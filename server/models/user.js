@@ -4,21 +4,27 @@ export default (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING,
-        allowNull: { args: false, msg: 'Please enter your name'}
+        allowNull: {
+          args: false,
+          msg: 'Please enter your name'
+        }
       },
       username: {
         type: DataTypes.STRING,
-        allowNull: { args: false, msg: 'Please enter your username' }
+        unique: {
+          args: true,
+          msg: 'Username already exists'
+        },
+        allowNull: {
+          args: false,
+          msg: 'Please enter your username'
+        }
       },
       email: {
         type: DataTypes.STRING,
         allowNull: {
           args: false,
           msg: 'Please enter your email address'
-        },
-        unique: {
-          args: true,
-          msg: 'Email already exists'
         },
         validate: {
           isEmail: {
