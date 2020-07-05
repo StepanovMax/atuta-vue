@@ -55,7 +55,6 @@ module.exports = {
     port: 9000,
     historyApiFallback: true
   },
-  watch: true,
   plugins: [
     new VueLoaderPlugin()
   ],

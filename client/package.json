@@ -8,8 +8,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "webpack --progress --colors",
-    "start": "webpack-dev-server --progress --colors --inline --hot",
+    "build": "webpack --progress --colors --no-watch",
+    "watch": "webpack --progress --colors --watch",
+    "start": "webpack-dev-server --progress --colors --inline --hot --watch",
     "dev": "webpack-dev-server"
   },
   "devDependencies": {
