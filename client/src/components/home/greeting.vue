@@ -4,13 +4,13 @@
     class="greeting"
   >
     <h1 class="greeting__h1">
-      Hello I'm
+      Hello this is
     </h1>
     <h2>
-      Max Stepanov
+      Atuta website
     </h2>
     <p>
-      Professional web developer
+      Developer version
     </p>
     <button @click="fetchMessage()">
       Click to fetch data!
