@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     fetchMessage() {
-      fetch('http://127.0.0.1:9001/api/test')
+      fetch('http://127.0.0.1:9001/test')
         /*
           Converting to json
         */
