@@ -1,6 +1,7 @@
-import Users from '../controllers/user';
+// import Users from '../controllers/user';
+const Users = require('../controllers/user');
 
-export default (app) => {
+module.exports = (app) => {
   app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", req.headers.origin);
     res.header('Access-Control-Allow-Credentials', 'true');

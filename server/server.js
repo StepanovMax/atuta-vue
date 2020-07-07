@@ -1,8 +1,14 @@
-import http from 'http';
-import express from 'express';
-import logger from 'morgan';
-import bodyParser from 'body-parser';
-import routes from './routes';
+const http = require('http');
+const express = require('express');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
+
+// import http from 'http';
+// import express from 'express';
+// import logger from 'morgan';
+// import bodyParser from 'body-parser';
+// import routes from './routes';
 
 const hostname = '127.0.0.1';
 const port = 9001;

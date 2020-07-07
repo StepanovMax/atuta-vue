@@ -1,7 +1,10 @@
-import model from '../models';
+// import model from '../models';
+const model = require('../models');
 
 const { User } = model;
+
 console.log('>> userSignUp')
+
 class Users {
   static signUp(req, res) {
     const { name, username, email, password } = req.body
@@ -32,4 +35,4 @@ class Users {
   }
 }
 
-export default Users;
+module.exports = Users;
