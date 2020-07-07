@@ -3,7 +3,7 @@ const model = require('../models');
 
 const { User } = model;
 
-console.log('>> userSignUp')
+// console.log('>> userSignUp');
 
 class Users {
   static signUp(req, res) {
