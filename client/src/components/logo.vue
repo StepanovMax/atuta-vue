@@ -1,5 +1,5 @@
 <template>
-  <img src="https://dummyimage.com/50x50/000/000000.jpg" >
+  <img src="src/images/logo/logo_desktop.png">
 </template>
 
 <script>

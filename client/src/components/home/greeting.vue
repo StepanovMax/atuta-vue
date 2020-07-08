@@ -3,23 +3,14 @@
     id="greeting"
     class="greeting"
   >
-    <h1 class="greeting__h1">
-      Hello
+    <h1 class="title title_h1">
+      Привет!
     </h1>
-    <p>
-      this is
-    </p>
-    <h2>
-      Atuta website
+    <h2 class="title title_h2">
+      Это сайт Атута.
     </h2>
-    <p>
-      Developers version
-    </p>
-    <button @click="fetchMessage()">
-      Click to fetch data!
-    </button>
-    <p>
-      {{ message }}
+    <p class="paragraph">
+      Добро пожаловать.
     </p>
   </div>
 </template>
@@ -50,6 +41,11 @@ export default {
           error => console.log('Error ::', error)
         )
     }
+  },
+  mounted() {
+    console.log('NODE_ENV ::', process.env.NODE_ENV);
+    console.log('VUE_APP_DOMAIN ::', process.env.VUE_APP_DOMAIN);
+    console.log('env ::', process.env);
   }
 };
 </script>

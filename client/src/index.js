@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import App from './App.vue';
 import Home from './components/home.vue'
-import Blog from './components/blog.vue'
+import StyleGuide from './components/styleGuide.vue'
 
 import './scss/index.scss'
 
@@ -20,9 +20,9 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/blog',
-      name:'blog',
-      component: Blog
+      path: '/styleGuide',
+      name:'styleGuide',
+      component: StyleGuide
     }
   ]
 });

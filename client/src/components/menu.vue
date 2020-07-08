@@ -2,12 +2,12 @@
   <ul class="menu">
     <li class="menu__item">
       <router-link :to="{ name: 'home' }">
-        Home
+        Главная
       </router-link>
     </li>
     <li class="menu__item">
-      <router-link :to="{ name: 'blog' }">
-        Blog
+      <router-link :to="{ name: 'styleGuide' }">
+        Общий стиль
       </router-link>
     </li>
   </ul>

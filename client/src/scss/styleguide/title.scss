@@ -1,0 +1,27 @@
+.title {
+  color: $COLOR-TITLE;
+
+  &_h1 {
+    font-size: 36px;
+  }
+
+  &_h2 {
+    font-size: 32px;
+  }
+
+  &_h3 {
+    font-size: 28px;
+  }
+
+  &_h4 {
+    font-size: 24px;
+  }
+
+  &_h5 {
+    font-size: 20px;
+  }
+
+  &_h6 {
+    font-size: 16px;
+  }
+}
