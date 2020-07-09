@@ -6,6 +6,11 @@
     <li class="menu__item">
       Помощь
     </li>
+    <li class="menu__item">
+      <router-link :to="{ name: 'styleGuide' }" class="link">
+        Общий стиль
+      </router-link>
+    </li>
   </ul>
 </template>
 

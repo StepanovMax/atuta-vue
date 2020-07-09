@@ -9,11 +9,6 @@
     <li class="menu__item">
       Войти / Регистрация
     </li>
-    <li class="menu__item">
-      <router-link :to="{ name: 'styleGuide' }" class="link">
-        Общий стиль
-      </router-link>
-    </li>
   </ul>
 </template>
 
