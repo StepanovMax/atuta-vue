@@ -1,0 +1,11 @@
+.link {
+  color: $COLOR-BLUE-MAIN;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: $COLOR-BLUE-LIGHT;
+  }
+}

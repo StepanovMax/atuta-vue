@@ -1,3 +1,26 @@
 html {
-  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  @extend .font-face;
+}
+
+
+html,
+body,
+.app {
+  height: 100%;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
 }

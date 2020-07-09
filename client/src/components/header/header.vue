@@ -3,20 +3,20 @@
     id="header"
     class="header"
   >
-    <Logo />
-    <Menu />
+    <HeaderTop />
+    <HeaderBottom />
   </header>
 </template>
 
 <script>
-import Logo from './logo.vue'
-import Menu from './menu.vue'
+import HeaderTop from './header-top.vue'
+import HeaderBottom from './header-bottom.vue'
 
 export default {
   name: 'header',
   components: {
-    Logo,
-    Menu
+    HeaderTop,
+    HeaderBottom
   },
 };
 </script>

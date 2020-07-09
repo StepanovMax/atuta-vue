@@ -1,3 +1,7 @@
 .content {
-  margin-top: 150px;
+  @extend .container;
+
+  width: 100%;
+  font-size: 16px;
+  padding: 50px 0;
 }

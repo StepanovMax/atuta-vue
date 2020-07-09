@@ -1,12 +1,16 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      <router-link :to="{ name: 'home' }">
-        Главная
-      </router-link>
+      Избранное
     </li>
     <li class="menu__item">
-      <router-link :to="{ name: 'styleGuide' }">
+      Мои объявления
+    </li>
+    <li class="menu__item">
+      Войти / Регистрация
+    </li>
+    <li class="menu__item">
+      <router-link :to="{ name: 'styleGuide' }" class="link">
         Общий стиль
       </router-link>
     </li>

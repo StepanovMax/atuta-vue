@@ -1,17 +1,22 @@
 // Reset styles
+@import 'reset-css';
 
+// Common
+@import "./common/variables/variables.scss";
 @import "./common/common.scss";
+@import "./common/header/header.scss";
+@import "./common/footer.scss";
 
 // Styleguide
-@import "./styleguide/variables.scss";
 @import "./styleguide/container.scss";
 @import "./styleguide/list.scss";
-@import "./styleguide/header.scss";
 @import "./styleguide/content.scss";
 @import "./styleguide/button.scss";
 @import "./styleguide/paragraph.scss";
 @import "./styleguide/title.scss";
 @import "./styleguide/image.scss";
+@import "./styleguide/link.scss";
+@import "./styleguide/styleguide-page.scss";
 
 // Blocks
 @import "./blocks/menu.scss";

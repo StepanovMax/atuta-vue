@@ -1,0 +1,14 @@
+.footer {
+  font-size: 12px;
+  padding: 15px 0;
+  background-color: $COLOR-GREY-LIGHT;
+
+  &__container {
+    @extend .container;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

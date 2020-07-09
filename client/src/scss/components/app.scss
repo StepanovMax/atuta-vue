@@ -1,8 +1,4 @@
 .app {
-  @extend .container;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $COLOR-BASE;
-  margin-top: 60px;
 }

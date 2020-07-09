@@ -1,0 +1,8 @@
+@import "./header-top.scss";
+@import "./header-bottom.scss";
+
+.header {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
