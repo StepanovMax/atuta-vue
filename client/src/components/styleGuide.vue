@@ -93,10 +93,19 @@
               <input type="text" class="input" placeholder="Enter your name">
             </li>
             <li class="list__item list__item_vertical">
-              <input type="text" class="input input_disabled" placeholder="Enter your name">
+              <input
+                type="text"
+                class="input input_disabled"
+                placeholder="Enter your name"
+                disabled
+              >
             </li>
             <li class="list__item list__item_vertical">
-              <input type="text" class="input input_invalid" placeholder="Enter your name">
+              <input
+                type="text"
+                class="input input_invalid"
+                value="Maxim Stepanov"
+              >
               <p class="paragraph paragraph_invalid">
                 Field "Object type" is necessary for filling.
               </p>
