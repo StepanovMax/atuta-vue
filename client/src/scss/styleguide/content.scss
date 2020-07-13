@@ -1,7 +1,8 @@
 .content {
   @extend .container;
 
-  width: 100%;
   font-size: 16px;
-  padding: 50px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @extend .padding-general;
 }

@@ -1,0 +1,42 @@
+.button {
+  border: 0;
+  border-radius: 4px;
+  color: $COLOR-WHITE;
+  letter-spacing: 0.5px;
+  background-color: $COLOR-BLUE-MAIN;
+  transition: background-color 0.3s ease;
+
+  &_middle {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  &_mini {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $COLOR-BLUE-ACTIVE;
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $COLOR-BLUE-HOVER;
+  }
+
+  &_disabled {
+    color: $COLOR-TEXT-DISABLED;
+    background-color: $COLOR-GREY-DISABLED;
+
+    &:hover {
+      cursor: default;
+      background-color: $COLOR-GREY-DISABLED;
+    }
+  }
+}

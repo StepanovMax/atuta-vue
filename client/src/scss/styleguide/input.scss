@@ -1,0 +1,34 @@
+.input {
+  font-size: 14px;
+  color: $COLOR-TEXT;
+  height: 40px;
+  letter-spacing: 0;
+  border-radius: 2px;
+  text-indent: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $COLOR-GREY-DISABLED;
+  background-color: $COLOR-GREY-DISABLED;
+
+  &_invalid {
+    border-color: $COLOR-RED-INVALID;
+  }
+
+  &_disabled {
+    background-color: $COLOR-GREY-DISABLED;
+
+    @include placeholder {
+      color: $COLOR-TEXT-DISABLED;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    background-color: $COLOR-GREY-DISABLED;
+  }
+
+  &:active {
+    outline: none;
+    background-color: $COLOR-GREY-DISABLED;
+  }
+}

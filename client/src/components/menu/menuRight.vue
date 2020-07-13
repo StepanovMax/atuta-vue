@@ -1,13 +1,13 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      Избранное
+      Favorites
     </li>
     <li class="menu__item">
-      Мои объявления
+      My objects
     </li>
     <li class="menu__item">
-      Войти / Регистрация
+      Enter / Registration
     </li>
   </ul>
 </template>

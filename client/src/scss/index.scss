@@ -3,12 +3,14 @@
 
 // Common
 @import "./common/variables/variables.scss";
+@import "./common/mixins.scss";
 @import "./common/common.scss";
 @import "./common/header/header.scss";
 @import "./common/footer.scss";
 
 // Styleguide
 @import "./styleguide/container.scss";
+@import "./styleguide/input.scss";
 @import "./styleguide/list.scss";
 @import "./styleguide/content.scss";
 @import "./styleguide/button.scss";

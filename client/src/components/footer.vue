@@ -4,9 +4,12 @@
     class="footer"
   >
     <div class="footer__container">
-      <MenuLeft />
+      <div class="footer__logo-container">
+        <Logo />
+        <MenuLeft />
+      </div>
       <p class="paragraph">
-        &copy; 2020 Все права защищены.
+        &copy; 2020 All rights reserved.
       </p>
     </div>
   </footer>
@@ -14,10 +17,12 @@
 
 <script>
 import MenuLeft from './menu/menuLeft.vue'
+import Logo from './logo.vue'
 
 export default {
   name: 'footer',
   components: {
+    Logo,
     MenuLeft
   }
 };

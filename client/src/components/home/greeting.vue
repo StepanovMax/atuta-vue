@@ -4,13 +4,13 @@
     class="greeting"
   >
     <h1 class="title title_h1">
-      Привет!
+      Hello!
     </h1>
     <h2 class="title title_h2">
-      Это сайт Атута.
+      This is the Atuta website.
     </h2>
     <p class="paragraph">
-      Добро пожаловать.
+      Welcome.
     </p>
   </div>
 </template>
