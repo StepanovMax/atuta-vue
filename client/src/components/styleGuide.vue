@@ -111,7 +111,7 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          ICons
+          Icons
         </h2>
       </div>
       <div class="list__item list__item_styleguide">
