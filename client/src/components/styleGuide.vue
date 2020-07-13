@@ -93,10 +93,19 @@
               <input type="text" class="input" placeholder="Enter your name">
             </li>
             <li class="list__item list__item_vertical">
-              <input type="text" class="input input_disabled" placeholder="Enter your name">
+              <input
+                type="text"
+                class="input input_disabled"
+                placeholder="Enter your name"
+                disabled
+              >
             </li>
             <li class="list__item list__item_vertical">
-              <input type="text" class="input input_invalid" placeholder="Enter your name">
+              <input
+                type="text"
+                class="input input_invalid"
+                value="Maxim Stepanov"
+              >
               <p class="paragraph paragraph_invalid">
                 Field "Object type" is necessary for filling.
               </p>
@@ -111,7 +120,7 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          ICons
+          Icons
         </h2>
       </div>
       <div class="list__item list__item_styleguide">

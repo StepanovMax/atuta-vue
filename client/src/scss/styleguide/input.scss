@@ -7,28 +7,40 @@
   text-indent: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: $COLOR-GREY-DISABLED;
-  background-color: $COLOR-GREY-DISABLED;
+  border-color: $COLOR-GREY-ACTIVE;
+  background-color: $COLOR-GREY-ACTIVE;
+
+  &:focus {
+    outline: none;
+    background-color: $COLOR-GREY-ACTIVE;
+  }
+
+  &:active {
+    outline: none;
+    background-color: $COLOR-GREY-ACTIVE;
+  }
 
   &_invalid {
     border-color: $COLOR-RED-INVALID;
   }
 
   &_disabled {
+    border-color: $COLOR-GREY-DISABLED;
     background-color: $COLOR-GREY-DISABLED;
 
     @include placeholder {
       color: $COLOR-TEXT-DISABLED;
     }
-  }
 
-  &:focus {
-    outline: none;
-    background-color: $COLOR-GREY-DISABLED;
-  }
+    &:focus {
+      border-color: $COLOR-GREY-DISABLED;
+      background-color: $COLOR-GREY-DISABLED;
+    }
 
-  &:active {
-    outline: none;
-    background-color: $COLOR-GREY-DISABLED;
+    &:active {
+      border-color: $COLOR-GREY-DISABLED;
+      background-color: $COLOR-GREY-DISABLED;
+    }
+  
   }
 }
