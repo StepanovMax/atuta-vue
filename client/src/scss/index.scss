@@ -2,7 +2,8 @@
 @import 'reset-css';
 
 // Common
-@import "./common/variables/variables.scss";
+@import "./variables/sizes.scss";
+@import "./variables/colors.scss";
 @import "./common/mixins.scss";
 @import "./common/common.scss";
 @import "./common/header/header.scss";
@@ -27,3 +28,4 @@
 @import "./components/app.scss";
 @import "./components/logo.scss";
 @import "./components/greeting.scss";
+@import "./components/switcher.scss";
