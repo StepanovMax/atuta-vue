@@ -9,7 +9,7 @@
         <MenuLeft />
       </div>
       <p class="paragraph">
-        &copy; 2020 All rights reserved.
+        &copy; 2020 Все права защищены.
       </p>
     </div>
   </footer>
