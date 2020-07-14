@@ -115,8 +115,50 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Switchers
+          Переключатели
         </h2>
+        <div class="styleguide__block">
+          <switcher
+            switcherId="switcher-1"
+            :items="[
+              {
+                label: 'Купить',
+                slug: 'buy',
+                checked: true
+              },
+              {
+                label: 'Снять',
+                slug: 'rent',
+                checked: false
+              }
+            ]"
+          />
+          <switcher
+            switcherId="switcher-2"
+            :items="[
+              {
+                label: 'Собственник',
+                slug: 'personal',
+                checked: false
+              },
+              {
+                label: 'Агент',
+                slug: 'agent',
+                checked: true
+              },
+              {
+                label: 'Агентство',
+                slug: 'agency',
+                checked: false
+              },
+              {
+                label: 'Застройщик',
+                slug: 'builder',
+                checked: false
+              }
+            ]"
+          />
+        </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
@@ -153,7 +195,12 @@
 </template>
 
 <script>
+import switcher from './common/switcher.vue'
+
 export default {
   name: 'blog',
+  components: {
+    switcher
+  }
 };
 </script>

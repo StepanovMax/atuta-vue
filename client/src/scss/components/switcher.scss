@@ -1,0 +1,47 @@
+$BORDER-RADIUS: 6px;
+
+.switcher {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    &-item {
+      cursor: pointer;
+      background-color: #F1F1F1;
+
+      &:first-child {
+        border-radius: $BORDER-RADIUS 0 0 $BORDER-RADIUS;
+      }
+
+      &:last-child {
+        border-radius: 0 $BORDER-RADIUS $BORDER-RADIUS 0;
+      }
+
+      &_active {
+        background-color: $COLOR-BLUE-MAIN;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: block;
+
+    &_active {
+      color: $COLOR-WHITE;
+    }
+  }
+
+  &__input-radio {
+    display: none;
+  }
+}
