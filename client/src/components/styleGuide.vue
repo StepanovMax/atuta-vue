@@ -1,71 +1,74 @@
 <template>
   <div id="styleguide" class="styleguide">
     <h1 class="title title_h1" style="text-align: center;">
-      Common elements style
+      Стиль общих элементов
     </h1>
     <div class="list">
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Text
+          Параграфы / текст
         </h2>
         <div class="styleguide__block">
           <p class="paragraph">
-            Aliquam erat volutpat. In ut quam vitae odio lacinia tincidunt. Vestibulum suscipit nulla quis orci. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Suspendisse eu ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Cras ultricies mi eu turpis hendrerit fringilla. Phasellus nec sem in justo pellentesque facilisis. Nam commodo suscipit quam. Vivamus elementum semper nisi.
+            Идейные соображения высшего порядка, а также консультация с широким активом позволяет выполнять важные задания по разработке новых предложений. Повседневная практика показывает, что рамки и место обучения кадров влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Идейные соображения высшего порядка, а также новая модель организационной деятельности в значительной степени обуславливает создание новых предложений. С другой стороны консультация с широким активом способствует подготовки и реализации модели развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач.
           </p>
           <p class="paragraph">
-            Sed a libero. Quisque id odio. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Vivamus aliquet elit ac nisl. Praesent egestas neque eu enim. Etiam imperdiet imperdiet orci. Ut a nisl id ante tempus hendrerit. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Sed in libero ut nibh placerat accumsan. Nulla sit amet est. Phasellus viverra nulla ut metus varius laoreet. Nullam sagittis. Etiam iaculis nunc ac metus. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.
+            Равным образом консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании соответствующий условий активизации. С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации дальнейших направлений развития. Повседневная практика показывает, что начало повседневной работы по формированию позиции в значительной степени обуславливает создание форм развития. Не следует, однако забывать, что реализация намеченных плановых заданий требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач.
+          </p>
+          <p class="paragraph">
+            Разнообразный и богатый опыт консультация с широким активом играет важную роль в формировании дальнейших направлений развития. С другой стороны новая модель организационной деятельности требуют определения и уточнения существенных финансовых и административных условий.
           </p>
         </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Titles
+          Заголовки
         </h2>
         <div class="styleguide__block">
           <h1 class="title title_h1">
-            Title H1
+            Заголовок H1
           </h1>
           <h2 class="title title_h2">
-            Title H2
+            Заголовок H2
           </h2>
           <h3 class="title title_h3">
-            Title H3
+            Заголовок H3
           </h3>
           <h4 class="title title_h4">
-            Title H4
+            Заголовок H4
           </h4>
           <h5 class="title title_h5">
-            Title H5
+            Заголовок H5
           </h5>
           <h6 class="title title_h6">
-            Title H6
+            Заголовок H6
           </h6>
         </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Buttons
+          Кнопки
         </h2>
         <div class="styleguide__block">
           <ul class="list">
             <li class="list__item list__item_vertical">
               <button class="button button_middle">
-                Show advert
+                Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
               <button class="button button_middle button_disabled">
-                Show advert
+                Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
               <button class="button button_mini">
-                Show advert
+                Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
               <button class="button button_mini button_disabled">
-                Show advert
+                Показать объявление
               </button>
             </li>
           </ul>
@@ -73,7 +76,7 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Images
+          Картинки
         </h2>
         <div class="styleguide__block">
           <img
@@ -85,18 +88,22 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Inputs
+          Поля ввода
         </h2>
         <div class="styleguide__block">
           <ul class="list">
             <li class="list__item list__item_vertical">
-              <input type="text" class="input" placeholder="Enter your name">
+              <input
+                type="text"
+                class="input"
+                placeholder="Введите своё имя"
+              >
             </li>
             <li class="list__item list__item_vertical">
               <input
                 type="text"
                 class="input input_disabled"
-                placeholder="Enter your name"
+                placeholder="Введите своё имя"
                 disabled
               >
             </li>
@@ -104,10 +111,10 @@
               <input
                 type="text"
                 class="input input_invalid"
-                value="Maxim Stepanov"
+                value="Максим Степанов"
               >
               <p class="paragraph paragraph_invalid">
-                Field "Object type" is necessary for filling.
+                Пожалуйста, заполните поле "Тип объекта".
               </p>
             </li>
           </ul>
@@ -162,32 +169,27 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Icons
+          Иконки
         </h2>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Checkboxes
+          Чекбоксы
         </h2>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Radio buttons
+          Радио кнопки
         </h2>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Selects
+          Выпадашки
         </h2>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
-          Tabs
-        </h2>
-      </div>
-      <div class="list__item list__item_styleguide">
-        <h2 class="title title_h2">
-          Range sliders
+          Значения диапазона
         </h2>
       </div>
     </div>

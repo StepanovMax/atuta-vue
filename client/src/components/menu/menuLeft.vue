@@ -1,14 +1,14 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      Companies
+      Компании
     </li>
     <li class="menu__item">
-      Help
+      Помощь
     </li>
     <li class="menu__item">
       <router-link :to="{ name: 'styleGuide' }" class="link">
-        Common style
+        Общий стиль
       </router-link>
     </li>
   </ul>
