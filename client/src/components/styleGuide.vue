@@ -88,6 +88,24 @@
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
+          Выпадашки
+        </h2>
+        <div class="styleguide__block">
+          <Multiselect
+            v-model="value"
+            :options="towns"
+            :show-labels="false"
+            :allow-empty="true"
+            :close-on-select="true"
+            :multiple="true"
+            label="name"
+            track-by="name"
+            placeholder="Выберите нужное"
+          />
+        </div>
+      </div>
+      <div class="list__item list__item_styleguide">
+        <h2 class="title title_h2">
           Поля ввода
         </h2>
         <div class="styleguide__block">
@@ -139,7 +157,11 @@
                 checked: false
               }
             ]"
+            v-model="switcherValue1"
           />
+          <pre>
+            Выбрано: {{ switcherValue1 }}
+          </pre>
           <switcher
             switcherId="switcher-2"
             :items="[
@@ -164,33 +186,72 @@
                 checked: false
               }
             ]"
+            v-model="switcherValue2"
           />
+          <pre>
+            Выбрано: {{ switcherValue2 }}
+          </pre>
         </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
           Иконки
         </h2>
+        <div class="styleguide__block">
+          <ul class="list">
+            <li class="list__item list__item_vertical">
+              <iconArrowUp />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconCrown />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconDiamond />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconAsterisk />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconCross />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconPlus />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconEdit />
+            </li>
+            <li class="list__item list__item_vertical">
+              <iconRemove />
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
           Чекбоксы
         </h2>
-      </div>
-      <div class="list__item list__item_styleguide">
-        <h2 class="title title_h2">
-          Радио кнопки
-        </h2>
-      </div>
-      <div class="list__item list__item_styleguide">
-        <h2 class="title title_h2">
-          Выпадашки
-        </h2>
+        <div class="styleguide__block">
+          <checkbox
+            switcherId="checkbox-1"
+            :item="{
+              label: 'Квартира',
+              slug: 'appartment',
+              checked: true
+            }"
+            v-model="checkboxValue1"
+          />
+          <pre>
+            Выбрано: {{ checkboxValue1 }}
+          </pre>
+        </div>
       </div>
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
           Значения диапазона
         </h2>
+        <div class="styleguide__block">
+          <range />
+        </div>
       </div>
     </div>
   </div>
@@ -198,11 +259,50 @@
 
 <script>
 import switcher from './common/switcher.vue'
+import iconArrowUp from './icons/iconArrowUp.vue'
+import iconDiamond from './icons/iconDiamond.vue'
+import iconCrown from './icons/iconCrown.vue'
+import iconAsterisk from './icons/iconAsterisk.vue'
+import iconCross from './icons/iconCross.vue'
+import iconPlus from './icons/iconPlus.vue'
+import iconEdit from './icons/iconEdit.vue'
+import iconRemove from './icons/iconRemove.vue'
+import checkbox from './common/checkbox.vue'
+import range from './common/range.vue'
+import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'blog',
   components: {
-    switcher
-  }
+    switcher,
+    iconArrowUp,
+    iconAsterisk,
+    iconCross,
+    iconPlus,
+    iconEdit,
+    iconCrown,
+    iconRemove,
+    iconDiamond,
+    checkbox,
+    range,
+    Multiselect,
+  },
+  data() {
+    return {
+      switcherValue1: '',
+      switcherValue2: '',
+      checkboxValue1: '',
+      value: null,
+      towns: [
+        { name: 'Таганрог' },
+        { name: 'Ростов-на-Дону' },
+        { name: 'Шахты' },
+        { name: 'Азов', $isDisabled: true },
+        { name: 'Сальск' },
+        { name: 'Батайск' },
+        { name: 'Новошахтинск' },
+      ]
+    }
+  },
 };
 </script>

@@ -19,6 +19,9 @@
 @import "./styleguide/title.scss";
 @import "./styleguide/image.scss";
 @import "./styleguide/link.scss";
+@import "./styleguide/icon.scss";
+@import "./styleguide/checkbox.scss";
+@import "./styleguide/range.scss";
 @import "./styleguide/styleguide-page.scss";
 
 // Blocks
@@ -29,3 +32,5 @@
 @import "./components/logo.scss";
 @import "./components/greeting.scss";
 @import "./components/switcher.scss";
+@import "./node-modules/multiselect.scss";
+@import "./node-modules-rewrite/multiselect.scss";
