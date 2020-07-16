@@ -1,0 +1,27 @@
+.icon {
+  &__path {
+    fill: $COLOR-TEXT;
+    transition: fill 0.3s ease;
+
+    &_checkbox {
+      fill: $COLOR-BLUE-ACTIVE;
+    }
+  }
+
+  // &:hover {
+  //   cursor: pointer;
+  // }
+
+  &:hover &__path {
+    fill: $COLOR-BLUE-MAIN;
+  }
+
+  &:active &__path {
+    fill: $COLOR-BLUE-ACTIVE;
+  }
+
+  &_rouble {
+    width: 16px;
+    height: 16px;
+  }
+}

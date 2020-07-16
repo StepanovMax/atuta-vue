@@ -35,7 +35,11 @@
 
 <script>
 export default {
-  name: 'Switcher',
+  name: 'switcher',
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   props: {
     items: {
       default: [],
@@ -58,10 +62,12 @@ export default {
       for (let i = 0; i < this.dataItems.length; i++) {
         if (i === index) {
           this.dataItems[i].checked = true;
+          this.value = this.dataItems[i].label
         } else {
           this.dataItems[i].checked = false;
         }
       }
+      this.$emit('change', this.value)
     }
   },
 };

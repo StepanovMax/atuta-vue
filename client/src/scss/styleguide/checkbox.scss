@@ -1,0 +1,42 @@
+.checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+
+  &__label {
+    padding-left: 25px;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+  }
+
+  &__icon {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &_checked {
+      border-color: $COLOR-BLUE-MAIN;
+      background-color: $COLOR-BLUE-MAIN;
+    }
+
+    &_active {
+      border-color: $COLOR-BLUE-MAIN;
+    }
+
+    &_disabled {
+      border-color: $COLOR-GREY-DISABLED;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}
