@@ -1,4 +1,5 @@
 .input {
+  padding: 0;
   font-size: 14px;
   color: $COLOR-TEXT;
   height: 40px;
@@ -9,6 +10,10 @@
   border-style: solid;
   border-color: $COLOR-GREY-ACTIVE;
   background-color: $COLOR-GREY-ACTIVE;
+
+  @include placeholder {
+    font-weight: 700;
+  }
 
   &:focus {
     outline: none;
