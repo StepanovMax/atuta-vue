@@ -1,0 +1,34 @@
+.search-mobile {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #F8F8F8;
+  padding: 5px 15px;
+
+  @include media(desktop) {
+    display: none;
+  }
+
+  @include media(tablet) {
+    display: none;
+  }
+
+  @include media(mobile) {
+    display: block;
+  }
+
+  &_hidden {
+    overflow: hidden;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+}

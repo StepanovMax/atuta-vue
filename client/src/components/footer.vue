@@ -1,13 +1,13 @@
 <template>
   <footer
-    id="footer"
+    id="footer-section"
     class="footer"
   >
     <div class="footer__container">
       <div class="footer__logo-container">
-        <Logo />
-        <MenuLeft />
+        <Logo location="footer" />
       </div>
+      <MenuLeft />
       <p class="paragraph">
         &copy; 2020 Все права защищены.
       </p>

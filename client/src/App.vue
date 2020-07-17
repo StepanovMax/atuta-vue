@@ -3,21 +3,27 @@
     id="app"
     class="app"
   >
-    <Header />
+    <headerDesktop />
+    <searchMobile />
     <router-view class="content"></router-view>
-    <Footer />
+    <menuMobile />
+    <footer />
   </div>
 </template>
 
 <script>
-import Header from './components/header/header.vue'
-import Footer from './components/footer.vue'
+import headerDesktop from './components/header/header.vue'
+import footer from './components/footer.vue'
+import searchMobile from './components/search/searchMobile.vue'
+import menuMobile from './components/menu/menuMobile.vue'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer
+    headerDesktop,
+    footer,
+    menuMobile,
+    searchMobile,
   }
 };
 </script>

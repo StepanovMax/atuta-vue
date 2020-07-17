@@ -1,10 +1,23 @@
-.button {
+.btn {
   border: 0;
   border-radius: 4px;
-  color: $COLOR-WHITE;
   letter-spacing: 0.5px;
-  background-color: $COLOR-BLUE-MAIN;
   transition: background-color 0.3s ease;
+  color: $COLOR-WHITE;
+  background-color: transparent;
+
+  &_blue {
+    color: $COLOR-WHITE;
+    background-color: $COLOR-BLUE-MAIN;
+
+    &:hover {
+      background-color: $COLOR-BLUE-HOVER;
+    }
+
+    &:focus {
+      background-color: $COLOR-BLUE-ACTIVE;
+    }
+  }
 
   &_middle {
     font-size: 16px;
@@ -16,9 +29,18 @@
     padding: 8px 12px;
   }
 
+  &_hamburger {
+    z-index: 3;
+    position: relative;
+  }
+
+  &_settings {
+    z-index: 4;
+    position: relative;
+  }
+
   &:focus {
     outline: none;
-    background-color: $COLOR-BLUE-ACTIVE;
   }
 
   &:active {
@@ -27,7 +49,6 @@
 
   &:hover {
     cursor: pointer;
-    background-color: $COLOR-BLUE-HOVER;
   }
 
   &_disabled {
