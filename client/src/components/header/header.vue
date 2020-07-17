@@ -1,22 +1,22 @@
 <template>
   <header
-    id="header"
+    id="header-section"
     class="header"
   >
-    <HeaderTop />
-    <HeaderBottom />
+    <headerTop />
+    <headerBottom />
   </header>
 </template>
 
 <script>
-import HeaderTop from './header-top.vue'
-import HeaderBottom from './header-bottom.vue'
+import headerTop from './headerTop.vue'
+import headerBottom from './headerBottom.vue'
 
 export default {
-  name: 'header',
+  name: 'headerDesktop',
   components: {
-    HeaderTop,
-    HeaderBottom
+    headerTop,
+    headerBottom,
   },
 };
 </script>

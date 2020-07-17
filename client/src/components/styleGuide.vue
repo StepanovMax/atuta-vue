@@ -52,22 +52,22 @@
         <div class="styleguide__block">
           <ul class="list">
             <li class="list__item list__item_vertical">
-              <button class="button button_middle">
+              <button class="btn btn_blue btn_middle">
                 Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
-              <button class="button button_middle button_disabled">
+              <button class="btn btn_blue btn_middle btn_disabled">
                 Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
-              <button class="button button_mini">
+              <button class="btn btn_blue btn_mini">
                 Показать объявление
               </button>
             </li>
             <li class="list__item list__item_vertical">
-              <button class="button button_mini button_disabled">
+              <button class="btn btn_blue btn_mini btn_disabled">
                 Показать объявление
               </button>
             </li>
@@ -82,7 +82,7 @@
           <img
             src="src/images/example-images/trees-in-park-257360.jpg"
             alt=""
-            class="image"
+            class="img"
           >
         </div>
       </div>

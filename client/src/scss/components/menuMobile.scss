@@ -1,0 +1,32 @@
+.menu-mobile {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
+  height: 30px;
+  background-color: $COLOR-WHITE;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+
+  &__list {
+    height: 100%;
+
+    &-item {
+      font-size: 10px;
+      color: $COLOR-BASE;
+    }
+  }
+
+  @include media(desktop) {
+    display: none;
+  }
+
+  @include media(tablet) {
+    display: none;
+  }
+
+  @include media(mobile) {
+    display: block;
+  }
+}

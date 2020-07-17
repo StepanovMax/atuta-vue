@@ -9,4 +9,16 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
+  @include media(desktop) {
+    display: block;
+  }
+
+  @include media(tablet) {
+    display: block;
+  }
+
+  @include media(mobile) {
+    display: none;
+  }
 }

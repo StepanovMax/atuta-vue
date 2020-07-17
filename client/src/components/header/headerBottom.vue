@@ -1,7 +1,7 @@
 <template>
   <div class="header-bottom">
     <div class="header-bottom__container">
-      <Logo />
+      <Logo location="header" />
     </div>
   </div>
 </template>
