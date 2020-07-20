@@ -1,11 +1,11 @@
 .header-top {
   padding-top: 5px;
   padding-bottom: 5px;
-  @extend .padding-general;
   margin-bottom: 10px;
   background-color: $COLOR-GREY-DISABLED;
   font-size: 12px;
   color: $COLOR-TEXT;
+  @include padding;
 
   &__container {
     @extend .container;

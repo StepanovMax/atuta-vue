@@ -17,14 +17,29 @@
 @mixin placeholder {
   &::-webkit-input-placeholder {
     @content;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
   }
   &:-moz-placeholder {
     @content;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
   }
   &::-moz-placeholder {
     @content;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
   }
   &:-ms-input-placeholder {
     @content;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  }
+}
+
+@mixin padding() {
+  @include media(desktop) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  @include media(mobile) {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

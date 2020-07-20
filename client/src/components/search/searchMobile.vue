@@ -2,12 +2,28 @@
   <div
     class="search-mobile"
     :class="[
-      { 'search-mobile__hidden': !this.isFilterOpen }
+      { 'search-mobile_hidden': !this.isFilterOpen }
     ]"
   >
     <div class="search-mobile__wrap">
-      <input type="text">
+      <input 
+        type="text"
+        class="search-mobile__input"
+        :class="[
+          { 'search-mobile__input_hidden': this.isFilterOpen }
+        ]"
+        placeholder="Поиск в Таганроге"
+        @focus="isInputOnFocus = true"
+        @blur="isInputOnFocus = false"
+      >
       <button
+        v-if="this.isInputOnFocus"
+        class="btn btn_blue btn_mini search-mobile__btn"
+      >
+        Искать
+      </button>
+      <button
+        v-if="!this.isInputOnFocus"
         class="btn btn_settings"
         @click="toggleFilter()"
       >
@@ -56,7 +72,8 @@ export default {
   },
   data() {
     return {
-      isFilterOpen: false
+      isFilterOpen: false,
+      isInputOnFocus: false,
     }
   },
   methods: {
