@@ -1,38 +1,169 @@
 <template>
   <div class="menu-mobile">
-    <ul class="menu-mobile__list list list_horizontal">
+    <ul
+      class="menu-mobile__list list list_horizontal"
+    >
       <li class="menu-mobile__list-item list__item">
         <router-link
+          v-slot="{ href, route, navigate, isActive }"
           :to="{ name: 'home' }"
-          class="link"
+          class="link menu-mobile__link"
+          exact
         >
-          Поиск
+          <a
+            :active="isActive"
+            :href="href"
+            @click="navigate"
+          >
+            <logoDefault
+              class="menu-mobile__icon"
+              :class="[
+                { 'icon_active': isActive }
+              ]"
+            />
+            <p
+              class="menu-mobile__text"
+              :class="[
+                { 'menu-mobile__text_active': isActive }
+              ]"
+            >
+              Поиск
+            </p>
+          </a>
         </router-link>
       </li>
       <li class="menu-mobile__list-item list__item">
-        Избранное
+        <router-link
+          v-slot="{ href, route, navigate, isActive }"
+          :to="{ name: 'favorites' }"
+          class="link menu-mobile__link"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            @click="navigate"
+          >
+            <iconHeart
+              class="menu-mobile__icon"
+              :class="[
+                { 'icon_active': isActive }
+              ]"
+            />
+            <p
+              class="menu-mobile__text"
+              :class="[
+                { 'menu-mobile__text_active': isActive }
+              ]"
+            >
+              Избранное
+            </p>
+          </a>
+        </router-link>
       </li>
       <li class="menu-mobile__list-item list__item">
-        Разместить
+        <router-link
+          v-slot="{ href, route, navigate, isActive }"
+          :to="{ name: 'addObject' }"
+          class="link menu-mobile__link"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            @click="navigate"
+          >
+            <iconPlusInCircle
+              class="menu-mobile__icon"
+              :class="[
+                { 'icon_active': isActive }
+              ]"
+            />
+            <p
+              class="menu-mobile__text"
+              :class="[
+                { 'menu-mobile__text_active': isActive }
+              ]"
+            >
+              Разместить
+            </p>
+          </a>
+        </router-link>
       </li>
       <li class="menu-mobile__list-item list__item">
-        Сообщения
+        <router-link
+          v-slot="{ href, route, navigate, isActive }"
+          :to="{ name: 'messages' }"
+          class="link menu-mobile__link"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            @click="navigate"
+          >
+            <iconMessages
+              class="menu-mobile__icon"
+              :class="[
+                { 'icon_active': isActive }
+              ]"
+            />
+            <p
+              class="menu-mobile__text"
+              :class="[
+                { 'menu-mobile__text_active': isActive }
+              ]"
+            >
+              Сообщения
+            </p>
+          </a>
+        </router-link>
       </li>
       <li class="menu-mobile__list-item list__item">
-        Профиль
+        <router-link
+          v-slot="{ href, route, navigate, isActive }"
+          :to="{ name: 'profile' }"
+          class="link menu-mobile__link"
+        >
+          <a
+            :active="isActive"
+            :href="href"
+            @click="navigate"
+          >
+            <iconProfile
+              class="menu-mobile__icon"
+              :class="[
+                { 'icon_active': isActive }
+              ]"
+            />
+            <p
+              class="menu-mobile__text"
+              :class="[
+                { 'menu-mobile__text_active': isActive }
+              ]"
+            >
+              Профиль
+            </p>
+          </a>
+        </router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import logoDefault from '../logo/logoDefault.vue'
+import iconHeart from '../icons/iconHeart.vue'
+import iconMessages from '../icons/iconMessages.vue'
+import iconProfile from '../icons/iconProfile.vue'
+import iconPlusInCircle from '../icons/iconPlusInCircle.vue'
 
 export default {
   name: 'menuMobile',
-  // components: {
-  //   iconSettings,
-  //   iconHamburger,
-  // },
+  components: {
+    logoDefault,
+    iconHeart,
+    iconMessages,
+    iconProfile,
+    iconPlusInCircle,
+  },
   // data() {
   //   return {
   //     isMenuOpen: false

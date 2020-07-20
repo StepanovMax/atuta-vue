@@ -10,10 +10,11 @@
   @include padding;
 
   @include media(desktop) {
-    padding-top: 51px;
+    padding-top: 50px;
   }
 
   @include media(mobile) {
-    padding-top: $SEARCH-MOBILE-HEIGHT;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }

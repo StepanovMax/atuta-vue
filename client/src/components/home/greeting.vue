@@ -4,24 +4,10 @@
     class="greeting"
   >
     <h1 class="title title_h1">
-      Привет!
+      Главная
     </h1>
-    <h2 class="title title_h2">
-      Это сайт Атута.
-    </h2>
     <p class="paragraph">
-      Добро пожаловать.
-    </p>
-    <p class="paragraph">
-      Quisque malesuada placerat nisl. Quisque id mi. Fusce neque. Nam at tortor in tellus interdum sagittis. Nunc egestas, augue at pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo quis pede.
-
-      Ut id nisl quis enim dignissim sagittis. Pellentesque auctor neque nec urna. Praesent ac sem eget est egestas volutpat. Praesent blandit laoreet nibh. Sed cursus turpis vitae tortor.
-
-      Praesent blandit laoreet nibh. Morbi nec metus. Pellentesque auctor neque nec urna. Aenean viverra rhoncus pede. Sed aliquam ultrices mauris.
-
-      Vivamus laoreet. Ut non enim eleifend felis pretium feugiat. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-
-      Morbi mollis tellus ac sapien. Praesent vestibulum dapibus nibh. Curabitur at lacus ac velit ornare lobortis. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      Разнообразный и богатый опыт консультация с широким активом позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. С другой стороны укрепление и развитие структуры требуют от нас анализа соответствующий условий активизации. Равным образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание новых предложений. Товарищи! новая модель организационной деятельности влечет за собой процесс внедрения и модернизации систем массового участия. Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. С другой стороны консультация с широким активом играет важную роль в формировании соответствующий условий активизации.
     </p>
   </div>
 </template>

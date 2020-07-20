@@ -1,21 +1,21 @@
 <template>
   <div class="header-top">
     <div class="header-top__container">
-      <MenuLeft />
-      <MenuRight />
+      <menuLeft />
+      <menuRight />
     </div>
   </div>
 </template>
 
 <script>
-import MenuLeft from '../menu/menuLeft.vue'
-import MenuRight from '../menu/menuRight.vue'
+import menuLeft from '../menu/menuLeft.vue'
+import menuRight from '../menu/menuRight.vue'
 
 export default {
   name: 'HeaderTop',
   components: {
-    MenuLeft,
-    MenuRight
+    menuLeft,
+    menuRight
   },
 };
 </script>
