@@ -20,7 +20,7 @@ import MenuLeft from './menu/menuLeft.vue'
 import Logo from './logo.vue'
 
 export default {
-  name: 'footer',
+  name: 'footerDesktop',
   components: {
     Logo,
     MenuLeft

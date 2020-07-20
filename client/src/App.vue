@@ -7,13 +7,13 @@
     <searchMobile />
     <router-view class="content"></router-view>
     <menuMobile />
-    <footer />
+    <footerDesktop />
   </div>
 </template>
 
 <script>
 import headerDesktop from './components/header/header.vue'
-import footer from './components/footer.vue'
+import footerDesktop from './components/footerDesktop.vue'
 import searchMobile from './components/search/searchMobile.vue'
 import menuMobile from './components/menu/menuMobile.vue'
 
@@ -21,7 +21,7 @@ export default {
   name: 'App',
   components: {
     headerDesktop,
-    footer,
+    footerDesktop,
     menuMobile,
     searchMobile,
   }

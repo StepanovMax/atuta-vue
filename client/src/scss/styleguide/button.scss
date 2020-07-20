@@ -37,6 +37,9 @@
   &_settings {
     z-index: 4;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   &:focus {

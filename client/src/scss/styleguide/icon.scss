@@ -8,16 +8,20 @@
     }
   }
 
-  // &:hover {
-  //   cursor: pointer;
-  // }
-
   &:hover &__path {
     fill: $COLOR-BLUE-MAIN;
   }
 
-  &:active &__path {
-    fill: $COLOR-BLUE-ACTIVE;
+  // &:active &__path {
+  //   fill: $COLOR-BLUE-ACTIVE;
+  // }
+
+  &_active &__path {
+    fill: $COLOR-BLUE-MAIN;
+
+    // &:active &__path {
+    //   fill: $COLOR-BLUE-MAIN;
+    // }
   }
 
   &_rouble {
