@@ -2,18 +2,18 @@
   z-index: -1;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 0;
+  right: -100%;
+  width: 100vw;
   height: 100vh;
   opacity: 0;
   overflow: hidden;
-  transition: opacity .3s ease;
-  transition: width .01s ease;
+  transition: opacity .3s ease .9s, right .3s ease .9s;
 
   &_open {
+    right: 0;
     opacity: 1;
     z-index: 3;
-    width: 100vw;
+    transition: opacity .3s ease;
   }
 
   &__overlay {
@@ -24,7 +24,7 @@
     z-index: -1;
     opacity: 0;
     background-color: #000000;
-    transition: opacity .3s ease;
+    transition: opacity .5s ease;
 
     &_open {
       z-index: 2;
@@ -40,9 +40,9 @@
     right: -100%;
     width: 94vw;
     height: 100vh;
-    transition: right .3s ease;
     background-color: $COLOR-WHITE;
     transition: right .3s ease;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 
     display: flex;
     flex-direction: row;

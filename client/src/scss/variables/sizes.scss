@@ -1,8 +1,15 @@
+$SEARCH-MOBILE-HEIGHT: 40px;
+
 .font-face {
   font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
-.padding-general {
+.padding-desktop {
   padding-left: 25px;
   padding-right: 25px;
+}
+
+.padding-mobile {
+  padding-left: 15px;
+  padding-right: 15px;
 }

@@ -4,9 +4,11 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 30px;
+  height: $SEARCH-MOBILE-HEIGHT;
   background-color: #F8F8F8;
   padding: 5px 15px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 
   @include media(desktop) {
     display: none;
@@ -21,7 +23,36 @@
   }
 
   &_hidden {
-    overflow: hidden;
+    z-index: 2;
+    // overflow: hidden;
+    transition: z-index .9s linear 1s;
+  }
+
+  &__input {
+    flex: 1;
+    z-index: 1;
+    height: 100%;
+    position: relative;
+    background-color: transparent;
+    border-color: transparent;
+    transition: z-index .3s ease 2.9s;
+
+    &:active {
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @include placeholder {
+      font-size: 16px;
+      color: $COLOR-TEXT-DISABLED;
+    }
+
+    &_hidden {
+      z-index: -1;
+    }
   }
 
   &__wrap {
@@ -30,5 +61,9 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+  }
+
+  &__btn {
+    font-size: 14px;
   }
 }
