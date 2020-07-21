@@ -5,19 +5,67 @@
     </div>
     <div class="form__row">
       <multiselect
-        v-model="garageValue"
-        :options="garageTypeItems"
+        v-model="garageParkingValue"
+        :options="garageParkingTypes"
         :show-labels="false"
         :allow-empty="false"
         :close-on-select="true"
         :multiple="false"
         label="label"
         track-by="label"
-        placeholder="Вид гаража"
+        placeholder="Гараж или машиноместо?"
+      />
+    </div>
+    <div
+      v-if="
+        garageParkingValue
+        && garageParkingValue.slug === 'garage'
+      "
+      class="form__row"
+    >
+      <multiselect
+        v-model="garageValue"
+        :options="garageTypes"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="true"
+        label="label"
+        track-by="label"
+        placeholder="Тип гаража"
+      />
+    </div>
+    <div
+      v-if="
+        garageParkingValue
+        && garageParkingValue.slug === 'parking'
+      "
+      class="form__row"
+    >
+      <multiselect
+        v-model="parkingValue"
+        :options="parkingTypes"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="true"
+        label="label"
+        track-by="label"
+        placeholder="Тип машиноместа"
       />
     </div>
     <div class="form__row">
-      
+      <multiselect
+        v-model="securityValue"
+        :options="securityTypes"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="false"
+        label="label"
+        track-by="label"
+        placeholder="Охрана"
+      />
     </div>
   </div>
 </template>
@@ -32,17 +80,78 @@ export default {
   },
   data() {
     return {
-      garageValue: null,
-      garageTypeItems: [
+      garageParkingValue: null,
+      garageParkingTypes: [
         {
           slug: 'garage',
           label: 'Гараж',
         },
         {
-          slug: 'parkingPlace',
+          slug: 'parking',
           label: 'Машиноместо',
         },
       ],
+      garageValue: null,
+      garageTypes: [
+        {
+          slug: 'reinforcedConcrete',
+          label: 'Железобетонный',
+        },
+        {
+          slug: 'brick',
+          label: 'Кирпичный',
+        },
+        {
+          slug: 'irony',
+          label: 'Железный',
+        },
+      ],
+      parkingValue: null,
+      parkingTypes: [
+        {
+          slug: 'multilevelParking',
+          label: 'Многоуровневый паркинг',
+        },
+        {
+          slug: 'undergroundParking',
+          label: 'Подземный паркинг',
+        },
+        {
+          slug: 'undergroundParking',
+          label: 'Подземная стоянка',
+        },
+        {
+          slug: 'openParking',
+          label: 'Открытая стоянка',
+        },
+      ],
+      securityValue: null,
+      securityTypes: [
+        {
+          slug: 'yes',
+          label: 'Да',
+        },
+        {
+          slug: 'no',
+          label: 'Нет',
+        },
+      ],
+      rangeValue: [0, 100]
+    }
+  },
+  created() {
+    this.min = 0
+    this.max = 250
+    this.bgStyle = {
+     backgroundColor: '#fff',
+     boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
+    }
+    this.tooltipStyle = {
+      backgroundColor: '#666',
+      borderColor: '#666'
+    }
+    this.processStyle = {
+      backgroundColor: '#999'
     }
   },
 };
