@@ -69,6 +69,11 @@
     }
   }
 
+  &__single {
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
   #{&}--active#{&}--above &__input {
     border-radius: 0;
     background-color: transparent;

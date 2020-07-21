@@ -1,0 +1,154 @@
+<template>
+  <div
+    class="filter-mobile"
+    :class="[
+      { 'filter-mobile_open': this.isFilterOpen }
+    ]"
+  >
+    <div
+      class="filter-mobile__overlay"
+      :class="[
+        { 'filter-mobile__overlay_open': this.isFilterOpen }
+      ]"
+    >
+    </div>
+    <div
+      class="filter-mobile__wrap"
+      :class="[
+        { 'filter-mobile__wrap_open': this.isFilterOpen }
+      ]"
+    >
+      <div class="filter-mobile__content">
+        <h3 class="title title_h3">
+          Фильтр
+        </h3>
+
+        <div class="form">
+          <div class="form__row">
+            <multiselect
+              v-model="buyRentValue"
+              :options="buyItems"
+              :show-labels="false"
+              :allow-empty="false"
+              :close-on-select="true"
+              :multiple="false"
+              label="label"
+              track-by="label"
+              placeholder="Купить или аренда?"
+            />
+          </div>
+          <div class="form__row">
+            <multiselect
+              v-model="objectTypeValue"
+              :options="objectTypes"
+              :show-labels="false"
+              :allow-empty="false"
+              :close-on-select="true"
+              :multiple="false"
+              label="label"
+              track-by="label"
+              placeholder="Тип объекта"
+            />
+          </div>
+        </div>
+
+        <filterApp
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'app'"
+        />
+
+        <filterHouse
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'house'"
+        />
+
+        <filterRoom
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'room'"
+        />
+
+        <filterGarage
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'garage'"
+        />
+
+        <filterArea
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'area'"
+        />
+
+        <filterCommercial
+          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'commercial'"
+        />
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import filterApp from './filterApp.vue'
+import filterHouse from './filterHouse.vue'
+import filterRoom from './filterRoom.vue'
+import filterGarage from './filterGarage.vue'
+import filterArea from './filterArea.vue'
+import filterCommercial from './filterCommercial.vue'
+import multiselect from 'vue-multiselect'
+
+export default {
+  name: 'filterMobile',
+  components: {
+    multiselect,
+    filterApp,
+    filterHouse,
+    filterRoom,
+    filterGarage,
+    filterArea,
+    filterCommercial,
+  },
+  props: {
+    isFilterOpen: {
+      default: false,
+      type: Boolean,
+      required: true
+    },
+  },
+  data() {
+    return {
+      buyRentValue: null,
+      buyItems: [
+        {
+          slug: 'buy',
+          label: 'Купить',
+        },
+        {
+          slug: 'rent',
+          label: 'Аренда',
+        },
+      ],
+      objectTypeValue: null,
+      objectTypes: [
+        {
+          slug: 'app',
+          label: 'Квартира',
+        },
+        {
+          slug: 'house',
+          label: 'Дом',
+        },
+        {
+          slug: 'room',
+          label: 'Комната',
+        },
+        {
+          slug: 'garage',
+          label: 'Гараж / Машиноместо',
+        },
+        {
+          slug: 'area',
+          label: 'Участок',
+        },
+        {
+          slug: 'commercial',
+          label: 'Коммерческая недвижимость',
+        },
+      ],
+    }
+  },
+};
+</script>

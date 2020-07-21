@@ -38,8 +38,8 @@
     position: absolute;
     top: 0;
     right: -100%;
+    bottom: 0;
     width: 100vw;
-    height: 100vh;
     background-color: $COLOR-WHITE;
     transition: right .3s ease;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
@@ -54,5 +54,12 @@
       right: 0;
       z-index: 3;
     }
+  }
+
+  &__content {
+    padding: 40px 15px 15px;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
   }
 }
