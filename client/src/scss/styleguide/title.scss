@@ -37,22 +37,70 @@
   }
 
   &_h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    @include media(desktop) {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  
+    @include media(tablet) {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  
+    @include media(mobile) {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
   }
 
   &_h4 {
-    font-size: 24px;
-    margin-bottom: 16px;
+    @include media(desktop) {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+  
+    @include media(tablet) {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+  
+    @include media(mobile) {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
   }
 
   &_h5 {
-    font-size: 20px;
-    margin-bottom: 14px;
+    @include media(desktop) {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+  
+    @include media(tablet) {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+  
+    @include media(mobile) {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
   }
 
   &_h6 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    @include media(desktop) {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    @include media(tablet) {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    @include media(mobile) {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
   }
 }
