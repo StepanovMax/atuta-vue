@@ -76,8 +76,7 @@
         :max="max"
         :tooltip-merge="tooltipMerge"
         v-model="rangeValue"
-      >
-      </vue-range-slider>
+      />
     </div>
   </div>
 </template>
