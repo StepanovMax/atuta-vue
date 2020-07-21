@@ -72,6 +72,9 @@
         Площадь
       </h3>
       <vue-range-slider
+        :min="min"
+        :max="max"
+        :tooltip-merge="tooltipMerge"
         v-model="rangeValue"
       >
       </vue-range-slider>
@@ -152,7 +155,8 @@ export default {
   },
   created() {
     this.min = 0
-    this.max = 250
+    this.max = 100
+    this.tooltipMerge = false
     this.bgStyle = {
      backgroundColor: '#fff',
      boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
