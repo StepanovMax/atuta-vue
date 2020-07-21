@@ -36,7 +36,7 @@
 
 <script>
 import iconSettings from '../icons/iconSettings.vue'
-import filterMobile from '../filterMobile.vue'
+import filterMobile from '../filters/filterMobile.vue'
 
 export default {
   name: 'searchMobile',

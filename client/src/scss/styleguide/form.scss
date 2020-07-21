@@ -1,0 +1,11 @@
+.form {
+  margin-bottom: 10px;
+
+  &__row {
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
