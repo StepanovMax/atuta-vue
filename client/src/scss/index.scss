@@ -34,8 +34,13 @@
 @import "./components/logo.scss";
 @import "./components/greeting.scss";
 @import "./components/switcher.scss";
-@import "./node-modules/multiselect.scss";
-@import "./node-modules-rewrite/multiselect.scss";
 @import "./components/menuMobile.scss";
 @import "./components/searchMobile.scss";
 @import "./components/filterMobile.scss";
+
+
+// Components node_modules
+@import "./node-modules/multiselect.scss";
+@import "./node-modules-rewrite/multiselect.scss";
+@import "./node-modules/vueRangeSlider.scss";
+@import "./node-modules-rewrite/vueRangeSlider.scss";

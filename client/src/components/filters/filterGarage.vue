@@ -67,16 +67,27 @@
         placeholder="Охрана"
       />
     </div>
+    <div class="form__row">
+      <h3 class="title title_h3">
+        Площадь
+      </h3>
+      <vue-range-slider
+        v-model="rangeValue"
+      >
+      </vue-range-slider>
+    </div>
   </div>
 </template>
 
 <script>
 import multiselect from 'vue-multiselect'
+import VueRangeSlider from 'vue-range-component'
 
 export default {
   name: 'filterGarage',
   components: {
     multiselect,
+    VueRangeSlider,
   },
   data() {
     return {
