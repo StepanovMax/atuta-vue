@@ -18,7 +18,14 @@
         { 'filter-mobile__wrap_open': this.isFilterOpen }
       ]"
     >
-      123
+      Фильтр
+      <router-link
+        :to="{ name: 'styleGuide' }"
+        class="link"
+        @click.native="closeFilterMobile"
+      >
+        Общий стиль
+      </router-link>
     </div>
   </div>
 </template>
@@ -27,6 +34,13 @@
 
 export default {
   name: 'filterMobile',
+  props: {
+    isFilterOpen: {
+      default: false,
+      type: Boolean,
+      required: true
+    },
+  },
   data() {
     return {
       isFilterOpen: false
