@@ -52,7 +52,7 @@
   &__placeholder {
     margin: 0;
     padding: 0;
-    color: $COLOR-TITLE;
+    color: $COLOR-TEXT;
   }
 
   &__input {
@@ -70,8 +70,11 @@
   }
 
   &__single {
+    font-size: 14px;
     margin-bottom: 0;
     background-color: transparent;
+    color: $COLOR-TITLE;
+    padding: 0;
   }
 
   #{&}--active#{&}--above &__input {
