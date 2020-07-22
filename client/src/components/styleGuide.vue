@@ -6,6 +6,16 @@
     <div class="list">
       <div class="list__item list__item_styleguide">
         <h2 class="title title_h2">
+          Значения диапазона
+        </h2>
+        <div class="styleguide__block">
+          <range
+            rangeType="area"
+          />
+        </div>
+      </div>
+      <div class="list__item list__item_styleguide">
+        <h2 class="title title_h2">
           Параграфы / текст
         </h2>
         <div class="styleguide__block">
@@ -243,14 +253,6 @@
           <pre>
             Выбрано: {{ checkboxValue1 }}
           </pre>
-        </div>
-      </div>
-      <div class="list__item list__item_styleguide">
-        <h2 class="title title_h2">
-          Значения диапазона
-        </h2>
-        <div class="styleguide__block">
-          <range />
         </div>
       </div>
     </div>

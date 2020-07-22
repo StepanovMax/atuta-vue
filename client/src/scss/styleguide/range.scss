@@ -27,8 +27,10 @@
   }
 
   &__text {
-    font-size: 18px;
+    font-size: 14px;
     width: 20px;
+    font-weight: 400;
+    color: $COLOR-TEXT;
   }
 
   &__desktop {
@@ -51,7 +53,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
 
     @include media(desktop) {
       display: none;
@@ -63,6 +65,46 @@
 
     @include media(mobile) {
       display: flex;
+    }
+
+    &-input {
+      text-align: right;
+      font-weight: 400;
+      width: calc(100% - 38px);
+
+      @include placeholder {
+        text-align: left;
+      }
+    }
+
+    &-text {
+      top: 50%;
+      right: 0;
+      margin-top: -11px;
+      position: absolute;
+      font-size: 14px;
+      width: 30px;
+      font-weight: 400;
+      color: $COLOR-TEXT;
+
+      &-sup {
+        vertical-align: super;
+        font-size: smaller;
+      }
+    }
+
+    &-item {
+      width: 50%;
+      position: relative;
+      background-color: $COLOR-GREY-ACTIVE;
+
+      &:first-child {
+        margin-right: 6px;
+      }
+
+      &:last-child {
+        margin-left: 6px;
+      }
     }
   }
 }

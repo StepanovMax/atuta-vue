@@ -6,24 +6,46 @@
       />
     </div>
     <div class="range__mobile">
-      <input
-        type="number"
-        class="input range__item range__input range__item"
-        placeholder="Площадь от"
-        v-model.number="inputValue[0]"
-      >
-      <input
-        type="number"
-        class="input range__item range__input range__item"
-        placeholder="Площадь до"
-        v-model.number="inputValue[1]"
-      >
-      <p
-        class="range__text range__item"
-        v-if="false"
-      >
-        ₽
-      </p>
+      <div class="range__mobile-item">
+        <input
+          type="number"
+          class="input range__mobile-input range__item range__input range__item"
+          placeholder="Площадь от"
+          v-model.number="inputValue[0]"
+        >
+        <p
+          v-if="rangeType === 'price'"
+          class="range__mobile-text range__item"
+        >
+          ₽
+        </p>
+        <p
+          v-if="rangeType === 'area'"
+          class="range__mobile-text range__item"
+        >
+          <span>м</span><sup class="range__mobile-text-sup">2</sup>
+        </p>
+      </div>
+      <div class="range__mobile-item">
+        <input
+          type="number"
+          class="input range__mobile-input range__item range__input range__item"
+          placeholder="Площадь до"
+          v-model.number="inputValue[1]"
+        >
+        <p
+          v-if="rangeType === 'price'"
+          class="range__mobile-text range__item"
+        >
+          ₽
+        </p>
+        <p
+          v-if="rangeType === 'area'"
+          class="range__mobile-text range__item"
+        >
+          <span>м</span><sup class="range__mobile-text-sup">2</sup>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -38,9 +60,13 @@ export default {
     VueSlider,
   },
   props: {
+    rangeType: {
+      type: String,
+      required: true,
+    },
     rangeData: {
       type: Array,
-      required: false
+      required: false,
     },
   },
   data() {
@@ -82,5 +108,8 @@ export default {
       backgroundColor: '#999'
     }
   },
+  mounted() {
+    console.log('this.rangeType ::', this.rangeType)
+  }
 };
 </script>
