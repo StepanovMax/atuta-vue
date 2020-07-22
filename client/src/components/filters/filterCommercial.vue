@@ -1,17 +1,7 @@
 <template>
   <div class="form">
     <div class="form__row">
-      <multiselect
-        v-model="garageValue"
-        :options="garageTypeItems"
-        :show-labels="false"
-        :allow-empty="false"
-        :close-on-select="true"
-        :multiple="false"
-        label="label"
-        track-by="label"
-        placeholder="Вид гаража"
-      />
+      Фильтр для коммерции
     </div>
     <div class="form__row">
       

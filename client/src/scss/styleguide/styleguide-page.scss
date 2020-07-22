@@ -1,5 +1,15 @@
 .styleguide {
   &__block {
-    margin: 0 40px;
+    @include media(desktop) {
+      margin: 0 40px;
+    }
+  
+    @include media(tablet) {
+      margin: 0 10px;
+    }
+  
+    @include media(mobile) {
+      margin: 0;
+    }
   }
 }

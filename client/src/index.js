@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vuex from 'vuex'
 import Router from 'vue-router';
 
 import App from './App.vue';
@@ -12,6 +13,7 @@ import addObject from './components/addObject.vue'
 import './scss/index.scss'
 
 Vue.use(Router)
+Vue.use(Vuex)
 
 Vue.config.productionTip = false;
 
@@ -51,8 +53,31 @@ const router = new Router({
   ]
 });
 
+const store = new Vuex.Store({
+  state: {
+    count: 11.7,
+    filterData: {
+      isBuyOrRent: null,
+      objectType: null,
+      garageOrParkingData: {
+        isGarageOrParking: null,
+        garageType: [],
+        parkingType: [],
+        security: null,
+      },
+      areaRange: [],
+    },
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+});
+
 new Vue({
   el: '#app',
   render: h => h(App),
   router,
+  store,
 });
