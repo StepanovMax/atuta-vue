@@ -30,7 +30,7 @@
               :multiple="false"
               label="label"
               track-by="label"
-              placeholder="Купить или аренда?"
+              placeholder="Купить или аренда? *"
             />
           </div>
           <div class="form__row">
@@ -43,7 +43,7 @@
               :multiple="false"
               label="label"
               track-by="label"
-              placeholder="Тип объекта"
+              placeholder="Какой тип объекта? *"
             />
           </div>
         </div>
@@ -75,6 +75,17 @@
         <filterCommercial
           v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'commercial'"
         />
+
+        <button
+          class="btn filter-mobile__btn btn_blue btn_middle"
+          :class="[
+            {
+              'btn_disabled': !this.requiredFormItemsIsFilled
+            }
+          ]"
+        >
+          Фильтровать
+        </button>
 
 <p
   class="paragraph"
@@ -176,7 +187,6 @@ export default {
     isBuyOrRent: {
       cache: false,
       get() {
-        // console.log('isBuyOrRent value ::', value);
         return this.buyRentValue;
       },
       set(value) {
@@ -193,6 +203,19 @@ export default {
         this.objectTypeValue = value;
         this.filterData.objectType = value.slug;
       }
+    },
+    requiredFormItemsIsFilled() {
+      let value;
+      if (this.buyRentValue && this.objectTypeValue) {
+        if (this.objectTypeValue.slug === 'garage') {
+          if (this.filterData.garageOrParkingData.isGarageOrParking) {
+            value = true;
+          } else {
+            value = false;
+          }
+        }
+      }
+      return value;
     },
   },
 };

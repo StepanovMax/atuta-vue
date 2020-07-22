@@ -66,6 +66,7 @@ const store = new Vuex.Store({
         security: null,
       },
       areaRange: [],
+      priceRange: [],
     },
   },
   mutations: {

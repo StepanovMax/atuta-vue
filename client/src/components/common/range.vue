@@ -10,41 +10,25 @@
         <input
           type="number"
           class="input range__mobile-input range__item range__input range__item"
-          placeholder="Площадь от"
+          :placeholder="placeholderText + ' от'"
           v-model.number="inputValue[0]"
         >
         <p
-          v-if="rangeType === 'price'"
+          v-html="currency"
           class="range__mobile-text range__item"
-        >
-          ₽
-        </p>
-        <p
-          v-if="rangeType === 'area'"
-          class="range__mobile-text range__item"
-        >
-          <span>м</span><sup class="range__mobile-text-sup">2</sup>
-        </p>
+        />
       </div>
       <div class="range__mobile-item">
         <input
           type="number"
           class="input range__mobile-input range__item range__input range__item"
-          placeholder="Площадь до"
+          :placeholder="placeholderText + ' до'"
           v-model.number="inputValue[1]"
         >
         <p
-          v-if="rangeType === 'price'"
+          v-html="currency"
           class="range__mobile-text range__item"
-        >
-          ₽
-        </p>
-        <p
-          v-if="rangeType === 'area'"
-          class="range__mobile-text range__item"
-        >
-          <span>м</span><sup class="range__mobile-text-sup">2</sup>
-        </p>
+        />
       </div>
     </div>
   </div>
@@ -85,20 +69,33 @@ export default {
       deep: true
     },
   },
-  // computed: {
-  //   rangeInputsValue() {
-  //     console.log('this.inputValue ::', this.inputValue);
-  //     this.$emit('update:rangeData', this.inputValue);
-  //     return this.inputValue;
-  //   },
-  // },
+  computed: {
+    currency() {
+      let value;
+      if (this.rangeType === 'price') {
+        value = `<span>₽</span>`;
+      } else if(this.rangeType === 'area') {
+        value = `<span><span>м</span><sup class="range__mobile-text-sup">2</sup></span>`;
+      }
+      return value;
+    },
+    placeholderText() {
+      let value;
+      if (this.rangeType === 'price') {
+        value = 'Цена';
+      } else if(this.rangeType === 'area') {
+        value = 'Площадь';
+      }
+      return value;
+    },
+  },
   created() {
     this.min = 0
     this.max = 100
     this.tooltipMerge = false
     this.bgStyle = {
-     backgroundColor: '#fff',
-     boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
+      backgroundColor: '#fff',
+      boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
     }
     this.tooltipStyle = {
       backgroundColor: '#666',
@@ -108,8 +105,5 @@ export default {
       backgroundColor: '#999'
     }
   },
-  mounted() {
-    console.log('this.rangeType ::', this.rangeType)
-  }
 };
 </script>

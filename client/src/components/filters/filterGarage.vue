@@ -10,7 +10,7 @@
         :multiple="false"
         label="label"
         track-by="label"
-        placeholder="Гараж или машиноместо?"
+        placeholder="Гараж или машиноместо? *"
       />
     </div>
     <div
@@ -29,7 +29,7 @@
         :multiple="true"
         label="label"
         track-by="label"
-        placeholder="Тип гаража"
+        placeholder="Какой тип гаража?"
       />
     </div>
     <div
@@ -48,7 +48,7 @@
         :multiple="true"
         label="label"
         track-by="label"
-        placeholder="Тип машиноместа"
+        placeholder="Какой тип тип машиноместа?"
       />
     </div>
     <div class="form__row">
@@ -56,18 +56,24 @@
         v-model="isSecurity"
         :options="securityTypes"
         :show-labels="false"
-        :allow-empty="false"
+        :allow-empty="true"
         :close-on-select="true"
         :multiple="false"
         label="label"
         track-by="label"
-        placeholder="Охрана"
+        placeholder="Нужна охрана?"
       />
     </div>
     <div class="form__row">
       <range
         rangeType="area"
         :rangeData.sync="areaRangeValue"
+      />
+    </div>
+    <div class="form__row">
+      <range
+        rangeType="price"
+        :rangeData.sync="priceRangeValue"
       />
     </div>
   </div>
@@ -136,7 +142,7 @@ export default {
       securityTypes: [
         {
           slug: 'yes',
-          label: 'Охрана есть',
+          label: 'Охрана нужна',
         },
         {
           slug: 'no',
@@ -196,9 +202,18 @@ export default {
         return this.areaRange;
       },
       set(value) {
-        console.log('value ::', value);
         this.areaRange = value;
         this.filterData.areaRange = value;
+      }
+    },
+    priceRangeValue: {
+      cache: false,
+      get() {
+        return this.priceRange;
+      },
+      set(value) {
+        this.priceRange = value;
+        this.filterData.priceRange = value;
       }
     },
   },
