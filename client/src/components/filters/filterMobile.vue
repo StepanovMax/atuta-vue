@@ -19,14 +19,10 @@
       ]"
     >
       <div class="filter-mobile__content">
-        <h3 class="title title_h3">
-          Фильтр
-        </h3>
-
         <div class="form">
           <div class="form__row">
             <multiselect
-              v-model="buyRentValue"
+              v-model="isBuyOrRent"
               :options="buyItems"
               :show-labels="false"
               :allow-empty="false"
@@ -39,7 +35,7 @@
           </div>
           <div class="form__row">
             <multiselect
-              v-model="objectTypeValue"
+              v-model="objectType"
               :options="objectTypes"
               :show-labels="false"
               :allow-empty="false"
@@ -65,7 +61,11 @@
         />
 
         <filterGarage
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'garage'"
+          v-if="
+            buyRentValue
+              && objectTypeValue
+              && objectTypeValue.slug == 'garage'
+          "
         />
 
         <filterArea
@@ -76,19 +76,30 @@
           v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'commercial'"
         />
 
+<p
+  class="paragraph"
+  style="font-size: 14px;"
+>
+<pre>
+{{ filterData }}
+</pre>
+</p>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import filterApp from './filterApp.vue'
-import filterHouse from './filterHouse.vue'
-import filterRoom from './filterRoom.vue'
-import filterGarage from './filterGarage.vue'
-import filterArea from './filterArea.vue'
-import filterCommercial from './filterCommercial.vue'
-import multiselect from 'vue-multiselect'
+import filterApp from './filterApp.vue';
+import filterHouse from './filterHouse.vue';
+import filterRoom from './filterRoom.vue';
+import filterGarage from './filterGarage.vue';
+import filterArea from './filterArea.vue';
+import filterCommercial from './filterCommercial.vue';
+import multiselect from 'vue-multiselect';
+
+import { mapState } from 'vuex';
 
 export default {
   name: 'filterMobile',
@@ -149,6 +160,40 @@ export default {
         },
       ],
     }
+  },
+  watch: {
+    filterData: {
+      handler(value) {
+        // console.log('store.filterData ::', value);
+      },
+      deep: true
+    },
+  },
+  computed: {
+    ...mapState([
+      'filterData',
+    ]),
+    isBuyOrRent: {
+      cache: false,
+      get() {
+        // console.log('isBuyOrRent value ::', value);
+        return this.buyRentValue;
+      },
+      set(value) {
+        this.buyRentValue = value;
+        this.filterData.isBuyOrRent = value.slug;
+      }
+    },
+    objectType: {
+      cache: false,
+      get() {
+        return this.objectTypeValue;
+      },
+      set(value) {
+        this.objectTypeValue = value;
+        this.filterData.objectType = value.slug;
+      }
+    },
   },
 };
 </script>

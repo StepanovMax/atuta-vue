@@ -26,7 +26,7 @@ export default {
     },
   },
   mounted() {
-    console.log('location ::', this.location);
+    // console.log('location ::', this.location);
   }
 };
 </script>

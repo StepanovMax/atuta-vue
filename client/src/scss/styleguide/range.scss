@@ -5,12 +5,64 @@
   align-items: flex-end;
 
   &__item {
-    margin-right: 10px;
     font-size: 16px;
     font-weight: 600;
   }
 
+  &__input {
+    width: 50%;
+
+    @include placeholder {
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    &:first-child {
+      margin-right: 6px;
+    }
+
+    &:last-child {
+      margin-left: 6px;
+    }
+  }
+
   &__text {
     font-size: 18px;
+    width: 20px;
+  }
+
+  &__desktop {
+    width: 100%;
+
+    @include media(desktop) {
+      display: block;
+    }
+
+    @include media(tablet) {
+      display: none;
+    }
+
+    @include media(mobile) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    @include media(desktop) {
+      display: none;
+    }
+
+    @include media(tablet) {
+      display: flex;
+    }
+
+    @include media(mobile) {
+      display: flex;
+    }
   }
 }

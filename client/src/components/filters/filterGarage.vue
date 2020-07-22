@@ -1,11 +1,8 @@
 <template>
   <div class="form">
     <div class="form__row">
-      Фильтр для гаражей
-    </div>
-    <div class="form__row">
       <multiselect
-        v-model="garageParkingValue"
+        v-model="isGarageOrParking"
         :options="garageParkingTypes"
         :show-labels="false"
         :allow-empty="false"
@@ -24,7 +21,7 @@
       class="form__row"
     >
       <multiselect
-        v-model="garageValue"
+        v-model="whatKindOfGarageType"
         :options="garageTypes"
         :show-labels="false"
         :allow-empty="false"
@@ -43,7 +40,7 @@
       class="form__row"
     >
       <multiselect
-        v-model="parkingValue"
+        v-model="whatKindOfParkingType"
         :options="parkingTypes"
         :show-labels="false"
         :allow-empty="false"
@@ -56,7 +53,7 @@
     </div>
     <div class="form__row">
       <multiselect
-        v-model="securityValue"
+        v-model="isSecurity"
         :options="securityTypes"
         :show-labels="false"
         :allow-empty="false"
@@ -68,14 +65,8 @@
       />
     </div>
     <div class="form__row">
-      <h3 class="title title_h3">
-        Площадь
-      </h3>
-      <vue-range-slider
-        :min="min"
-        :max="max"
-        :tooltip-merge="tooltipMerge"
-        v-model="rangeValue"
+      <range
+        :rangeData.sync="areaRangeValue"
       />
     </div>
   </div>
@@ -83,13 +74,15 @@
 
 <script>
 import multiselect from 'vue-multiselect'
-import VueRangeSlider from 'vue-range-component'
+import range from '../common/range.vue'
+
+import { mapState } from 'vuex';
 
 export default {
   name: 'filterGarage',
   components: {
     multiselect,
-    VueRangeSlider,
+    range,
   },
   data() {
     return {
@@ -104,7 +97,7 @@ export default {
           label: 'Машиноместо',
         },
       ],
-      garageValue: null,
+      garageTypeValue: null,
       garageTypes: [
         {
           slug: 'reinforcedConcrete',
@@ -119,7 +112,7 @@ export default {
           label: 'Железный',
         },
       ],
-      parkingValue: null,
+      parkingTypeValue: null,
       parkingTypes: [
         {
           slug: 'multilevelParking',
@@ -142,31 +135,71 @@ export default {
       securityTypes: [
         {
           slug: 'yes',
-          label: 'Да',
+          label: 'Охрана есть',
         },
         {
           slug: 'no',
-          label: 'Нет',
+          label: 'Без охраны',
         },
       ],
-      rangeValue: [0, 100]
+      areaRange: null,
     }
   },
-  created() {
-    this.min = 0
-    this.max = 100
-    this.tooltipMerge = false
-    this.bgStyle = {
-     backgroundColor: '#fff',
-     boxShadow: 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
-    }
-    this.tooltipStyle = {
-      backgroundColor: '#666',
-      borderColor: '#666'
-    }
-    this.processStyle = {
-      backgroundColor: '#999'
-    }
+  computed: {
+    ...mapState([
+      'filterData',
+    ]),
+    isGarageOrParking: {
+      cache: false,
+      get() {
+        return this.garageParkingValue;
+      },
+      set(value) {
+        this.garageParkingValue = value;
+        this.filterData.garageOrParkingData.isGarageOrParking = value.slug;
+      }
+    },
+    whatKindOfGarageType: {
+      cache: false,
+      get() {
+        return this.garageTypeValue;
+      },
+      set(value) {
+        this.garageTypeValue = value;
+        this.filterData.garageOrParkingData.garageType = value;
+      }
+    },
+    whatKindOfParkingType: {
+      cache: false,
+      get() {
+        return this.parkingTypeValue;
+      },
+      set(value) {
+        this.parkingTypeValue = value;
+        this.filterData.garageOrParkingData.parkingType = value;
+      }
+    },
+    isSecurity: {
+      cache: false,
+      get() {
+        return this.securityValue;
+      },
+      set(value) {
+        this.securityValue = value;
+        this.filterData.garageOrParkingData.security = value.slug;
+      }
+    },
+    areaRangeValue: {
+      cache: false,
+      get() {
+        return this.areaRange;
+      },
+      set(value) {
+        console.log('value ::', value);
+        this.areaRange = value;
+        this.filterData.areaRange = value;
+      }
+    },
   },
 };
 </script>
