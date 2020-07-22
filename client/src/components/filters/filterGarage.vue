@@ -66,6 +66,7 @@
     </div>
     <div class="form__row">
       <range
+        rangeType="area"
         :rangeData.sync="areaRangeValue"
       />
     </div>
