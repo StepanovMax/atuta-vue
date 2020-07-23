@@ -61,12 +61,12 @@ const store = new Vuex.Store({
       objectType: null,
       garageOrParkingData: {
         isGarageOrParking: null,
-        garageType: null,
-        parkingType: null,
+        garageType: [],
+        parkingType: [],
         security: null,
       },
-      areaRange: null,
-      priceRange: null,
+      areaRange: [],
+      priceRange: [],
     },
   },
   mutations: {
