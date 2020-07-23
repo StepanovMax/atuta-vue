@@ -57,8 +57,11 @@ const store = new Vuex.Store({
   state: {
     count: 11.7,
     filterData: {
+      town: null,
+      district: null,
       isBuyOrRent: null,
       objectType: null,
+      seller: null,
       garageOrParkingData: {
         isGarageOrParking: null,
         garageType: null,

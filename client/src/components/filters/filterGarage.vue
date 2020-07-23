@@ -1,6 +1,9 @@
 <template>
   <div class="form">
     <div class="form__row">
+      <h3 class="title title_h6">
+        Вид объекта*
+      </h3>
       <multiselect
         v-model="isGarageOrParking"
         :options="garageParkingTypes"
@@ -20,12 +23,15 @@
       "
       class="form__row"
     >
+      <h3 class="title title_h6">
+        Тип гаража
+      </h3>
       <multiselect
         v-model="whatKindOfGarageType"
         :options="garageTypes"
         :show-labels="false"
-        :allow-empty="false"
-        :close-on-select="true"
+        :allow-empty="true"
+        :close-on-select="false"
         :multiple="true"
         label="label"
         track-by="label"
@@ -39,12 +45,15 @@
       "
       class="form__row"
     >
+      <h3 class="title title_h6">
+        Тип машиноместа
+      </h3>
       <multiselect
         v-model="whatKindOfParkingType"
         :options="parkingTypes"
         :show-labels="false"
-        :allow-empty="false"
-        :close-on-select="true"
+        :allow-empty="true"
+        :close-on-select="false"
         :multiple="true"
         label="label"
         track-by="label"
@@ -52,6 +61,9 @@
       />
     </div>
     <div class="form__row">
+      <h3 class="title title_h6">
+        Охрана
+      </h3>
       <multiselect
         v-model="isSecurity"
         :options="securityTypes"
@@ -65,15 +77,12 @@
       />
     </div>
     <div class="form__row">
+      <h3 class="title title_h6">
+        Площадь*
+      </h3>
       <range
         rangeType="area"
         :rangeData.sync="areaRangeValue"
-      />
-    </div>
-    <div class="form__row">
-      <range
-        rangeType="price"
-        :rangeData.sync="priceRangeValue"
       />
     </div>
   </div>
@@ -162,6 +171,12 @@ export default {
         return this.garageParkingValue;
       },
       set(value) {
+        // Clear the rest items data from the store.
+        if (value.slug === 'garage') {
+          this.filterData.garageOrParkingData.parkingType = null;
+        } else if (value.slug === 'parking') {
+          this.filterData.garageOrParkingData.garageType = null;
+        }
         this.garageParkingValue = value;
         this.filterData.garageOrParkingData.isGarageOrParking = value.slug;
       }
@@ -204,16 +219,6 @@ export default {
       set(value) {
         this.areaRange = value;
         this.filterData.areaRange = value;
-      }
-    },
-    priceRangeValue: {
-      cache: false,
-      get() {
-        return this.priceRange;
-      },
-      set(value) {
-        this.priceRange = value;
-        this.filterData.priceRange = value;
       }
     },
   },
