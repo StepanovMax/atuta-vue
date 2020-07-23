@@ -30,13 +30,14 @@
         <iconSettings />
       </button>
     </div>
-    <filterMobile :isFilterOpen="this.isFilterOpen" />
+    <filterMobile />
   </div>
 </template>
 
 <script>
 import iconSettings from '../icons/iconSettings.vue'
 import filterMobile from '../filters/filterMobile.vue'
+import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'searchMobile',
@@ -46,17 +47,21 @@ export default {
   },
   data() {
     return {
-      isFilterOpen: false,
       isInputOnFocus: false,
     }
   },
   methods: {
     toggleFilter() {
-      this.isFilterOpen = !this.isFilterOpen;
+      this.$store.commit('switchFilter', !this.isFilterOpen);
     },
     closeFilterMobile() {
-      this.isFilterOpen = false;
+      this.$store.commit('switchFilter', false);
     }
-  }
+  },
+  computed: {
+    ...mapState([
+      'isFilterOpen',
+    ]),
+  },
 };
 </script>
