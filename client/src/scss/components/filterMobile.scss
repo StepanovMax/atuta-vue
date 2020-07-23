@@ -65,9 +65,18 @@
   }
 
   &__btn {
+    margin-left: 10px;
+  }
+
+  &__buttons-block {
     z-index: 3;
     right: 20px;
     bottom: 20px;
     position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
   }
 }

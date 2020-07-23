@@ -76,16 +76,24 @@
           v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'commercial'"
         />
 
-        <button
-          class="btn filter-mobile__btn btn_blue btn_middle"
-          :class="[
-            {
-              'btn_disabled': !this.requiredFormItemsIsFilled
-            }
-          ]"
-        >
-          Фильтровать
-        </button>
+        <div class="filter-mobile__buttons-block">
+          <button
+            class="btn filter-mobile__btn btn_blue btn_middle"
+          >
+            Сбросить
+          </button>
+
+          <button
+            class="btn filter-mobile__btn btn_blue btn_middle"
+            :class="[
+              {
+                'btn_disabled': !this.requiredFormItemsIsFilled
+              }
+            ]"
+          >
+            Фильтровать
+          </button>
+        </div>
 
 <p
   class="paragraph"
