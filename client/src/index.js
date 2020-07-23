@@ -56,6 +56,7 @@ const router = new Router({
 const store = new Vuex.Store({
   state: {
     count: 11.7,
+    isFilterOpen: false,
     filterData: {
       town: null,
       district: null,
@@ -73,8 +74,8 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
-    increment (state) {
-      state.count++
+    switchFilter(state, data) {
+      state.isFilterOpen = data;
     }
   }
 });

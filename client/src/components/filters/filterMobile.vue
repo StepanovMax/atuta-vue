@@ -184,7 +184,7 @@
   style="font-size: 14px;"
 >
 <pre>
-{{ filterData }}
+{{ /* filterData */ }}
 </pre>
 </p>
 
@@ -215,13 +215,6 @@ export default {
     filterArea,
     filterCommercial,
     range,
-  },
-  props: {
-    isFilterOpen: {
-      default: false,
-      type: Boolean,
-      required: true
-    },
   },
   data() {
     return {
@@ -325,6 +318,7 @@ export default {
   computed: {
     ...mapState([
       'filterData',
+      'isFilterOpen',
     ]),
     townSelection: {
       cache: false,
