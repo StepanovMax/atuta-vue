@@ -28,7 +28,7 @@
           :options="districtsList"
           :show-labels="false"
           :allow-empty="true"
-          :close-on-select="true"
+          :close-on-select="false"
           :multiple="true"
           :searchable="false"
           label="label"
