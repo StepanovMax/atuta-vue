@@ -40,7 +40,7 @@
 
           <div class="form__row">
             <h3 class="title title_h6">
-              Район*
+              Район
             </h3>
             <multiselect
               v-model="districtSelection"
@@ -92,44 +92,71 @@
         </div>
 
         <filterApp
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'app'"
+          v-if="
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'app'
+          "
         />
 
         <filterHouse
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'house'"
+          v-if="
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'house'
+          "
         />
 
         <filterRoom
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'room'"
+          v-if="
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'room'
+          "
         />
 
         <filterGarage
           v-if="
-            buyRentValue
-              && objectTypeValue
-              && objectTypeValue.slug == 'garageOrParking'
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'garageOrParking'
           "
         />
 
         <filterArea
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'area'"
+          v-if="
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'area'
+          "
         />
 
         <filterCommercial
-          v-if="buyRentValue && objectTypeValue && objectTypeValue.slug == 'commercial'"
+          v-if="
+            isTownSelected
+            && buyRentValue
+            && objectTypeValue
+            && objectTypeValue.slug == 'commercial'
+          "
         />
 
         <div class="form__row">
           <h3 class="title title_h6">
-            Продавцы*
+            Продавцы
           </h3>
           <multiselect
             v-model="sellerSelection"
             :options="sellersList"
             :show-labels="false"
-            :allow-empty="false"
+            :allow-empty="true"
             :close-on-select="false"
             :multiple="true"
+            :searchable="false"
             label="label"
             track-by="label"
             placeholder="Выберите продавца"
@@ -141,7 +168,7 @@
           v-if="buyRentValue && buyRentValue.slug == 'buy'"
         >
           <h3 class="title title_h6">
-            Цена*
+            Цена
           </h3>
           <range
             rangeType="price"
@@ -395,6 +422,12 @@ export default {
         this.filterData.seller = value;
       }
     },
+    isTownSelected() {
+      return this.filterData.town;
+    },
+  },
+  methods() {
+
   },
 };
 </script>
