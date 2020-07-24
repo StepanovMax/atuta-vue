@@ -1,7 +1,19 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      Избранное
+      <router-link
+        v-slot="{ href, route, navigate, isActive }"
+        :to="{ name: 'favorites' }"
+        class="link"
+      >
+        <a
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+        >
+          Избранное
+        </a>
+      </router-link>
     </li>
     <li class="menu__item">
       Мои объекты

@@ -1,11 +1,11 @@
 .styleguide {
   &__block {
     @include media(desktop) {
-      margin: 0 40px;
+      margin: 0;
     }
   
     @include media(tablet) {
-      margin: 0 10px;
+      margin: 0;
     }
   
     @include media(mobile) {

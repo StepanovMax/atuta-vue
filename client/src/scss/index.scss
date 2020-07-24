@@ -14,6 +14,7 @@
 @import "./styleguide/container.scss";
 @import "./styleguide/input.scss";
 @import "./styleguide/list.scss";
+@import "./styleguide/main.scss";
 @import "./styleguide/content.scss";
 @import "./styleguide/button.scss";
 @import "./styleguide/paragraph.scss";
@@ -25,6 +26,8 @@
 @import "./styleguide/range.scss";
 @import "./styleguide/form.scss";
 @import "./styleguide/styleguide-page.scss";
+@import "./styleguide/article.scss";
+@import "./styleguide/filter.scss";
 
 // Blocks
 @import "./blocks/menu.scss";
@@ -37,6 +40,9 @@
 @import "./components/menuMobile.scss";
 @import "./components/searchMobile.scss";
 @import "./components/filterMobile.scss";
+@import "./components/filterDesktop.scss";
+@import "./components/ads.scss";
+@import "./components/filterMain.scss";
 
 
 // Components node_modules

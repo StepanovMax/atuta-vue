@@ -164,15 +164,5 @@ export default {
     iconProfile,
     iconPlusInCircle,
   },
-  // data() {
-  //   return {
-  //     isMenuOpen: false
-  //   }
-  // },
-  // methods: {
-  //   closeFilterMobile() {
-  //     this.isMenuOpen = false;
-  //   }
-  // }
 };
 </script>

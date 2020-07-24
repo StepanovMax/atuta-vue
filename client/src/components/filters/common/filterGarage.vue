@@ -82,7 +82,7 @@
     </div>
     <div class="form__row">
       <h3 class="title title_h6">
-        Площадь*
+        Площадь
       </h3>
       <range
         rangeType="area"
@@ -94,7 +94,7 @@
 
 <script>
 import multiselect from 'vue-multiselect'
-import range from '../common/range.vue'
+import range from '../../common/range.vue'
 
 import { mapState } from 'vuex';
 

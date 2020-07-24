@@ -1,0 +1,22 @@
+.ads {
+  &__link {
+    display: block;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+
+  @include media(desktop) {
+
+  }
+
+  @include media(tablet) {
+    display: none;
+  }
+
+  @include media(mobile) {
+
+  }
+}
