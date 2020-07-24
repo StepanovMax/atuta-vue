@@ -154,7 +154,7 @@
             :options="sellersList"
             :show-labels="false"
             :allow-empty="true"
-            :close-on-select="false"
+            :close-on-select="true"
             :multiple="true"
             :searchable="false"
             label="label"
