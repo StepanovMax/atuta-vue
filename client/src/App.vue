@@ -8,7 +8,9 @@
   >
     <headerDesktop />
     <searchMobile />
-    <router-view class="content"></router-view>
+    <div class="main-wrap">
+      <router-view class="main"></router-view>
+    </div>
     <menuMobile />
     <footerDesktop />
   </div>

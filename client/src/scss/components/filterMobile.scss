@@ -78,5 +78,17 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+  
+    @include media(desktop) {
+      display: none;
+    }
+  
+    @include media(tablet) {
+      display: none;
+    }
+  
+    @include media(mobile) {
+      display: flex;
+    }
   }
 }
