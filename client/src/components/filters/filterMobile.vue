@@ -157,6 +157,19 @@ export default {
       'filterData',
       'isFilterOpen',
     ]),
+    requiredFormItemsIsFilled() {
+      let value;
+      if (this.buyRentValue && this.objectTypeValue) {
+        if (this.objectTypeValue.slug === 'garageOrParking') {
+          if (this.filterData.garageOrParkingData.isGarageOrParking) {
+            value = true;
+          } else {
+            value = false;
+          }
+        }
+      }
+      return value;
+    },
   },
 };
 </script>

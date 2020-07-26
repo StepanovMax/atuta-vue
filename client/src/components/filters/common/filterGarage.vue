@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <div class="form__row">
-      <h3 class="title title_h6">
+      <h3 class="title title_h6 form__title">
         Вид объекта*
       </h3>
       <multiselect
@@ -24,7 +24,7 @@
       "
       class="form__row"
     >
-      <h3 class="title title_h6">
+      <h3 class="title title_h6 form__title">
         Тип гаража
       </h3>
       <multiselect
@@ -47,7 +47,7 @@
       "
       class="form__row"
     >
-      <h3 class="title title_h6">
+      <h3 class="title title_h6 form__title">
         Тип машиноместа
       </h3>
       <multiselect
@@ -64,7 +64,7 @@
       />
     </div>
     <div class="form__row">
-      <h3 class="title title_h6">
+      <h3 class="title title_h6 form__title">
         Охрана
       </h3>
       <multiselect
@@ -81,7 +81,7 @@
       />
     </div>
     <div class="form__row">
-      <h3 class="title title_h6">
+      <h3 class="title title_h6 form__title">
         Площадь
       </h3>
       <range

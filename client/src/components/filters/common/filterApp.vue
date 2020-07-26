@@ -4,7 +4,21 @@
       Фильтр для квартиры
     </div>
     <div class="form__row">
-      
+      <h3 class="title title_h6">
+        Вид объекта*
+      </h3>
+      <multiselect
+        v-model="isGarageOrParking"
+        :options="garageParkingTypes"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="false"
+        :searchable="false"
+        label="label"
+        track-by="label"
+        placeholder="Гараж или машиноместо? *"
+      />
     </div>
   </div>
 </template>
