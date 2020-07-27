@@ -8,16 +8,16 @@
         :class="[
           { 'switcher__list-item_active': item.checked }
         ]"
-        v-for="(item, index) in this.dataItems"
+        v-for="(item, index) in dataItemsChecked"
         :key="index"
       >
         <input
           class="switcher__input-radio"
           type="radio"
+          :value="item.slug"
           :id="'id-' + switcherId + '-' + index"
           :name="'name-' + switcherId"
-          :checked="item.checked"
-          @change="clickRadioButton(index)"
+          v-model="picked"
         >
         <label
           class="switcher__label"
@@ -53,22 +53,37 @@ export default {
   },
   data() {
     return {
-      selectedRadioArray: [],
-      dataItems: this.items
+      picked: [],
+      dataItemsChecked: [...this.items].map(function(item) {
+        item.checked = false;
+        return item;
+      }),
     }
   },
-  methods: {
-    clickRadioButton(index) {
-      for (let i = 0; i < this.dataItems.length; i++) {
-        if (i === index) {
-          this.dataItems[i].checked = true;
-          this.value = this.dataItems[i].label
-        } else {
-          this.dataItems[i].checked = false;
+  watch: {
+    picked: {
+      handler() {
+        for (let i = 0; i < this.dataItemsChecked.length; i++) {
+          if (this.picked === this.dataItemsChecked[i].slug) {
+            this.dataItemsChecked[i].checked = true;
+            this.removeCheckedAttribute({...this.dataItemsChecked[i]});
+          } else {
+            this.dataItemsChecked[i].checked = false;
+          }
         }
-      }
-      this.$emit('change', this.value)
-    }
+      },
+      deep: true
+    },
+  },
+  methods: {
+    removeCheckedAttribute(checkedElement) {
+      let valueArray = checkedElement;
+      delete valueArray.checked;
+      this.updateValue(valueArray);
+    },
+    updateValue(data) {
+      this.$emit('update:value', data);
+    },
   },
 };
 </script>

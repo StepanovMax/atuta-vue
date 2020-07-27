@@ -166,12 +166,10 @@
                 {
                   label: 'Купить',
                   slug: 'buy',
-                  checked: true
                 },
                 {
                   label: 'Снять',
                   slug: 'rent',
-                  checked: false
                 }
               ]"
               v-model="switcherValue1"
@@ -325,7 +323,17 @@ export default {
         { name: 'Сальск' },
         { name: 'Батайск' },
         { name: 'Новошахтинск' },
-      ]
+      ],
+      townsList: [
+        {
+          slug: 'taganrog',
+          label: 'Таганрог',
+        },
+        {
+          slug: 'rostov-on-don',
+          label: 'Ростов-на-Дону',
+        },
+      ],
     }
   },
 };

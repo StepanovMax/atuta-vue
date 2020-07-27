@@ -319,7 +319,7 @@ export default {
   methods: {
     updateFilterState(data) {
       this.$store.commit('updateFilterState', data);
-      console.log('updateFilterState :: >', this.filterData);
+      // console.log('updateFilterState :: >', this.filterData);
     },
   },
 };
