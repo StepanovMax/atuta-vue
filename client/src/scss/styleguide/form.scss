@@ -8,4 +8,10 @@
       margin-top: 0;
     }
   }
+
+  &__title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: $COLOR-TEXT;
+  }
 }

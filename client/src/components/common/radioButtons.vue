@@ -1,30 +1,30 @@
 <template>
-  <div class="switcher">
+  <div class="radio-buttons">
     <ul
-      class="switcher__list"
+      class="radio-buttons__list"
     >
       <li
-        class="switcher__list-item"
+        class="radio-buttons__list-item"
         :class="[
-          { 'switcher__list-item_active': item.checked }
+          { 'radio-buttons__list-item_active': item.checked }
         ]"
         v-for="(item, index) in dataItemsChecked"
-        :key="index"
+        :key="'key-' + radioButtonsId + '-' + index"
       >
         <input
-          class="switcher__input-radio"
+          class="radio-buttons__input-radio"
+          :id="'id-' + radioButtonsId + '-' + index"
           type="radio"
           :value="item.slug"
-          :id="'id-' + switcherId + '-' + index"
-          :name="'name-' + switcherId"
+          :name="'name-' + radioButtonsId"
           v-model="picked"
         >
         <label
-          class="switcher__label"
+          class="radio-buttons__label"
           :class="[
-            { 'switcher__label_active': item.checked }
+            { 'radio-buttons__label_active': item.checked }
           ]"
-          :for="'id-' + switcherId + '-' + index"
+          :for="'id-' + radioButtonsId + '-' + index"
         >
           {{ item.label }}
         </label>
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'switcher',
+  name: 'radioButtons',
   model: {
     prop: 'value',
     event: 'change'
@@ -46,9 +46,10 @@ export default {
       type: Array,
       required: true
     },
-    switcherId: {
+    radioButtonsId: {
       default: '',
-      type: String
+      type: String,
+      required: true
     },
   },
   data() {
@@ -63,6 +64,7 @@ export default {
   watch: {
     picked: {
       handler() {
+        console.log('test', this.dataItemsChecked);
         for (let i = 0; i < this.dataItemsChecked.length; i++) {
           if (this.picked === this.dataItemsChecked[i].slug) {
             this.dataItemsChecked[i].checked = true;
@@ -82,6 +84,7 @@ export default {
       this.updateValue(valueArray);
     },
     updateValue(data) {
+      console.log('update.value', data);
       this.$emit('update:value', data);
     },
   },

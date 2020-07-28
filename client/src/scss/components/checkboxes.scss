@@ -1,0 +1,58 @@
+.checkboxes {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+
+    &-item {
+      margin-bottom: 5px;
+      height: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  &__label {
+    padding-left: 6px;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__icon {
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: $COLOR-BLUE-MAIN;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &_checked {
+      border-width: 0;
+    }
+
+    &_active {
+      border-color: $COLOR-BLUE-MAIN;
+      background-color: $COLOR-WHITE;
+    }
+
+    &_disabled {
+      border-color: $COLOR-GREY-DISABLED;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+}

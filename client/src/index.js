@@ -60,14 +60,14 @@ const store = new Vuex.Store({
     filterData: {
       town: null,
       district: null,
-      isBuyOrRent: null,
-      objectType: null,
+      deal: null,
+      object: null,
       seller: null,
       garageOrParkingData: {
-        isGarageOrParking: null,
+        security: null,
         garageType: null,
         parkingType: null,
-        security: null,
+        isGarageOrParking: null,
       },
       areaRange: null,
       priceRange: null,
@@ -76,7 +76,25 @@ const store = new Vuex.Store({
   mutations: {
     switchFilter(state, data) {
       state.isFilterOpen = data;
-    }
+    },
+    resetFilter(state) {
+      let obj = {
+        ...state.filterData
+      };
+      Object.keys(obj).forEach(function(key1) {
+        obj[key1] = null;
+        if (obj[key1] !== null && typeof obj[key1] === 'object') {
+          Object.keys(obj[key1]).forEach(function(key2) {
+            obj[key1][key2] = null;
+          });
+        }
+        return obj;
+      });
+      state.filterData = obj;
+    },
+    updateFilterState(state, data) {
+      state.filterData = data;
+    },
   }
 });
 

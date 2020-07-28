@@ -13,7 +13,7 @@
 import multiselect from 'vue-multiselect'
 
 export default {
-  name: 'filterGarage',
+  name: 'filterHouse',
   components: {
     multiselect,
   },
