@@ -4,7 +4,7 @@
     transition: fill 0.3s ease;
 
     &_checkbox {
-      fill: $COLOR-BLUE-ACTIVE;
+      fill: $COLOR-BLUE-MAIN;
     }
   }
 
@@ -17,7 +17,7 @@
   // }
 
   &_active &__path {
-    fill: $COLOR-BLUE-MAIN;
+    fill: $COLOR-BLUE-ACTIVE;
 
     // &:active &__path {
     //   fill: $COLOR-BLUE-MAIN;

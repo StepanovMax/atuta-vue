@@ -4,19 +4,17 @@
       <h3 class="title title_h6 form__title">
         Вид объекта*
       </h3>
-      <multiselect
-        v-model="isGarageOrParking"
-        :options="garageParkingTypes"
-        :show-labels="false"
-        :allow-empty="false"
-        :close-on-select="true"
-        :multiple="false"
-        :searchable="false"
-        label="label"
-        track-by="label"
-        placeholder="Гараж или машиноместо? *"
+      <switcher
+        switcherId="deal2"
+        :items="dealArray"
+        :value.sync="filterDataClone.deal2"
       />
     </div>
+
+    <pre>
+      {{ filterDataClone.garageOrParkingData.isGarageOrParking }}
+    </pre>
+
     <div
       v-if="
         garageParkingValue
@@ -40,6 +38,7 @@
         placeholder="Какой тип гаража?"
       />
     </div>
+
     <div
       v-if="
         garageParkingValue
@@ -95,17 +94,22 @@
 <script>
 import multiselect from 'vue-multiselect'
 import range from '../../common/range.vue'
+import radioButtons from '../../common/radioButtons.vue';
+import switcher from '../../common/switcher.vue';
 
 import { mapState } from 'vuex';
 
 export default {
   name: 'filterGarage',
   components: {
-    multiselect,
     range,
+    switcher,
+    multiselect,
+    radioButtons,
   },
   data() {
     return {
+      filterDataClone: {},
       garageParkingValue: null,
       garageParkingTypes: [
         {
@@ -163,6 +167,16 @@ export default {
         },
       ],
       areaRange: null,
+      dealArray: [
+        {
+          slug: 'buy',
+          label: 'Купить',
+        },
+        {
+          slug: 'rent',
+          label: 'Аренда',
+        },
+      ],
     }
   },
   computed: {
@@ -177,12 +191,12 @@ export default {
       set(value) {
         // Clear the rest items data from the store.
         if (value.slug === 'garage') {
-          this.filterData.garageOrParkingData.parkingType = null;
+          this.filterDataClone.garageOrParkingData.parkingType = null;
         } else if (value.slug === 'parking') {
-          this.filterData.garageOrParkingData.garageType = null;
+          this.filterDataClone.garageOrParkingData.garageType = null;
         }
         this.garageParkingValue = value;
-        this.filterData.garageOrParkingData.isGarageOrParking = value.slug;
+        this.filterDataClone.garageOrParkingData.isGarageOrParking = value.slug;
       }
     },
     whatKindOfGarageType: {
@@ -192,7 +206,7 @@ export default {
       },
       set(value) {
         this.garageTypeValue = value;
-        this.filterData.garageOrParkingData.garageType = value;
+        this.filterDataClone.garageOrParkingData.garageType = value;
       }
     },
     whatKindOfParkingType: {
@@ -202,7 +216,7 @@ export default {
       },
       set(value) {
         this.parkingTypeValue = value;
-        this.filterData.garageOrParkingData.parkingType = value;
+        this.filterDataClone.garageOrParkingData.parkingType = value;
       }
     },
     isSecurity: {
@@ -225,6 +239,9 @@ export default {
         this.filterData.areaRange = value;
       }
     },
+  },
+  created() {
+    this.filterDataClone = JSON.parse(JSON.stringify(this.filterData));
   },
 };
 </script>

@@ -93,60 +93,6 @@
           </div>
         </div>
 
-        <filterApp
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'app'
-          "
-        />
-
-        <filterHouse
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'house'
-          "
-        />
-
-        <filterRoom
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'room'
-          "
-        />
-
-        <filterGarage
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'garageOrParking'
-          "
-        />
-
-        <filterArea
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'area'
-          "
-        />
-
-        <filterCommercial
-          v-if="
-            filterData.town
-            && filterData.deal
-            && filterData.object
-            && filterData.object.slug == 'commercial'
-          "
-        />
-
         <div class="form">
 
           <div
@@ -156,7 +102,7 @@
             <h3 class="title title_h6 form__title">
               Цена
             </h3>
-            <range
+            <rangeMobile
               rangeType="price"
               :rangeData.sync="filterDataClone.priceRange"
             />
@@ -169,7 +115,7 @@
             <h3 class="title title_h6 form__title">
               Аренда в месяц
             </h3>
-            <range
+            <rangeMobile
               rangeType="price"
               :rangeData.sync="filterDataClone.priceRange"
             />
@@ -220,27 +166,15 @@
 </template>
 
 <script>
-import range from '../common/range.vue'
+import rangeMobile from '../common/rangeMobile.vue'
 import multiselect from 'vue-multiselect';
-import filterApp from './common/filterApp.vue';
-import filterHouse from './common/filterHouse.vue';
-import filterRoom from './common/filterRoom.vue';
-import filterGarage from './common/filterGarage.vue';
-import filterArea from './common/filterArea.vue';
-import filterCommercial from './common/filterCommercial.vue';
 import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'filterMobile',
   components: {
-    range,
+    rangeMobile,
     multiselect,
-    filterApp,
-    filterHouse,
-    filterRoom,
-    filterGarage,
-    filterArea,
-    filterCommercial,
   },
   data() {
     return {

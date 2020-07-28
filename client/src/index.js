@@ -64,10 +64,10 @@ const store = new Vuex.Store({
       object: null,
       seller: null,
       garageOrParkingData: {
-        isGarageOrParking: null,
+        security: null,
         garageType: null,
         parkingType: null,
-        security: null,
+        isGarageOrParking: null,
       },
       areaRange: null,
       priceRange: null,

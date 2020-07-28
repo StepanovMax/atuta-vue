@@ -27,7 +27,7 @@
 import multiselect from 'vue-multiselect'
 
 export default {
-  name: 'filterGarage',
+  name: 'filterApp',
   components: {
     multiselect,
   },

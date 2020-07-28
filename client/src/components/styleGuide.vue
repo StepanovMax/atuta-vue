@@ -16,7 +16,7 @@
             Значения диапазона
           </h2>
           <div class="styleguide__block">
-            <range
+            <rangeDesktop
               rangeType="area"
             />
           </div>
@@ -246,14 +246,6 @@
             Чекбоксы
           </h2>
           <div class="styleguide__block">
-            <checkbox
-              switcherId="checkbox-1"
-              :item="{
-                label: 'Квартира',
-                slug: 'appartment',
-                checked: true
-              }"
-              v-model="checkboxValue1"
             />
             <pre>
               Выбрано: {{ checkboxValue1 }}
@@ -290,7 +282,7 @@ import iconPlus from './icons/iconPlus.vue'
 import iconEdit from './icons/iconEdit.vue'
 import iconRemove from './icons/iconRemove.vue'
 import checkbox from './common/checkbox.vue'
-import range from './common/range.vue'
+import rangeDesktop from './common/rangeDesktop.vue'
 import Multiselect from 'vue-multiselect'
 
 export default {
@@ -306,7 +298,7 @@ export default {
     iconRemove,
     iconDiamond,
     checkbox,
-    range,
+    rangeDesktop,
     Multiselect,
   },
   data() {

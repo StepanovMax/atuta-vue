@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="filter-desktop"
-  >
+  <div class="filter-desktop">
     <div class="form">
-
       <div class="form__row">
         <h3 class="title title_h6 form__title">
           Город*
@@ -19,34 +16,6 @@
           label="label"
           track-by="label"
           placeholder="Выберите город"
-        />
-      </div>
-
-      <div class="form__row">
-        <h3 class="title title_h6 form__title">
-          Тип сделки*
-        </h3>
-        <switcher
-          switcherId="deal-13"
-          :items="dealArray"
-          :value.sync="filterDataClone.deal"
-        />
-      </div>
-
-      <div class="form__row">
-        <h3 class="title title_h6 form__title">
-          Тип объекта*
-        </h3>
-        <multiselect
-          v-model="filterDataClone.object"
-          :options="objectTypes"
-          :show-labels="false"
-          :allow-empty="false"
-          :close-on-select="true"
-          :multiple="false"
-          label="label"
-          track-by="label"
-          placeholder="Какой тип объекта? *"
         />
       </div>
 
@@ -69,114 +38,167 @@
       </div>
     </div>
 
-    <filterApp
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'app'
-      "
-    />
-
-    <filterHouse
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'house'
-      "
-    />
-
-    <filterRoom
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'room'
-      "
-    />
-
-    <filterGarage
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'garageOrParking'
-      "
-    />
-
-    <filterArea
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'area'
-      "
-    />
-
-    <filterCommercial
-      v-if="
-        filterData.town
-        && filterData.deal
-        && filterData.object
-        && filterData.object.slug == 'commercial'
-      "
-    />
-
-    <div class="form">
-
-      <div
-        class="form__row"
-        v-if="filterData.deal && filterData.deal.slug == 'buy'"
-      >
-        <h3 class="title title_h6 form__title">
-          Цена
-        </h3>
-        <range
-          rangeType="price"
-          :rangeData.sync="filterDataClone.priceRange"
-        />
-      </div>
-
-      <div
-        class="form__row"
-        v-if="filterData.deal && filterData.deal.slug == 'rent'"
-      >
-        <h3 class="title title_h6 form__title">
-          Аренда в месяц
-        </h3>
-        <range
-          rangeType="price"
-          :rangeData.sync="filterDataClone.priceRange"
-        />
-      </div>
-
-      <div class="form__row">
-        <h3 class="title title_h6 form__title">
-          Продавцы
-        </h3>
-        <multiselect
-          v-model="filterDataClone.seller"
-          :options="sellersList"
-          :show-labels="false"
-          :allow-empty="true"
-          :close-on-select="true"
-          :multiple="true"
-          :searchable="false"
-          label="label"
-          track-by="label"
-          placeholder="Выберите продавца"
-        />
-      </div>
-
+    <div class="form__row">
+      <h3 class="title title_h6 form__title">
+        Тип сделки*
+      </h3>
+      <switcher
+        switcherId="deal"
+        :items="dealArray"
+        :value.sync="filterDataClone.deal"
+      />
     </div>
 
+    <div class="form__row">
+      <h3 class="title title_h6 form__title">
+        Тип объекта*
+      </h3>
+      <radioButtons
+        radioButtonsId="objectType"
+        :items="objectTypes"
+        :value.sync="filterDataClone.object"
+      />
+    </div>
+
+
+
+
+    <!-- Garage filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'garageOrParking'
+      "
+    >
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Гараж или машиноместо?*
+        </h3>
+        <radioButtons
+          radioButtonsId="objectView"
+          :items="garageParkingTypes"
+          :value.sync="filterDataClone.garageOrParkingData.isGarageOrParking"
+        />
+      </div>
+
+      <div
+        v-if="
+          filterDataClone.garageOrParkingData.isGarageOrParking
+          && filterDataClone.garageOrParkingData.isGarageOrParking.slug === 'garage'
+        "
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Тип гаража
+        </h3>
+        <checkboxes
+          key="garageType"
+          checkboxId="garageType"
+          :items="garageTypes"
+          :value.sync="filterDataClone.garageOrParkingData.garageType"
+        />
+      </div>
+
+      <div
+        v-if="
+          filterDataClone.garageOrParkingData.isGarageOrParking
+          && filterDataClone.garageOrParkingData.isGarageOrParking.slug === 'parking'
+        "
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Тип машиноместа
+        </h3>
+        <checkboxes
+          key="parkingType"
+          checkboxId="parkingType"
+          :items="parkingTypes"
+          :value.sync="filterDataClone.garageOrParkingData.parkingType"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Охрана
+        </h3>
+        <switcher
+          switcherId="security"
+          :items="securityTypes"
+          :value.sync="filterDataClone.security"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь
+        </h3>
+        <rangeDesktop
+          rangeType="area"
+          :rangeData="rangeArea"
+          :value.sync="filterDataClone.areaRange"
+        />
+      </div>
+    </template>
+
+
+    <div
+      class="form__row"
+      v-if="filterDataClone.deal && filterDataClone.deal.slug == 'buy'"
+    >
+      <h3 class="title title_h6 form__title">
+        Цена
+      </h3>
+      <rangeDesktop
+        rangeType="price"
+        :rangeData="rangePrice"
+        :value.sync="filterDataClone.priceRange"
+      />
+    </div>
+
+    <div
+      class="form__row"
+      v-if="filterDataClone.deal && filterDataClone.deal.slug == 'rent'"
+    >
+      <h3 class="title title_h6 form__title">
+        Аренда в месяц
+      </h3>
+      <rangeDesktop
+        rangeType="price"
+        :rangeData="rangeRent"
+        :value.sync="filterDataClone.priceRange"
+      />
+    </div>
+
+    <div class="form__row">
+      <h3 class="title title_h6 form__title">
+        Продавцы
+      </h3>
+      <checkboxes
+        key="sellers"
+        checkboxId="sellers"
+        :items="sellersList"
+        :value.sync="filterDataClone.seller"
+      />
+    </div>
+
+
     <br />
+
+
     <div class="">
       <pre>
         {{ filterDataClone }}
       </pre>
     </div>
+
 
     <div class="filter-desktop__buttons-block">
       <button
@@ -201,29 +223,21 @@
 </template>
 
 <script>
-import switcher from '../common/switcher.vue'
-import range from '../common/range.vue'
+import rangeDesktop from '../common/rangeDesktop.vue';
 import multiselect from 'vue-multiselect';
-import filterApp from './common/filterApp.vue';
-import filterHouse from './common/filterHouse.vue';
-import filterRoom from './common/filterRoom.vue';
-import filterGarage from './common/filterGarage.vue';
-import filterArea from './common/filterArea.vue';
-import filterCommercial from './common/filterCommercial.vue';
+import checkboxes from '../common/checkboxes.vue';
+import radioButtons from '../common/radioButtons.vue';
+import switcher from '../common/switcher.vue';
 import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'filterDesktop',
   components: {
-    range,
+    rangeDesktop,
+    checkboxes,
+    radioButtons,
     switcher,
     multiselect,
-    filterApp,
-    filterHouse,
-    filterRoom,
-    filterGarage,
-    filterArea,
-    filterCommercial,
   },
   data() {
     return {
@@ -244,24 +258,22 @@ export default {
       ],
       townList: [
         {
-          slug: 'buy',
-          label: 'Купить',
+          slug: 'rostov-on-don',
+          label: 'Ростов-на-Дону',
         },
         {
-          slug: 'rent',
-          label: 'Аренда',
+          slug: 'taganrog',
+          label: 'Таганрог',
         },
       ],
       dealArray: [
         {
           slug: 'buy',
           label: 'Купить',
-          // checked: false,
         },
         {
           slug: 'rent',
           label: 'Аренда',
-          // checked: false,
         },
       ],
       districtsList: [
@@ -330,6 +342,61 @@ export default {
           label: 'Коммерческая недвижимость',
         },
       ],
+      garageParkingTypes: [
+        {
+          slug: 'garage',
+          label: 'Гараж',
+        },
+        {
+          slug: 'parking',
+          label: 'Машиноместо',
+        },
+      ],
+      garageTypes: [
+        {
+          slug: 'reinforcedConcrete',
+          label: 'Железобетонный',
+        },
+        {
+          slug: 'brick',
+          label: 'Кирпичный',
+        },
+        {
+          slug: 'irony',
+          label: 'Железный',
+        },
+      ],
+      parkingTypes: [
+        {
+          slug: 'multilevelParking',
+          label: 'Многоуровневый паркинг',
+        },
+        {
+          slug: 'undergroundParking',
+          label: 'Подземный паркинг',
+        },
+        {
+          slug: 'сoveredParking',
+          label: 'Крытая стоянка',
+        },
+        {
+          slug: 'openParking',
+          label: 'Открытая стоянка',
+        },
+      ],
+      securityTypes: [
+        {
+          slug: 'yes',
+          label: 'Да',
+        },
+        {
+          slug: 'no',
+          label: 'Нет',
+        },
+      ],
+      rangePrice: [0, 10000000],
+      rangeRent: [10, 1100],
+      rangeArea: [0, 500],
     }
   },
   watch: {
@@ -358,11 +425,9 @@ export default {
       }
       return value;
     },
-    isTownSelected() {
-      return this.filterData.town;
-    },
   },
   created() {
+    // Getting the data for the filter from store.
     this.filterDataClone = JSON.parse(JSON.stringify(this.filterData));
   },
   methods: {
