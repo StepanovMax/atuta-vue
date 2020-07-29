@@ -50,7 +50,7 @@ export default {
     rangeData: {
       type: Array,
       default: [0, 100],
-      required: true,
+      required: false,
     },
   },
   data() {
@@ -112,6 +112,8 @@ export default {
         value = `<span>₽</span>`;
       } else if(this.rangeType === 'area') {
         value = `<span><span>м</span><sup class="range__mobile-text-sup">2</sup></span>`;
+      } else if(this.rangeType === 'none') {
+        value = '';
       }
       return value;
     },
