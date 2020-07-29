@@ -6,24 +6,32 @@
       <li
         class="checkboxes__list-item"
         :class="[
-          { 'checkboxes__list-item_active': item.checked }
+          { 'checkboxes__list-item_active': item.checked },
+          { 'checkboxes__list-item-rooms-count': checkboxId === 'roomsCount' }
         ]"
         v-for="(item, index) in itemsCopy"
         :key="index"
       >
-        <iconChecked
-          v-if="item.checked"
-          class="checkboxes__icon checkboxes__icon_checked"
-        />
         <div
-          v-else
-          class="checkboxes__icon checkboxes__icon_active"
-        />
+          class=""
+          @click="trigger(index)"
+        >
+          <iconChecked
+            v-if="item.checked"
+            class="checkboxes__icon checkboxes__icon_checked"
+          />
+          <div
+            v-else
+            class="checkboxes__icon checkboxes__icon_active"
+          />
+        </div>
         <input
+          ref="checkboxinput"
           :id="'id-' + checkboxId + '-' + index"
           class="checkboxes__input"
           type="checkbox"
           :value="item"
+          :key="'key-' + checkboxId + '-' + index"
           v-model="picked"
         >
         <label
@@ -59,6 +67,11 @@ export default {
       type: String,
       default: '',
       required: true
+    },
+    checkboxType: {
+      type: String,
+      default: 'default',
+      required: false
     },
   },
   data() {
@@ -107,6 +120,10 @@ export default {
     },
     updateValue(data) {
       this.$emit('update:value', data);
+    },
+    trigger(i) {
+      console.log('::', i, this.$refs.checkboxinput[i]);
+      this.$refs.checkboxinput[i].click();
     },
   },
 };
