@@ -71,6 +71,7 @@ const store = new Vuex.Store({
       },
       app: {
         roomsCount: null,
+        appType: null,
       },
       areaRange: null,
       priceRange: null,

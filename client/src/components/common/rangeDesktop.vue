@@ -1,9 +1,28 @@
 <template>
   <div class="range">
     <div class="range__desktop">
+      <div class="range__price">
+        <p class="range__price-digit range__price-digit-from">
+          <span>
+            {{ rangeValueFormatted[0] }}
+          </span>
+          <span
+            v-html="currency"
+          />
+        </p>
+        <p class="range__price-digit range__price-digit-to">
+          <span>
+            {{ rangeValueFormatted[1] }}
+          </span>
+          <span
+            v-html="currency"
+          />
+        </p>
+      </div>
       <VueSlider
         v-bind="options"
         v-model="rangeValue"
+        :tooltip="'none'"
       />
     </div>
   </div>
@@ -38,9 +57,9 @@ export default {
     return {
       rangeValue: [this.rangeData[0], this.rangeData[1]],
       options: {
-        dotSize: 24,
+        dotSize: 20,
         width: 'auto',
-        height: 4,
+        height: 2,
         contained: false,
         direction: 'ltr',
         data: null,
@@ -103,6 +122,22 @@ export default {
       } else if(this.rangeType === 'area') {
         value = 'Площадь';
       }
+      return value;
+    },
+    rangeValueFormatted() {
+      console.log('this.rangeValue[0]', this.rangeValue[0]);
+      console.log('this.rangeValue[1]', this.rangeValue[1]);
+      const value0 = this.formatPrice(this.rangeValue[0]);
+      const value1 = this.formatPrice(this.rangeValue[1]);
+      const value = [value0, value1];
+      console.log('value', value);
+      return value;
+    },
+  },
+  methods: {
+    formatPrice(price) {
+      const priceString = price.toString();
+      const value = priceString.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
       return value;
     },
   },

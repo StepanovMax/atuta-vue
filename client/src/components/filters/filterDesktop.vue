@@ -171,6 +171,17 @@
           :value.sync="filterDataClone.app.roomsCount"
         />
       </div>
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Тип объекта
+        </h3>
+        <checkboxes
+          key="appType"
+          checkboxId="appType"
+          :items="appTypes"
+          :value.sync="filterDataClone.app.appType"
+        />
+      </div>
     </template>
 
 
@@ -460,7 +471,17 @@ export default {
           label: '9+',
         },
       ],
-      rangePrice: [0, 10000000],
+      appTypes: [
+        {
+          slug: 'secondaryUsing',
+          label: 'Вторичка',
+        },
+        {
+          slug: 'newBuilding',
+          label: 'Новостройка',
+        },
+      ],
+      rangePrice: [0, 100000000],
       rangeRent: [10, 1100],
       rangeArea: [0, 500],
     }
