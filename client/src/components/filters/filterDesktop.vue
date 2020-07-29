@@ -481,7 +481,7 @@ export default {
           label: 'Новостройка',
         },
       ],
-      rangePrice: [0, 10000000],
+      rangePrice: [0, 100000000],
       rangeRent: [10, 1100],
       rangeArea: [0, 500],
     }
