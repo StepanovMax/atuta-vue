@@ -1,23 +1,40 @@
 .checkboxes {
   &__list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
     position: relative;
 
     &-item {
+      width: auto;
+      min-width: 20%;
       margin-bottom: 5px;
+      margin-right: 5px;
+      box-sizing: border-box;
       height: 20px;
       position: relative;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+
+      &-rooms-count {
+        margin-right: 0;
+
+        &:nth-child(1) {
+          width: 40%;
+        }
+
+        &:nth-child(2) {
+          width: 60%;
+        }
+      }
     }
   }
 
   &__label {
-    padding-left: 6px;
+    padding: 5px 0 5px 4px;
     cursor: pointer;
     z-index: 2;
     position: relative;
@@ -25,6 +42,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex: 1;
   }
 
   &__icon {
@@ -37,6 +55,7 @@
     border-color: $COLOR-BLUE-MAIN;
     cursor: pointer;
     box-sizing: border-box;
+    flex: none;
 
     &_checked {
       border-width: 0;

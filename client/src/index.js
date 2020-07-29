@@ -69,6 +69,9 @@ const store = new Vuex.Store({
         parkingType: null,
         isGarageOrParking: null,
       },
+      app: {
+        roomsCount: null,
+      },
       areaRange: null,
       priceRange: null,
     },

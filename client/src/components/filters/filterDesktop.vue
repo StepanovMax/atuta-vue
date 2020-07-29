@@ -149,6 +149,32 @@
     </template>
 
 
+
+    <!-- Garage filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'app'
+      "
+    >
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Количество комнат
+        </h3>
+        <checkboxes
+          key="roomsCount"
+          checkboxId="roomsCount"
+          checkboxType="checkboxButtons"
+          :items="roomsCount"
+          :value.sync="filterDataClone.app.roomsCount"
+        />
+      </div>
+    </template>
+
+
+
     <div
       class="form__row"
       v-if="filterDataClone.deal && filterDataClone.deal.slug == 'buy'"
@@ -187,16 +213,6 @@
         :items="sellersList"
         :value.sync="filterDataClone.seller"
       />
-    </div>
-
-
-    <br />
-
-
-    <div class="">
-      <pre>
-        {{ filterDataClone }}
-      </pre>
     </div>
 
 
@@ -394,6 +410,56 @@ export default {
           label: 'Нет',
         },
       ],
+      roomsCount: [
+        {
+          slug: 'studio',
+          label: 'Студия',
+        },
+        {
+          slug: 'freePlan',
+          label: 'Своб.планировка',
+        },
+        {
+          slug: '1',
+          label: '1',
+        },
+        {
+          slug: '2',
+          label: '2',
+        },
+        {
+          slug: '3',
+          label: '3',
+        },
+        {
+          slug: '4',
+          label: '4',
+        },
+        {
+          slug: '5',
+          label: '5',
+        },
+        {
+          slug: '6',
+          label: '6',
+        },
+        {
+          slug: '7',
+          label: '7',
+        },
+        {
+          slug: '8',
+          label: '8',
+        },
+        {
+          slug: '9',
+          label: '9',
+        },
+        {
+          slug: '9+',
+          label: '9+',
+        },
+      ],
       rangePrice: [0, 10000000],
       rangeRent: [10, 1100],
       rangeArea: [0, 500],
@@ -421,6 +487,8 @@ export default {
           } else {
             value = false;
           }
+        } else if (this.filterData.object.slug === 'app') {
+          value = true;
         }
       }
       return value;
