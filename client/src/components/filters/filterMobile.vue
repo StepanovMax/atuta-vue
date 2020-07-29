@@ -102,10 +102,6 @@
             <h3 class="title title_h6 form__title">
               Цена
             </h3>
-            <rangeMobile
-              rangeType="price"
-              :rangeData.sync="filterDataClone.priceRange"
-            />
           </div>
 
           <div
@@ -115,10 +111,6 @@
             <h3 class="title title_h6 form__title">
               Аренда в месяц
             </h3>
-            <rangeMobile
-              rangeType="price"
-              :rangeData.sync="filterDataClone.priceRange"
-            />
           </div>
 
           <div class="form__row">

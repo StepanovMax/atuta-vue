@@ -12,10 +12,28 @@
     <br />
 
 
-    <div class="">
+    <div style="display: flex;">
       <pre>
-        {{ filterData }}
+        {{ filterData.town }}
+        {{ filterData.district }}
+        {{ filterData.deal }}
+        {{ filterData.object }}
+        {{ filterData.seller }}
       </pre>
+    </div>
+    <div style="display: flex;">
+      <div class="">
+        Квартиры
+        <pre>
+          {{ filterData.app }}
+        </pre>
+      </div>
+      <div class="">
+        Гаражи
+        <pre>
+          {{ filterData.garage }}
+        </pre>
+      </div>
     </div>
 
 

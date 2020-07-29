@@ -83,7 +83,7 @@
       <h3 class="title title_h6 form__title">
         Площадь
       </h3>
-      <range
+      <rangeDesktop
         rangeType="area"
         :rangeData.sync="areaRangeValue"
       />
