@@ -28,7 +28,7 @@
           :options="districtsList"
           :show-labels="false"
           :allow-empty="true"
-          :close-on-select="false"
+          :close-on-select="true"
           :multiple="true"
           :searchable="false"
           label="label"
@@ -69,7 +69,7 @@
         filterDataClone.town
         && filterDataClone.deal
         && filterDataClone.object
-        && filterDataClone.object.slug === 'garageOrParking'
+        && filterDataClone.object.slug === 'garage'
       "
     >
       <div
@@ -81,14 +81,14 @@
         <radioButtons
           radioButtonsId="objectView"
           :items="garageParkingTypes"
-          :value.sync="filterDataClone.garageOrParkingData.isGarageOrParking"
+          :value.sync="filterDataClone.garage.type"
         />
       </div>
 
       <div
         v-if="
-          filterDataClone.garageOrParkingData.isGarageOrParking
-          && filterDataClone.garageOrParkingData.isGarageOrParking.slug === 'garage'
+          filterDataClone.garage.type
+          && filterDataClone.garage.type.slug === 'garage'
         "
         class="form__row"
       >
@@ -99,14 +99,14 @@
           key="garageType"
           checkboxId="garageType"
           :items="garageTypes"
-          :value.sync="filterDataClone.garageOrParkingData.garageType"
+          :value.sync="filterDataClone.garage.garageType"
         />
       </div>
 
       <div
         v-if="
-          filterDataClone.garageOrParkingData.isGarageOrParking
-          && filterDataClone.garageOrParkingData.isGarageOrParking.slug === 'parking'
+          filterDataClone.garage.type
+          && filterDataClone.garage.type.slug === 'parking'
         "
         class="form__row"
       >
@@ -117,7 +117,7 @@
           key="parkingType"
           checkboxId="parkingType"
           :items="parkingTypes"
-          :value.sync="filterDataClone.garageOrParkingData.parkingType"
+          :value.sync="filterDataClone.garage.parkingType"
         />
       </div>
 
@@ -130,7 +130,7 @@
         <switcher
           switcherId="security"
           :items="securityTypes"
-          :value.sync="filterDataClone.security"
+          :value.sync="filterDataClone.garage.security"
         />
       </div>
 
@@ -141,16 +141,52 @@
           Площадь
         </h3>
         <rangeDesktop
+          key="garageRangeArea"
           rangeType="area"
-          :rangeData="rangeArea"
-          :value.sync="filterDataClone.garageOrParkingData.areaRange"
+          :rangeData="garageRangeArea"
+          :value.sync="filterDataClone.garage.area"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeDesktop
+          key="garageRangePrice"
+          rangeType="price"
+          :rangeData="garageRangePrice"
+          :value.sync="filterDataClone.garage.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeDesktop
+          key="garageRangeRent"
+          rangeType="price"
+          :rangeData="garageRangeRent"
+          :value.sync="filterDataClone.garage.rent"
         />
       </div>
     </template>
 
 
-
-    <!-- Garage filter part -->
+    <!-- Appartment filter part -->
     <template
       v-if="
         filterDataClone.town
@@ -159,6 +195,62 @@
         && filterDataClone.object.slug === 'app'
       "
     >
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeDesktop
+          key="appRangePrice"
+          rangeType="price"
+          :rangeData="appRangePrice"
+          :value.sync="filterDataClone.app.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeDesktop
+          key="appRangeRent"
+          rangeType="price"
+          :rangeData="appRangeRent"
+          :value.sync="filterDataClone.app.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Срок аренды
+        </h3>
+        <checkboxes
+          key="rentType"
+          checkboxId="rentType"
+          checkboxType="default"
+          :items="rentTypes"
+          :value.sync="filterDataClone.app.rentType"
+        />
+      </div>
+
       <div class="form__row">
         <h3 class="title title_h6 form__title">
           Количество комнат
@@ -171,6 +263,7 @@
           :value.sync="filterDataClone.app.roomsCount"
         />
       </div>
+
       <div class="form__row">
         <h3 class="title title_h6 form__title">
           Тип объекта
@@ -179,7 +272,7 @@
           key="appType"
           checkboxId="appType"
           :items="appTypes"
-          :value.sync="filterDataClone.app.appType"
+          :value.sync="filterDataClone.app.type"
         />
       </div>
 
@@ -193,7 +286,7 @@
           key="appRangeArea"
           rangeType="area"
           :rangeData="appRangeArea"
-          :value.sync="filterDataClone.app.appRangeArea"
+          :value.sync="filterDataClone.app.area"
         />
       </div>
 
@@ -207,13 +300,13 @@
           key="appFloor"
           rangeType="none"
           :rangeData="appFloor"
-          :value.sync="filterDataClone.app.appFloor"
+          :value.sync="filterDataClone.app.floor"
         />
         <checkboxes
           key="appFloorNot"
           checkboxId="appFloorNot"
           :items="appFloorNot"
-          :value.sync="filterDataClone.app.appFloorNot"
+          :value.sync="filterDataClone.app.floorNot"
         />
       </div>
 
@@ -227,7 +320,7 @@
           key="appFloorAll"
           rangeType="none"
           :rangeData="appFloorAll"
-          :value.sync="filterDataClone.app.appFloorAll"
+          :value.sync="filterDataClone.app.floorAll"
         />
       </div>
 
@@ -241,40 +334,23 @@
           key="appView"
           checkboxId="appView"
           :items="appView"
-          :value.sync="filterDataClone.app.appView"
+          :value.sync="filterDataClone.app.view"
         />
       </div>
     </template>
 
 
-
-    <div
-      class="form__row"
-      v-if="filterDataClone.deal && filterDataClone.deal.slug == 'buy'"
+    <!-- House filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'house'
+      "
     >
-      <h3 class="title title_h6 form__title">
-        Цена
-      </h3>
-      <rangeDesktop
-        rangeType="price"
-        :rangeData="rangePrice"
-        :value.sync="filterDataClone.priceRange"
-      />
-    </div>
+    </template>
 
-    <div
-      class="form__row"
-      v-if="filterDataClone.deal && filterDataClone.deal.slug == 'rent'"
-    >
-      <h3 class="title title_h6 form__title">
-        Аренда в месяц
-      </h3>
-      <rangeDesktop
-        rangeType="price"
-        :rangeData="rangeRent"
-        :value.sync="filterDataClone.priceRange"
-      />
-    </div>
 
     <div class="form__row">
       <h3 class="title title_h6 form__title">
@@ -419,7 +495,7 @@ export default {
           label: 'Комната',
         },
         {
-          slug: 'garageOrParking',
+          slug: 'garage',
           label: 'Гараж / Машиноместо',
         },
         {
@@ -543,10 +619,12 @@ export default {
           label: 'Новостройка',
         },
       ],
-      rangePrice: [0, 100000000],
-      rangeRent: [10, 1100],
-      rangeArea: [0, 500],
-      appRangeArea: [0, 200],
+      garageRangeArea: [0, 100],
+      garageRangePrice: [0, 100000000],
+      garageRangeRent: [0, 100000000],
+      appRangePrice: [0, 100000000],
+      appRangeRent: [0, 1000000],
+      appRangeArea: [0, 500],
       appFloor: [0, 100],
       appFloorAll: [0, 100],
       appFloorNot: [
@@ -581,6 +659,16 @@ export default {
           label: 'Блочный',
         },
       ],
+      rentTypes: [
+        {
+          slug: 'perDay',
+          label: 'Посуточно',
+        },
+        {
+          slug: 'longTerm',
+          label: 'На длительный срок',
+        },
+      ],
     }
   },
   watch: {
@@ -599,8 +687,8 @@ export default {
     requiredFormItemsIsFilled() {
       let value;
       if (this.filterData.deal && this.filterData.object) {
-        if (this.filterData.object.slug === 'garageOrParking') {
-          if (this.filterData.garageOrParkingData.isGarageOrParking) {
+        if (this.filterData.object.slug === 'garage') {
+          if (this.filterData.garage.type) {
             value = true;
           } else {
             value = false;
