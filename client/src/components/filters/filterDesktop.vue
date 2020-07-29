@@ -143,7 +143,7 @@
         <rangeDesktop
           rangeType="area"
           :rangeData="rangeArea"
-          :value.sync="filterDataClone.areaRange"
+          :value.sync="filterDataClone.garageOrParkingData.areaRange"
         />
       </div>
     </template>
@@ -180,6 +180,68 @@
           checkboxId="appType"
           :items="appTypes"
           :value.sync="filterDataClone.app.appType"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Общая площадь
+        </h3>
+        <rangeDesktop
+          key="appRangeArea"
+          rangeType="area"
+          :rangeData="appRangeArea"
+          :value.sync="filterDataClone.app.appRangeArea"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Этаж
+        </h3>
+        <rangeDesktop
+          key="appFloor"
+          rangeType="none"
+          :rangeData="appFloor"
+          :value.sync="filterDataClone.app.appFloor"
+        />
+        <checkboxes
+          key="appFloorNot"
+          checkboxId="appFloorNot"
+          :items="appFloorNot"
+          :value.sync="filterDataClone.app.appFloorNot"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Этажей всего
+        </h3>
+        <rangeDesktop
+          key="appFloorAll"
+          rangeType="none"
+          :rangeData="appFloorAll"
+          :value.sync="filterDataClone.app.appFloorAll"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Вид дома
+        </h3>
+        <checkboxes
+          key="appView"
+          checkboxId="appView"
+          :items="appView"
+          :value.sync="filterDataClone.app.appView"
         />
       </div>
     </template>
@@ -484,6 +546,41 @@ export default {
       rangePrice: [0, 100000000],
       rangeRent: [10, 1100],
       rangeArea: [0, 500],
+      appRangeArea: [0, 200],
+      appFloor: [0, 100],
+      appFloorAll: [0, 100],
+      appFloorNot: [
+        {
+          slug: 'first',
+          label: 'Не первый этаж',
+        },
+        {
+          slug: 'last',
+          label: 'Не последний этаж',
+        },
+      ],
+      appView: [
+        {
+          slug: 'brick',
+          label: 'Кирпичный',
+        },
+        {
+          slug: 'panel',
+          label: 'Панельный',
+        },
+        {
+          slug: 'monolit',
+          label: 'Монолитный',
+        },
+        {
+          slug: 'wood',
+          label: 'Деревянный',
+        },
+        {
+          slug: 'block',
+          label: 'Блочный',
+        },
+      ],
     }
   },
   watch: {
