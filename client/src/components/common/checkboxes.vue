@@ -7,7 +7,8 @@
         class="checkboxes__list-item"
         :class="[
           { 'checkboxes__list-item_active': item.checked },
-          { 'checkboxes__list-item-rooms-count': checkboxId === 'roomsCount' }
+          { 'checkboxes__list-item-rooms-count': checkboxId === 'roomsCount' },
+          { 'checkboxes__list-item-house-type': checkboxId === 'houseType' }
         ]"
         v-for="(item, index) in itemsCopy"
         :key="index"

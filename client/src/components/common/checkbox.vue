@@ -15,6 +15,7 @@
       {{ item.label }}
     </label>
     <input
+      :key="key"
       id="asd"
       class="checkbox__input"
       type="checkbox"
@@ -41,6 +42,16 @@ export default {
       type: Object,
       required: true
     },
+    checkboxId: {
+      type: String,
+      default: '',
+      required: true
+    },
+    key: {
+      type: String,
+      default: '',
+      required: true
+    },
   },
   data() {
     return {
@@ -49,14 +60,15 @@ export default {
   },
   methods: {
     clickCheckbox() {
-      console.log('this.checkboxArray.checked', this.checkboxArray.checked)
-      this.checkboxArray.checked = !this.checkboxArray.checked
+      this.checkboxArray.checked = !this.checkboxArray.checked;
       if (this.checkboxArray.checked) {
-        this.value = this.checkboxArray.label
+        this.value = this.checkboxArray.slug;
       } else {
-        this.value = 'Не выбрано'
+        this.value = null;
       }
-      this.$emit('change', this.value)
+      console.log('value', this.value);
+      // this.$emit('change', this.value);
+      this.$emit('update:value', this.value);
     }
   },
 };
