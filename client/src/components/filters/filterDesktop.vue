@@ -442,7 +442,10 @@
         />
       </div>
 
-      <div class="form__row">
+      <div
+        v-if="false"
+        class="form__row"
+      >
         <h3 class="title title_h6 form__title">
           Дом за городом?
         </h3>
@@ -456,9 +459,6 @@
 
       <div
         class="form__row"
-        v-if="
-          filterDataClone.house.isIntoCity
-        "
       >
         <h3 class="title title_h6 form__title">
           Расстояние до города
