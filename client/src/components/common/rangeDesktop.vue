@@ -1,6 +1,24 @@
 <template>
   <div class="range">
     <div class="range__desktop">
+      <div class="range__price">
+        <p class="range__price-digit range__price-digit-from">
+          <span>
+            {{ rangeValue[0] }}
+          </span>
+          <span
+            v-html="currency"
+          />
+        </p>
+        <p class="range__price-digit range__price-digit-to">
+          <span>
+            {{ rangeValue[1] }}
+          </span>
+          <span
+            v-html="currency"
+          />
+        </p>
+      </div>
       <VueSlider
         v-bind="options"
         v-model="rangeValue"
@@ -38,9 +56,9 @@ export default {
     return {
       rangeValue: [this.rangeData[0], this.rangeData[1]],
       options: {
-        dotSize: 24,
+        dotSize: 20,
         width: 'auto',
-        height: 4,
+        height: 2,
         contained: false,
         direction: 'ltr',
         data: null,

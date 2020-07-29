@@ -1,8 +1,32 @@
+.vue-slider {
+  margin: 0 10px;
+}
+
 .range {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+
+    &-digit {
+      font-size: 14px;
+
+      &-from {
+
+      }
+
+      &-to {
+
+      }
+    }
+  }
 
   &__item {
     font-size: 16px;
