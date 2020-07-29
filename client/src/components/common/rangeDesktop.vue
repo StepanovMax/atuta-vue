@@ -127,12 +127,9 @@ export default {
       return value;
     },
     rangeValueFormatted() {
-      console.log('this.rangeValue[0]', this.rangeValue[0]);
-      console.log('this.rangeValue[1]', this.rangeValue[1]);
       const value0 = this.formatPrice(this.rangeValue[0]);
       const value1 = this.formatPrice(this.rangeValue[1]);
       const value = [value0, value1];
-      console.log('value', value);
       return value;
     },
   },

@@ -243,8 +243,8 @@
           Срок аренды
         </h3>
         <checkboxes
-          key="rentType"
-          checkboxId="rentType"
+          key="appRentType"
+          checkboxId="appRentType"
           checkboxType="default"
           :items="rentTypes"
           :value.sync="filterDataClone.app.rentType"
@@ -256,10 +256,10 @@
           Количество комнат
         </h3>
         <checkboxes
-          key="roomsCount"
-          checkboxId="roomsCount"
+          key="appRoomsCount"
+          checkboxId="appRoomsCount"
           checkboxType="checkboxButtons"
-          :items="roomsCount"
+          :items="appRoomsCount"
           :value.sync="filterDataClone.app.roomsCount"
         />
       </div>
@@ -349,6 +349,127 @@
         && filterDataClone.object.slug === 'house'
       "
     >
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeDesktop
+          key="houseRangePrice"
+          rangeType="price"
+          :rangeData="houseRangePrice"
+          :value.sync="filterDataClone.house.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeDesktop
+          key="houseRangeRent"
+          rangeType="price"
+          :rangeData="houseRangeRent"
+          :value.sync="filterDataClone.house.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Срок аренды
+        </h3>
+        <checkboxes
+          key="houseRentType"
+          checkboxId="houseRentType"
+          checkboxType="default"
+          :items="rentTypes"
+          :value.sync="filterDataClone.house.rentType"
+        />
+      </div>
+
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Количество комнат
+        </h3>
+        <checkboxes
+          key="houseRoomsCount"
+          checkboxId="houseRoomsCount"
+          checkboxType="checkboxButtons"
+          :items="houseRoomsCount"
+          :value.sync="filterDataClone.house.roomsCount"
+        />
+      </div>
+
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Тип объекта
+        </h3>
+        <checkboxes
+          key="houseType"
+          checkboxId="houseType"
+          :items="houseTypes"
+          :value.sync="filterDataClone.house.type"
+        />
+      </div>
+
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Вид объекта
+        </h3>
+        <checkboxes
+          key="houseView"
+          checkboxId="houseView"
+          :items="appTypes"
+          :value.sync="filterDataClone.house.view"
+        />
+      </div>
+
+      <div class="form__row">
+        <h3 class="title title_h6 form__title">
+          Дом за городом?
+        </h3>
+        <checkbox
+          key="intoCity"
+          checkboxId="intoCity"
+          :item="intoCityType"
+          :value.sync="filterDataClone.house.isIntoCity"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.house.isIntoCity
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Расстояние до города
+        </h3>
+        <rangeDesktop
+          key="houseDistance"
+          rangeType="default"
+          :rangeData="houseDistance"
+          :value.sync="filterDataClone.house.distance"
+        />
+      </div>
     </template>
 
 
@@ -390,6 +511,7 @@
 <script>
 import rangeDesktop from '../common/rangeDesktop.vue';
 import multiselect from 'vue-multiselect';
+import checkbox from '../common/checkbox.vue';
 import checkboxes from '../common/checkboxes.vue';
 import radioButtons from '../common/radioButtons.vue';
 import switcher from '../common/switcher.vue';
@@ -399,6 +521,7 @@ export default {
   name: 'filterDesktop',
   components: {
     rangeDesktop,
+    checkbox,
     checkboxes,
     radioButtons,
     switcher,
@@ -559,7 +682,7 @@ export default {
           label: 'Нет',
         },
       ],
-      roomsCount: [
+      appRoomsCount: [
         {
           slug: 'studio',
           label: 'Студия',
@@ -619,14 +742,6 @@ export default {
           label: 'Новостройка',
         },
       ],
-      garageRangeArea: [0, 100],
-      garageRangePrice: [0, 100000000],
-      garageRangeRent: [0, 100000000],
-      appRangePrice: [0, 100000000],
-      appRangeRent: [0, 1000000],
-      appRangeArea: [0, 500],
-      appFloor: [0, 100],
-      appFloorAll: [0, 100],
       appFloorNot: [
         {
           slug: 'first',
@@ -669,6 +784,82 @@ export default {
           label: 'На длительный срок',
         },
       ],
+      houseRoomsCount: [
+        {
+          slug: '1',
+          label: '1',
+        },
+        {
+          slug: '2',
+          label: '2',
+        },
+        {
+          slug: '3',
+          label: '3',
+        },
+        {
+          slug: '4',
+          label: '4',
+        },
+        {
+          slug: '5',
+          label: '5',
+        },
+        {
+          slug: '6',
+          label: '6',
+        },
+        {
+          slug: '7',
+          label: '7',
+        },
+        {
+          slug: '8',
+          label: '8',
+        },
+        {
+          slug: '9',
+          label: '9',
+        },
+        {
+          slug: '9+',
+          label: '9+',
+        },
+      ],
+      houseTypes: [
+        {
+          slug: 'house',
+          label: 'Дом',
+        },
+        {
+          slug: 'summerCottage',
+          label: 'Дача',
+        },
+        {
+          slug: 'cottage',
+          label: 'Коттедж',
+        },
+        {
+          slug: 'townhouse',
+          label: 'Таунхаус',
+        },
+      ],
+      intoCityType: {
+        slug: 'yes',
+        label: 'Да',
+        checked: false,
+      },
+      garageRangeArea: [0, 100],
+      garageRangePrice: [0, 100000000],
+      garageRangeRent: [0, 100000000],
+      appRangePrice: [0, 100000000],
+      appRangeRent: [0, 1000000],
+      appRangeArea: [0, 500],
+      appFloor: [0, 100],
+      appFloorAll: [0, 100],
+      houseRangePrice: [0, 100000000],
+      houseRangeRent: [0, 100000000],
+      houseDistance: [0, 100],
     }
   },
   watch: {

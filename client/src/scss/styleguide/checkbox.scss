@@ -4,10 +4,11 @@
   position: relative;
 
   &__label {
-    padding-left: 25px;
+    padding-left: 20px;
     cursor: pointer;
     z-index: 2;
     position: relative;
+    font-size: 14px;
   }
 
   &__icon {
@@ -15,11 +16,12 @@
     left: 0;
     z-index: 1;
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
+    box-sizing: border-box;
     cursor: pointer;
 
     &_checked {

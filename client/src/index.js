@@ -84,6 +84,13 @@ const store = new Vuex.Store({
         rent: null,
         rentType: null,
       },
+      house: {
+        roomsCount: null,
+        rentType: null,
+        type: null,
+        view: null,
+        isIntoCity: null,
+      },
     },
   },
   mutations: {

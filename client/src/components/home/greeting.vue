@@ -34,6 +34,12 @@
           {{ filterData.garage }}
         </pre>
       </div>
+      <div class="">
+        Дома
+        <pre>
+          {{ filterData.house }}
+        </pre>
+      </div>
     </div>
 
 
