@@ -1370,27 +1370,27 @@ export default {
           label: 'Офис',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'stock',
           label: 'Склад',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'public-catering',
           label: 'Общепит',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'hotel',
           label: 'Гостиница',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'production',
           label: 'Производство',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'sector',
           label: 'Участок',
         },
         {
-          slug: 'agricultural-purpose',
+          slug: 'trading-area',
           label: 'Торговая площадь',
         },
         {
