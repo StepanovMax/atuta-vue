@@ -776,12 +776,6 @@
           rangeType="price"
           :value.sync="filterDataClone.commercial.price"
         />
-        <radioButtons
-          radioButtonsView="floatRight"
-          radioButtonsId="commercialRentType"
-          :items="commercialRentType"
-          :value.sync="filterDataClone.commercial.rentType"
-        />
       </div>
 
       <div
@@ -798,6 +792,12 @@
           key="commercialRangeRent"
           rangeType="price"
           :value.sync="filterDataClone.commercial.rent"
+        />
+        <radioButtons
+          radioButtonsView="floatRight"
+          radioButtonsId="commercialRentType"
+          :items="commercialRentType"
+          :value.sync="filterDataClone.commercial.rentType"
         />
       </div>
 
