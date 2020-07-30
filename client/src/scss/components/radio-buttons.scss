@@ -1,6 +1,11 @@
 $BORDER-RADIUS: 6px;
 
 .radio-buttons {
+  &_float-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 
   &__list {
     width: 100%;
@@ -17,6 +22,11 @@ $BORDER-RADIUS: 6px;
       flex-direction: row;
       justify-content: flex-start;
       align-items: flex-start;
+    }
+
+    &_float-right {
+      width: auto;
+      margin-top: 6px;
     }
   }
 

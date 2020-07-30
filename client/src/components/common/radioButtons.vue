@@ -1,7 +1,15 @@
 <template>
-  <div class="radio-buttons">
+  <div
+    class="radio-buttons"
+    :class="[
+      { 'radio-buttons_float-right': radioButtonsView === 'floatRight' }
+    ]"
+  >
     <ul
       class="radio-buttons__list"
+      :class="[
+        { 'radio-buttons__list_float-right': radioButtonsView === 'floatRight' }
+      ]"
     >
       <li
         class="radio-buttons__list-item"
@@ -17,6 +25,7 @@
           type="radio"
           :value="item.slug"
           :name="'name-' + radioButtonsId"
+          :checked="item.checked"
           v-model="picked"
         >
         <label
@@ -51,11 +60,21 @@ export default {
       type: String,
       required: true
     },
+    radioButtonsView: {
+      default: 'default',
+      type: String,
+      required: false
+    },
   },
   data() {
     return {
       picked: [],
       dataItemsChecked: [...this.items].map(function(item) {
+        // console.log('radioButtonsView', this.radioButtonsView);
+        // if (this.radioButtonsView && (this.radioButtonsView === 'floatRight')) {
+        //   console.log('items', this.items);
+        // } else {
+        // }
         item.checked = false;
         return item;
       }),
@@ -86,5 +105,10 @@ export default {
       this.$emit('update:value', data);
     },
   },
+  // mounted() {
+  //   if (this.radioButtonsType === 'floatRight') {
+  //     console.log('items', this.items);
+  //   }
+  // },
 };
 </script>

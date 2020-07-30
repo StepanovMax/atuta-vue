@@ -54,6 +54,7 @@
         Тип объекта*
       </h3>
       <radioButtons
+        radioButtonsView="default"
         radioButtonsId="objectType"
         :items="objectTypes"
         :value.sync="filterDataClone.object"
@@ -113,6 +114,7 @@
           Гараж или машиноместо?*
         </h3>
         <radioButtons
+          radioButtonsView="default"
           radioButtonsId="objectView"
           :items="garageParkingTypes"
           :value.sync="filterDataClone.garage.type"
@@ -663,6 +665,200 @@
     </template>
 
 
+    <!-- Sector filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'sector'
+      "
+    >
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeInput
+          key="sectorRangeInputPrice"
+          rangeType="price"
+          :value.sync="filterDataClone.sector.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeInput
+          key="sectorRangeRent"
+          rangeType="price"
+          :value.sync="filterDataClone.sector.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Категория участка
+        </h3>
+        <checkboxes
+          key="sectorCategory"
+          checkboxId="sectorCategory"
+          :items="sectorCategory"
+          :value.sync="filterDataClone.sector.category"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь
+        </h3>
+        <rangeSlider
+          key="sectorRangeArea"
+          rangeType="areaLand"
+          :rangeData="sectorRangeArea"
+          :value.sync="filterDataClone.sector.area"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Расстояние до города
+        </h3>
+        <rangeSlider
+          key="sectorDistance"
+          rangeType="distance"
+          :rangeData="sectorDistance"
+          :value.sync="filterDataClone.sector.distance"
+        />
+      </div>
+    </template>
+
+
+    <!-- Commercial filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'commercial'
+      "
+    >
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeInput
+          key="commercialRangeInputPrice"
+          rangeType="price"
+          :value.sync="filterDataClone.commercial.price"
+        />
+        <radioButtons
+          radioButtonsView="floatRight"
+          radioButtonsId="commercialRentType"
+          :items="commercialRentType"
+          :value.sync="filterDataClone.commercial.rentType"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeInput
+          key="commercialRangeRent"
+          rangeType="price"
+          :value.sync="filterDataClone.commercial.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Класс здания
+        </h3>
+        <checkboxes
+          key="commercialClass"
+          checkboxId="commercialClass"
+          :items="commercialClass"
+          :value.sync="filterDataClone.commercial.class"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Вид объекта
+        </h3>
+        <checkboxes
+          key="commercialView"
+          checkboxId="commercialView"
+          :items="commercialView"
+          :value.sync="filterDataClone.commercial.view"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь
+        </h3>
+        <rangeSlider
+          key="commercialRangeArea"
+          rangeType="area"
+          :rangeData="commercialRangeArea"
+          :value.sync="filterDataClone.commercial.area"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Расстояние до города
+        </h3>
+        <rangeSlider
+          key="commercialDistance"
+          rangeType="distance"
+          :rangeData="commercialDistance"
+          :value.sync="filterDataClone.commercial.distance"
+        />
+      </div>
+    </template>
+
+
     <div class="form__row">
       <h3 class="title title_h6 form__title">
         Продавцы
@@ -679,6 +875,11 @@
     <div class="filter-desktop__buttons-block">
       <button
         class="btn filter-desktop__btn btn_blue btn_mini"
+        :class="[
+          {
+            'btn_disabled': !this.atLeastOneFormItemIsFilled
+          }
+        ]"
         @click="resetFilter()"
       >
         Сбросить
@@ -814,7 +1015,7 @@ export default {
           label: 'Гараж / Машиноместо',
         },
         {
-          slug: 'area',
+          slug: 'sector',
           label: 'Участок',
         },
         {
@@ -1131,6 +1332,84 @@ export default {
           label: 'Не последний этаж',
         },
       ],
+      sectorCategory: [
+        {
+          slug: 'settlements',
+          label: 'Поселений(ИЖС)',
+        },
+        {
+          slug: 'industrial-purpose',
+          label: 'Промназначения',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Сельскохозяйственного назначения',
+        },
+      ],
+      commercialClass: [
+        {
+          slug: 'a',
+          label: 'A',
+        },
+        {
+          slug: 'b',
+          label: 'B',
+        },
+        {
+          slug: 'c',
+          label: 'C',
+        },
+        {
+          slug: 'd',
+          label: 'D',
+        },
+      ],
+      commercialView: [
+        {
+          slug: 'settlements',
+          label: 'Офис',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Склад',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Общепит',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Гостиница',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Производство',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Участок',
+        },
+        {
+          slug: 'agricultural-purpose',
+          label: 'Торговая площадь',
+        },
+        {
+          slug: 'industrial-purpose',
+          label: 'Свободного назначения',
+        },
+      ],
+      commercialRentType: [
+        {
+          slug: 'for-all',
+          label: 'За всё',
+          checked: true,
+        },
+        {
+          slug: 'per-meter',
+          label: 'За м²',
+          checked: false,
+        },
+      ],
       garageRangeArea: [0, 100],
       garageRangePrice: [0, 100000000],
       garageRangeRent: [0, 100000000],
@@ -1148,6 +1427,10 @@ export default {
       roomRangeArea: [0, 100],
       roomFloorRange: [0, 30],
       roomFloorAll: [0, 30],
+      sectorRangeArea: [0, 1000],
+      sectorDistance: [0, 100],
+      commercialRangeArea: [0, 1000],
+      commercialDistance: [0, 100],
     }
   },
   watch: {
@@ -1163,6 +1446,10 @@ export default {
       'filterData',
       'isFilterOpen',
     ]),
+    atLeastOneFormItemIsFilled() {
+      const value = true;
+      return value;
+    },
     requiredFormItemsIsFilled() {
       let value;
       if (this.filterData.deal && this.filterData.object) {
@@ -1175,6 +1462,8 @@ export default {
         } else if (this.filterData.object.slug === 'app') {
           value = true;
         } else if (this.filterData.object.slug === 'room') {
+          value = true;
+        } else if (this.filterData.object.slug === 'sector') {
           value = true;
         }
       }

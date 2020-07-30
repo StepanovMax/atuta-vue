@@ -108,6 +108,22 @@ const store = new Vuex.Store({
         floorAll: null,
         floorNot: null,
       },
+      sector: {
+        price: null,
+        rent: null,
+        distance: null,
+        area: null,
+        category: null,
+      },
+      commercial: {
+        price: null,
+        rent: null,
+        rentType: null,
+        class: null,
+        view: null,
+        area: null,
+        distance: null,
+      },
     },
   },
   mutations: {
