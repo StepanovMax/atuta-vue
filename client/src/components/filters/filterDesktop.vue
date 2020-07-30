@@ -523,6 +523,146 @@
     </template>
 
 
+    <!-- Room filter part -->
+    <template
+      v-if="
+        filterDataClone.town
+        && filterDataClone.deal
+        && filterDataClone.object
+        && filterDataClone.object.slug === 'room'
+      "
+    >
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeInput
+          key="roomRangeInputPrice"
+          rangeType="price"
+          :value.sync="filterDataClone.room.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeInput
+          key="roomRangeRent"
+          rangeType="price"
+          :value.sync="filterDataClone.room.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Срок аренды
+        </h3>
+        <checkboxes
+          key="roomRentType"
+          checkboxId="roomRentType"
+          checkboxType="default"
+          :items="rentTypes"
+          :value.sync="filterDataClone.room.rentType"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь комнаты
+        </h3>
+        <rangeSlider
+          key="roomRangeArea"
+          rangeType="area"
+          :rangeData="roomRangeArea"
+          :value.sync="filterDataClone.room.area"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Количество комнат
+        </h3>
+        <checkboxes
+          key="roomRoomsCount"
+          checkboxId="roomRoomsCount"
+          :items="roomRoomsCount"
+          :value.sync="filterDataClone.room.roomsCount"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Этаж
+        </h3>
+        <rangeSlider
+          key="roomFloorRange"
+          rangeType="default"
+          :rangeData="roomFloorRange"
+          :value.sync="filterDataClone.room.floor"
+        />
+        <checkboxes
+          key="roomFloorNot"
+          checkboxId="roomFloorNot"
+          :items="roomFloorNot"
+          :value.sync="filterDataClone.room.floorNot"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Этажей в доме
+        </h3>
+        <rangeSlider
+          key="roomFloorAll"
+          rangeType="default"
+          :rangeData="roomFloorAll"
+          :value.sync="filterDataClone.room.floorAll"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Тип дома
+        </h3>
+        <checkboxes
+          key="roomType"
+          checkboxId="roomType"
+          :items="appView"
+          :value.sync="filterDataClone.room.type"
+        />
+      </div>
+    </template>
+
+
     <div class="form__row">
       <h3 class="title title_h6 form__title">
         Продавцы
@@ -878,6 +1018,48 @@ export default {
           label: '9+',
         },
       ],
+      roomRoomsCount: [
+        {
+          slug: '1',
+          label: '1',
+        },
+        {
+          slug: '2',
+          label: '2',
+        },
+        {
+          slug: '3',
+          label: '3',
+        },
+        {
+          slug: '4',
+          label: '4',
+        },
+        {
+          slug: '5',
+          label: '5',
+        },
+        {
+          slug: '6',
+          label: '6',
+        },
+        {
+          slug: '7',
+          label: '7',
+        },
+        {
+          slug: '8',
+          label: '8',
+        },
+        {
+          slug: '9',
+          label: '9',
+        },
+        {
+          slug: '9+',
+          label: '9+',
+        },
+      ],
       houseTypes: [
         {
           slug: 'house',
@@ -939,6 +1121,16 @@ export default {
           label: 'Прочее',
         },
       ],
+      roomFloorNot: [
+        {
+          slug: 'first',
+          label: 'Не первый этаж',
+        },
+        {
+          slug: 'last',
+          label: 'Не последний этаж',
+        },
+      ],
       garageRangeArea: [0, 100],
       garageRangePrice: [0, 100000000],
       garageRangeRent: [0, 100000000],
@@ -953,6 +1145,9 @@ export default {
       houseAreaLand: [0, 100],
       houseDistance: [0, 100],
       houseFloorAll: [0, 30],
+      roomRangeArea: [0, 100],
+      roomFloorRange: [0, 30],
+      roomFloorAll: [0, 30],
     }
   },
   watch: {
@@ -978,6 +1173,8 @@ export default {
             value = false;
           }
         } else if (this.filterData.object.slug === 'app') {
+          value = true;
+        } else if (this.filterData.object.slug === 'room') {
           value = true;
         }
       }
