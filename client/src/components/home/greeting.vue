@@ -41,6 +41,14 @@
         </pre>
       </div>
     </div>
+    <div style="display: flex;">
+      <div class="">
+        Конаты
+        <pre>
+          {{ filterData.room }}
+        </pre>
+      </div>
+    </div>
 
 
 
