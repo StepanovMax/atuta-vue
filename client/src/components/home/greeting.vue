@@ -43,9 +43,21 @@
     </div>
     <div style="display: flex;">
       <div class="">
-        Конаты
+        Комнаты
         <pre>
           {{ filterData.room }}
+        </pre>
+      </div>
+      <div class="">
+        Участки
+        <pre>
+          {{ filterData.sector }}
+        </pre>
+      </div>
+      <div class="">
+        Коммерция
+        <pre>
+          {{ filterData.commercial }}
         </pre>
       </div>
     </div>
