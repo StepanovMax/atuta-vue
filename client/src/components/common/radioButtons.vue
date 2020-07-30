@@ -64,7 +64,6 @@ export default {
   watch: {
     picked: {
       handler() {
-        console.log('test', this.dataItemsChecked);
         for (let i = 0; i < this.dataItemsChecked.length; i++) {
           if (this.picked === this.dataItemsChecked[i].slug) {
             this.dataItemsChecked[i].checked = true;
@@ -84,7 +83,6 @@ export default {
       this.updateValue(valueArray);
     },
     updateValue(data) {
-      console.log('update.value', data);
       this.$emit('update:value', data);
     },
   },

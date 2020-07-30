@@ -16,7 +16,7 @@
             Значения диапазона
           </h2>
           <div class="styleguide__block">
-            <rangeDesktop
+            <rangeSlider
               rangeType="area"
             />
           </div>
@@ -282,7 +282,7 @@ import iconPlus from './icons/iconPlus.vue'
 import iconEdit from './icons/iconEdit.vue'
 import iconRemove from './icons/iconRemove.vue'
 import checkbox from './common/checkbox.vue'
-import rangeDesktop from './common/rangeDesktop.vue'
+import rangeSlider from './common/rangeSlider.vue'
 import Multiselect from 'vue-multiselect'
 
 export default {
@@ -298,7 +298,7 @@ export default {
     iconRemove,
     iconDiamond,
     checkbox,
-    rangeDesktop,
+    rangeSlider,
     Multiselect,
   },
   data() {
