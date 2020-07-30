@@ -777,6 +777,10 @@
           :value.sync="filterDataClone.commercial.price"
         />
         <radioButtons
+          v-if="
+            filterDataClone.deal
+            && filterDataClone.deal.slug == 'rent'
+          "
           radioButtonsView="floatRight"
           radioButtonsId="commercialRentType"
           :items="commercialRentType"
