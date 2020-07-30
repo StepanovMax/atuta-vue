@@ -1,0 +1,23 @@
+.vue-slider {
+  margin: 0 10px;
+
+  &-process {
+    background-color: $COLOR-BLUE-MAIN;
+  }
+
+  &-dot-handle {
+    border-color: $COLOR-BLUE-MAIN;
+
+    &-focus {
+      border-color: $COLOR-BLUE-MAIN;
+    }
+  }
+
+  &:hover &-process {
+    background-color: $COLOR-BLUE-MAIN;
+  }
+
+  &:hover &-dot-handle {
+    border-color: $COLOR-BLUE-MAIN;
+  }
+}

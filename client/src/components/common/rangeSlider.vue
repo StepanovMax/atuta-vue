@@ -112,6 +112,10 @@ export default {
         value = `<span>₽</span>`;
       } else if(this.rangeType === 'area') {
         value = `<span><span>м</span><sup class="range__mobile-text-sup">2</sup></span>`;
+      } else if(this.rangeType === 'distance') {
+        value = `<span>км</span>`;
+      } else if(this.rangeType === 'areaLand') {
+        value = `<span>сот</span>`;
       } else if(this.rangeType === 'none') {
         value = '';
       }

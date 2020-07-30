@@ -1,0 +1,44 @@
+.range-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__item {
+    width: 50%;
+    position: relative;
+    padding: 0;
+    font-size: 14px;
+    color: $COLOR-TEXT;
+    height: 36px;
+    letter-spacing: 0;
+    border-radius: 2px;
+    text-indent: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $COLOR-GREY-ACTIVE;
+    background-color: $COLOR-WHITE;
+  }
+
+  &__input {
+    font-weight: 400;
+    width: calc(100% - 28px);
+    font-size: 14px;
+    color: $COLOR-TITLE;
+    border-width: 0;
+  }
+
+  &__text {
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    position: absolute;
+    font-size: 14px;
+    height: 20px;
+    width: 30px;
+    font-weight: 400;
+    color: $COLOR-TEXT;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

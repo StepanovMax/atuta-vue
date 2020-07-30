@@ -74,6 +74,40 @@
     >
       <div
         class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'buy'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Цена
+        </h3>
+        <rangeInput
+          key="garageRangePrice"
+          rangeType="price"
+          :value.sync="filterDataClone.garage.price"
+        />
+      </div>
+
+      <div
+        class="form__row"
+        v-if="
+          filterDataClone.deal
+          && filterDataClone.deal.slug == 'rent'
+        "
+      >
+        <h3 class="title title_h6 form__title">
+          Аренда в месяц
+        </h3>
+        <rangeInput
+          key="garageRangeRent"
+          rangeType="price"
+          :value.sync="filterDataClone.garage.rent"
+        />
+      </div>
+
+      <div
+        class="form__row"
       >
         <h3 class="title title_h6 form__title">
           Гараж или машиноместо?*
@@ -140,47 +174,11 @@
         <h3 class="title title_h6 form__title">
           Площадь
         </h3>
-        <rangeDesktop
+        <rangeSlider
           key="garageRangeArea"
           rangeType="area"
           :rangeData="garageRangeArea"
           :value.sync="filterDataClone.garage.area"
-        />
-      </div>
-
-      <div
-        class="form__row"
-        v-if="
-          filterDataClone.deal
-          && filterDataClone.deal.slug == 'buy'
-        "
-      >
-        <h3 class="title title_h6 form__title">
-          Цена
-        </h3>
-        <rangeDesktop
-          key="garageRangePrice"
-          rangeType="price"
-          :rangeData="garageRangePrice"
-          :value.sync="filterDataClone.garage.price"
-        />
-      </div>
-
-      <div
-        class="form__row"
-        v-if="
-          filterDataClone.deal
-          && filterDataClone.deal.slug == 'rent'
-        "
-      >
-        <h3 class="title title_h6 form__title">
-          Аренда в месяц
-        </h3>
-        <rangeDesktop
-          key="garageRangeRent"
-          rangeType="price"
-          :rangeData="garageRangeRent"
-          :value.sync="filterDataClone.garage.rent"
         />
       </div>
     </template>
@@ -206,10 +204,9 @@
         <h3 class="title title_h6 form__title">
           Цена
         </h3>
-        <rangeDesktop
+        <rangeInput
           key="appRangePrice"
           rangeType="price"
-          :rangeData="appRangePrice"
           :value.sync="filterDataClone.app.price"
         />
       </div>
@@ -224,10 +221,9 @@
         <h3 class="title title_h6 form__title">
           Аренда в месяц
         </h3>
-        <rangeDesktop
+        <rangeInput
           key="appRangeRent"
           rangeType="price"
-          :rangeData="appRangeRent"
           :value.sync="filterDataClone.app.rent"
         />
       </div>
@@ -258,7 +254,7 @@
         <checkboxes
           key="appRoomsCount"
           checkboxId="appRoomsCount"
-          checkboxType="checkboxButtons"
+          checkboxType="roomsCount"
           :items="appRoomsCount"
           :value.sync="filterDataClone.app.roomsCount"
         />
@@ -282,7 +278,7 @@
         <h3 class="title title_h6 form__title">
           Общая площадь
         </h3>
-        <rangeDesktop
+        <rangeSlider
           key="appRangeArea"
           rangeType="area"
           :rangeData="appRangeArea"
@@ -296,7 +292,7 @@
         <h3 class="title title_h6 form__title">
           Этаж
         </h3>
-        <rangeDesktop
+        <rangeSlider
           key="appFloor"
           rangeType="none"
           :rangeData="appFloor"
@@ -316,7 +312,7 @@
         <h3 class="title title_h6 form__title">
           Этажей всего
         </h3>
-        <rangeDesktop
+        <rangeSlider
           key="appFloorAll"
           rangeType="none"
           :rangeData="appFloorAll"
@@ -360,10 +356,9 @@
         <h3 class="title title_h6 form__title">
           Цена
         </h3>
-        <rangeDesktop
-          key="houseRangePrice"
+        <rangeInput
+          key="houseRangeInputPrice"
           rangeType="price"
-          :rangeData="houseRangePrice"
           :value.sync="filterDataClone.house.price"
         />
       </div>
@@ -378,10 +373,9 @@
         <h3 class="title title_h6 form__title">
           Аренда в месяц
         </h3>
-        <rangeDesktop
+        <rangeInput
           key="houseRangeRent"
           rangeType="price"
-          :rangeData="houseRangeRent"
           :value.sync="filterDataClone.house.rent"
         />
       </div>
@@ -442,7 +436,10 @@
         />
       </div>
 
-      <div class="form__row">
+      <div
+        v-if="false"
+        class="form__row"
+      >
         <h3 class="title title_h6 form__title">
           Дом за городом?
         </h3>
@@ -456,18 +453,71 @@
 
       <div
         class="form__row"
-        v-if="
-          filterDataClone.house.isIntoCity
-        "
       >
         <h3 class="title title_h6 form__title">
           Расстояние до города
         </h3>
-        <rangeDesktop
+        <rangeSlider
           key="houseDistance"
-          rangeType="default"
+          rangeType="distance"
           :rangeData="houseDistance"
           :value.sync="filterDataClone.house.distance"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь дома
+        </h3>
+        <rangeSlider
+          key="houseAreaHouse"
+          rangeType="area"
+          :rangeData="houseAreaHouse"
+          :value.sync="filterDataClone.house.areaHouse"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Площадь участка
+        </h3>
+        <rangeSlider
+          key="houseAreaLand"
+          rangeType="areaLand"
+          :rangeData="houseAreaLand"
+          :value.sync="filterDataClone.house.areaLand"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Этажей в доме
+        </h3>
+        <rangeSlider
+          key="houseFloorAll"
+          rangeType="default"
+          :rangeData="houseFloorAll"
+          :value.sync="filterDataClone.house.floorAll"
+        />
+      </div>
+
+      <div
+        class="form__row"
+      >
+        <h3 class="title title_h6 form__title">
+          Материал стен
+        </h3>
+        <checkboxes
+          key="houseWall"
+          checkboxId="houseWall"
+          :items="houseWall"
+          :value.sync="filterDataClone.house.wall"
         />
       </div>
     </template>
@@ -509,7 +559,8 @@
 </template>
 
 <script>
-import rangeDesktop from '../common/rangeDesktop.vue';
+import rangeSlider from '../common/rangeSlider.vue';
+import rangeInput from '../common/rangeInput.vue';
 import multiselect from 'vue-multiselect';
 import checkbox from '../common/checkbox.vue';
 import checkboxes from '../common/checkboxes.vue';
@@ -520,7 +571,8 @@ import { mapState, store, commit } from 'vuex';
 export default {
   name: 'filterDesktop',
   components: {
-    rangeDesktop,
+    rangeInput,
+    rangeSlider,
     checkbox,
     checkboxes,
     radioButtons,
@@ -849,17 +901,58 @@ export default {
         label: 'Да',
         checked: false,
       },
+      houseWall: [
+        {
+          slug: 'brick',
+          label: 'Кирпичный',
+        },
+        {
+          slug: 'balk',
+          label: 'Брус',
+        },
+        {
+          slug: 'timber',
+          label: 'Бревно',
+        },
+        {
+          slug: 'gas-blocks',
+          label: 'Газоблоки',
+        },
+        {
+          slug: 'metal',
+          label: 'Металл',
+        },
+        {
+          slug: 'foam-blocks',
+          label: 'Пеноблоки',
+        },
+        {
+          slug: 'reinforced-concrete-panels',
+          label: 'Ж/б панели',
+        },
+        {
+          slug: 'sandvich-panels',
+          label: 'Сендвич-панели',
+        },
+        {
+          slug: 'others',
+          label: 'Прочее',
+        },
+      ],
       garageRangeArea: [0, 100],
       garageRangePrice: [0, 100000000],
       garageRangeRent: [0, 100000000],
       appRangePrice: [0, 100000000],
       appRangeRent: [0, 1000000],
-      appRangeArea: [0, 500],
+      appRangeArea: [0, 300],
       appFloor: [0, 100],
       appFloorAll: [0, 100],
       houseRangePrice: [0, 100000000],
       houseRangeRent: [0, 100000000],
+      houseAreaHouse: [0, 500],
+      houseAreaLand: [0, 100],
       houseDistance: [0, 100],
+      houseFloorAll: [0, 30],
     }
   },
   watch: {
