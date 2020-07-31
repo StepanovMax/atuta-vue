@@ -17,6 +17,7 @@
           </h2>
           <div class="styleguide__block">
             <rangeSlider
+              rangeSliderID="test"
               rangeType="area"
             />
           </div>

@@ -20,6 +20,7 @@
         </p>
       </div>
       <VueSlider
+        :key="'key-' + rangeSliderID"
         v-bind="options"
         v-model="rangeValue"
         :tooltip="'none'"
@@ -51,6 +52,11 @@ export default {
       type: Array,
       default: [0, 100],
       required: false,
+    },
+    rangeSliderID: {
+      type: String,
+      default: '',
+      required: true,
     },
   },
   data() {

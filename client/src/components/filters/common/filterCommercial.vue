@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="commercialRangeInputPrice"
+        rangeInputID="commercialRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="commercialRangeRent"
+        rangeInputID="commercialRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -76,7 +76,7 @@
         Площадь
       </h3>
       <rangeSlider
-        key="commercialRangeArea"
+        rangeSliderID="commercialRangeArea"
         rangeType="area"
         :rangeData="filterDataDefaultClone.commercialRangeArea"
         :value.sync="filterSelected.area"
@@ -90,7 +90,7 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        key="commercialDistance"
+        rangeSliderID="commercialDistance"
         rangeType="distance"
         :rangeData="filterDataDefaultClone.commercialDistance"
         :value.sync="filterSelected.distance"

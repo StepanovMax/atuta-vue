@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="houseRangeInputPrice"
+        rangeInputID="houseRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="houseRangeRent"
+        rangeInputID="houseRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -113,7 +113,7 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        key="houseDistance"
+        rangeSliderID="houseDistance"
         rangeType="distance"
         :rangeData="filterDataDefaultClone.houseDistance"
         :value.sync="filterSelected.distance"
@@ -127,7 +127,7 @@
         Площадь дома
       </h3>
       <rangeSlider
-        key="houseAreaHouse"
+        rangeSliderID="houseAreaHouse"
         rangeType="area"
         :rangeData="filterDataDefaultClone.houseAreaHouse"
         :value.sync="filterSelected.areaHouse"
@@ -141,7 +141,7 @@
         Площадь участка
       </h3>
       <rangeSlider
-        key="houseAreaLand"
+        rangeSliderID="houseAreaLand"
         rangeType="areaLand"
         :rangeData="filterDataDefaultClone.houseAreaLand"
         :value.sync="filterSelected.areaLand"
@@ -155,7 +155,7 @@
         Этажей в доме
       </h3>
       <rangeSlider
-        key="houseFloorAll"
+        rangeSliderID="houseFloorAll"
         rangeType="default"
         :rangeData="filterDataDefaultClone.houseFloorAll"
         :value.sync="filterSelected.floorAll"

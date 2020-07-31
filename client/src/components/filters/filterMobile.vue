@@ -105,6 +105,24 @@
           "
         />
 
+        <filterRoom
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'room'
+          "
+        />
+
+        <filterGarage
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'garage'
+          "
+        />
+
       </div>
     </div>
   </div>
@@ -112,7 +130,9 @@
 
 <script>
 import filterApp from './mobile/filterApp.vue';
+import filterRoom from './mobile/filterRoom.vue';
 import filterHouse from './mobile/filterHouse.vue';
+import filterGarage from './mobile/filterGarage.vue';
 import switcher from '../common/switcher.vue';
 import rangeMobile from '../common/rangeMobile.vue'
 import radioButtons from '../common/radioButtons.vue';
@@ -124,7 +144,9 @@ export default {
   components: {
     switcher,
     filterApp,
+    filterRoom,
     filterHouse,
+    filterGarage,
     rangeMobile,
     multiselect,
     radioButtons,

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="houseRangeInputPrice"
+        rangeInputID="roomRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -22,14 +22,14 @@
       class="form__row"
       v-if="
         filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'rent'
+        && filterDataSelected.deal.slug == 'room'
       "
     >
       <h3 class="title title_h6 form__title">
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="houseRangeRent"
+        rangeInputID="roomRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -39,109 +39,63 @@
       class="form__row"
       v-if="
         filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'rent'
+        && filterDataSelected.deal.slug == 'room'
       "
     >
       <h3 class="title title_h6 form__title">
         Срок аренды
       </h3>
       <checkboxes
-        key="houseRentType"
-        checkboxId="houseRentType"
+        key="roomRentType"
+        checkboxId="roomRentType"
         checkboxType="default"
         :items="filterDataDefaultClone.rentType"
         :value.sync="filterSelected.rentType"
       />
     </div>
 
-    <div class="form__row">
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Площадь комнаты
+      </h3>
+      <rangeInput
+        rangeInputID="roomRangeArea"
+        rangeType="area"
+        :value.sync="filterSelected.area"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
       <h3 class="title title_h6 form__title">
         Количество комнат
       </h3>
       <checkboxes
-        key="houseRoomsCount"
-        checkboxId="houseRoomsCount"
-        checkboxType="checkboxButtons"
-        :items="filterDataDefaultClone.houseRoomsCount"
+        key="roomRoomsCount"
+        checkboxId="roomRoomsCount"
+        :items="filterDataDefaultClone.roomRoomsCount"
         :value.sync="filterSelected.roomsCount"
       />
     </div>
 
-    <div class="form__row">
+    <div
+      class="form__row"
+    >
       <h3 class="title title_h6 form__title">
-        Тип объекта
+        Этаж
       </h3>
+      <rangeInput
+        rangeInputID="roomFloorRange"
+        rangeType="floor"
+        :value.sync="filterSelected.floor"
+      />
       <checkboxes
-        key="houseType"
-        checkboxId="houseType"
-        :items="filterDataDefaultClone.houseTypes"
-        :value.sync="filterSelected.type"
-      />
-    </div>
-
-    <div class="form__row">
-      <h3 class="title title_h6 form__title">
-        Вид объекта
-      </h3>
-      <checkboxes
-        key="houseView"
-        checkboxId="houseView"
-        :items="filterDataDefaultClone.appTypes"
-        :value.sync="filterSelected.view"
-      />
-    </div>
-
-    <div
-      v-if="false"
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Дом за городом?
-      </h3>
-      <checkbox
-        key="intoCity"
-        checkboxId="intoCity"
-        :item="filterDataDefaultClone.intoCityType"
-        :value.sync="filterSelected.isIntoCity"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Расстояние до города
-      </h3>
-      <rangeInput
-        rangeInputID="houseDistance"
-        rangeType="distance"
-        :value.sync="filterSelected.distance"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Площадь дома
-      </h3>
-      <rangeInput
-        rangeInputID="houseAreaHouse"
-        rangeType="area"
-        :value.sync="filterSelected.areaHouse"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Площадь участка
-      </h3>
-      <rangeInput
-        rangeInputID="houseAreaLand"
-        rangeType="area"
-        :value.sync="filterSelected.areaLand"
+        checkboxId="roomFloorNot"
+        :items="filterDataDefaultClone.roomFloorNot"
+        :value.sync="filterSelected.floorNot"
       />
     </div>
 
@@ -152,7 +106,7 @@
         Этажей в доме
       </h3>
       <rangeInput
-        rangeInputID="houseFloorAll"
+        rangeInputID="roomRangeFloorAll"
         rangeType="floorAll"
         :value.sync="filterSelected.floorAll"
       />
@@ -162,13 +116,13 @@
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Материал стен
+        Тип дома
       </h3>
       <checkboxes
-        key="houseWall"
-        checkboxId="houseWall"
-        :items="filterDataDefaultClone.houseWall"
-        :value.sync="filterSelected.wall"
+        key="roomType"
+        checkboxId="roomType"
+        :items="filterDataDefaultClone.appView"
+        :value.sync="filterSelected.type"
       />
     </div>
 
@@ -180,12 +134,14 @@ import { mapState } from 'vuex';
 import multiselect from 'vue-multiselect'
 import rangeInput from '../../common/rangeInput.vue';
 import checkboxes from '../../common/checkboxes.vue';
+import rangeSlider from '../../common/rangeSlider.vue';
 
 export default {
-  name: 'filterApp',
+  name: 'filterRoom',
   components: {
     rangeInput,
     checkboxes,
+    rangeSlider,
     multiselect,
   },
   data() {
@@ -196,7 +152,7 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        this.updateFilterHouseState(this.filterSelected);
+        this.updateFilterRoomState(this.filterSelected);
       },
       deep: true
     },
@@ -211,15 +167,15 @@ export default {
     },
   },
   methods: {
-    updateFilterHouseState(data) {
-      this.$store.commit('updateFilterHouseState', data);
+    updateFilterRoomState(data) {
+      this.$store.commit('updateFilterRoomState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.house));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.room));
   },
 };
 </script>
