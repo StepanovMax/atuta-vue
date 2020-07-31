@@ -120,12 +120,12 @@
 </template>
 
 <script>
-import filterApp from './common/filterApp.vue';
-import filterHouse from './common/filterHouse.vue';
-import filterRoom from './common/filterRoom.vue';
-import filterGarage from './common/filterGarage.vue';
-import filterSector from './common/filterSector.vue';
-import filterCommercial from './common/filterCommercial.vue';
+import filterApp from './desktop/filterApp.vue';
+import filterHouse from './desktop/filterHouse.vue';
+import filterRoom from './desktop/filterRoom.vue';
+import filterGarage from './desktop/filterGarage.vue';
+import filterSector from './desktop/filterSector.vue';
+import filterCommercial from './desktop/filterCommercial.vue';
 import rangeSlider from '../common/rangeSlider.vue';
 import rangeInput from '../common/rangeInput.vue';
 import multiselect from 'vue-multiselect';

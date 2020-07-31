@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="sectorRangeInputPrice"
+        rangeInputID="sectorRangeInputPriceDesktop"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="sectorRangeRent"
+        rangeInputID="sectorRangeRentDesktop"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -42,8 +42,8 @@
         Категория участка
       </h3>
       <checkboxes
-        key="sectorCategory"
-        checkboxId="sectorCategory"
+        checkboxType="default"
+        checkboxId="sectorCategoryDesktop"
         :items="filterDataDefaultClone.sectorCategory"
         :value.sync="filterSelected.category"
       />
@@ -56,7 +56,7 @@
         Площадь
       </h3>
       <rangeSlider
-        rangeSliderID="sectorRangeArea"
+        rangeSliderID="sectorRangeAreaDesktop"
         rangeType="areaLand"
         :rangeData="filterDataDefaultClone.sectorRangeArea"
         :value.sync="filterSelected.area"
@@ -70,7 +70,7 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        rangeSliderID="sectorDistance"
+        rangeSliderID="sectorDistanceDesktop"
         rangeType="distance"
         :rangeData="filterDataDefaultClone.sectorDistance"
         :value.sync="filterSelected.distance"

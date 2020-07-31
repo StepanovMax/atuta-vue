@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="houseRangeInputPrice"
+        rangeInputID="houseRangeInputPriceDesktop"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="houseRangeRent"
+        rangeInputID="houseRangeRentDesktop"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -46,8 +46,7 @@
         Срок аренды
       </h3>
       <checkboxes
-        key="houseRentType"
-        checkboxId="houseRentType"
+        checkboxId="houseRentTypeDesktop"
         checkboxType="default"
         :items="filterDataDefaultClone.rentType"
         :value.sync="filterSelected.rentType"
@@ -59,8 +58,7 @@
         Количество комнат
       </h3>
       <checkboxes
-        key="houseRoomsCount"
-        checkboxId="houseRoomsCount"
+        checkboxId="houseRoomsCountDesktop"
         checkboxType="checkboxButtons"
         :items="filterDataDefaultClone.houseRoomsCount"
         :value.sync="filterSelected.roomsCount"
@@ -72,8 +70,8 @@
         Тип объекта
       </h3>
       <checkboxes
-        key="houseType"
-        checkboxId="houseType"
+        checkboxType="default"
+        checkboxId="houseTypeDesktop"
         :items="filterDataDefaultClone.houseTypes"
         :value.sync="filterSelected.type"
       />
@@ -84,8 +82,8 @@
         Вид объекта
       </h3>
       <checkboxes
-        key="houseView"
-        checkboxId="houseView"
+        checkboxType="default"
+        checkboxId="houseViewDesktop"
         :items="filterDataDefaultClone.appTypes"
         :value.sync="filterSelected.view"
       />
@@ -100,7 +98,7 @@
       </h3>
       <checkbox
         key="intoCity"
-        checkboxId="intoCity"
+        checkboxId="intoCityDesktop"
         :item="filterDataDefaultClone.intoCityType"
         :value.sync="filterSelected.isIntoCity"
       />
@@ -113,7 +111,7 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        rangeSliderID="houseDistance"
+        rangeSliderID="houseDistanceDesktop"
         rangeType="distance"
         :rangeData="filterDataDefaultClone.houseDistance"
         :value.sync="filterSelected.distance"
@@ -127,7 +125,7 @@
         Площадь дома
       </h3>
       <rangeSlider
-        rangeSliderID="houseAreaHouse"
+        rangeSliderID="houseAreaHouseDesktop"
         rangeType="area"
         :rangeData="filterDataDefaultClone.houseAreaHouse"
         :value.sync="filterSelected.areaHouse"
@@ -141,7 +139,7 @@
         Площадь участка
       </h3>
       <rangeSlider
-        rangeSliderID="houseAreaLand"
+        rangeSliderID="houseAreaLandDesktop"
         rangeType="areaLand"
         :rangeData="filterDataDefaultClone.houseAreaLand"
         :value.sync="filterSelected.areaLand"
@@ -155,7 +153,7 @@
         Этажей в доме
       </h3>
       <rangeSlider
-        rangeSliderID="houseFloorAll"
+        rangeSliderID="houseFloorAllDesktop"
         rangeType="default"
         :rangeData="filterDataDefaultClone.houseFloorAll"
         :value.sync="filterSelected.floorAll"
@@ -169,8 +167,8 @@
         Материал стен
       </h3>
       <checkboxes
-        key="houseWall"
-        checkboxId="houseWall"
+        checkboxType="default"
+        checkboxId="houseWallDesktop"
         :items="filterDataDefaultClone.houseWall"
         :value.sync="filterSelected.wall"
       />

@@ -20,6 +20,7 @@
         :key="'key-' + radioButtonsId + '-' + index"
       >
         <input
+          :key="'key-' + radioButtonsId + '-' + index"
           class="radio-buttons__input-radio"
           :id="'id-' + radioButtonsId + '-' + index"
           type="radio"

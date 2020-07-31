@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="appRangePriceMobile"
+        rangeInputID="commercialRangeInputPriceMobile"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,26 +29,14 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="appRangeRentMobile"
+        rangeInputID="commercialRangeRentMobile"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
-    </div>
-
-    <div
-      class="form__row"
-      v-if="
-        filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'rent'
-      "
-    >
-      <h3 class="title title_h6 form__title">
-        Срок аренды
-      </h3>
-      <checkboxes
-        checkboxId="appRentTypeMobile"
-        checkboxType="default"
-        :items="filterDataDefaultClone.rentType"
+      <radioButtons
+        radioButtonsView="floatRight"
+        radioButtonsId="commercialRentTypeMobile"
+        :items="filterDataDefaultClone.commercialRentType"
         :value.sync="filterSelected.rentType"
       />
     </div>
@@ -57,25 +45,13 @@
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Количество комнат
-      </h3>
-      <checkboxes
-        checkboxId="appRoomsCountMobile"
-        checkboxType="roomsCount"
-        :items="filterDataDefaultClone.appRooms"
-        :value.sync="filterSelected.roomsCount"
-      />
-    </div>
-
-    <div class="form__row">
-      <h3 class="title title_h6 form__title">
-        Тип объекта
+        Класс здания
       </h3>
       <checkboxes
         checkboxType="default"
-        checkboxId="appTypeMobile"
-        :items="filterDataDefaultClone.appTypes"
-        :value.sync="filterSelected.type"
+        checkboxId="commercialClassMobile"
+        :items="filterDataDefaultClone.commercialClass"
+        :value.sync="filterSelected.class"
       />
     </div>
 
@@ -83,10 +59,24 @@
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Общая площадь
+        Вид объекта
+      </h3>
+      <checkboxes
+        checkboxType="default"
+        checkboxId="commercialViewMobile"
+        :items="filterDataDefaultClone.commercialView"
+        :value.sync="filterSelected.view"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Площадь
       </h3>
       <rangeInput
-        rangeInputID="appRangeAreaMobile"
+        rangeInputID="commercialRangeAreaMobile"
         rangeType="area"
         :value.sync="filterSelected.area"
       />
@@ -96,45 +86,12 @@
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Этаж
+        Расстояние до города
       </h3>
       <rangeInput
-        rangeInputID="appRangeFloor"
-        rangeType="floor"
-        :value.sync="filterSelected.floor"
-      />
-      <checkboxes
-        checkboxType="default"
-        checkboxId="appFloorNotMobile"
-        :items="filterDataDefaultClone.appFloorNot"
-        :value.sync="filterSelected.floorNot"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Этажей всего
-      </h3>
-      <rangeInput
-        rangeInputID="appRangeFloorAllMobile"
-        rangeType="floorAll"
-        :value.sync="filterSelected.floorAll"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Вид дома
-      </h3>
-      <checkboxes
-        checkboxType="default"
-        checkboxId="appViewMobile"
-        :items="filterDataDefaultClone.appView"
-        :value.sync="filterSelected.view"
+        rangeInputID="commercialDistanceMobile"
+        rangeType="distance"
+        :value.sync="filterSelected.distance"
       />
     </div>
 
@@ -147,12 +104,16 @@ import multiselect from 'vue-multiselect'
 import rangeInput from '../../common/rangeInput.vue';
 import checkboxes from '../../common/checkboxes.vue';
 import rangeSlider from '../../common/rangeSlider.vue';
+import switcher from '../../common/switcher.vue';
+import radioButtons from '../../common/radioButtons.vue';
 
 export default {
   name: 'filterApp',
   components: {
+    switcher,
     rangeInput,
     checkboxes,
+    radioButtons,
     rangeSlider,
     multiselect,
   },
@@ -164,7 +125,7 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        this.updateFilterAppState(this.filterSelected);
+        this.updateFilterCommercialState(this.filterSelected);
       },
       deep: true
     },
@@ -179,15 +140,15 @@ export default {
     },
   },
   methods: {
-    updateFilterAppState(data) {
-      this.$store.commit('updateFilterAppState', data);
+    updateFilterCommercialState(data) {
+      this.$store.commit('updateFilterCommercialState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.app));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.commercial));
   },
 };
 </script>

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="appRangePrice"
+        rangeInputID="appRangePriceDesktop"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="appRangeRent"
+        rangeInputID="appRangeRentDesktop"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -46,8 +46,7 @@
         Срок аренды
       </h3>
       <checkboxes
-        key="appRentType"
-        checkboxId="appRentType"
+        checkboxId="appRentTypeDesktop"
         checkboxType="default"
         :items="filterDataDefaultClone.rentType"
         :value.sync="filterSelected.rentType"
@@ -61,8 +60,7 @@
         Количество комнат
       </h3>
       <checkboxes
-        key="appRoomsCount"
-        checkboxId="appRoomsCount"
+        checkboxId="appRoomsCountDesktop"
         checkboxType="roomsCount"
         :items="filterDataDefaultClone.appRooms"
         :value.sync="filterSelected.roomsCount"
@@ -74,8 +72,8 @@
         Тип объекта
       </h3>
       <checkboxes
-        key="appType"
-        checkboxId="appType"
+        checkboxType="default"
+        checkboxId="appTypeDesktop"
         :items="filterDataDefaultClone.appTypes"
         :value.sync="filterSelected.type"
       />
@@ -88,7 +86,7 @@
         Общая площадь
       </h3>
       <rangeSlider
-        rangeSliderID="appRangeArea"
+        rangeSliderID="appRangeAreaDesktop"
         rangeType="area"
         :rangeData="filterDataDefaultClone.appRangeArea"
         :value.sync="filterSelected.area"
@@ -102,14 +100,14 @@
         Этаж
       </h3>
       <rangeSlider
-        rangeSliderID="appFloor"
+        rangeSliderID="appFloorDesktop"
         rangeType="none"
         :rangeData="filterDataDefaultClone.appFloor"
         :value.sync="filterSelected.floor"
       />
       <checkboxes
-        key="appFloorNot"
-        checkboxId="appFloorNot"
+        checkboxType="default"
+        checkboxId="appFloorNotDesktop"
         :items="filterDataDefaultClone.appFloorNot"
         :value.sync="filterSelected.floorNot"
       />
@@ -122,7 +120,7 @@
         Этажей всего
       </h3>
       <rangeSlider
-        rangeSliderID="appFloorAll"
+        rangeSliderID="appFloorAllDesktop"
         rangeType="none"
         :rangeData="filterDataDefaultClone.appFloorAll"
         :value.sync="filterSelected.floorAll"
@@ -136,8 +134,8 @@
         Вид дома
       </h3>
       <checkboxes
-        key="appView"
-        checkboxId="appView"
+        checkboxType="default"
+        checkboxId="appViewDesktop"
         :items="filterDataDefaultClone.appView"
         :value.sync="filterSelected.view"
       />

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="garageRangePrice"
+        rangeInputID="garageRangePriceMobile"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="garageRangeRent"
+        rangeInputID="garageRangeRentMobile"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -43,7 +43,7 @@
       </h3>
       <radioButtons
         radioButtonsView="default"
-        radioButtonsId="objectView"
+        radioButtonsId="objectViewMobile"
         :items="filterDataDefaultClone.garage"
         :value.sync="filterSelected.type"
       />
@@ -60,8 +60,9 @@
         Тип гаража
       </h3>
       <checkboxes
-        key="garageType"
-        checkboxId="garageType"
+        key="garageTypeMobile"
+        checkboxType="default"
+        checkboxId="garageTypeMobile"
         :items="filterDataDefaultClone.garageTypes"
         :value.sync="filterSelected.garageType"
       />
@@ -78,8 +79,9 @@
         Тип машиноместа
       </h3>
       <checkboxes
-        key="parkingType"
-        checkboxId="parkingType"
+        key="parkingTypeMobile"
+        checkboxType="default"
+        checkboxId="parkingTypeMobile"
         :items="filterDataDefaultClone.parkingTypes"
         :value.sync="filterSelected.parkingType"
       />
@@ -92,7 +94,7 @@
         Охрана
       </h3>
       <switcher
-        switcherId="security"
+        switcherId="securityMobile"
         :items="filterDataDefaultClone.security"
         :value.sync="filterSelected.security"
       />
@@ -105,7 +107,7 @@
         Площадь
       </h3>
       <rangeInput
-        rangeInputID="garageRangeArea"
+        rangeInputID="garageRangeAreaMobile"
         rangeType="area"
         :value.sync="filterSelected.area"
       />

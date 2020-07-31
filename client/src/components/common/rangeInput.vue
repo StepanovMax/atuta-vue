@@ -87,7 +87,7 @@ export default {
       let value;
       if (this.rangeType === 'price') {
         value = 'Цена';
-      } else if(this.rangeType === 'area') {
+      } else if(this.rangeType === 'area' || this.rangeType === 'areaLand') {
         value = 'Площадь';
       } else if(this.rangeType === 'floor') {
         value = 'Этаж';
