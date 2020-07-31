@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="roomRangeInputPrice"
+        rangeInputID="roomRangeInputPriceMobile"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -22,14 +22,14 @@
       class="form__row"
       v-if="
         filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'room'
+        && filterDataSelected.deal.slug == 'rent'
       "
     >
       <h3 class="title title_h6 form__title">
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="roomRangeRent"
+        rangeInputID="roomRangeRentMobile"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -39,15 +39,14 @@
       class="form__row"
       v-if="
         filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'room'
+        && filterDataSelected.deal.slug == 'rent'
       "
     >
       <h3 class="title title_h6 form__title">
         Срок аренды
       </h3>
       <checkboxes
-        key="roomRentType"
-        checkboxId="roomRentType"
+        checkboxId="roomRentTypeMobile"
         checkboxType="default"
         :items="filterDataDefaultClone.rentType"
         :value.sync="filterSelected.rentType"
@@ -61,7 +60,7 @@
         Площадь комнаты
       </h3>
       <rangeInput
-        rangeInputID="roomRangeArea"
+        rangeInputID="roomRangeAreaMobile"
         rangeType="area"
         :value.sync="filterSelected.area"
       />
@@ -74,8 +73,8 @@
         Количество комнат
       </h3>
       <checkboxes
-        key="roomRoomsCount"
-        checkboxId="roomRoomsCount"
+        checkboxType="default"
+        checkboxId="roomRoomsCountMobile"
         :items="filterDataDefaultClone.roomRoomsCount"
         :value.sync="filterSelected.roomsCount"
       />
@@ -88,12 +87,13 @@
         Этаж
       </h3>
       <rangeInput
-        rangeInputID="roomFloorRange"
+        rangeInputID="roomFloorRangeMobile"
         rangeType="floor"
         :value.sync="filterSelected.floor"
       />
       <checkboxes
-        checkboxId="roomFloorNot"
+        checkboxType="default"
+        checkboxId="roomFloorNotMobile"
         :items="filterDataDefaultClone.roomFloorNot"
         :value.sync="filterSelected.floorNot"
       />
@@ -106,7 +106,7 @@
         Этажей в доме
       </h3>
       <rangeInput
-        rangeInputID="roomRangeFloorAll"
+        rangeInputID="roomRangeFloorAllMobile"
         rangeType="floorAll"
         :value.sync="filterSelected.floorAll"
       />
@@ -119,8 +119,8 @@
         Тип дома
       </h3>
       <checkboxes
-        key="roomType"
-        checkboxId="roomType"
+        checkboxType="default"
+        checkboxId="roomTypeMobile"
         :items="filterDataDefaultClone.appView"
         :value.sync="filterSelected.type"
       />

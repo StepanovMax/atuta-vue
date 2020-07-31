@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="appRangePriceMobile"
+        rangeInputID="garageRangePriceDesktop"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="appRangeRentMobile"
+        rangeInputID="garageRangeRentDesktop"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -37,104 +37,80 @@
 
     <div
       class="form__row"
-      v-if="
-        filterDataSelected.deal
-        && filterDataSelected.deal.slug == 'rent'
-      "
     >
       <h3 class="title title_h6 form__title">
-        Срок аренды
+        Гараж или машиноместо?*
       </h3>
-      <checkboxes
-        checkboxId="appRentTypeMobile"
-        checkboxType="default"
-        :items="filterDataDefaultClone.rentType"
-        :value.sync="filterSelected.rentType"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Количество комнат
-      </h3>
-      <checkboxes
-        checkboxId="appRoomsCountMobile"
-        checkboxType="roomsCount"
-        :items="filterDataDefaultClone.appRooms"
-        :value.sync="filterSelected.roomsCount"
-      />
-    </div>
-
-    <div class="form__row">
-      <h3 class="title title_h6 form__title">
-        Тип объекта
-      </h3>
-      <checkboxes
-        checkboxType="default"
-        checkboxId="appTypeMobile"
-        :items="filterDataDefaultClone.appTypes"
+      <radioButtons
+        radioButtonsView="default"
+        radioButtonsId="objectViewDesktop"
+        :items="filterDataDefaultClone.garage"
         :value.sync="filterSelected.type"
       />
     </div>
 
     <div
+      v-if="
+        filterDataSelected.garage.type
+        && filterDataSelected.garage.type.slug == 'garage'
+      "
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Общая площадь
+        Тип гаража
       </h3>
-      <rangeInput
-        rangeInputID="appRangeAreaMobile"
+      <checkboxes
+        key="garageTypeDesktop"
+        checkboxType="default"
+        checkboxId="garageTypeDesktop"
+        :items="filterDataDefaultClone.garageTypes"
+        :value.sync="filterSelected.garageType"
+      />
+    </div>
+
+    <div
+      v-if="
+        filterDataSelected.garage.type
+        && filterDataSelected.garage.type.slug == 'parking'
+      "
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Тип машиноместа
+      </h3>
+      <checkboxes
+        key="parkingTypeDesktop"
+        checkboxType="default"
+        checkboxId="parkingTypeDesktop"
+        :items="filterDataDefaultClone.parkingTypes"
+        :value.sync="filterSelected.parkingType"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Охрана
+      </h3>
+      <switcher
+        switcherId="securityDesktop"
+        :items="filterDataDefaultClone.security"
+        :value.sync="filterSelected.security"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Площадь
+      </h3>
+      <rangeSlider
+        rangeSliderID="garageRangeAreaDesktop"
         rangeType="area"
+        :rangeData="filterDataDefaultClone.garageRangeArea"
         :value.sync="filterSelected.area"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Этаж
-      </h3>
-      <rangeInput
-        rangeInputID="appRangeFloor"
-        rangeType="floor"
-        :value.sync="filterSelected.floor"
-      />
-      <checkboxes
-        checkboxType="default"
-        checkboxId="appFloorNotMobile"
-        :items="filterDataDefaultClone.appFloorNot"
-        :value.sync="filterSelected.floorNot"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Этажей всего
-      </h3>
-      <rangeInput
-        rangeInputID="appRangeFloorAllMobile"
-        rangeType="floorAll"
-        :value.sync="filterSelected.floorAll"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Вид дома
-      </h3>
-      <checkboxes
-        checkboxType="default"
-        checkboxId="appViewMobile"
-        :items="filterDataDefaultClone.appView"
-        :value.sync="filterSelected.view"
       />
     </div>
 
@@ -147,12 +123,16 @@ import multiselect from 'vue-multiselect'
 import rangeInput from '../../common/rangeInput.vue';
 import checkboxes from '../../common/checkboxes.vue';
 import rangeSlider from '../../common/rangeSlider.vue';
+import switcher from '../../common/switcher.vue';
+import radioButtons from '../../common/radioButtons.vue';
 
 export default {
   name: 'filterApp',
   components: {
+    switcher,
     rangeInput,
     checkboxes,
+    radioButtons,
     rangeSlider,
     multiselect,
   },
@@ -164,7 +144,7 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        this.updateFilterAppState(this.filterSelected);
+        this.updateFilterGarageState(this.filterSelected);
       },
       deep: true
     },
@@ -179,15 +159,15 @@ export default {
     },
   },
   methods: {
-    updateFilterAppState(data) {
-      this.$store.commit('updateFilterAppState', data);
+    updateFilterGarageState(data) {
+      this.$store.commit('updateFilterGarageState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.app));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.garage));
   },
 };
 </script>

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="commercialRangeInputPrice"
+        rangeInputID="commercialRangeInputPriceDesktop"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,13 +29,13 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="commercialRangeRent"
+        rangeInputID="commercialRangeRentDesktop"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
       <radioButtons
         radioButtonsView="floatRight"
-        radioButtonsId="commercialRentType"
+        radioButtonsId="commercialRentTypeDesktop"
         :items="filterDataDefaultClone.commercialRentType"
         :value.sync="filterSelected.rentType"
       />
@@ -48,8 +48,8 @@
         Класс здания
       </h3>
       <checkboxes
-        key="commercialClass"
-        checkboxId="commercialClass"
+        checkboxType="default"
+        checkboxId="commercialClassDesktop"
         :items="filterDataDefaultClone.commercialClass"
         :value.sync="filterSelected.class"
       />
@@ -62,8 +62,8 @@
         Вид объекта
       </h3>
       <checkboxes
-        key="commercialView"
-        checkboxId="commercialView"
+        checkboxType="default"
+        checkboxId="commercialViewDesktop"
         :items="filterDataDefaultClone.commercialView"
         :value.sync="filterSelected.view"
       />
@@ -76,7 +76,7 @@
         Площадь
       </h3>
       <rangeSlider
-        rangeSliderID="commercialRangeArea"
+        rangeSliderID="commercialRangeAreaDesktop"
         rangeType="area"
         :rangeData="filterDataDefaultClone.commercialRangeArea"
         :value.sync="filterSelected.area"
@@ -90,7 +90,7 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        rangeSliderID="commercialDistance"
+        rangeSliderID="commercialDistanceDesktop"
         rangeType="distance"
         :rangeData="filterDataDefaultClone.commercialDistance"
         :value.sync="filterSelected.distance"

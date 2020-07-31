@@ -123,6 +123,24 @@
           "
         />
 
+        <filterSector
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'sector'
+          "
+        />
+
+        <filterCommercial
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'commercial'
+          "
+        />
+
       </div>
     </div>
   </div>
@@ -133,6 +151,8 @@ import filterApp from './mobile/filterApp.vue';
 import filterRoom from './mobile/filterRoom.vue';
 import filterHouse from './mobile/filterHouse.vue';
 import filterGarage from './mobile/filterGarage.vue';
+import filterSector from './mobile/filterSector.vue';
+import filterCommercial from './mobile/filterCommercial.vue';
 import switcher from '../common/switcher.vue';
 import rangeMobile from '../common/rangeMobile.vue'
 import radioButtons from '../common/radioButtons.vue';
@@ -147,6 +167,8 @@ export default {
     filterRoom,
     filterHouse,
     filterGarage,
+    filterSector,
+    filterCommercial,
     rangeMobile,
     multiselect,
     radioButtons,

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        rangeInputID="houseRangeInputPrice"
+        rangeInputID="houseRangeInputPriceMobile"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        rangeInputID="houseRangeRent"
+        rangeInputID="houseRangeRentMobile"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -46,8 +46,7 @@
         Срок аренды
       </h3>
       <checkboxes
-        key="houseRentType"
-        checkboxId="houseRentType"
+        checkboxId="houseRentTypeMobile"
         checkboxType="default"
         :items="filterDataDefaultClone.rentType"
         :value.sync="filterSelected.rentType"
@@ -59,8 +58,7 @@
         Количество комнат
       </h3>
       <checkboxes
-        key="houseRoomsCount"
-        checkboxId="houseRoomsCount"
+        checkboxId="houseRoomsCountMobile"
         checkboxType="checkboxButtons"
         :items="filterDataDefaultClone.houseRoomsCount"
         :value.sync="filterSelected.roomsCount"
@@ -72,8 +70,8 @@
         Тип объекта
       </h3>
       <checkboxes
-        key="houseType"
-        checkboxId="houseType"
+        checkboxType="default"
+        checkboxId="houseTypeMobile"
         :items="filterDataDefaultClone.houseTypes"
         :value.sync="filterSelected.type"
       />
@@ -84,8 +82,8 @@
         Вид объекта
       </h3>
       <checkboxes
-        key="houseView"
-        checkboxId="houseView"
+        checkboxType="default"
+        checkboxId="houseViewMobile"
         :items="filterDataDefaultClone.appTypes"
         :value.sync="filterSelected.view"
       />
@@ -100,7 +98,7 @@
       </h3>
       <checkbox
         key="intoCity"
-        checkboxId="intoCity"
+        checkboxId="intoCityMobile"
         :item="filterDataDefaultClone.intoCityType"
         :value.sync="filterSelected.isIntoCity"
       />
@@ -113,7 +111,7 @@
         Расстояние до города
       </h3>
       <rangeInput
-        rangeInputID="houseDistance"
+        rangeInputID="houseDistanceMobile"
         rangeType="distance"
         :value.sync="filterSelected.distance"
       />
@@ -126,7 +124,7 @@
         Площадь дома
       </h3>
       <rangeInput
-        rangeInputID="houseAreaHouse"
+        rangeInputID="houseAreaHouseMobile"
         rangeType="area"
         :value.sync="filterSelected.areaHouse"
       />
@@ -139,7 +137,7 @@
         Площадь участка
       </h3>
       <rangeInput
-        rangeInputID="houseAreaLand"
+        rangeInputID="houseAreaLandMobile"
         rangeType="area"
         :value.sync="filterSelected.areaLand"
       />
@@ -152,7 +150,7 @@
         Этажей в доме
       </h3>
       <rangeInput
-        rangeInputID="houseFloorAll"
+        rangeInputID="houseFloorAllMobile"
         rangeType="floorAll"
         :value.sync="filterSelected.floorAll"
       />
@@ -165,8 +163,8 @@
         Материал стен
       </h3>
       <checkboxes
-        key="houseWall"
-        checkboxId="houseWall"
+        checkboxType="default"
+        checkboxId="houseWallMobile"
         :items="filterDataDefaultClone.houseWall"
         :value.sync="filterSelected.wall"
       />
