@@ -62,7 +62,7 @@
               Тип сделки*
             </h3>
             <switcher
-              switcherId="deal"
+              switcherId="dealMobile"
               :items="filterDataDefaultClone.deal"
               :value.sync="filterSelected.deal"
             />
@@ -96,6 +96,15 @@
           "
         />
 
+        <filterHouse
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'house'
+          "
+        />
+
       </div>
     </div>
   </div>
@@ -103,6 +112,7 @@
 
 <script>
 import filterApp from './mobile/filterApp.vue';
+import filterHouse from './mobile/filterHouse.vue';
 import switcher from '../common/switcher.vue';
 import rangeMobile from '../common/rangeMobile.vue'
 import radioButtons from '../common/radioButtons.vue';
@@ -114,6 +124,7 @@ export default {
   components: {
     switcher,
     filterApp,
+    filterHouse,
     rangeMobile,
     multiselect,
     radioButtons,

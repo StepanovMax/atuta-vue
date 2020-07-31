@@ -68,6 +68,12 @@ export default {
         value = '';
       } else if(this.rangeType === 'floorAll') {
         value = '';
+      } else if(this.rangeType === 'distance') {
+        value = `<span>км</span>`;
+      } else if(this.rangeType === 'areaLand') {
+        value = `<span>сот</span>`;
+      } else if(this.rangeType === 'none') {
+        value = '';
       }
       return value;
     },
@@ -81,6 +87,8 @@ export default {
         value = 'Этаж';
       } else if(this.rangeType === 'floorAll') {
         value = 'Этажей всего';
+      } else if(this.rangeType === 'distance') {
+        value = 'Расстояние';
       }
       return value;
     },
