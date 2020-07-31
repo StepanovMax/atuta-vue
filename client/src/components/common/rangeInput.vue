@@ -8,6 +8,10 @@
         v-model="inputFrom"
       >
       <p
+        v-if="
+          rangeType !== 'floor'
+          || rangeType !== 'floorAll'
+        "
         v-html="currency"
         class="range-input__text"
       />
@@ -20,6 +24,10 @@
         v-model="inputTo"
       >
       <p
+        v-if="
+          rangeType !== 'floor'
+          || rangeType !== 'floorAll'
+        "
         v-html="currency"
         class="range-input__text"
       />
@@ -56,6 +64,10 @@ export default {
         value = `<span>₽</span>`;
       } else if(this.rangeType === 'area') {
         value = `<span><span>м</span><sup class="range__input-text-sup">2</sup></span>`;
+      } else if(this.rangeType === 'floor') {
+        value = '';
+      } else if(this.rangeType === 'floorAll') {
+        value = '';
       }
       return value;
     },
@@ -65,6 +77,10 @@ export default {
         value = 'Цена';
       } else if(this.rangeType === 'area') {
         value = 'Площадь';
+      } else if(this.rangeType === 'floor') {
+        value = 'Этаж';
+      } else if(this.rangeType === 'floorAll') {
+        value = 'Этажей всего';
       }
       return value;
     },

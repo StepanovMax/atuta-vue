@@ -14,7 +14,7 @@
         :key="index"
       >
         <div
-          class=""
+          class="checkboxes__icon-wrap"
           @click="trigger(index)"
         >
           <iconChecked
