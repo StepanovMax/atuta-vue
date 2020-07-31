@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="roomRangeInputPrice"
+        rangeInputID="roomRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="roomRangeRent"
+        rangeInputID="roomRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -61,7 +61,7 @@
         Площадь комнаты
       </h3>
       <rangeSlider
-        key="roomRangeArea"
+        rangeSliderID="roomRangeArea"
         rangeType="area"
         :rangeData="filterDataDefaultClone.roomRangeArea"
         :value.sync="filterSelected.area"
@@ -89,7 +89,7 @@
         Этаж
       </h3>
       <rangeSlider
-        key="roomFloorRange"
+        rangeSliderID="roomFloorRange"
         rangeType="default"
         :rangeData="filterDataDefaultClone.roomFloorRange"
         :value.sync="filterSelected.floor"
@@ -109,7 +109,7 @@
         Этажей в доме
       </h3>
       <rangeSlider
-        key="roomFloorAll"
+        rangeSliderID="roomFloorAll"
         rangeType="default"
         :rangeData="filterDataDefaultClone.roomFloorAll"
         :value.sync="filterSelected.floorAll"

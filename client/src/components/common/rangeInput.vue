@@ -18,6 +18,7 @@
     </div>
     <div class="range-input__item">
       <input
+        :key="'key-' + rangeInputID"
         type="number"
         class="input range-input__input"
         :placeholder="placeholderText + ' до'"
@@ -47,6 +48,11 @@ export default {
     rangeType: {
       type: String,
       default: 'price',
+      required: true,
+    },
+    rangeInputID: {
+      type: String,
+      default: '',
       required: true,
     },
   },

@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="garageRangePrice"
+        rangeInputID="garageRangePrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="garageRangeRent"
+        rangeInputID="garageRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -105,7 +105,7 @@
         Площадь
       </h3>
       <rangeSlider
-        key="garageRangeArea"
+        rangeSliderID="garageRangeArea"
         rangeType="area"
         :rangeData="filterDataDefaultClone.garageRangeArea"
         :value.sync="filterSelected.area"

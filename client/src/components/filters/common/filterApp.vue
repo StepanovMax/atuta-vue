@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="appRangePrice"
+        rangeInputID="appRangePrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="appRangeRent"
+        rangeInputID="appRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -88,7 +88,7 @@
         Общая площадь
       </h3>
       <rangeSlider
-        key="appRangeArea"
+        rangeSliderID="appRangeArea"
         rangeType="area"
         :rangeData="filterDataDefaultClone.appRangeArea"
         :value.sync="filterSelected.area"
@@ -102,7 +102,7 @@
         Этаж
       </h3>
       <rangeSlider
-        key="appFloor"
+        rangeSliderID="appFloor"
         rangeType="none"
         :rangeData="filterDataDefaultClone.appFloor"
         :value.sync="filterSelected.floor"
@@ -122,7 +122,7 @@
         Этажей всего
       </h3>
       <rangeSlider
-        key="appFloorAll"
+        rangeSliderID="appFloorAll"
         rangeType="none"
         :rangeData="filterDataDefaultClone.appFloorAll"
         :value.sync="filterSelected.floorAll"
