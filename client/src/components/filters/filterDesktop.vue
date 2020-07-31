@@ -43,7 +43,7 @@
           Тип сделки*
         </h3>
         <switcher
-          switcherId="deal"
+          switcherId="dealDesktop"
           :items="filterDataDefaultClone.deal"
           :value.sync="filterSelected.deal"
         />
