@@ -89,6 +89,15 @@
       "
     />
 
+    <filterGarage
+      v-if="
+        filterDataSelected.town
+        && filterDataSelected.deal
+        && filterDataSelected.object
+        && filterDataSelected.object.slug === 'garage'
+      "
+    />
+
   </div>
 </template>
 
@@ -96,6 +105,7 @@
 import filterApp from './common/filterApp.vue';
 import filterHouse from './common/filterHouse.vue';
 import filterRoom from './common/filterRoom.vue';
+import filterGarage from './common/filterGarage.vue';
 import rangeSlider from '../common/rangeSlider.vue';
 import rangeInput from '../common/rangeInput.vue';
 import multiselect from 'vue-multiselect';
@@ -111,6 +121,7 @@ export default {
     filterApp,
     filterHouse,
     filterRoom,
+    filterGarage,
     rangeInput,
     rangeSlider,
     checkbox,

@@ -1,247 +1,171 @@
 <template>
   <div class="form">
-    <div class="form__row">
+
+    <div
+      class="form__row"
+      v-if="
+        filterDataSelected.deal
+        && filterDataSelected.deal.slug == 'buy'
+      "
+    >
       <h3 class="title title_h6 form__title">
-        Вид объекта*
+        Цена
       </h3>
-      <switcher
-        switcherId="deal2"
-        :items="dealArray"
-        :value.sync="filterDataClone.deal2"
+      <rangeInput
+        key="garageRangePrice"
+        rangeType="price"
+        :value.sync="filterSelected.price"
       />
     </div>
 
-    <pre>
-      {{ filterDataClone.garageOrParkingData.isGarageOrParking }}
-    </pre>
+    <div
+      class="form__row"
+      v-if="
+        filterDataSelected.deal
+        && filterDataSelected.deal.slug == 'rent'
+      "
+    >
+      <h3 class="title title_h6 form__title">
+        Аренда в месяц
+      </h3>
+      <rangeInput
+        key="garageRangeRent"
+        rangeType="price"
+        :value.sync="filterSelected.rent"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Гараж или машиноместо?*
+      </h3>
+      <radioButtons
+        radioButtonsView="default"
+        radioButtonsId="objectView"
+        :items="filterDataDefaultClone.garage"
+        :value.sync="filterSelected.type"
+      />
+    </div>
 
     <div
       v-if="
-        garageParkingValue
-        && garageParkingValue.slug === 'garage'
+        filterDataSelected.garage.type
+        && filterDataSelected.garage.type.slug === 'garage'
       "
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
         Тип гаража
       </h3>
-      <multiselect
-        v-model="whatKindOfGarageType"
-        :options="garageTypes"
-        :show-labels="false"
-        :allow-empty="true"
-        :close-on-select="true"
-        :multiple="true"
-        :searchable="false"
-        label="label"
-        track-by="label"
-        placeholder="Какой тип гаража?"
+      <checkboxes
+        key="garageType"
+        checkboxId="garageType"
+        :items="filterDataDefaultClone.garageTypes"
+        :value.sync="filterSelected.garageType"
       />
     </div>
 
     <div
       v-if="
-        garageParkingValue
-        && garageParkingValue.slug === 'parking'
+        filterDataSelected.garage.type
+        && filterDataSelected.garage.type.slug === 'parking'
       "
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
         Тип машиноместа
       </h3>
-      <multiselect
-        v-model="whatKindOfParkingType"
-        :options="parkingTypes"
-        :show-labels="false"
-        :allow-empty="true"
-        :close-on-select="true"
-        :multiple="true"
-        :searchable="false"
-        label="label"
-        track-by="label"
-        placeholder="Какой тип тип машиноместа?"
+      <checkboxes
+        key="parkingType"
+        checkboxId="parkingType"
+        :items="filterDataDefaultClone.parkingTypes"
+        :value.sync="filterSelected.parkingType"
       />
     </div>
-    <div class="form__row">
+
+    <div
+      class="form__row"
+    >
       <h3 class="title title_h6 form__title">
         Охрана
       </h3>
-      <multiselect
-        v-model="isSecurity"
-        :options="securityTypes"
-        :show-labels="false"
-        :allow-empty="true"
-        :close-on-select="true"
-        :multiple="false"
-        :searchable="false"
-        label="label"
-        track-by="label"
-        placeholder="Нужна охрана?"
+      <switcher
+        switcherId="security"
+        :items="filterDataDefaultClone.security"
+        :value.sync="filterSelected.security"
       />
     </div>
-    <div class="form__row">
+
+    <div
+      class="form__row"
+    >
       <h3 class="title title_h6 form__title">
         Площадь
       </h3>
-      <rangeDesktop
+      <rangeSlider
+        key="garageRangeArea"
         rangeType="area"
-        :rangeData.sync="areaRangeValue"
+        :rangeData="filterDataDefaultClone.garageRangeArea"
+        :value.sync="filterSelected.area"
       />
     </div>
+
   </div>
 </template>
 
 <script>
-import multiselect from 'vue-multiselect'
-import range from '../../common/range.vue'
-import radioButtons from '../../common/radioButtons.vue';
-import switcher from '../../common/switcher.vue';
-
 import { mapState } from 'vuex';
+import multiselect from 'vue-multiselect'
+import rangeInput from '../../common/rangeInput.vue';
+import checkboxes from '../../common/checkboxes.vue';
+import rangeSlider from '../../common/rangeSlider.vue';
+import switcher from '../../common/switcher.vue';
+import radioButtons from '../../common/radioButtons.vue';
 
 export default {
-  name: 'filterGarage',
+  name: 'filterApp',
   components: {
-    range,
     switcher,
-    multiselect,
+    rangeInput,
+    checkboxes,
     radioButtons,
+    rangeSlider,
+    multiselect,
   },
   data() {
     return {
-      filterDataClone: {},
-      garageParkingValue: null,
-      garageParkingTypes: [
-        {
-          slug: 'garage',
-          label: 'Гараж',
-        },
-        {
-          slug: 'parking',
-          label: 'Машиноместо',
-        },
-      ],
-      garageTypeValue: null,
-      garageTypes: [
-        {
-          slug: 'reinforcedConcrete',
-          label: 'Железобетонный',
-        },
-        {
-          slug: 'brick',
-          label: 'Кирпичный',
-        },
-        {
-          slug: 'irony',
-          label: 'Железный',
-        },
-      ],
-      parkingTypeValue: null,
-      parkingTypes: [
-        {
-          slug: 'multilevelParking',
-          label: 'Многоуровневый паркинг',
-        },
-        {
-          slug: 'undergroundParking',
-          label: 'Подземный паркинг',
-        },
-        {
-          slug: 'undergroundParking',
-          label: 'Подземная стоянка',
-        },
-        {
-          slug: 'openParking',
-          label: 'Открытая стоянка',
-        },
-      ],
-      securityValue: null,
-      securityTypes: [
-        {
-          slug: 'yes',
-          label: 'Охрана нужна',
-        },
-        {
-          slug: 'no',
-          label: 'Без охраны',
-        },
-      ],
-      areaRange: null,
-      dealArray: [
-        {
-          slug: 'buy',
-          label: 'Купить',
-        },
-        {
-          slug: 'rent',
-          label: 'Аренда',
-        },
-      ],
+      filterSelected: {},
     }
+  },
+  watch: {
+    filterSelected: {
+      handler() {
+        this.updateFilterGarageState(this.filterSelected);
+      },
+      deep: true
+    },
   },
   computed: {
     ...mapState([
-      'filterData',
+      'filterDataDefault',
+      'filterDataSelected',
     ]),
-    isGarageOrParking: {
-      cache: false,
-      get() {
-        return this.garageParkingValue;
-      },
-      set(value) {
-        // Clear the rest items data from the store.
-        if (value.slug === 'garage') {
-          this.filterDataClone.garageOrParkingData.parkingType = null;
-        } else if (value.slug === 'parking') {
-          this.filterDataClone.garageOrParkingData.garageType = null;
-        }
-        this.garageParkingValue = value;
-        this.filterDataClone.garageOrParkingData.isGarageOrParking = value.slug;
-      }
+    filterDataDefaultClone() {
+      return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
-    whatKindOfGarageType: {
-      cache: false,
-      get() {
-        return this.garageTypeValue;
-      },
-      set(value) {
-        this.garageTypeValue = value;
-        this.filterDataClone.garageOrParkingData.garageType = value;
-      }
+  },
+  methods: {
+    updateFilterGarageState(data) {
+      this.$store.commit('updateFilterGarageState', data);
     },
-    whatKindOfParkingType: {
-      cache: false,
-      get() {
-        return this.parkingTypeValue;
-      },
-      set(value) {
-        this.parkingTypeValue = value;
-        this.filterDataClone.garageOrParkingData.parkingType = value;
-      }
-    },
-    isSecurity: {
-      cache: false,
-      get() {
-        return this.securityValue;
-      },
-      set(value) {
-        this.securityValue = value;
-        this.filterData.garageOrParkingData.security = value.slug;
-      }
-    },
-    areaRangeValue: {
-      cache: false,
-      get() {
-        return this.areaRange;
-      },
-      set(value) {
-        this.areaRange = value;
-        this.filterData.areaRange = value;
-      }
+    resetFilter() {
+      this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterDataClone = JSON.parse(JSON.stringify(this.filterData));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.garage));
   },
 };
 </script>
