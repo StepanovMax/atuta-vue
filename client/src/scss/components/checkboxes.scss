@@ -1,4 +1,12 @@
 .checkboxes {
+  margin-top: 5px;
+
+  &__icon {
+    &-wrap {
+      display: flex;
+    }
+  }
+
   &__list {
     display: flex;
     flex-direction: row;

@@ -21,14 +21,13 @@
       <div class="filter-mobile__content">
 
         <div class="form">
-
           <div class="form__row">
             <h3 class="title title_h6 form__title">
               Город*
             </h3>
             <multiselect
-              v-model="filterDataClone.town"
-              :options="townsList"
+              v-model="filterSelected.town"
+              :options="filterDataDefaultClone.town"
               :show-labels="false"
               :allow-empty="false"
               :close-on-select="true"
@@ -42,18 +41,30 @@
 
           <div class="form__row">
             <h3 class="title title_h6 form__title">
-              Тип сделки*
+              Район
             </h3>
             <multiselect
-              v-model="filterDataClone.deal"
-              :options="buyItems"
+              v-model="filterSelected.district"
+              :options="filterDataDefaultClone.district"
               :show-labels="false"
-              :allow-empty="false"
+              :allow-empty="true"
               :close-on-select="true"
-              :multiple="false"
+              :multiple="true"
+              :searchable="false"
               label="label"
               track-by="label"
-              placeholder="Купить или аренда? *"
+              placeholder="Выберите район"
+            />
+          </div>
+
+          <div class="form__row">
+            <h3 class="title title_h6 form__title">
+              Тип сделки*
+            </h3>
+            <switcher
+              switcherId="deal"
+              :items="filterDataDefaultClone.deal"
+              :value.sync="filterSelected.deal"
             />
           </div>
 
@@ -62,244 +73,82 @@
               Тип объекта*
             </h3>
             <multiselect
-              v-model="filterDataClone.object"
-              :options="objectTypes"
+              v-model="filterSelected.object"
+              :options="filterDataDefaultClone.object"
               :show-labels="false"
               :allow-empty="false"
               :close-on-select="true"
               :multiple="false"
+              :searchable="true"
               label="label"
               track-by="label"
-              placeholder="Какой тип объекта? *"
-            />
-          </div>
-
-          <div class="form__row">
-            <h3 class="title title_h6 form__title">
-              Район
-            </h3>
-            <multiselect
-              v-model="filterDataClone.district"
-              :options="districtsList"
-              :show-labels="false"
-              :allow-empty="true"
-              :close-on-select="false"
-              :multiple="true"
-              :searchable="false"
-              label="label"
-              track-by="label"
-              placeholder="Выберите район"
+              placeholder="Тип объекта"
             />
           </div>
         </div>
 
-        <div class="form">
+        <filterApp
+          v-if="
+            filterDataSelected.town
+            && filterDataSelected.deal
+            && filterDataSelected.object
+            && filterDataSelected.object.slug === 'app'
+          "
+        />
 
-          <div
-            class="form__row"
-            v-if="filterData.deal && filterData.deal.slug == 'buy'"
-          >
-            <h3 class="title title_h6 form__title">
-              Цена
-            </h3>
-          </div>
-
-          <div
-            class="form__row"
-            v-if="filterData.deal && filterData.deal.slug == 'rent'"
-          >
-            <h3 class="title title_h6 form__title">
-              Аренда в месяц
-            </h3>
-          </div>
-
-          <div class="form__row">
-            <h3 class="title title_h6 form__title">
-              Продавцы
-            </h3>
-            <multiselect
-              v-model="filterDataClone.seller"
-              :options="sellersList"
-              :show-labels="false"
-              :allow-empty="true"
-              :close-on-select="true"
-              :multiple="true"
-              :searchable="false"
-              label="label"
-              track-by="label"
-              placeholder="Выберите продавца"
-            />
-          </div>
-
-        </div>
-
-
-        <div class="filter-mobile__buttons-block">
-          <button
-            class="btn filter-mobile__btn btn_blue btn_mini"
-          >
-            Сбросить
-          </button>
-
-          <button
-            class="btn filter-mobile__btn btn_blue btn_mini"
-            :class="[
-              {
-                'btn_disabled': !this.requiredFormItemsIsFilled
-              }
-            ]"
-          >
-            Фильтровать
-          </button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import filterApp from './mobile/filterApp.vue';
+import switcher from '../common/switcher.vue';
 import rangeMobile from '../common/rangeMobile.vue'
+import radioButtons from '../common/radioButtons.vue';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'filterMobile',
   components: {
+    switcher,
+    filterApp,
     rangeMobile,
     multiselect,
+    radioButtons,
   },
   data() {
     return {
-      filterDataClone: {},
-      sellersList: [
-        {
-          slug: 'personal',
-          label: 'Собственник',
-        },
-        {
-          slug: 'agency',
-          label: 'Агентство',
-        },
-        {
-          slug: 'builder',
-          label: 'Застройщик',
-        },
-      ],
-      townsList: [
-        {
-          slug: 'taganrog',
-          label: 'Таганрог',
-        },
-        {
-          slug: 'rostov-on-don',
-          label: 'Ростов-на-Дону',
-        },
-      ],
-      districtsList: [
-        {
-          slug: 'yuzhny',
-          label: 'Южный',
-        },
-        {
-          slug: 'center',
-          label: 'Центр',
-        },
-        {
-          slug: 'zapadny',
-          label: 'Западный',
-        },
-        {
-          slug: 'severo-zapadny',
-          label: 'Северо-западный',
-        },
-        {
-          slug: 'severny',
-          label: 'Северный',
-        },
-        {
-          slug: 'vostochny',
-          label: 'Востоный',
-        },
-        {
-          slug: 'suburb',
-          label: 'Пригород',
-        },
-      ],
-      buyItems: [
-        {
-          slug: 'buy',
-          label: 'Купить',
-        },
-        {
-          slug: 'rent',
-          label: 'Аренда',
-        },
-      ],
-      objectTypes: [
-        {
-          slug: 'app',
-          label: 'Квартира',
-        },
-        {
-          slug: 'house',
-          label: 'Дом',
-        },
-        {
-          slug: 'room',
-          label: 'Комната',
-        },
-        {
-          slug: 'garageOrParking',
-          label: 'Гараж / Машиноместо',
-        },
-        {
-          slug: 'area',
-          label: 'Участок',
-        },
-        {
-          slug: 'commercial',
-          label: 'Коммерческая недвижимость',
-        },
-      ],
+      filterSelected: {},
+      filterDataSelectedClone: {},
     }
   },
   watch: {
-    filterDataClone: {
+    filterSelected: {
       handler() {
-        this.updateFilterState(this.filterDataClone);
+        console.log('watch mobile filterSelected', this.filterSelected);
+        this.updateFilterState(this.filterSelected);
       },
       deep: true
     },
   },
   computed: {
     ...mapState([
-      'filterData',
       'isFilterOpen',
+      'filterDataDefault',
+      'filterDataSelected',
     ]),
-    requiredFormItemsIsFilled() {
-      let value;
-      if (this.filterData.deal && this.filterData.object) {
-        if (this.filterData.object.slug === 'garageOrParking') {
-          if (this.filterData.garageOrParkingData.isGarageOrParking) {
-            value = true;
-          } else {
-            value = false;
-          }
-        }
-      }
-      return value;
-    },
-    isTownSelected() {
-      return this.filterData.town;
+    filterDataDefaultClone() {
+      return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
   },
   created() {
-    this.filterDataClone = JSON.parse(JSON.stringify(this.filterData));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
   methods: {
     updateFilterState(data) {
       this.$store.commit('updateFilterState', data);
-      // console.log('updateFilterState :: >', this.filterData);
     },
   },
 };

@@ -30,6 +30,9 @@
         <iconSettings />
       </button>
     </div>
+
+    <filterMobile />
+
   </div>
 </template>
 
