@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="commercialRangeInputPrice"
+        key="sectorRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,43 +29,23 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="commercialRangeRent"
+        key="sectorRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
-      <radioButtons
-        radioButtonsView="floatRight"
-        radioButtonsId="commercialRentType"
-        :items="filterDataDefaultClone.commercialRentType"
-        :value.sync="filterSelected.rentType"
-      />
     </div>
 
     <div
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Класс здания
+        Категория участка
       </h3>
       <checkboxes
-        key="commercialClass"
-        checkboxId="commercialClass"
-        :items="filterDataDefaultClone.commercialClass"
-        :value.sync="filterSelected.class"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Вид объекта
-      </h3>
-      <checkboxes
-        key="commercialView"
-        checkboxId="commercialView"
-        :items="filterDataDefaultClone.commercialView"
-        :value.sync="filterSelected.view"
+        key="sectorCategory"
+        checkboxId="sectorCategory"
+        :items="filterDataDefaultClone.sectorCategory"
+        :value.sync="filterSelected.category"
       />
     </div>
 
@@ -76,9 +56,9 @@
         Площадь
       </h3>
       <rangeSlider
-        key="commercialRangeArea"
-        rangeType="area"
-        :rangeData="filterDataDefaultClone.commercialRangeArea"
+        key="sectorRangeArea"
+        rangeType="areaLand"
+        :rangeData="filterDataDefaultClone.sectorRangeArea"
         :value.sync="filterSelected.area"
       />
     </div>
@@ -90,9 +70,9 @@
         Расстояние до города
       </h3>
       <rangeSlider
-        key="commercialDistance"
+        key="sectorDistance"
         rangeType="distance"
-        :rangeData="filterDataDefaultClone.commercialDistance"
+        :rangeData="filterDataDefaultClone.sectorDistance"
         :value.sync="filterSelected.distance"
       />
     </div>
@@ -127,7 +107,7 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        this.updateFilterCommercialState(this.filterSelected);
+        this.updateFilterSectorState(this.filterSelected);
       },
       deep: true
     },
@@ -142,15 +122,15 @@ export default {
     },
   },
   methods: {
-    updateFilterCommercialState(data) {
-      this.$store.commit('updateFilterCommercialState', data);
+    updateFilterSectorState(data) {
+      this.$store.commit('updateFilterSectorState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.commercial));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.sector));
   },
 };
 </script>
