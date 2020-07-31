@@ -1,10 +1,11 @@
 <template>
   <div class="form">
+
     <div
       class="form__row"
       v-if="
-        filterDataClone.deal
-        && filterDataClone.deal.slug == 'buy'
+        filterDataSelected.deal
+        && filterDataSelected.deal.slug == 'buy'
       "
     >
       <h3 class="title title_h6 form__title">
@@ -13,15 +14,15 @@
       <rangeInput
         key="houseRangeInputPrice"
         rangeType="price"
-        :value.sync="filterDataClone.house.price"
+        :value.sync="filterSelected.price"
       />
     </div>
 
     <div
       class="form__row"
       v-if="
-        filterDataClone.deal
-        && filterDataClone.deal.slug == 'rent'
+        filterDataSelected.deal
+        && filterDataSelected.deal.slug == 'rent'
       "
     >
       <h3 class="title title_h6 form__title">
@@ -30,15 +31,15 @@
       <rangeInput
         key="houseRangeRent"
         rangeType="price"
-        :value.sync="filterDataClone.house.rent"
+        :value.sync="filterSelected.rent"
       />
     </div>
 
     <div
       class="form__row"
       v-if="
-        filterDataClone.deal
-        && filterDataClone.deal.slug == 'rent'
+        filterDataSelected.deal
+        && filterDataSelected.deal.slug == 'rent'
       "
     >
       <h3 class="title title_h6 form__title">
@@ -48,8 +49,8 @@
         key="houseRentType"
         checkboxId="houseRentType"
         checkboxType="default"
-        :items="rentTypes"
-        :value.sync="filterDataClone.house.rentType"
+        :items="filterDataDefaultClone.rentType"
+        :value.sync="filterSelected.rentType"
       />
     </div>
 
@@ -61,8 +62,8 @@
         key="houseRoomsCount"
         checkboxId="houseRoomsCount"
         checkboxType="checkboxButtons"
-        :items="houseRoomsCount"
-        :value.sync="filterDataClone.house.roomsCount"
+        :items="filterDataDefaultClone.houseRoomsCount"
+        :value.sync="filterSelected.roomsCount"
       />
     </div>
 
@@ -73,8 +74,8 @@
       <checkboxes
         key="houseType"
         checkboxId="houseType"
-        :items="houseTypes"
-        :value.sync="filterDataClone.house.type"
+        :items="filterDataDefaultClone.houseTypes"
+        :value.sync="filterSelected.type"
       />
     </div>
 
@@ -85,8 +86,8 @@
       <checkboxes
         key="houseView"
         checkboxId="houseView"
-        :items="appTypes"
-        :value.sync="filterDataClone.house.view"
+        :items="filterDataDefaultClone.appTypes"
+        :value.sync="filterSelected.view"
       />
     </div>
 
@@ -100,8 +101,8 @@
       <checkbox
         key="intoCity"
         checkboxId="intoCity"
-        :item="intoCityType"
-        :value.sync="filterDataClone.house.isIntoCity"
+        :item="filterDataDefaultClone.intoCityType"
+        :value.sync="filterSelected.isIntoCity"
       />
     </div>
 
@@ -114,8 +115,8 @@
       <rangeSlider
         key="houseDistance"
         rangeType="distance"
-        :rangeData="houseDistance"
-        :value.sync="filterDataClone.house.distance"
+        :rangeData="filterDataDefaultClone.houseDistance"
+        :value.sync="filterSelected.distance"
       />
     </div>
 
@@ -128,8 +129,8 @@
       <rangeSlider
         key="houseAreaHouse"
         rangeType="area"
-        :rangeData="houseAreaHouse"
-        :value.sync="filterDataClone.house.areaHouse"
+        :rangeData="filterDataDefaultClone.houseAreaHouse"
+        :value.sync="filterSelected.areaHouse"
       />
     </div>
 
@@ -142,8 +143,8 @@
       <rangeSlider
         key="houseAreaLand"
         rangeType="areaLand"
-        :rangeData="houseAreaLand"
-        :value.sync="filterDataClone.house.areaLand"
+        :rangeData="filterDataDefaultClone.houseAreaLand"
+        :value.sync="filterSelected.areaLand"
       />
     </div>
 
@@ -156,8 +157,8 @@
       <rangeSlider
         key="houseFloorAll"
         rangeType="default"
-        :rangeData="houseFloorAll"
-        :value.sync="filterDataClone.house.floorAll"
+        :rangeData="filterDataDefaultClone.houseFloorAll"
+        :value.sync="filterSelected.floorAll"
       />
     </div>
 
@@ -170,189 +171,61 @@
       <checkboxes
         key="houseWall"
         checkboxId="houseWall"
-        :items="houseWall"
-        :value.sync="filterDataClone.house.wall"
+        :items="filterDataDefaultClone.houseWall"
+        :value.sync="filterSelected.wall"
       />
     </div>
 
-    <pre>
-      {{ filterData }}
-    </pre>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import multiselect from 'vue-multiselect'
-import rangeSlider from '../../common/rangeSlider.vue';
-import checkboxes from '../../common/checkboxes.vue';
 import rangeInput from '../../common/rangeInput.vue';
-import { mapState, store, commit } from 'vuex';
+import checkboxes from '../../common/checkboxes.vue';
+import rangeSlider from '../../common/rangeSlider.vue';
 
 export default {
-  name: 'filterHouse',
+  name: 'filterApp',
   components: {
-    rangeSlider,
-    checkboxes,
     rangeInput,
+    checkboxes,
+    rangeSlider,
     multiselect,
   },
   data() {
     return {
-      rentTypes: [
-        {
-          slug: 'perDay',
-          label: 'Посуточно',
-        },
-        {
-          slug: 'longTerm',
-          label: 'На длительный срок',
-        },
-      ],
-      houseRoomsCount: [
-        {
-          slug: '1',
-          label: '1',
-        },
-        {
-          slug: '2',
-          label: '2',
-        },
-        {
-          slug: '3',
-          label: '3',
-        },
-        {
-          slug: '4',
-          label: '4',
-        },
-        {
-          slug: '5',
-          label: '5',
-        },
-        {
-          slug: '6',
-          label: '6',
-        },
-        {
-          slug: '7',
-          label: '7',
-        },
-        {
-          slug: '8',
-          label: '8',
-        },
-        {
-          slug: '9',
-          label: '9',
-        },
-        {
-          slug: '9+',
-          label: '9+',
-        },
-      ],
-      houseTypes: [
-        {
-          slug: 'house',
-          label: 'Дом',
-        },
-        {
-          slug: 'summerCottage',
-          label: 'Дача',
-        },
-        {
-          slug: 'cottage',
-          label: 'Коттедж',
-        },
-        {
-          slug: 'townhouse',
-          label: 'Таунхаус',
-        },
-      ],
-      intoCityType: {
-        slug: 'yes',
-        label: 'Да',
-        checked: false,
-      },
-      houseWall: [
-        {
-          slug: 'brick',
-          label: 'Кирпичный',
-        },
-        {
-          slug: 'balk',
-          label: 'Брус',
-        },
-        {
-          slug: 'timber',
-          label: 'Бревно',
-        },
-        {
-          slug: 'gas-blocks',
-          label: 'Газоблоки',
-        },
-        {
-          slug: 'metal',
-          label: 'Металл',
-        },
-        {
-          slug: 'foam-blocks',
-          label: 'Пеноблоки',
-        },
-        {
-          slug: 'reinforced-concrete-panels',
-          label: 'Ж/б панели',
-        },
-        {
-          slug: 'sandvich-panels',
-          label: 'Сендвич-панели',
-        },
-        {
-          slug: 'others',
-          label: 'Прочее',
-        },
-      ],
-      appTypes: [
-        {
-          slug: 'secondaryUsing',
-          label: 'Вторичка',
-        },
-        {
-          slug: 'newBuilding',
-          label: 'Новостройка',
-        },
-      ],
-      houseRangePrice: [0, 100000000],
-      houseRangeRent: [0, 100000000],
-      houseAreaHouse: [0, 500],
-      houseAreaLand: [0, 100],
-      houseDistance: [0, 100],
-      houseFloorAll: [0, 30],
+      filterSelected: {},
     }
   },
   watch: {
-    filterDataClone: {
+    filterSelected: {
       handler() {
-        this.updateFilterState(this.filterDataClone);
+        this.updateFilterHouseState(this.filterSelected);
       },
       deep: true
     },
   },
   computed: {
     ...mapState([
-      'filterData',
+      'filterDataDefault',
+      'filterDataSelected',
     ]),
-  },
-  created() {
-    // Getting the data for the filter from store.
-    this.filterDataClone = JSON.parse(JSON.stringify(this.filterData));
+    filterDataDefaultClone() {
+      return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
   },
   methods: {
-    updateFilterState(data) {
-      this.$store.commit('updateFilterState', data);
+    updateFilterHouseState(data) {
+      this.$store.commit('updateFilterHouseState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
+  },
+  created() {
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.house));
   },
 };
 </script>

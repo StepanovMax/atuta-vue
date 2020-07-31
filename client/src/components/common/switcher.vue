@@ -55,7 +55,9 @@ export default {
     return {
       picked: [],
       dataItemsChecked: [...this.items].map(function(item) {
-        item.checked = false;
+        if (!item.hasOwnProperty('checked')) {
+          item.checked = false;
+        }
         return item;
       }),
     }

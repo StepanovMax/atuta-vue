@@ -12,7 +12,7 @@
         Цена
       </h3>
       <rangeInput
-        key="garageRangePrice"
+        key="sectorRangeInputPrice"
         rangeType="price"
         :value.sync="filterSelected.price"
       />
@@ -29,7 +29,7 @@
         Аренда в месяц
       </h3>
       <rangeInput
-        key="garageRangeRent"
+        key="sectorRangeRent"
         rangeType="price"
         :value.sync="filterSelected.rent"
       />
@@ -39,62 +39,13 @@
       class="form__row"
     >
       <h3 class="title title_h6 form__title">
-        Гараж или машиноместо?*
-      </h3>
-      <radioButtons
-        radioButtonsView="default"
-        radioButtonsId="objectView"
-        :items="filterDataDefaultClone.garage"
-        :value.sync="filterSelected.type"
-      />
-    </div>
-
-    <div
-      v-if="
-        filterDataSelected.garage.type
-        && filterDataSelected.garage.type.slug === 'garage'
-      "
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Тип гаража
+        Категория участка
       </h3>
       <checkboxes
-        key="garageType"
-        checkboxId="garageType"
-        :items="filterDataDefaultClone.garageTypes"
-        :value.sync="filterSelected.garageType"
-      />
-    </div>
-
-    <div
-      v-if="
-        filterDataSelected.garage.type
-        && filterDataSelected.garage.type.slug === 'parking'
-      "
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Тип машиноместа
-      </h3>
-      <checkboxes
-        key="parkingType"
-        checkboxId="parkingType"
-        :items="filterDataDefaultClone.parkingTypes"
-        :value.sync="filterSelected.parkingType"
-      />
-    </div>
-
-    <div
-      class="form__row"
-    >
-      <h3 class="title title_h6 form__title">
-        Охрана
-      </h3>
-      <switcher
-        switcherId="security"
-        :items="filterDataDefaultClone.security"
-        :value.sync="filterSelected.security"
+        key="sectorCategory"
+        checkboxId="sectorCategory"
+        :items="filterDataDefaultClone.sectorCategory"
+        :value.sync="filterSelected.category"
       />
     </div>
 
@@ -105,10 +56,24 @@
         Площадь
       </h3>
       <rangeSlider
-        key="garageRangeArea"
-        rangeType="area"
-        :rangeData="filterDataDefaultClone.garageRangeArea"
+        key="sectorRangeArea"
+        rangeType="areaLand"
+        :rangeData="filterDataDefaultClone.sectorRangeArea"
         :value.sync="filterSelected.area"
+      />
+    </div>
+
+    <div
+      class="form__row"
+    >
+      <h3 class="title title_h6 form__title">
+        Расстояние до города
+      </h3>
+      <rangeSlider
+        key="sectorDistance"
+        rangeType="distance"
+        :rangeData="filterDataDefaultClone.sectorDistance"
+        :value.sync="filterSelected.distance"
       />
     </div>
 
@@ -142,7 +107,7 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        this.updateFilterGarageState(this.filterSelected);
+        this.updateFilterSectorState(this.filterSelected);
       },
       deep: true
     },
@@ -157,15 +122,15 @@ export default {
     },
   },
   methods: {
-    updateFilterGarageState(data) {
-      this.$store.commit('updateFilterGarageState', data);
+    updateFilterSectorState(data) {
+      this.$store.commit('updateFilterSectorState', data);
     },
     resetFilter() {
       this.$store.commit('resetFilter');
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.garage));
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected.sector));
   },
 };
 </script>
