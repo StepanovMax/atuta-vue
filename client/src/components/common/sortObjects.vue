@@ -28,6 +28,29 @@
         class="
           btn
           sort-objects__btn
+          sort-objects__btn_date
+        "
+        :class="{'sort-objects__btn_active': activeButton === 'date'}"
+        @click="sortDate()"
+      >
+        <span
+          class="sort-objects__btn-text"
+          :class="{'sort-objects__btn-text_active': activeButton === 'date'}"
+        >
+          Дата
+        </span>
+        <iconSortArrows
+          v-if="activeButton === 'date'"
+          :class="'sort-objects__btn-icon'"
+          :arrowWay="sortWayDate"
+        />
+      </button>
+    </li>
+    <li class="sort-objects__item">
+      <button
+        class="
+          btn
+          sort-objects__btn
           sort-objects__btn_area
         "
         :class="{'sort-objects__btn_active': activeButton === 'area'}"
@@ -73,7 +96,8 @@ export default {
       dataObjectsForSorting: this.propObjectsForSorting,
       sortWayArea: 'less',
       sortWayPrice: 'less',
-      activeButton: 'price',
+      sortWayDate: 'more',
+      activeButton: 'date',
     }
   },
   methods: {
@@ -139,9 +163,40 @@ export default {
       this.activeButton = 'price';
       this.$emit('update:value', this.dataObjectsForSorting);
     },
+    sortDate() {
+      if (this.sortWayDate === 'less') {
+        this.dataObjectsForSorting.sort(
+          (a, b) => {
+            if (parseInt(a.date) < parseInt(b.date)) {
+              return -1;
+            }
+            if (parseInt(a.date) > parseInt(b.date)) {
+              return 1;
+            }
+            return 0
+          }
+        );
+        this.sortWayDate = 'more';
+      } else if (this.sortWayDate === 'more') {
+        this.dataObjectsForSorting.sort(
+          (a, b) => {
+            if (parseInt(a.date) < parseInt(b.date)) {
+              return 1;
+            }
+            if (parseInt(a.date) > parseInt(b.date)) {
+              return -1;
+            }
+            return 0
+          }
+        );
+        this.sortWayDate = 'less';
+      }
+      this.activeButton = 'date';
+      this.$emit('update:value', this.dataObjectsForSorting);
+    },
   },
   mounted() {
-    this.sortPrice();
+    this.sortDate();
   },
 };
 </script>

@@ -49,6 +49,9 @@
           <p class="">
             Площадь: {{ item.area }} м²
           </p>
+          <p class="">
+            Дата: {{ timeConverter(item.date) }}
+          </p>
         </div>
       </li>
     </ul>
@@ -91,6 +94,17 @@ export default {
         this.dataGridItems = this.dataSortedObjects;
       },
       deep: true
+    },
+  },
+  methods: {
+    timeConverter(UNIX_timestamp){
+      const a = new Date(UNIX_timestamp * 1000);
+      const months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май','Июнь','Июль', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+      const year = a.getFullYear();
+      const month = months[a.getMonth()];
+      const date = a.getDate();
+      const time = date + ' ' + month + ' ' + year;
+      return time;
     },
   },
 };
