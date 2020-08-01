@@ -1,26 +1,11 @@
 <template>
   <div class="grid">
     <div class="grid__buttons">
-      <div class="grid__buttons-view">
-        <ul class="grid__buttons-view-list">
-          <li class="grid__buttons-view-list-item">
-            <button
-              class="grid__buttons-button"
-              @click="switchToNetView()"
-            >
-              Сетка
-            </button>
-          </li>
-          <li class="grid__buttons-view-list-item">
-            <button
-              class="grid__buttons-button"
-              @click="switchToListView()"
-            >
-              Список
-            </button>
-          </li>
-        </ul>
-      </div>
+
+      <switcherGrid
+        :value.sync="dataGridView"
+      />
+
       <div class="grid__buttons-sort">
         <ul class="grid__buttons-sort-list">
           <li class="grid__buttons-sort-list-item">
@@ -87,9 +72,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import switcherGrid from './common/switcherGrid.vue';
 
 export default {
   name: 'grid',
+  components: {
+    switcherGrid,
+  },
   data() {
     return {
       dataGridView: this.propGridView,
@@ -110,21 +99,15 @@ export default {
       required: true,
     }
   },
-  // computed: {
-  //   ...mapState([
-  //     'testObjects',
-  //   ]),
-  //   storedObjects() {
-  //     return JSON.parse(JSON.stringify(this.testObjects));
-  //   },
-  // },
+  watch: {
+    dataGridView: {
+      handler() {
+        console.log('dataGridView', this.dataGridView);
+      },
+      deep: true
+    },
+  },
   methods: {
-    switchToNetView(data) {
-      this.dataGridView = 'net';
-    },
-    switchToListView() {
-      this.dataGridView = 'list';
-    },
     sortArea() {
       if (this.sortWayArea === 'less') {
         this.dataGridItems.sort(
@@ -183,12 +166,6 @@ export default {
         this.sortWayPrice = 'less';
       }
     },
-  },
-  created() {
-    // console.log('created this.dataGridItems ::', this.dataGridItems);
-  },
-  mounted() {
-    // console.log('this.dataGridItems ::', this.dataGridItems);
   },
 };
 </script>

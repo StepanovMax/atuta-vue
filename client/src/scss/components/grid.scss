@@ -2,11 +2,43 @@
   &__buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-bottom: 10px;
 
+    @include media(desktop) {
+      justify-content: space-between;
+    }
+
+    @include media(tablet) {
+      justify-content: flex-end;
+    }
+
+    @include media(mobile) {
+      justify-content: flex-end;
+    }
+
     &-button {
+      margin: 0;
+      padding: 5px;
       cursor: pointer;
+
+      &-view {
+        width: 24px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: $COLOR-BLUE-MAIN;
+
+        .icon {
+          width: 100%;
+          height: auto;
+          fill: #fff;
+
+          &__path {
+            fill: #fff;
+          }
+        }
+      }
     }
 
     &-view {
@@ -36,17 +68,7 @@
         justify-content: flex-end;
 
         &-item {
-          @include media(desktop) {
-            margin-left: 5px;
-          }
-  
-          @include media(tablet) {
-            margin-right: 5px;
-          }
-      
-          @include media(mobile) {
-            margin-right: 5px;
-          }
+          margin-left: 5px;
         }
       }
     }

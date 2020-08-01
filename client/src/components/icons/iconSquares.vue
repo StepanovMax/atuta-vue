@@ -1,5 +1,5 @@
 <template>
-  <svg 
+  <svg
     width="20"
     height="20"
     viewBox="0 0 20 20"
@@ -7,20 +7,27 @@
     class="icon"
   >
     <rect
-      y="16"
-      width="20"
-      height="4"
+      x="12"
+      y="12"
+      width="8"
+      height="8"
       class="icon__path"
     />
     <rect
-      y="8"
-      width="20"
-      height="4"
+      y="12"
+      width="8"
+      height="8"
       class="icon__path"
     />
     <rect
-      width="20"
-      height="4"
+      x="12"
+      width="8"
+      height="8"
+      class="icon__path"
+    />
+    <rect
+      width="8"
+      height="8"
       class="icon__path"
     />
   </svg>
@@ -28,6 +35,6 @@
 
 <script>
 export default {
-  name: 'iconHamburger'
+  name: 'iconSquares'
 };
 </script>
