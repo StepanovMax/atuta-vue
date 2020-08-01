@@ -161,7 +161,6 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        console.log('watch filterSelected', this.filterSelected);
         this.updateFilterState(this.filterSelected);
       },
       deep: true
