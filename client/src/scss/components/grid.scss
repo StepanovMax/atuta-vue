@@ -1,0 +1,83 @@
+.grid {
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &-button {
+      cursor: pointer;
+    }
+
+    &-view {
+      &-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        &-item {
+          margin-right: 5px;
+        }
+      }
+  
+      @include media(tablet) {
+        display: none;
+      }
+  
+      @include media(mobile) {
+        display: none;
+      }
+    }
+
+    &-sort {
+      &-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        &-item {
+          @include media(desktop) {
+            margin-left: 5px;
+          }
+  
+          @include media(tablet) {
+            margin-right: 5px;
+          }
+      
+          @include media(mobile) {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 10px 10px;
+
+    &-item {
+      &_column-3 {
+        width: $WIDTH-33;
+      }
+    }
+
+    &_net {
+      @include media(desktop) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+  
+      @include media(tablet) {
+        grid-template-columns: 1fr;
+      }
+  
+      @include media(mobile) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &_list {
+      grid-template-columns: 100%;
+    }
+  }
+}

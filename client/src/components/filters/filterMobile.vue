@@ -182,7 +182,6 @@ export default {
   watch: {
     filterSelected: {
       handler() {
-        console.log('watch mobile filterSelected', this.filterSelected);
         this.updateFilterState(this.filterSelected);
       },
       deep: true
