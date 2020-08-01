@@ -6,6 +6,14 @@
     &_checkbox {
       fill: $COLOR-BLUE-MAIN;
     }
+
+    &-arrow {
+      fill: $COLOR-WHITE;
+
+      &_active{
+        fill: $COLOR-BLUE-SUPER-LIGHT;
+      }
+    }
   }
 
   &_active &__path {

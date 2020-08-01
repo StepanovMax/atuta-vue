@@ -6,26 +6,11 @@
         :value.sync="dataGridView"
       />
 
-      <div class="grid__buttons-sort">
-        <ul class="grid__buttons-sort-list">
-          <li class="grid__buttons-sort-list-item">
-            <button
-              class="grid__buttons-button"
-              @click="sortPrice()"
-            >
-              Цена
-            </button>
-          </li>
-          <li class="grid__buttons-sort-list-item">
-            <button
-              class="grid__buttons-button"
-              @click="sortArea()"
-            >
-              Площадь
-            </button>
-          </li>
-        </ul>
-      </div>
+      <sortObjects
+        :propObjectsForSorting="propGridItems"
+        :value.sync="dataSortedObjects"
+      />
+
     </div>
     <ul
       class="grid__list"
@@ -72,19 +57,20 @@
 
 <script>
 import { mapState } from 'vuex';
+import sortObjects from './common/sortObjects.vue';
 import switcherGrid from './common/switcherGrid.vue';
 
 export default {
   name: 'grid',
   components: {
+    sortObjects,
     switcherGrid,
   },
   data() {
     return {
       dataGridView: this.propGridView,
       dataGridItems: this.propGridItems,
-      sortWayArea: 'less',
-      sortWayPrice: 'less',
+      dataSortedObjects: null,
     }
   },
   props: {
@@ -100,71 +86,11 @@ export default {
     }
   },
   watch: {
-    dataGridView: {
+    dataSortedObjects: {
       handler() {
-        console.log('dataGridView', this.dataGridView);
+        this.dataGridItems = this.dataSortedObjects;
       },
       deep: true
-    },
-  },
-  methods: {
-    sortArea() {
-      if (this.sortWayArea === 'less') {
-        this.dataGridItems.sort(
-          (a, b) => {
-            if (parseInt(a.area) < parseInt(b.area)) {
-              return -1;
-            }
-            if (parseInt(a.area) > parseInt(b.area)) {
-              return 1;
-            }
-            return 0
-          }
-        );
-        this.sortWayArea = 'more';
-      } else if (this.sortWayArea === 'more') {
-        this.dataGridItems.sort(
-          (a, b) => {
-            if (parseInt(a.area) < parseInt(b.area)) {
-              return 1;
-            }
-            if (parseInt(a.area) > parseInt(b.area)) {
-              return -1;
-            }
-            return 0
-          }
-        );
-        this.sortWayArea = 'less';
-      }
-    },
-    sortPrice() {
-      if (this.sortWayPrice === 'less') {
-        this.dataGridItems.sort(
-          (a, b) => {
-            if (parseInt(a.price) < parseInt(b.price)) {
-              return -1;
-            }
-            if (parseInt(a.price) > parseInt(b.price)) {
-              return 1;
-            }
-            return 0
-          }
-        );
-        this.sortWayPrice = 'more';
-      } else if (this.sortWayPrice === 'more') {
-        this.dataGridItems.sort(
-          (a, b) => {
-            if (parseInt(a.price) < parseInt(b.price)) {
-              return 1;
-            }
-            if (parseInt(a.price) > parseInt(b.price)) {
-              return -1;
-            }
-            return 0
-          }
-        );
-        this.sortWayPrice = 'less';
-      }
     },
   },
 };
