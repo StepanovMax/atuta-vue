@@ -129,10 +129,10 @@ export default {
       if (this.sortWayArea === 'less') {
         this.dataGridItems.sort(
           (a, b) => {
-            if (a.area < b.area) {
+            if (parseInt(a.area) < parseInt(b.area)) {
               return -1;
             }
-            if (a.area > b.area) {
+            if (parseInt(a.area) > parseInt(b.area)) {
               return 1;
             }
             return 0
@@ -142,10 +142,10 @@ export default {
       } else if (this.sortWayArea === 'more') {
         this.dataGridItems.sort(
           (a, b) => {
-            if (a.price < b.price) {
+            if (parseInt(a.area) < parseInt(b.area)) {
               return 1;
             }
-            if (a.price > b.price) {
+            if (parseInt(a.area) > parseInt(b.area)) {
               return -1;
             }
             return 0
