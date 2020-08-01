@@ -1,0 +1,39 @@
+.sort-objects {
+  display: flex;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: $COLOR-GREY-DISABLED;
+
+    &_active {
+      background-color: $COLOR-BLUE-MAIN;
+    }
+
+    &_area {
+      border-radius: 0 4px 4px 0;
+    }
+
+    &_price {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &-text {
+      margin-right: 6px;
+      font-size: 12px;
+      color: $COLOR-TEXT;
+      letter-spacing: 0;
+      padding: 1px 0;
+
+      &_active {
+        color: $COLOR-WHITE;
+      }
+    }
+
+    &-icon {
+      width: 7px;
+      height: auto;
+    }
+  }
+}
