@@ -5,6 +5,7 @@
   transition: background-color 0.3s ease;
   color: $COLOR-WHITE;
   background-color: transparent;
+  @extend .font-face;
 
   &_blue {
     color: $COLOR-WHITE;
