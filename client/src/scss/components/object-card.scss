@@ -6,6 +6,10 @@
   color: $COLOR-TEXT;
   height: 100%;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__wrap {
     display: flex;
     flex-direction: column;

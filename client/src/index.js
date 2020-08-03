@@ -9,6 +9,7 @@ import favoritesPage from './components/favoritesPage.vue'
 import messagesPage from './components/messagesPage.vue'
 import profilePage from './components/profilePage.vue'
 import addObject from './components/addObject.vue'
+import objectPage from './components/objectPage.vue'
 import formatNumbers from './plugins/formatNumbers.js'
 
 import './scss/index.scss'
@@ -52,7 +53,12 @@ const router = new Router({
       path: '/add-object',
       name:'addObject',
       component: addObject
-    }
+    },
+    {
+      path: '/object-page',
+      name:'objectPage',
+      component: objectPage
+    },
   ]
 });
 
