@@ -1,0 +1,9 @@
+.object-page {
+  margin: auto;
+  max-width: 1280px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 15%;
+  grid-template-areas: "article ads";
+  gap: 0 30px;
+}

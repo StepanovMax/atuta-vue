@@ -1,5 +1,8 @@
 <template>
-  <div id="home">
+  <div
+    id="home"
+    class="main"
+  >
     <div class="filter">
       <filterDesktop />
     </div>

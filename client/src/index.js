@@ -9,6 +9,7 @@ import favoritesPage from './components/favoritesPage.vue'
 import messagesPage from './components/messagesPage.vue'
 import profilePage from './components/profilePage.vue'
 import addObject from './components/addObject.vue'
+import objectPage from './components/objectPage.vue'
 import formatNumbers from './plugins/formatNumbers.js'
 
 import './scss/index.scss'
@@ -52,7 +53,12 @@ const router = new Router({
       path: '/add-object',
       name:'addObject',
       component: addObject
-    }
+    },
+    {
+      path: '/object-page',
+      name:'objectPage',
+      component: objectPage
+    },
   ]
 });
 
@@ -653,7 +659,7 @@ const store = new Vuex.Store({
         agency: '"Тандем" Реэлторская компания',
         id: 7125647174,
         urlPreview: 'objects/8993850241.jpg',
-        phoneNumber: '+79612701887',
+        phoneNumber: '79612701887',
       },
       {
         price: '2700000',
@@ -669,7 +675,7 @@ const store = new Vuex.Store({
         agency: '«Агентство недвижимости №1»',
         id: 7125647175,
         urlPreview: 'objects/8993850262.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '2090000',
@@ -685,7 +691,7 @@ const store = new Vuex.Store({
         agency: 'Гранд Плюс',
         id: 7125647176,
         urlPreview: 'objects/8993850286.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '950000',
@@ -701,7 +707,7 @@ const store = new Vuex.Store({
         agency: 'АН "ВДОМЕ"',
         id: 7125647177,
         urlPreview: 'objects/8993850262.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '1100000',
@@ -717,7 +723,7 @@ const store = new Vuex.Store({
         agency: 'АН "ВДОМЕ"',
         id: 7125647178,
         urlPreview: 'objects/8993850286.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '3100000',
@@ -733,7 +739,7 @@ const store = new Vuex.Store({
         agency: 'Частное лицо',
         id: 7125647179,
         urlPreview: 'objects/8993850241.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '2700000',
@@ -749,7 +755,7 @@ const store = new Vuex.Store({
         agency: 'Частное лицо',
         id: 7125647180,
         urlPreview: 'objects/8993850241.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '1500000',
@@ -765,7 +771,7 @@ const store = new Vuex.Store({
         agency: 'Регион Бизнес Недвижимость',
         id: 7125647181,
         urlPreview: 'objects/8993850241.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '2720000',
@@ -781,7 +787,7 @@ const store = new Vuex.Store({
         agency: '«Альфа-Дон центр недвижимости»',
         id: 7125647182,
         urlPreview: 'objects/8993850286.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '1420000',
@@ -797,7 +803,7 @@ const store = new Vuex.Store({
         agency: '«Перспектива24» - Федеральный оператор недвижимости',
         id: 7125647183,
         urlPreview: 'objects/8993850262.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '1941325',
@@ -813,7 +819,7 @@ const store = new Vuex.Store({
         agency: 'Агентство недвижимости "№1"',
         id: 7125647184,
         urlPreview: 'objects/8993850286.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
       {
         price: '1499000',
@@ -829,7 +835,7 @@ const store = new Vuex.Store({
         agency: 'Компания «РиКом недвижимость» 2008-2020',
         id: 7125647185,
         urlPreview: 'objects/8993850286.jpg',
-        phoneNumber: '+79612699310',
+        phoneNumber: '79612699310',
       },
     ],
   },

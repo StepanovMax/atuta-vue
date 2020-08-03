@@ -2,109 +2,115 @@
   <div
     class="object-card"
   >
-    <div
-      class="object-card__wrap"
-      :class="{'object-card__wrap_list': propObjectView === 'list'}"
+    <router-link
+      class="object-card__link"
+      :to="{ name: 'objectPage' }"
     >
       <div
-        class="object-card__img-wrap"
-        :class="{'object-card__img-wrap_list': propObjectView === 'list'}"
-      >
-        <img
-          class="img object-card__img"
-          :src="'src/images/' + dataObjectData.urlPreview"
-          alt=""
-        >
-      </div>
-      <div
-        class="object-card__info-wrap"
-        :class="{'object-card__info-wrap_list': propObjectView === 'list'}"
+        class="object-card__wrap"
+        :class="{'object-card__wrap_list-view': propObjectView === 'list'}"
       >
         <div
-          class="object-card__middle"
-          :class="{'object-card__middle_list': propObjectView === 'list'}"
+          class="object-card__wrap-img"
+          :class="{'object-card__wrap-img_list-view': propObjectView === 'list'}"
         >
-          <p class="object-card__price">
-            <span class="object-card__price_number">
-              {{ formatNumbers(dataObjectData.price) }} ₽
-            </span>
-            <span
-              v-if="filterDataSelected.deal && (filterDataSelected.deal.slug === 'rent')"
-              class="object-card__price_text"
-            >
-              в месяц
-            </span>
-          </p>
-          <button class="btn object-card__btn object-card__btn_favorites">
-            <iconHeartStroke />
-          </button>
+          <img
+            class="img object-card__img"
+            :src="'src/images/' + dataObjectData.urlPreview"
+            alt=""
+          >
         </div>
         <div
-          class="object-card__bottom"
-          :class="{'object-card__bottom_list': propObjectView === 'list'}"
+          class="object-card__wrap-info"
+          :class="{'object-card__wrap-info_list-view': propObjectView === 'list'}"
         >
           <div
-            class="object-card__item object-card__info"
-            :class="{'object-card__info_list': propObjectView === 'list'}"
+            class="object-card__wrap-info_top"
+            :class="{'object-card__wrap-info_top_list-view': propObjectView === 'list'}"
           >
-            <div
-              class="object-card__info-item object-card__info-item_room"
-              :class="{'object-card__info-item_list': propObjectView === 'list'}"
-            >
-              {{ dataObjectData.rooms }} к.кв
-            </div>
-            <div
-              class="object-card__info-item object-card__info-item_area"
-              :class="{'object-card__info-item_list': propObjectView === 'list'}"
-            >
-              {{ dataObjectData.area }} м²
-            </div>
-            <div
-              class="object-card__info-item object-card__info-item_floor"
-              :class="{'object-card__info-item_list': propObjectView === 'list'}"
-            >
-              {{ dataObjectData.floorCurrent }}/{{ dataObjectData.floorFull }} этаж
-            </div>
+            <p class="object-card__price">
+              <span class="object-card__price_number">
+                {{ formatNumbers(dataObjectData.price) }} ₽
+              </span>
+              <span
+                v-if="filterDataSelected.deal && (filterDataSelected.deal.slug === 'rent')"
+                class="object-card__price_text"
+              >
+                в месяц
+              </span>
+            </p>
+            <button class="btn object-card__btn object-card__btn_favorites">
+              <iconHeartStroke />
+            </button>
           </div>
-          <p
-            class="object-card__item object-card__address"
-            :class="{'object-card__address_list': propObjectView === 'list'}"
+          <div
+            class="object-card__wrap-info_bottom"
+            :class="{'object-card__wrap-info_bottom_list-view': propObjectView === 'list'}"
           >
-            {{ dataObjectData.address }}
-          </p>
-          <p class="object-card__item object-card__district">
-            р-н {{ dataObjectData.district }}
-          </p>
-          <p class="object-card__item object-card__date">
-            <span>
-              № {{ dataObjectData.id }}
-            </span>
-            <span>
-              {{ timeConverter(dataObjectData.date) }}
-            </span>
-          </p>
-          <p
-            class="object-card__agency"
-            :class="{'object-card__agency_list': propObjectView === 'list'}"
-          >
-            {{ dataObjectData.agency }}
-          </p>
+            <div
+              class="object-card__wrap-info-details"
+              :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
+            >
+              <div
+                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
+                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+              >
+                {{ dataObjectData.rooms }} к.кв
+              </div>
+              <div
+                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
+                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+              >
+                {{ dataObjectData.area }} м²
+              </div>
+              <div
+                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_floor"
+                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+              >
+                {{ dataObjectData.floorCurrent }}/{{ dataObjectData.floorFull }} этаж
+              </div>
+            </div>
+            <p
+              class="object-card__wrap-info__item object-card__address"
+              :class="{'object-card__address_list-view': propObjectView === 'list'}"
+            >
+              {{ dataObjectData.address }}
+            </p>
+            <p class="object-card__wrap-info__item object-card__district">
+              р-н {{ dataObjectData.district }}
+            </p>
+            <p class="object-card__wrap-info__item object-card__date">
+              <span>
+                № {{ dataObjectData.id }}
+              </span>
+              <span>
+                {{ timeConverter(dataObjectData.date) }}
+              </span>
+            </p>
+            <p
+              class="object-card__agency"
+              :class="{'object-card__agency_list-view': propObjectView === 'list'}"
+            >
+              {{ dataObjectData.agency }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div
-        class="object-card__right"
-        :class="{'object-card__right_list': propObjectView === 'list'}"
-      >
         <div
-          class=""
+          class="object-card__action"
+          :class="{'object-card__action_list-view': propObjectView === 'list'}"
         >
-          <showPhoneNumber
-            v-if="dataObjectData.phoneNumber"
-            :propPhoneNumber="dataObjectData.phoneNumber"
-          />
+          <div
+            class=""
+          >
+            <showPhoneNumber
+              propClass="object-card__btn_show-phone"
+              v-if="dataObjectData.phoneNumber"
+              :propPhoneNumber="dataObjectData.phoneNumber"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
