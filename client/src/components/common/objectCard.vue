@@ -45,7 +45,7 @@
         >
           <div
             class="object-card__wrap-info-details"
-            :class="{'object-card__wrap-info-details_list': propObjectView === 'list'}"
+            :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
           >
             <div
               class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"

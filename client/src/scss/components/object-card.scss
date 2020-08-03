@@ -72,8 +72,8 @@
           &_area {
             border-right: 1px solid $COLOR-TITLE;
           }
-    
-          &_list {
+
+          &_list-view {
             width: auto;
             text-align: left;
             padding: 0 15px;
@@ -82,6 +82,10 @@
               padding-left: 0;
             }
           }
+        }
+
+        &_list-view {
+          justify-content: flex-start;
         }
       }
 
@@ -112,6 +116,7 @@
 
       &_list-view {
         width: auto;
+        max-width: 340px;
         justify-content: flex-start;
       }
     }
