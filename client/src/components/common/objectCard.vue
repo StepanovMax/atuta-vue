@@ -8,7 +8,7 @@
     >
       <div
         class="object-card__img-wrap"
-        :class="{'object-card__img_list': propObjectView === 'list'}"
+        :class="{'object-card__img-wrap_list': propObjectView === 'list'}"
       >
         <img
           class="img object-card__img"
@@ -16,8 +16,14 @@
           alt=""
         >
       </div>
-      <div class="object-card__info-wrap">
-        <div class="object-card__middle">
+      <div
+        class="object-card__info-wrap"
+        :class="{'object-card__info-wrap_list': propObjectView === 'list'}"
+      >
+        <div
+          class="object-card__middle"
+          :class="{'object-card__middle_list': propObjectView === 'list'}"
+        >
           <p class="object-card__price">
             <span class="object-card__price_number">
               {{ formatNumbers(dataObjectData.price) }} ₽
@@ -33,19 +39,37 @@
             <iconHeartStroke />
           </button>
         </div>
-        <div class="object-card__bottom">
-          <div class="object-card__item object-card__info">
-            <div class="object-card__info-item object-card__info-item_room">
-              {{ dataObjectData.rooms }} ком.
+        <div
+          class="object-card__bottom"
+          :class="{'object-card__bottom_list': propObjectView === 'list'}"
+        >
+          <div
+            class="object-card__item object-card__info"
+            :class="{'object-card__info_list': propObjectView === 'list'}"
+          >
+            <div
+              class="object-card__info-item object-card__info-item_room"
+              :class="{'object-card__info-item_list': propObjectView === 'list'}"
+            >
+              {{ dataObjectData.rooms }} к.кв
             </div>
-            <div class="object-card__info-item object-card__info-item_area">
+            <div
+              class="object-card__info-item object-card__info-item_area"
+              :class="{'object-card__info-item_list': propObjectView === 'list'}"
+            >
               {{ dataObjectData.area }} м²
             </div>
-            <div class="object-card__info-item object-card__info-item_floor">
+            <div
+              class="object-card__info-item object-card__info-item_floor"
+              :class="{'object-card__info-item_list': propObjectView === 'list'}"
+            >
               {{ dataObjectData.floorCurrent }}/{{ dataObjectData.floorFull }} этаж
             </div>
           </div>
-          <p class="object-card__item object-card__address">
+          <p
+            class="object-card__item object-card__address"
+            :class="{'object-card__address_list': propObjectView === 'list'}"
+          >
             {{ dataObjectData.address }}
           </p>
           <p class="object-card__item object-card__district">
@@ -59,9 +83,25 @@
               {{ timeConverter(dataObjectData.date) }}
             </span>
           </p>
-          <p class="object-card__agency">
+          <p
+            class="object-card__agency"
+            :class="{'object-card__agency_list': propObjectView === 'list'}"
+          >
             {{ dataObjectData.agency }}
           </p>
+        </div>
+      </div>
+      <div
+        class="object-card__right"
+        :class="{'object-card__right_list': propObjectView === 'list'}"
+      >
+        <div
+          class=""
+        >
+          <showPhoneNumber
+            v-if="dataObjectData.phoneNumber"
+            :propPhoneNumber="dataObjectData.phoneNumber"
+          />
         </div>
       </div>
     </div>
@@ -71,16 +111,19 @@
 <script>
 import { mapState } from 'vuex';
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
+import showPhoneNumber from './showPhoneNumber.vue';
 
 export default {
   name: 'grid',
   data() {
     return {
       dataObjectData: this.propObjectData,
+      dataIsShowPhoneNumber: false,
     }
   },
   components: {
     iconHeartStroke,
+    showPhoneNumber,
   },
   props: {
     propObjectData: {

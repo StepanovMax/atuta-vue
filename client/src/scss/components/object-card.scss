@@ -1,7 +1,7 @@
 .object-card {
   border-width: 1px;
   border-style: solid;
-  border-color: $COLOR-GREY-ACTIVE;
+  border-color: $COLOR-GREY-BORDER;
   border-radius: 10px;
   color: $COLOR-TEXT;
   height: 100%;
@@ -15,6 +15,7 @@
 
     &_list {
       flex-direction: row;
+      display: inline-flex;
     }
   }
 
@@ -36,11 +37,12 @@
       @include media(mobile) {
         height: 240px;
       }
-    }
 
-    &_list {
-      width: 220px;
-      margin-right: 20px;
+      &_list {
+        width: 220px;
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -56,6 +58,10 @@
     align-self: center;
     width: 100%;
 
+    &_list {
+      justify-content: flex-start;
+    }
+
     &-item {
       width: $WIDTH-33;
       font-size: 12px;
@@ -69,14 +75,39 @@
       &_area {
         border-right: 1px solid $COLOR-TITLE;
       }
+
+      &_list {
+        width: auto;
+        text-align: left;
+        padding: 0 15px;
+
+        &:nth-child(1) {
+          padding-left: 0;
+        }
+      }
+    }
+
+    &-wrap {
+      &_list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-right: 15px;
+      }
     }
   }
 
   &__bottom {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &_list {
+      height: auto;
+    }
   }
 
   &__price {
@@ -113,11 +144,16 @@
   }
 
   &__middle {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
     margin-bottom: 12px;
+
+    &_list {
+      margin-bottom: 6px;
+    }
   }
 
   &__address {
@@ -125,6 +161,10 @@
     height: 26px;
     overflow: hidden;
     margin-bottom: 8px;
+
+    &_list {
+      height: auto;
+    }
   }
 
   &__district {
@@ -164,11 +204,23 @@
     font-weight: 400;
     font-size: 12px;
     background-color: $COLOR-GREY-LIGHT;
+
+    &_list {
+      height: 22px;
+    }
   }
 
   &__text {
     &-bold {
       font-weight: 700;
+    }
+  }
+
+  &__right {
+    display: none;
+
+    &_list {
+      display: block;
     }
   }
 }
