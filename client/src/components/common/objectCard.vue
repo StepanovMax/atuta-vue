@@ -12,7 +12,15 @@
       </div>
       <div class="object-card__middle">
         <p class="object-card__price">
-          {{ formatNumbers(dataObjectData.price) }} ₽
+          <span class="object-card__price_number">
+            {{ formatNumbers(dataObjectData.price) }} ₽
+          </span>
+          <span
+            v-if="filterDataSelected.deal && (filterDataSelected.deal.slug === 'rent')"
+            class="object-card__price_text"
+          >
+            в месяц
+          </span>
         </p>
       </div>
       <div class="object-card__bottom">
@@ -76,6 +84,11 @@ export default {
       const time = date + ' ' + month + ' ' + year;
       return time;
     },
+  },
+  computed: {
+    ...mapState([
+      'filterDataSelected',
+    ]),
   },
 };
 </script>
