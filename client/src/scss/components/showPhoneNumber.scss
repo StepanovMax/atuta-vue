@@ -1,9 +1,24 @@
 .show-phone-number {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
   &__btn {
-    background-color: #ccc;
+    background-color: $COLOR-BLUE-LIGHT;
+
+    &:hover {
+      background-color: $COLOR-BLUE-MAIN;
+    }
   }
 
   &__phone-number {
+    font-size: 14px;
 
+    &-link {
+      color: $COLOR-BLUE-LIGHT;
+      text-decoration: none;
+    }
   }
 }

@@ -5,15 +5,21 @@
     <button
       v-if="!isShowPhoneNumber"
       class="btn show-phone-number__btn"
+      :class="propClass"
       @click="togglePhoneNumber()"
     >
       Показать телефон
     </button>
     <p
       v-if="isShowPhoneNumber"
-      class="show-phone-number__number"
+      class="show-phone-number__phone-number"
     >
-      {{ propPhoneNumber }}
+      <a
+        :href="'tel:' + propPhoneNumber"
+        class="show-phone-number__phone-number-link"
+      >
+        {{ formatMobilePhone(propPhoneNumber) }}
+      </a>
     </p>
   </div>
 </template>
@@ -23,6 +29,11 @@ export default {
   name: 'showPhoneNumber',
   props: {
     propPhoneNumber: {
+      type: String,
+      default: '',
+      required: true
+    },
+    propClass: {
       type: String,
       default: '',
       required: true
