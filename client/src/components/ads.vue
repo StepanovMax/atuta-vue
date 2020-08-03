@@ -2,12 +2,12 @@
   <div class="ads">
     <a
       class="link ads__link"
-      href="https://tinkoff.ru"
+      href="https://www.open.ru/"
       title="Реклама"
       target="_blank"
     >
       <img
-        src="src/images/ads/sale.jpg"
+        src="src/images/ads/bank.jpg"
         alt="Реклама"
         class="image ads__img"
       >
