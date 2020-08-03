@@ -1,0 +1,24 @@
+.single {
+  // &-wrap {
+  //   @include padding;
+  //   flex: 1 0 auto;
+  // }
+
+  @extend .container-single;
+
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  flex: 1 0 auto;
+
+  @include media(desktop) {
+    padding-top: 50px;
+  }
+
+  @include media(mobile) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

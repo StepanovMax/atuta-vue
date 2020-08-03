@@ -6,7 +6,7 @@
       v-if="!isShowPhoneNumber"
       class="btn show-phone-number__btn"
       :class="propClass"
-      @click="togglePhoneNumber()"
+      @click.stop.prevent="togglePhoneNumber()"
     >
       Показать телефон
     </button>

@@ -1,5 +1,8 @@
 <template>
-  <div id="favorites">
+  <div
+    id="favorites"
+    class="single"
+  >
     <div class="filter">
       Фильтр будет жить здесь!
     </div>
@@ -23,28 +26,17 @@
         Разнообразный и богатый опыт рамки и место обучения кадров позволяет выполнять важные задания по разработке новых предложений. Разнообразный и богатый опыт новая модель организационной деятельности позволяет выполнять важные задания по разработке систем массового участия.
       </p>
     </div>
-    <div class="ads">
-      <a
-        class=""
-        href="https://tinkoff.ru"
-        title="Реклама Тинькофф"
-        target="_blank"
-      >
-        <img
-          src="src/images/ads/tinkoff.jpeg"
-          alt="Реклама Тинькофф"
-          class="image"
-        >
-      </a>
-    </div>
+    <ads />
   </div>
 </template>
 
 <script>
+import ads from './ads.vue';
+
 export default {
   name: 'favoritesPage',
   components: {
-    // Greeting
+    ads
   },
 };
 </script>

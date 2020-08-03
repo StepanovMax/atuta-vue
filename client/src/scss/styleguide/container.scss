@@ -29,4 +29,37 @@
       "ads";
     gap: 1px;
   }
+
+  &-single {
+    margin: auto;
+    max-width: 1280px;
+  
+    display: grid;
+    grid-template-rows: 1fr;
+  
+    @include media(desktop) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 15%;
+      grid-template-areas:
+      "article"
+      "ads";
+      gap: 0 30px;
+    }
+  
+    @include media(tablet) {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 15%;
+      grid-template-areas:
+      "article";
+      gap: 0 20px;
+    }
+  
+    @include media(mobile) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "article"
+        "ads";
+      gap: 1px;
+    }
+  }
 }
