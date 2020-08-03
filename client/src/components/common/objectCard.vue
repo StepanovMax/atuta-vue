@@ -17,20 +17,26 @@
       </div>
       <div class="object-card__bottom">
         <p class="object-card__item object-card__address">
-          {{ dataObjectData.address }}, р-н {{ dataObjectData.district }}
+          {{ dataObjectData.address }}
         </p>
-        <p class="object-card__item object-card__area">
-          <strong class="object-card__text-bold">
-            Площадь:
-          </strong>
-          <span>
+        <p class="object-card__item object-card__district">
+          р-н {{ dataObjectData.district }}
+        </p>
+        <div class="object-card__item object-card__info">
+          <div class="object-card__info-item object-card__info-item_room">
+            {{ dataObjectData.rooms }} ком.
+          </div>
+          <div class="object-card__info-item object-card__info-item_area">
             {{ dataObjectData.area }} м²
-          </span>
-        </p>
+          </div>
+          <div class="object-card__info-item object-card__info-item_floor">
+            {{ dataObjectData.floorCurrent }}/{{ dataObjectData.floorFull }} этаж
+          </div>
+        </div>
         <p class="object-card__item object-card__date">
-          <strong class="object-card__text-bold">
-            Дата:
-          </strong>
+          <span>
+            № {{ dataObjectData.id }}
+          </span>
           <span>
             {{ timeConverter(dataObjectData.date) }}
           </span>

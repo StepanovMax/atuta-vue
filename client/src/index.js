@@ -798,7 +798,7 @@ const store = new Vuex.Store({
         floorCurrent: 3,
         floorFull: 5,
         rooms: 2,
-        district: 'Северный',
+        district: 'Пригород',
         date: '1551475607',
         agency: 'Агентство недвижимости "№1"',
         id: 7125647184,

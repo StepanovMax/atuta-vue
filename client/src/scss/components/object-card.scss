@@ -6,6 +6,33 @@
   color: $COLOR-TEXT;
   height: 100%;
 
+  &__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    width: 100%;
+
+    &-item {
+      width: $WIDTH-33;
+      font-size: 12px;
+      color: $COLOR-TITLE;
+      text-align: center;
+
+      &_room {
+        border-right: 1px solid $COLOR-TITLE;
+      }
+
+      &_area {
+        border-right: 1px solid $COLOR-TITLE;
+      }
+
+      &_floor {
+
+      }
+    }
+  }
+
   &__top {
     margin-bottom: 10px;
   }
@@ -31,9 +58,13 @@
   &__wrap {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 8px;
     height: 100%;
     box-sizing: border-box;
+  }
+
+  &__item {
+    margin-bottom: 8px;
   }
 
   &__price {
@@ -45,6 +76,14 @@
 
   &__address {
     color: $COLOR-TITLE;
+    height: 26px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  &__district {
+    font-size: 12px;
+    color: $COLOR-TITLE;
   }
 
   &__agency,
@@ -54,25 +93,31 @@
     font-size: 13px;
   }
 
+
+  &__date {
+    color: $COLOR-TITLE;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__agency {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    height: 40px;
-    margin-top: 8px;
-    padding: 4px 10px;
+
+    height: 30px;
+    margin-top: 0px;
+    padding: 2px 10px;
     text-align: center;
     color: $COLOR-TITLE;
     border-radius: 10px;
     font-weight: 400;
     font-size: 12px;
     background-color: $COLOR-GREY-LIGHT;
-  }
-
-  &__item {
-    margin-bottom: 4px;
   }
 
   &__text {
