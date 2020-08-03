@@ -37,6 +37,7 @@
         :key="'key-' + item.id + '-' + index"
       >
         <objectCard
+          :propObjectView="dataGridView"
           :key="'key-' + item.id + '-' + index"
           :propObjectData="item"
         />

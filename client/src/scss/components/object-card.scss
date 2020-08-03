@@ -1,12 +1,55 @@
 .object-card {
   border-width: 1px;
   border-style: solid;
-  border-color: $COLOR-GREY-LIGHT;
+  border-color: $COLOR-GREY-ACTIVE;
   border-radius: 10px;
   color: $COLOR-TEXT;
   height: 100%;
 
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+
+    &_list {
+      flex-direction: row;
+    }
+  }
+
+  &__img {
+    &-wrap {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 12px;
+
+      @include media(desktop) {
+        height: 150px;
+      }
+    
+      @include media(tablet) {
+        height: 150px;
+      }
+    
+      @include media(mobile) {
+        height: 240px;
+      }
+    }
+
+    &_list {
+      width: 220px;
+      margin-right: 20px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 8px;
+  }
+
   &__info {
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,34 +69,6 @@
       &_area {
         border-right: 1px solid $COLOR-TITLE;
       }
-
-      &_floor {
-
-      }
-    }
-  }
-
-  &__top {
-    margin-bottom: 12px;
-  }
-
-  &__img {
-    &-wrap {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 10px;
-
-      @include media(desktop) {
-        height: 150px;
-      }
-    
-      @include media(tablet) {
-        height: 150px;
-      }
-    
-      @include media(mobile) {
-        height: 240px;
-      }
     }
   }
 
@@ -64,21 +79,11 @@
     justify-content: space-between;
   }
 
-  &__wrap {
+  &__price {
+    color: $COLOR-TITLE;
     display: flex;
     flex-direction: column;
-    padding: 8px;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  &__item {
-    margin-bottom: 8px;
-  }
-
-  &__price {
-    margin-bottom: 8px;
-    color: $COLOR-TITLE;
+    justify-content: center;
 
     &_number {
       font-size: 16px;
@@ -91,8 +96,32 @@
     }
   }
 
+  &__btn {
+    &_favorites {
+      width: 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &:hover {
+        .icon_stroke {
+          fill: $COLOR-TEXT-DISABLED;
+        }
+      }
+    }
+  }
+
+  &__middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 12px;
+  }
+
   &__address {
-    color: $COLOR-TITLE;
+    color: $COLOR-BASE;
     height: 26px;
     overflow: hidden;
     margin-bottom: 8px;
@@ -100,7 +129,7 @@
 
   &__district {
     font-size: 12px;
-    color: $COLOR-TITLE;
+    color: $COLOR-BASE;
   }
 
   &__agency,
@@ -112,12 +141,12 @@
 
 
   &__date {
-    color: $COLOR-TITLE;
     text-align: right;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    color: $COLOR-BASE;
   }
 
   &__agency {
