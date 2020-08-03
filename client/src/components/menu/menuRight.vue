@@ -1,5 +1,5 @@
 <template>
-  <ul class="menu">
+  <ul class="menu menu_right">
     <li class="menu__item">
       <router-link
         v-slot="{ href, route, navigate, isActive }"
@@ -17,9 +17,6 @@
     </li>
     <li class="menu__item">
       Мои объекты
-    </li>
-    <li class="menu__item">
-      Вход / регистрация
     </li>
   </ul>
 </template>
