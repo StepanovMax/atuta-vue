@@ -154,12 +154,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      &:hover {
-        .icon_stroke {
-          fill: $COLOR-TEXT-DISABLED;
-        }
-      }
+      transition: all 0.5s ease;
     }
 
     &_show-phone {
