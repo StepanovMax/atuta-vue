@@ -160,6 +160,17 @@
     &_show-phone {
       letter-spacing: 0;
       padding: 5px 10px;
+      margin-bottom: 10px;
+      background-color: $COLOR-TEXT-DISABLED;
+
+      &:hover {
+        background-color: $COLOR-BLUE-LIGHT;
+      }
+    }
+
+    &_write-message {
+      letter-spacing: 0;
+      padding: 5px 10px;
       background-color: $COLOR-TEXT-DISABLED;
 
       &:hover {
@@ -233,8 +244,10 @@
 
     &_list-view {
       display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 10px 0 0;
       margin-left: 20px;
       margin-right: 10px;
       flex-grow: 1;

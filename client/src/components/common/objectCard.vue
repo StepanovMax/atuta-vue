@@ -108,6 +108,12 @@
               :propPhoneNumber="dataObjectData.phoneNumber"
             />
           </div>
+          <button
+            class="btn object-card__btn_write-message"
+            @click.stop.prevent
+          >
+            Написать сообщение
+          </button>
         </div>
       </div>
     </router-link>
