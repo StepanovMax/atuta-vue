@@ -100,20 +100,25 @@
           :class="{'object-card__action_list-view': propObjectView === 'list'}"
         >
           <div
-            class=""
+            class="object-card__action-top"
           >
             <showPhoneNumber
               propClass="object-card__btn_show-phone"
               v-if="dataObjectData.phoneNumber"
               :propPhoneNumber="dataObjectData.phoneNumber"
             />
+            <button
+              class="btn object-card__btn_write-message"
+              @click.stop.prevent
+            >
+              Написать сообщение
+            </button>
           </div>
-          <button
-            class="btn object-card__btn_write-message"
-            @click.stop.prevent
+          <div
+            class="object-card__action-bottom"
           >
-            Написать сообщение
-          </button>
+            <socialSharing />
+          </div>
         </div>
       </div>
     </router-link>
@@ -125,6 +130,7 @@ import { mapState } from 'vuex';
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
 import showPhoneNumber from './showPhoneNumber.vue';
 import moveToFavorites from './moveToFavorites.vue';
+import socialSharing from './socialSharing.vue';
 
 export default {
   name: 'grid',
@@ -138,6 +144,7 @@ export default {
     iconHeartStroke,
     showPhoneNumber,
     moveToFavorites,
+    socialSharing,
   },
   props: {
     propObjectData: {

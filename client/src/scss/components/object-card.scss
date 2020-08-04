@@ -160,8 +160,8 @@
     &_show-phone {
       letter-spacing: 0;
       padding: 5px 10px;
-      margin-bottom: 10px;
       background-color: $COLOR-TEXT-DISABLED;
+      margin-bottom: 10px;
 
       &:hover {
         background-color: $COLOR-BLUE-LIGHT;
@@ -246,11 +246,23 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      justify-content: flex-start;
-      padding: 10px 0 0;
+      justify-content: space-between;
+      padding: 4px 0 0;
       margin-left: 20px;
       margin-right: 10px;
       flex-grow: 1;
+    }
+
+    &-item {
+      margin-bottom: 10px;
+    }
+
+    &-top {
+
+    }
+
+    &-bottom {
+
     }
   }
 }
