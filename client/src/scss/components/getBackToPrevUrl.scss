@@ -1,0 +1,18 @@
+.get-back-to-prev-url {
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+
+  &__icon {
+    height: auto;
+    width: 8px;
+    margin-right: 4px;
+  }
+
+  &__text {
+    color: $COLOR-BLUE-MAIN;
+  }
+}
