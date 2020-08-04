@@ -1,0 +1,19 @@
+.social-sharing {
+  &__title {
+    font-size: 14px;
+    color: $COLOR-TITLE;
+    margin-bottom: 6px;
+  }
+
+  &__title {
+    text-align: right;
+  }
+
+  &__list {
+    gap: 0 8px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-auto-flow: column;
+  }
+}
