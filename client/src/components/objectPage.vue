@@ -4,6 +4,7 @@
     class="object-page"
   >
     <div class="article">
+      <getBackToPrevUrl />
       <h1 class="title title_h1">
         Страница объекта
       </h1>
@@ -17,11 +18,13 @@
 
 <script>
 import ads from './ads.vue';
+import getBackToPrevUrl from './common/getBackToPrevUrl.vue';
 
 export default {
   name: 'objectPage',
   components: {
     ads,
+    getBackToPrevUrl,
   },
 };
 </script>

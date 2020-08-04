@@ -40,7 +40,7 @@
               </span>
             </p>
             <button class="btn object-card__btn object-card__btn_favorites">
-              <iconHeartStroke />
+              <moveToFavorites />
             </button>
           </div>
           <div
@@ -118,6 +118,7 @@
 import { mapState } from 'vuex';
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
 import showPhoneNumber from './showPhoneNumber.vue';
+import moveToFavorites from './moveToFavorites.vue';
 
 export default {
   name: 'grid',
@@ -130,6 +131,7 @@ export default {
   components: {
     iconHeartStroke,
     showPhoneNumber,
+    moveToFavorites,
   },
   props: {
     propObjectData: {
