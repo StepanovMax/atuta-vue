@@ -144,6 +144,26 @@ const store = new Vuex.Store({
           slug: 'taganrog',
           label: 'Таганрог',
         },
+        {
+          slug: 'azov',
+          label: 'Азов',
+        },
+        {
+          slug: 'shakhty',
+          label: 'Шахты',
+        },
+        {
+          slug: 'kamenolomni',
+          label: 'Каменоломни',
+        },
+        {
+          slug: 'aleksandrovsk-sahalinskij',
+          label: 'Александровск-Сахалинский',
+        },
+        {
+          slug: 'rostov-velikiy',
+          label: 'Ростов Великий',
+        },
       ],
       district: [
         {

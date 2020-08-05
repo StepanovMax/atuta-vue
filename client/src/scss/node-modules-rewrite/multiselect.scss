@@ -1,84 +1,133 @@
-.multiselect {
-  &__element {
-    color: $COLOR-TITLE;
-    font-size: 14px;
-  }
+@mixin multiselect {
+  .multiselect {
+    &__element {
+      color: $COLOR-TITLE;
+      font-size: 14px;
+    }
 
-  &__option {
-    &--selected {
-      color: $COLOR-WHITE;
+    &__option {
+      &--selected {
+        color: $COLOR-WHITE;
+        background-color: $COLOR-BLUE-MAIN;
+      }
+
+      &--highlight {
+        background-color: $COLOR-BLUE-LIGHT;
+      }
+
+      &#{&}--selected#{&}--highlight {
+        background-color: $COLOR-BLUE-LIGHT;
+      }
+    }
+
+    &__tag {
+      margin: 3px 7px 3px 0;
       background-color: $COLOR-BLUE-MAIN;
+
+      &-icon:after {
+        color: $COLOR-BLUE-HOVER;
+      }
     }
 
-    &--highlight {
-      background-color: $COLOR-BLUE-LIGHT;
-    }
-
-    &#{&}--selected#{&}--highlight {
-      background-color: $COLOR-BLUE-LIGHT;
-    }
-  }
-
-  &__tag {
-    margin: 3px 7px 3px 0;
-    background-color: $COLOR-BLUE-MAIN;
-
-    &-icon:after {
-      color: $COLOR-BLUE-HOVER;
-    }
-  }
-
-  &__tags {
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border-radius: 4px;
-    border-color: $COLOR-GREY-ACTIVE;
-    background-color: $COLOR-GREY-ACTIVE;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-items: center;
-
-    &-wrap {
+    &__tags {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      border-radius: 4px;
+      border-color: $COLOR-GREY-ACTIVE;
+      background-color: $COLOR-GREY-ACTIVE;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       flex-wrap: wrap;
       align-items: center;
+
+      &-wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        align-items: center;
+      }
     }
-  }
 
-  &__placeholder {
-    margin: 0;
-    padding: 0;
-    color: $COLOR-TEXT;
-  }
+    &__placeholder {
+      margin: 0;
+      padding: 0;
+      color: $COLOR-TEXT;
+    }
 
-  &__input {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
+    &__input {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
 
-    @include placeholder {
+      @include placeholder {
+        color: $COLOR-TITLE;
+      }
+
+      &:focus {
+        background-color: transparent;
+      }
+    }
+
+    &__single {
+      font-size: 14px;
+      margin-bottom: 0;
+      background-color: transparent;
       color: $COLOR-TITLE;
+      padding: 0;
     }
 
-    &:focus {
+    #{&}--active#{&}--above &__input {
+      border-radius: 0;
       background-color: transparent;
     }
   }
+}
 
-  &__single {
-    font-size: 14px;
-    margin-bottom: 0;
-    background-color: transparent;
-    color: $COLOR-TITLE;
-    padding: 0;
-  }
+@include multiselect;
 
-  #{&}--active#{&}--above &__input {
-    border-radius: 0;
-    background-color: transparent;
+.multiselect-search-main {
+  min-height: 30px;
+
+  .multiselect {
+    &__tags,
+    &__select {
+      height: 30px;
+    }
+
+    &__tags,
+    &__option {
+      min-height: 30px;
+    }
+
+    &__tags {
+      border-color: $COLOR-GREY-DISABLED;
+      background-color: $COLOR-GREY-DISABLED;
+    }
+
+    &__select {
+      width: 20px;
+      padding: 5px 0;
+    }
+
+    &__tags {
+      padding: 0 20px 0 8px;
+    }
+
+    &__single {
+      line-height: 100%;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &__option {
+      font-size: 13px;
+      padding: 6px 12px;
+    }
+
+    &__content-wrapper {
+      top: calc(100% + 6px);
+    }
   }
 }
