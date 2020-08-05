@@ -33,8 +33,8 @@
               :close-on-select="true"
               :multiple="false"
               :searchable="true"
-              label="label"
-              track-by="label"
+              label="city"
+              track-by="city"
               placeholder="Выберите город"
             />
           </div>
