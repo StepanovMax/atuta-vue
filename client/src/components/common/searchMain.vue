@@ -21,7 +21,19 @@
       search-main__item
       search-main__item_town
     ">
-      Город
+      <multiselect
+        class="multiselect-search-main"
+        v-model="filterSelected.town"
+        :options="filterDataDefaultClone.town"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="false"
+        :searchable="true"
+        label="label"
+        track-by="label"
+        placeholder="Город"
+      />
     </div>
     <div class="
       search-main__item
@@ -33,17 +45,19 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex';
+import { mapState } from 'vuex';
+import multiselect from 'vue-multiselect';
 import iconSearchGlass from '../icons/iconSearchGlass.vue';
 
 export default {
   name: 'grid',
   data() {
     return {
-      // dataObjectData: this.propObjectData,
+      filterSelected: {},
     }
   },
   components: {
+    multiselect,
     iconSearchGlass,
   },
   props: {
@@ -53,7 +67,18 @@ export default {
     //   required: true,
     // },
   },
+  watch: {
+    filterSelected: {
+      handler() {
+        this.updateFilterState(this.filterSelected);
+      },
+      deep: true
+    },
+  },
   methods: {
+    updateFilterState(data) {
+      this.$store.commit('updateFilterState', data);
+    },
     // timeConverter(UNIX_timestamp){
     //   const a = new Date(UNIX_timestamp * 1000);
     //   const year = a.getFullYear();
@@ -70,9 +95,16 @@ export default {
     // },
   },
   computed: {
-    // ...mapState([
-    //   'filterDataSelected',
-    // ]),
+    ...mapState([
+      'filterDataDefault',
+      'filterDataSelected',
+    ]),
+    filterDataDefaultClone() {
+      return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
+  },
+  created() {
+    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
 };
 </script>
