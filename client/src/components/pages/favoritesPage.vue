@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import ads from './ads.vue';
-import filterDesktop from './filters/filterDesktop.vue';
+import ads from '../ads.vue';
+import filterDesktop from '../filters/filterDesktop.vue';
 
 export default {
   name: 'favoritesPage',

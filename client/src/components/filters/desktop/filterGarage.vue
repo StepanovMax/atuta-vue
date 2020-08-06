@@ -8,7 +8,12 @@
         && filterDataSelected.deal.slug == 'buy'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Цена
       </h3>
       <rangeInput
@@ -25,7 +30,12 @@
         && filterDataSelected.deal.slug == 'rent'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Аренда в месяц
       </h3>
       <rangeInput
@@ -38,7 +48,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Гараж или машиноместо?*
       </h3>
       <radioButtons
@@ -56,7 +71,12 @@
       "
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Тип гаража
       </h3>
       <checkboxes
@@ -75,7 +95,12 @@
       "
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Тип машиноместа
       </h3>
       <checkboxes
@@ -90,7 +115,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Охрана
       </h3>
       <switcher
@@ -103,7 +133,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Площадь
       </h3>
       <rangeSlider

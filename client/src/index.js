@@ -4,13 +4,15 @@ import Router from 'vue-router';
 
 import App from './App.vue';
 import Home from './components/home.vue'
-import StyleGuide from './components/styleGuide.vue'
-import favoritesPage from './components/favoritesPage.vue'
-import messagesPage from './components/messagesPage.vue'
-import profilePage from './components/profilePage.vue'
-import addObject from './components/addObject.vue'
-import objectPage from './components/objectPage.vue'
+// plugins
 import formatNumbers from './plugins/formatNumbers.js'
+// pages
+import addObject from './components/pages/addObject.vue'
+import StyleGuide from './components/pages/styleGuide.vue'
+import objectPage from './components/pages/objectPage.vue'
+import profilePage from './components/pages/profilePage.vue'
+import messagesPage from './components/pages/messagesPage.vue'
+import favoritesPage from './components/pages/favoritesPage.vue'
 
 import './scss/index.scss'
 

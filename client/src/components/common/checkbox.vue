@@ -70,8 +70,6 @@ export default {
       } else {
         this.value = null;
       }
-      console.log('value', this.value);
-      // this.$emit('change', this.value);
       this.$emit('update:value', this.value);
     }
   },

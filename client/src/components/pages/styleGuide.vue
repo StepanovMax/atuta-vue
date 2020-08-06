@@ -273,17 +273,17 @@
 </template>
 
 <script>
-import switcher from './common/switcher.vue'
-import iconArrowUp from './icons/iconArrowUp.vue'
-import iconDiamond from './icons/iconDiamond.vue'
-import iconCrown from './icons/iconCrown.vue'
-import iconAsterisk from './icons/iconAsterisk.vue'
-import iconCross from './icons/iconCross.vue'
-import iconPlus from './icons/iconPlus.vue'
-import iconEdit from './icons/iconEdit.vue'
-import iconRemove from './icons/iconRemove.vue'
-import checkbox from './common/checkbox.vue'
-import rangeSlider from './common/rangeSlider.vue'
+import switcher from '../common/switcher.vue'
+import iconArrowUp from '../icons/iconArrowUp.vue'
+import iconDiamond from '../icons/iconDiamond.vue'
+import iconCrown from '../icons/iconCrown.vue'
+import iconAsterisk from '../icons/iconAsterisk.vue'
+import iconCross from '../icons/iconCross.vue'
+import iconPlus from '../icons/iconPlus.vue'
+import iconEdit from '../icons/iconEdit.vue'
+import iconRemove from '../icons/iconRemove.vue'
+import checkbox from '../common/checkbox.vue'
+import rangeSlider from '../common/rangeSlider.vue'
 import Multiselect from 'vue-multiselect'
 
 export default {
