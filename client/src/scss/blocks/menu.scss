@@ -1,8 +1,10 @@
 .menu {
   @extend .list;
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: flex-start;
+  font-size: 12px;
 
   &__item {
     @extend .list__item;
@@ -15,5 +17,18 @@
 
   &_right {
     justify-content: flex-end;
+  }
+
+  &__btn {
+    display: block;
+    font-size: 12px;
+    padding: 3px 8px;
+    letter-spacing: 0;
+    text-decoration: none;
+    background-color: $COLOR-BLUE-LIGHT;
+
+    &:hover {
+      background-color: $COLOR-BLUE-MAIN;
+    }
   }
 }

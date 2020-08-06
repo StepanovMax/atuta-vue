@@ -18,6 +18,24 @@
     <li class="menu__item">
       Мои объекты
     </li>
+    <li class="menu__item">
+      <router-link
+        v-slot="{ href, navigate, isActive }"
+        :to="{ name: 'addObject' }"
+        class="
+          btn
+          menu__btn
+        "
+      >
+        <a
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+        >
+          Подать объявление
+        </a>
+      </router-link>
+    </li>
   </ul>
 </template>
 

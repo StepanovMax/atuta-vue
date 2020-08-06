@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import ads from './ads.vue';
-import getBackToPrevUrl from './common/getBackToPrevUrl.vue';
+import ads from '../ads.vue';
+import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 
 export default {
   name: 'objectPage',
