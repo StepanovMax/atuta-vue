@@ -8,7 +8,12 @@
         && filterDataSelected.deal.slug == 'buy'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Цена
       </h3>
       <rangeInput
@@ -25,7 +30,12 @@
         && filterDataSelected.deal.slug == 'rent'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Аренда в месяц
       </h3>
       <rangeInput
@@ -42,7 +52,12 @@
         && filterDataSelected.deal.slug == 'rent'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Срок аренды
       </h3>
       <checkboxes
@@ -56,7 +71,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Площадь комнаты
       </h3>
       <rangeSlider
@@ -70,7 +90,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Количество комнат
       </h3>
       <checkboxes
@@ -84,7 +109,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Этаж
       </h3>
       <rangeSlider
@@ -104,7 +134,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Этажей в доме
       </h3>
       <rangeSlider
@@ -118,7 +153,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Тип дома
       </h3>
       <checkboxes

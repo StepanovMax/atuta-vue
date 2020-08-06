@@ -8,13 +8,15 @@
     <ul
       class="radio-buttons__list"
       :class="[
-        { 'radio-buttons__list_float-right': radioButtonsView === 'floatRight' }
+        { 'radio-buttons__list_float-right': radioButtonsView === 'floatRight' },
+        { 'radio-buttons__list_wrap radio-buttons__list_wrap-add-object': radioButtonsView === 'wrapAddObject' },
       ]"
     >
       <li
         class="radio-buttons__list-item"
         :class="[
-          { 'radio-buttons__list-item_active': item.checked }
+          { 'radio-buttons__list-item_active': item.checked },
+          { 'radio-buttons__list-item_wrap radio-buttons__list-item_wrap-add-object': radioButtonsView === 'wrapAddObject' },
         ]"
         v-for="(item, index) in dataItemsChecked"
         :key="'key-' + radioButtonsId + '-' + index"

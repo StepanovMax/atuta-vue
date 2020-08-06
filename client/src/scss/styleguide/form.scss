@@ -7,11 +7,36 @@
     &:first-child {
       margin-top: 0;
     }
+
+    &_block-half-width {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__title {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: $COLOR-TEXT;
+    &_filter-desktop {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: $COLOR-TEXT;
+    }
+
+    &_add-object {
+      font-size: 20px;
+      color: $COLOR-TEXT;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__block-half-width {
+    width: 50%;
+  }
+
+  &__input {
+    &_add-object {
+      width: 100%;
+    }
   }
 }

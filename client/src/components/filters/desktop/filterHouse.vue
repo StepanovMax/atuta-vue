@@ -8,7 +8,12 @@
         && filterDataSelected.deal.slug == 'buy'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Цена
       </h3>
       <rangeInput
@@ -25,7 +30,12 @@
         && filterDataSelected.deal.slug == 'rent'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Аренда в месяц
       </h3>
       <rangeInput
@@ -42,7 +52,12 @@
         && filterDataSelected.deal.slug == 'rent'
       "
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Срок аренды
       </h3>
       <checkboxes
@@ -54,7 +69,12 @@
     </div>
 
     <div class="form__row">
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Количество комнат
       </h3>
       <checkboxes
@@ -66,7 +86,12 @@
     </div>
 
     <div class="form__row">
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Тип объекта
       </h3>
       <checkboxes
@@ -78,7 +103,12 @@
     </div>
 
     <div class="form__row">
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Вид объекта
       </h3>
       <checkboxes
@@ -93,7 +123,12 @@
       v-if="false"
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Дом за городом?
       </h3>
       <checkbox
@@ -107,7 +142,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Расстояние до города
       </h3>
       <rangeSlider
@@ -121,7 +161,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Площадь дома
       </h3>
       <rangeSlider
@@ -135,7 +180,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Площадь участка
       </h3>
       <rangeSlider
@@ -149,7 +199,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Этажей в доме
       </h3>
       <rangeSlider
@@ -163,7 +218,12 @@
     <div
       class="form__row"
     >
-      <h3 class="title title_h6 form__title">
+      <h3 class="
+        title
+        title_h6
+        form__title 
+        form__title_filter-desktop
+      ">
         Материал стен
       </h3>
       <checkboxes

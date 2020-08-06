@@ -17,16 +17,36 @@ $BORDER-RADIUS: 6px;
     &-item {
       padding: 5px 0;
       cursor: pointer;
-      flex: 1;
+      flex-shrink: 1;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: flex-start;
+
+      &_wrap {
+        width: 50%;
+
+        &-add-object {
+          &:nth-child(2n + 1) {
+            width: 30%;
+          }
+
+          &:nth-child(2n + 2) {
+            width: 70%;
+          }
+        }
+      }
     }
 
     &_float-right {
       width: auto;
       margin-top: 6px;
+    }
+
+    &_wrap {
+      flex-wrap: wrap;
+      flex-shrink: unset;
+      flex-direction: row;
     }
   }
 

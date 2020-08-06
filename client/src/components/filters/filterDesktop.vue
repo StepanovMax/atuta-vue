@@ -3,7 +3,12 @@
 
     <div class="form">
       <div class="form__row">
-        <h3 class="title title_h6 form__title">
+        <h3 class="
+          title
+          title_h6
+          form__title 
+          form__title_filter-desktop
+        ">
           Тип сделки*
         </h3>
         <switcher
@@ -14,7 +19,12 @@
       </div>
 
       <div class="form__row">
-        <h3 class="title title_h6 form__title">
+        <h3 class="
+          title
+          title_h6
+          form__title 
+          form__title_filter-desktop
+        ">
           Тип объекта*
         </h3>
         <radioButtons
