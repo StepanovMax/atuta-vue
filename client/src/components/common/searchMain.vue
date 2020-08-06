@@ -2,10 +2,12 @@
   <div
     class="search-main"
   >
-    <div class="
-      search-main__item
-      search-main__item_input
-    ">
+    <div
+      class="
+        search-main__item
+        search-main__item_input
+      "
+    >
       <iconSearchGlass
         class="search-main__icon-search-glass"
       />
@@ -15,7 +17,45 @@
           input
           search-main__input
         "
+        @focus="focusInput()"
+        v-model="searchMainInputValue"
       >
+      <button
+        v-if="isButtonShow"
+        class="
+          btn
+          search-main__btn
+        "
+        @click="searchBtnClick()"
+      >
+        Искать
+      </button>
+      <div
+        class="search-main__item-checkboxes"
+      >
+        <ul class="search-main__item-checkboxes-list">
+          <li class="search-main__item-checkboxes-list-item">
+            <checkbox
+              key="searchInTitleDesktop"
+              class="search-main__checkbox"
+              checkboxId="searchInTitleDesktop"
+              :propClass="'search-main__checkbox'"
+              :item="filterDataDefaultClone.searchInTitle"
+              :value.sync="filterSelected.searchInTitle"
+            />
+          </li>
+          <li class="search-main__item-checkboxes-list-item">
+            <checkbox
+              key="searchWithImagesDesktop"
+              class="search-main__checkbox"
+              checkboxId="searchWithImagesDesktop"
+              :propClass="'search-main__checkbox'"
+              :item="filterDataDefaultClone.searchWithImages"
+              :value.sync="filterSelected.searchWithImages"
+            />
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="
       search-main__item
@@ -59,6 +99,7 @@
 <script>
 import { mapState } from 'vuex';
 import multiselect from 'vue-multiselect';
+import checkbox from '../common/checkbox.vue'
 import iconSearchGlass from '../icons/iconSearchGlass.vue';
 
 export default {
@@ -66,18 +107,14 @@ export default {
   data() {
     return {
       filterSelected: {},
+      isButtonShow: false,
+      searchMainInputValue: null,
     }
   },
   components: {
+    checkbox,
     multiselect,
     iconSearchGlass,
-  },
-  props: {
-    // propObjectData: {
-    //   type: Object,
-    //   default: {},
-    //   required: true,
-    // },
   },
   watch: {
     filterSelected: {
@@ -86,26 +123,33 @@ export default {
       },
       deep: true
     },
+    filterDataSelected: {
+      handler() {
+        this.filterSelected = this.filterDataSelected;
+      },
+      deep: true
+    },
+    searchMainInputValue: {
+      handler(value) {
+        if (value) {
+          this.isButtonShow = true;
+        } else if (!value) {
+          this.isButtonShow = false;
+        }
+      },
+      deep: true
+    },
   },
   methods: {
     updateFilterState(data) {
-      console.log('data', data);
       this.$store.commit('updateFilterState', data);
     },
-    // timeConverter(UNIX_timestamp){
-    //   const a = new Date(UNIX_timestamp * 1000);
-    //   const year = a.getFullYear();
-    //   let month = a.getMonth();
-    //   if (month < 10) {
-    //     month = '0' + month;
-    //   }
-    //   let day = a.getDate();
-    //   if (day < 10) {
-    //     day = '0' + day;
-    //   }
-    //   const time = day + '.' + month + '.' + year;
-    //   return time;
-    // },
+    searchBtnClick(event){
+      console.log('searchSubmit');
+    },
+    focusInput(){
+      this.isButtonShow = true;
+    },
   },
   computed: {
     ...mapState([
