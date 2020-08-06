@@ -4,42 +4,6 @@
     <div class="form">
       <div class="form__row">
         <h3 class="title title_h6 form__title">
-          Город*
-        </h3>
-        <multiselect
-          v-model="filterSelected.town"
-          :options="filterDataDefaultClone.town"
-          :show-labels="false"
-          :allow-empty="false"
-          :close-on-select="true"
-          :multiple="false"
-          :searchable="true"
-          label="city"
-          track-by="city"
-          placeholder="Выберите город"
-        />
-      </div>
-
-      <div class="form__row">
-        <h3 class="title title_h6 form__title">
-          Район
-        </h3>
-        <multiselect
-          v-model="filterSelected.district"
-          :options="filterDataDefaultClone.district"
-          :show-labels="false"
-          :allow-empty="true"
-          :close-on-select="true"
-          :multiple="true"
-          :searchable="false"
-          label="label"
-          track-by="label"
-          placeholder="Выберите район"
-        />
-      </div>
-
-      <div class="form__row">
-        <h3 class="title title_h6 form__title">
           Тип сделки*
         </h3>
         <switcher
@@ -162,6 +126,13 @@ export default {
     filterSelected: {
       handler() {
         this.updateFilterState(this.filterSelected);
+      },
+      deep: true
+    },
+    filterDataSelected: {
+      handler() {
+        this.filterSelected = this.filterDataSelected;
+        console.log('filterDataSelected', this.filterDataSelected);
       },
       deep: true
     },
