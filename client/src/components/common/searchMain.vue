@@ -39,7 +39,19 @@
       search-main__item
       search-main__item_district
     ">
-      Район
+      <multiselect
+        class="multiselect-search-main"
+        v-model="filterSelected.district"
+        :options="filterDataDefaultClone.district"
+        :show-labels="false"
+        :allow-empty="false"
+        :close-on-select="true"
+        :multiple="false"
+        :searchable="true"
+        label="label"
+        track-by="label"
+        placeholder="Район"
+      />
     </div>
   </div>
 </template>
@@ -77,6 +89,7 @@ export default {
   },
   methods: {
     updateFilterState(data) {
+      console.log('data', data);
       this.$store.commit('updateFilterState', data);
     },
     // timeConverter(UNIX_timestamp){
