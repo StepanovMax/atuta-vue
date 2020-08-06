@@ -67,6 +67,8 @@ const store = new Vuex.Store({
     count: 11.7,
     isFilterOpen: false,
     filterDataSelected: {
+      searchInTitle: null,
+      searchWithImages: null,
       town: null,
       district: null,
       deal: null,
@@ -135,6 +137,16 @@ const store = new Vuex.Store({
       },
     },
     filterDataDefault: {
+      searchInTitle: {
+        slug: 'only-in-title',
+        label: 'Только в названиях',
+        checked: false,
+      },
+      searchWithImages: {
+        slug: 'only-with-photos',
+        label: 'Только с фото',
+        checked: false,
+      },
       town: 
       [
         {

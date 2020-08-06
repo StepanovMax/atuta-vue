@@ -1,6 +1,6 @@
-@-webkit-keyframes autofill {
-  0%,100% {
-    color: #666;
+@keyframes autofill {
+  0%, 100% {
+    color: $COLOR-TEXT;
     background: transparent;
   }
 }
@@ -21,6 +21,15 @@
   grid-auto-flow: column;
   grid-template-columns: 1fr 20% 20%;
 
+  &__btn {
+    padding: 5px 10px;
+    background: $COLOR-BLUE-LIGHT;
+
+    &:hover {
+      background: $COLOR-BLUE-MAIN;
+    }
+  }
+
   &__icon-search-glass {
     top: 4px;
     left: 0;
@@ -30,10 +39,14 @@
 
   &__item {
     &_input {
-      margin: 5px 10px;
+      margin: 5px 0 5px 10px;
       padding-left: 20px;
       position: relative;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     &_town {
@@ -42,8 +55,37 @@
     }
 
     &_district {
-      padding: 5px 10px;
+      padding: 0;
       border-left: 1px solid $COLOR-GREY-BORDER;
+      margin-right: 10px;
+    }
+
+    &-checkboxes {
+      top: calc(100% + 10px);
+      right: 0;
+      position: absolute;
+
+      &-list {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        &-item {
+          margin-right: 10px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__checkbox {
+    &-label {
+      font-size: 12px;
+      color: $COLOR-TEXT;
     }
   }
 
@@ -67,7 +109,7 @@
     &:-webkit-autofill:hover, 
     &:-webkit-autofill:focus, 
     &:-webkit-autofill:active  {
-      -webkit-box-shadow: 0 0 0 30px $COLOR-GREY-DISABLED inset !important;
+      box-shadow: 0 0 0 30px $COLOR-GREY-DISABLED inset !important;
     }
   }
 }

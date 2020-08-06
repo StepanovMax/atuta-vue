@@ -93,8 +93,6 @@ import filterCommercial from './desktop/filterCommercial.vue';
 import rangeSlider from '../common/rangeSlider.vue';
 import rangeInput from '../common/rangeInput.vue';
 import multiselect from 'vue-multiselect';
-import checkbox from '../common/checkbox.vue';
-import checkboxes from '../common/checkboxes.vue';
 import radioButtons from '../common/radioButtons.vue';
 import switcher from '../common/switcher.vue';
 import { mapState, store, commit } from 'vuex';
@@ -110,8 +108,6 @@ export default {
     filterCommercial,
     rangeInput,
     rangeSlider,
-    checkbox,
-    checkboxes,
     radioButtons,
     switcher,
     multiselect,
@@ -132,7 +128,6 @@ export default {
     filterDataSelected: {
       handler() {
         this.filterSelected = this.filterDataSelected;
-        console.log('filterDataSelected', this.filterDataSelected);
       },
       deep: true
     },

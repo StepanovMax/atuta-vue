@@ -3,21 +3,25 @@
     <div
       v-if="!checkboxArray.checked"
       class="checkbox__icon checkbox__icon_active"
+      :class="propClass + '-icon'"
     />
     <iconChecked
       v-else
       class="checkbox__icon"
+      :class="propClass + '-icon'"
     />
     <label
-      for="asd"
+      :for="checkboxId"
       class="checkbox__label"
+      :class="propClass + '-label'"
     >
       {{ item.label }}
     </label>
     <input
-      :key="key"
-      id="asd"
+      :key="checkboxId"
+      :id="checkboxId"
       class="checkbox__input"
+      :class="propClass + '-input'"
       type="checkbox"
       @change="clickCheckbox()"
     >
@@ -47,10 +51,10 @@ export default {
       default: '',
       required: true
     },
-    key: {
+    propClass: {
       type: String,
       default: '',
-      required: true
+      required: false
     },
   },
   data() {

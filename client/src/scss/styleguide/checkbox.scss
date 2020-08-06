@@ -1,10 +1,14 @@
 .checkbox {
-  width: 20px;
+  // width: 20px;
   height: 20px;
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
 
   &__label {
-    padding-left: 20px;
+    padding-left: 4px;
     cursor: pointer;
     z-index: 2;
     position: relative;
@@ -12,10 +16,10 @@
   }
 
   &__icon {
-    top: 0;
-    left: 0;
+    // top: 0;
+    // left: 0;
     z-index: 1;
-    position: absolute;
+    // position: absolute;
     width: 16px;
     height: 16px;
     border-width: 1px;
