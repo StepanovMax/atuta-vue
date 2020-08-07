@@ -18,8 +18,8 @@
       </h1>
 
       <div class="form form_add-object">
-        <div class="form__row form__row_block-half-width">
-          <div class="form__block-half-width">
+        <div class="form__row form__row_block-width form__row_block-width-half">
+          <div class="form__block-width form__block-width-half">
             <div class="form__row">
               <h3 class="
                 title
@@ -34,7 +34,7 @@
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectType"
                 :items="filterDataDefaultClone.object"
-                :value.sync="filterSelected.object"
+                :value.sync="createdObject.object"
               />
             </div>
 
@@ -52,7 +52,7 @@
                 class="add-object-page__switcher"
                 switcherId="dealDesktop"
                 :items="filterDataDefaultClone.deal"
-                :value.sync="filterSelected.deal"
+                :value.sync="createdObject.deal"
               />
             </div>
 
@@ -78,14 +78,14 @@
               >
             </div>
           </div>
-          <div class="form__block-half-width">
+          <div class="form__block-width form__block-width-half">
             <yandex-map 
               class="add-object-page__map"
               :settings="settings"
               :coords="coordsTaganrog"
               :zoom="15"
               :controls="controls"
-              @click="onClick"
+              @click="onMapClick"
             >
               <ymap-marker 
                 :coords="coordsTaganrog"
@@ -95,7 +95,38 @@
             </yandex-map>
           </div>
         </div>
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h4
+                form__title
+                form__title_add-object
+                title_bold
+              ">
+                Район*
+              </h3>
+              <multiselect
+                v-model="createdObject.district"
+                :options="filterDataDefaultClone.district"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="label"
+                placeholder="Район"
+              />
+            </div>
+          </div>
+        </div>
       </div>
+
+      <pre>
+        {{ createdObject }}
+      </pre>
 
     </div>
 
@@ -105,11 +136,12 @@
 </template>
 
 <script>
-import ads from '../ads.vue';
-import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
-import switcher from '../common/switcher.vue';
 import { mapState, store, commit } from 'vuex';
+import ads from '../ads.vue';
+import multiselect from 'vue-multiselect';
+import switcher from '../common/switcher.vue';
 import radioButtons from '../common/radioButtons.vue';
+import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
   name: 'addObject',
@@ -118,10 +150,12 @@ export default {
     switcher,
     yandexMap,
     ymapMarker,
+    multiselect,
     radioButtons,
   },
   data() {
     return {
+      createdObject: {},
       settings: {
         lang: 'ru_RU',
         version: '2.1',
@@ -146,6 +180,14 @@ export default {
       currentAddress: ''
     }
   },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+  },
   computed: {
     ...mapState([
       'filterDataDefault',
@@ -160,31 +202,24 @@ export default {
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
+    this.createdObject = JSON.parse(JSON.stringify(this.filterDataSelected));
+    this.createdObject.address = null; 
   },
   methods: {
-    onClick(e) {
+    onMapClick(e) {
       this.coordsTaganrog = e.get('coords');
-      // console.log('ymaps', ymaps);
-      // 47.22064, 38.914713
-      // 47.215266, 38.908182
       ymaps.geocode(this.coordsTaganrog).then(
         res => {
-          // console.log('res', res);
           // console.log('geoObjects', res.geoObjects.get(0));
           const firstGeoObject = res.geoObjects.get(0);
-          var firstGeoObjectStreet = firstGeoObject.properties.get('name');
-          // console.log('firstGeoObject', firstGeoObject);
-          const coords = firstGeoObject.geometry.getCoordinates();
-          // console.log('firstGeoObjectCoords', coords);
-          const firstGeoObjectAddress = firstGeoObject.getLocalities();
-          // console.log('firstGeoObjectAddress', firstGeoObjectAddress);
+          // var firstGeoObjectStreet = firstGeoObject.properties.get('name');
+          // const coords = firstGeoObject.geometry.getCoordinates();
+          // const firstGeoObjectAddress = firstGeoObject.getLocalities();
 
           // Название населенного пункта или вышестоящее административно-территориальное образование.
           // console.log(firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas());
           const town = firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas();
           firstGeoObject.properties.getAll();
-          console.log('::', firstGeoObject.properties.getAll().text);
           this.currentAddress = firstGeoObject.properties.getAll().text;
           // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
           // firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
@@ -228,11 +263,11 @@ export default {
       );
     },
   },
-  async mounted() {
-    await loadYmap({
-      ...this.settings,
-      debug: true
-    });
-  }
+  // async mounted() {
+  //   await loadYmap({
+  //     ...this.settings,
+  //     debug: true
+  //   });
+  // }
 };
 </script>
