@@ -32,7 +32,7 @@
               </h3>
               <radioButtons
                 radioButtonsView="wrapAddObject"
-                radioButtonsId="objectType"
+                radioButtonsId="objectTypeAddObject"
                 :items="filterDataDefaultClone.object"
                 :value.sync="createdObject.object"
               />
@@ -95,6 +95,7 @@
             </yandex-map>
           </div>
         </div>
+
         <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
@@ -122,11 +123,99 @@
             </div>
           </div>
         </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h4
+                form__title
+                form__title_add-object
+                title_bold
+              ">
+                Тип объекта*
+              </h3>
+              <switcher
+                class="add-object-page__switcher"
+                switcherId="typeAddObject"
+                :items="filterDataDefaultClone.appTypes"
+                :value.sync="createdObject.app.type"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h4
+                form__title
+                form__title_add-object
+                title_bold
+              ">
+                Вид дома
+              </h3>
+              <radioButtons
+                radioButtonsView="wrapHalf"
+                radioButtonsId="appViewAddObject"
+                :items="filterDataDefaultClone.appView"
+                :value.sync="createdObject.app.view"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h4
+                form__title
+                form__title_add-object
+                title_bold
+              ">
+                Количество комнат*
+              </h3>
+              <multiselect
+                v-model="createdObject.roomsCount"
+                :options="filterDataDefaultClone.appRooms"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="label"
+                placeholder="Количество комнат"
+              />
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <pre>
-        {{ createdObject }}
-      </pre>
+      <div
+        style="
+          color: #444;
+          font-size: 13px;
+          line-height: 110%;
+        "
+      >
+        <h3
+          class="
+            title
+            title_h6
+            title_bold
+          "
+        >
+          Данные созданного объекта:
+        </h3>
+        <pre>{{ createdObject }}</pre>
+      </div>
 
     </div>
 
