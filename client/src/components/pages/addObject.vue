@@ -34,7 +34,7 @@
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectType"
                 :items="filterDataDefaultClone.object"
-                :value.sync="filterSelected.object"
+                :value.sync="createdObject.object"
               />
             </div>
 
@@ -52,7 +52,7 @@
                 class="add-object-page__switcher"
                 switcherId="dealDesktop"
                 :items="filterDataDefaultClone.deal"
-                :value.sync="filterSelected.deal"
+                :value.sync="createdObject.deal"
               />
             </div>
 
@@ -108,7 +108,7 @@
                 Район*
               </h3>
               <multiselect
-                v-model="filterSelected.district"
+                v-model="createdObject.district"
                 :options="filterDataDefaultClone.district"
                 :show-labels="false"
                 :allow-empty="false"
@@ -125,7 +125,7 @@
       </div>
 
       <pre>
-        {{ filterSelected }}
+        {{ createdObject }}
       </pre>
 
     </div>
@@ -155,6 +155,7 @@ export default {
   },
   data() {
     return {
+      createdObject: {},
       settings: {
         lang: 'ru_RU',
         version: '2.1',
@@ -179,6 +180,14 @@ export default {
       currentAddress: ''
     }
   },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+  },
   computed: {
     ...mapState([
       'filterDataDefault',
@@ -193,31 +202,24 @@ export default {
     },
   },
   created() {
-    this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
+    this.createdObject = JSON.parse(JSON.stringify(this.filterDataSelected));
+    this.createdObject.address = null; 
   },
   methods: {
     onMapClick(e) {
       this.coordsTaganrog = e.get('coords');
-      // console.log('ymaps', ymaps);
-      // 47.22064, 38.914713
-      // 47.215266, 38.908182
       ymaps.geocode(this.coordsTaganrog).then(
         res => {
-          // console.log('res', res);
           // console.log('geoObjects', res.geoObjects.get(0));
           const firstGeoObject = res.geoObjects.get(0);
           // var firstGeoObjectStreet = firstGeoObject.properties.get('name');
-          // console.log('firstGeoObject', firstGeoObject);
           // const coords = firstGeoObject.geometry.getCoordinates();
-          // console.log('firstGeoObjectCoords', coords);
           // const firstGeoObjectAddress = firstGeoObject.getLocalities();
-          // console.log('firstGeoObjectAddress', firstGeoObjectAddress);
 
           // Название населенного пункта или вышестоящее административно-территориальное образование.
           // console.log(firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas());
           const town = firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas();
           firstGeoObject.properties.getAll();
-          // console.log('::', firstGeoObject.properties.getAll().text);
           this.currentAddress = firstGeoObject.properties.getAll().text;
           // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
           // firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
