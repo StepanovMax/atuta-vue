@@ -73,11 +73,26 @@
                   form__input
                   form__input_add-object
                 "
+                v-model="currentAddress"
+                @change="updateMapPosition($event)"
               >
             </div>
           </div>
           <div class="form__block-half-width">
-            456
+            <yandex-map 
+              class="add-object-page__map"
+              :settings="settings"
+              :coords="coordsTaganrog"
+              :zoom="15"
+              :controls="controls"
+              @click="onClick"
+            >
+              <ymap-marker 
+                :coords="coordsTaganrog"
+                marker-id="123"
+                hint-content="some hint" 
+              />
+            </yandex-map>
           </div>
         </div>
       </div>
@@ -91,6 +106,7 @@
 
 <script>
 import ads from '../ads.vue';
+import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 import switcher from '../common/switcher.vue';
 import { mapState, store, commit } from 'vuex';
 import radioButtons from '../common/radioButtons.vue';
@@ -100,7 +116,35 @@ export default {
   components: {
     ads,
     switcher,
+    yandexMap,
+    ymapMarker,
     radioButtons,
+  },
+  data() {
+    return {
+      settings: {
+        lang: 'ru_RU',
+        version: '2.1',
+        coordorder: 'latlong',
+        apiKey: '511c4fe7-bda5-4cea-b1e2-bdb28ea527c9',
+      },
+      coordsMoscow: [
+        55.661574,
+        37.573856,
+      ],
+      coordsTaganrog: [
+        47.22064,
+        38.914713,
+      ],
+      coordsTaganrogChekhova: [
+        47.215266,
+        38.908182,
+      ],
+      controls: [
+        'zoomControl',
+      ],
+      currentAddress: ''
+    }
   },
   computed: {
     ...mapState([
@@ -118,5 +162,77 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
+  methods: {
+    onClick(e) {
+      this.coordsTaganrog = e.get('coords');
+      // console.log('ymaps', ymaps);
+      // 47.22064, 38.914713
+      // 47.215266, 38.908182
+      ymaps.geocode(this.coordsTaganrog).then(
+        res => {
+          // console.log('res', res);
+          // console.log('geoObjects', res.geoObjects.get(0));
+          const firstGeoObject = res.geoObjects.get(0);
+          var firstGeoObjectStreet = firstGeoObject.properties.get('name');
+          // console.log('firstGeoObject', firstGeoObject);
+          const coords = firstGeoObject.geometry.getCoordinates();
+          // console.log('firstGeoObjectCoords', coords);
+          const firstGeoObjectAddress = firstGeoObject.getLocalities();
+          // console.log('firstGeoObjectAddress', firstGeoObjectAddress);
+
+          // Название населенного пункта или вышестоящее административно-территориальное образование.
+          // console.log(firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas());
+          const town = firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas();
+          firstGeoObject.properties.getAll();
+          console.log('::', firstGeoObject.properties.getAll().text);
+          this.currentAddress = firstGeoObject.properties.getAll().text;
+          // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
+          // firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
+        },
+        error => {
+          console.log('Rejected [Geocode error] ::', error);
+        }
+      );
+    },
+    async getAddress(coords) {
+      // await loadYmap({ ...settings, debug: true });
+      // ymap.geocode(coords).then(function (res) {
+      //   // const firstGeoObject = res.geoObjects.get(0);
+      //   console.log('res', res);
+
+      //   // myPlacemark.properties
+      //   //   .set({
+      //   //     // Формируем строку с данными об объекте.
+      //   //     iconCaption: [
+      //   //       // Название населенного пункта или вышестоящее административно-территориальное образование.
+      //   //       firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas(),
+      //   //       // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
+      //   //       firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
+      //   //     ].filter(Boolean).join(', '),
+      //   //     // В качестве контента балуна задаем строку с адресом объекта.
+      //   //     balloonContent: firstGeoObject.getAddressLine()
+      //   //   });
+      // });
+    },
+    updateMapPosition(event) {
+      ymaps.geocode(event.target.value).then(
+        res => {
+          const firstGeoObject = res.geoObjects.get(0);
+          const coords = firstGeoObject.geometry.getCoordinates();
+          this.coordsTaganrog = coords;
+          this.currentAddress = firstGeoObject.properties.getAll().text;
+        },
+        error => {
+          console.log('Rejected [Geocode error] ::', error);
+        }
+      );
+    },
+  },
+  async mounted() {
+    await loadYmap({
+      ...this.settings,
+      debug: true
+    });
+  }
 };
 </script>

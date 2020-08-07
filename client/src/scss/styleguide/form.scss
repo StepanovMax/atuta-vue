@@ -10,7 +10,7 @@
 
     &_block-half-width {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -31,7 +31,8 @@
   }
 
   &__block-half-width {
-    width: 50%;
+    width: calc(50% - 10px);
+    position: relative;
   }
 
   &__input {

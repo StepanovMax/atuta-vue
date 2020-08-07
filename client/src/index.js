@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex'
 import Router from 'vue-router';
+import 'regenerator-runtime/runtime';
 
 import App from './App.vue';
 import Home from './components/home.vue'
