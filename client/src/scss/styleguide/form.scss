@@ -8,11 +8,19 @@
       margin-top: 0;
     }
 
-    &_block-half-width {
+    &_block-width {
       display: flex;
       align-items: stretch;
       flex-direction: row;
       justify-content: space-between;
+
+      &-half {
+
+      }
+
+      &-third {
+
+      }
     }
   }
 
@@ -30,9 +38,16 @@
     }
   }
 
-  &__block-half-width {
-    width: calc(50% - 10px);
+  &__block-width {
     position: relative;
+
+    &-half {
+      width: calc(50% - 10px);
+    }
+
+    &-third {
+      width: calc((100% / 3) - 10px);
+    }
   }
 
   &__input {
