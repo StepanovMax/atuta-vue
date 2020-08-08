@@ -45,6 +45,9 @@
       border-color: $COLOR-GREY-DISABLED;
       background-color: $COLOR-GREY-DISABLED;
     }
-  
+  }
+
+  &_error {
+    border-color: $COLOR-RED-INVALID;
   }
 }

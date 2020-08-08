@@ -88,6 +88,9 @@ const store = new Vuex.Store({
         floorNot: null,
         roomsCount: null,
         area: null,
+        areaKitchen: null,
+        areaLiving: null,
+        onlineShow: null,
       },
       house: {
         roomsCount: null,
@@ -10650,6 +10653,143 @@ const store = new Vuex.Store({
           checked: false,
         },
       ],
+      appFloorAllList: [
+        {
+          slug: '1',
+          label: '1',
+        },
+        {
+          slug: '2',
+          label: '2',
+        },
+        {
+          slug: '3',
+          label: '3',
+        },
+        {
+          slug: '4',
+          label: '4',
+        },
+        {
+          slug: '5',
+          label: '5',
+        },
+        {
+          slug: '6',
+          label: '6',
+        },
+        {
+          slug: '7',
+          label: '7',
+        },
+        {
+          slug: '8',
+          label: '8',
+        },
+        {
+          slug: '9',
+          label: '9',
+        },
+        {
+          slug: '10',
+          label: '10',
+        },
+        {
+          slug: '11',
+          label: '11',
+        },
+        {
+          slug: '12',
+          label: '12',
+        },
+        {
+          slug: '13',
+          label: '13',
+        },
+        {
+          slug: '14',
+          label: '14',
+        },
+        {
+          slug: '15',
+          label: '15',
+        },
+        {
+          slug: '16',
+          label: '16',
+        },
+        {
+          slug: '17',
+          label: '17',
+        },
+        {
+          slug: '18',
+          label: '18',
+        },
+        {
+          slug: '19',
+          label: '19',
+        },
+        {
+          slug: '20',
+          label: '20',
+        },
+        {
+          slug: '21',
+          label: '21',
+        },
+        {
+          slug: '22',
+          label: '22',
+        },
+        {
+          slug: '23',
+          label: '23',
+        },
+        {
+          slug: '24',
+          label: '24',
+        },
+        {
+          slug: '25',
+          label: '25',
+        },
+        {
+          slug: '26',
+          label: '26',
+        },
+        {
+          slug: '27',
+          label: '27',
+        },
+        {
+          slug: '28',
+          label: '28',
+        },
+        {
+          slug: '29',
+          label: '29',
+        },
+        {
+          slug: '30',
+          label: '30',
+        },
+        {
+          slug: '30+',
+          label: '30+',
+        },
+      ],
+      appOnlineShow: [
+        {
+          slug: 'yes',
+          label: 'Да',
+        },
+        {
+          slug: 'no',
+          label: 'Нет',
+        },
+      ],
+      appYearsStartPosition: 1800,
       garageRangeArea: [0, 100],
       garageRangePrice: [0, 100000000],
       garageRangeRent: [0, 100000000],
