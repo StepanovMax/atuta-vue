@@ -23,10 +23,10 @@
             <div class="form__row">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Тип объекта*
               </h3>
@@ -41,10 +41,10 @@
             <div class="form__row">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Тип сделки*
               </h3>
@@ -59,10 +59,10 @@
             <div class="form__row">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Адрес*
               </h3>
@@ -101,10 +101,10 @@
             <div class="form__block-width form__block-width-third">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Район*
               </h3>
@@ -129,10 +129,10 @@
             <div class="form__block-width form__block-width-third">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Тип объекта*
               </h3>
@@ -151,10 +151,10 @@
             <div class="form__block-width form__block-width-third">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Вид дома
               </h3>
@@ -173,15 +173,15 @@
             <div class="form__block-width form__block-width-third">
               <h3 class="
                 title
-                title_h4
+                title_h5
+                title_bold
                 form__title
                 form__title_add-object
-                title_bold
               ">
                 Количество комнат*
               </h3>
               <multiselect
-                v-model="createdObject.roomsCount"
+                v-model="createdObject.app.roomsCount"
                 :options="filterDataDefaultClone.appRooms"
                 :show-labels="false"
                 :allow-empty="false"
@@ -192,6 +192,222 @@
                 track-by="label"
                 placeholder="Количество комнат"
               />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <h3 class="
+            title
+            title_h5
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Этажи
+          </h3>
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Этажей всего*
+              </h4>
+              <multiselect
+                v-model="createdObject.app.floorAll"
+                :options="filterDataDefaultClone.appFloorAllList"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="label"
+                placeholder="Этажей всего"
+              />
+            </div>
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Этаж*
+              </h4>
+              <multiselect
+                v-model="createdObject.app.floor"
+                :options="filterDataDefaultClone.appFloorAllList"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="label"
+                placeholder="Этаж"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <h3 class="
+            title
+            title_h5
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Год постройки
+          </h3>
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <multiselect
+                v-model="createdObject.app.year"
+                :options="appYearsList"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="label"
+                placeholder="Год постройки"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <h3 class="
+            title
+            title_h5
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Площадь
+          </h3>
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Общая площадь
+              </h4>
+              <input
+                type="number"
+                class="input"
+                v-model="appAreaFull"
+                :class="{
+                  'input_error': this.errors.includes('appAreaFull')
+                }"
+              >
+            </div>
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Площадь кухни
+              </h4>
+              <input
+                type="number"
+                class="input"
+                v-model="appAreaKitchen"
+                :class="{
+                  'input_error': this.errors.includes('appAreaKitchen')
+                }"
+              >
+            </div>
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Жилая площадь
+              </h4>
+              <input
+                type="number"
+                class="input"
+                :class="{
+                  'input_error': this.errors.includes('appAreaLiving')
+                }"
+                v-model="appAreaLiving"
+              >
+            </div>
+          </div>
+          <p
+            v-if="this.errors.includes('appAreaFull')"
+            class="paragraph paragraph_invalid"
+          >
+            Сумма жилой площади и площади кухни не может быть больше или равна общей площади
+          </p>
+          <p
+            v-if="this.errors.includes('appAreaLiving')"
+            class="paragraph paragraph_invalid"
+          >
+            Жилая площадь не может быть больше или равна общей площади
+          </p>
+          <p
+            v-if="this.errors.includes('appAreaKitchen')"
+            class="paragraph paragraph_invalid"
+          >
+            Площадь кухни не может быть больше или равна общей площади
+          </p>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Онлайн показ
+              </h3>
+              <switcher
+                class="add-object-page__switcher"
+                switcherId="onlineShowAddObject"
+                :items="filterDataDefaultClone.appOnlineShow"
+                :value.sync="createdObject.app.onlineShow"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Фотографии
+              </h3>
+              
             </div>
           </div>
         </div>
@@ -266,7 +482,12 @@ export default {
       controls: [
         'zoomControl',
       ],
-      currentAddress: ''
+      currentAddress: '',
+      numberYear: null,
+      appAreaFullData: null,
+      appAreaKitchenData: null,
+      appAreaLivingData: null,
+      errors: [],
     }
   },
   watch: {
@@ -288,6 +509,66 @@ export default {
     },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
+    appYearsList() {
+      const currentYear = new Date().getFullYear();
+      const startYear = this.filterDataDefaultClone.appYearsStartPosition;
+      let yearsArray = [];
+      for (let i = startYear; i <= currentYear; i++) {
+        yearsArray.push(
+          {
+            'slug': i,
+            'label': i
+          }
+        );
+      }
+      return yearsArray.reverse()
+    },
+    appArea: {
+      cache: false,
+      get() {
+        return this.inputValueFrom;
+      },
+      set(value) {
+        console.log(value);
+      }
+    },
+    appAreaFull: {
+      cache: false,
+      get() {
+        return this.appAreaFullData;
+      },
+      set(value) {
+        this.appAreaFullData = this.validateNumbers(value);
+        this.validateArea();
+      }
+    },
+    appAreaKitchen: {
+      cache: false,
+      get() {
+        return this.appAreaKitchenData;
+      },
+      set(value) {
+        this.appAreaKitchenData = this.validateNumbers(value);
+        this.validateArea();
+      }
+    },
+    appAreaLiving: {
+      cache: false,
+      get() {
+        return this.appAreaLivingData;
+      },
+      set(value) {
+        console.log('value ::', value);
+        if (value === '0') {
+          this.errors.push('appAreaLiving');
+        } else {
+          const index = this.errors.indexOf('appAreaLiving');
+          this.errors.splice(index, 1);
+        }
+        this.appAreaLivingData = this.validateNumbers(value);
+        this.validateArea();
+      }
     },
   },
   created() {
@@ -350,6 +631,58 @@ export default {
           console.log('Rejected [Geocode error] ::', error);
         }
       );
+    },
+    numberYearValidate(event) {
+      const currentYear = new Date().getFullYear();
+      const value = event.target.value;
+      if (value.length === 4) {
+        if (value > 1800 && value <= currentYear) {
+          console.log('value  year correct ::', value);
+        }
+      }
+    },
+    validateArea() {
+      // console.log(' ');
+      // console.log('this.appAreaFull', this.appAreaFull);
+      // console.log('this.appAreaKitchen', this.appAreaKitchen);
+      // console.log('this.appAreaLiving', this.appAreaLiving);
+      if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen)) {
+        if (this.appAreaFull <= this.appAreaKitchen) {
+          this.errors.push('appAreaKitchen');
+        } else {
+          const indexAppAreaKitchen = this.errors.indexOf('appAreaKitchen');
+          this.errors.splice(indexAppAreaKitchen, 1);
+          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
+          this.errors.splice(indexAppAreaFull, 1);
+        }
+      }
+      if (Boolean(this.appAreaFull) && Boolean(this.appAreaLiving)) {
+        if (this.appAreaFull <= this.appAreaLiving) {
+          this.errors.push('appAreaLiving');
+        } else {
+          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
+          this.errors.splice(indexAppAreaLiving, 1);
+          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
+          this.errors.splice(indexAppAreaFull, 1);
+        }
+      }
+      if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen) && Boolean(this.appAreaLiving)) {
+        const sumKitchenWithLiving = +this.appAreaKitchen + +this.appAreaLiving;
+        if (this.appAreaFull <= sumKitchenWithLiving) {
+          this.errors.push('appAreaFull');
+        } else {
+          const indexAppAreaKitchen = this.errors.indexOf('appAreaLiving');
+          this.errors.splice(indexAppAreaKitchen, 1);
+          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
+          this.errors.splice(indexAppAreaLiving, 1);
+          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
+          this.errors.splice(indexAppAreaFull, 1);
+        }
+      }
+    },
+    validateNumbers(value) {
+      const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
+      return trimmedValue;
     },
   },
   // async mounted() {
