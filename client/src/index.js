@@ -77,6 +77,7 @@ const store = new Vuex.Store({
       deal: null,
       object: null,
       seller: null,
+      tarif: null,
       app: {
         price: null,
         rent: null,

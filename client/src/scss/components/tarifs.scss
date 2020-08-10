@@ -1,32 +1,71 @@
 .tarifs {
+  width: 100%;
+
   &__item {
     cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    transition: background-color .5s ease;
 
     &:first-child {
       margin-bottom: 20px;
     }
+
+    &:hover {
+      background-color: $COLOR-GREY-DISABLED;
+    }
   }
 
   &__image {
-    width: 200px;
-    height: 150px;
-    border-radius: 4px;
+    min-width: calc(100% / 3);
+    height: 120px;
+    border-radius: 8px;
     margin-right: 20px;
     background-color: $COLOR-GREY-DISABLED;
     border-width: 1px;
     border-style: solid;
     border-color: $COLOR-TEXT-DISABLED;
+    position: relative;
+
+    &-text {
+      font-size: 18px;
+      color: $COLOR-TEXT;
+      position: absolute;
+
+      &_price {
+        right: 10px;
+        bottom: 10px;
+      }
+
+      &_name {
+        top: 10px;
+        left: 10px;
+      }
+
+      &_active {
+        color: $COLOR-WHITE;
+      }
+    }
 
     &_active {
       background-color: $COLOR-VIOLET;
+      border-color: $COLOR-VIOLET;
     }
   }
 
   &__text {
+    font-size: 14px;
+  }
 
+  &__icon {
+    top: 6px;
+    right: 10px;
+    width: 40px;
+    position: absolute;
+
+    &_active {
+    }
   }
 }
