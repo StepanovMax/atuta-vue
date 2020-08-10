@@ -4,16 +4,35 @@
   >
     <div
       class="tarifs__item"
-      @click="selectTarif('vip')"
-      id="vip"
+      @click="selectTarif(tarifsArray[0].slug)"
+      :id="tarifsArray[0].slug"
     >
       <div
         class="tarifs__image"
         :class="{
-          'tarifs__image_active': this.tarif === 'vip'
+          'tarifs__image_active': this.selectedTarifName === tarifsArray[0].slug
         }"
       >
-
+        <p
+          class="tarifs__image-text tarifs__image-text_name"
+          :class="{
+            'tarifs__image-text_active': this.selectedTarifName === tarifsArray[0].slug
+          }"
+        >
+          {{ tarifsArray[0].label }}
+        </p>
+        <p
+          class="tarifs__image-text tarifs__image-text_price"
+          :class="{
+            'tarifs__image-text_active': this.selectedTarifName === tarifsArray[0].slug
+          }"
+        >
+          {{ tarifsArray[0].price }}₽
+        </p>
+        <iconCrown
+          class="tarifs__icon"
+          :propColor="this.selectedTarifName === tarifsArray[0].slug ? 'white' : ''"
+        />
       </div>
       <div class="tarifs__text">
         <p class="paragraph">
@@ -29,16 +48,35 @@
     </div>
     <div
       class="tarifs__item"
-      @click="selectTarif('premium')"
-      id="premium"
+      @click="selectTarif(tarifsArray[1].slug)"
+      :id="tarifsArray[1].slug"
     >
       <div
         class="tarifs__image"
         :class="{
-          'tarifs__image_active': this.tarif === 'premium'
+          'tarifs__image_active': this.selectedTarifName === tarifsArray[1].slug
         }"
       >
-
+        <p
+          class="tarifs__image-text tarifs__image-text_name"
+          :class="{
+            'tarifs__image-text_active': this.selectedTarifName === tarifsArray[1].slug
+          }"
+        >
+          {{ tarifsArray[1].label }}
+        </p>
+        <p
+          class="tarifs__image-text tarifs__image-text_price"
+          :class="{
+            'tarifs__image-text_active': this.selectedTarifName === tarifsArray[1].slug
+          }"
+        >
+          {{ tarifsArray[1].price }}₽
+        </p>
+        <iconDiamond
+          class="tarifs__icon"
+          :propColor="this.selectedTarifName === tarifsArray[1].slug ? 'white' : ''"
+        />
       </div>
       <div class="tarifs__text">
         <p class="paragraph">
@@ -53,22 +91,59 @@
 </template>
 
 <script>
+import iconCrown from './icons/iconCrown.vue';
+import iconDiamond from './icons/iconDiamond.vue';
+
 export default {
   name: 'tarifs',
+  components: {
+    iconCrown,
+    iconDiamond,
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   data() {
     return {
-      tarif: '',
+      selectedTarifName: '',
+      tarifPrice: '',
+      tarifsArray: [
+        {
+          label: 'VIP',
+          slug: 'vip',
+          price: 100,
+        },
+        {
+          label: 'Premium',
+          slug: 'premium',
+          price: 50,
+        },
+      ]
     }
   },
+  watch: {
+    selectedTarifName: {
+      handler(value) {
+        if (value === 'vip') {
+          this.$emit('update:value', this.tarifsArray[0]);
+        } else if (value === 'premium') {
+          this.$emit('update:value', this.tarifsArray[1]);
+        } else {
+          this.$emit('update:value', 0);
+        }
+      },
+      deep: true
+    },
+  },
   methods: {
-    selectTarif(target) {
-      console.log('el ::', target);
-      if(this.tarif === '') {
-        this.tarif = target;
-      } else if (this.tarif !== '' && this.tarif === target) {
-        this.tarif = '';
-      } else if (this.tarif !== '' && this.tarif !== target) {
-        this.tarif = target;
+    selectTarif(targetedTarifName) {
+      if(this.selectedTarifName === '') {
+        this.selectedTarifName = targetedTarifName;
+      } else if (this.selectedTarifName !== '' && this.selectedTarifName === targetedTarifName) {
+        this.selectedTarifName = '';
+      } else if (this.selectedTarifName !== '' && this.selectedTarifName !== targetedTarifName) {
+        this.selectedTarifName = targetedTarifName;
       }
     },
   },

@@ -508,7 +508,7 @@
                   form__input
                   form__input_add-object
                 "
-              >
+              >₽
             </div>
           </div>
         </div>
@@ -551,7 +551,7 @@
                 Услуга “Поднять объявление”
               </h3>
               <tarifs 
-                v-model="createdObject.tarif"
+                :value.sync="createdObject.tarif"
               />
             </div>
           </div>
@@ -566,8 +566,9 @@
                 title_bold
                 form__title
                 form__title_add-object
+                add-object-page__text_price-total
               ">
-                Итого: 130р
+                Итого: {{ totalPrice }}₽
               </h3>
             </div>
           </div>
@@ -576,7 +577,14 @@
         <div class="form__row">
           <div class="form__row form__row_block-width">
             <div class="form__block-width">
-              <button class="btn btn_blue btn_middle">
+              <button
+                class="
+                  btn
+                  btn_blue
+                  btn_middle
+                  add-object-page__btn
+                "
+              >
                 Разместить объявление
               </button>
             </div>
@@ -749,6 +757,15 @@ export default {
         this.validateArea();
       }
     },
+    totalPrice() {
+      let selectedTarifPrice = 0;
+      if (this.createdObject.tarif) {
+        selectedTarifPrice = this.createdObject.tarif.price;
+      }
+      const defaultPrice = 30;
+      const sum = defaultPrice + selectedTarifPrice;
+      return sum;
+    }
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.filterDataSelected));
