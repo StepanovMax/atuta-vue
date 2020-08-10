@@ -1,4 +1,6 @@
 .icon {
+  display: block;
+
   &__path {
     fill: $COLOR-TEXT;
     transition: fill 0.3s ease;
@@ -13,6 +15,10 @@
       &_active{
         fill: $COLOR-BLUE-SUPER-LIGHT;
       }
+    }
+
+    &_white {
+      fill: $COLOR-WHITE;
     }
   }
 

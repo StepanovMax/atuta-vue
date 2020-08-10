@@ -1,0 +1,114 @@
+.vue_component {
+  &__upload {
+    &--image {
+      padding: 0 !important;
+      min-height: auto !important;
+      width: 100%;
+
+      form {
+        width: 100%;
+
+        .upload_image_form {
+          &__thumbnail {
+            &s {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+
+              &[data-v-590170d4] {
+                padding-bottom: 1em;
+                margin: 0;
+              }
+
+              span[data-v-590170d4] {
+                top: 0;
+                left: auto;
+                right: 0;
+                font-size: 12px;
+                color: $COLOR-WHITE;
+                background-color: $COLOR-BLUE-MAIN;
+                padding: 2px;
+                width: 12px;
+                height: 12px;
+                text-align: center;
+                vertical-align: middle;
+              }
+            }
+
+            &[data-v-590170d4] {
+              margin: 0 20px 20px 0;
+            }
+          }
+        }
+
+        div[data-v-590170d4] {
+          text-align: left !important;
+        }
+
+        .btn {
+          @extend .btn_blue;
+          @extend .btn_mini;
+          z-index: -1;
+          letter-spacing: 0;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.input-file {
+  &-btn {
+    margin-bottom: 20px;
+
+    &__label {
+
+    }
+
+    &__input {
+
+    }
+  }
+
+  &-images {
+    &__list {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      &-item {
+        width: 150px;
+        height: 100px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        overflow: hidden;
+
+        &-img {
+          max-width: 100%;
+        }
+      }
+    }
+
+    &__btn {
+      &_close {
+        background-color: rgba(0, 0, 0, .2);
+        top: 0;
+        right: 0;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        padding: 6px;
+        border-radius: 0;
+      }
+    }
+  }
+}
