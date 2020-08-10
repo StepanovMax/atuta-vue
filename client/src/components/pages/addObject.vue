@@ -464,6 +464,122 @@
           </div>
         </div>
 
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Описание
+              </h3>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                class="textarea"
+              >
+
+              </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Цена
+              </h3>
+              <input
+                type="number"
+                class="
+                  input
+                  form__input
+                  form__input_add-object
+                "
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width">
+            <div class="form__block-width">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Размещение объявления
+              </h3>
+              <p class="paragraph">
+                Стоимость размещения объявления - 30 ₽
+              </p>
+              <p class="paragraph">
+                Подача объявления стоит 30 рублей и в течение 30 дней Ваше объявление будет показываться на сайте.
+              </p>
+              <p class="paragraph">
+                Чтобы поднять объявление в поиске - воспользуйтесь услугой “Поднять объявление”. Она обновляет дату размещения объявления, поэтому поднимается в поиске, как только что опубликованное. В итоге Ваше объявление видит больше потенциальных покупателей.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width">
+            <div class="form__block-width">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Услуга “Поднять объявление”
+              </h3>
+              <tarifs 
+                v-model="createdObject.tarif"
+              />
+            </div>
+          </div>
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Итого: 130р
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width">
+            <div class="form__block-width">
+              <button class="btn btn_blue btn_middle">
+                Разместить объявление
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div
@@ -500,12 +616,14 @@ import switcher from '../common/switcher.vue';
 import iconCross from '../icons/iconCross.vue';
 import { mapState, store, commit } from 'vuex';
 import radioButtons from '../common/radioButtons.vue';
+import tarifs from '../tarifs.vue';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
   name: 'addObject',
   components: {
     ads,
+    tarifs,
     switcher,
     yandexMap,
     iconCross,
