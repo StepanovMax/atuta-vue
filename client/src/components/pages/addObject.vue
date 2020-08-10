@@ -555,6 +555,9 @@
               />
             </div>
           </div>
+        </div>
+
+        <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3 class="
