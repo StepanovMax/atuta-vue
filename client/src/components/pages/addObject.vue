@@ -218,7 +218,7 @@
                 Этажей всего*
               </h4>
               <multiselect
-                v-model="createdObject.app.floorAll"
+                v-model="floorAll"
                 :options="filterDataDefaultClone.appFloorAllList"
                 :show-labels="false"
                 :allow-empty="false"
@@ -242,7 +242,7 @@
               </h4>
               <multiselect
                 v-model="createdObject.app.floor"
-                :options="filterDataDefaultClone.appFloorAllList"
+                :options="filterDataDefaultClone.appFloorAllListCurrent"
                 :show-labels="false"
                 :allow-empty="false"
                 :close-on-select="true"
@@ -482,8 +482,8 @@
                 cols="30"
                 rows="10"
                 class="textarea"
+                v-model="createdObject.description"
               >
-
               </textarea>
             </div>
           </div>
@@ -501,14 +501,9 @@
               ">
                 Цена
               </h3>
-              <input
-                type="number"
-                class="
-                  input
-                  form__input
-                  form__input_add-object
-                "
-              >₽
+              <inputField
+                :value.sync="createdObject.app.price"
+              />
             </div>
           </div>
         </div>
@@ -575,8 +570,24 @@
         </div>
 
         <div class="form__row">
-          <div class="form__row form__row_block-width">
-            <div class="form__block-width">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <objectCard
+                class="object-card_fixed-width"
+                :propObjectData="objectData"
+                key="key-preview-add-object"
+                propObjectView=""
+              />
+            </div>
+
+            <div class="
+              form__block-width
+              form__block-width-two-third
+              form__block-width-third_to-bottom
+            ">
+              <p class="paragraph paragraph_mini">
+                Вот таким образом ваше объявление будет выглядеть после подачи.
+              </p>
               <button
                 class="
                   btn
@@ -621,13 +632,15 @@
 
 <script>
 import ads from '../ads.vue';
+import tarifs from '../tarifs.vue';
 import multiselect from 'vue-multiselect';
 import uploadImage from 'vue-upload-image';
 import switcher from '../common/switcher.vue';
 import iconCross from '../icons/iconCross.vue';
 import { mapState, store, commit } from 'vuex';
+import objectCard from '../common/objectCard.vue';
+import inputField from '../common/inputField.vue';
 import radioButtons from '../common/radioButtons.vue';
-import tarifs from '../tarifs.vue';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
@@ -639,6 +652,8 @@ export default {
     yandexMap,
     iconCross,
     ymapMarker,
+    inputField,
+    objectCard,
     multiselect,
     uploadImage,
     radioButtons,
@@ -675,6 +690,22 @@ export default {
       errors: [],
       dataUploadedImages: [],
       images: [],
+      objectData: {
+        price: '1630000',
+        dealType: 'buy',
+        address: 'Ростовская область, Таганрог, ул. Чехова, 318',
+        area: 60,
+        rooms: 2,
+        floorCurrent: 3,
+        floorFull: 5,
+        rooms: 2,
+        district: 'Западный',
+        date: '1596317207',
+        agency: '"Тандем" Реэлторская компания',
+        id: 7125647174,
+        urlPreview: 'objects/8993850241.jpg',
+        phoneNumber: '79612701887',
+      },
     }
   },
   watch: {
@@ -688,7 +719,7 @@ export default {
   computed: {
     ...mapState([
       'filterDataDefault',
-      'filterDataSelected',
+      'objectDataSelected',
     ]),
     atLeastOneFormItemIsFilled() {
       const value = true;
@@ -710,15 +741,6 @@ export default {
         );
       }
       return yearsArray.reverse()
-    },
-    appArea: {
-      cache: false,
-      get() {
-        return this.inputValueFrom;
-      },
-      set(value) {
-        console.log(value);
-      }
     },
     appAreaFull: {
       cache: false,
@@ -746,7 +768,6 @@ export default {
         return this.appAreaLivingData;
       },
       set(value) {
-        console.log('value ::', value);
         if (value === '0') {
           this.errors.push('appAreaLiving');
         } else {
@@ -765,10 +786,36 @@ export default {
       const defaultPrice = 30;
       const sum = defaultPrice + selectedTarifPrice;
       return sum;
-    }
+    },
+    floorAll: {
+      cache: false,
+      get() {
+        return this.createdObject.app.floorAll;
+      },
+      set(value) {
+        // If a user select floorFull more than floorCurrent.
+        if (this.createdObject.app.floor && value.slug < this.createdObject.app.floor.slug) {
+          // Then floorCurrent will be a null.
+          this.createdObject.app.floor = null;
+        }
+        // All floors that bigger than selected floorAll value will be disabled.
+        this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
+          item => {
+            // Convert slug string to number and add a value +1.
+            const selectedNumber = +value.slug + 1;
+            if (item.slug >= selectedNumber ) {
+              item.$isDisabled = true;
+            } else {
+              item.$isDisabled = false;
+            }
+          }
+        )
+        this.createdObject.app.floorAll = value;
+      }
+    },
   },
   created() {
-    this.createdObject = JSON.parse(JSON.stringify(this.filterDataSelected));
+    this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
     this.createdObject.address = null; 
   },
   methods: {
@@ -824,7 +871,7 @@ export default {
           this.currentAddress = firstGeoObject.properties.getAll().text;
         },
         error => {
-          console.log('Rejected [Geocode error] ::', error);
+          console.error('Rejected [Geocode error] ::', error);
         }
       );
     },
@@ -838,10 +885,6 @@ export default {
       }
     },
     validateArea() {
-      // console.log(' ');
-      // console.log('this.appAreaFull', this.appAreaFull);
-      // console.log('this.appAreaKitchen', this.appAreaKitchen);
-      // console.log('this.appAreaLiving', this.appAreaLiving);
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen)) {
         if (this.appAreaFull <= this.appAreaKitchen) {
           this.errors.push('appAreaKitchen');
@@ -881,8 +924,8 @@ export default {
       return trimmedValue;
     },
     uploadImages(event) {
-      console.log('uploadIMages files ::', event);
-      console.log('uploadIMages files ::', event.srcElement.files.length);
+      // console.log('uploadIMages files ::', event);
+      // console.log('uploadIMages files ::', event.srcElement.files.length);
       if (!!event.srcElement.files.length) {
         // this.dataUploadedImages = event.srcElement.files;
 
@@ -893,7 +936,6 @@ export default {
             let reader = new FileReader();
             reader.onload = (e) => {
               this.$refs.image[i].src = reader.result;
-              console.log(this.$refs.image[i].src);
             };
             reader.readAsDataURL(this.dataUploadedImages[i]);
 
@@ -904,15 +946,13 @@ export default {
             // this.dataUploadedImages.push(object);
           }
         }
-        console.log('this.dataUploadedImages ::', this.dataUploadedImages);
+        // console.log('this.dataUploadedImages ::', this.dataUploadedImages);
       }
     },
     uploadImage(e) {
       let vm = this;
       const selectedFiles = e.target.files;
-      // console.log('e.target.files', e.target.files);
       for (let i = 0; i < selectedFiles.length; i++) {
-        // console.log(selectedFiles[i]);
         this.dataUploadedImages.push(selectedFiles[i]);
       }
 
@@ -920,7 +960,6 @@ export default {
         let reader = new FileReader();
         reader.onload = (e) => {
           this.$refs.image[i].src = reader.result;
-          // console.log(this.$refs.image[i].src);
           this.images.push({
             'src': reader.result
           });

@@ -1,0 +1,16 @@
+.input-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__input {
+    @extend .input;
+    margin-right: 6px;
+  }
+
+  &__currency {
+    @extend .paragraph;
+    font-size: 22px;
+  }
+}
