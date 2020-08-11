@@ -69,6 +69,78 @@ const store = new Vuex.Store({
   state: {
     count: 11.7,
     isFilterOpen: false,
+    objectDataSelected: {
+      town: null,
+      district: null,
+      deal: null,
+      object: null,
+      tarif: null,
+      description: null,
+      app: {
+        price: null,
+        rent: null,
+        rentType: null,
+        type: null,
+        view: null,
+        floor: null,
+        floorAll: null,
+        floorNot: null,
+        roomsCount: null,
+        area: null,
+        areaKitchen: null,
+        areaLiving: null,
+        onlineShow: null,
+      },
+      house: {
+        roomsCount: null,
+        type: null,
+        view: null,
+        isIntoCity: null,
+        distance: null,
+        areaHouse: null,
+        areaLand: null,
+        floorAll: null,
+        price: null,
+        rent: null,
+        rentType: null,
+        wall: null,
+      },
+      room: {
+        price: null,
+        rent: null,
+        rentType: null,
+        area: null,
+        roomsCount: null,
+        floor: null,
+        floorAll: null,
+        floorNot: null,
+      },
+      garage: {
+        type: null,
+        security: null,
+        garageType: null,
+        parkingType: null,
+        area: null,
+        rent: null,
+        price: null,
+      },
+      sector: {
+        price: null,
+        rent: null,
+        distance: null,
+        area: null,
+        category: null,
+      },
+      commercial: {
+        price: null,
+        rent: null,
+        rentType: null,
+        class: null,
+        view: null,
+        area: null,
+        distance: null,
+      },
+    },
     filterDataSelected: {
       searchInTitle: null,
       searchWithImages: null,
@@ -10776,7 +10848,133 @@ const store = new Vuex.Store({
           label: '30',
         },
         {
-          slug: '30+',
+          slug: '31',
+          label: '30+',
+        },
+      ],
+      appFloorAllListCurrent: [
+        {
+          slug: '1',
+          label: '1',
+        },
+        {
+          slug: '2',
+          label: '2',
+        },
+        {
+          slug: '3',
+          label: '3',
+        },
+        {
+          slug: '4',
+          label: '4',
+        },
+        {
+          slug: '5',
+          label: '5',
+        },
+        {
+          slug: '6',
+          label: '6',
+        },
+        {
+          slug: '7',
+          label: '7',
+        },
+        {
+          slug: '8',
+          label: '8',
+        },
+        {
+          slug: '9',
+          label: '9',
+        },
+        {
+          slug: '10',
+          label: '10',
+        },
+        {
+          slug: '11',
+          label: '11',
+        },
+        {
+          slug: '12',
+          label: '12',
+        },
+        {
+          slug: '13',
+          label: '13',
+        },
+        {
+          slug: '14',
+          label: '14',
+        },
+        {
+          slug: '15',
+          label: '15',
+        },
+        {
+          slug: '16',
+          label: '16',
+        },
+        {
+          slug: '17',
+          label: '17',
+        },
+        {
+          slug: '18',
+          label: '18',
+        },
+        {
+          slug: '19',
+          label: '19',
+        },
+        {
+          slug: '20',
+          label: '20',
+        },
+        {
+          slug: '21',
+          label: '21',
+        },
+        {
+          slug: '22',
+          label: '22',
+        },
+        {
+          slug: '23',
+          label: '23',
+        },
+        {
+          slug: '24',
+          label: '24',
+        },
+        {
+          slug: '25',
+          label: '25',
+        },
+        {
+          slug: '26',
+          label: '26',
+        },
+        {
+          slug: '27',
+          label: '27',
+        },
+        {
+          slug: '28',
+          label: '28',
+        },
+        {
+          slug: '29',
+          label: '29',
+        },
+        {
+          slug: '30',
+          label: '30',
+        },
+        {
+          slug: '31',
           label: '30+',
         },
       ],

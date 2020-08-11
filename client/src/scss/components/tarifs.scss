@@ -56,7 +56,7 @@
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 
   &__icon {
@@ -64,8 +64,5 @@
     right: 10px;
     width: 40px;
     position: absolute;
-
-    &_active {
-    }
   }
 }
