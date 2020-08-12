@@ -1,26 +1,26 @@
 import Vue from 'vue';
-import Vuex from 'vuex'
+import Vuex from 'vuex';
 import Router from 'vue-router';
 import 'regenerator-runtime/runtime';
 
 import App from './App.vue';
-import Home from './components/home.vue'
+import Home from './components/home.vue';
 // plugins
-import formatNumbers from './plugins/formatNumbers.js'
+import formatNumbers from './plugins/formatNumbers.js';
 // pages
-import addObject from './components/pages/addObject.vue'
-import StyleGuide from './components/pages/styleGuide.vue'
-import objectPage from './components/pages/objectPage.vue'
-import profilePage from './components/pages/profilePage.vue'
-import messagesPage from './components/pages/messagesPage.vue'
-import favoritesPage from './components/pages/favoritesPage.vue'
+import addObject from './components/pages/addObject.vue';
+import StyleGuide from './components/pages/styleGuide.vue';
+import objectPage from './components/pages/objectPage.vue';
+import profilePage from './components/pages/profilePage.vue';
+import messagesPage from './components/pages/messagesPage.vue';
+import favoritesPage from './components/pages/favoritesPage.vue';
 
-import './scss/index.scss'
+import './scss/index.scss';
 
 
-Vue.use(Router)
-Vue.use(Vuex)
-Vue.use(formatNumbers)
+Vue.use(Vuex);
+Vue.use(Router);
+Vue.use(formatNumbers);
 
 Vue.config.productionTip = false;
 
