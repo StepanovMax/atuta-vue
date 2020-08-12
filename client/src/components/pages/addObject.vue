@@ -74,7 +74,7 @@
                   form__input_add-object
                 "
                 v-model="currentAddress"
-                @change="updateMapPosition($event)"
+                @change="onInputEnter($event)"
               >
             </div>
           </div>
@@ -124,254 +124,10 @@
           </div>
         </div>
 
-        <div class="form__row">
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Тип объекта*
-              </h3>
-              <switcher
-                class="add-object-page__switcher"
-                switcherId="typeAddObject"
-                :items="filterDataDefaultClone.appTypes"
-                :value.sync="createdObject.app.type"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Вид дома
-              </h3>
-              <radioButtons
-                radioButtonsView="wrapHalf"
-                radioButtonsId="appViewAddObject"
-                :items="filterDataDefaultClone.appView"
-                :value.sync="createdObject.app.view"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Количество комнат*
-              </h3>
-              <multiselect
-                v-model="createdObject.app.roomsCount"
-                :options="filterDataDefaultClone.appRooms"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="label"
-                track-by="label"
-                placeholder="Количество комнат"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <h3 class="
-            title
-            title_h5
-            title_bold
-            form__title
-            form__title_add-object
-          ">
-            Этажи
-          </h3>
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Этажей всего*
-              </h4>
-              <multiselect
-                v-model="floorAll"
-                :options="filterDataDefaultClone.appFloorAllList"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="label"
-                track-by="label"
-                placeholder="Этажей всего"
-              />
-            </div>
-            <div class="form__block-width form__block-width-third">
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Этаж*
-              </h4>
-              <multiselect
-                v-model="createdObject.app.floor"
-                :options="filterDataDefaultClone.appFloorAllListCurrent"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="label"
-                track-by="label"
-                placeholder="Этаж"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <h3 class="
-            title
-            title_h5
-            title_bold
-            form__title
-            form__title_add-object
-          ">
-            Год постройки
-          </h3>
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <multiselect
-                v-model="createdObject.app.year"
-                :options="appYearsList"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="label"
-                track-by="label"
-                placeholder="Год постройки"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <h3 class="
-            title
-            title_h5
-            title_bold
-            form__title
-            form__title_add-object
-          ">
-            Площадь
-          </h3>
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Общая площадь
-              </h4>
-              <input
-                type="number"
-                class="input"
-                v-model="appAreaFull"
-                :class="{
-                  'input_error': this.errors.includes('appAreaFull')
-                }"
-              >
-            </div>
-            <div class="form__block-width form__block-width-third">
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Площадь кухни
-              </h4>
-              <input
-                type="number"
-                class="input"
-                v-model="appAreaKitchen"
-                :class="{
-                  'input_error': this.errors.includes('appAreaKitchen')
-                }"
-              >
-            </div>
-            <div class="form__block-width form__block-width-third">
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Жилая площадь
-              </h4>
-              <input
-                type="number"
-                class="input"
-                :class="{
-                  'input_error': this.errors.includes('appAreaLiving')
-                }"
-                v-model="appAreaLiving"
-              >
-            </div>
-          </div>
-          <p
-            v-if="this.errors.includes('appAreaFull')"
-            class="paragraph paragraph_invalid"
-          >
-            Сумма жилой площади и площади кухни не может быть больше или равна общей площади
-          </p>
-          <p
-            v-if="this.errors.includes('appAreaLiving')"
-            class="paragraph paragraph_invalid"
-          >
-            Жилая площадь не может быть больше или равна общей площади
-          </p>
-          <p
-            v-if="this.errors.includes('appAreaKitchen')"
-            class="paragraph paragraph_invalid"
-          >
-            Площадь кухни не может быть больше или равна общей площади
-          </p>
-        </div>
+        <addObjectApp
+          v-if="createdObject.object && createdObject.object.slug === 'app'"
+          :propCreatedObjectApp="createdObject.app"
+        />
 
         <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
@@ -642,6 +398,7 @@ import objectCard from '../common/objectCard.vue';
 import inputField from '../common/inputField.vue';
 import radioButtons from '../common/radioButtons.vue';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
+import addObjectApp from '../addObject/desktop/addObjectApp.vue';
 
 export default {
   name: 'addObject',
@@ -657,6 +414,7 @@ export default {
     multiselect,
     uploadImage,
     radioButtons,
+    addObjectApp,
   },
   data() {
     return {
@@ -683,10 +441,6 @@ export default {
         'zoomControl',
       ],
       currentAddress: '',
-      numberYear: null,
-      appAreaFullData: null,
-      appAreaKitchenData: null,
-      appAreaLivingData: null,
       errors: [],
       dataUploadedImages: [],
       images: [],
@@ -728,56 +482,6 @@ export default {
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
-    appYearsList() {
-      const currentYear = new Date().getFullYear();
-      const startYear = this.filterDataDefaultClone.appYearsStartPosition;
-      let yearsArray = [];
-      for (let i = startYear; i <= currentYear; i++) {
-        yearsArray.push(
-          {
-            'slug': i,
-            'label': i
-          }
-        );
-      }
-      return yearsArray.reverse()
-    },
-    appAreaFull: {
-      cache: false,
-      get() {
-        return this.appAreaFullData;
-      },
-      set(value) {
-        this.appAreaFullData = this.validateNumbers(value);
-        this.validateArea();
-      }
-    },
-    appAreaKitchen: {
-      cache: false,
-      get() {
-        return this.appAreaKitchenData;
-      },
-      set(value) {
-        this.appAreaKitchenData = this.validateNumbers(value);
-        this.validateArea();
-      }
-    },
-    appAreaLiving: {
-      cache: false,
-      get() {
-        return this.appAreaLivingData;
-      },
-      set(value) {
-        if (value === '0') {
-          this.errors.push('appAreaLiving');
-        } else {
-          const index = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(index, 1);
-        }
-        this.appAreaLivingData = this.validateNumbers(value);
-        this.validateArea();
-      }
-    },
     totalPrice() {
       let selectedTarifPrice = 0;
       if (this.createdObject.tarif) {
@@ -787,32 +491,6 @@ export default {
       const sum = defaultPrice + selectedTarifPrice;
       return sum;
     },
-    floorAll: {
-      cache: false,
-      get() {
-        return this.createdObject.app.floorAll;
-      },
-      set(value) {
-        // If a user select floorFull more than floorCurrent.
-        if (this.createdObject.app.floor && value.slug < this.createdObject.app.floor.slug) {
-          // Then floorCurrent will be a null.
-          this.createdObject.app.floor = null;
-        }
-        // All floors that bigger than selected floorAll value will be disabled.
-        this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
-          item => {
-            // Convert slug string to number and add a value +1.
-            const selectedNumber = +value.slug + 1;
-            if (item.slug >= selectedNumber ) {
-              item.$isDisabled = true;
-            } else {
-              item.$isDisabled = false;
-            }
-          }
-        )
-        this.createdObject.app.floorAll = value;
-      }
-    },
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
@@ -821,107 +499,78 @@ export default {
   methods: {
     onMapClick(e) {
       this.coordsTaganrog = e.get('coords');
-      ymaps.geocode(this.coordsTaganrog).then(
-        res => {
-          // console.log('geoObjects', res.geoObjects.get(0));
-          const firstGeoObject = res.geoObjects.get(0);
-          // var firstGeoObjectStreet = firstGeoObject.properties.get('name');
-          // const coords = firstGeoObject.geometry.getCoordinates();
-          // const firstGeoObjectAddress = firstGeoObject.getLocalities();
-
-          // Название населенного пункта или вышестоящее административно-территориальное образование.
-          // console.log(firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas());
-          const town = firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas();
-          firstGeoObject.properties.getAll();
-          this.currentAddress = firstGeoObject.properties.getAll().text;
-          // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
-          // firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
-        },
-        error => {
-          console.log('Rejected [Geocode error] ::', error);
-        }
-      );
+      this.detectAddress(this.coordsTaganrog);
     },
-    async getAddress(coords) {
-      // await loadYmap({ ...settings, debug: true });
-      // ymap.geocode(coords).then(function (res) {
-      //   // const firstGeoObject = res.geoObjects.get(0);
-      //   console.log('res', res);
-
-      //   // myPlacemark.properties
-      //   //   .set({
-      //   //     // Формируем строку с данными об объекте.
-      //   //     iconCaption: [
-      //   //       // Название населенного пункта или вышестоящее административно-территориальное образование.
-      //   //       firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas(),
-      //   //       // Получаем путь до топонима, если метод вернул null, запрашиваем наименование здания.
-      //   //       firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
-      //   //     ].filter(Boolean).join(', '),
-      //   //     // В качестве контента балуна задаем строку с адресом объекта.
-      //   //     balloonContent: firstGeoObject.getAddressLine()
-      //   //   });
-      // });
-    },
-    updateMapPosition(event) {
+    onInputEnter(event) {
       ymaps.geocode(event.target.value).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
           this.coordsTaganrog = coords;
-          this.currentAddress = firstGeoObject.properties.getAll().text;
+          this.detectAddress(this.coordsTaganrog);
         },
         error => {
           console.error('Rejected [Geocode error] ::', error);
         }
       );
     },
-    numberYearValidate(event) {
-      const currentYear = new Date().getFullYear();
-      const value = event.target.value;
-      if (value.length === 4) {
-        if (value > 1800 && value <= currentYear) {
-          console.log('value  year correct ::', value);
+    detectAddress(coords) {
+      ymaps.geocode(this.coordsTaganrog).then(
+        res => {
+          const firstGeoObject = res.geoObjects.get(0);
+          const addressArray = firstGeoObject.properties._data.metaDataProperty.GeocoderMetaData.Address.Components;
+          let selectedAddressArray = [];
+          let selectedAddress = '';
+
+          addressArray.forEach(
+            (item, index) => {
+              if (index === 2 && item.kind === 'province') {
+                selectedAddressArray.push(item.name);
+              } else if (item.kind === 'locality') {
+                selectedAddressArray.push(item.name);
+              } else {
+                if (item.kind === 'street' || item.kind === 'house') {
+                  if (item.kind === 'street') {
+                    selectedAddressArray.push(item.name);
+                  } else if (item.kind === 'house') {
+                    selectedAddressArray.push(item.name);
+                  }
+                } else if (item.kind === 'district') {
+                  selectedAddressArray.push(item.name);
+                }
+              }
+            }
+          )
+
+          selectedAddressArray.forEach(
+            (item, index) => {
+              if (index === 0) {
+                selectedAddress = item
+              } else {
+                selectedAddress += ', ' + item
+              }
+            }
+          );
+
+          // console.log(
+          //   '::',
+          //   firstGeoObject.getLocalities()[0],
+          //   firstGeoObject._xalEntities.administrativeAreas[0],
+          //   firstGeoObject._xalEntities.thoroughfare,
+          //   firstGeoObject._xalEntities.premiseNumber,
+          //   firstGeoObject.getLocalities(),
+          //   firstGeoObject.getAdministrativeAreas(),
+          //   firstGeoObject.getPremise(),
+          //   firstGeoObject.getThoroughfare(),
+          //   firstGeoObject.properties.getAll().text
+          // );
+
+          this.currentAddress = selectedAddress;
+        },
+        error => {
+          console.log('Rejected [Geocode error] ::', error);
         }
-      }
-    },
-    validateArea() {
-      if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen)) {
-        if (this.appAreaFull <= this.appAreaKitchen) {
-          this.errors.push('appAreaKitchen');
-        } else {
-          const indexAppAreaKitchen = this.errors.indexOf('appAreaKitchen');
-          this.errors.splice(indexAppAreaKitchen, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
-        }
-      }
-      if (Boolean(this.appAreaFull) && Boolean(this.appAreaLiving)) {
-        if (this.appAreaFull <= this.appAreaLiving) {
-          this.errors.push('appAreaLiving');
-        } else {
-          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaLiving, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
-        }
-      }
-      if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen) && Boolean(this.appAreaLiving)) {
-        const sumKitchenWithLiving = +this.appAreaKitchen + +this.appAreaLiving;
-        if (this.appAreaFull <= sumKitchenWithLiving) {
-          this.errors.push('appAreaFull');
-        } else {
-          const indexAppAreaKitchen = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaKitchen, 1);
-          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaLiving, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
-        }
-      }
-    },
-    validateNumbers(value) {
-      const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
-      return trimmedValue;
+      );
     },
     uploadImages(event) {
       // console.log('uploadIMages files ::', event);
