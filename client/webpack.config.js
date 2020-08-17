@@ -67,7 +67,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname),
     port: 9000,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new VueLoaderPlugin()
@@ -76,5 +76,5 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
     }
-  }
+  },
 }

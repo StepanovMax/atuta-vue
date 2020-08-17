@@ -64,14 +64,14 @@
       <multiselect
         class="multiselect-search-main"
         v-model="filterSelected.town"
-        :options="filterDataDefaultClone.town"
+        :options="getFlatLocalitiesList"
         :show-labels="false"
         :allow-empty="false"
         :close-on-select="true"
         :multiple="false"
         :searchable="true"
-        label="city"
-        track-by="city"
+        label="label"
+        track-by="label"
         placeholder="Город"
       />
     </div>
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import multiselect from 'vue-multiselect';
 import checkbox from '../common/checkbox.vue'
 import iconSearchGlass from '../icons/iconSearchGlass.vue';
@@ -152,6 +152,9 @@ export default {
     },
   },
   computed: {
+    ...mapGetters([
+      'getFlatLocalitiesList',
+    ]),
     ...mapState([
       'filterDataDefault',
       'filterDataSelected',

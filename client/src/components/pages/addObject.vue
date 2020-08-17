@@ -110,14 +110,14 @@
               </h3>
               <multiselect
                 v-model="createdObject.district"
-                :options="filterDataDefaultClone.district"
+                :options="localityDistricts"
                 :show-labels="false"
                 :allow-empty="false"
                 :close-on-select="true"
                 :multiple="false"
                 :searchable="true"
                 label="label"
-                track-by="label"
+                track-by="slug"
                 placeholder="Район"
               />
             </div>
@@ -125,8 +125,21 @@
         </div>
 
         <addObjectApp
-          v-if="createdObject.object && createdObject.object.slug === 'app'"
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'app'
+          "
           :propCreatedObjectApp="createdObject.app"
+        />
+
+        <addObjectHouse
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'house'
+          "
+          :propCreatedObjectHouse="createdObject.house"
         />
 
         <div class="form__row">
@@ -245,20 +258,48 @@
           </div>
         </div>
 
-        <div class="form__row">
+        <div
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
+              <h3
+                v-if="
+                  !createdObject.deal
+                "
+                class="
+                  form__title
+                  form__title_add-object
+                "
+              >
                 Цена
               </h3>
+              <h3
+                v-if="
+                  createdObject.deal
+                  && createdObject.deal.slug === 'buy'
+                "
+                class="
+                  form__title
+                  form__title_add-object
+                "
+              >
+                Цена
+              </h3>
+              <h3
+                v-if="
+                  createdObject.deal
+                  && createdObject.deal.slug === 'rent'
+                "
+                class="
+                  form__title
+                  form__title_add-object
+                "
+              >
+                Цена в месяц
+              </h3>
               <inputField
-                :value.sync="createdObject.app.price"
+                :value.sync="createdObject.price"
               />
             </div>
           </div>
@@ -387,18 +428,21 @@
 </template>
 
 <script>
-import ads from '../ads.vue';
-import tarifs from '../tarifs.vue';
+import axios from 'axios';
 import multiselect from 'vue-multiselect';
 import uploadImage from 'vue-upload-image';
-import switcher from '../common/switcher.vue';
+import { mapState, mapGetters, store, commit } from 'vuex';
+import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
+
+import ads from '../ads.vue';
+import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
-import { mapState, store, commit } from 'vuex';
+import switcher from '../common/switcher.vue';
 import objectCard from '../common/objectCard.vue';
 import inputField from '../common/inputField.vue';
 import radioButtons from '../common/radioButtons.vue';
-import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 import addObjectApp from '../addObject/desktop/addObjectApp.vue';
+import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
 
 export default {
   name: 'addObject',
@@ -415,27 +459,28 @@ export default {
     uploadImage,
     radioButtons,
     addObjectApp,
+    addObjectHouse,
+    axios,
   },
   data() {
     return {
+      localityDistricts: [],
+      townObject: {},
+      townLabel: {
+        type: String,
+        default: '',
+      },
       createdObject: {},
       settings: {
         lang: 'ru_RU',
         version: '2.1',
         coordorder: 'latlong',
-        apiKey: '511c4fe7-bda5-4cea-b1e2-bdb28ea527c9',
+        apiKey: '6d871862-9fd6-4a24-b967-4a75bef3fdfd',
+        apiKeyOld: '511c4fe7-bda5-4cea-b1e2-bdb28ea527c9',
       },
-      coordsMoscow: [
-        55.661574,
-        37.573856,
-      ],
       coordsTaganrog: [
         47.22064,
         38.914713,
-      ],
-      coordsTaganrogChekhova: [
-        47.215266,
-        38.908182,
       ],
       controls: [
         'zoomControl',
@@ -460,20 +505,42 @@ export default {
         urlPreview: 'objects/8993850241.jpg',
         phoneNumber: '79612701887',
       },
+      district: '',
     }
   },
   watch: {
-    currentAddress: {
+    townLabel: {
       handler(value) {
-        this.createdObject.address = value;
+        const localityObject = this.getLocalityByLabel(value);
+        // this.townObject = localityObject;
+        console.log('localityDistricts', this.localityDistricts);
+        console.log('localityDistricts', this.localityDistricts);
+        this.localityDistricts = localityObject.districts;
+        // this.localityDistricts = [
+        //   {
+        //     label: 'Центр3',
+        //     slug: 'center3',
+        //   },
+        //   {
+        //     label: 'Центр4',
+        //     slug: 'center4y',
+        //   }
+        // ];
+        this.createdObject.town = localityObject;
+        // this.createdObject.district = this.localityDistricts;
+        console.log('localityDistricts', this.localityDistricts);
       },
       deep: true
     },
   },
   computed: {
+    ...mapGetters([
+      'getFlatLocalitiesList',
+    ]),
     ...mapState([
       'filterDataDefault',
       'objectDataSelected',
+      'filterDataSelected',
     ]),
     atLeastOneFormItemIsFilled() {
       const value = true;
@@ -497,9 +564,18 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    getLocalityByLabel(label) {
+      const localityObjects = this.getFlatLocalitiesList;
+      const foundedLocalityObject = localityObjects.filter(
+        item => {
+          return item.label === label
+        }
+      );
+      return foundedLocalityObject[0];
+    },
     onMapClick(e) {
       this.coordsTaganrog = e.get('coords');
-      this.detectAddress(this.coordsTaganrog);
+      this.getAddress(this.coordsTaganrog);
     },
     onInputEnter(event) {
       ymaps.geocode(event.target.value).then(
@@ -507,15 +583,15 @@ export default {
           const firstGeoObject = res.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
           this.coordsTaganrog = coords;
-          this.detectAddress(this.coordsTaganrog);
+          this.getAddress(this.coordsTaganrog);
         },
         error => {
           console.error('Rejected [Geocode error] ::', error);
         }
       );
     },
-    detectAddress(coords) {
-      ymaps.geocode(this.coordsTaganrog).then(
+    getAddress(coords) {
+      ymaps.geocode(coords).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
           const addressArray = firstGeoObject.properties._data.metaDataProperty.GeocoderMetaData.Address.Components;
@@ -528,6 +604,8 @@ export default {
                 selectedAddressArray.push(item.name);
               } else if (item.kind === 'locality') {
                 selectedAddressArray.push(item.name);
+                this.townLabel = item.name;
+                this.createdObject.town = this.townObject;
               } else {
                 if (item.kind === 'street' || item.kind === 'house') {
                   if (item.kind === 'street') {
@@ -540,14 +618,14 @@ export default {
                 }
               }
             }
-          )
+          );
 
           selectedAddressArray.forEach(
             (item, index) => {
               if (index === 0) {
-                selectedAddress = item
+                selectedAddress = item;
               } else {
-                selectedAddress += ', ' + item
+                selectedAddress += ', ' + item;
               }
             }
           );
@@ -568,13 +646,58 @@ export default {
           this.currentAddress = selectedAddress;
         },
         error => {
-          console.log('Rejected [Geocode error] ::', error);
+          console.log('Rejected [getAddress error] ::', error);
+        }
+      );
+    },
+    getDistrict(cityName) {
+      ymaps.geocode(cityName).then(
+        res => {
+          const coords = res.geoObjects.get(0).geometry.getCoordinates();
+          const step = 0.001;
+          // console.log('coords ::', coords[0], coords[1]);
+          // console.log('coords 1 ::', coords[0] + step, coords[1] + step);
+          // console.log('coords 2 ::', coords[0] + step * 2, coords[1] + step * 2);
+          let changedCoords = [];
+
+          // console.log('getDistrict res step ymapsGeocode 1 ::');
+          function ymapsGeocode(coords) {
+            // console.log('ymapsGeocode 2 ::');
+            ymaps.geocode(
+              coords,
+              {
+                kind: 'district'
+              }
+            ).then(
+              res => {
+                const addressArray = res.geoObjects.get(0).properties._data.metaDataProperty.GeocoderMetaData.Address.Components;
+
+                addressArray.forEach(
+                  (item, index) => {
+                    if (item.kind === 'district') {
+                      this.district = item.name;
+                    }
+                  }
+                );
+              },
+              error => {
+                console.log('Rejected [getDistrict error] ::', error);
+              }
+            );
+          };
+
+          for(let i = 0; i < 10; i++) {
+            changedCoords = [coords[0] + (step * i), coords[1] + (step * i)];
+            ymapsGeocode(changedCoords);
+          }
+
+        },
+        error => {
+          console.log('Rejected [getDistrict error] ::', error);
         }
       );
     },
     uploadImages(event) {
-      // console.log('uploadIMages files ::', event);
-      // console.log('uploadIMages files ::', event.srcElement.files.length);
       if (!!event.srcElement.files.length) {
         // this.dataUploadedImages = event.srcElement.files;
 
@@ -621,11 +744,8 @@ export default {
       this.images.splice(index, 1);
     },
   },
-  // async mounted() {
-  //   await loadYmap({
-  //     ...this.settings,
-  //     debug: true
-  //   });
-  // }
+  async mounted() {
+
+  }
 };
 </script>
