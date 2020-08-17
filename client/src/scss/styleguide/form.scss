@@ -36,6 +36,10 @@
     &_add-object {
       color: $COLOR-TEXT;
       margin-bottom: 15px;
+
+      @extend .title;
+      @extend .title_h5;
+      @extend .title_bold;
     }
   }
 

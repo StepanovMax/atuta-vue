@@ -369,6 +369,14 @@ export default {
       }
     },
   },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+  },
   methods: {
     validateNumbers(value) {
       const trimmedValue = +value.toString().replace(/[^0-9]/g, '');

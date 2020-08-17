@@ -30,10 +30,15 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "connect-history-api-fallback": "^1.6.0",
+    "esri-leaflet-geocoder": "^2.3.3",
     "express": "^4.17.1",
+    "leaflet": "^1.6.0",
     "regenerator-runtime": "^0.13.7",
     "reset-css": "^5.0.1",
+    "search-osm-geocode": "^0.0.8",
+    "transliteration": "^2.1.11",
     "vue": "^2.6.11",
     "vue-fragment": "^1.5.1",
     "vue-multiselect": "^2.1.6",
@@ -42,6 +47,7 @@
     "vue-slider-component": "^3.2.2",
     "vue-upload-image": "^1.1.5",
     "vue-yandex-maps": "^0.10.9",
+    "vue2-leaflet": "^2.5.2",
     "vuex": "^3.5.1"
   }
 }
