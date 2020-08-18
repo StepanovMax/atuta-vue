@@ -36,6 +36,18 @@ const formatNumbers = {
             return true;
           }
         },
+        convertRangeToArray(range) {
+          let resultedArray = [];
+          for (let i = range[0]; i <= range[1]; i++) {
+            resultedArray.push(
+              {
+                'label': i,
+                'slug': i,
+              }
+            );
+          }
+          return resultedArray;
+        },
       },
     });
   }

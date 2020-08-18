@@ -142,6 +142,15 @@
           :propCreatedObjectHouse="createdObject.house"
         />
 
+        <addObjectRoom
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'room'
+          "
+          :propCreatedObjectRoom="createdObject.room"
+        />
+
         <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
@@ -254,6 +263,81 @@
                 v-model="createdObject.description"
               >
               </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-half">
+            <div class="form__block-width form__block-width-half">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Телефон
+              </h3>
+              <multiselect
+                v-model="createdObject.phone"
+                :options="phones"
+                :custom-label="labelWithPhone"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="slug"
+                placeholder="Телефон"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-half">
+            <div class="form__block-width form__block-width-half">
+              <h3 class="
+                title
+                title_h5
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Способ связи
+              </h3>
+              <checkboxes
+                checkboxId="connectionWayAddObject"
+                checkboxType="listVertical"
+                :items="filterDataDefaultClone.connectionWay"
+                :value.sync="createdObject.connectionWay"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-if="
+            createdObject.deal
+            && createdObject.deal.slug === 'rent'
+          "
+          class="form__row"
+        >
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h3
+                class="
+                  form__title
+                  form__title_add-object
+                "
+              >
+                Залог
+              </h3>
+              <inputField
+                :value.sync="createdObject.deposit"
+              />
             </div>
           </div>
         </div>
@@ -438,10 +522,12 @@ import ads from '../ads.vue';
 import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
+import checkboxes from '../common/checkboxes.vue';
 import objectCard from '../common/objectCard.vue';
 import inputField from '../common/inputField.vue';
 import radioButtons from '../common/radioButtons.vue';
 import addObjectApp from '../addObject/desktop/addObjectApp.vue';
+import addObjectRoom from '../addObject/desktop/addObjectRoom.vue';
 import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
 
 export default {
@@ -454,11 +540,13 @@ export default {
     iconCross,
     ymapMarker,
     inputField,
+    checkboxes,
     objectCard,
     multiselect,
     uploadImage,
     radioButtons,
     addObjectApp,
+    addObjectRoom,
     addObjectHouse,
     axios,
   },
@@ -506,29 +594,34 @@ export default {
         phoneNumber: '79612701887',
       },
       district: '',
+      phones: [
+        {
+          label: 'Максим Степанов',
+          slug: 'maxim-stepanov',
+          phone: '+7 (961) 270-18-87',
+        },
+        {
+          label: 'Артур Тавадян',
+          slug: 'artur-tavadyan',
+          phone: '+7 (928) 112-20-80',
+        },
+      ],
     }
   },
   watch: {
     townLabel: {
       handler(value) {
         const localityObject = this.getLocalityByLabel(value);
-        // this.townObject = localityObject;
-        console.log('localityDistricts', this.localityDistricts);
-        console.log('localityDistricts', this.localityDistricts);
-        this.localityDistricts = localityObject.districts;
-        // this.localityDistricts = [
-        //   {
-        //     label: 'Центр3',
-        //     slug: 'center3',
-        //   },
-        //   {
-        //     label: 'Центр4',
-        //     slug: 'center4y',
-        //   }
-        // ];
-        this.createdObject.town = localityObject;
-        // this.createdObject.district = this.localityDistricts;
-        console.log('localityDistricts', this.localityDistricts);
+        if (localityObject) {
+          this.localityDistricts = localityObject.districts;
+        } else {
+          this.localityDistricts = [
+            {
+              label: 'Пригород',
+              slug: 'suburb',
+            }
+          ];
+        }
       },
       deep: true
     },
@@ -564,6 +657,9 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    labelWithPhone ({ label, phone }) {
+      return `${label}: ${phone}`
+    },
     getLocalityByLabel(label) {
       const localityObjects = this.getFlatLocalitiesList;
       const foundedLocalityObject = localityObjects.filter(

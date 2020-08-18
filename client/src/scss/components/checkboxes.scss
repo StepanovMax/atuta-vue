@@ -43,6 +43,16 @@
         width: 50%;
         margin-right: 0;
       }
+
+      &-vertical {
+        width: 100%;
+      }
+    }
+
+    &_list {
+      &-vertical {
+        flex-direction: column;
+      }
     }
   }
 
