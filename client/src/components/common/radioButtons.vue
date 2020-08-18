@@ -75,11 +75,6 @@ export default {
     return {
       picked: [],
       dataItemsChecked: [...this.items].map(function(item) {
-        // console.log('radioButtonsView', this.radioButtonsView);
-        // if (this.radioButtonsView && (this.radioButtonsView === 'floatRight')) {
-        //   console.log('items', this.items);
-        // } else {
-        // }
         item.checked = false;
         return item;
       }),
@@ -110,10 +105,5 @@ export default {
       this.$emit('update:value', data);
     },
   },
-  // mounted() {
-  //   if (this.radioButtonsType === 'floatRight') {
-  //     console.log('items', this.items);
-  //   }
-  // },
 };
 </script>
