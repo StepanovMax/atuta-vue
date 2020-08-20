@@ -4,7 +4,7 @@
       type="text"
       class="input-field__input"
       v-model="enteredValue"
-      @keypress="isNumber($event)"
+      @keypress="gIsNumber($event)"
     >
     <p
       class="input-field__currency"

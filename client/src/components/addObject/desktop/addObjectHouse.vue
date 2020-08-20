@@ -158,11 +158,11 @@
             form__title
             form__title_add-object
           ">
-            Этажи
+            Этажей всего
           </h3>
           <multiselect
             v-model="propCreatedObjectHouse.floorAll"
-            :options="this.houseFloors"
+            :options="houseFloors"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -187,19 +187,27 @@
           </h3>
           <multiselect
             v-model="propCreatedObjectHouse.distance"
-            :options="this.houseDistance"
+            :options="getDistanceArray"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
             :multiple="false"
-            :searchable="true"
+            :searchable="false"
             label="label"
             track-by="label"
-            placeholder="Этажей всего"
+            placeholder="Расстояние до города"
           />
         </div>
       </div>
     </div>
+
+    <addObjectComfort
+      v-if="
+        propCreatedObject.deal
+        && propCreatedObject.deal.slug === 'rent'
+      "
+      :propCreatedObjectComfort="propCreatedObjectHouse"
+    />
 
   </Fragment>
 </template>
@@ -207,20 +215,20 @@
 <script>
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
-import { mapState, store, commit } from 'vuex';
-// import switcher from '../../common/switcher.vue';
+import { mapState, mapGetters, store, commit } from 'vuex';
 import radioButtons from '../../common/radioButtons.vue';
+import addObjectComfort from './addObjectComfort.vue';
 
 export default {
   name: 'addObjectHouse',
   components: {
-    // switcher,
     Fragment,
     multiselect,
     radioButtons,
+    addObjectComfort,
   },
   props: {
-    propCreatedObjectHouse: {
+    propCreatedObject: {
       type: Object,
       default: {},
       required: true,
@@ -229,17 +237,21 @@ export default {
   data() {
     return {
       createdObject: {},
+      propCreatedObjectHouse: this.propCreatedObject.house,
     }
   },
   computed: {
     ...mapState([
       'filterDataDefault',
     ]),
+    ...mapGetters([
+      'getDistanceArray',
+    ]),
     houseDistance() {
-      return this.convertRangeToArray(this.filterDataDefaultClone.houseDistance);
+      return this.gConvertRangeToArray(this.filterDataDefaultClone.houseDistance);
     },
     houseFloors() {
-      return this.convertRangeToArray(this.filterDataDefaultClone.houseFloorAll);
+      return this.gConvertRangeToArray(this.filterDataDefaultClone.houseFloorAll);
     },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));

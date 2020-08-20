@@ -80,28 +80,6 @@
     </div>
 
     <div class="form__row">
-      <div class="form__row form__row_block-width form__row_block-width-third">
-        <div class="form__block-width form__block-width-third">
-          <h3 class="
-            title
-            title_h5
-            title_bold
-            form__title
-            form__title_add-object
-          ">
-            Удобства
-          </h3>
-          <radioButtons
-            radioButtonsView="listVertical"
-            radioButtonsId="roomСomfortAddObject"
-            :items="filterDataDefaultClone.roomComfort"
-            :value.sync="propCreatedObjectRoom.comfort"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="form__row">
       <h3 class="
         title
         title_h5
@@ -161,6 +139,14 @@
       </div>
     </div>
 
+    <addObjectComfort
+      v-if="
+        propCreatedObject.deal
+        && propCreatedObject.deal.slug === 'rent'
+      "
+      :propCreatedObjectComfort="propCreatedObjectRoom"
+    />
+
   </Fragment>
 </template>
 
@@ -168,19 +154,19 @@
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
-// import switcher from '../../common/switcher.vue';
 import radioButtons from '../../common/radioButtons.vue';
+import addObjectComfort from './addObjectComfort.vue';
 
 export default {
   name: 'addObjectRoom',
   components: {
-    // switcher,
     Fragment,
     multiselect,
     radioButtons,
+    addObjectComfort,
   },
   props: {
-    propCreatedObjectRoom: {
+    propCreatedObject: {
       type: Object,
       default: {},
       required: true,
@@ -189,6 +175,7 @@ export default {
   data() {
     return {
       // createdObject: {},
+      propCreatedObjectRoom: this.propCreatedObject.room,
     }
   },
   computed: {
@@ -196,7 +183,7 @@ export default {
       'filterDataDefault',
     ]),
     roomRooms() {
-      let array = this.convertRangeToArray(this.filterDataDefaultClone.roomRooms);
+      let array = this.gConvertRangeToArray(this.filterDataDefaultClone.roomRooms);
       array.push({
         label: '9+',
         slug: '9+',

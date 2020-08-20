@@ -27,7 +27,7 @@ const formatNumbers = {
           return null
         },
         // Help to avoid non numeric symbols(apart from dot) while entering a data to input field.
-        isNumber(evt) {
+        gIsNumber(evt) {
           evt = (evt) ? evt : window.event;
           var charCode = (evt.which) ? evt.which : evt.keyCode;
           if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
@@ -36,7 +36,7 @@ const formatNumbers = {
             return true;
           }
         },
-        convertRangeToArray(range) {
+        gConvertRangeToArray(range) {
           let resultedArray = [];
           for (let i = range[0]; i <= range[1]; i++) {
             resultedArray.push(
@@ -48,7 +48,16 @@ const formatNumbers = {
           }
           return resultedArray;
         },
-      },
+        gAddPlusLastValueToArray(array) {
+          let resultedArray = array;
+          const maxNumber = array.length;
+          resultedArray.push({
+            label: maxNumber + '+',
+            slug: maxNumber + '+',
+          });
+          return resultedArray;
+        },
+      }
     });
   }
 }

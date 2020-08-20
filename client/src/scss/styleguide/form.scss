@@ -15,6 +15,7 @@
       align-items: stretch;
       flex-direction: row;
       justify-content: flex-start;
+      margin-bottom: 15px;
 
       &-half {
 
@@ -35,7 +36,7 @@
 
     &_add-object {
       color: $COLOR-TEXT;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
 
       @extend .title;
       @extend .title_h5;

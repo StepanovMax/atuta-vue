@@ -127,7 +127,6 @@ export default {
       this.$emit('update:value', data);
     },
     trigger(i) {
-      console.log('::', i, this.$refs.checkboxinput[i]);
       this.$refs.checkboxinput[i].click();
     },
   },

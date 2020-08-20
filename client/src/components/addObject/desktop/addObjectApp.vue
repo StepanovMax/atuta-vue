@@ -250,6 +250,14 @@
       </p>
     </div>
 
+    <addObjectComfort
+      v-if="
+        propCreatedObject.deal
+        && propCreatedObject.deal.slug === 'rent'
+      "
+      :propCreatedObjectComfort="propCreatedObjectApp"
+    />
+
   </Fragment>
 </template>
 
@@ -259,17 +267,21 @@ import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
 import switcher from '../../common/switcher.vue';
 import radioButtons from '../../common/radioButtons.vue';
+import checkboxes from '../../common/checkboxes.vue';
+import addObjectComfort from './addObjectComfort.vue';
 
 export default {
   name: 'addObjectApp',
   components: {
-    switcher,
     Fragment,
+    switcher,
+    checkboxes,
     multiselect,
     radioButtons,
+    addObjectComfort,
   },
   props: {
-    propCreatedObjectApp: {
+    propCreatedObject: {
       type: Object,
       default: {},
       required: true,
@@ -277,11 +289,12 @@ export default {
   },
   data() {
     return {
+      errors: [],
       createdObject: {},
       appAreaFullData: null,
       appAreaKitchenData: null,
       appAreaLivingData: null,
-      errors: [],
+      propCreatedObjectApp: this.propCreatedObject.app,
     }
   },
   computed: {
@@ -289,6 +302,16 @@ export default {
       'filterDataDefault',
       'objectDataSelected',
     ]),
+    roomBedCount() {
+      const array = this.gConvertRangeToArray(this.filterDataDefaultClone.roomBedCount);
+      const resultedArray = this.gAddPlusLastValueToArray(array);
+      return resultedArray;
+    },
+    roomSleepingPlacesCount() {
+      const array = this.gConvertRangeToArray(this.filterDataDefaultClone.roomSleepingPlacesCount);
+      const resultedArray = this.gAddPlusLastValueToArray(array);
+      return resultedArray;
+    },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },

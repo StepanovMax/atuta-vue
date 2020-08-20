@@ -18,4 +18,10 @@
   &_mini {
     font-size: 0.9rem;
   }
+
+  &_highlighted {
+    padding: 2px 4px;
+    color: $COLOR-WHITE;
+    background-color: $COLOR-BLUE-LIGHT;
+  }
 }
