@@ -2,26 +2,10 @@
   <Fragment>
 
     <div class="form__row">
-      <div class="form__row form__row_block-width form__row_block-width-half">
-        <div class="form__block-width form__block-width-half">
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            Вид объекта*
-          </h3>
-          <radioButtons
-            radioButtonsView="wrapHalf"
-            radioButtonsId="objectViewAddObject"
-            :items="filterDataDefaultClone.houseTypes"
-            :value.sync="propCreatedObjectHouse.type"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="form__row">
       <h3 class="
+        title
+        title_h5
+        title_bold
         form__title
         form__title_add-object
       ">
@@ -30,8 +14,8 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectHouse.year"
-            :options="houseYearsList"
+            v-model="propCreatedObjectRoom.year"
+            :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -49,14 +33,17 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
+            title
+            title_h5
+            title_bold
             form__title
             form__title_add-object
           ">
             Количество комнат*
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.roomsCount"
-            :options="filterDataDefaultClone.houseRoomsCount"
+            v-model="propCreatedObjectRoom.roomsCount"
+            :options="roomRooms"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -74,22 +61,19 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
+            title
+            title_h5
+            title_bold
             form__title
             form__title_add-object
           ">
-            Материал стен
+            Вид дома
           </h3>
-          <multiselect
-            v-model="propCreatedObjectHouse.wall"
-            :options="filterDataDefaultClone.houseWall"
-            :show-labels="false"
-            :allow-empty="false"
-            :close-on-select="true"
-            :multiple="false"
-            :searchable="true"
-            label="label"
-            track-by="label"
-            placeholder="Материал стен"
+          <radioButtons
+            radioButtonsView="wrapHalf"
+            radioButtonsId="roomViewAddObject"
+            :items="filterDataDefaultClone.appView"
+            :value.sync="propCreatedObjectRoom.view"
           />
         </div>
       </div>
@@ -103,7 +87,7 @@
         form__title
         form__title_add-object
       ">
-        Площадь
+        Этажи
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
@@ -114,55 +98,11 @@
             form__title
             form__title_add-object
           ">
-            Площадь дома
+            Этажей всего*
           </h4>
-          <div class="">
-            <input
-              type="number"
-              class="input"
-              v-model="propCreatedObjectHouse.areaHouse"
-            >
-            <span class="">
-              м²
-            </span>
-          </div>
-        </div>
-        <div class="form__block-width form__block-width-third">
-          <h4 class="
-            title
-            title_h6
-            title_bold
-            form__title
-            form__title_add-object
-          ">
-            Площадь участка
-          </h4>
-          <div class="">
-            <input
-              type="number"
-              class="input"
-              v-model="propCreatedObjectHouse.areaLand"
-            >
-            <span class="">
-              сот.
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form__row">
-      <div class="form__row form__row_block-width form__row_block-width-third">
-        <div class="form__block-width form__block-width-third">
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            Этажей всего
-          </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.floorAll"
-            :options="houseFloors"
+            v-model="floorAll"
+            :options="filterDataDefaultClone.appFloorAllList"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -173,29 +113,27 @@
             placeholder="Этажей всего"
           />
         </div>
-      </div>
-    </div>
-
-    <div class="form__row">
-      <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
-          <h3 class="
+          <h4 class="
+            title
+            title_h6
+            title_bold
             form__title
             form__title_add-object
           ">
-            Расстояние до города
-          </h3>
+            Этаж*
+          </h4>
           <multiselect
-            v-model="propCreatedObjectHouse.distance"
-            :options="getDistanceArray"
+            v-model="propCreatedObjectRoom.floor"
+            :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
             :multiple="false"
-            :searchable="false"
+            :searchable="true"
             label="label"
             track-by="label"
-            placeholder="Расстояние до города"
+            placeholder="Этаж"
           />
         </div>
       </div>
@@ -206,7 +144,7 @@
         propCreatedObject.deal
         && propCreatedObject.deal.slug === 'rent'
       "
-      :propCreatedObjectComfort="propCreatedObjectHouse"
+      :propCreatedObjectComfort="propCreatedObjectRoom"
     />
 
   </Fragment>
@@ -215,12 +153,12 @@
 <script>
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
-import { mapState, mapGetters, store, commit } from 'vuex';
+import { mapState, store, commit } from 'vuex';
 import radioButtons from '../../common/radioButtons.vue';
 import addObjectComfort from './addObjectComfort.vue';
 
 export default {
-  name: 'addObjectHouse',
+  name: 'addObjectRoom',
   components: {
     Fragment,
     multiselect,
@@ -236,27 +174,26 @@ export default {
   },
   data() {
     return {
-      createdObject: {},
-      propCreatedObjectHouse: this.propCreatedObject.house,
+      // createdObject: {},
+      propCreatedObjectRoom: this.propCreatedObject.room,
     }
   },
   computed: {
     ...mapState([
       'filterDataDefault',
     ]),
-    ...mapGetters([
-      'getDistanceArray',
-    ]),
-    houseDistance() {
-      return this.gConvertRangeToArray(this.filterDataDefaultClone.houseDistance);
-    },
-    houseFloors() {
-      return this.gConvertRangeToArray(this.filterDataDefaultClone.houseFloorAll);
+    roomRooms() {
+      let array = this.gConvertRangeToArray(this.filterDataDefaultClone.roomRooms);
+      array.push({
+        label: '9+',
+        slug: '9+',
+      });
+      return array;
     },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
-    houseYearsList() {
+    appYearsList() {
       const currentYear = new Date().getFullYear();
       const startYear = this.filterDataDefaultClone.appYearsStartPosition;
       let yearsArray = [];
@@ -270,12 +207,38 @@ export default {
       }
       return yearsArray.reverse()
     },
+    floorAll: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectRoom.floorAll;
+      },
+      set(value) {
+        // If a user select floorFull more than floorCurrent.
+        if (this.propCreatedObjectRoom.floor && value.slug < this.propCreatedObjectRoom.floor.slug) {
+          // Then floorCurrent will be a null.
+          this.propCreatedObjectRoom.floor = null;
+        }
+        // All floors that bigger than selected floorAll value will be disabled.
+        this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
+          item => {
+            // Convert slug string to number and add a value +1.
+            const selectedNumber = +value.slug + 1;
+            if (item.slug >= selectedNumber ) {
+              item.$isDisabled = true;
+            } else {
+              item.$isDisabled = false;
+            }
+          }
+        )
+        this.propCreatedObjectRoom.floorAll = value;
+      }
+    },
   },
   methods: {
-    validateNumbers(value) {
-      const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
-      return trimmedValue;
-    },
+    // validateNumbers(value) {
+    //   const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
+    //   return trimmedValue;
+    // },
   },
 };
 </script>

@@ -31,6 +31,7 @@
 @import "./styleguide/filter.scss";
 @import "./styleguide/inputFile.scss";
 @import "./styleguide/textarea.scss";
+@import "./styleguide/unit.scss";
 
 // Blocks
 @import "./blocks/menu.scss";
@@ -47,8 +48,8 @@
 @import "./components/ads.scss";
 @import "./components/filter-main.scss";
 @import "./components/checkboxes.scss";
-@import "./components/radio-buttons.scss";
-@import "./components/range-input.scss";
+@import "./components/radioButtons.scss";
+@import "./components/rangeInput.scss";
 @import "./components/grid.scss";
 @import "./components/switcherGrid.scss";
 @import "./components/sortObjects.scss";
@@ -60,6 +61,7 @@
 @import "./components/searchMain.scss";
 @import "./components/tarifs.scss";
 @import "./components/inputField.scss";
+@import "./components/inputWithUnit.scss";
 
 // Pages
 @import "./components/objectPage.scss";

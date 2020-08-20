@@ -2,13 +2,17 @@
   <div class="checkboxes">
     <ul
       class="checkboxes__list"
+      :class="[
+        { 'checkboxes__list_list-vertical': checkboxType === 'listVertical' },
+      ]"
     >
       <li
         class="checkboxes__list-item"
         :class="[
           { 'checkboxes__list-item_active': item.checked },
           { 'checkboxes__list-item-rooms-count': checkboxType === 'roomsCount' },
-          { 'checkboxes__list-item-house-type': checkboxId === 'houseType' }
+          { 'checkboxes__list-item-house-type': checkboxId === 'houseType' },
+          { 'checkboxes__list-item-vertical': checkboxType === 'listVertical' },
         ]"
         v-for="(item, index) in itemsCopy"
         :key="index"
@@ -123,7 +127,6 @@ export default {
       this.$emit('update:value', data);
     },
     trigger(i) {
-      console.log('::', i, this.$refs.checkboxinput[i]);
       this.$refs.checkboxinput[i].click();
     },
   },

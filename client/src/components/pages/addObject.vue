@@ -22,9 +22,6 @@
           <div class="form__block-width form__block-width-half">
             <div class="form__row">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -40,9 +37,6 @@
 
             <div class="form__row">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -58,9 +52,6 @@
 
             <div class="form__row">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -85,12 +76,12 @@
               :coords="coordsTaganrog"
               :zoom="15"
               :controls="controls"
-              @click="onMapClick"
+              @click="clickOnMap"
             >
               <ymap-marker 
                 :coords="coordsTaganrog"
                 marker-id="123"
-                hint-content="some hint" 
+                hint-content=""
               />
             </yandex-map>
           </div>
@@ -100,9 +91,6 @@
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -130,7 +118,7 @@
             && createdObject.object
             && createdObject.object.slug === 'app'
           "
-          :propCreatedObjectApp="createdObject.app"
+          :propCreatedObject="createdObject"
         />
 
         <addObjectHouse
@@ -139,7 +127,43 @@
             && createdObject.object
             && createdObject.object.slug === 'house'
           "
-          :propCreatedObjectHouse="createdObject.house"
+          :propCreatedObject="createdObject"
+        />
+
+        <addObjectRoom
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'room'
+          "
+          :propCreatedObject="createdObject"
+        />
+
+        <addObjectSector
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'sector'
+          "
+          :propCreatedObject="createdObject"
+        />
+
+        <addObjectGarage
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'garage'
+          "
+          :propCreatedObject="createdObject"
+        />
+
+        <addObjectCommercial
+          v-if="
+            createdObject.deal
+            && createdObject.object
+            && createdObject.object.slug === 'commercial'
+          "
+          :propCreatedObject="createdObject"
         />
 
         <div class="form__row">
@@ -168,9 +192,6 @@
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -237,9 +258,6 @@
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width">
               <h3 class="
-                title
-                title_h5
-                title_bold
                 form__title
                 form__title_add-object
               ">
@@ -258,52 +276,153 @@
           </div>
         </div>
 
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-half">
+            <div class="form__block-width form__block-width-half">
+              <h3 class="
+                form__title
+                form__title_add-object
+              ">
+                Телефон
+              </h3>
+              <multiselect
+                v-model="createdObject.phone"
+                :options="phones"
+                :custom-label="labelWithPhone"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="true"
+                label="label"
+                track-by="slug"
+                placeholder="Телефон"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-half">
+            <div class="form__block-width form__block-width-half">
+              <h3 class="
+                form__title
+                form__title_add-object
+              ">
+                Способ связи
+              </h3>
+              <checkboxes
+                checkboxId="connectionWayAddObject"
+                checkboxType="listVertical"
+                :items="filterDataDefaultClone.connectionWay"
+                :value.sync="createdObject.connectionWay"
+              />
+            </div>
+          </div>
+        </div>
+
         <div
+          v-if="
+            createdObject.deal
+            && createdObject.deal.slug === 'rent'
+            && createdObject.object
+            && (
+              createdObject.object.slug === 'app'
+              || createdObject.object.slug === 'room'
+              || createdObject.object.slug === 'house'
+            )
+          "
+          class="form__row"
+        >
+          <h3 class="
+            form__title
+            form__title_add-object
+          ">
+            Срок аренды
+          </h3>
+          <switcher
+            class="add-object-page__switcher"
+            switcherId="rentTypeDesktop"
+            :items="filterDataDefaultClone.rentType"
+            :value.sync="createdObject.rentType"
+          />
+        </div>
+
+        <div
+          v-if="
+            createdObject.deal
+            && createdObject.deal.slug === 'rent'
+          "
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3
-                v-if="
-                  !createdObject.deal
-                "
                 class="
                   form__title
                   form__title_add-object
                 "
               >
-                Цена
+                Залог
               </h3>
-              <h3
-                v-if="
-                  createdObject.deal
-                  && createdObject.deal.slug === 'buy'
-                "
-                class="
-                  form__title
-                  form__title_add-object
-                "
-              >
-                Цена
-              </h3>
-              <h3
-                v-if="
-                  createdObject.deal
-                  && createdObject.deal.slug === 'rent'
-                "
-                class="
-                  form__title
-                  form__title_add-object
-                "
-              >
-                Цена в месяц
-              </h3>
+              <inputField
+                :value.sync="createdObject.deposit"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <h3 class="
+            title
+            title_h5
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Цена
+          </h3>
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width form__block-width-third">
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                {{ priceTitle }}
+              </h4>
+              <inputField
+                :value.sync="createdObject.price"
+              />
+            </div>
+            <div
+              v-if="
+                createdObject.deal
+                && createdObject.deal.slug === 'rent'
+                && createdObject.object
+                && createdObject.object.slug === 'commercial'
+              "
+              class="form__block-width form__block-width-third"
+            >
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Цена в год
+              </h4>
               <inputField
                 :value.sync="createdObject.price"
               />
             </div>
           </div>
         </div>
+
+
 
         <div class="form__row">
           <div class="form__row form__row_block-width">
@@ -318,7 +437,7 @@
                 Размещение объявления
               </h3>
               <p class="paragraph">
-                Стоимость размещения объявления - 30 ₽
+                Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
               </p>
               <p class="paragraph">
                 Подача объявления стоит 30 рублей и в течение 30 дней Ваше объявление будет показываться на сайте.
@@ -438,11 +557,16 @@ import ads from '../ads.vue';
 import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
+import checkboxes from '../common/checkboxes.vue';
 import objectCard from '../common/objectCard.vue';
 import inputField from '../common/inputField.vue';
 import radioButtons from '../common/radioButtons.vue';
 import addObjectApp from '../addObject/desktop/addObjectApp.vue';
+import addObjectRoom from '../addObject/desktop/addObjectRoom.vue';
 import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
+import addObjectSector from '../addObject/desktop/addObjectSector.vue';
+import addObjectGarage from '../addObject/desktop/addObjectGarage.vue';
+import addObjectCommercial from '../addObject/desktop/addObjectCommercial.vue';
 
 export default {
   name: 'addObject',
@@ -454,12 +578,17 @@ export default {
     iconCross,
     ymapMarker,
     inputField,
+    checkboxes,
     objectCard,
     multiselect,
     uploadImage,
     radioButtons,
     addObjectApp,
+    addObjectRoom,
     addObjectHouse,
+    addObjectSector,
+    addObjectGarage,
+    addObjectCommercial,
     axios,
   },
   data() {
@@ -506,29 +635,34 @@ export default {
         phoneNumber: '79612701887',
       },
       district: '',
+      phones: [
+        {
+          label: 'Максим Степанов',
+          slug: 'maxim-stepanov',
+          phone: '+7 (961) 270-18-87',
+        },
+        {
+          label: 'Артур Тавадян',
+          slug: 'artur-tavadyan',
+          phone: '+7 (928) 112-20-80',
+        },
+      ],
     }
   },
   watch: {
     townLabel: {
       handler(value) {
         const localityObject = this.getLocalityByLabel(value);
-        // this.townObject = localityObject;
-        console.log('localityDistricts', this.localityDistricts);
-        console.log('localityDistricts', this.localityDistricts);
-        this.localityDistricts = localityObject.districts;
-        // this.localityDistricts = [
-        //   {
-        //     label: 'Центр3',
-        //     slug: 'center3',
-        //   },
-        //   {
-        //     label: 'Центр4',
-        //     slug: 'center4y',
-        //   }
-        // ];
-        this.createdObject.town = localityObject;
-        // this.createdObject.district = this.localityDistricts;
-        console.log('localityDistricts', this.localityDistricts);
+        if (localityObject) {
+          this.localityDistricts = localityObject.districts;
+        } else {
+          this.localityDistricts = [
+            {
+              label: 'Пригород',
+              slug: 'suburb',
+            }
+          ];
+        }
       },
       deep: true
     },
@@ -542,6 +676,20 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
+    priceTitle() {
+      let titleLabel = 'Цена';
+      if (this.createdObject.deal && this.createdObject.deal.slug === 'buy') {
+        titleLabel = 'Цена';
+      } else if (this.createdObject.deal && this.createdObject.deal.slug === 'rent') {
+        titleLabel = 'Цена в месяц';
+      }
+      if (this.createdObject.rentType && this.createdObject.rentType.slug === 'per-day') {
+        titleLabel = 'Цена в день';
+      } else if (this.createdObject.rentType && this.createdObject.rentType.slug === 'long-term') {
+        titleLabel = 'Цена в месяц';
+      }
+      return titleLabel;
+    },
     atLeastOneFormItemIsFilled() {
       const value = true;
       return value;
@@ -564,6 +712,9 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    labelWithPhone ({ label, phone }) {
+      return `${label}: ${phone}`
+    },
     getLocalityByLabel(label) {
       const localityObjects = this.getFlatLocalitiesList;
       const foundedLocalityObject = localityObjects.filter(
@@ -573,9 +724,9 @@ export default {
       );
       return foundedLocalityObject[0];
     },
-    onMapClick(e) {
+    clickOnMap(e) {
       this.coordsTaganrog = e.get('coords');
-      this.getAddress(this.coordsTaganrog);
+      // this.getAddress(this.coordsTaganrog);
     },
     onInputEnter(event) {
       ymaps.geocode(event.target.value).then(
@@ -744,8 +895,5 @@ export default {
       this.images.splice(index, 1);
     },
   },
-  async mounted() {
-
-  }
 };
 </script>

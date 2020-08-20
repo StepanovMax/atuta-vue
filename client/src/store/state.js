@@ -10,58 +10,82 @@ const state = {
     object: null,
     tarif: null,
     description: null,
+    phone: null,
+    connectionWay: null,
+    onlineShow: null,
+    photoGallery: null,
     price: null,
+    deposit: null,
     app: {
-      rentType: null,
       type: null,
       view: null,
+      area: null,
+      year: null,
       floor: null,
+      rentType: null,
       floorAll: null,
       floorNot: null,
       roomsCount: null,
-      area: null,
-      areaKitchen: null,
       areaLiving: null,
       onlineShow: null,
+      areaKitchen: null,
+      comfortType: null,
+      bedCount: null,
+      sleepingPlacesCount: null,
+      roomMultimedia: null,
+      roomEquipment: null,
+      roomComfort: null,
+      roomAdditional: null,
     },
     house: {
-      roomsCount: null,
       type: null,
       view: null,
-      isIntoCity: null,
+      wall: null,
+      year: null,
       distance: null,
-      areaHouse: null,
       areaLand: null,
       floorAll: null,
       rentType: null,
-      wall: null,
+      areaHouse: null,
+      roomsCount: null,
+      isIntoCity: null,
     },
     room: {
-      rentType: null,
       area: null,
-      roomsCount: null,
+      year: null,
       floor: null,
       floorAll: null,
       floorNot: null,
+      rentType: null,
+      roomsCount: null,
+      comfort: null,
     },
     garage: {
       type: null,
+      area: null,
+      year: null,
+      distance: null,
       security: null,
       garageType: null,
       parkingType: null,
-      area: null,
     },
     sector: {
-      distance: null,
       area: null,
+      distance: null,
       category: null,
+      type: null,
+      facade: null,
     },
     commercial: {
-      rentType: null,
-      class: null,
       view: null,
       area: null,
+      year: null,
+      class: null,
+      rentType: null,
       distance: null,
+      floor: null,
+      floorAll: null,
+      tenant: null,
     },
   },
   filterDataSelected: {
@@ -139,6 +163,16 @@ const state = {
     },
   },
   filterDataDefault: {
+    tenant: [
+      {
+        label: 'Да',
+        slug: 'yes',
+      },
+      {
+        label: 'Нет',
+        slug: 'no',
+      },
+    ],
     searchInTitle: {
       slug: 'only-in-title',
       label: 'Только в названиях',
@@ -149,6 +183,20 @@ const state = {
       label: 'Только с фото',
       checked: false,
     },
+    sectorType: [
+      {
+        label: 'Поселений(ИЖС)',
+        slug: 'settlements',
+      },
+      {
+        label: 'Сельсхозназначения(СНТ, ДНП)',
+        slug: 'agricultural',
+      },
+      {
+        label: 'Промназначения',
+        slug: 'industrial',
+      },
+    ],
     town: 
     [
       {
@@ -10088,7 +10136,7 @@ const state = {
         "city": "Пуровск"
       },
       {
-        "region": "Ямало-Ненецкий АО",
+        "region": "Ямало-Нен��цкий АО",
         "city": "Салехард"
       },
       {
@@ -10343,6 +10391,7 @@ const state = {
         label: '9+',
       },
     ],
+    roomRooms: [1, 9],
     appTypes: [
       {
         slug: 'secondaryUsing',
@@ -10387,12 +10436,12 @@ const state = {
     ],
     rentType: [
       {
-        slug: 'perDay',
         label: 'Посуточно',
+        slug: 'per-day',
       },
       {
-        slug: 'longTerm',
         label: 'На длительный срок',
+        slug: 'long-term',
       },
     ],
     houseRoomsCount: [
@@ -10890,6 +10939,106 @@ const state = {
         label: 'Нет',
       },
     ],
+    connectionWay: [
+      {
+        label: 'Телефон',
+        slug: 'phone',
+      },
+      {
+        label: 'Сообщения',
+        slug: 'messages',
+      },
+    ],
+    comfortType: [
+      {
+        label: 'Общие',
+        slug: 'common',
+      },
+      {
+        label: 'Свои',
+        slug: 'personal',
+      },
+    ],
+    roomMultimedia: [
+      {
+        label: 'Wi-fi',
+        slug: 'wi-fi',
+      },
+      {
+        label: 'Телевизор',
+        slug: 'tv',
+      },
+      {
+        label: 'Кабельное/цифровое ТВ',
+        slug: 'cable',
+      },
+    ],
+    roomEquipment: [
+      {
+        label: 'Плита',
+        slug: 'stove',
+      },
+      {
+        label: 'Микроволновка',
+        slug: 'microwave',
+      },
+      {
+        label: 'Холодильник',
+        slug: 'fridge',
+      },
+      {
+        label: 'Стиральная машина',
+        slug: 'washing-machine',
+      },
+      {
+        label: 'Фен',
+        slug: 'hair-dryer',
+      },
+      {
+        label: 'Утюг',
+        slug: 'iron',
+      },
+      {
+        label: 'Посудомойка',
+        slug: 'dishwasher',
+      },
+    ],
+    roomComfort: [
+      {
+        label: 'Кондиционер',
+        slug: 'air-conditioner',
+      },
+      {
+        label: 'Камин',
+        slug: 'fireplace',
+      },
+      {
+        label: 'Балкон/лоджия',
+        slug: 'balcony',
+      },
+      {
+        label: 'Парковочное место',
+        slug: 'parking-place',
+      },
+    ],
+    roomAdditional: [
+      {
+        label: 'Можно с животными',
+        slug: 'available-with-animals',
+      },
+      {
+        label: 'Можно с детьми',
+        slug: 'available-with-kids',
+      },
+      {
+        label: 'Можно для мероприятий',
+        slug: 'available-for-events',
+      },
+      {
+        label: 'Можно курить',
+        slug: 'available-for-smoking',
+      },
+    ],
     appYearsStartPosition: 1800,
     garageRangeArea: [0, 100],
     garageRangePrice: [0, 100000000],
@@ -10898,16 +11047,20 @@ const state = {
     appRangeRent: [0, 1000000],
     appRangeArea: [0, 300],
     appFloor: [0, 30],
-    appFloorAll: [0, 30],
+    appFloorAll: [1, 30],
     houseRangePrice: [0, 100000000],
     houseRangeRent: [0, 100000000],
     houseAreaHouse: [0, 500],
     houseAreaLand: [0, 100],
+    distance: [1, 100],
     houseDistance: [0, 100],
-    houseFloorAll: [0, 30],
+    houseFloorAll: [1, 30],
     roomRangeArea: [0, 100],
-    roomFloorRange: [0, 30],
-    roomFloorAll: [0, 30],
+    roomBedCount: [1, 10],
+    roomSleepingPlacesCount: [1, 15],
+    roomFloorRange: [1, 30],
+    roomFloorAll: [1, 30],
+    commercialFloorAll: [1, 30],
     sectorRangeArea: [0, 1000],
     sectorDistance: [0, 100],
     commercialRangeArea: [0, 1000],

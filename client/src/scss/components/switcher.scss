@@ -1,19 +1,15 @@
 $BORDER-RADIUS: 6px;
 
 .switcher {
-  // margin-bottom: 20px;
-
   &__list {
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     &-item {
       cursor: pointer;
       background-color: #F1F1F1;
-      flex: 1;
 
       &:first-child {
         border-radius: $BORDER-RADIUS 0 0 $BORDER-RADIUS;

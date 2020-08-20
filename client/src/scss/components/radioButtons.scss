@@ -39,6 +39,10 @@ $BORDER-RADIUS: 6px;
         &-half {
           width: 50%;
         }
+
+        &-vertical {
+          width: 100%;
+        }
       }
     }
 
@@ -51,6 +55,10 @@ $BORDER-RADIUS: 6px;
       flex-wrap: wrap;
       flex-shrink: unset;
       flex-direction: row;
+    }
+
+    &_vertical {
+      flex-direction: column;
     }
   }
 
