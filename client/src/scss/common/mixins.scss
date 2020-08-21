@@ -39,9 +39,16 @@
     padding-right: 25px;
   }
 
-  @include media(tablet) {
+  @include media(tablet-landscape) {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  @include media(tablet-portrait) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   @include media(mobile) {

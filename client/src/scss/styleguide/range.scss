@@ -61,7 +61,7 @@
       display: block;
     }
 
-    @include media(tablet) {
+    @include media(tablet-landscape) {
       display: none;
     }
 
@@ -80,7 +80,7 @@
       display: none;
     }
 
-    @include media(tablet) {
+    @include media(tablet-landscape) {
       display: flex;
     }
 

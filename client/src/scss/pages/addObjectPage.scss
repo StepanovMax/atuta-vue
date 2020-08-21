@@ -6,6 +6,10 @@
 
   &__btn {
     align-self: flex-end;
+
+    @include media(mobile) {
+      align-self: stretch;
+    }
   }
 
   &__text {
@@ -15,4 +19,12 @@
       }
     }
   }
+
+  .ymaps-2-1-77-map {
+    @include media(mobile) {
+      height: 200px !important;
+    }
+  }
+
+  @extend .container_add-object-page;
 }

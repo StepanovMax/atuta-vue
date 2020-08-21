@@ -17,6 +17,11 @@
     padding-top: 50px;
   }
 
+  @include media(tablet-portrait) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
   @include media(mobile) {
     padding-top: 70px;
     padding-bottom: 70px;

@@ -1,0 +1,26 @@
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1025px;
+
+@mixin media($media) {
+  @if $media == mobile {
+    @media only screen and (min-width: $mobile) and (max-width: $tablet - 1) {
+      @content;
+    }
+  }
+  @else if $media == tablet-landscape {
+    @media only screen and (min-width: $tablet) and (max-width: $desktop) and (orientation: landscape) {
+      @content;
+    }
+  }
+  @else if $media == tablet-portrait {
+    @media only screen and (min-width: $tablet) and (max-width: $desktop) and (orientation: portrait) {
+      @content;
+    }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $desktop) {
+      @content;
+    }
+  }
+}

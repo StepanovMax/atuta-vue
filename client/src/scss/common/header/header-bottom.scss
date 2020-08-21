@@ -14,8 +14,12 @@
     display: block;
   }
 
-  @include media(tablet) {
+  @include media(tablet-landscape) {
     display: block;
+  }
+
+  @include media(tablet-portrait) {
+    display: none;
   }
 
   @include media(mobile) {
