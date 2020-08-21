@@ -28,11 +28,19 @@ $BORDER-RADIUS: 6px;
 
         &-add-object {
           &:nth-child(2n + 1) {
-            width: 30%;
+            width: 40%;
+
+            @include media(tablet-landscape) {
+              width: 100%;
+            }
           }
 
           &:nth-child(2n + 2) {
-            width: 70%;
+            width: 60%;
+
+            @include media(tablet-landscape) {
+              width: 100%;
+            }
           }
         }
 

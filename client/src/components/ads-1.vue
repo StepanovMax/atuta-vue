@@ -7,7 +7,7 @@
       target="_blank"
     >
       <img
-        src="src/images/ads/bank.jpg"
+        src="src/images/ads/external-content.duckduckgo.com2.jpeg"
         alt="Реклама"
         class="image ads__img"
       >
@@ -18,6 +18,6 @@
 <script>
 
 export default {
-  name: 'ads',
+  name: 'ads1',
 };
 </script>

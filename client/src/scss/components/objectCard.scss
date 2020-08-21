@@ -27,7 +27,7 @@
         height: 150px;
       }
     
-      @include media(tablet) {
+      @include media(tablet-landscape) {
         height: 150px;
       }
     
@@ -266,5 +266,9 @@
 
   &_fixed-width {
     width: 250px;
+
+    @include media(mobile) {
+      align-self: center;
+    }
   }
 }

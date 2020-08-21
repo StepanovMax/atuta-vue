@@ -4,7 +4,7 @@
     class="main add-object-page"
   >
 
-    <ads />
+    <ads1 />
 
     <div class="article">
       <h1
@@ -12,6 +12,7 @@
           title
           title_h3
           title_bold
+          form__title_add-object-main
         "
       >
         Подать объявление
@@ -541,7 +542,7 @@
 
     </div>
 
-    <ads />
+    <ads2 />
 
   </div>
 </template>
@@ -553,7 +554,8 @@ import uploadImage from 'vue-upload-image';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
-import ads from '../ads.vue';
+import ads1 from '../ads-1.vue';
+import ads2 from '../ads-2.vue';
 import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
@@ -571,7 +573,8 @@ import addObjectCommercial from '../addObject/desktop/addObjectCommercial.vue';
 export default {
   name: 'addObject',
   components: {
-    ads,
+    ads1,
+    ads2,
     tarifs,
     switcher,
     yandexMap,

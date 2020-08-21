@@ -12,20 +12,20 @@
         :propGridItems="storedObjects"
       />
     </div>
-    <ads />
+    <ads2 />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import ads from './ads.vue';
+import ads2 from './ads-2.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
 
 export default {
   name: 'home',
   components: {
-    ads,
+    ads2,
     grid,
     filterDesktop,
   },
