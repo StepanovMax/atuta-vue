@@ -1,0 +1,27 @@
+.input-address {
+  position: relative;
+
+  &__suggest-list {
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    padding: 8px 0;
+    position: absolute;
+    background-color: $COLOR-GREY-DISABLED;
+
+    &-item {
+      padding: 8px 10px;
+      margin-bottom: 2px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $COLOR-GREY-BORDER;
+      }
+
+      &-text {
+        font-size: 14px;
+        color: $COLOR-TEXT;
+      }
+    }
+  }
+}

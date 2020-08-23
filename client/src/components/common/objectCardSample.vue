@@ -29,7 +29,10 @@
             :class="{'object-card__wrap-info_top_list-view': propObjectView === 'list'}"
           >
             <p class="object-card__price">
-              <span class="object-card__price_number">
+              <span
+                v-if="dataObjectData.price"
+                class="object-card__price_number"
+              >
                 {{ formatNumbers(dataObjectData.price) }} ₽
               </span>
               <span
@@ -55,40 +58,79 @@
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
-                {{ dataObjectData.rooms }} к.кв
+                <span
+                  v-if="dataObjectData.rooms"
+                >
+                  {{ dataObjectData.rooms }}
+                </span>
+                <span>
+                  к.кв
+                </span>
               </div>
               <div
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
-                <span>
-                  {{ dataObjectData.area }}
+                <span
+                  v-if="dataObjectData.area"
+                >
+                  {{ dataObjectData.area }} 
                 </span>
-                <unit
-                  propUnit="meterSquare"
-                />
+                <span>
+                  м²
+                </span>
               </div>
               <div
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_floor"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
-                {{ dataObjectData.floorCurrent }}/{{ dataObjectData.floorFull }} этаж
+                <span
+                  v-if="dataObjectData.floorCurrent"
+                >
+                  {{ dataObjectData.floorCurrent }}
+                </span>/
+                <span
+                  v-if="dataObjectData.floorFull"
+                >
+                  {{ dataObjectData.floorFull }}
+                </span>
+                <span>
+                  этаж
+                </span>
               </div>
             </div>
             <p
               class="object-card__wrap-info__item object-card__address"
               :class="{'object-card__address_list-view': propObjectView === 'list'}"
             >
-              {{ dataObjectData.address }}
+              <span
+                v-if="dataObjectData.address"
+              >
+                {{ dataObjectData.address }}
+              </span>
             </p>
             <p class="object-card__wrap-info__item object-card__district">
-              р-н {{ dataObjectData.district }}
+              <span>
+                р-н
+              </span>
+              <span
+                v-if="dataObjectData.district"
+              >
+                {{ dataObjectData.district }}
+              </span>
             </p>
             <p class="object-card__wrap-info__item object-card__date">
               <span>
-                № {{ dataObjectData.id }}
+                №
               </span>
-              <span>
+              <span
+                v-if="dataObjectData.id"
+              >
+                {{ dataObjectData.id }}
+              </span>
+              <span
+                v-if="dataObjectData.date"
+              >
                 {{ timeConverter(dataObjectData.date) }}
               </span>
             </p>
@@ -96,7 +138,11 @@
               class="object-card__agency"
               :class="{'object-card__agency_list-view': propObjectView === 'list'}"
             >
-              {{ dataObjectData.agency }}
+              <span
+                v-if="dataObjectData.agency"
+              >
+                {{ dataObjectData.agency }}
+              </span>
             </p>
           </div>
         </div>
@@ -136,7 +182,6 @@ import iconHeartStroke from '../icons/iconHeartStroke.vue';
 import showPhoneNumber from './showPhoneNumber.vue';
 import moveToFavorites from './moveToFavorites.vue';
 import socialSharing from './socialSharing.vue';
-import unit from './unit.vue';
 
 export default {
   name: 'grid',
@@ -147,7 +192,6 @@ export default {
     }
   },
   components: {
-    unit,
     iconHeartStroke,
     showPhoneNumber,
     moveToFavorites,
@@ -174,10 +218,7 @@ export default {
     propObjectData: {
       handler(value) {
         // console.log('1 ::', value);
-        if (!!value) {
-          // console.log('2 ::', value);
-          this.dataObjectData = value;
-        }
+        this.dataObjectData = value;
       },
       deep: true
     },

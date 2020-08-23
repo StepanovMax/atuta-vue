@@ -1,9 +1,10 @@
 <template>
   <div class="input-with-unit">
     <input
-      :type="propType"
+      type="text"
       class="input input-with-unit__input"
-      @input="inputChange($event)"
+      @keypress="gIsNumber($event)"
+      v-model="enteredValue"
     >
     <unit
       :propUnit="propUnit"
@@ -20,6 +21,9 @@ export default {
     prop: 'value',
     event: 'change'
   },
+  components: {
+    unit,
+  },
   props: {
     propType: {
       type: String,
@@ -32,12 +36,26 @@ export default {
       required: true,
     },
   },
-  components: {
-    unit,
+  data() {
+    return {
+      formattedValue: '',
+    }
   },
   methods: {
-    inputChange(event) {
-      this.$emit('update:value', event.target.value);
+    // inputChange(event) {
+    //   this.$emit('update:value', event.target.value);
+    // },
+  },
+  computed: {
+    enteredValue: {
+      cache: false,
+      get() {
+        return this.formattedValue;
+      },
+      set(value) {
+        this.formattedValue = this.gFormatPrice(value);
+        this.$emit('update:value', value.replace(/\s/g, ''));
+      }
     },
   },
 };

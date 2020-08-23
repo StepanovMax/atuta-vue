@@ -182,14 +182,14 @@
           ">
             Общая площадь
           </h4>
-          <input
-            type="number"
-            class="input"
-            v-model="appAreaFull"
+          <inputWithUnit
+            propType="number"
+            propUnit="meterSquare"
+            :value.sync="appAreaFull"
             :class="{
               'input_error': this.errors.includes('appAreaFull')
             }"
-          >
+          />
         </div>
         <div class="form__block-width form__block-width-third">
           <h4 class="
@@ -201,14 +201,14 @@
           ">
             Площадь кухни
           </h4>
-          <input
-            type="number"
-            class="input"
-            v-model="appAreaKitchen"
+          <inputWithUnit
+            propType="number"
+            propUnit="meterSquare"
+            :value.sync="appAreaKitchen"
             :class="{
               'input_error': this.errors.includes('appAreaKitchen')
             }"
-          >
+          />
         </div>
         <div class="form__block-width form__block-width-third">
           <h4 class="
@@ -220,14 +220,14 @@
           ">
             Жилая площадь
           </h4>
-          <input
-            type="number"
-            class="input"
+          <inputWithUnit
+            propType="number"
+            propUnit="meterSquare"
+            :value.sync="appAreaLiving"
             :class="{
               'input_error': this.errors.includes('appAreaLiving')
             }"
-            v-model="appAreaLiving"
-          >
+          />
         </div>
       </div>
       <p
@@ -269,6 +269,7 @@ import switcher from '../../common/switcher.vue';
 import radioButtons from '../../common/radioButtons.vue';
 import checkboxes from '../../common/checkboxes.vue';
 import addObjectComfort from './addObjectComfort.vue';
+import inputWithUnit from '../../common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectApp',
@@ -278,6 +279,7 @@ export default {
     checkboxes,
     multiselect,
     radioButtons,
+    inputWithUnit,
     addObjectComfort,
   },
   props: {
@@ -361,7 +363,9 @@ export default {
         return this.appAreaFullData;
       },
       set(value) {
+        console.log('test', value);
         this.appAreaFullData = this.validateNumbers(value);
+        this.propCreatedObjectApp.area = this.appAreaFullData;
         this.validateArea();
       }
     },
@@ -372,6 +376,7 @@ export default {
       },
       set(value) {
         this.appAreaKitchenData = this.validateNumbers(value);
+        this.propCreatedObjectApp.areaKitchen = this.appAreaKitchenData;
         this.validateArea();
       }
     },
@@ -388,6 +393,7 @@ export default {
           this.errors.splice(index, 1);
         }
         this.appAreaLivingData = this.validateNumbers(value);
+        this.propCreatedObjectApp.areaLiving = this.appAreaLivingData;
         this.validateArea();
       }
     },

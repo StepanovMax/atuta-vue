@@ -2,28 +2,21 @@
   <Fragment>
 
     <div class="form__row">
-      <h3 class="
-        title
-        title_h5
-        title_bold
-        form__title
-        form__title_add-object
-      ">
-        Год постройки
-      </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
-          <multiselect
-            v-model="propCreatedObjectRoom.year"
-            :options="appYearsList"
-            :show-labels="false"
-            :allow-empty="false"
-            :close-on-select="true"
-            :multiple="false"
-            :searchable="true"
-            label="label"
-            track-by="label"
-            placeholder="Год постройки"
+          <h3 class="
+            title
+            title_h5
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Площадь комнаты
+          </h3>
+          <inputWithUnit
+            propType="number"
+            propUnit="meterSquare"
+            :value.sync="propCreatedObjectRoom.area"
           />
         </div>
       </div>
@@ -74,6 +67,34 @@
             radioButtonsId="roomViewAddObject"
             :items="filterDataDefaultClone.appView"
             :value.sync="propCreatedObjectRoom.view"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <h3 class="
+        title
+        title_h5
+        title_bold
+        form__title
+        form__title_add-object
+      ">
+        Год постройки
+      </h3>
+      <div class="form__row form__row_block-width form__row_block-width-third">
+        <div class="form__block-width form__block-width-third">
+          <multiselect
+            v-model="propCreatedObjectRoom.year"
+            :options="appYearsList"
+            :show-labels="false"
+            :allow-empty="false"
+            :close-on-select="true"
+            :multiple="false"
+            :searchable="true"
+            label="label"
+            track-by="label"
+            placeholder="Год постройки"
           />
         </div>
       </div>
@@ -156,6 +177,7 @@ import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
 import radioButtons from '../../common/radioButtons.vue';
 import addObjectComfort from './addObjectComfort.vue';
+import inputWithUnit from '../../common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectRoom',
@@ -163,6 +185,7 @@ export default {
     Fragment,
     multiselect,
     radioButtons,
+    inputWithUnit,
     addObjectComfort,
   },
   props: {

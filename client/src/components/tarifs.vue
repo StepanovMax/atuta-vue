@@ -27,7 +27,10 @@
             'tarifs__image-text_active': this.selectedTarifName === tarifsArray[0].slug
           }"
         >
-          {{ tarifsArray[0].price }}₽
+          {{ tarifsArray[0].price }}
+          <unit
+            propUnit="rouble"
+          />
         </p>
         <iconCrown
           class="tarifs__icon"
@@ -71,7 +74,10 @@
             'tarifs__image-text_active': this.selectedTarifName === tarifsArray[1].slug
           }"
         >
-          {{ tarifsArray[1].price }}₽
+          {{ tarifsArray[1].price }}
+          <unit
+            propUnit="rouble"
+          />
         </p>
         <iconDiamond
           class="tarifs__icon"
@@ -93,10 +99,12 @@
 <script>
 import iconCrown from './icons/iconCrown.vue';
 import iconDiamond from './icons/iconDiamond.vue';
+import unit from './common/unit.vue';
 
 export default {
   name: 'tarifs',
   components: {
+    unit,
     iconCrown,
     iconDiamond,
   },

@@ -41,6 +41,10 @@
       &_price {
         right: 10px;
         bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
       }
 
       &_name {

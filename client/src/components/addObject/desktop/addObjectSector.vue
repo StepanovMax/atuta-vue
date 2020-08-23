@@ -19,7 +19,7 @@
         ">
           <inputWithUnit
             propType="number"
-            propUnit="meterSquare"
+            propUnit="acr"
             :value.sync="propCreatedObjectSector.area"
           />
         </div>

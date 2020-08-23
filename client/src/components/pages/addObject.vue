@@ -58,16 +58,36 @@
               ">
                 Адрес*
               </h3>
-              <input
-                type="text"
-                class="
-                  input
-                  form__input
-                  form__input_add-object
-                "
-                v-model="currentAddress"
-                @change="onInputEnter($event)"
-              >
+              <div class="input-address">
+                <input
+                  type="text"
+                  class="
+                    input
+                    form__input
+                    form__input_add-object
+                  "
+                  id="suggestAddress"
+                  v-model="currentAddress"
+                  @keypress="onInputType($event)"
+                >
+                <ul
+                  v-if="suggestList.length > 0"
+                  class="input-address__suggest-list"
+                >
+                  <li
+                    class="input-address__suggest-list-item"
+                    v-for="(item, index) in suggestList"
+                    :key="'key-' + index"
+                    @click="selectSuggestedAddress"
+                  >
+                    <p
+                      class="input-address__suggest-list-item-text"
+                    >
+                      {{ item.value }}
+                    </p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="form__block-width form__block-width-half">
@@ -349,35 +369,8 @@
           />
         </div>
 
-        <div
-          v-if="
-            createdObject.deal
-            && createdObject.deal.slug === 'rent'
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3
-                class="
-                  form__title
-                  form__title_add-object
-                "
-              >
-                Залог
-              </h3>
-              <inputField
-                :value.sync="createdObject.deposit"
-              />
-            </div>
-          </div>
-        </div>
-
         <div class="form__row">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
@@ -394,7 +387,9 @@
               ">
                 {{ priceTitle }}
               </h4>
-              <inputField
+              <inputWithUnit
+                propType="number"
+                propUnit="rouble"
                 :value.sync="createdObject.price"
               />
             </div>
@@ -416,13 +411,36 @@
               ">
                 Цена в год
               </h4>
-              <inputField
+              <inputWithUnit
+                propType="number"
+                propUnit="rouble"
                 :value.sync="createdObject.price"
+              />
+            </div>
+            <div
+              v-if="
+                createdObject.deal
+                && createdObject.deal.slug === 'rent'
+              "
+              class="form__block-width form__block-width-third"
+            >
+              <h4 class="
+                title
+                title_h6
+                title_bold
+                form__title
+                form__title_add-object
+              ">
+                Залог
+              </h4>
+              <inputWithUnit
+                propType="number"
+                propUnit="rouble"
+                :value.sync="createdObject.deposit"
               />
             </div>
           </div>
         </div>
-
 
 
         <div class="form__row">
@@ -450,6 +468,7 @@
           </div>
         </div>
 
+
         <div class="form__row">
           <div class="form__row form__row_block-width">
             <div class="form__block-width">
@@ -469,6 +488,7 @@
           </div>
         </div>
 
+
         <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
@@ -486,14 +506,16 @@
           </div>
         </div>
 
+
         <div class="form__row">
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
-              <objectCard
+              <objectCardSample
+                key="key-preview-add-object"
                 class="object-card_fixed-width"
                 :propObjectData="objectData"
-                key="key-preview-add-object"
                 propObjectView=""
+                propObjectType="app"
               />
             </div>
 
@@ -521,6 +543,7 @@
 
       </div>
 
+
       <div
         style="
           color: #444;
@@ -539,6 +562,7 @@
         </h3>
         <pre>{{ createdObject }}</pre>
       </div>
+
 
     </div>
 
@@ -560,9 +584,9 @@ import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
 import checkboxes from '../common/checkboxes.vue';
-import objectCard from '../common/objectCard.vue';
-import inputField from '../common/inputField.vue';
+import objectCardSample from '../common/objectCardSample.vue';
 import radioButtons from '../common/radioButtons.vue';
+import inputWithUnit from '../common/inputWithUnit.vue';
 import addObjectApp from '../addObject/desktop/addObjectApp.vue';
 import addObjectRoom from '../addObject/desktop/addObjectRoom.vue';
 import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
@@ -580,14 +604,14 @@ export default {
     yandexMap,
     iconCross,
     ymapMarker,
-    inputField,
     checkboxes,
-    objectCard,
+    objectCardSample,
     multiselect,
     uploadImage,
     radioButtons,
     addObjectApp,
     addObjectRoom,
+    inputWithUnit,
     addObjectHouse,
     addObjectSector,
     addObjectGarage,
@@ -596,6 +620,11 @@ export default {
   },
   data() {
     return {
+      suggestList: [],
+      userData: {
+        name: 'Агентство недвижимости №1',
+        type: 'agency',
+      },
       localityDistricts: [],
       townObject: {},
       townLabel: {
@@ -622,9 +651,9 @@ export default {
       dataUploadedImages: [],
       images: [],
       objectData: {
-        price: '1630000',
-        dealType: 'buy',
-        address: 'Ростовская область, Таганрог, ул. Чехова, 318',
+        price: 0,
+        deal: 'buy',
+        address: '',
         area: 60,
         rooms: 2,
         floorCurrent: 3,
@@ -669,6 +698,26 @@ export default {
       },
       deep: true
     },
+    createdObject: {
+      handler(value) {
+        // console.log('object', value);
+        // if (value.price) {
+        //   this.objectData.price = value.price;
+        // }
+        // if (value.address) {
+        //   this.objectData.address = value.address;
+        // }
+        // if (value.deal) {
+        //   this.objectData.dealType = value.deal;
+        // }
+        this.objectData = value;
+        this.createdObject = value;
+        this.objectData.agency = this.userData.name;
+        this.objectData.type = this.userData.type;
+        // console.log(this.objectData);
+      },
+      deep: true
+    },
   },
   computed: {
     ...mapGetters([
@@ -679,6 +728,16 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
+    objectPrice: {
+      cache: false,
+      get() {
+        return this.objectData.price;
+      },
+      set(value) {
+        this.objectData.price = value;
+        this.createdObject.price = value;
+      }
+    },
     priceTitle() {
       let titleLabel = 'Цена';
       if (this.createdObject.deal && this.createdObject.deal.slug === 'buy') {
@@ -715,6 +774,12 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    selectSuggestedAddress(event) {
+      console.log(event.target.innerText);
+      // this.currentAddress = event.target.innerText;
+      this.convertAddress(event.target.innerText);
+      this.suggestList = [];
+    },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
     },
@@ -732,7 +797,11 @@ export default {
       // this.getAddress(this.coordsTaganrog);
     },
     onInputEnter(event) {
-      ymaps.geocode(event.target.value).then(
+      this.convertAddress(event.target.value);
+      console.log('event.target.value ::', event.target.value);
+    },
+    convertAddress(address) {
+      ymaps.geocode(address).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
@@ -741,6 +810,16 @@ export default {
         },
         error => {
           console.error('Rejected [Geocode error] ::', error);
+        }
+      );
+    },
+    onInputType(event) {
+      ymaps.suggest(this.currentAddress).then(
+        res => {
+          this.suggestList = res;
+        },
+        error => {
+          console.error('Rejected [Suggest error] ::', error);
         }
       );
     },
@@ -898,5 +977,19 @@ export default {
       this.images.splice(index, 1);
     },
   },
+  // mounted() {
+  //   const suggestView1 = ymaps.SuggestView('currentAddress');
+  //   const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));
+  // },
+  // mounted() {
+  //   ymaps.ready(this.yaMapInit());
+  // },
+  // async mounted() {
+  //   await loadYmap({
+  //     ...this.settings,
+  //     debug: true
+  //   });
+  //   const suggestView1 = ymaps.SuggestView('suggestAddress');
+  // }
 };
 </script>
