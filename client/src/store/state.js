@@ -11068,6 +11068,7 @@ const state = {
   },
   testObjects: [
     {
+      type: 'app',
       price: '1630000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Чехова, 318',
@@ -11084,6 +11085,7 @@ const state = {
       phoneNumber: '79612701887',
     },
     {
+      type: 'house',
       price: '2700000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, 7-й Новый пер., 100-2',
@@ -11100,6 +11102,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'room',
       price: '2090000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Чехова, 346',
@@ -11116,6 +11119,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'garage',
       price: '950000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Свободы, 36-2',
@@ -11132,6 +11136,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'commercial',
       price: '1100000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Свободы, 24-2',
@@ -11148,6 +11153,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'sector',
       price: '3100000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Маршала Жукова, 1Д',
@@ -11164,6 +11170,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '2700000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Ломоносова, 53',
@@ -11180,6 +11187,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '1500000',
       dealType: 'buy',
       address: 'Ростовская область, Шахты, Рыночный переулок',
@@ -11196,6 +11204,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '2720000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Дзержинского, 166',
@@ -11212,6 +11221,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '1420000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, Мариупольское ш., 27-2к1',
@@ -11228,6 +11238,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '1941325',
       dealType: 'buy',
       address: 'Ростовская область, Неклиновский р-н, с. Новобессергеневка, микрорайон Авиатор, ул. Н.П. Овчарова, 5к1',
@@ -11244,6 +11255,7 @@ const state = {
       phoneNumber: '79612699310',
     },
     {
+      type: 'app',
       price: '1499000',
       dealType: 'buy',
       address: 'Ростовская область, Таганрог, ул. Дзержинского, 171-3',

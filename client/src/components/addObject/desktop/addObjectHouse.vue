@@ -117,14 +117,11 @@
             Площадь дома
           </h4>
           <div class="">
-            <input
-              type="number"
-              class="input"
-              v-model="propCreatedObjectHouse.areaHouse"
-            >
-            <span class="">
-              м²
-            </span>
+            <inputWithUnit
+              propType="number"
+              propUnit="meterSquare"
+              :value.sync="propCreatedObjectHouse.areaHouse"
+            />
           </div>
         </div>
         <div class="form__block-width form__block-width-third">
@@ -137,16 +134,11 @@
           ">
             Площадь участка
           </h4>
-          <div class="">
-            <input
-              type="number"
-              class="input"
-              v-model="propCreatedObjectHouse.areaLand"
-            >
-            <span class="">
-              сот.
-            </span>
-          </div>
+          <inputWithUnit
+            propType="number"
+            propUnit="acr"
+            :value.sync="propCreatedObjectHouse.areaLand"
+          />
         </div>
       </div>
     </div>
@@ -218,6 +210,7 @@ import multiselect from 'vue-multiselect';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import radioButtons from '../../common/radioButtons.vue';
 import addObjectComfort from './addObjectComfort.vue';
+import inputWithUnit from '../../common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectHouse',
@@ -225,6 +218,7 @@ export default {
     Fragment,
     multiselect,
     radioButtons,
+    inputWithUnit,
     addObjectComfort,
   },
   props: {

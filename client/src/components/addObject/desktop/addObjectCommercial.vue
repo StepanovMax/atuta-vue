@@ -46,7 +46,7 @@
           </h3>
           <inputWithUnit
             propType="number"
-            propUnit="meterSquare"
+            :propUnit="sectorUnit"
             :value.sync="propCreatedObjectCommercial.area"
           />
         </div>
@@ -297,6 +297,18 @@ export default {
     ...mapGetters([
       'getDistanceArray',
     ]),
+    sectorUnit() {
+      let sectorUnitSlug;
+      if (
+        this.propCreatedObjectCommercial.type
+        && this.propCreatedObjectCommercial.type.slug === 'sector'
+      ) {
+        sectorUnitSlug = 'acr';
+      } else {
+        sectorUnitSlug = 'meterSquare';
+      }
+      return sectorUnitSlug;
+    },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },

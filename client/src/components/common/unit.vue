@@ -1,14 +1,59 @@
 <template>
-  <p
-    v-html="unitName"
-    class="unit"
-  />
+  <div class="">
+    <p
+      v-if="propUnit === 'meterSquare'"
+      class="unit"
+    >
+      <span class="unit">
+        <span class="unit__name unit__name_meter-square">
+          м
+        </span>
+        <sup class="unit__sup">
+          2
+        </sup>
+      </span>
+    </p>
+    <p
+      v-if="propUnit === 'acr'"
+      class="unit"
+    >
+      <span class="unit">
+        <span class="unit__name unit__name_acr">
+          сот.
+        </span>
+      </span>
+    </p>
+    <p
+      v-if="propUnit === 'meter'"
+      class="unit"
+    >
+      <span class="unit">
+        <span class="unit__name unit__name_meter">
+          м
+        </span>
+      </span>
+    </p>
+    <p
+      v-if="propUnit === 'rouble'"
+      class="unit"
+    >
+      <span class="unit">
+        <span class="unit__name unit__name_rouble">
+          <iconRouble />
+        </span>
+      </span>
+    </p>
+  </div>
 </template>
 
 <script>
+import iconRouble from '../icons/iconRouble.vue';
 
 export default {
   name: 'unit',
+  components: {
+    iconRouble,
+  },
   props: {
     propUnit: {
       type: String,
@@ -22,7 +67,7 @@ export default {
       if (this.propUnit === 'meterSquare') {
         unit = `
           <span class="unit">
-            <span class="unit__name">
+            <span class="unit__name unit__name_meter-square">
               м
             </span>
             <sup class="unit__sup">
@@ -30,10 +75,10 @@ export default {
             </sup>
           </span>
         `;
-      } else if (this.propUnit === 'meterSquare') {
+      } else if (this.propUnit === 'acr') {
         unit = `
           <span class="unit">
-            <span class="unit__name">
+            <span class="unit__name unit__name_acr">
               сот.
             </span>
           </span>
@@ -41,8 +86,16 @@ export default {
       } else if (this.propUnit === 'meter') {
         unit = `
           <span class="unit">
-            <span class="unit__name">
+            <span class="unit__name unit__name_meter">
               м
+            </span>
+          </span>
+        `;
+      } else if (this.propUnit === 'rouble') {
+        unit = `
+          <span class="unit">
+            <span class="unit__name unit__name_rouble">
+              <iconRouble />
             </span>
           </span>
         `;
