@@ -219,58 +219,28 @@
                 Фотографии
               </h3>
               <upload-image
+                v-if="false"
                 is="upload-image"
                 :url="'google.com'"
                 button_html="Загрузить изображения"
               />
+            </div>
+          </div>
+        </div>
 
-
-              <div class="input-file">
-                <div
-                  class="input-file-images"
-                >
-                  <ul
-                    v-show="false"
-                    class="input-file-images__list"
-                  >
-                    <li
-                      class="input-file-images__list-item"
-                      v-for="(item, index) in dataUploadedImages"
-                      :key="index"
-                    >
-                      <img
-                        :alt="item.name"
-                        class="input-file-images__list-item-img"
-                        :ref="'image'"
-                      >
-                      <button
-                        class="btn input-file-images__btn_close"
-                        @click="removeImage(index)"
-                      >
-                        <iconCross propColor="white" />
-                      </button>
-                    </li>
-                  </ul>
-                  <ul class="input-file-images__list">
-                    <li
-                      class="input-file-images__list-item"
-                      v-for="(item, index) in images"
-                      :key="index"
-                    >
-                      <img
-                        :src="item.src"
-                        class="input-file-images__list-item-img"
-                      >
-                      <button
-                        class="btn input-file-images__btn_close"
-                        @click="removeImage(index)"
-                      >
-                        <iconCross propColor="white" />
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+        <div class="form__row">
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div class="form__block-width">
+              <h3 class="
+                form__title
+                form__title_add-object
+              ">
+                Фотографии
+              </h3>
+              <upload-images
+                id="upload-images"
+                :propIsMultiple="true"
+              />
             </div>
           </div>
         </div>
@@ -574,7 +544,7 @@
 <script>
 import axios from 'axios';
 import multiselect from 'vue-multiselect';
-import uploadImage from 'vue-upload-image';
+// import uploadImage from 'vue-upload-image';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
@@ -584,9 +554,10 @@ import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
 import checkboxes from '../common/checkboxes.vue';
-import objectCardSample from '../common/objectCardSample.vue';
+import uploadImages from '../common/uploadImages.vue';
 import radioButtons from '../common/radioButtons.vue';
 import inputWithUnit from '../common/inputWithUnit.vue';
+import objectCardSample from '../common/objectCardSample.vue';
 import addObjectApp from '../addObject/desktop/addObjectApp.vue';
 import addObjectRoom from '../addObject/desktop/addObjectRoom.vue';
 import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
@@ -607,7 +578,8 @@ export default {
     checkboxes,
     objectCardSample,
     multiselect,
-    uploadImage,
+    // uploadImage,
+    uploadImages,
     radioButtons,
     addObjectApp,
     addObjectRoom,
@@ -648,8 +620,6 @@ export default {
       ],
       currentAddress: '',
       errors: [],
-      dataUploadedImages: [],
-      images: [],
       objectData: {
         price: 0,
         deal: 'buy',
@@ -929,52 +899,6 @@ export default {
           console.log('Rejected [getDistrict error] ::', error);
         }
       );
-    },
-    uploadImages(event) {
-      if (!!event.srcElement.files.length) {
-        // this.dataUploadedImages = event.srcElement.files;
-
-        // URL.createObjectURL(event.srcElement.files[i];
-
-        for (const i in event.srcElement.files) {
-          if (event.srcElement.files.hasOwnProperty(i)) {
-            let reader = new FileReader();
-            reader.onload = (e) => {
-              this.$refs.image[i].src = reader.result;
-            };
-            reader.readAsDataURL(this.dataUploadedImages[i]);
-
-            // let object = event.srcElement.files[i];
-            // object.name = window.URL.createObjectURL(object.name);
-            // console.log('i ::', object);
-            // console.log('object.name ::', object.name);
-            // this.dataUploadedImages.push(object);
-          }
-        }
-        // console.log('this.dataUploadedImages ::', this.dataUploadedImages);
-      }
-    },
-    uploadImage(e) {
-      let vm = this;
-      const selectedFiles = e.target.files;
-      for (let i = 0; i < selectedFiles.length; i++) {
-        this.dataUploadedImages.push(selectedFiles[i]);
-      }
-
-      for (let i = 0; i < this.dataUploadedImages.length; i++) {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-          this.$refs.image[i].src = reader.result;
-          this.images.push({
-            'src': reader.result
-          });
-        };
-
-        reader.readAsDataURL(this.dataUploadedImages[i]);
-      }
-    },
-    removeImage(index) {
-      this.images.splice(index, 1);
     },
   },
   // mounted() {
