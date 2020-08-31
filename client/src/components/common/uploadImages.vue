@@ -84,7 +84,6 @@
 
 <script>
 import draggable from 'vuedraggable';
-import arrayMove from 'array-move';
 
 import iconCross from '../icons/iconCross.vue';
 
