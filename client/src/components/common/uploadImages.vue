@@ -1,6 +1,7 @@
 <template>
   <div class="upload-images">
     <label
+      class="btn btn_blue upload-images__btn-upload"
       for="uploadImagesInput"
     >
       <p>
@@ -8,6 +9,7 @@
       </p>
       <input
         type="file"
+        class="upload-images__input-file"
         id="uploadImagesInput"
         @change="uploadImages($event.target.files)"
         :multiple="propIsMultiple"
@@ -57,7 +59,7 @@
             title="Rotate to left"
             @click="rotateImage('left', index)"
           >
-            -
+            <iconArrowRotateLeft />
           </button>
           <button
             class="
@@ -69,30 +71,31 @@
             title="Rotate to right"
             @click="rotateImage('right', index)"
           >
-            +
+            <iconArrowRotateRight />
           </button>
         </div>
       </div>
     </draggable>
 
-    <pre>
-      {{ filesArray }}
-    </pre>
-
   </div>
 </template>
 
 <script>
+import arrayMove from 'array-move';
 import draggable from 'vuedraggable';
 
 import iconCross from '../icons/iconCross.vue';
+import iconArrowRotateLeft from '../icons/iconArrowRotateLeft.vue';
+import iconArrowRotateRight from '../icons/iconArrowRotateRight.vue';
 
 
 export default {
   name: 'uploadImages',
   components: {
-    iconCross,
     draggable,
+    iconCross,
+    iconArrowRotateLeft,
+    iconArrowRotateRight,
   },
   props: {
     propIsMultiple: {
@@ -141,12 +144,23 @@ export default {
     uploadImages(fileList) {
       if (fileList && fileList.length > 0) {
         for (let i = 0; i < fileList.length; i++) {
-          const canvasID = 'canvas-' + i;
+          let canvasID = 'canvas-' + i;
+          let index = i;
+
+          this.filesArray.forEach(
+            item => {
+              if (item.id === canvasID) {
+                console.log('canvasID catch ::', this.filesArray.length, i);
+                index = this.filesArray.length;
+                canvasID = 'canvas-' + index;
+              }
+            }
+          )
 
           this.filesArray.push({
-            degrees: 0,
             id: canvasID,
             object: fileList[i],
+            degrees: 0,
             imageRatio: 0,
           });
 
@@ -161,7 +175,7 @@ export default {
           let imageWidth = image.width;
           let imageHeight = image.height;
 
-          image.src = URL.createObjectURL(fileList[i]);
+          const currentUrl = image.src = URL.createObjectURL(fileList[i]);
 
           image.onload = function() {
             const canvas = document.getElementById(canvasID);
@@ -170,7 +184,7 @@ export default {
             const context = canvas.getContext('2d');
 
             imageRatio = image.width / image.height;
-            vm.filesArray[i].imageRatio = imageRatio;
+            vm.filesArray[index].imageRatio = imageRatio;
             imageLWidth = canvas.width;
             imageLHeight = canvas.width / imageRatio;
             imagePWidth = canvas.height * imageRatio;
@@ -193,13 +207,13 @@ export default {
             context.drawImage(this, 0, 0, imageWidth, imageHeight);
           }
 
-          const currentUrl = URL.createObjectURL(fileList[i]);
-          this.dataUploadedImages.push({
-            id: i,
-            url: currentUrl,
-          });
+          // const currentUrl = URL.createObjectURL(fileList[index]);
+          // this.dataUploadedImages.push({
+          //   id: i,
+          //   url: currentUrl,
+          // });
 
-          URL.revokeObjectURL(fileList[i]);
+          URL.revokeObjectURL(fileList[index]);
         }
       }
     },
@@ -207,6 +221,7 @@ export default {
       const image = new Image();
       image.src = URL.createObjectURL(this.filesArray[index].object);
       const imageRatio = this.filesArray[index].imageRatio;
+      const imageID = this.filesArray[index].id;
       let currentDegree = this.calcDegree(way, index);
       let imageLWidth;
       let imageLHeight;
@@ -214,7 +229,7 @@ export default {
       let imagePHeight;
 
       image.onload = function() {
-        const canvas = document.getElementById('canvas-' + index);
+        const canvas = document.getElementById(imageID);
         canvas.height = 1600;
         canvas.width = 2400;
         const context = canvas.getContext('2d');
@@ -347,73 +362,13 @@ export default {
         context.rotate(currentDegree * Math.PI/180);
         context.drawImage(image, 0, 0, imageWidth, imageHeight);
         context.restore();
-
-        // window.location.href = canvas.toDataURL();
-        // console.log('canvas ::', canvas.toDataURL());
       }
-      // this.filesArray.forEach(
-      //   item => {
-      //     console.log(URL.createObjectURL(item.object));
-      //   }
-      // )
     },
     removeImage(index) {
       this.filesArray.splice(index, 1);
-      console.log('after removing', index, this.filesArray);
-    },
-    rotateToRight(index) {
-      console.log('rotateToRight');
-      console.log('Image');
-      const image = new Image();
-      image.src = URL.createObjectURL(this.filesArray[index]);
-      image.onload = function() {
-        console.log('onload');
-        const canvas = document.getElementById('canvas-' + index);
-        const context = canvas.getContext('2d');
-        const imgWidth = this.width;
-        const imgHeight = this.height;
-        const imgRatio = imgWidth / imgHeight;
-        if (imgRatio >= 1) {
-          canvas.height = 150 / imgRatio;
-          canvas.width = 150;
-        } else {
-          canvas.height = 100;
-          canvas.width = 100 * imgRatio;
-        }
-        // context.clearRect(0,0,canvas.width,canvas.height);
-        // context.save();
-        context.translate(canvas.height/2, canvas.width/2);
-        context.rotate(90 * Math.PI/180);
-        console.log('canvas ::', canvas.width, canvas.height);
-        context.drawImage(this, -canvas.width/2, -canvas.height/3, canvas.height, canvas.width);
-        // context.restore();
-
-        // canvas.toBlob(function(blob) {
-        //   const finalURL = URL.createObjectURL(blob);
-        //   // console.log('finalURL ::', finalURL);
-        // }, 'image/png');
-      }
-      // context.drawImage(this, 0, 0, canvas.width, canvas.height);
-    },
-    rotateToLeft(item, index) {
-      console.log('rotateToLeft');
-      const finalDegrees = item.degrees - 90;
-      this.filesArray[index].degrees = finalDegrees;
-      const image = new Image();
-      image.src = URL.createObjectURL(item.object);
-      image.onload = function() {
-        const canvas = document.getElementById('canvas-' + index);
-        const context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        context.save();
-        // context(canvas.width/2, canvas.height/2);
-        context.rotate(finalDegrees * Math.PI/180);
-        context.drawImage(this, -this.width/2, -this.width/2);
-        context.restore();
-      }
     },
     changeArrayOrder(event) {
-      this.dataUploadedImages = arrayMove(this.dataUploadedImages, event.oldIndex, event.newIndex);
+      this.filesArray = arrayMove(this.filesArray, event.oldIndex, event.newIndex);
     },
     drawRotated(image, degrees) {
       context.clearRect(0,0,canvas.width,canvas.height);

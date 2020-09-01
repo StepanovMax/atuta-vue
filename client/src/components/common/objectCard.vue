@@ -167,7 +167,7 @@ export default {
     propObjectType: {
       type: String,
       default: 'app',
-      required: true,
+      required: false,
     },
   },
   watch: {

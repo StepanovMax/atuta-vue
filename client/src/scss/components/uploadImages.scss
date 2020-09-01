@@ -9,6 +9,10 @@ $UPLOAD-IMAGE-WIDTH: 200px;
     align-items: flex-start;
     margin-top: 20px;
 
+    @include media(mobile) {
+      justify-content: space-between;
+    }
+
     &-item {
       width: $UPLOAD-IMAGE-WIDTH;
       height: $UPLOAD-IMAGE-WIDTH / 1.5;
@@ -24,7 +28,17 @@ $UPLOAD-IMAGE-WIDTH: 200px;
       cursor: move;
       border-radius: 4px;
       overflow: hidden;
+
+      @include media(mobile) {
+        margin-right: 0;
+        width: calc(50% - 15px);
+      }
     }
+  }
+
+  &__btn-upload {
+    padding: 8px 12px;
+    font-size: 14px;
   }
 
   &__image {
@@ -46,40 +60,54 @@ $UPLOAD-IMAGE-WIDTH: 200px;
   }
 
   &__btn {
+    border-radius: 4px;
+    overflow: hidden;
     position: absolute;
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, .2);
+    transition: opacity .3s ease, background-color .3s ease;
 
     &_close {
-      top: 0;
-      right: 0;
-      position: absolute;
+      top: 4px;
+      right: 4px;
       width: 22px;
       height: 22px;
       padding: 6px;
-      background-color: rgba(0, 0, 0, .2);
-      border-radius: 4px;
-      overflow: hidden;
-      opacity: 0.8;
-      transition: opacity .3s ease, background-color .3s ease;
-
-      &:hover {
-        opacity: 1;
-        background-color: rgba(0, 0, 0, .3);
-      }
+      position: absolute;
     }
 
     &_rotate {
-      padding: 5px;
-      bottom: 0;
+      width: 22px;
+      height: 22px;
+      padding: 6px;
+      bottom: 4px;
       position: absolute;
-      font-size: 24px;
 
       &-left {
-        right: 40px;
+        right: 28px;
       }
 
       &-right {
-        right: 0;
+        right: 4px;
+      }
+
+      @include media(mobile) {
+        width: 26px;
+        height: 26px;
+
+        &-left {
+          right: 34px;
+        }
       }
     }
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, .3);
+    }
+  }
+
+  &__input-file {
+    display: none;
   }
 }

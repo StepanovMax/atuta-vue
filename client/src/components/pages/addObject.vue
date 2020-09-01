@@ -218,25 +218,6 @@
               ">
                 Фотографии
               </h3>
-              <upload-image
-                v-if="false"
-                is="upload-image"
-                :url="'google.com'"
-                button_html="Загрузить изображения"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width">
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                Фотографии
-              </h3>
               <upload-images
                 id="upload-images"
                 :propIsMultiple="true"

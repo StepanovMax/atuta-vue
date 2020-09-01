@@ -30,6 +30,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "array-move": "^3.0.1",
     "axios": "^0.19.2",
     "connect-history-api-fallback": "^1.6.0",
     "esri-leaflet-geocoder": "^2.3.3",
