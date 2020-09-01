@@ -1,6 +1,10 @@
 $UPLOAD-IMAGE-WIDTH: 200px;
 
 .upload-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
   &__list {
     display: flex;
     flex-direction: row;
@@ -39,6 +43,7 @@ $UPLOAD-IMAGE-WIDTH: 200px;
   &__btn-upload {
     padding: 8px 12px;
     font-size: 14px;
+    max-width: 170px;
   }
 
   &__image {
