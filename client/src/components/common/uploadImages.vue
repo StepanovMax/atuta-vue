@@ -22,8 +22,10 @@
     <draggable
       class="upload-images__list"
       ghost-class="ghost"
+      @sort="dragDetection($event)"
       @start="dragging = true"
       @end="dragging = false"
+      handle=".upload-images__btn_handle"
     >
       <div
         class="upload-images__list-item"
@@ -38,6 +40,15 @@
           Your browser does not support the HTML5 canvas tag.
         </canvas>
         <div class="upload-images__image-controls">
+          <button
+            class="
+              btn
+              upload-images__btn
+              upload-images__btn_handle
+            "
+          >
+            <iconCross propColor="white" />
+          </button>
           <button
             class="
               btn
