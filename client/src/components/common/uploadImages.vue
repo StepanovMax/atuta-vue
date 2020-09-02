@@ -59,7 +59,7 @@
             title="Rotate to left"
             @click="rotateImage('left', index)"
           >
-            <iconArrowRotateLeft />
+            +
           </button>
           <button
             class="
@@ -71,7 +71,7 @@
             title="Rotate to right"
             @click="rotateImage('right', index)"
           >
-            <iconArrowRotateRight />
+            -
           </button>
         </div>
       </div>
