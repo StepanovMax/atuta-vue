@@ -55,7 +55,6 @@ $UPLOAD-IMAGE-WIDTH: 200px;
 
     &-controls {
       top: 0;
-      left: 0;
       right: 0;
       bottom: 0;
       z-index: 3;
@@ -67,6 +66,16 @@ $UPLOAD-IMAGE-WIDTH: 200px;
     }
   }
 
+  &__handle {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    cursor: move;
+    z-index: 2;
+  }
+
   &__btn {
     border-radius: 4px;
     overflow: hidden;
@@ -74,16 +83,6 @@ $UPLOAD-IMAGE-WIDTH: 200px;
     opacity: 0.8;
     background-color: rgba(0, 0, 0, .2);
     transition: opacity .3s ease, background-color .3s ease;
-
-    &_handle {
-      top: 4px;
-      left: 4px;
-      width: 22px;
-      height: 22px;
-      padding: 6px;
-      position: absolute;
-      cursor: move;
-    }
 
     &_close {
       top: 4px;
