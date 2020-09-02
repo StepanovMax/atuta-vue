@@ -1,11 +1,13 @@
 $UPLOAD-IMAGE-WIDTH: 200px;
 
 .upload-images {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
   &__list {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,6 +81,16 @@ $UPLOAD-IMAGE-WIDTH: 200px;
       height: 22px;
       padding: 6px;
       position: absolute;
+
+      @include media(tablet) {
+        width: 30px;
+        height: 30px;
+      }
+
+      @include media(mobile) {
+        width: 30px;
+        height: 30px;
+      }
     }
 
     &_rotate {
@@ -96,12 +108,21 @@ $UPLOAD-IMAGE-WIDTH: 200px;
         right: 4px;
       }
 
-      @include media(mobile) {
-        width: 26px;
-        height: 26px;
+      @include media(tablet) {
+        width: 30px;
+        height: 30px;
 
         &-left {
-          right: 34px;
+          left: 4px;
+        }
+      }
+
+      @include media(mobile) {
+        width: 30px;
+        height: 30px;
+
+        &-left {
+          left: 4px;
         }
       }
     }
