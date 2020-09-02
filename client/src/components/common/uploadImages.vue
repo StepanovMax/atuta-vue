@@ -19,12 +19,8 @@
     </label>
 
 
-    <draggable
+    <div
       class="upload-images__list"
-      ghost-class="ghost"
-      @start="dragging = true"
-      @sort="changeArrayOrder($event)"
-      @end="dragging = false"
     >
       <div
         class="upload-images__list-item"
@@ -75,7 +71,7 @@
           </button>
         </div>
       </div>
-    </draggable>
+    </div>
 
   </div>
 </template>
