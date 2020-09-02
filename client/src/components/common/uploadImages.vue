@@ -19,8 +19,11 @@
     </label>
 
 
-    <div
+    <draggable
       class="upload-images__list"
+      ghost-class="ghost"
+      @start="dragging = true"
+      @end="dragging = false"
     >
       <div
         class="upload-images__list-item"
@@ -55,7 +58,7 @@
             title="Rotate to left"
             @click="rotateImage('left', index)"
           >
-            +
+            <iconArrowRotateLeft />
           </button>
           <button
             class="
@@ -67,11 +70,11 @@
             title="Rotate to right"
             @click="rotateImage('right', index)"
           >
-            -
+            <iconArrowRotateRight />
           </button>
         </div>
       </div>
-    </div>
+    </draggable>
 
   </div>
 </template>
@@ -214,7 +217,6 @@ export default {
       }
     },
     rotateImage(way, index) {
-      alert('rotateImage');
       const image = new Image();
       image.src = URL.createObjectURL(this.filesArray[index].object);
       const imageRatio = this.filesArray[index].imageRatio;
