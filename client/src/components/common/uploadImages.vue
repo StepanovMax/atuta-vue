@@ -218,6 +218,7 @@ export default {
       }
     },
     rotateImage(way, index) {
+      alert('rotateImage');
       const image = new Image();
       image.src = URL.createObjectURL(this.filesArray[index].object);
       const imageRatio = this.filesArray[index].imageRatio;
