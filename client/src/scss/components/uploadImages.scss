@@ -104,18 +104,21 @@ $UPLOAD-IMAGE-WIDTH: 200px;
     }
 
     &_rotate {
-      width: 22px;
-      height: 22px;
       padding: 6px;
       bottom: 4px;
       position: absolute;
-
-      &-left {
-        right: 28px;
-      }
-
+  
       &-right {
         right: 4px;
+      }
+
+      @include media(desktop) {
+        width: 22px;
+        height: 22px;
+
+        &-left {
+          right: 28px;
+        }
       }
 
       @include media(tablet) {
@@ -123,7 +126,7 @@ $UPLOAD-IMAGE-WIDTH: 200px;
         height: 30px;
 
         &-left {
-          left: 4px;
+          right: 40px;
         }
       }
 
@@ -132,7 +135,7 @@ $UPLOAD-IMAGE-WIDTH: 200px;
         height: 30px;
 
         &-left {
-          left: 4px;
+          right: 40px;
         }
       }
     }
