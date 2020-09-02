@@ -25,13 +25,14 @@
       @sort="dragDetection($event)"
       @start="dragging = true"
       @end="dragging = false"
-      handle=".upload-images__btn_handle"
+      handle=".upload-images__handle"
     >
       <div
         class="upload-images__list-item"
         v-for="(item, index) in filesArray"
         :key="item.id"
       >
+        <div class="upload-images__handle" />
         <canvas
           :key="item.id"
           :id="item.id"
@@ -40,15 +41,6 @@
           Your browser does not support the HTML5 canvas tag.
         </canvas>
         <div class="upload-images__image-controls">
-          <button
-            class="
-              btn
-              upload-images__btn
-              upload-images__btn_handle
-            "
-          >
-            <iconCross propColor="white" />
-          </button>
           <button
             class="
               btn
