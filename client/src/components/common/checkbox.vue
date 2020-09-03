@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     clickCheckbox() {
-      console.log('test');
       this.checkboxArray.checked = !this.checkboxArray.checked;
       if (this.checkboxArray.checked) {
         this.value = this.checkboxArray.slug;
