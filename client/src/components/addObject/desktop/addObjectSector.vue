@@ -117,12 +117,11 @@
           ">
             Наличие строений
           </h3>
-          <radioButtons
-            v-if="false"
-            radioButtonsView="wrapHalf"
-            radioButtonsId="objectViewAddObject"
-            :items="filterDataDefaultClone.houseTypes"
-            :value.sync="propCreatedObjectSector.type"
+          <switcher
+            class="add-object-page__switcher"
+            switcherId="objectViewAddObject"
+            :items="filterDataDefaultClone.appOnlineShow"
+            :value.sync="propCreatedObjectSector.onlineShow"
           />
         </div>
       </div>
@@ -133,6 +132,7 @@
 
 <script>
 import multiselect from 'vue-multiselect';
+import switcher from '../../common/switcher.vue';
 import radioButtons from '../../common/radioButtons.vue';
 import inputWithUnit from '../../common/inputWithUnit.vue';
 import { mapState, mapGetters, store, commit } from 'vuex';
@@ -140,6 +140,7 @@ import { mapState, mapGetters, store, commit } from 'vuex';
 export default {
   name: 'addObjectSector',
   components: {
+    switcher,
     multiselect,
     radioButtons,
     inputWithUnit,

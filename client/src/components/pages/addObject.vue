@@ -21,6 +21,7 @@
       <div class="form form_add-object">
         <div class="form__row form__row_block-width form__row_block-width-half">
           <div class="form__block-width form__block-width-half">
+
             <div class="form__row">
               <h3 class="
                 form__title
@@ -635,16 +636,10 @@ export default {
   watch: {
     townLabel: {
       handler(value) {
+        this.createdObject.town = value;
         const localityObject = this.getLocalityByLabel(value);
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
-        } else {
-          this.localityDistricts = [
-            {
-              label: 'Пригород',
-              slug: 'suburb',
-            }
-          ];
         }
       },
       deep: true
@@ -725,11 +720,13 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    // hideSuggestionsList() {
+    //   this.suggestList = [];
+    // },
     selectSuggestedAddress(event) {
-      console.log(event.target.innerText);
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
-      this.suggestList = [];
+      // this.hideSuggestionsList;
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
