@@ -111,7 +111,13 @@
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      v-if="
+        propCreatedObjectCommercial.type
+        && propCreatedObjectCommercial.type.slug !== 'sector'
+      "
+      class="form__row"
+    >
       <h3 class="
         title
         title_h5
@@ -196,7 +202,13 @@
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      v-if="
+        propCreatedObjectCommercial.type
+        && propCreatedObjectCommercial.type.slug !== 'sector'
+      "
+      class="form__row"
+    >
       <div class="
         form__row
         form__row_block-width
