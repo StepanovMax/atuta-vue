@@ -119,29 +119,6 @@
             form__title
             form__title_add-object
           ">
-            Этажей всего*
-          </h4>
-          <multiselect
-            v-model="floorAll"
-            :options="filterDataDefaultClone.appFloorAllList"
-            :show-labels="false"
-            :allow-empty="false"
-            :close-on-select="true"
-            :multiple="false"
-            :searchable="true"
-            label="label"
-            track-by="label"
-            placeholder="Этажей всего"
-          />
-        </div>
-        <div class="form__block-width form__block-width-third">
-          <h4 class="
-            title
-            title_h6
-            title_bold
-            form__title
-            form__title_add-object
-          ">
             Этаж*
           </h4>
           <multiselect
@@ -155,6 +132,29 @@
             label="label"
             track-by="label"
             placeholder="Этаж"
+          />
+        </div>
+        <div class="form__block-width form__block-width-third">
+          <h4 class="
+            title
+            title_h6
+            title_bold
+            form__title
+            form__title_add-object
+          ">
+            Этажей всего*
+          </h4>
+          <multiselect
+            v-model="floorAll"
+            :options="filterDataDefaultClone.appFloorAllList"
+            :show-labels="false"
+            :allow-empty="false"
+            :close-on-select="true"
+            :multiple="false"
+            :searchable="true"
+            label="label"
+            track-by="label"
+            placeholder="Этажей всего"
           />
         </div>
       </div>
