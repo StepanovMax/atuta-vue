@@ -81,6 +81,7 @@
                     v-for="(item, index) in suggestList"
                     :key="'key-' + index"
                     @click="selectSuggestedAddress"
+                    v-click-outside.stop="hideSuggestionsList"
                   >
                     <p
                       class="input-address__suggest-list-item-text"
@@ -727,7 +728,7 @@ export default {
     selectSuggestedAddress(event) {
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
-      this.hideSuggestionsList();
+      this.hideSuggestionsList;
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
