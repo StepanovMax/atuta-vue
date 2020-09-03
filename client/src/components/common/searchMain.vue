@@ -64,7 +64,7 @@
     ">
       <multiselect
         class="multiselect-search-main"
-        v-model="filterSelected.town"
+        v-model="townsList"
         :options="getFlatLocalitiesList"
         :show-labels="false"
         :allow-empty="false"
@@ -89,6 +89,7 @@
         :close-on-select="true"
         :multiple="false"
         :searchable="true"
+        :disabled="isDistrictsDisabled"
         label="label"
         track-by="label"
         placeholder="Район"
@@ -111,6 +112,8 @@ export default {
       isButtonShow: false,
       searchMainInputValue: null,
       hideSearch: true,
+      townsList: null,
+      isDistrictsDisabled: true,
     }
   },
   components: {
@@ -145,6 +148,15 @@ export default {
         } else if (!value) {
           this.isButtonShow = false;
         }
+      },
+      deep: true
+    },
+    townsList: {
+      handler(value) {
+        console.log(value);
+        this.filterSelected.town = value;
+        this.filterDataDefaultClone.district = value.districts;
+        this.isDistrictsDisabled = false;
       },
       deep: true
     },
