@@ -422,8 +422,8 @@ const federalRegions = [
             "slug": "severnoe-tushino"
           },
           {
-            "label": "Еверный",
-            "slug": "evernyy"
+            "label": "Северный",
+            "slug": "severnyy"
           },
           {
             "label": "Сокол",
@@ -452,6 +452,10 @@ const federalRegions = [
           {
             "label": "Ясенево",
             "slug": "yasenevo"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -3072,6 +3076,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -3885,6 +3893,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -4049,6 +4061,10 @@ const federalRegions = [
           {
             "label": "Фоминское",
             "slug": "fominskoe"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5306,6 +5322,10 @@ const federalRegions = [
           {
             "label": "Цигломенский",
             "slug": "ciglomenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5697,6 +5717,10 @@ const federalRegions = [
           {
             "label": "Ягры",
             "slug": "yagry"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5787,6 +5811,10 @@ const federalRegions = [
           {
             "label": "Трусовский",
             "slug": "trusovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6750,6 +6778,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6800,6 +6832,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6927,6 +6963,10 @@ const federalRegions = [
           {
             "label": "Западный",
             "slug": "zapadnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -7257,6 +7297,10 @@ const federalRegions = [
           {
             "label": "Фокинский",
             "slug": "fokinskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8183,6 +8227,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8344,6 +8392,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8750,6 +8802,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9404,6 +9460,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9667,6 +9727,10 @@ const federalRegions = [
           {
             "label": "Северный",
             "slug": "severnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9855,6 +9919,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -10661,6 +10729,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11043,6 +11115,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11459,6 +11535,10 @@ const federalRegions = [
           {
             "label": "Южный массив",
             "slug": "yuzhnyy-massiv"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11827,6 +11907,10 @@ const federalRegions = [
           {
             "label": "Свердловский",
             "slug": "sverdlovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12307,6 +12391,10 @@ const federalRegions = [
           {
             "label": "Черновский",
             "slug": "chernovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12434,6 +12522,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12685,6 +12777,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -13288,6 +13384,10 @@ const federalRegions = [
           {
             "label": "Октябрьский",
             "slug": "oktyabrskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14279,6 +14379,10 @@ const federalRegions = [
           {
             "label": "Южная промзона",
             "slug": "yuzhnaya-promzona"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14665,6 +14769,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14786,6 +14894,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -15146,6 +15258,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -16229,6 +16345,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -16874,6 +16994,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -17122,6 +17246,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -18004,6 +18132,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -18837,6 +18969,10 @@ const federalRegions = [
           {
             "label": "Энергетики",
             "slug": "energetiki"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -19238,6 +19374,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -19658,6 +19798,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -20980,6 +21124,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -21866,6 +22014,10 @@ const federalRegions = [
           {
             "label": "Сормовский",
             "slug": "sormovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -22377,6 +22529,10 @@ const federalRegions = [
           {
             "label": "Сормовский",
             "slug": "sormovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -22881,6 +23037,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -23350,6 +23510,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -23905,6 +24069,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -24400,6 +24568,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -24880,6 +25052,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -25462,6 +25638,10 @@ const federalRegions = [
           {
             "label": "Свердловский",
             "slug": "sverdlovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -25781,6 +25961,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -26576,6 +26760,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27417,6 +27605,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27482,6 +27674,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27902,6 +28098,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -28507,6 +28707,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -28556,6 +28760,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -29194,6 +29402,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -30720,6 +30932,10 @@ const federalRegions = [
           {
             "label": "Чкаловский",
             "slug": "chkalovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31069,6 +31285,10 @@ const federalRegions = [
           {
             "label": "Тагилстроевский",
             "slug": "tagilstroevskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31504,6 +31724,10 @@ const federalRegions = [
           {
             "label": "Северо-западный",
             "slug": "severo-zapadnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31935,6 +32159,10 @@ const federalRegions = [
           {
             "label": "Промышленный",
             "slug": "promyshlennyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32430,6 +32658,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32584,6 +32816,10 @@ const federalRegions = [
           {
             "label": "Промышленный",
             "slug": "promyshlennyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32940,6 +33176,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -33372,6 +33612,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -33556,6 +33800,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -34291,6 +34539,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -34666,6 +34918,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -35307,6 +35563,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -36057,6 +36317,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -36361,6 +36625,10 @@ const federalRegions = [
           {
             "label": "Устиновский",
             "slug": "ustinovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -36991,6 +37259,10 @@ const federalRegions = [
           {
             "label": "Ленинский",
             "slug": "leninskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37490,6 +37762,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37868,6 +38144,10 @@ const federalRegions = [
           {
             "label": "Правобережный",
             "slug": "pravoberezhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37915,6 +38195,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38145,6 +38429,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38605,6 +38893,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38673,6 +38965,10 @@ const federalRegions = [
           {
             "label": "Московский",
             "slug": "moskovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38955,212 +39251,212 @@ const federalRegions = [
       {
         "type": "poselok",
         "label": "Амдерма",
-        "slug": ""
+        "slug": "amderma"
       },
       {
         "type": "derevnya",
         "label": "Андег",
-        "slug": ""
+        "slug": "andeg"
       },
       {
         "type": "derevnya",
         "label": "Белушье",
-        "slug": ""
+        "slug": "belushe"
       },
       {
         "type": "poselok",
         "label": "Бугрино",
-        "slug": ""
+        "slug": "bugrino"
       },
       {
         "type": "poselok",
         "label": "Варнек",
-        "slug": ""
+        "slug": "varnek"
       },
       {
         "type": "selo",
         "label": "Великовисочное",
-        "slug": ""
+        "slug": "velikovisochnoe"
       },
       {
         "type": "derevnya",
         "label": "Верхняя Пеша",
-        "slug": ""
+        "slug": "verhnyaya-pesha"
       },
       {
         "type": "derevnya",
         "label": "Вижас",
-        "slug": ""
+        "slug": "vizhas"
       },
       {
         "type": "derevnya",
         "label": "Волоковая",
-        "slug": ""
+        "slug": "volokovaya"
       },
       {
         "type": "derevnya",
         "label": "Волонга",
-        "slug": ""
+        "slug": "volonga"
       },
       {
         "type": "poselok",
         "label": "Выучейский",
-        "slug": ""
+        "slug": "vyucheyskiy"
       },
       {
         "type": "poselok",
         "label": "Индига",
-        "slug": ""
+        "slug": "indiga"
       },
       {
         "type": "working-poselok",
         "label": "Искателей",
-        "slug": ""
+        "slug": "iskateley"
       },
       {
         "type": "derevnya",
         "label": "Каменка",
-        "slug": ""
+        "slug": "kamenka"
       },
       {
         "type": "poselok",
         "label": "Каратайка",
-        "slug": ""
+        "slug": "karatayka"
       },
       {
         "type": "derevnya",
         "label": "Кия",
-        "slug": ""
+        "slug": "kiya"
       },
       {
         "type": "selo",
         "label": "Коткино",
-        "slug": ""
+        "slug": "kotkino"
       },
       {
         "type": "poselok",
         "label": "Красное",
-        "slug": ""
+        "slug": "krasnoe"
       },
       {
         "type": "derevnya",
         "label": "Куя",
-        "slug": ""
+        "slug": "kuya"
       },
       {
         "type": "selo",
         "label": "Лабожское",
-        "slug": ""
+        "slug": "labozhskoe"
       },
       {
         "type": "derevnya",
         "label": "Макарово",
-        "slug": ""
+        "slug": "makarovo"
       },
       {
         "type": "derevnya",
         "label": "Мгла",
-        "slug": ""
+        "slug": "mgla"
       },
       {
         "type": "poselok",
         "label": "Нельмин-Нос",
-        "slug": ""
+        "slug": "nelmin-nos"
       },
       {
         "type": "selo",
         "label": "Несь",
-        "slug": ""
+        "slug": "nes"
       },
       {
         "type": "selo",
         "label": "Нижняя Пеша",
-        "slug": ""
+        "slug": "nizhnyaya-pesha"
       },
       {
         "type": "selo",
         "label": "Оксино",
-        "slug": ""
+        "slug": "oksino"
       },
       {
         "type": "selo",
         "label": "Ома",
-        "slug": ""
+        "slug": "oma"
       },
       {
         "type": "derevnya",
         "label": "Осколково",
-        "slug": ""
+        "slug": "oskolkovo"
       },
       {
         "type": "derevnya",
         "label": "Пылемец",
-        "slug": ""
+        "slug": "pylemec"
       },
       {
         "type": "derevnya",
         "label": "Снопа",
-        "slug": ""
+        "slug": "snopa"
       },
       {
         "type": "selo",
         "label": "Тельвиска",
-        "slug": ""
+        "slug": "telviska"
       },
       {
         "type": "derevnya",
         "label": "Тошвиска",
-        "slug": ""
+        "slug": "toshviska"
       },
       {
         "type": "derevnya",
         "label": "Устье",
-        "slug": ""
+        "slug": "uste"
       },
       {
         "type": "poselok",
         "label": "Усть-Кара",
-        "slug": ""
+        "slug": "ust-kara"
       },
       {
         "type": "poselok",
         "label": "Харута",
-        "slug": ""
+        "slug": "haruta"
       },
       {
         "type": "poselok",
         "label": "Харьягинский",
-        "slug": ""
+        "slug": "haryaginskiy"
       },
       {
         "type": "poselok",
         "label": "Хонгурей",
-        "slug": ""
+        "slug": "hongurey"
       },
       {
         "type": "poselok",
         "label": "Хорей-Вер",
-        "slug": ""
+        "slug": "horey-ver"
       },
       {
         "type": "derevnya",
         "label": "Чёрная",
-        "slug": ""
+        "slug": "chyornaya"
       },
       {
         "type": "derevnya",
         "label": "Чижа",
-        "slug": ""
+        "slug": "chizha"
       },
       {
         "type": "selo",
         "label": "Шойна",
-        "slug": ""
+        "slug": "shoyna"
       },
       {
         "type": "derevnya",
         "label": "Щелино",
-        "slug": ""
+        "slug": "shchelino"
       }
     ]
   },
@@ -39388,6 +39684,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -39734,6 +40034,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -39795,6 +40099,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       }
