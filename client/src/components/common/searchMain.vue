@@ -175,8 +175,12 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
-  // mounted() {
-  //   console.info('Route ::', this.$router.history.current.name);
-  // },
+  mounted() {
+    if (this.$router.history.current.name === 'addObject') {
+      this.hideSearch = false;
+    } else {
+      this.hideSearch = true;
+    }
+  },
 };
 </script>
