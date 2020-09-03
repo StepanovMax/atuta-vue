@@ -1,15 +1,20 @@
 <template>
   <div class="checkbox">
     <div
-      v-if="!checkboxArray.checked"
-      class="checkbox__icon checkbox__icon_active"
-      :class="propClass + '-icon'"
-    />
-    <iconChecked
-      v-else
-      class="checkbox__icon"
-      :class="propClass + '-icon'"
-    />
+      class=""
+      @click="clickCheckbox()"
+    >
+      <div
+        v-if="!checkboxArray.checked"
+        class="checkbox__icon checkbox__icon_active"
+        :class="propClass + '-icon'"
+      />
+      <iconChecked
+        v-else
+        class="checkbox__icon 123"
+        :class="propClass + '-icon'"
+      />
+    </div>
     <label
       :for="checkboxId"
       class="checkbox__label"
@@ -64,6 +69,7 @@ export default {
   },
   methods: {
     clickCheckbox() {
+      console.log('test');
       this.checkboxArray.checked = !this.checkboxArray.checked;
       if (this.checkboxArray.checked) {
         this.value = this.checkboxArray.slug;
