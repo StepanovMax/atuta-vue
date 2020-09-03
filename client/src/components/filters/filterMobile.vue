@@ -26,15 +26,15 @@
               Город*
             </h3>
             <multiselect
-              v-model="filterSelected.town"
-              :options="filterDataDefaultClone.town"
+              v-model="townsList"
+              :options="getFlatLocalitiesList"
               :show-labels="false"
               :allow-empty="false"
               :close-on-select="true"
               :multiple="false"
               :searchable="true"
-              label="city"
-              track-by="city"
+              label="label"
+              track-by="label"
               placeholder="Выберите город"
             />
           </div>
@@ -51,6 +51,7 @@
               :close-on-select="true"
               :multiple="true"
               :searchable="false"
+              :disabled="isDistrictsDisabled"
               label="label"
               track-by="label"
               placeholder="Выберите район"
@@ -157,7 +158,7 @@ import switcher from '../common/switcher.vue';
 import rangeMobile from '../common/rangeMobile.vue'
 import radioButtons from '../common/radioButtons.vue';
 import multiselect from 'vue-multiselect';
-import { mapState, store, commit } from 'vuex';
+import { mapState, mapGetters, store, commit } from 'vuex';
 
 export default {
   name: 'filterMobile',
@@ -177,6 +178,8 @@ export default {
     return {
       filterSelected: {},
       filterDataSelectedClone: {},
+      townsList: null,
+      isDistrictsDisabled: true,
     }
   },
   watch: {
@@ -186,12 +189,23 @@ export default {
       },
       deep: true
     },
+    townsList: {
+      handler(value) {
+        this.filterSelected.town = value;
+        this.filterDataDefaultClone.district = value.districts;
+        this.isDistrictsDisabled = false;
+      },
+      deep: true
+    },
   },
   computed: {
     ...mapState([
       'isFilterOpen',
       'filterDataDefault',
       'filterDataSelected',
+    ]),
+    ...mapGetters([
+      'getFlatLocalitiesList',
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));

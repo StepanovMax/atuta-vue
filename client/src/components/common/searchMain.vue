@@ -153,7 +153,6 @@ export default {
     },
     townsList: {
       handler(value) {
-        console.log(value);
         this.filterSelected.town = value;
         this.filterDataDefaultClone.district = value.districts;
         this.isDistrictsDisabled = false;
