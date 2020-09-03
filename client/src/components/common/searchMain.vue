@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="hideSearch"
     class="search-main"
   >
     <div
@@ -109,6 +110,7 @@ export default {
       filterSelected: {},
       isButtonShow: false,
       searchMainInputValue: null,
+      hideSearch: true,
     }
   },
   components: {
@@ -117,6 +119,13 @@ export default {
     iconSearchGlass,
   },
   watch: {
+    $route(to, from){
+      if (to.matched[0].name === 'addObject') {
+        this.hideSearch = false;
+      } else {
+        this.hideSearch = true;
+      }
+    },
     filterSelected: {
       handler() {
         this.updateFilterState(this.filterSelected);
@@ -166,5 +175,8 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
+  // mounted() {
+  //   console.info('Route ::', this.$router.history.current.name);
+  // },
 };
 </script>
