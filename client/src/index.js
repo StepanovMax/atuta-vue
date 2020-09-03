@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import 'regenerator-runtime/runtime';
+import vClickOutside from 'v-click-outside';
+
 import router from './store/router.js';
 import store from './store/store.js';
 
@@ -8,7 +10,9 @@ import App from './App.vue';
 import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
 
-
+ 
+Vue.use(vClickOutside);
+ 
 Vue.use(formatNumbers);
 
 Vue.config.productionTip = false;

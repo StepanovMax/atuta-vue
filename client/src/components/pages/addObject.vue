@@ -74,6 +74,7 @@
                 <ul
                   v-if="suggestList.length > 0"
                   class="input-address__suggest-list"
+                  v-click-outside="hideSuggestionsList"
                 >
                   <li
                     class="input-address__suggest-list-item"
@@ -92,7 +93,7 @@
             </div>
           </div>
           <div class="form__block-width form__block-width-half">
-            <yandex-map 
+            <yandex-map
               class="add-object-page__map"
               :settings="settings"
               :coords="coordsTaganrog"
@@ -720,13 +721,13 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
-    // hideSuggestionsList() {
-    //   this.suggestList = [];
-    // },
+    hideSuggestionsList() {
+      this.suggestList = [];
+    },
     selectSuggestedAddress(event) {
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
-      // this.hideSuggestionsList;
+      this.hideSuggestionsList();
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
