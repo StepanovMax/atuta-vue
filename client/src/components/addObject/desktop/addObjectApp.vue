@@ -92,19 +92,19 @@
             form__title
             form__title_add-object
           ">
-            Этажей всего*
+            Этаж*
           </h4>
           <multiselect
-            v-model="floorAll"
-            :options="filterDataDefaultClone.appFloorAllList"
+            v-model="propCreatedObjectApp.floor"
+            :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
             :multiple="false"
-            :searchable="true"
+            :searchable="false"
             label="label"
             track-by="label"
-            placeholder="Этажей всего"
+            placeholder="Этаж"
           />
         </div>
         <div class="form__block-width form__block-width-third">
@@ -115,19 +115,19 @@
             form__title
             form__title_add-object
           ">
-            Этаж*
+            Этажей всего*
           </h4>
           <multiselect
-            v-model="propCreatedObjectApp.floor"
-            :options="filterDataDefaultClone.appFloorAllListCurrent"
+            v-model="floorAll"
+            :options="filterDataDefaultClone.appFloorAllList"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
             :multiple="false"
-            :searchable="true"
+            :searchable="false"
             label="label"
             track-by="label"
-            placeholder="Этаж"
+            placeholder="Этажей всего"
           />
         </div>
       </div>

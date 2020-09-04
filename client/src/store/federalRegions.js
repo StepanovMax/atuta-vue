@@ -422,8 +422,8 @@ const federalRegions = [
             "slug": "severnoe-tushino"
           },
           {
-            "label": "Еверный",
-            "slug": "evernyy"
+            "label": "Северный",
+            "slug": "severnyy"
           },
           {
             "label": "Сокол",
@@ -452,6 +452,10 @@ const federalRegions = [
           {
             "label": "Ясенево",
             "slug": "yasenevo"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -461,7 +465,7 @@ const federalRegions = [
         "label": "Абрамцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -476,7 +480,7 @@ const federalRegions = [
         "label": "Алабино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -491,7 +495,7 @@ const federalRegions = [
         "label": "Апрелевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -506,7 +510,7 @@ const federalRegions = [
         "label": "Архангельское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -521,7 +525,7 @@ const federalRegions = [
         "label": "Ашитково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -536,7 +540,7 @@ const federalRegions = [
         "label": "Байконур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -551,7 +555,7 @@ const federalRegions = [
         "label": "Бакшеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -566,7 +570,7 @@ const federalRegions = [
         "label": "Балашиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -581,7 +585,7 @@ const federalRegions = [
         "label": "Барыбино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -596,7 +600,7 @@ const federalRegions = [
         "label": "Белоомут",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -611,7 +615,7 @@ const federalRegions = [
         "label": "Белые Столбы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -626,7 +630,7 @@ const federalRegions = [
         "label": "Бородино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -641,7 +645,7 @@ const federalRegions = [
         "label": "Бронницы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -656,7 +660,7 @@ const federalRegions = [
         "label": "Быково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -671,7 +675,7 @@ const federalRegions = [
         "label": "Валуево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -686,7 +690,7 @@ const federalRegions = [
         "label": "Вербилки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -701,7 +705,7 @@ const federalRegions = [
         "label": "Верея",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -716,7 +720,7 @@ const federalRegions = [
         "label": "Видное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -731,7 +735,7 @@ const federalRegions = [
         "label": "Внуково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -746,7 +750,7 @@ const federalRegions = [
         "label": "Вождь Пролетариата",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -761,7 +765,7 @@ const federalRegions = [
         "label": "Волоколамск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -776,7 +780,7 @@ const federalRegions = [
         "label": "Вороново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -791,7 +795,7 @@ const federalRegions = [
         "label": "Воскресенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -806,7 +810,7 @@ const federalRegions = [
         "label": "Восточный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -821,7 +825,7 @@ const federalRegions = [
         "label": "Востряково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -836,7 +840,7 @@ const federalRegions = [
         "label": "Высоковск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -851,7 +855,7 @@ const federalRegions = [
         "label": "Голицино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -866,7 +870,7 @@ const federalRegions = [
         "label": "Деденево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -881,7 +885,7 @@ const federalRegions = [
         "label": "Дедовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -896,7 +900,7 @@ const federalRegions = [
         "label": "Джержинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -911,7 +915,7 @@ const federalRegions = [
         "label": "Дмитров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -926,7 +930,7 @@ const federalRegions = [
         "label": "Долгопрудный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -941,7 +945,7 @@ const federalRegions = [
         "label": "Домодедово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -956,7 +960,7 @@ const federalRegions = [
         "label": "Дорохово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -971,7 +975,7 @@ const federalRegions = [
         "label": "Дрезна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -986,7 +990,7 @@ const federalRegions = [
         "label": "Дубки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1001,7 +1005,7 @@ const federalRegions = [
         "label": "Дубна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1016,7 +1020,7 @@ const federalRegions = [
         "label": "Егорьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1031,7 +1035,7 @@ const federalRegions = [
         "label": "Железнодорожный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1046,7 +1050,7 @@ const federalRegions = [
         "label": "Жилево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1061,7 +1065,7 @@ const federalRegions = [
         "label": "Жуковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1076,7 +1080,7 @@ const federalRegions = [
         "label": "Загорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1091,7 +1095,7 @@ const federalRegions = [
         "label": "Загорянский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1106,7 +1110,7 @@ const federalRegions = [
         "label": "Запрудная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1121,7 +1125,7 @@ const federalRegions = [
         "label": "Зарайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1136,7 +1140,7 @@ const federalRegions = [
         "label": "Звенигород",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1151,7 +1155,7 @@ const federalRegions = [
         "label": "Зеленоград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1166,7 +1170,7 @@ const federalRegions = [
         "label": "Ивантеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1181,7 +1185,7 @@ const federalRegions = [
         "label": "Икша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1196,7 +1200,7 @@ const federalRegions = [
         "label": "Ильинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1211,7 +1215,7 @@ const federalRegions = [
         "label": "Истра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1226,7 +1230,7 @@ const federalRegions = [
         "label": "Кашира",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1241,7 +1245,7 @@ const federalRegions = [
         "label": "Керва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1256,7 +1260,7 @@ const federalRegions = [
         "label": "Климовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1271,7 +1275,7 @@ const federalRegions = [
         "label": "Клин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1286,7 +1290,7 @@ const federalRegions = [
         "label": "Клязьма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1301,7 +1305,7 @@ const federalRegions = [
         "label": "Кожино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1316,7 +1320,7 @@ const federalRegions = [
         "label": "Кокошкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1331,7 +1335,7 @@ const federalRegions = [
         "label": "Коломна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1346,7 +1350,7 @@ const federalRegions = [
         "label": "Колюбакино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1361,7 +1365,7 @@ const federalRegions = [
         "label": "Королев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1376,7 +1380,7 @@ const federalRegions = [
         "label": "Косино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1391,7 +1395,7 @@ const federalRegions = [
         "label": "Котельники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1406,7 +1410,7 @@ const federalRegions = [
         "label": "Красково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1421,7 +1425,7 @@ const federalRegions = [
         "label": "Красноармейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1436,7 +1440,7 @@ const federalRegions = [
         "label": "Красногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1451,7 +1455,7 @@ const federalRegions = [
         "label": "Краснозаводск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1466,7 +1470,7 @@ const federalRegions = [
         "label": "Краснознаменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1481,7 +1485,7 @@ const federalRegions = [
         "label": "Красный Ткач",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1496,7 +1500,7 @@ const federalRegions = [
         "label": "Крюково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1511,7 +1515,7 @@ const federalRegions = [
         "label": "Кубинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1526,7 +1530,7 @@ const federalRegions = [
         "label": "Купавна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1541,7 +1545,7 @@ const federalRegions = [
         "label": "Куровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1556,7 +1560,7 @@ const federalRegions = [
         "label": "Лесной Городок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1571,7 +1575,7 @@ const federalRegions = [
         "label": "Ликино-Дулево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1586,7 +1590,7 @@ const federalRegions = [
         "label": "Лобня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1601,7 +1605,7 @@ const federalRegions = [
         "label": "Лопатинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1616,7 +1620,7 @@ const federalRegions = [
         "label": "Лосино-Петровский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1631,7 +1635,7 @@ const federalRegions = [
         "label": "Лотошино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1646,7 +1650,7 @@ const federalRegions = [
         "label": "Лукино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1661,7 +1665,7 @@ const federalRegions = [
         "label": "Луховицы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1676,7 +1680,7 @@ const federalRegions = [
         "label": "Лыткарино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1691,7 +1695,7 @@ const federalRegions = [
         "label": "Львовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1706,7 +1710,7 @@ const federalRegions = [
         "label": "Люберцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1721,7 +1725,7 @@ const federalRegions = [
         "label": "Малаховка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1736,7 +1740,7 @@ const federalRegions = [
         "label": "Михайловское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1751,7 +1755,7 @@ const federalRegions = [
         "label": "Михнево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1766,7 +1770,7 @@ const federalRegions = [
         "label": "Можайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1781,7 +1785,7 @@ const federalRegions = [
         "label": "Монино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1796,7 +1800,7 @@ const federalRegions = [
         "label": "Муханово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1811,7 +1815,7 @@ const federalRegions = [
         "label": "Мытищи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1826,7 +1830,7 @@ const federalRegions = [
         "label": "Нарофоминск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1841,7 +1845,7 @@ const federalRegions = [
         "label": "Нахабино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1856,7 +1860,7 @@ const federalRegions = [
         "label": "Некрасовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1871,7 +1875,7 @@ const federalRegions = [
         "label": "Немчиновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1886,7 +1890,7 @@ const federalRegions = [
         "label": "Новобратцевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1901,7 +1905,7 @@ const federalRegions = [
         "label": "Новоподрезково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1916,7 +1920,7 @@ const federalRegions = [
         "label": "Ногинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1931,7 +1935,7 @@ const federalRegions = [
         "label": "Обухово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1946,7 +1950,7 @@ const federalRegions = [
         "label": "Одинцово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1961,7 +1965,7 @@ const federalRegions = [
         "label": "Ожерелье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1976,7 +1980,7 @@ const federalRegions = [
         "label": "Озеры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -1991,7 +1995,7 @@ const federalRegions = [
         "label": "Октябрьский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2006,7 +2010,7 @@ const federalRegions = [
         "label": "Опалиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2021,7 +2025,7 @@ const federalRegions = [
         "label": "Орехово-Зуево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2036,7 +2040,7 @@ const federalRegions = [
         "label": "Павловский Посад",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2051,7 +2055,7 @@ const federalRegions = [
         "label": "Первомайский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2066,7 +2070,7 @@ const federalRegions = [
         "label": "Пески",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2081,7 +2085,7 @@ const federalRegions = [
         "label": "Пироговский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2096,7 +2100,7 @@ const federalRegions = [
         "label": "Подольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2111,7 +2115,7 @@ const federalRegions = [
         "label": "Полушкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2126,7 +2130,7 @@ const federalRegions = [
         "label": "Правдинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2141,7 +2145,7 @@ const federalRegions = [
         "label": "Привокзальный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2156,7 +2160,7 @@ const federalRegions = [
         "label": "Пролетарский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2171,7 +2175,7 @@ const federalRegions = [
         "label": "Протвино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2186,7 +2190,7 @@ const federalRegions = [
         "label": "Пушкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2201,7 +2205,7 @@ const federalRegions = [
         "label": "Пущино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2216,7 +2220,7 @@ const federalRegions = [
         "label": "Радовицкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2231,7 +2235,7 @@ const federalRegions = [
         "label": "Раменское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2246,7 +2250,7 @@ const federalRegions = [
         "label": "Реутов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2261,7 +2265,7 @@ const federalRegions = [
         "label": "Решетниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2276,7 +2280,7 @@ const federalRegions = [
         "label": "Родники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2291,7 +2295,7 @@ const federalRegions = [
         "label": "Рошаль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2306,7 +2310,7 @@ const federalRegions = [
         "label": "Рублево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2321,7 +2325,7 @@ const federalRegions = [
         "label": "Руза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2336,7 +2340,7 @@ const federalRegions = [
         "label": "Салтыковка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2351,7 +2355,7 @@ const federalRegions = [
         "label": "Северный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2366,7 +2370,7 @@ const federalRegions = [
         "label": "Сергиев Посад",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2381,7 +2385,7 @@ const federalRegions = [
         "label": "Серебряные Пруды",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2396,7 +2400,7 @@ const federalRegions = [
         "label": "Серпухов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2411,7 +2415,7 @@ const federalRegions = [
         "label": "Солнечногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2426,7 +2430,7 @@ const federalRegions = [
         "label": "Солнцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2441,7 +2445,7 @@ const federalRegions = [
         "label": "Софрино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2456,7 +2460,7 @@ const federalRegions = [
         "label": "Старая Купавна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2471,7 +2475,7 @@ const federalRegions = [
         "label": "Старбеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2486,7 +2490,7 @@ const federalRegions = [
         "label": "Ступино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2501,7 +2505,7 @@ const federalRegions = [
         "label": "Сходня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2516,7 +2520,7 @@ const federalRegions = [
         "label": "Талдом",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2531,7 +2535,7 @@ const federalRegions = [
         "label": "Текстильщик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2546,7 +2550,7 @@ const federalRegions = [
         "label": "Темпы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2561,7 +2565,7 @@ const federalRegions = [
         "label": "Тишково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2576,7 +2580,7 @@ const federalRegions = [
         "label": "Томилино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2591,7 +2595,7 @@ const federalRegions = [
         "label": "Троицк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2606,7 +2610,7 @@ const federalRegions = [
         "label": "Туголесский Бор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2621,7 +2625,7 @@ const federalRegions = [
         "label": "Тучково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2636,7 +2640,7 @@ const federalRegions = [
         "label": "Уваровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2651,7 +2655,7 @@ const federalRegions = [
         "label": "Удельная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2666,7 +2670,7 @@ const federalRegions = [
         "label": "Успенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2681,7 +2685,7 @@ const federalRegions = [
         "label": "Фирсановка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2696,7 +2700,7 @@ const federalRegions = [
         "label": "Фосфоритный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2711,7 +2715,7 @@ const federalRegions = [
         "label": "Фрязино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2726,7 +2730,7 @@ const federalRegions = [
         "label": "Фряново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2741,7 +2745,7 @@ const federalRegions = [
         "label": "Химки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2756,7 +2760,7 @@ const federalRegions = [
         "label": "Хорлово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2771,7 +2775,7 @@ const federalRegions = [
         "label": "Хотьково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2786,7 +2790,7 @@ const federalRegions = [
         "label": "Черкизово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2801,7 +2805,7 @@ const federalRegions = [
         "label": "Черноголовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2816,7 +2820,7 @@ const federalRegions = [
         "label": "Черусти",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2831,7 +2835,7 @@ const federalRegions = [
         "label": "Чехов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2846,7 +2850,7 @@ const federalRegions = [
         "label": "Шарапово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2861,7 +2865,7 @@ const federalRegions = [
         "label": "Шатура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2876,7 +2880,7 @@ const federalRegions = [
         "label": "Шатурторф",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2891,7 +2895,7 @@ const federalRegions = [
         "label": "Шаховская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2906,7 +2910,7 @@ const federalRegions = [
         "label": "Шереметьевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2921,7 +2925,7 @@ const federalRegions = [
         "label": "Щелково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2936,7 +2940,7 @@ const federalRegions = [
         "label": "Щербинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2951,7 +2955,7 @@ const federalRegions = [
         "label": "Электрогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2966,7 +2970,7 @@ const federalRegions = [
         "label": "Электросталь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2981,7 +2985,7 @@ const federalRegions = [
         "label": "Электроугли",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -2996,7 +3000,7 @@ const federalRegions = [
         "label": "Яхрома",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3072,6 +3076,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -3081,7 +3089,7 @@ const federalRegions = [
         "label": "Александровская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3096,7 +3104,7 @@ const federalRegions = [
         "label": "Бокситогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3111,7 +3119,7 @@ const federalRegions = [
         "label": "Большая Ижора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3126,7 +3134,7 @@ const federalRegions = [
         "label": "Будогощь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3141,7 +3149,7 @@ const federalRegions = [
         "label": "Вознесенье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3156,7 +3164,7 @@ const federalRegions = [
         "label": "Волосово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3171,7 +3179,7 @@ const federalRegions = [
         "label": "Волхов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3186,7 +3194,7 @@ const federalRegions = [
         "label": "Всеволожск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3201,7 +3209,7 @@ const federalRegions = [
         "label": "Выборг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3216,7 +3224,7 @@ const federalRegions = [
         "label": "Вырица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3231,7 +3239,7 @@ const federalRegions = [
         "label": "Высоцк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3246,7 +3254,7 @@ const federalRegions = [
         "label": "Гатчина",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3261,7 +3269,7 @@ const federalRegions = [
         "label": "Дружная Горка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3276,7 +3284,7 @@ const federalRegions = [
         "label": "Дубровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3291,7 +3299,7 @@ const federalRegions = [
         "label": "Ефимовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3306,7 +3314,7 @@ const federalRegions = [
         "label": "Зеленогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3321,7 +3329,7 @@ const federalRegions = [
         "label": "Ивангород",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3336,7 +3344,7 @@ const federalRegions = [
         "label": "Каменногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3351,7 +3359,7 @@ const federalRegions = [
         "label": "Кикерино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3366,7 +3374,7 @@ const federalRegions = [
         "label": "Кингисепп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3381,7 +3389,7 @@ const federalRegions = [
         "label": "Кириши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3396,7 +3404,7 @@ const federalRegions = [
         "label": "Кировск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3411,7 +3419,7 @@ const federalRegions = [
         "label": "Кобринское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3426,7 +3434,7 @@ const federalRegions = [
         "label": "Колпино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3441,7 +3449,7 @@ const federalRegions = [
         "label": "Коммунар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3456,7 +3464,7 @@ const federalRegions = [
         "label": "Кронштадт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3471,7 +3479,7 @@ const federalRegions = [
         "label": "Лисий Нос",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3486,7 +3494,7 @@ const federalRegions = [
         "label": "Лодейное Поле",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3501,7 +3509,7 @@ const federalRegions = [
         "label": "Ломоносов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3516,7 +3524,7 @@ const federalRegions = [
         "label": "Луга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3531,7 +3539,7 @@ const federalRegions = [
         "label": "Павловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3546,7 +3554,7 @@ const federalRegions = [
         "label": "Парголово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3561,7 +3569,7 @@ const federalRegions = [
         "label": "Петродворец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3576,7 +3584,7 @@ const federalRegions = [
         "label": "Пикалёво",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3591,7 +3599,7 @@ const federalRegions = [
         "label": "Подпорожье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3606,7 +3614,7 @@ const federalRegions = [
         "label": "Приозерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3621,7 +3629,7 @@ const federalRegions = [
         "label": "Пушкин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3636,7 +3644,7 @@ const federalRegions = [
         "label": "Сестрорецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3651,7 +3659,7 @@ const federalRegions = [
         "label": "Сланцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3666,7 +3674,7 @@ const federalRegions = [
         "label": "Сосновый Бор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3681,7 +3689,7 @@ const federalRegions = [
         "label": "Тихвин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3696,7 +3704,7 @@ const federalRegions = [
         "label": "Тосно",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3711,7 +3719,7 @@ const federalRegions = [
         "label": "Шлиссельбург",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3733,7 +3741,7 @@ const federalRegions = [
         "label": "Адыгейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3748,7 +3756,7 @@ const federalRegions = [
         "label": "Майкоп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3770,7 +3778,7 @@ const federalRegions = [
         "label": "Горно-Алтайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3792,7 +3800,7 @@ const federalRegions = [
         "label": "Акташ",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3807,7 +3815,7 @@ const federalRegions = [
         "label": "Акутиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3822,7 +3830,7 @@ const federalRegions = [
         "label": "Алейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3837,7 +3845,7 @@ const federalRegions = [
         "label": "Алтайский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3852,7 +3860,7 @@ const federalRegions = [
         "label": "Баево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3885,6 +3893,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -3894,7 +3906,7 @@ const federalRegions = [
         "label": "Белово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3909,7 +3921,7 @@ const federalRegions = [
         "label": "Белокуриха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -3924,7 +3936,7 @@ const federalRegions = [
         "label": "Белоярск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4049,6 +4061,10 @@ const federalRegions = [
           {
             "label": "Фоминское",
             "slug": "fominskoe"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -4058,7 +4074,7 @@ const federalRegions = [
         "label": "Благовещенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4073,7 +4089,7 @@ const federalRegions = [
         "label": "Боровлянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4088,7 +4104,7 @@ const federalRegions = [
         "label": "Бурла",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4103,7 +4119,7 @@ const federalRegions = [
         "label": "Бурсоль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4118,7 +4134,7 @@ const federalRegions = [
         "label": "Волчиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4133,7 +4149,7 @@ const federalRegions = [
         "label": "Горно-Алтайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4148,7 +4164,7 @@ const federalRegions = [
         "label": "Горняк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4163,7 +4179,7 @@ const federalRegions = [
         "label": "Ельцовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4178,7 +4194,7 @@ const federalRegions = [
         "label": "Залесово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4193,7 +4209,7 @@ const federalRegions = [
         "label": "Заринск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4208,7 +4224,7 @@ const federalRegions = [
         "label": "Заток",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4223,7 +4239,7 @@ const federalRegions = [
         "label": "Змеиногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4238,7 +4254,7 @@ const federalRegions = [
         "label": "Камень-на-Оби",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4253,7 +4269,7 @@ const federalRegions = [
         "label": "Ключи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4268,7 +4284,7 @@ const federalRegions = [
         "label": "Кош-Агач",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4283,7 +4299,7 @@ const federalRegions = [
         "label": "Красногорское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4298,7 +4314,7 @@ const federalRegions = [
         "label": "Краснощеково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4313,7 +4329,7 @@ const federalRegions = [
         "label": "Кулунда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4328,7 +4344,7 @@ const federalRegions = [
         "label": "Кытманово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4343,7 +4359,7 @@ const federalRegions = [
         "label": "Мамонтово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4358,7 +4374,7 @@ const federalRegions = [
         "label": "Новичиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4373,7 +4389,7 @@ const federalRegions = [
         "label": "Новоалтайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4388,7 +4404,7 @@ const federalRegions = [
         "label": "Онгудай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4403,7 +4419,7 @@ const federalRegions = [
         "label": "Павловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4418,7 +4434,7 @@ const federalRegions = [
         "label": "Петропавловское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4433,7 +4449,7 @@ const federalRegions = [
         "label": "Поспелиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4448,7 +4464,7 @@ const federalRegions = [
         "label": "Ребриха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4463,7 +4479,7 @@ const federalRegions = [
         "label": "Родино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4478,7 +4494,7 @@ const federalRegions = [
         "label": "Рубцовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4493,7 +4509,7 @@ const federalRegions = [
         "label": "Славгород",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4508,7 +4524,7 @@ const federalRegions = [
         "label": "Смоленское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4523,7 +4539,7 @@ const federalRegions = [
         "label": "Солонешное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4538,7 +4554,7 @@ const federalRegions = [
         "label": "Солтон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4553,7 +4569,7 @@ const federalRegions = [
         "label": "Староаллейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4568,7 +4584,7 @@ const federalRegions = [
         "label": "Табуны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4583,7 +4599,7 @@ const federalRegions = [
         "label": "Тальменка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4598,7 +4614,7 @@ const federalRegions = [
         "label": "Топчиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4613,7 +4629,7 @@ const federalRegions = [
         "label": "Троицкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4628,7 +4644,7 @@ const federalRegions = [
         "label": "Турочак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4643,7 +4659,7 @@ const federalRegions = [
         "label": "Тюменцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4658,7 +4674,7 @@ const federalRegions = [
         "label": "Угловское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4673,7 +4689,7 @@ const federalRegions = [
         "label": "Усть-Калманка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4688,7 +4704,7 @@ const federalRegions = [
         "label": "Усть-Кан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4703,7 +4719,7 @@ const federalRegions = [
         "label": "Усть-Кокса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4718,7 +4734,7 @@ const federalRegions = [
         "label": "Усть-Улаган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4733,7 +4749,7 @@ const federalRegions = [
         "label": "Усть-Чарышская Пристань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4748,7 +4764,7 @@ const federalRegions = [
         "label": "Хабары",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4763,7 +4779,7 @@ const federalRegions = [
         "label": "Целинное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4778,7 +4794,7 @@ const federalRegions = [
         "label": "Чарышское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4793,7 +4809,7 @@ const federalRegions = [
         "label": "Шебалино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4808,7 +4824,7 @@ const federalRegions = [
         "label": "Шелаболиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4823,7 +4839,7 @@ const federalRegions = [
         "label": "Шипуново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4845,7 +4861,7 @@ const federalRegions = [
         "label": "Айгунь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4860,7 +4876,7 @@ const federalRegions = [
         "label": "Архара",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4875,7 +4891,7 @@ const federalRegions = [
         "label": "Белогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4890,7 +4906,7 @@ const federalRegions = [
         "label": "Благовещенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4905,7 +4921,7 @@ const federalRegions = [
         "label": "Бурея",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4920,7 +4936,7 @@ const federalRegions = [
         "label": "Возжаевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4935,7 +4951,7 @@ const federalRegions = [
         "label": "Екатеринославка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4950,7 +4966,7 @@ const federalRegions = [
         "label": "Ерофей Павлович",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4965,7 +4981,7 @@ const federalRegions = [
         "label": "Завитинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4980,7 +4996,7 @@ const federalRegions = [
         "label": "Зея",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -4995,7 +5011,7 @@ const federalRegions = [
         "label": "Златоустовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5010,7 +5026,7 @@ const federalRegions = [
         "label": "Ивановка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5025,7 +5041,7 @@ const federalRegions = [
         "label": "Коболдо",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5040,7 +5056,7 @@ const federalRegions = [
         "label": "Магдагачи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5055,7 +5071,7 @@ const federalRegions = [
         "label": "Новобурейский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5070,7 +5086,7 @@ const federalRegions = [
         "label": "Поярково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5085,7 +5101,7 @@ const federalRegions = [
         "label": "Райчихинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5100,7 +5116,7 @@ const federalRegions = [
         "label": "Ромны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5115,7 +5131,7 @@ const federalRegions = [
         "label": "Свободный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5130,7 +5146,7 @@ const federalRegions = [
         "label": "Серышево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5145,7 +5161,7 @@ const federalRegions = [
         "label": "Сковородино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5160,7 +5176,7 @@ const federalRegions = [
         "label": "Стойба",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5175,7 +5191,7 @@ const federalRegions = [
         "label": "Тамбовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5190,7 +5206,7 @@ const federalRegions = [
         "label": "Тында",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5205,7 +5221,7 @@ const federalRegions = [
         "label": "Шимановск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5220,7 +5236,7 @@ const federalRegions = [
         "label": "Экимчан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5235,7 +5251,7 @@ const federalRegions = [
         "label": "Ядрино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5257,7 +5273,7 @@ const federalRegions = [
         "label": "Амдерма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5306,6 +5322,10 @@ const federalRegions = [
           {
             "label": "Цигломенский",
             "slug": "ciglomenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5315,7 +5335,7 @@ const federalRegions = [
         "label": "Березник",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5330,7 +5350,7 @@ const federalRegions = [
         "label": "Вельск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5345,7 +5365,7 @@ const federalRegions = [
         "label": "Верхняя Тойма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5360,7 +5380,7 @@ const federalRegions = [
         "label": "Волошка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5375,7 +5395,7 @@ const federalRegions = [
         "label": "Вычегодский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5390,7 +5410,7 @@ const federalRegions = [
         "label": "Емца",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5405,7 +5425,7 @@ const federalRegions = [
         "label": "Илеза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5420,7 +5440,7 @@ const federalRegions = [
         "label": "Ильинско-Подомское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5435,7 +5455,7 @@ const federalRegions = [
         "label": "Каргополь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5450,7 +5470,7 @@ const federalRegions = [
         "label": "Карпогоры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5465,7 +5485,7 @@ const federalRegions = [
         "label": "Кодино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5480,7 +5500,7 @@ const federalRegions = [
         "label": "Коноша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5495,7 +5515,7 @@ const federalRegions = [
         "label": "Коряжма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5510,7 +5530,7 @@ const federalRegions = [
         "label": "Котлас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5525,7 +5545,7 @@ const federalRegions = [
         "label": "Красноборск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5540,7 +5560,7 @@ const federalRegions = [
         "label": "Лешуконское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5555,7 +5575,7 @@ const federalRegions = [
         "label": "Мезень",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5570,7 +5590,7 @@ const federalRegions = [
         "label": "Мирный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5585,7 +5605,7 @@ const federalRegions = [
         "label": "Нарьян-Мар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5600,7 +5620,7 @@ const federalRegions = [
         "label": "Новодвинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5615,7 +5635,7 @@ const federalRegions = [
         "label": "Няндома",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5630,7 +5650,7 @@ const federalRegions = [
         "label": "Онега",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5645,7 +5665,7 @@ const federalRegions = [
         "label": "Пинега",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5660,7 +5680,7 @@ const federalRegions = [
         "label": "Плесецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5697,6 +5717,10 @@ const federalRegions = [
           {
             "label": "Ягры",
             "slug": "yagry"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5706,7 +5730,7 @@ const federalRegions = [
         "label": "Сольвычегодск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5721,7 +5745,7 @@ const federalRegions = [
         "label": "Холмогоры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5736,7 +5760,7 @@ const federalRegions = [
         "label": "Шенкурск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5751,7 +5775,7 @@ const federalRegions = [
         "label": "Яренск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5787,6 +5811,10 @@ const federalRegions = [
           {
             "label": "Трусовский",
             "slug": "trusovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -5796,7 +5824,7 @@ const federalRegions = [
         "label": "Ахтубинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5811,7 +5839,7 @@ const federalRegions = [
         "label": "Верхний Баскунчак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5826,7 +5854,7 @@ const federalRegions = [
         "label": "Володарский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5841,7 +5869,7 @@ const federalRegions = [
         "label": "Енотаевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5856,7 +5884,7 @@ const federalRegions = [
         "label": "Икряное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5871,7 +5899,7 @@ const federalRegions = [
         "label": "Камызяк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5886,7 +5914,7 @@ const federalRegions = [
         "label": "Капустин Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5901,7 +5929,7 @@ const federalRegions = [
         "label": "Красный Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5916,7 +5944,7 @@ const federalRegions = [
         "label": "Лиман",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5931,7 +5959,7 @@ const federalRegions = [
         "label": "Началово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5946,7 +5974,7 @@ const federalRegions = [
         "label": "Харабали",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5961,7 +5989,7 @@ const federalRegions = [
         "label": "Черный Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5983,7 +6011,7 @@ const federalRegions = [
         "label": "Аксаково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -5998,7 +6026,7 @@ const federalRegions = [
         "label": "Амзя",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6013,7 +6041,7 @@ const federalRegions = [
         "label": "Аскино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6028,7 +6056,7 @@ const federalRegions = [
         "label": "Баймак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6043,7 +6071,7 @@ const federalRegions = [
         "label": "Бакалы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6058,7 +6086,7 @@ const federalRegions = [
         "label": "Белебей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6073,7 +6101,7 @@ const federalRegions = [
         "label": "Белорецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6088,7 +6116,7 @@ const federalRegions = [
         "label": "Бижбуляк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6103,7 +6131,7 @@ const federalRegions = [
         "label": "Бирск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6118,7 +6146,7 @@ const federalRegions = [
         "label": "Благовещенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6133,7 +6161,7 @@ const federalRegions = [
         "label": "Большеустьикинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6148,7 +6176,7 @@ const federalRegions = [
         "label": "Бураево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6163,7 +6191,7 @@ const federalRegions = [
         "label": "Верхнеяркеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6178,7 +6206,7 @@ const federalRegions = [
         "label": "Верхние Киги",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6193,7 +6221,7 @@ const federalRegions = [
         "label": "Верхние Татышлы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6208,7 +6236,7 @@ const federalRegions = [
         "label": "Верхний Авзян",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6223,7 +6251,7 @@ const federalRegions = [
         "label": "Давлеканово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6238,7 +6266,7 @@ const federalRegions = [
         "label": "Дуван",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6253,7 +6281,7 @@ const federalRegions = [
         "label": "Дюртюли",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6268,7 +6296,7 @@ const federalRegions = [
         "label": "Ермекеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6283,7 +6311,7 @@ const federalRegions = [
         "label": "Ермолаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6298,7 +6326,7 @@ const federalRegions = [
         "label": "Зилаир",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6313,7 +6341,7 @@ const federalRegions = [
         "label": "Зирган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6328,7 +6356,7 @@ const federalRegions = [
         "label": "Иглино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6343,7 +6371,7 @@ const federalRegions = [
         "label": "Инзер",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6358,7 +6386,7 @@ const federalRegions = [
         "label": "Исянгулово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6373,7 +6401,7 @@ const federalRegions = [
         "label": "Ишимбай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6388,7 +6416,7 @@ const federalRegions = [
         "label": "Кананикольское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6403,7 +6431,7 @@ const federalRegions = [
         "label": "Кандры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6418,7 +6446,7 @@ const federalRegions = [
         "label": "Караидель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6433,7 +6461,7 @@ const federalRegions = [
         "label": "Караидельский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6448,7 +6476,7 @@ const federalRegions = [
         "label": "Киргиз-Мияки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6463,7 +6491,7 @@ const federalRegions = [
         "label": "Красноусольский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6478,7 +6506,7 @@ const federalRegions = [
         "label": "Кумертау",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6493,7 +6521,7 @@ const federalRegions = [
         "label": "Кушнаренково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6508,7 +6536,7 @@ const federalRegions = [
         "label": "Малояз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6523,7 +6551,7 @@ const federalRegions = [
         "label": "Мелеуз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6538,7 +6566,7 @@ const federalRegions = [
         "label": "Месягутово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6553,7 +6581,7 @@ const federalRegions = [
         "label": "Мраково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6568,7 +6596,7 @@ const federalRegions = [
         "label": "Нефтекамск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6583,7 +6611,7 @@ const federalRegions = [
         "label": "Октябрьский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6598,7 +6626,7 @@ const federalRegions = [
         "label": "Раевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6613,7 +6641,7 @@ const federalRegions = [
         "label": "Салават",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6628,7 +6656,7 @@ const federalRegions = [
         "label": "Сибай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6643,7 +6671,7 @@ const federalRegions = [
         "label": "Старобалтачево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6658,7 +6686,7 @@ const federalRegions = [
         "label": "Старосубхангулово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6673,7 +6701,7 @@ const federalRegions = [
         "label": "Стерлибашево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6750,6 +6778,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6759,7 +6791,7 @@ const federalRegions = [
         "label": "Туймазы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6800,6 +6832,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6809,7 +6845,7 @@ const federalRegions = [
         "label": "Учалы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6824,7 +6860,7 @@ const federalRegions = [
         "label": "Федоровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6839,7 +6875,7 @@ const federalRegions = [
         "label": "Чекмагуш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6854,7 +6890,7 @@ const federalRegions = [
         "label": "Чишмы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6869,7 +6905,7 @@ const federalRegions = [
         "label": "Шаран",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6884,7 +6920,7 @@ const federalRegions = [
         "label": "Янаул",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6906,7 +6942,7 @@ const federalRegions = [
         "label": "Алексеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6927,6 +6963,10 @@ const federalRegions = [
           {
             "label": "Западный",
             "slug": "zapadnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -6936,7 +6976,7 @@ const federalRegions = [
         "label": "Борисовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6951,7 +6991,7 @@ const federalRegions = [
         "label": "Валуйки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6966,7 +7006,7 @@ const federalRegions = [
         "label": "Вейделевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6981,7 +7021,7 @@ const federalRegions = [
         "label": "Волоконовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -6996,7 +7036,7 @@ const federalRegions = [
         "label": "Грайворон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7011,7 +7051,7 @@ const federalRegions = [
         "label": "Губкин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7026,7 +7066,7 @@ const federalRegions = [
         "label": "Ивня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7041,7 +7081,7 @@ const federalRegions = [
         "label": "Короча",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7056,7 +7096,7 @@ const federalRegions = [
         "label": "Красногвардейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7071,7 +7111,7 @@ const federalRegions = [
         "label": "Новый Оскол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7086,7 +7126,7 @@ const federalRegions = [
         "label": "Ракитное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7101,7 +7141,7 @@ const federalRegions = [
         "label": "Ровеньки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7116,7 +7156,7 @@ const federalRegions = [
         "label": "Старый Оскол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7131,7 +7171,7 @@ const federalRegions = [
         "label": "Строитель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7146,7 +7186,7 @@ const federalRegions = [
         "label": "Чернянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7161,7 +7201,7 @@ const federalRegions = [
         "label": "Шебекино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7183,7 +7223,7 @@ const federalRegions = [
         "label": "Алтухово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7198,7 +7238,7 @@ const federalRegions = [
         "label": "Белая Березка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7213,7 +7253,7 @@ const federalRegions = [
         "label": "Белые Берега",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7228,7 +7268,7 @@ const federalRegions = [
         "label": "Большое Полпино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7257,6 +7297,10 @@ const federalRegions = [
           {
             "label": "Фокинский",
             "slug": "fokinskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -7266,7 +7310,7 @@ const federalRegions = [
         "label": "Бытошь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7281,7 +7325,7 @@ const federalRegions = [
         "label": "Выгоничи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7296,7 +7340,7 @@ const federalRegions = [
         "label": "Вышков",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7311,7 +7355,7 @@ const federalRegions = [
         "label": "Гордеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7326,7 +7370,7 @@ const federalRegions = [
         "label": "Дубровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7341,7 +7385,7 @@ const federalRegions = [
         "label": "Дятьково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7356,7 +7400,7 @@ const federalRegions = [
         "label": "Жирятино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7371,7 +7415,7 @@ const federalRegions = [
         "label": "Жуковка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7386,7 +7430,7 @@ const federalRegions = [
         "label": "Злынка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7401,7 +7445,7 @@ const federalRegions = [
         "label": "Ивот",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7416,7 +7460,7 @@ const federalRegions = [
         "label": "Карачев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7431,7 +7475,7 @@ const federalRegions = [
         "label": "Клетня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7446,7 +7490,7 @@ const federalRegions = [
         "label": "Климово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7461,7 +7505,7 @@ const federalRegions = [
         "label": "Клинцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7476,7 +7520,7 @@ const federalRegions = [
         "label": "Кокаревка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7491,7 +7535,7 @@ const federalRegions = [
         "label": "Комаричи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7506,7 +7550,7 @@ const federalRegions = [
         "label": "Красная Гора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7521,7 +7565,7 @@ const federalRegions = [
         "label": "Локоть",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7536,7 +7580,7 @@ const federalRegions = [
         "label": "Мглин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7551,7 +7595,7 @@ const federalRegions = [
         "label": "Навля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7566,7 +7610,7 @@ const federalRegions = [
         "label": "Новозыбков",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7581,7 +7625,7 @@ const federalRegions = [
         "label": "Погар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7596,7 +7640,7 @@ const federalRegions = [
         "label": "Почеп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7611,7 +7655,7 @@ const federalRegions = [
         "label": "Ржаница",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7626,7 +7670,7 @@ const federalRegions = [
         "label": "Рогнедино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7641,7 +7685,7 @@ const federalRegions = [
         "label": "Севск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7656,7 +7700,7 @@ const federalRegions = [
         "label": "Стародуб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7671,7 +7715,7 @@ const federalRegions = [
         "label": "Суземка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7686,7 +7730,7 @@ const federalRegions = [
         "label": "Сураж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7701,7 +7745,7 @@ const federalRegions = [
         "label": "Трубчевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7716,7 +7760,7 @@ const federalRegions = [
         "label": "Унеча",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7738,7 +7782,7 @@ const federalRegions = [
         "label": "Бабушкин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7753,7 +7797,7 @@ const federalRegions = [
         "label": "Багдарин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7768,7 +7812,7 @@ const federalRegions = [
         "label": "Баргузин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7783,7 +7827,7 @@ const federalRegions = [
         "label": "Баянгол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7798,7 +7842,7 @@ const federalRegions = [
         "label": "Бичура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7813,7 +7857,7 @@ const federalRegions = [
         "label": "Выдрино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7828,7 +7872,7 @@ const federalRegions = [
         "label": "Гусиное Озеро",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7843,7 +7887,7 @@ const federalRegions = [
         "label": "Гусиноозерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7858,7 +7902,7 @@ const federalRegions = [
         "label": "Заиграево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7873,7 +7917,7 @@ const federalRegions = [
         "label": "Закаменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7888,7 +7932,7 @@ const federalRegions = [
         "label": "Иволгинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7903,7 +7947,7 @@ const federalRegions = [
         "label": "Илька",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7918,7 +7962,7 @@ const federalRegions = [
         "label": "Кабанск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7933,7 +7977,7 @@ const federalRegions = [
         "label": "Каменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7948,7 +7992,7 @@ const federalRegions = [
         "label": "Кижинга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7963,7 +8007,7 @@ const federalRegions = [
         "label": "Курумкан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7978,7 +8022,7 @@ const federalRegions = [
         "label": "Кырен",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -7993,7 +8037,7 @@ const federalRegions = [
         "label": "Кяхта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8008,7 +8052,7 @@ const federalRegions = [
         "label": "Монды",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8023,7 +8067,7 @@ const federalRegions = [
         "label": "Мухоршибирь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8038,7 +8082,7 @@ const federalRegions = [
         "label": "Нижнеангарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8053,7 +8097,7 @@ const federalRegions = [
         "label": "Орлик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8068,7 +8112,7 @@ const federalRegions = [
         "label": "Петропавловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8083,7 +8127,7 @@ const federalRegions = [
         "label": "Романовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8098,7 +8142,7 @@ const federalRegions = [
         "label": "Северобайкальск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8113,7 +8157,7 @@ const federalRegions = [
         "label": "Селенгинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8128,7 +8172,7 @@ const federalRegions = [
         "label": "Сосново-Озерское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8143,7 +8187,7 @@ const federalRegions = [
         "label": "Такси��о",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8158,7 +8202,7 @@ const federalRegions = [
         "label": "Турунтаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8183,6 +8227,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8192,7 +8240,7 @@ const federalRegions = [
         "label": "Хоринск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8214,7 +8262,7 @@ const federalRegions = [
         "label": "Александров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8229,7 +8277,7 @@ const federalRegions = [
         "label": "Андреево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8244,7 +8292,7 @@ const federalRegions = [
         "label": "Анопино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8259,7 +8307,7 @@ const federalRegions = [
         "label": "Бавлены",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8274,7 +8322,7 @@ const federalRegions = [
         "label": "Балакирево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8289,7 +8337,7 @@ const federalRegions = [
         "label": "Боголюбово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8304,7 +8352,7 @@ const federalRegions = [
         "label": "Великодворский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8319,7 +8367,7 @@ const federalRegions = [
         "label": "Вербовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8344,6 +8392,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8353,7 +8405,7 @@ const federalRegions = [
         "label": "Вязники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8368,7 +8420,7 @@ const federalRegions = [
         "label": "Городищи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8383,7 +8435,7 @@ const federalRegions = [
         "label": "Гороховец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8398,7 +8450,7 @@ const federalRegions = [
         "label": "Гусевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8413,7 +8465,7 @@ const federalRegions = [
         "label": "Гусь Хрустальный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8428,7 +8480,7 @@ const federalRegions = [
         "label": "Золотково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8443,7 +8495,7 @@ const federalRegions = [
         "label": "Иванищи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8458,7 +8510,7 @@ const federalRegions = [
         "label": "Камешково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8473,7 +8525,7 @@ const federalRegions = [
         "label": "Карабаново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8488,7 +8540,7 @@ const federalRegions = [
         "label": "Киржач",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8503,7 +8555,7 @@ const federalRegions = [
         "label": "Ковров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8518,7 +8570,7 @@ const federalRegions = [
         "label": "Кольчугино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8533,7 +8585,7 @@ const federalRegions = [
         "label": "Красная Горбатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8548,7 +8600,7 @@ const federalRegions = [
         "label": "Меленки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8563,7 +8615,7 @@ const federalRegions = [
         "label": "Муром",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8578,7 +8630,7 @@ const federalRegions = [
         "label": "Петушки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8593,7 +8645,7 @@ const federalRegions = [
         "label": "Покров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8608,7 +8660,7 @@ const federalRegions = [
         "label": "Собинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8623,7 +8675,7 @@ const federalRegions = [
         "label": "Судогда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8638,7 +8690,7 @@ const federalRegions = [
         "label": "Суздаль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8653,7 +8705,7 @@ const federalRegions = [
         "label": "Юрьев-Польский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8675,7 +8727,7 @@ const federalRegions = [
         "label": "Алексеевская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8690,7 +8742,7 @@ const federalRegions = [
         "label": "Алущевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8705,7 +8757,7 @@ const federalRegions = [
         "label": "Быково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8750,6 +8802,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -8759,7 +8815,7 @@ const federalRegions = [
         "label": "Волжский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8774,7 +8830,7 @@ const federalRegions = [
         "label": "Городище",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8789,7 +8845,7 @@ const federalRegions = [
         "label": "Дубовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8804,7 +8860,7 @@ const federalRegions = [
         "label": "Елань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8819,7 +8875,7 @@ const federalRegions = [
         "label": "Жирновск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8834,7 +8890,7 @@ const federalRegions = [
         "label": "Иловля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8849,7 +8905,7 @@ const federalRegions = [
         "label": "Калач-на-Дону",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8864,7 +8920,7 @@ const federalRegions = [
         "label": "Камышин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8879,7 +8935,7 @@ const federalRegions = [
         "label": "Кириллов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8894,7 +8950,7 @@ const federalRegions = [
         "label": "Клетский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8909,7 +8965,7 @@ const federalRegions = [
         "label": "Котельниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8924,7 +8980,7 @@ const federalRegions = [
         "label": "Котово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8939,7 +8995,7 @@ const federalRegions = [
         "label": "Кумылженская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8954,7 +9010,7 @@ const federalRegions = [
         "label": "Ленинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8969,7 +9025,7 @@ const federalRegions = [
         "label": "Михайловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8984,7 +9040,7 @@ const federalRegions = [
         "label": "Нехаевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -8999,7 +9055,7 @@ const federalRegions = [
         "label": "Николаевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9014,7 +9070,7 @@ const federalRegions = [
         "label": "Новоаннинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9029,7 +9085,7 @@ const federalRegions = [
         "label": "Новониколаевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9044,7 +9100,7 @@ const federalRegions = [
         "label": "Ольховка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9059,7 +9115,7 @@ const federalRegions = [
         "label": "Палласовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9074,7 +9130,7 @@ const federalRegions = [
         "label": "Рудня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9089,7 +9145,7 @@ const federalRegions = [
         "label": "Светлый Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9104,7 +9160,7 @@ const federalRegions = [
         "label": "Серафимович",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9119,7 +9175,7 @@ const federalRegions = [
         "label": "Средняя Ахтуба",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9134,7 +9190,7 @@ const federalRegions = [
         "label": "Сталинград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9149,7 +9205,7 @@ const federalRegions = [
         "label": "Старая Полтавка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9164,7 +9220,7 @@ const federalRegions = [
         "label": "Суровикино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9179,7 +9235,7 @@ const federalRegions = [
         "label": "Урюпинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9194,7 +9250,7 @@ const federalRegions = [
         "label": "Фролово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9209,7 +9265,7 @@ const federalRegions = [
         "label": "Чернышковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9231,7 +9287,7 @@ const federalRegions = [
         "label": "Бабаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9246,7 +9302,7 @@ const federalRegions = [
         "label": "Белозерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9261,7 +9317,7 @@ const federalRegions = [
         "label": "Великий Устюг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9276,7 +9332,7 @@ const federalRegions = [
         "label": "Верховажье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9291,7 +9347,7 @@ const federalRegions = [
         "label": "Вожега",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9404,6 +9460,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9413,7 +9473,7 @@ const federalRegions = [
         "label": "Вохтога",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9428,7 +9488,7 @@ const federalRegions = [
         "label": "Вытегра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9443,7 +9503,7 @@ const federalRegions = [
         "label": "Грязовец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9458,7 +9518,7 @@ const federalRegions = [
         "label": "Кадников",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9473,7 +9533,7 @@ const federalRegions = [
         "label": "Кадуй",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9488,7 +9548,7 @@ const federalRegions = [
         "label": "Кичменгский Городок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9503,7 +9563,7 @@ const federalRegions = [
         "label": "Липин Бор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9518,7 +9578,7 @@ const federalRegions = [
         "label": "Никольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9533,7 +9593,7 @@ const federalRegions = [
         "label": "Нюксеница",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9548,7 +9608,7 @@ const federalRegions = [
         "label": "Сокол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9563,7 +9623,7 @@ const federalRegions = [
         "label": "Сямжа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9578,7 +9638,7 @@ const federalRegions = [
         "label": "Тарногский Городок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9593,7 +9653,7 @@ const federalRegions = [
         "label": "Тотьма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9608,7 +9668,7 @@ const federalRegions = [
         "label": "Устюжна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9623,7 +9683,7 @@ const federalRegions = [
         "label": "Харовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9638,7 +9698,7 @@ const federalRegions = [
         "label": "Чагода",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9667,6 +9727,10 @@ const federalRegions = [
           {
             "label": "Северный",
             "slug": "severnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9676,7 +9740,7 @@ const federalRegions = [
         "label": "Шексна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9691,7 +9755,7 @@ const federalRegions = [
         "label": "Шуйское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9713,7 +9777,7 @@ const federalRegions = [
         "label": "Анна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9728,7 +9792,7 @@ const federalRegions = [
         "label": "Бобров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9743,7 +9807,7 @@ const federalRegions = [
         "label": "Богучар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9758,7 +9822,7 @@ const federalRegions = [
         "label": "Борисоглебск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9773,7 +9837,7 @@ const federalRegions = [
         "label": "Бутурлиновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9788,7 +9852,7 @@ const federalRegions = [
         "label": "Верхний Мамон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9803,7 +9867,7 @@ const federalRegions = [
         "label": "Верхняя Хава",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9818,7 +9882,7 @@ const federalRegions = [
         "label": "Воробьевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9855,6 +9919,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -9864,7 +9932,7 @@ const federalRegions = [
         "label": "Грибановский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9879,7 +9947,7 @@ const federalRegions = [
         "label": "Давыдовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9894,7 +9962,7 @@ const federalRegions = [
         "label": "Елань-Коленовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9909,7 +9977,7 @@ const federalRegions = [
         "label": "Калач",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9924,7 +9992,7 @@ const federalRegions = [
         "label": "Кантемировка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9939,7 +10007,7 @@ const federalRegions = [
         "label": "Лиски",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9954,7 +10022,7 @@ const federalRegions = [
         "label": "Нижнедевицк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9969,7 +10037,7 @@ const federalRegions = [
         "label": "Новая Усмань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9984,7 +10052,7 @@ const federalRegions = [
         "label": "Новохоперск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -9999,7 +10067,7 @@ const federalRegions = [
         "label": "Ольховатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10014,7 +10082,7 @@ const federalRegions = [
         "label": "Острогожск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10029,7 +10097,7 @@ const federalRegions = [
         "label": "Павловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10044,7 +10112,7 @@ const federalRegions = [
         "label": "Панино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10059,7 +10127,7 @@ const federalRegions = [
         "label": "Петропавловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10074,7 +10142,7 @@ const federalRegions = [
         "label": "Поворино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10089,7 +10157,7 @@ const federalRegions = [
         "label": "Подгоренский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10104,7 +10172,7 @@ const federalRegions = [
         "label": "Рамонь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10119,7 +10187,7 @@ const federalRegions = [
         "label": "Репьевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10134,7 +10202,7 @@ const federalRegions = [
         "label": "Россошь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10149,7 +10217,7 @@ const federalRegions = [
         "label": "Семилуки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10164,7 +10232,7 @@ const federalRegions = [
         "label": "Таловая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10179,7 +10247,7 @@ const federalRegions = [
         "label": "Терновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10194,7 +10262,7 @@ const federalRegions = [
         "label": "Хохольский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10209,7 +10277,7 @@ const federalRegions = [
         "label": "Эртиль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10224,7 +10292,7 @@ const federalRegions = [
         "label": "нововоронеж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10246,7 +10314,7 @@ const federalRegions = [
         "label": "Агвали",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10261,7 +10329,7 @@ const federalRegions = [
         "label": "Акуша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10276,7 +10344,7 @@ const federalRegions = [
         "label": "Ахты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10291,7 +10359,7 @@ const federalRegions = [
         "label": "Ачису",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10306,7 +10374,7 @@ const federalRegions = [
         "label": "Бабаюрт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10321,7 +10389,7 @@ const federalRegions = [
         "label": "Бежта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10336,7 +10404,7 @@ const federalRegions = [
         "label": "Ботлих",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10351,7 +10419,7 @@ const federalRegions = [
         "label": "Буйнакск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10366,7 +10434,7 @@ const federalRegions = [
         "label": "Вачи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10381,7 +10449,7 @@ const federalRegions = [
         "label": "Гергебиль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10396,7 +10464,7 @@ const federalRegions = [
         "label": "Гуниб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10411,7 +10479,7 @@ const federalRegions = [
         "label": "Дагестанские Огни",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10426,7 +10494,7 @@ const federalRegions = [
         "label": "Дербент",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10441,7 +10509,7 @@ const federalRegions = [
         "label": "Дылым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10456,7 +10524,7 @@ const federalRegions = [
         "label": "Ершовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10471,7 +10539,7 @@ const federalRegions = [
         "label": "Избербаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10486,7 +10554,7 @@ const federalRegions = [
         "label": "Карабудахкент",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10501,7 +10569,7 @@ const federalRegions = [
         "label": "Карата",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10516,7 +10584,7 @@ const federalRegions = [
         "label": "Каспийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10531,7 +10599,7 @@ const federalRegions = [
         "label": "Касумкент",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10546,7 +10614,7 @@ const federalRegions = [
         "label": "Кизилюрт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10561,7 +10629,7 @@ const federalRegions = [
         "label": "Кизляр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10576,7 +10644,7 @@ const federalRegions = [
         "label": "Кочубей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10591,7 +10659,7 @@ const federalRegions = [
         "label": "Кумух",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10606,7 +10674,7 @@ const federalRegions = [
         "label": "Курах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10621,7 +10689,7 @@ const federalRegions = [
         "label": "Магарамкент",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10636,7 +10704,7 @@ const federalRegions = [
         "label": "Маджалис",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10661,6 +10729,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -10670,7 +10742,7 @@ const federalRegions = [
         "label": "Мехельта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10685,7 +10757,7 @@ const federalRegions = [
         "label": "Новолакское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10700,7 +10772,7 @@ const federalRegions = [
         "label": "Рутул",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10715,7 +10787,7 @@ const federalRegions = [
         "label": "Советское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10730,7 +10802,7 @@ const federalRegions = [
         "label": "Тарумовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10745,7 +10817,7 @@ const federalRegions = [
         "label": "Терекли-Мектеб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10760,7 +10832,7 @@ const federalRegions = [
         "label": "Тлярата",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10775,7 +10847,7 @@ const federalRegions = [
         "label": "Тпиг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10790,7 +10862,7 @@ const federalRegions = [
         "label": "Уркарах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10805,7 +10877,7 @@ const federalRegions = [
         "label": "Хасавюрт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10820,7 +10892,7 @@ const federalRegions = [
         "label": "Хив",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10835,7 +10907,7 @@ const federalRegions = [
         "label": "Хунзах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10850,7 +10922,7 @@ const federalRegions = [
         "label": "Цуриб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10865,7 +10937,7 @@ const federalRegions = [
         "label": "Южно-Сухокумск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10887,7 +10959,7 @@ const federalRegions = [
         "label": "Биробиджан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10909,7 +10981,7 @@ const federalRegions = [
         "label": "Архиповка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10924,7 +10996,7 @@ const federalRegions = [
         "label": "Верхний Ландех",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10939,7 +11011,7 @@ const federalRegions = [
         "label": "Вичуга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10954,7 +11026,7 @@ const federalRegions = [
         "label": "Гаврилов Посад",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10969,7 +11041,7 @@ const federalRegions = [
         "label": "Долматовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10984,7 +11056,7 @@ const federalRegions = [
         "label": "Дуляпино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -10999,7 +11071,7 @@ const federalRegions = [
         "label": "Заволжск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11014,7 +11086,7 @@ const federalRegions = [
         "label": "Заречный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11043,6 +11115,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11052,7 +11128,7 @@ const federalRegions = [
         "label": "Иваньковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11067,7 +11143,7 @@ const federalRegions = [
         "label": "Ильинское-Хованское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11082,7 +11158,7 @@ const federalRegions = [
         "label": "Каминский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11097,7 +11173,7 @@ const federalRegions = [
         "label": "Кинешма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11112,7 +11188,7 @@ const federalRegions = [
         "label": "Комсомольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11127,7 +11203,7 @@ const federalRegions = [
         "label": "Кохма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11142,7 +11218,7 @@ const federalRegions = [
         "label": "Лух",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11157,7 +11233,7 @@ const federalRegions = [
         "label": "Палех",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11172,7 +11248,7 @@ const federalRegions = [
         "label": "Пестяки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11187,7 +11263,7 @@ const federalRegions = [
         "label": "Приволжск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11202,7 +11278,7 @@ const federalRegions = [
         "label": "Пучеж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11217,7 +11293,7 @@ const federalRegions = [
         "label": "Родники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11232,7 +11308,7 @@ const federalRegions = [
         "label": "Савино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11247,7 +11323,7 @@ const federalRegions = [
         "label": "Сокольское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11262,7 +11338,7 @@ const federalRegions = [
         "label": "Тейково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11277,7 +11353,7 @@ const federalRegions = [
         "label": "Фурманов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11292,7 +11368,7 @@ const federalRegions = [
         "label": "Шуя",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11307,7 +11383,7 @@ const federalRegions = [
         "label": "Южа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11322,7 +11398,7 @@ const federalRegions = [
         "label": "Юрьевец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11344,7 +11420,7 @@ const federalRegions = [
         "label": "Алексеевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11359,7 +11435,7 @@ const federalRegions = [
         "label": "Алзамай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11374,7 +11450,7 @@ const federalRegions = [
         "label": "Алыгжер",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11459,6 +11535,10 @@ const federalRegions = [
           {
             "label": "Южный массив",
             "slug": "yuzhnyy-massiv"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11468,7 +11548,7 @@ const federalRegions = [
         "label": "Артемовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11483,7 +11563,7 @@ const federalRegions = [
         "label": "Атагай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11498,7 +11578,7 @@ const federalRegions = [
         "label": "Байкал",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11513,7 +11593,7 @@ const federalRegions = [
         "label": "Байкальск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11528,7 +11608,7 @@ const federalRegions = [
         "label": "Балаганск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11543,7 +11623,7 @@ const federalRegions = [
         "label": "Баяндай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11558,7 +11638,7 @@ const federalRegions = [
         "label": "Бирюсинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11573,7 +11653,7 @@ const federalRegions = [
         "label": "Бодайбо",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11588,7 +11668,7 @@ const federalRegions = [
         "label": "Большая Речка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11603,7 +11683,7 @@ const federalRegions = [
         "label": "Большой Луг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11618,7 +11698,7 @@ const federalRegions = [
         "label": "Бохан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11633,7 +11713,7 @@ const federalRegions = [
         "label": "Братск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11648,7 +11728,7 @@ const federalRegions = [
         "label": "Видим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11663,7 +11743,7 @@ const federalRegions = [
         "label": "Витимский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11678,7 +11758,7 @@ const federalRegions = [
         "label": "Вихоревка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11693,7 +11773,7 @@ const federalRegions = [
         "label": "Еланцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11708,7 +11788,7 @@ const federalRegions = [
         "label": "Ербогачен",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11723,7 +11803,7 @@ const federalRegions = [
         "label": "Железногорск-Илимский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11738,7 +11818,7 @@ const federalRegions = [
         "label": "Жигалово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11753,7 +11833,7 @@ const federalRegions = [
         "label": "Забитуй",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11768,7 +11848,7 @@ const federalRegions = [
         "label": "Залари",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11783,7 +11863,7 @@ const federalRegions = [
         "label": "Звездный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11798,7 +11878,7 @@ const federalRegions = [
         "label": "Зима",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11827,6 +11907,10 @@ const federalRegions = [
           {
             "label": "Свердловский",
             "slug": "sverdlovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -11836,7 +11920,7 @@ const federalRegions = [
         "label": "Казачинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11851,7 +11935,7 @@ const federalRegions = [
         "label": "Качуг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11866,7 +11950,7 @@ const federalRegions = [
         "label": "Квиток",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11881,7 +11965,7 @@ const federalRegions = [
         "label": "Киренск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11896,7 +11980,7 @@ const federalRegions = [
         "label": "Куйтун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11911,7 +11995,7 @@ const federalRegions = [
         "label": "Култук",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11926,7 +12010,7 @@ const federalRegions = [
         "label": "Кутулик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11941,7 +12025,7 @@ const federalRegions = [
         "label": "Мама",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11956,7 +12040,7 @@ const federalRegions = [
         "label": "Нижнеудинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11971,7 +12055,7 @@ const federalRegions = [
         "label": "Оса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -11986,7 +12070,7 @@ const federalRegions = [
         "label": "Саянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12001,7 +12085,7 @@ const federalRegions = [
         "label": "Слюдянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12016,7 +12100,7 @@ const federalRegions = [
         "label": "Тайшет",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12031,7 +12115,7 @@ const federalRegions = [
         "label": "Тулун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12046,7 +12130,7 @@ const federalRegions = [
         "label": "Усолье-Сибирское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12061,7 +12145,7 @@ const federalRegions = [
         "label": "Усть-Илимск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12076,7 +12160,7 @@ const federalRegions = [
         "label": "Усть-Кут",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12091,7 +12175,7 @@ const federalRegions = [
         "label": "Усть-Ордынский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12106,7 +12190,7 @@ const federalRegions = [
         "label": "Усть-Уда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12121,7 +12205,7 @@ const federalRegions = [
         "label": "Черемхово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12136,7 +12220,7 @@ const federalRegions = [
         "label": "Чунский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12151,7 +12235,7 @@ const federalRegions = [
         "label": "Шелехов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12173,7 +12257,7 @@ const federalRegions = [
         "label": "Балей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12188,7 +12272,7 @@ const federalRegions = [
         "label": "Борзя",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12203,7 +12287,7 @@ const federalRegions = [
         "label": "Краснокаменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12218,7 +12302,7 @@ const federalRegions = [
         "label": "Могоча",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12233,7 +12317,7 @@ const federalRegions = [
         "label": "Нерчинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12248,7 +12332,7 @@ const federalRegions = [
         "label": "Петровск-Забайкальский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12263,7 +12347,7 @@ const federalRegions = [
         "label": "Сретенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12278,7 +12362,7 @@ const federalRegions = [
         "label": "Хилок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12307,6 +12391,10 @@ const federalRegions = [
           {
             "label": "Черновский",
             "slug": "chernovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12316,7 +12404,7 @@ const federalRegions = [
         "label": "Шилка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12338,7 +12426,7 @@ const federalRegions = [
         "label": "Баксан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12353,7 +12441,7 @@ const federalRegions = [
         "label": "Майский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12434,6 +12522,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12443,7 +12535,7 @@ const federalRegions = [
         "label": "Нарткала",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12458,7 +12550,7 @@ const federalRegions = [
         "label": "Прохладный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12473,7 +12565,7 @@ const federalRegions = [
         "label": "Советское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12488,7 +12580,7 @@ const federalRegions = [
         "label": "Терек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12503,7 +12595,7 @@ const federalRegions = [
         "label": "Тырныауз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12518,7 +12610,7 @@ const federalRegions = [
         "label": "Чегем-Первый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12540,7 +12632,7 @@ const federalRegions = [
         "label": "Багратионовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12555,7 +12647,7 @@ const federalRegions = [
         "label": "Балтийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12570,7 +12662,7 @@ const federalRegions = [
         "label": "Гвардейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12585,7 +12677,7 @@ const federalRegions = [
         "label": "Гурьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12600,7 +12692,7 @@ const federalRegions = [
         "label": "Гусев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12615,7 +12707,7 @@ const federalRegions = [
         "label": "Железнодорожный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12630,7 +12722,7 @@ const federalRegions = [
         "label": "Зеленоградск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12645,7 +12737,7 @@ const federalRegions = [
         "label": "Знаменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12660,7 +12752,7 @@ const federalRegions = [
         "label": "Кёнигсберг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12685,6 +12777,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -12694,7 +12790,7 @@ const federalRegions = [
         "label": "Кёнигсберг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12709,7 +12805,7 @@ const federalRegions = [
         "label": "Краснознаменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12724,7 +12820,7 @@ const federalRegions = [
         "label": "Мамоново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12739,7 +12835,7 @@ const federalRegions = [
         "label": "Неман",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12754,7 +12850,7 @@ const federalRegions = [
         "label": "Нестеров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12769,7 +12865,7 @@ const federalRegions = [
         "label": "Озерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12784,7 +12880,7 @@ const federalRegions = [
         "label": "Полесск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12799,7 +12895,7 @@ const federalRegions = [
         "label": "Правдинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12814,7 +12910,7 @@ const federalRegions = [
         "label": "Светлогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12829,7 +12925,7 @@ const federalRegions = [
         "label": "Светлый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12844,7 +12940,7 @@ const federalRegions = [
         "label": "Славск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12859,7 +12955,7 @@ const federalRegions = [
         "label": "Советск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12874,7 +12970,7 @@ const federalRegions = [
         "label": "Черняховск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12896,7 +12992,7 @@ const federalRegions = [
         "label": "Аршань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12911,7 +13007,7 @@ const federalRegions = [
         "label": "Каспийский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12926,7 +13022,7 @@ const federalRegions = [
         "label": "Комсомольский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12941,7 +13037,7 @@ const federalRegions = [
         "label": "Малые Дербеты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12956,7 +13052,7 @@ const federalRegions = [
         "label": "Приютное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12971,7 +13067,7 @@ const federalRegions = [
         "label": "Советское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -12986,7 +13082,7 @@ const federalRegions = [
         "label": "Троицкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13001,7 +13097,7 @@ const federalRegions = [
         "label": "Утта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13016,7 +13112,7 @@ const federalRegions = [
         "label": "Цаган-Аман",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13031,7 +13127,7 @@ const federalRegions = [
         "label": "Элиста",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13046,7 +13142,7 @@ const federalRegions = [
         "label": "Юста",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13061,7 +13157,7 @@ const federalRegions = [
         "label": "Яшалта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13076,7 +13172,7 @@ const federalRegions = [
         "label": "Яшкуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13098,7 +13194,7 @@ const federalRegions = [
         "label": "Бабынино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13113,7 +13209,7 @@ const federalRegions = [
         "label": "Балабаново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13128,7 +13224,7 @@ const federalRegions = [
         "label": "Барятино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13143,7 +13239,7 @@ const federalRegions = [
         "label": "Белоусово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13158,7 +13254,7 @@ const federalRegions = [
         "label": "Бетлица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13173,7 +13269,7 @@ const federalRegions = [
         "label": "Боровск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13188,7 +13284,7 @@ const federalRegions = [
         "label": "Дугна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13203,7 +13299,7 @@ const federalRegions = [
         "label": "Дудоровский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13218,7 +13314,7 @@ const federalRegions = [
         "label": "Думиничи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13233,7 +13329,7 @@ const federalRegions = [
         "label": "Еленский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13248,7 +13344,7 @@ const federalRegions = [
         "label": "Жиздра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13263,7 +13359,7 @@ const federalRegions = [
         "label": "Износки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13288,6 +13384,10 @@ const federalRegions = [
           {
             "label": "Октябрьский",
             "slug": "oktyabrskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -13297,7 +13397,7 @@ const federalRegions = [
         "label": "Киров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13312,7 +13412,7 @@ const federalRegions = [
         "label": "Козельск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13327,7 +13427,7 @@ const federalRegions = [
         "label": "Кондрово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13342,7 +13442,7 @@ const federalRegions = [
         "label": "Людиново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13357,7 +13457,7 @@ const federalRegions = [
         "label": "Малоярославец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13372,7 +13472,7 @@ const federalRegions = [
         "label": "Медынь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13387,7 +13487,7 @@ const federalRegions = [
         "label": "Мещовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13402,7 +13502,7 @@ const federalRegions = [
         "label": "Мосальск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13417,7 +13517,7 @@ const federalRegions = [
         "label": "Обнинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13432,7 +13532,7 @@ const federalRegions = [
         "label": "Перемышль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13447,7 +13547,7 @@ const federalRegions = [
         "label": "Спас-Деменск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13462,7 +13562,7 @@ const federalRegions = [
         "label": "Сухиничи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13477,7 +13577,7 @@ const federalRegions = [
         "label": "Таруса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13492,7 +13592,7 @@ const federalRegions = [
         "label": "Ульяново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13507,7 +13607,7 @@ const federalRegions = [
         "label": "Ферзиково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13522,7 +13622,7 @@ const federalRegions = [
         "label": "Хвастовичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13537,7 +13637,7 @@ const federalRegions = [
         "label": "Юхнов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13559,7 +13659,7 @@ const federalRegions = [
         "label": "Атласово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13574,7 +13674,7 @@ const federalRegions = [
         "label": "Аянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13589,7 +13689,7 @@ const federalRegions = [
         "label": "Большерецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13604,7 +13704,7 @@ const federalRegions = [
         "label": "Вилючинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13619,7 +13719,7 @@ const federalRegions = [
         "label": "Елизово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13634,7 +13734,7 @@ const federalRegions = [
         "label": "Ильпырский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13649,7 +13749,7 @@ const federalRegions = [
         "label": "Каменское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13664,7 +13764,7 @@ const federalRegions = [
         "label": "Кировский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13679,7 +13779,7 @@ const federalRegions = [
         "label": "Ключи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13694,7 +13794,7 @@ const federalRegions = [
         "label": "Крапивная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13709,7 +13809,7 @@ const federalRegions = [
         "label": "Мильково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13724,7 +13824,7 @@ const federalRegions = [
         "label": "Никольское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13739,7 +13839,7 @@ const federalRegions = [
         "label": "Озерновский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13754,7 +13854,7 @@ const federalRegions = [
         "label": "Оссора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13769,7 +13869,7 @@ const federalRegions = [
         "label": "Палана",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13784,7 +13884,7 @@ const federalRegions = [
         "label": "Парень",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13799,7 +13899,7 @@ const federalRegions = [
         "label": "Пахачи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13814,7 +13914,7 @@ const federalRegions = [
         "label": "Петропавловск-Камчатский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13829,7 +13929,7 @@ const federalRegions = [
         "label": "Тигиль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13844,7 +13944,7 @@ const federalRegions = [
         "label": "Тиличики",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13859,7 +13959,7 @@ const federalRegions = [
         "label": "Усть-Большерецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13874,7 +13974,7 @@ const federalRegions = [
         "label": "Усть-Камчатск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13896,7 +13996,7 @@ const federalRegions = [
         "label": "Амбарный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13911,7 +14011,7 @@ const federalRegions = [
         "label": "Беломорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13926,7 +14026,7 @@ const federalRegions = [
         "label": "Валаам",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13941,7 +14041,7 @@ const federalRegions = [
         "label": "Вирандозеро",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13956,7 +14056,7 @@ const federalRegions = [
         "label": "Гирвас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13971,7 +14071,7 @@ const federalRegions = [
         "label": "Деревянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -13986,7 +14086,7 @@ const federalRegions = [
         "label": "Идель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14001,7 +14101,7 @@ const federalRegions = [
         "label": "Ильинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14016,7 +14116,7 @@ const federalRegions = [
         "label": "Импалахти",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14031,7 +14131,7 @@ const federalRegions = [
         "label": "Калевала",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14046,7 +14146,7 @@ const federalRegions = [
         "label": "Кемь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14061,7 +14161,7 @@ const federalRegions = [
         "label": "Кестеньга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14076,7 +14176,7 @@ const federalRegions = [
         "label": "Кондопога",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14091,7 +14191,7 @@ const federalRegions = [
         "label": "Костомукша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14106,7 +14206,7 @@ const federalRegions = [
         "label": "Лахденпохья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14121,7 +14221,7 @@ const federalRegions = [
         "label": "Лоухи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14136,7 +14236,7 @@ const federalRegions = [
         "label": "Медвежьегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14151,7 +14251,7 @@ const federalRegions = [
         "label": "Муезерский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14166,7 +14266,7 @@ const federalRegions = [
         "label": "Олонец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14279,6 +14379,10 @@ const federalRegions = [
           {
             "label": "Южная промзона",
             "slug": "yuzhnaya-promzona"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14288,7 +14392,7 @@ const federalRegions = [
         "label": "Питкяранта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14303,7 +14407,7 @@ const federalRegions = [
         "label": "Повенец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14318,7 +14422,7 @@ const federalRegions = [
         "label": "Пряжа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14333,7 +14437,7 @@ const federalRegions = [
         "label": "Пудож",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14348,7 +14452,7 @@ const federalRegions = [
         "label": "Сегежа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14363,7 +14467,7 @@ const federalRegions = [
         "label": "Сортавала",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14378,7 +14482,7 @@ const federalRegions = [
         "label": "Софпорог",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14393,7 +14497,7 @@ const federalRegions = [
         "label": "Суоярви",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14415,7 +14519,7 @@ const federalRegions = [
         "label": "",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14430,7 +14534,7 @@ const federalRegions = [
         "label": "",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14445,7 +14549,7 @@ const federalRegions = [
         "label": "",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14460,7 +14564,7 @@ const federalRegions = [
         "label": "",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14482,7 +14586,7 @@ const federalRegions = [
         "label": "Анжеро-Судженск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14497,7 +14601,7 @@ const federalRegions = [
         "label": "Барзас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14512,7 +14616,7 @@ const federalRegions = [
         "label": "Белово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14527,7 +14631,7 @@ const federalRegions = [
         "label": "Белогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14542,7 +14646,7 @@ const federalRegions = [
         "label": "Березовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14557,7 +14661,7 @@ const federalRegions = [
         "label": "Грамотеино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14572,7 +14676,7 @@ const federalRegions = [
         "label": "Гурьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14587,7 +14691,7 @@ const federalRegions = [
         "label": "Ижморский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14602,7 +14706,7 @@ const federalRegions = [
         "label": "Итатский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14617,7 +14721,7 @@ const federalRegions = [
         "label": "Калтан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14632,7 +14736,7 @@ const federalRegions = [
         "label": "Кедровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14665,6 +14769,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14674,7 +14782,7 @@ const federalRegions = [
         "label": "Киселевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14689,7 +14797,7 @@ const federalRegions = [
         "label": "Крапивинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14704,7 +14812,7 @@ const federalRegions = [
         "label": "Ленинск-Кузнецкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14719,7 +14827,7 @@ const federalRegions = [
         "label": "Мариинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14734,7 +14842,7 @@ const federalRegions = [
         "label": "Междуреченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14749,7 +14857,7 @@ const federalRegions = [
         "label": "Мыски",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14786,6 +14894,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -14795,7 +14907,7 @@ const federalRegions = [
         "label": "Осинники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14810,7 +14922,7 @@ const federalRegions = [
         "label": "Прокопьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14825,7 +14937,7 @@ const federalRegions = [
         "label": "Промышленная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14840,7 +14952,7 @@ const federalRegions = [
         "label": "Тайга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14855,7 +14967,7 @@ const federalRegions = [
         "label": "Таштагол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14870,7 +14982,7 @@ const federalRegions = [
         "label": "Тисуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14885,7 +14997,7 @@ const federalRegions = [
         "label": "Топки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14900,7 +15012,7 @@ const federalRegions = [
         "label": "Тяжинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14915,7 +15027,7 @@ const federalRegions = [
         "label": "Юрга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14930,7 +15042,7 @@ const federalRegions = [
         "label": "Яшкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14945,7 +15057,7 @@ const federalRegions = [
         "label": "Яя",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14967,7 +15079,7 @@ const federalRegions = [
         "label": "Арбаж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14982,7 +15094,7 @@ const federalRegions = [
         "label": "Аркуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -14997,7 +15109,7 @@ const federalRegions = [
         "label": "Белая Холуница",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15012,7 +15124,7 @@ const federalRegions = [
         "label": "Богородское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15027,7 +15139,7 @@ const federalRegions = [
         "label": "Боровой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15042,7 +15154,7 @@ const federalRegions = [
         "label": "Верхошижемье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15057,7 +15169,7 @@ const federalRegions = [
         "label": "Вятские Поляны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15072,7 +15184,7 @@ const federalRegions = [
         "label": "Зуевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15087,7 +15199,7 @@ const federalRegions = [
         "label": "Каринторф",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15102,7 +15214,7 @@ const federalRegions = [
         "label": "Кикнур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15117,7 +15229,7 @@ const federalRegions = [
         "label": "Кильмезь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15146,6 +15258,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -15155,7 +15271,7 @@ const federalRegions = [
         "label": "Кирово-Чепецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15170,7 +15286,7 @@ const federalRegions = [
         "label": "Кирс",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15185,7 +15301,7 @@ const federalRegions = [
         "label": "Кобра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15200,7 +15316,7 @@ const federalRegions = [
         "label": "Котельнич",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15215,7 +15331,7 @@ const federalRegions = [
         "label": "Кумены",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15230,7 +15346,7 @@ const federalRegions = [
         "label": "Ленинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15245,7 +15361,7 @@ const federalRegions = [
         "label": "Луза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15260,7 +15376,7 @@ const federalRegions = [
         "label": "Малмыж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15275,7 +15391,7 @@ const federalRegions = [
         "label": "Мураши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15290,7 +15406,7 @@ const federalRegions = [
         "label": "Нагорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15305,7 +15421,7 @@ const federalRegions = [
         "label": "Нема",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15320,7 +15436,7 @@ const federalRegions = [
         "label": "Нововятск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15335,7 +15451,7 @@ const federalRegions = [
         "label": "Нолинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15350,7 +15466,7 @@ const federalRegions = [
         "label": "Омутнинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15365,7 +15481,7 @@ const federalRegions = [
         "label": "Опарино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15380,7 +15496,7 @@ const federalRegions = [
         "label": "Оричи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15395,7 +15511,7 @@ const federalRegions = [
         "label": "Пижанка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15410,7 +15526,7 @@ const federalRegions = [
         "label": "Подосиновец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15425,7 +15541,7 @@ const federalRegions = [
         "label": "Санчурск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15440,7 +15556,7 @@ const federalRegions = [
         "label": "Свеча",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15455,7 +15571,7 @@ const federalRegions = [
         "label": "Слободской",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15470,7 +15586,7 @@ const federalRegions = [
         "label": "Советск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15485,7 +15601,7 @@ const federalRegions = [
         "label": "Суна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15500,7 +15616,7 @@ const federalRegions = [
         "label": "Тужа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15515,7 +15631,7 @@ const federalRegions = [
         "label": "Уни",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15530,7 +15646,7 @@ const federalRegions = [
         "label": "Уржум",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15545,7 +15661,7 @@ const federalRegions = [
         "label": "Фаленки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15560,7 +15676,7 @@ const federalRegions = [
         "label": "Халтурин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15575,7 +15691,7 @@ const federalRegions = [
         "label": "Юрья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15590,7 +15706,7 @@ const federalRegions = [
         "label": "Яранск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15612,7 +15728,7 @@ const federalRegions = [
         "label": "Абезь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15627,7 +15743,7 @@ const federalRegions = [
         "label": "Айкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15642,7 +15758,7 @@ const federalRegions = [
         "label": "Верхняя Инта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15657,7 +15773,7 @@ const federalRegions = [
         "label": "Визинга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15672,7 +15788,7 @@ const federalRegions = [
         "label": "Водный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15687,7 +15803,7 @@ const federalRegions = [
         "label": "Вожаель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15702,7 +15818,7 @@ const federalRegions = [
         "label": "Воркута",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15717,7 +15833,7 @@ const federalRegions = [
         "label": "Вуктыл",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15732,7 +15848,7 @@ const federalRegions = [
         "label": "Гешарт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15747,7 +15863,7 @@ const federalRegions = [
         "label": "Елецкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15762,7 +15878,7 @@ const federalRegions = [
         "label": "Емва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15777,7 +15893,7 @@ const federalRegions = [
         "label": "Заполярный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15792,7 +15908,7 @@ const federalRegions = [
         "label": "Ижма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15807,7 +15923,7 @@ const federalRegions = [
         "label": "Инта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15822,7 +15938,7 @@ const federalRegions = [
         "label": "Ираель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15837,7 +15953,7 @@ const federalRegions = [
         "label": "Каджером",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15852,7 +15968,7 @@ const federalRegions = [
         "label": "Кажым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15867,7 +15983,7 @@ const federalRegions = [
         "label": "Кожым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15882,7 +15998,7 @@ const federalRegions = [
         "label": "Койгородок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15897,7 +16013,7 @@ const federalRegions = [
         "label": "Корткерос",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15912,7 +16028,7 @@ const federalRegions = [
         "label": "Кослан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15927,7 +16043,7 @@ const federalRegions = [
         "label": "Объячево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15942,7 +16058,7 @@ const federalRegions = [
         "label": "Печора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15957,7 +16073,7 @@ const federalRegions = [
         "label": "Сосногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15972,7 +16088,7 @@ const federalRegions = [
         "label": "Сыктывкар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -15987,7 +16103,7 @@ const federalRegions = [
         "label": "Троицко-Печерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16002,7 +16118,7 @@ const federalRegions = [
         "label": "Усинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16017,7 +16133,7 @@ const federalRegions = [
         "label": "Усогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16032,7 +16148,7 @@ const federalRegions = [
         "label": "Усть-Кулом",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16047,7 +16163,7 @@ const federalRegions = [
         "label": "Усть-Цильма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16062,7 +16178,7 @@ const federalRegions = [
         "label": "Ухта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16084,7 +16200,7 @@ const federalRegions = [
         "label": "Антропово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16099,7 +16215,7 @@ const federalRegions = [
         "label": "Боговарово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16114,7 +16230,7 @@ const federalRegions = [
         "label": "Буй",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16129,7 +16245,7 @@ const federalRegions = [
         "label": "Волгореченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16144,7 +16260,7 @@ const federalRegions = [
         "label": "Галич",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16159,7 +16275,7 @@ const federalRegions = [
         "label": "Горчуха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16174,7 +16290,7 @@ const federalRegions = [
         "label": "Зебляки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16189,7 +16305,7 @@ const federalRegions = [
         "label": "Кадый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16204,7 +16320,7 @@ const federalRegions = [
         "label": "Кологрив",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16229,6 +16345,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -16238,7 +16358,7 @@ const federalRegions = [
         "label": "Красное-на-Волге",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16253,7 +16373,7 @@ const federalRegions = [
         "label": "Макарьев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16268,7 +16388,7 @@ const federalRegions = [
         "label": "Мантурово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16283,7 +16403,7 @@ const federalRegions = [
         "label": "Нерехта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16298,7 +16418,7 @@ const federalRegions = [
         "label": "Нея",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16313,7 +16433,7 @@ const federalRegions = [
         "label": "Островское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16328,7 +16448,7 @@ const federalRegions = [
         "label": "Павино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16343,7 +16463,7 @@ const federalRegions = [
         "label": "Парфентьево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16358,7 +16478,7 @@ const federalRegions = [
         "label": "Поназырево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16373,7 +16493,7 @@ const federalRegions = [
         "label": "Солигалич",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16388,7 +16508,7 @@ const federalRegions = [
         "label": "Судиславль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16403,7 +16523,7 @@ const federalRegions = [
         "label": "Сусанино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16418,7 +16538,7 @@ const federalRegions = [
         "label": "Чухлома",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16433,7 +16553,7 @@ const federalRegions = [
         "label": "Шарья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16448,7 +16568,7 @@ const federalRegions = [
         "label": "Шемятино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16470,7 +16590,7 @@ const federalRegions = [
         "label": "Абинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16485,7 +16605,7 @@ const federalRegions = [
         "label": "Абрау-Дюрсо",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16500,7 +16620,7 @@ const federalRegions = [
         "label": "Анапа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16515,7 +16635,7 @@ const federalRegions = [
         "label": "Апшеронск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16530,7 +16650,7 @@ const federalRegions = [
         "label": "Армавир",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16545,7 +16665,7 @@ const federalRegions = [
         "label": "Архипо-Осиповка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16560,7 +16680,7 @@ const federalRegions = [
         "label": "Афипский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16575,7 +16695,7 @@ const federalRegions = [
         "label": "Ахтырский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16590,7 +16710,7 @@ const federalRegions = [
         "label": "Ачуево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16605,7 +16725,7 @@ const federalRegions = [
         "label": "Белореченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16620,7 +16740,7 @@ const federalRegions = [
         "label": "Верхнебаканский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16635,7 +16755,7 @@ const federalRegions = [
         "label": "Выселки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16650,7 +16770,7 @@ const federalRegions = [
         "label": "Геленджик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16665,7 +16785,7 @@ const federalRegions = [
         "label": "Гиагинская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16680,7 +16800,7 @@ const federalRegions = [
         "label": "Горячий Ключ",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16695,7 +16815,7 @@ const federalRegions = [
         "label": "Джубга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16710,7 +16830,7 @@ const federalRegions = [
         "label": "Динская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16725,7 +16845,7 @@ const federalRegions = [
         "label": "Ейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16740,7 +16860,7 @@ const federalRegions = [
         "label": "Ильский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16755,7 +16875,7 @@ const federalRegions = [
         "label": "Кабардинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16770,7 +16890,7 @@ const federalRegions = [
         "label": "Калинино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16785,7 +16905,7 @@ const federalRegions = [
         "label": "Калининская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16800,7 +16920,7 @@ const federalRegions = [
         "label": "Каменномостский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16815,7 +16935,7 @@ const federalRegions = [
         "label": "Каневская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16830,7 +16950,7 @@ const federalRegions = [
         "label": "Кореновск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16845,7 +16965,7 @@ const federalRegions = [
         "label": "Красноармейская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16874,6 +16994,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -16883,7 +17007,7 @@ const federalRegions = [
         "label": "Кропоткин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16898,7 +17022,7 @@ const federalRegions = [
         "label": "Крыловская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16913,7 +17037,7 @@ const federalRegions = [
         "label": "Крымск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16928,7 +17052,7 @@ const federalRegions = [
         "label": "Курганинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16943,7 +17067,7 @@ const federalRegions = [
         "label": "Кущевская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16958,7 +17082,7 @@ const federalRegions = [
         "label": "Лабинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16973,7 +17097,7 @@ const federalRegions = [
         "label": "Лениградская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -16988,7 +17112,7 @@ const federalRegions = [
         "label": "Майкоп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17003,7 +17127,7 @@ const federalRegions = [
         "label": "Мостовской",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17018,7 +17142,7 @@ const federalRegions = [
         "label": "Новороссийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17033,7 +17157,7 @@ const federalRegions = [
         "label": "Отрадная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17048,7 +17172,7 @@ const federalRegions = [
         "label": "Павловская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17063,7 +17187,7 @@ const federalRegions = [
         "label": "Приморско-Ахтарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17078,7 +17202,7 @@ const federalRegions = [
         "label": "Северская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17093,7 +17217,7 @@ const federalRegions = [
         "label": "Славянск-на-Кубани",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17122,6 +17246,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -17131,7 +17259,7 @@ const federalRegions = [
         "label": "Староминская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17146,7 +17274,7 @@ const federalRegions = [
         "label": "Старощербиновская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17161,7 +17289,7 @@ const federalRegions = [
         "label": "Тбилисская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17176,7 +17304,7 @@ const federalRegions = [
         "label": "Темрюк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17191,7 +17319,7 @@ const federalRegions = [
         "label": "Тимашевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17206,7 +17334,7 @@ const federalRegions = [
         "label": "Тихорецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17221,7 +17349,7 @@ const federalRegions = [
         "label": "Туапсе",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17236,7 +17364,7 @@ const federalRegions = [
         "label": "Тульский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17251,7 +17379,7 @@ const federalRegions = [
         "label": "Усть-Лабинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17266,7 +17394,7 @@ const federalRegions = [
         "label": "Шовгеновский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17288,7 +17416,7 @@ const federalRegions = [
         "label": " Железногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17303,7 +17431,7 @@ const federalRegions = [
         "label": "Абаза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17318,7 +17446,7 @@ const federalRegions = [
         "label": "Абакан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17333,7 +17461,7 @@ const federalRegions = [
         "label": "Абан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17348,7 +17476,7 @@ const federalRegions = [
         "label": "Агинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17363,7 +17491,7 @@ const federalRegions = [
         "label": "Артемовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17378,7 +17506,7 @@ const federalRegions = [
         "label": "Аскиз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17393,7 +17521,7 @@ const federalRegions = [
         "label": "Ачинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17408,7 +17536,7 @@ const federalRegions = [
         "label": "Байкит",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17423,7 +17551,7 @@ const federalRegions = [
         "label": "Балахта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17438,7 +17566,7 @@ const federalRegions = [
         "label": "Балыкса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17453,7 +17581,7 @@ const federalRegions = [
         "label": "Белый Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17468,7 +17596,7 @@ const federalRegions = [
         "label": "Бельтырский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17483,7 +17611,7 @@ const federalRegions = [
         "label": "Бея",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17498,7 +17626,7 @@ const federalRegions = [
         "label": "Бискамжа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17513,7 +17641,7 @@ const federalRegions = [
         "label": "Боготол",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17528,7 +17656,7 @@ const federalRegions = [
         "label": "Боград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17543,7 +17671,7 @@ const federalRegions = [
         "label": "Богучаны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17558,7 +17686,7 @@ const federalRegions = [
         "label": "Большая Мурта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17573,7 +17701,7 @@ const federalRegions = [
         "label": "Большой Улуй",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17588,7 +17716,7 @@ const federalRegions = [
         "label": "Бородино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17603,7 +17731,7 @@ const federalRegions = [
         "label": "Ванавара",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17618,7 +17746,7 @@ const federalRegions = [
         "label": "Верхнеимбатск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17633,7 +17761,7 @@ const federalRegions = [
         "label": "Горячегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17648,7 +17776,7 @@ const federalRegions = [
         "label": "Дзержинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17663,7 +17791,7 @@ const federalRegions = [
         "label": "Дивногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17678,7 +17806,7 @@ const federalRegions = [
         "label": "Диксон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17693,7 +17821,7 @@ const federalRegions = [
         "label": "Дудинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17708,7 +17836,7 @@ const federalRegions = [
         "label": "Емельяново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17723,7 +17851,7 @@ const federalRegions = [
         "label": "Енисейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17738,7 +17866,7 @@ const federalRegions = [
         "label": "Ермаковское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17753,7 +17881,7 @@ const federalRegions = [
         "label": "Заозерный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17768,7 +17896,7 @@ const federalRegions = [
         "label": "Зеленогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17783,7 +17911,7 @@ const federalRegions = [
         "label": "Игарка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17798,7 +17926,7 @@ const federalRegions = [
         "label": "Идринское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17813,7 +17941,7 @@ const federalRegions = [
         "label": "Иланский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17828,7 +17956,7 @@ const federalRegions = [
         "label": "Ирбейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17843,7 +17971,7 @@ const federalRegions = [
         "label": "Казачинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17858,7 +17986,7 @@ const federalRegions = [
         "label": "Канск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17873,7 +18001,7 @@ const federalRegions = [
         "label": "Каратузское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17888,7 +18016,7 @@ const federalRegions = [
         "label": "Караул",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17903,7 +18031,7 @@ const federalRegions = [
         "label": "Кежма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17918,7 +18046,7 @@ const federalRegions = [
         "label": "Кодинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17933,7 +18061,7 @@ const federalRegions = [
         "label": "Козулька",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17948,7 +18076,7 @@ const federalRegions = [
         "label": "Копьево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -17963,7 +18091,7 @@ const federalRegions = [
         "label": "Краснотуранск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18004,6 +18132,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -18013,7 +18145,7 @@ const federalRegions = [
         "label": "Курагино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18028,7 +18160,7 @@ const federalRegions = [
         "label": "Лесосибирск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18043,7 +18175,7 @@ const federalRegions = [
         "label": "Минусинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18058,7 +18190,7 @@ const federalRegions = [
         "label": "Мотыгино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18073,7 +18205,7 @@ const federalRegions = [
         "label": "Назарово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18088,7 +18220,7 @@ const federalRegions = [
         "label": "Нижний Ингаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18103,7 +18235,7 @@ const federalRegions = [
         "label": "Новоселово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18118,7 +18250,7 @@ const federalRegions = [
         "label": "Норильск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18133,7 +18265,7 @@ const federalRegions = [
         "label": "Партизанское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18148,7 +18280,7 @@ const federalRegions = [
         "label": "Пировское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18163,7 +18295,7 @@ const federalRegions = [
         "label": "Саяногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18178,7 +18310,7 @@ const federalRegions = [
         "label": "Северо-Енисейский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18193,7 +18325,7 @@ const federalRegions = [
         "label": "Сосновоборск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18208,7 +18340,7 @@ const federalRegions = [
         "label": "Тасеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18223,7 +18355,7 @@ const federalRegions = [
         "label": "Таштып",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18238,7 +18370,7 @@ const federalRegions = [
         "label": "Тура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18253,7 +18385,7 @@ const federalRegions = [
         "label": "Туруханск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18268,7 +18400,7 @@ const federalRegions = [
         "label": "Тюхтет",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18283,7 +18415,7 @@ const federalRegions = [
         "label": "Ужур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18298,7 +18430,7 @@ const federalRegions = [
         "label": "Усть-Авам",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18313,7 +18445,7 @@ const federalRegions = [
         "label": "Уяр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18328,7 +18460,7 @@ const federalRegions = [
         "label": "Хатанга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18343,7 +18475,7 @@ const federalRegions = [
         "label": "Черемушки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18358,7 +18490,7 @@ const federalRegions = [
         "label": "Черногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18373,7 +18505,7 @@ const federalRegions = [
         "label": "Шалинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18388,7 +18520,7 @@ const federalRegions = [
         "label": "Шарыпово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18403,7 +18535,7 @@ const federalRegions = [
         "label": "Шира",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18418,7 +18550,7 @@ const federalRegions = [
         "label": "Шушенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18440,7 +18572,7 @@ const federalRegions = [
         "label": "Севастополь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18455,7 +18587,7 @@ const federalRegions = [
         "label": "Симферополь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18470,7 +18602,7 @@ const federalRegions = [
         "label": "Керчь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18485,7 +18617,7 @@ const federalRegions = [
         "label": "Евпатория",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18500,7 +18632,7 @@ const federalRegions = [
         "label": "Ялта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18515,7 +18647,7 @@ const federalRegions = [
         "label": "Феодосия",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18530,7 +18662,7 @@ const federalRegions = [
         "label": "Джанкой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18545,7 +18677,7 @@ const federalRegions = [
         "label": "Алушта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18560,7 +18692,7 @@ const federalRegions = [
         "label": "Бахчисарай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18575,7 +18707,7 @@ const federalRegions = [
         "label": "Саки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18590,7 +18722,7 @@ const federalRegions = [
         "label": "Красноперекопск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18605,7 +18737,7 @@ const federalRegions = [
         "label": "Армянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18620,7 +18752,7 @@ const federalRegions = [
         "label": "Судак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18635,7 +18767,7 @@ const federalRegions = [
         "label": "Белогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18650,7 +18782,7 @@ const federalRegions = [
         "label": "Инкерман",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18665,7 +18797,7 @@ const federalRegions = [
         "label": "Щёлкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18680,7 +18812,7 @@ const federalRegions = [
         "label": "Старый Крым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18695,7 +18827,7 @@ const federalRegions = [
         "label": "Алупка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18717,7 +18849,7 @@ const federalRegions = [
         "label": "Варгаши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18732,7 +18864,7 @@ const federalRegions = [
         "label": "Глядянское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18747,7 +18879,7 @@ const federalRegions = [
         "label": "Далматово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18762,7 +18894,7 @@ const federalRegions = [
         "label": "Каргаполье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18777,7 +18909,7 @@ const federalRegions = [
         "label": "Катайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18792,7 +18924,7 @@ const federalRegions = [
         "label": "Кетово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18837,6 +18969,10 @@ const federalRegions = [
           {
             "label": "Энергетики",
             "slug": "energetiki"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -18846,7 +18982,7 @@ const federalRegions = [
         "label": "Куртамыш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18861,7 +18997,7 @@ const federalRegions = [
         "label": "Лебяжье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18876,7 +19012,7 @@ const federalRegions = [
         "label": "Макушино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18891,7 +19027,7 @@ const federalRegions = [
         "label": "Мишкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18906,7 +19042,7 @@ const federalRegions = [
         "label": "Мокроусово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18921,7 +19057,7 @@ const federalRegions = [
         "label": "Петухово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18936,7 +19072,7 @@ const federalRegions = [
         "label": "Половинное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18951,7 +19087,7 @@ const federalRegions = [
         "label": "Сафакулево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18966,7 +19102,7 @@ const federalRegions = [
         "label": "Целинное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18981,7 +19117,7 @@ const federalRegions = [
         "label": "Шадринск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -18996,7 +19132,7 @@ const federalRegions = [
         "label": "Шатрово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19011,7 +19147,7 @@ const federalRegions = [
         "label": "Шумиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19026,7 +19162,7 @@ const federalRegions = [
         "label": "Щучье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19041,7 +19177,7 @@ const federalRegions = [
         "label": "Юргамыш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19063,7 +19199,7 @@ const federalRegions = [
         "label": "Альменево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19078,7 +19214,7 @@ const federalRegions = [
         "label": "Белая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19093,7 +19229,7 @@ const federalRegions = [
         "label": "Большое Солдатское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19108,7 +19244,7 @@ const federalRegions = [
         "label": "Глушково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19123,7 +19259,7 @@ const federalRegions = [
         "label": "Горшечное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19138,7 +19274,7 @@ const federalRegions = [
         "label": "Дмитриев-Льговский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19153,7 +19289,7 @@ const federalRegions = [
         "label": "Железногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19168,7 +19304,7 @@ const federalRegions = [
         "label": "Золотухино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19183,7 +19319,7 @@ const federalRegions = [
         "label": "Касторное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19198,7 +19334,7 @@ const federalRegions = [
         "label": "Конышевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19213,7 +19349,7 @@ const federalRegions = [
         "label": "Коренево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19238,6 +19374,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -19247,7 +19387,7 @@ const federalRegions = [
         "label": "Курчатов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19262,7 +19402,7 @@ const federalRegions = [
         "label": "Кшенский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19277,7 +19417,7 @@ const federalRegions = [
         "label": "Льгов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19292,7 +19432,7 @@ const federalRegions = [
         "label": "Мантурово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19307,7 +19447,7 @@ const federalRegions = [
         "label": "Медвенка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19322,7 +19462,7 @@ const federalRegions = [
         "label": "Обоянь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19337,7 +19477,7 @@ const federalRegions = [
         "label": "Поныри",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19352,7 +19492,7 @@ const federalRegions = [
         "label": "Пристень",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19367,7 +19507,7 @@ const federalRegions = [
         "label": "Прямицыно",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19382,7 +19522,7 @@ const federalRegions = [
         "label": "Рыльск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19397,7 +19537,7 @@ const federalRegions = [
         "label": "Суджа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19412,7 +19552,7 @@ const federalRegions = [
         "label": "Тим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19427,7 +19567,7 @@ const federalRegions = [
         "label": "Фатеж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19442,7 +19582,7 @@ const federalRegions = [
         "label": "Хомутовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19457,7 +19597,7 @@ const federalRegions = [
         "label": "Черемисиново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19472,7 +19612,7 @@ const federalRegions = [
         "label": "Щигры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19494,7 +19634,7 @@ const federalRegions = [
         "label": "Грязи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19509,7 +19649,7 @@ const federalRegions = [
         "label": "Данхов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19524,7 +19664,7 @@ const federalRegions = [
         "label": "Доброе",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19539,7 +19679,7 @@ const federalRegions = [
         "label": "Долгоруково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19554,7 +19694,7 @@ const federalRegions = [
         "label": "Елец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19569,7 +19709,7 @@ const federalRegions = [
         "label": "Задонск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19584,7 +19724,7 @@ const federalRegions = [
         "label": "Измалково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19599,7 +19739,7 @@ const federalRegions = [
         "label": "Казинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19614,7 +19754,7 @@ const federalRegions = [
         "label": "Лебедянь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19629,7 +19769,7 @@ const federalRegions = [
         "label": "Лев Толстой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19658,6 +19798,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -19667,7 +19811,7 @@ const federalRegions = [
         "label": "Тербуны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19682,7 +19826,7 @@ const federalRegions = [
         "label": "Усмань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19697,7 +19841,7 @@ const federalRegions = [
         "label": "Хлевное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19712,7 +19856,7 @@ const federalRegions = [
         "label": "Чаплыгин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19734,7 +19878,7 @@ const federalRegions = [
         "label": "Анадырь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19749,7 +19893,7 @@ const federalRegions = [
         "label": "Атка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19764,7 +19908,7 @@ const federalRegions = [
         "label": "Балыгычан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19779,7 +19923,7 @@ const federalRegions = [
         "label": "Беринговский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19794,7 +19938,7 @@ const federalRegions = [
         "label": "Билибино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19809,7 +19953,7 @@ const federalRegions = [
         "label": "Большевик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19824,7 +19968,7 @@ const federalRegions = [
         "label": "Ванкарем",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19839,7 +19983,7 @@ const federalRegions = [
         "label": "Иульитин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19854,7 +19998,7 @@ const federalRegions = [
         "label": "Кадыкчан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19869,7 +20013,7 @@ const federalRegions = [
         "label": "Лаврентия",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19884,7 +20028,7 @@ const federalRegions = [
         "label": "Магадан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19899,7 +20043,7 @@ const federalRegions = [
         "label": "Мыс Шмидта",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19914,7 +20058,7 @@ const federalRegions = [
         "label": "Ола",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19929,7 +20073,7 @@ const federalRegions = [
         "label": "Омонск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19944,7 +20088,7 @@ const federalRegions = [
         "label": "Омсукчан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19959,7 +20103,7 @@ const federalRegions = [
         "label": "Палатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19974,7 +20118,7 @@ const federalRegions = [
         "label": "Певек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -19989,7 +20133,7 @@ const federalRegions = [
         "label": "Провидения",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20004,7 +20148,7 @@ const federalRegions = [
         "label": "Сеймчан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20019,7 +20163,7 @@ const federalRegions = [
         "label": "Синегорье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20034,7 +20178,7 @@ const federalRegions = [
         "label": "Сусуман",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20049,7 +20193,7 @@ const federalRegions = [
         "label": "Усть-Белая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20064,7 +20208,7 @@ const federalRegions = [
         "label": "Усть-Омчуг",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20079,7 +20223,7 @@ const federalRegions = [
         "label": "Эвенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20094,7 +20238,7 @@ const federalRegions = [
         "label": "Эгвекинот",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20109,7 +20253,7 @@ const federalRegions = [
         "label": "Ягодное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20131,7 +20275,7 @@ const federalRegions = [
         "label": "Волжск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20146,7 +20290,7 @@ const federalRegions = [
         "label": "Дубовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20161,7 +20305,7 @@ const federalRegions = [
         "label": "Звенигово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20176,7 +20320,7 @@ const federalRegions = [
         "label": "Йошкар-Ола",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20191,7 +20335,7 @@ const federalRegions = [
         "label": "Килемары",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20206,7 +20350,7 @@ const federalRegions = [
         "label": "Козьмодемьянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20221,7 +20365,7 @@ const federalRegions = [
         "label": "Куженер",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20236,7 +20380,7 @@ const federalRegions = [
         "label": "Мари-Турек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20251,7 +20395,7 @@ const federalRegions = [
         "label": "Медведево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20266,7 +20410,7 @@ const federalRegions = [
         "label": "Морки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20281,7 +20425,7 @@ const federalRegions = [
         "label": "Новый Торьял",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20296,7 +20440,7 @@ const federalRegions = [
         "label": "Оршанка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20311,7 +20455,7 @@ const federalRegions = [
         "label": "Параньга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20326,7 +20470,7 @@ const federalRegions = [
         "label": "Сернур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20341,7 +20485,7 @@ const federalRegions = [
         "label": "Советский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20356,7 +20500,7 @@ const federalRegions = [
         "label": "Юрино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20378,7 +20522,7 @@ const federalRegions = [
         "label": "Ардатов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20393,7 +20537,7 @@ const federalRegions = [
         "label": "Атюрьево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20408,7 +20552,7 @@ const federalRegions = [
         "label": "Атяшево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20423,7 +20567,7 @@ const federalRegions = [
         "label": "Большие Березники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20438,7 +20582,7 @@ const federalRegions = [
         "label": "Большое Игнатово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20453,7 +20597,7 @@ const federalRegions = [
         "label": "Выша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20468,7 +20612,7 @@ const federalRegions = [
         "label": "Ельники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20483,7 +20627,7 @@ const federalRegions = [
         "label": "Зубова Поляна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20498,7 +20642,7 @@ const federalRegions = [
         "label": "Инсар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20513,7 +20657,7 @@ const federalRegions = [
         "label": "Кадошкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20528,7 +20672,7 @@ const federalRegions = [
         "label": "Кемля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20543,7 +20687,7 @@ const federalRegions = [
         "label": "Ковылкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20558,7 +20702,7 @@ const federalRegions = [
         "label": "Комсомольский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20573,7 +20717,7 @@ const federalRegions = [
         "label": "Кочкурово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20588,7 +20732,7 @@ const federalRegions = [
         "label": "Краснослободск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20603,7 +20747,7 @@ const federalRegions = [
         "label": "Лямбирь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20618,7 +20762,7 @@ const federalRegions = [
         "label": "Ромоданово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20633,7 +20777,7 @@ const federalRegions = [
         "label": "Рузаевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20648,7 +20792,7 @@ const federalRegions = [
         "label": "Саранск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20663,7 +20807,7 @@ const federalRegions = [
         "label": "Старое Шайгово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20678,7 +20822,7 @@ const federalRegions = [
         "label": "Темников",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20693,7 +20837,7 @@ const federalRegions = [
         "label": "Теньгушево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20708,7 +20852,7 @@ const federalRegions = [
         "label": "Торбеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20723,7 +20867,7 @@ const federalRegions = [
         "label": "Чамзинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20745,7 +20889,7 @@ const federalRegions = [
         "label": "Апатиты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20760,7 +20904,7 @@ const federalRegions = [
         "label": "Африканда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20775,7 +20919,7 @@ const federalRegions = [
         "label": "Верхнетуломский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20790,7 +20934,7 @@ const federalRegions = [
         "label": "Заозерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20805,7 +20949,7 @@ const federalRegions = [
         "label": "Заполярный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20820,7 +20964,7 @@ const federalRegions = [
         "label": "Зареченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20835,7 +20979,7 @@ const federalRegions = [
         "label": "Зашеек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20850,7 +20994,7 @@ const federalRegions = [
         "label": "Зеленоборский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20865,7 +21009,7 @@ const federalRegions = [
         "label": "Кандалакша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20880,7 +21024,7 @@ const federalRegions = [
         "label": "Кильдинстрой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20895,7 +21039,7 @@ const federalRegions = [
         "label": "Кировск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20910,7 +21054,7 @@ const federalRegions = [
         "label": "Ковдор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20925,7 +21069,7 @@ const federalRegions = [
         "label": "Кола",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20940,7 +21084,7 @@ const federalRegions = [
         "label": "Конда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20955,7 +21099,7 @@ const federalRegions = [
         "label": "Мончегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -20980,6 +21124,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -20989,7 +21137,7 @@ const federalRegions = [
         "label": "Мурмаши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21004,7 +21152,7 @@ const federalRegions = [
         "label": "Никель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21019,7 +21167,7 @@ const federalRegions = [
         "label": "Оленегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21034,7 +21182,7 @@ const federalRegions = [
         "label": "Полярные Зори",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21049,7 +21197,7 @@ const federalRegions = [
         "label": "Полярный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21064,7 +21212,7 @@ const federalRegions = [
         "label": "Североморск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21079,7 +21227,7 @@ const federalRegions = [
         "label": "Снежногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21094,7 +21242,7 @@ const federalRegions = [
         "label": "Умба",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21116,7 +21264,7 @@ const federalRegions = [
         "label": "Ардатов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21131,7 +21279,7 @@ const federalRegions = [
         "label": "Арзамас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21146,7 +21294,7 @@ const federalRegions = [
         "label": "Арья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21161,7 +21309,7 @@ const federalRegions = [
         "label": "Балахна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21176,7 +21324,7 @@ const federalRegions = [
         "label": "Богородск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21191,7 +21339,7 @@ const federalRegions = [
         "label": "Большереченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21206,7 +21354,7 @@ const federalRegions = [
         "label": "Большое Болдино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21221,7 +21369,7 @@ const federalRegions = [
         "label": "Большое Козино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21236,7 +21384,7 @@ const federalRegions = [
         "label": "Большое Мурашкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21251,7 +21399,7 @@ const federalRegions = [
         "label": "Большое Пикино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21266,7 +21414,7 @@ const federalRegions = [
         "label": "Бор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21281,7 +21429,7 @@ const federalRegions = [
         "label": "Бутурлино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21296,7 +21444,7 @@ const federalRegions = [
         "label": "Вад",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21311,7 +21459,7 @@ const federalRegions = [
         "label": "Варнавино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21326,7 +21474,7 @@ const federalRegions = [
         "label": "Васильсурск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21341,7 +21489,7 @@ const federalRegions = [
         "label": "Вахтан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21356,7 +21504,7 @@ const federalRegions = [
         "label": "Вача",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21371,7 +21519,7 @@ const federalRegions = [
         "label": "Велетьма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21386,7 +21534,7 @@ const federalRegions = [
         "label": "Ветлуга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21401,7 +21549,7 @@ const federalRegions = [
         "label": "Виля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21416,7 +21564,7 @@ const federalRegions = [
         "label": "Вознесенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21431,7 +21579,7 @@ const federalRegions = [
         "label": "Володарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21446,7 +21594,7 @@ const federalRegions = [
         "label": "Воротынец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21461,7 +21609,7 @@ const federalRegions = [
         "label": "Ворсма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21476,7 +21624,7 @@ const federalRegions = [
         "label": "Воскресенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21491,7 +21639,7 @@ const federalRegions = [
         "label": "Выездное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21506,7 +21654,7 @@ const federalRegions = [
         "label": "Выкса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21521,7 +21669,7 @@ const federalRegions = [
         "label": "Гагино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21536,7 +21684,7 @@ const federalRegions = [
         "label": "Гидроторф",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21551,7 +21699,7 @@ const federalRegions = [
         "label": "Горбатов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21566,7 +21714,7 @@ const federalRegions = [
         "label": "Горбатовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21581,7 +21729,7 @@ const federalRegions = [
         "label": "Городец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21596,7 +21744,7 @@ const federalRegions = [
         "label": "Горький",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21611,7 +21759,7 @@ const federalRegions = [
         "label": "Дальнее Константиново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21626,7 +21774,7 @@ const federalRegions = [
         "label": "Дзержинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21641,7 +21789,7 @@ const federalRegions = [
         "label": "Дивеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21656,7 +21804,7 @@ const federalRegions = [
         "label": "Досчатое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21671,7 +21819,7 @@ const federalRegions = [
         "label": "Заволжье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21686,7 +21834,7 @@ const federalRegions = [
         "label": "Катунки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21701,7 +21849,7 @@ const federalRegions = [
         "label": "Керженец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21716,7 +21864,7 @@ const federalRegions = [
         "label": "Княгинино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21731,7 +21879,7 @@ const federalRegions = [
         "label": "Ковернино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21746,7 +21894,7 @@ const federalRegions = [
         "label": "Красные Баки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21761,7 +21909,7 @@ const federalRegions = [
         "label": "Кстово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21776,7 +21924,7 @@ const federalRegions = [
         "label": "Кулебаки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21791,7 +21939,7 @@ const federalRegions = [
         "label": "Лукоянов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21806,7 +21954,7 @@ const federalRegions = [
         "label": "Лысково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21821,7 +21969,7 @@ const federalRegions = [
         "label": "Навашино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21866,6 +22014,10 @@ const federalRegions = [
           {
             "label": "Сормовский",
             "slug": "sormovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -21875,7 +22027,7 @@ const federalRegions = [
         "label": "Павлово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21890,7 +22042,7 @@ const federalRegions = [
         "label": "Первомайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21905,7 +22057,7 @@ const federalRegions = [
         "label": "Перевоз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21920,7 +22072,7 @@ const federalRegions = [
         "label": "Пильна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21935,7 +22087,7 @@ const federalRegions = [
         "label": "Починки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21950,7 +22102,7 @@ const federalRegions = [
         "label": "Саров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21965,7 +22117,7 @@ const federalRegions = [
         "label": "Сергач",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21980,7 +22132,7 @@ const federalRegions = [
         "label": "Сеченово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -21995,7 +22147,7 @@ const federalRegions = [
         "label": "Сосновское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22010,7 +22162,7 @@ const federalRegions = [
         "label": "Спасское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22025,7 +22177,7 @@ const federalRegions = [
         "label": "Тонкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22040,7 +22192,7 @@ const federalRegions = [
         "label": "Тоншаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22055,7 +22207,7 @@ const federalRegions = [
         "label": "Уразовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22070,7 +22222,7 @@ const federalRegions = [
         "label": "Урень",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22085,7 +22237,7 @@ const federalRegions = [
         "label": "Чкаловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22100,7 +22252,7 @@ const federalRegions = [
         "label": "Шаранга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22115,7 +22267,7 @@ const federalRegions = [
         "label": "Шатки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22130,7 +22282,7 @@ const federalRegions = [
         "label": "Шахунья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22152,7 +22304,7 @@ const federalRegions = [
         "label": "Анциферово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22167,7 +22319,7 @@ const federalRegions = [
         "label": "Батецкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22182,7 +22334,7 @@ const federalRegions = [
         "label": "Большая Вишера",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22197,7 +22349,7 @@ const federalRegions = [
         "label": "Боровичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22212,7 +22364,7 @@ const federalRegions = [
         "label": "Валдай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22227,7 +22379,7 @@ const federalRegions = [
         "label": "Волот",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22242,7 +22394,7 @@ const federalRegions = [
         "label": "Деманск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22257,7 +22409,7 @@ const federalRegions = [
         "label": "Зарубино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22272,7 +22424,7 @@ const federalRegions = [
         "label": "Кресцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22287,7 +22439,7 @@ const federalRegions = [
         "label": "Любытино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22302,7 +22454,7 @@ const federalRegions = [
         "label": "Малая Вишера",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22317,7 +22469,7 @@ const federalRegions = [
         "label": "Марево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22332,7 +22484,7 @@ const federalRegions = [
         "label": "Мошенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22377,6 +22529,10 @@ const federalRegions = [
           {
             "label": "Сормовский",
             "slug": "sormovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -22386,7 +22542,7 @@ const federalRegions = [
         "label": "Окуловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22401,7 +22557,7 @@ const federalRegions = [
         "label": "Парфино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22416,7 +22572,7 @@ const federalRegions = [
         "label": "Пестово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22431,7 +22587,7 @@ const federalRegions = [
         "label": "Поддорье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22446,7 +22602,7 @@ const federalRegions = [
         "label": "Сольцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22461,7 +22617,7 @@ const federalRegions = [
         "label": "Старая Русса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22476,7 +22632,7 @@ const federalRegions = [
         "label": "Хвойное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22491,7 +22647,7 @@ const federalRegions = [
         "label": "Холм",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22506,7 +22662,7 @@ const federalRegions = [
         "label": "Чудово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22521,7 +22677,7 @@ const federalRegions = [
         "label": "Шимск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22543,7 +22699,7 @@ const federalRegions = [
         "label": "Баган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22558,7 +22714,7 @@ const federalRegions = [
         "label": "Барабинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22573,7 +22729,7 @@ const federalRegions = [
         "label": "Бердск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22588,7 +22744,7 @@ const federalRegions = [
         "label": "Биаза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22603,7 +22759,7 @@ const federalRegions = [
         "label": "Болотное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22618,7 +22774,7 @@ const federalRegions = [
         "label": "Венгерово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22633,7 +22789,7 @@ const federalRegions = [
         "label": "Довольное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22648,7 +22804,7 @@ const federalRegions = [
         "label": "Завьялово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22663,7 +22819,7 @@ const federalRegions = [
         "label": "Искитим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22678,7 +22834,7 @@ const federalRegions = [
         "label": "Карасук",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22693,7 +22849,7 @@ const federalRegions = [
         "label": "Каргат",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22708,7 +22864,7 @@ const federalRegions = [
         "label": "Колывань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22723,7 +22879,7 @@ const federalRegions = [
         "label": "Краснозерское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22738,7 +22894,7 @@ const federalRegions = [
         "label": "Крутиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22753,7 +22909,7 @@ const federalRegions = [
         "label": "Куйбышев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22768,7 +22924,7 @@ const federalRegions = [
         "label": "Купино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22783,7 +22939,7 @@ const federalRegions = [
         "label": "Кыштовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22798,7 +22954,7 @@ const federalRegions = [
         "label": "Маслянино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22813,7 +22969,7 @@ const federalRegions = [
         "label": "Михайловский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22828,7 +22984,7 @@ const federalRegions = [
         "label": "Мошково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22881,6 +23037,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -22890,7 +23050,7 @@ const federalRegions = [
         "label": "Ордынское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22905,7 +23065,7 @@ const federalRegions = [
         "label": "Северное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22920,7 +23080,7 @@ const federalRegions = [
         "label": "Сузун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22935,7 +23095,7 @@ const federalRegions = [
         "label": "Татарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22950,7 +23110,7 @@ const federalRegions = [
         "label": "Тогучин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22965,7 +23125,7 @@ const federalRegions = [
         "label": "Убинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22980,7 +23140,7 @@ const federalRegions = [
         "label": "Усть-Тарка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -22995,7 +23155,7 @@ const federalRegions = [
         "label": "Чаны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23010,7 +23170,7 @@ const federalRegions = [
         "label": "Черепаново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23025,7 +23185,7 @@ const federalRegions = [
         "label": "Чистоозерное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23040,7 +23200,7 @@ const federalRegions = [
         "label": "Чулым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23062,7 +23222,7 @@ const federalRegions = [
         "label": "Береговой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23077,7 +23237,7 @@ const federalRegions = [
         "label": "Большеречье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23092,7 +23252,7 @@ const federalRegions = [
         "label": "Большие Уки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23107,7 +23267,7 @@ const federalRegions = [
         "label": "Горьковское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23122,7 +23282,7 @@ const federalRegions = [
         "label": "Знаменское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23137,7 +23297,7 @@ const federalRegions = [
         "label": "Исилькуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23152,7 +23312,7 @@ const federalRegions = [
         "label": "Калачинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23167,7 +23327,7 @@ const federalRegions = [
         "label": "Колосовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23182,7 +23342,7 @@ const federalRegions = [
         "label": "Кормиловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23197,7 +23357,7 @@ const federalRegions = [
         "label": "Крутинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23212,7 +23372,7 @@ const federalRegions = [
         "label": "Любинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23227,7 +23387,7 @@ const federalRegions = [
         "label": "Марьяновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23242,7 +23402,7 @@ const federalRegions = [
         "label": "Муромцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23257,7 +23417,7 @@ const federalRegions = [
         "label": "Называевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23272,7 +23432,7 @@ const federalRegions = [
         "label": "Нижняя Омка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23287,7 +23447,7 @@ const federalRegions = [
         "label": "Нововаршавка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23302,7 +23462,7 @@ const federalRegions = [
         "label": "Одесское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23317,7 +23477,7 @@ const federalRegions = [
         "label": "Оконешниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23350,6 +23510,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -23359,7 +23523,7 @@ const federalRegions = [
         "label": "Павлоградка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23374,7 +23538,7 @@ const federalRegions = [
         "label": "Полтавка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23389,7 +23553,7 @@ const federalRegions = [
         "label": "Русская Поляна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23404,7 +23568,7 @@ const federalRegions = [
         "label": "Саргатское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23419,7 +23583,7 @@ const federalRegions = [
         "label": "Седельниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23434,7 +23598,7 @@ const federalRegions = [
         "label": "Таврическое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23449,7 +23613,7 @@ const federalRegions = [
         "label": "Тара",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23464,7 +23628,7 @@ const federalRegions = [
         "label": "Тевриз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23479,7 +23643,7 @@ const federalRegions = [
         "label": "Тюкалинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23494,7 +23658,7 @@ const federalRegions = [
         "label": "Усть-Ишим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23509,7 +23673,7 @@ const federalRegions = [
         "label": "Черлак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23524,7 +23688,7 @@ const federalRegions = [
         "label": "Шербакуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23546,7 +23710,7 @@ const federalRegions = [
         "label": "Абдулино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23561,7 +23725,7 @@ const federalRegions = [
         "label": "Адамовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23576,7 +23740,7 @@ const federalRegions = [
         "label": "Айдырлинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23591,7 +23755,7 @@ const federalRegions = [
         "label": "Акбулак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23606,7 +23770,7 @@ const federalRegions = [
         "label": "Аккермановка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23621,7 +23785,7 @@ const federalRegions = [
         "label": "Асекеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23636,7 +23800,7 @@ const federalRegions = [
         "label": "Беляевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23651,7 +23815,7 @@ const federalRegions = [
         "label": "Бугуруслан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23666,7 +23830,7 @@ const federalRegions = [
         "label": "Бузулук",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23681,7 +23845,7 @@ const federalRegions = [
         "label": "Гай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23696,7 +23860,7 @@ const federalRegions = [
         "label": "Грачевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23711,7 +23875,7 @@ const federalRegions = [
         "label": "Домбаровский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23726,7 +23890,7 @@ const federalRegions = [
         "label": "Дубенский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23741,7 +23905,7 @@ const federalRegions = [
         "label": "Илек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23756,7 +23920,7 @@ const federalRegions = [
         "label": "Ириклинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23771,7 +23935,7 @@ const federalRegions = [
         "label": "Кувандык",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23786,7 +23950,7 @@ const federalRegions = [
         "label": "Курманаевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23801,7 +23965,7 @@ const federalRegions = [
         "label": "Матвеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23816,7 +23980,7 @@ const federalRegions = [
         "label": "Медногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23831,7 +23995,7 @@ const federalRegions = [
         "label": "Новоорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23846,7 +24010,7 @@ const federalRegions = [
         "label": "Новосергиевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23861,7 +24025,7 @@ const federalRegions = [
         "label": "Новотроицк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23876,7 +24040,7 @@ const federalRegions = [
         "label": "Октябрьское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23905,6 +24069,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -23914,7 +24082,7 @@ const federalRegions = [
         "label": "Орск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23929,7 +24097,7 @@ const federalRegions = [
         "label": "Первомайский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23944,7 +24112,7 @@ const federalRegions = [
         "label": "Переволоцкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23959,7 +24127,7 @@ const federalRegions = [
         "label": "Пономаревка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23974,7 +24142,7 @@ const federalRegions = [
         "label": "Саракташ",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -23989,7 +24157,7 @@ const federalRegions = [
         "label": "Светлый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24004,7 +24172,7 @@ const federalRegions = [
         "label": "Северное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24019,7 +24187,7 @@ const federalRegions = [
         "label": "Соль-Илецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24034,7 +24202,7 @@ const federalRegions = [
         "label": "Сорочинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24049,7 +24217,7 @@ const federalRegions = [
         "label": "Ташла",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24064,7 +24232,7 @@ const federalRegions = [
         "label": "Тоцкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24079,7 +24247,7 @@ const federalRegions = [
         "label": "Тюльган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24094,7 +24262,7 @@ const federalRegions = [
         "label": "Шарлык",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24109,7 +24277,7 @@ const federalRegions = [
         "label": "Энергетик",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24124,7 +24292,7 @@ const federalRegions = [
         "label": "Ясный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24146,7 +24314,7 @@ const federalRegions = [
         "label": "Болхов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24161,7 +24329,7 @@ const federalRegions = [
         "label": "Верховье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24176,7 +24344,7 @@ const federalRegions = [
         "label": "Глазуновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24191,7 +24359,7 @@ const federalRegions = [
         "label": "Дмитровск-Орловский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24206,7 +24374,7 @@ const federalRegions = [
         "label": "Долгое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24221,7 +24389,7 @@ const federalRegions = [
         "label": "Залегощь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24236,7 +24404,7 @@ const federalRegions = [
         "label": "Змиевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24251,7 +24419,7 @@ const federalRegions = [
         "label": "Знаменское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24266,7 +24434,7 @@ const federalRegions = [
         "label": "Колпны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24281,7 +24449,7 @@ const federalRegions = [
         "label": "Красная Заря",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24296,7 +24464,7 @@ const federalRegions = [
         "label": "Кромы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24311,7 +24479,7 @@ const federalRegions = [
         "label": "Ливны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24326,7 +24494,7 @@ const federalRegions = [
         "label": "Малоархангельск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24341,7 +24509,7 @@ const federalRegions = [
         "label": "Мценск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24356,7 +24524,7 @@ const federalRegions = [
         "label": "Нарышкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24371,7 +24539,7 @@ const federalRegions = [
         "label": "Новосиль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24400,6 +24568,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -24409,7 +24581,7 @@ const federalRegions = [
         "label": "Покровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24424,7 +24596,7 @@ const federalRegions = [
         "label": "Сосково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24439,7 +24611,7 @@ const federalRegions = [
         "label": "Тросна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24454,7 +24626,7 @@ const federalRegions = [
         "label": "Хомутово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24469,7 +24641,7 @@ const federalRegions = [
         "label": "Хотынец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24484,7 +24656,7 @@ const federalRegions = [
         "label": "Шаблыкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24506,7 +24678,7 @@ const federalRegions = [
         "label": "Башмаково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24521,7 +24693,7 @@ const federalRegions = [
         "label": "Беднодемьяновск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24536,7 +24708,7 @@ const federalRegions = [
         "label": "Беково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24551,7 +24723,7 @@ const federalRegions = [
         "label": "Белинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24566,7 +24738,7 @@ const federalRegions = [
         "label": "Бессоновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24581,7 +24753,7 @@ const federalRegions = [
         "label": "Вадинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24596,7 +24768,7 @@ const federalRegions = [
         "label": "Верхозим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24611,7 +24783,7 @@ const federalRegions = [
         "label": "Городище",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24626,7 +24798,7 @@ const federalRegions = [
         "label": "Евлашево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24641,7 +24813,7 @@ const federalRegions = [
         "label": "Земетчино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24656,7 +24828,7 @@ const federalRegions = [
         "label": "Золотаревка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24671,7 +24843,7 @@ const federalRegions = [
         "label": "Исса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24686,7 +24858,7 @@ const federalRegions = [
         "label": "Каменка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24701,7 +24873,7 @@ const federalRegions = [
         "label": "Колышлей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24716,7 +24888,7 @@ const federalRegions = [
         "label": "Кондоль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24731,7 +24903,7 @@ const federalRegions = [
         "label": "Кузнецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24746,7 +24918,7 @@ const federalRegions = [
         "label": "Лопатино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24761,7 +24933,7 @@ const federalRegions = [
         "label": "Малая Сердоба",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24776,7 +24948,7 @@ const federalRegions = [
         "label": "Мокшан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24791,7 +24963,7 @@ const federalRegions = [
         "label": "Наровчат",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24806,7 +24978,7 @@ const federalRegions = [
         "label": "Неверкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24821,7 +24993,7 @@ const federalRegions = [
         "label": "Нижний Ломов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24836,7 +25008,7 @@ const federalRegions = [
         "label": "Никольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24851,7 +25023,7 @@ const federalRegions = [
         "label": "Пачелма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24880,6 +25052,10 @@ const federalRegions = [
           {
             "label": "Первомайский",
             "slug": "pervomayskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -24889,7 +25065,7 @@ const federalRegions = [
         "label": "Русский Камешкир",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24904,7 +25080,7 @@ const federalRegions = [
         "label": "Сердобск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24919,7 +25095,7 @@ const federalRegions = [
         "label": "Сосновоборск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24934,7 +25110,7 @@ const federalRegions = [
         "label": "Сура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24949,7 +25125,7 @@ const federalRegions = [
         "label": "Тамала",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24964,7 +25140,7 @@ const federalRegions = [
         "label": "Шемышейка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -24986,7 +25162,7 @@ const federalRegions = [
         "label": "Барда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25001,7 +25177,7 @@ const federalRegions = [
         "label": "Березники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25016,7 +25192,7 @@ const federalRegions = [
         "label": "Большая Соснова",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25031,7 +25207,7 @@ const federalRegions = [
         "label": "Верещагино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25046,7 +25222,7 @@ const federalRegions = [
         "label": "Гайны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25061,7 +25237,7 @@ const federalRegions = [
         "label": "Горнозаводск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25076,7 +25252,7 @@ const federalRegions = [
         "label": "Гремячинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25091,7 +25267,7 @@ const federalRegions = [
         "label": "Губаха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25106,7 +25282,7 @@ const federalRegions = [
         "label": "Добрянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25121,7 +25297,7 @@ const federalRegions = [
         "label": "Елово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25136,7 +25312,7 @@ const federalRegions = [
         "label": "Зюкайка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25151,7 +25327,7 @@ const federalRegions = [
         "label": "Ильинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25166,7 +25342,7 @@ const federalRegions = [
         "label": "Карагай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25181,7 +25357,7 @@ const federalRegions = [
         "label": "Керчевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25196,7 +25372,7 @@ const federalRegions = [
         "label": "Кизел",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25211,7 +25387,7 @@ const federalRegions = [
         "label": "Коса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25226,7 +25402,7 @@ const federalRegions = [
         "label": "Кочево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25241,7 +25417,7 @@ const federalRegions = [
         "label": "Красновишерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25256,7 +25432,7 @@ const federalRegions = [
         "label": "Краснокамск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25271,7 +25447,7 @@ const federalRegions = [
         "label": "Кудымкар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25286,7 +25462,7 @@ const federalRegions = [
         "label": "Куеда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25301,7 +25477,7 @@ const federalRegions = [
         "label": "Кунгур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25316,7 +25492,7 @@ const federalRegions = [
         "label": "Лысьва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25331,7 +25507,7 @@ const federalRegions = [
         "label": "Ныроб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25346,7 +25522,7 @@ const federalRegions = [
         "label": "Нытва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25361,7 +25537,7 @@ const federalRegions = [
         "label": "Октябрьский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25376,7 +25552,7 @@ const federalRegions = [
         "label": "Орда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25391,7 +25567,7 @@ const federalRegions = [
         "label": "Оса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25406,7 +25582,7 @@ const federalRegions = [
         "label": "Оханск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25421,7 +25597,7 @@ const federalRegions = [
         "label": "Очер",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25462,6 +25638,10 @@ const federalRegions = [
           {
             "label": "Свердловский",
             "slug": "sverdlovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -25471,7 +25651,7 @@ const federalRegions = [
         "label": "Соликамск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25486,7 +25666,7 @@ const federalRegions = [
         "label": "Суксун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25501,7 +25681,7 @@ const federalRegions = [
         "label": "Уинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25516,7 +25696,7 @@ const federalRegions = [
         "label": "Усолье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25531,7 +25711,7 @@ const federalRegions = [
         "label": "Усть-Кишерть",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25546,7 +25726,7 @@ const federalRegions = [
         "label": "Чайковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25561,7 +25741,7 @@ const federalRegions = [
         "label": "Частые",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25576,7 +25756,7 @@ const federalRegions = [
         "label": "Чердынь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25591,7 +25771,7 @@ const federalRegions = [
         "label": "Чернореченский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25606,7 +25786,7 @@ const federalRegions = [
         "label": "Чернушка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25621,7 +25801,7 @@ const federalRegions = [
         "label": "Чусовой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25636,7 +25816,7 @@ const federalRegions = [
         "label": "Юрла",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25651,7 +25831,7 @@ const federalRegions = [
         "label": "Юсьва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25673,7 +25853,7 @@ const federalRegions = [
         "label": "Анучино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25688,7 +25868,7 @@ const federalRegions = [
         "label": "Арсеньев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25703,7 +25883,7 @@ const federalRegions = [
         "label": "Артем",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25718,7 +25898,7 @@ const federalRegions = [
         "label": "Артемовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25733,7 +25913,7 @@ const federalRegions = [
         "label": "Большой Камень",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25748,7 +25928,7 @@ const federalRegions = [
         "label": "Валентин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25781,6 +25961,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -25790,7 +25974,7 @@ const federalRegions = [
         "label": "Высокогорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25805,7 +25989,7 @@ const federalRegions = [
         "label": "Горные Ключи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25820,7 +26004,7 @@ const federalRegions = [
         "label": "Горный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25835,7 +26019,7 @@ const federalRegions = [
         "label": "Дальнегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25850,7 +26034,7 @@ const federalRegions = [
         "label": "Дальнереченск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25865,7 +26049,7 @@ const federalRegions = [
         "label": "Зарубино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25880,7 +26064,7 @@ const federalRegions = [
         "label": "Кавалерово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25895,7 +26079,7 @@ const federalRegions = [
         "label": "Каменка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25910,7 +26094,7 @@ const federalRegions = [
         "label": "Камень-Рыболов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25925,7 +26109,7 @@ const federalRegions = [
         "label": "Кировский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25940,7 +26124,7 @@ const federalRegions = [
         "label": "Лазо",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25955,7 +26139,7 @@ const federalRegions = [
         "label": "Лесозаводск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25970,7 +26154,7 @@ const federalRegions = [
         "label": "Лучегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -25985,7 +26169,7 @@ const federalRegions = [
         "label": "Михайловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26000,7 +26184,7 @@ const federalRegions = [
         "label": "Находка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26015,7 +26199,7 @@ const federalRegions = [
         "label": "Новопокровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26030,7 +26214,7 @@ const federalRegions = [
         "label": "Ольга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26045,7 +26229,7 @@ const federalRegions = [
         "label": "Партизанск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26060,7 +26244,7 @@ const federalRegions = [
         "label": "Пограничный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26075,7 +26259,7 @@ const federalRegions = [
         "label": "Покровка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26090,7 +26274,7 @@ const federalRegions = [
         "label": "Русский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26105,7 +26289,7 @@ const federalRegions = [
         "label": "Самарга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26120,7 +26304,7 @@ const federalRegions = [
         "label": "Славянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26135,7 +26319,7 @@ const federalRegions = [
         "label": "Спасск-Дальний",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26150,7 +26334,7 @@ const federalRegions = [
         "label": "Терней",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26165,7 +26349,7 @@ const federalRegions = [
         "label": "Уссурийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26180,7 +26364,7 @@ const federalRegions = [
         "label": "Фокино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26195,7 +26379,7 @@ const federalRegions = [
         "label": "Хасан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26210,7 +26394,7 @@ const federalRegions = [
         "label": "Хороль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26225,7 +26409,7 @@ const federalRegions = [
         "label": "Черниговка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26240,7 +26424,7 @@ const federalRegions = [
         "label": "Чугуевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26255,7 +26439,7 @@ const federalRegions = [
         "label": "Яковлевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26277,7 +26461,7 @@ const federalRegions = [
         "label": "Бежаницы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26292,7 +26476,7 @@ const federalRegions = [
         "label": "Великие Луки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26307,7 +26491,7 @@ const federalRegions = [
         "label": "Гдов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26322,7 +26506,7 @@ const federalRegions = [
         "label": "Дедовичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26337,7 +26521,7 @@ const federalRegions = [
         "label": "Дно",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26352,7 +26536,7 @@ const federalRegions = [
         "label": "Заплюсье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26367,7 +26551,7 @@ const federalRegions = [
         "label": "Идрица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26382,7 +26566,7 @@ const federalRegions = [
         "label": "Красногородское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26397,7 +26581,7 @@ const federalRegions = [
         "label": "Кунья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26412,7 +26596,7 @@ const federalRegions = [
         "label": "Локня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26427,7 +26611,7 @@ const federalRegions = [
         "label": "Невель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26442,7 +26626,7 @@ const federalRegions = [
         "label": "Новоржев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26457,7 +26641,7 @@ const federalRegions = [
         "label": "Новосокольники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26472,7 +26656,7 @@ const federalRegions = [
         "label": "Опочка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26487,7 +26671,7 @@ const federalRegions = [
         "label": "Остров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26502,7 +26686,7 @@ const federalRegions = [
         "label": "Палкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26517,7 +26701,7 @@ const federalRegions = [
         "label": "Печоры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26532,7 +26716,7 @@ const federalRegions = [
         "label": "Плюсса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26547,7 +26731,7 @@ const federalRegions = [
         "label": "Порхов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26576,6 +26760,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -26585,7 +26773,7 @@ const federalRegions = [
         "label": "Пустошка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26600,7 +26788,7 @@ const federalRegions = [
         "label": "Пушкинские Горы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26615,7 +26803,7 @@ const federalRegions = [
         "label": "Пыталово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26630,7 +26818,7 @@ const federalRegions = [
         "label": "Себеж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26645,7 +26833,7 @@ const federalRegions = [
         "label": "Струги-Красные",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26660,7 +26848,7 @@ const federalRegions = [
         "label": "Усвяты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26682,7 +26870,7 @@ const federalRegions = [
         "label": "Азов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26697,7 +26885,7 @@ const federalRegions = [
         "label": "Аксай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26712,7 +26900,7 @@ const federalRegions = [
         "label": "Алмазный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26727,7 +26915,7 @@ const federalRegions = [
         "label": "Аютинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26742,7 +26930,7 @@ const federalRegions = [
         "label": "Багаевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26757,7 +26945,7 @@ const federalRegions = [
         "label": "Батайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26772,7 +26960,7 @@ const federalRegions = [
         "label": "Белая Калитва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26787,7 +26975,7 @@ const federalRegions = [
         "label": "Боковская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26802,7 +26990,7 @@ const federalRegions = [
         "label": "Большая Мартыновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26817,7 +27005,7 @@ const federalRegions = [
         "label": "Вешенская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26832,7 +27020,7 @@ const federalRegions = [
         "label": "Волгодонск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26847,7 +27035,7 @@ const federalRegions = [
         "label": "Восход",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26862,7 +27050,7 @@ const federalRegions = [
         "label": "Гигант",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26877,7 +27065,7 @@ const federalRegions = [
         "label": "Горняцкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26892,7 +27080,7 @@ const federalRegions = [
         "label": "Гуково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26907,7 +27095,7 @@ const federalRegions = [
         "label": "Донецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26922,7 +27110,7 @@ const federalRegions = [
         "label": "Донской",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26937,7 +27125,7 @@ const federalRegions = [
         "label": "Дубовское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26952,7 +27140,7 @@ const federalRegions = [
         "label": "Егорлыкская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26967,7 +27155,7 @@ const federalRegions = [
         "label": "Жирнов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26982,7 +27170,7 @@ const federalRegions = [
         "label": "Заветное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -26997,7 +27185,7 @@ const federalRegions = [
         "label": "Зверево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27012,7 +27200,7 @@ const federalRegions = [
         "label": "Зерноград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27027,7 +27215,7 @@ const federalRegions = [
         "label": "Зимовники",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27042,7 +27230,7 @@ const federalRegions = [
         "label": "Кагальницкая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27057,7 +27245,7 @@ const federalRegions = [
         "label": "Казанская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27072,7 +27260,7 @@ const federalRegions = [
         "label": "Каменоломни",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27087,7 +27275,7 @@ const federalRegions = [
         "label": "Каменск-Шахтинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27102,7 +27290,7 @@ const federalRegions = [
         "label": "Кашары",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27117,7 +27305,7 @@ const federalRegions = [
         "label": "Коксовый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27132,7 +27320,7 @@ const federalRegions = [
         "label": "Константиновск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27147,7 +27335,7 @@ const federalRegions = [
         "label": "Красный Сулин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27162,7 +27350,7 @@ const federalRegions = [
         "label": "Куйбышево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27177,7 +27365,7 @@ const federalRegions = [
         "label": "Матвеев Курган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27192,7 +27380,7 @@ const federalRegions = [
         "label": "Мигулинская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27207,7 +27395,7 @@ const federalRegions = [
         "label": "Миллерово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27222,7 +27410,7 @@ const federalRegions = [
         "label": "Милютинская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27237,7 +27425,7 @@ const federalRegions = [
         "label": "Морозовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27252,7 +27440,7 @@ const federalRegions = [
         "label": "Новочеркасск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27267,7 +27455,7 @@ const federalRegions = [
         "label": "Новошахтинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27282,7 +27470,7 @@ const federalRegions = [
         "label": "Обливская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27297,7 +27485,7 @@ const federalRegions = [
         "label": "Орловский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27312,7 +27500,7 @@ const federalRegions = [
         "label": "Песчанокопское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27327,7 +27515,7 @@ const federalRegions = [
         "label": "Покровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27342,7 +27530,7 @@ const federalRegions = [
         "label": "Пролетарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27357,7 +27545,7 @@ const federalRegions = [
         "label": "Ремонтное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27372,7 +27560,7 @@ const federalRegions = [
         "label": "Родионово-Несветайская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27417,6 +27605,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27426,7 +27618,7 @@ const federalRegions = [
         "label": "Сальск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27441,7 +27633,7 @@ const federalRegions = [
         "label": "Семикаракорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27482,6 +27674,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27491,7 +27687,7 @@ const federalRegions = [
         "label": "Тарасовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27506,7 +27702,7 @@ const federalRegions = [
         "label": "Тацинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27521,7 +27717,7 @@ const federalRegions = [
         "label": "Усть-Донецкий",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27536,7 +27732,7 @@ const federalRegions = [
         "label": "Целина",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27551,7 +27747,7 @@ const federalRegions = [
         "label": "Цимлянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27566,7 +27762,7 @@ const federalRegions = [
         "label": "Чалтырь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27581,7 +27777,7 @@ const federalRegions = [
         "label": "Чертково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27596,7 +27792,7 @@ const federalRegions = [
         "label": "Шахты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27611,7 +27807,7 @@ const federalRegions = [
         "label": "Шолоховский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27633,7 +27829,7 @@ const federalRegions = [
         "label": "Александро-Невский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27648,7 +27844,7 @@ const federalRegions = [
         "label": "Горняк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27663,7 +27859,7 @@ const federalRegions = [
         "label": "Гусь Железный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27678,7 +27874,7 @@ const federalRegions = [
         "label": "Елатьма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27693,7 +27889,7 @@ const federalRegions = [
         "label": "Ермишь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27708,7 +27904,7 @@ const federalRegions = [
         "label": "Заречный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27723,7 +27919,7 @@ const federalRegions = [
         "label": "Захарово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27738,7 +27934,7 @@ const federalRegions = [
         "label": "Кадом",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27753,7 +27949,7 @@ const federalRegions = [
         "label": "Касимов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27768,7 +27964,7 @@ const federalRegions = [
         "label": "Кораблино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27783,7 +27979,7 @@ const federalRegions = [
         "label": "Милославское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27798,7 +27994,7 @@ const federalRegions = [
         "label": "Михайлов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27813,7 +28009,7 @@ const federalRegions = [
         "label": "Пителино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27828,7 +28024,7 @@ const federalRegions = [
         "label": "Пронск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27843,7 +28039,7 @@ const federalRegions = [
         "label": "Путятино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27858,7 +28054,7 @@ const federalRegions = [
         "label": "Рыбное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27873,7 +28069,7 @@ const federalRegions = [
         "label": "Ряжск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27902,6 +28098,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -27911,7 +28111,7 @@ const federalRegions = [
         "label": "Сапожок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27926,7 +28126,7 @@ const federalRegions = [
         "label": "Сараи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27941,7 +28141,7 @@ const federalRegions = [
         "label": "Сасово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27956,7 +28156,7 @@ const federalRegions = [
         "label": "Скопин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27971,7 +28171,7 @@ const federalRegions = [
         "label": "Спас-Клепики",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -27986,7 +28186,7 @@ const federalRegions = [
         "label": "Спасск-Рязанский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28001,7 +28201,7 @@ const federalRegions = [
         "label": "Старожилово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28016,7 +28216,7 @@ const federalRegions = [
         "label": "Ухолово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28031,7 +28231,7 @@ const federalRegions = [
         "label": "Чучково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28046,7 +28246,7 @@ const federalRegions = [
         "label": "Шацк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28061,7 +28261,7 @@ const federalRegions = [
         "label": "Шилово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28083,7 +28283,7 @@ const federalRegions = [
         "label": "Алексеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28098,7 +28298,7 @@ const federalRegions = [
         "label": "Безенчук",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28113,7 +28313,7 @@ const federalRegions = [
         "label": "Богатое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28128,7 +28328,7 @@ const federalRegions = [
         "label": "Богатырь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28143,7 +28343,7 @@ const federalRegions = [
         "label": "Большая Глущица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28158,7 +28358,7 @@ const federalRegions = [
         "label": "Большая Черниговка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28173,7 +28373,7 @@ const federalRegions = [
         "label": "Борское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28188,7 +28388,7 @@ const federalRegions = [
         "label": "Волжский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28203,7 +28403,7 @@ const federalRegions = [
         "label": "Жигулевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28218,7 +28418,7 @@ const federalRegions = [
         "label": "Зольное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28233,7 +28433,7 @@ const federalRegions = [
         "label": "Исаклы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28248,7 +28448,7 @@ const federalRegions = [
         "label": "Камышла",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28263,7 +28463,7 @@ const federalRegions = [
         "label": "Кинель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28278,7 +28478,7 @@ const federalRegions = [
         "label": "Кинель-Черкасы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28293,7 +28493,7 @@ const federalRegions = [
         "label": "Клявлино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28308,7 +28508,7 @@ const federalRegions = [
         "label": "Кошки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28323,7 +28523,7 @@ const federalRegions = [
         "label": "Красноармейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28338,7 +28538,7 @@ const federalRegions = [
         "label": "Красный Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28353,7 +28553,7 @@ const federalRegions = [
         "label": "Куйбышев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28368,7 +28568,7 @@ const federalRegions = [
         "label": "Нефтегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28383,7 +28583,7 @@ const federalRegions = [
         "label": "Новокуйбышевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28398,7 +28598,7 @@ const federalRegions = [
         "label": "Октябрьск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28413,7 +28613,7 @@ const federalRegions = [
         "label": "Отрадный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28428,7 +28628,7 @@ const federalRegions = [
         "label": "Пестравка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28443,7 +28643,7 @@ const federalRegions = [
         "label": "Похвистнево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28458,7 +28658,7 @@ const federalRegions = [
         "label": "Приволжье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28507,6 +28707,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -28516,7 +28720,7 @@ const federalRegions = [
         "label": "Сургут (Самарская обл.)",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28531,7 +28735,7 @@ const federalRegions = [
         "label": "Сызрань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28556,6 +28760,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -28565,7 +28773,7 @@ const federalRegions = [
         "label": "Хворостянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28580,7 +28788,7 @@ const federalRegions = [
         "label": "Чапаевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28595,7 +28803,7 @@ const federalRegions = [
         "label": "Челно-Вершины",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28610,7 +28818,7 @@ const federalRegions = [
         "label": "Шентала",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28625,7 +28833,7 @@ const federalRegions = [
         "label": "Шигоны",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28647,7 +28855,7 @@ const federalRegions = [
         "label": "Александров Гай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28662,7 +28870,7 @@ const federalRegions = [
         "label": "Аркадак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28677,7 +28885,7 @@ const federalRegions = [
         "label": "Аткарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28692,7 +28900,7 @@ const federalRegions = [
         "label": "Базарный Карабулак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28707,7 +28915,7 @@ const federalRegions = [
         "label": "Балаково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28722,7 +28930,7 @@ const federalRegions = [
         "label": "Балашов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28737,7 +28945,7 @@ const federalRegions = [
         "label": "Балтай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28752,7 +28960,7 @@ const federalRegions = [
         "label": "Возрождение",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28767,7 +28975,7 @@ const federalRegions = [
         "label": "Вольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28782,7 +28990,7 @@ const federalRegions = [
         "label": "Воскресенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28797,7 +29005,7 @@ const federalRegions = [
         "label": "Горный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28812,7 +29020,7 @@ const federalRegions = [
         "label": "Дергачи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28827,7 +29035,7 @@ const federalRegions = [
         "label": "Духовницкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28842,7 +29050,7 @@ const federalRegions = [
         "label": "Екатериновка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28857,7 +29065,7 @@ const federalRegions = [
         "label": "Ершов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28872,7 +29080,7 @@ const federalRegions = [
         "label": "Заречный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28887,7 +29095,7 @@ const federalRegions = [
         "label": "Ивантеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28902,7 +29110,7 @@ const federalRegions = [
         "label": "Калининск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28917,7 +29125,7 @@ const federalRegions = [
         "label": "Каменский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28932,7 +29140,7 @@ const federalRegions = [
         "label": "Красноармейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28947,7 +29155,7 @@ const federalRegions = [
         "label": "Красный Кут",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28962,7 +29170,7 @@ const federalRegions = [
         "label": "Лысые Горы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28977,7 +29185,7 @@ const federalRegions = [
         "label": "Маркс",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -28992,7 +29200,7 @@ const federalRegions = [
         "label": "Мокроус",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29007,7 +29215,7 @@ const federalRegions = [
         "label": "Новоузенск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29022,7 +29230,7 @@ const federalRegions = [
         "label": "Новые Бурасы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29037,7 +29245,7 @@ const federalRegions = [
         "label": "Озинки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29052,7 +29260,7 @@ const federalRegions = [
         "label": "Перелюб",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29067,7 +29275,7 @@ const federalRegions = [
         "label": "Петровск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29082,7 +29290,7 @@ const federalRegions = [
         "label": "Питерка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29097,7 +29305,7 @@ const federalRegions = [
         "label": "Пугачев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29112,7 +29320,7 @@ const federalRegions = [
         "label": "Ровное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29127,7 +29335,7 @@ const federalRegions = [
         "label": "Романовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29142,7 +29350,7 @@ const federalRegions = [
         "label": "Ртищево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29157,7 +29365,7 @@ const federalRegions = [
         "label": "Самойловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29194,6 +29402,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -29203,7 +29415,7 @@ const federalRegions = [
         "label": "Степное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29218,7 +29430,7 @@ const federalRegions = [
         "label": "Татищево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29233,7 +29445,7 @@ const federalRegions = [
         "label": "Турки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29248,7 +29460,7 @@ const federalRegions = [
         "label": "Хвалынск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29263,7 +29475,7 @@ const federalRegions = [
         "label": "Энгельс",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29285,7 +29497,7 @@ const federalRegions = [
         "label": "Абый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29300,7 +29512,7 @@ const federalRegions = [
         "label": "Алдан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29315,7 +29527,7 @@ const federalRegions = [
         "label": "Амга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29330,7 +29542,7 @@ const federalRegions = [
         "label": "Батагай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29345,7 +29557,7 @@ const federalRegions = [
         "label": "Бердигестях",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29360,7 +29572,7 @@ const federalRegions = [
         "label": "Беркакит",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29375,7 +29587,7 @@ const federalRegions = [
         "label": "Бестях",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29390,7 +29602,7 @@ const federalRegions = [
         "label": "Борогонцы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29405,7 +29617,7 @@ const federalRegions = [
         "label": "Верхневилюйск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29420,7 +29632,7 @@ const federalRegions = [
         "label": "Верхнеколымск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29435,7 +29647,7 @@ const federalRegions = [
         "label": "Верхоянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29450,7 +29662,7 @@ const federalRegions = [
         "label": "Вилюйск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29465,7 +29677,7 @@ const federalRegions = [
         "label": "Витим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29480,7 +29692,7 @@ const federalRegions = [
         "label": "Власово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29495,7 +29707,7 @@ const federalRegions = [
         "label": "Жиганск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29510,7 +29722,7 @@ const federalRegions = [
         "label": "Зырянка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29525,7 +29737,7 @@ const federalRegions = [
         "label": "Кангалассы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29540,7 +29752,7 @@ const federalRegions = [
         "label": "Канкунский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29555,7 +29767,7 @@ const federalRegions = [
         "label": "Ленск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29570,7 +29782,7 @@ const federalRegions = [
         "label": "Майя",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29585,7 +29797,7 @@ const federalRegions = [
         "label": "Менкеря",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29600,7 +29812,7 @@ const federalRegions = [
         "label": "Мирный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29615,7 +29827,7 @@ const federalRegions = [
         "label": "Нерюнгри",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29630,7 +29842,7 @@ const federalRegions = [
         "label": "Нычалах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29645,7 +29857,7 @@ const federalRegions = [
         "label": "Нюрба",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29660,7 +29872,7 @@ const federalRegions = [
         "label": "Олекминск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29675,7 +29887,7 @@ const federalRegions = [
         "label": "Покровск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29690,7 +29902,7 @@ const federalRegions = [
         "label": "Сангар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29705,7 +29917,7 @@ const federalRegions = [
         "label": "Саскылах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29720,7 +29932,7 @@ const federalRegions = [
         "label": "Среднеколымск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29735,7 +29947,7 @@ const federalRegions = [
         "label": "Сунтар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29750,7 +29962,7 @@ const federalRegions = [
         "label": "Тикси",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29765,7 +29977,7 @@ const federalRegions = [
         "label": "Усть-Мая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29780,7 +29992,7 @@ const federalRegions = [
         "label": "Усть-Нера",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29795,7 +30007,7 @@ const federalRegions = [
         "label": "Хандыга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29810,7 +30022,7 @@ const federalRegions = [
         "label": "Хонуу",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29825,7 +30037,7 @@ const federalRegions = [
         "label": "Черский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29840,7 +30052,7 @@ const federalRegions = [
         "label": "Чокурдах",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29855,7 +30067,7 @@ const federalRegions = [
         "label": "Чурапча",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29870,7 +30082,7 @@ const federalRegions = [
         "label": "Якутск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29892,7 +30104,7 @@ const federalRegions = [
         "label": "Александровск-Сахалинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29907,7 +30119,7 @@ const federalRegions = [
         "label": "Анбэцу",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29922,7 +30134,7 @@ const federalRegions = [
         "label": "Анива",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29937,7 +30149,7 @@ const federalRegions = [
         "label": "Бошняково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29952,7 +30164,7 @@ const federalRegions = [
         "label": "Быков",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29967,7 +30179,7 @@ const federalRegions = [
         "label": "Вахрушев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29982,7 +30194,7 @@ const federalRegions = [
         "label": "Взморье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -29997,7 +30209,7 @@ const federalRegions = [
         "label": "Гастелло",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30012,7 +30224,7 @@ const federalRegions = [
         "label": "Горнозаводск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30027,7 +30239,7 @@ const federalRegions = [
         "label": "Долинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30042,7 +30254,7 @@ const federalRegions = [
         "label": "Ильинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30057,7 +30269,7 @@ const federalRegions = [
         "label": "Катангли",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30072,7 +30284,7 @@ const federalRegions = [
         "label": "Корсаков",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30087,7 +30299,7 @@ const federalRegions = [
         "label": "Курильск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30102,7 +30314,7 @@ const federalRegions = [
         "label": "Макаров",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30117,7 +30329,7 @@ const federalRegions = [
         "label": "Невельск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30132,7 +30344,7 @@ const federalRegions = [
         "label": "Ноглики",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30147,7 +30359,7 @@ const federalRegions = [
         "label": "Оха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30162,7 +30374,7 @@ const federalRegions = [
         "label": "Поронайск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30177,7 +30389,7 @@ const federalRegions = [
         "label": "Северо-Курильск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30192,7 +30404,7 @@ const federalRegions = [
         "label": "Смирных",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30207,7 +30419,7 @@ const federalRegions = [
         "label": "Томари",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30222,7 +30434,7 @@ const federalRegions = [
         "label": "Тымовское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30237,7 +30449,7 @@ const federalRegions = [
         "label": "Углегорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30252,7 +30464,7 @@ const federalRegions = [
         "label": "Холмск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30267,7 +30479,7 @@ const federalRegions = [
         "label": "Шахтерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30282,7 +30494,7 @@ const federalRegions = [
         "label": "Южно-Курильск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30297,7 +30509,7 @@ const federalRegions = [
         "label": "Южно-Сахалинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30319,7 +30531,7 @@ const federalRegions = [
         "label": "Алапаевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30334,7 +30546,7 @@ const federalRegions = [
         "label": "Алтынай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30349,7 +30561,7 @@ const federalRegions = [
         "label": "Арамиль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30364,7 +30576,7 @@ const federalRegions = [
         "label": "Артемовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30379,7 +30591,7 @@ const federalRegions = [
         "label": "Арти",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30394,7 +30606,7 @@ const federalRegions = [
         "label": "Асбест",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30409,7 +30621,7 @@ const federalRegions = [
         "label": "Ачит",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30424,7 +30636,7 @@ const federalRegions = [
         "label": "Байкалово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30439,7 +30651,7 @@ const federalRegions = [
         "label": "Басьяновский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30454,7 +30666,7 @@ const federalRegions = [
         "label": "Белоярский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30469,7 +30681,7 @@ const federalRegions = [
         "label": "Березовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30484,7 +30696,7 @@ const federalRegions = [
         "label": "Богданович",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30499,7 +30711,7 @@ const federalRegions = [
         "label": "Буланаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30514,7 +30726,7 @@ const federalRegions = [
         "label": "Верхний Тагил",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30529,7 +30741,7 @@ const federalRegions = [
         "label": "Верхняя Пышма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30544,7 +30756,7 @@ const federalRegions = [
         "label": "Верхняя Салда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30559,7 +30771,7 @@ const federalRegions = [
         "label": "Верхняя Синячиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30574,7 +30786,7 @@ const federalRegions = [
         "label": "Верхняя Сысерть",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30589,7 +30801,7 @@ const federalRegions = [
         "label": "Верхняя Тура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30604,7 +30816,7 @@ const federalRegions = [
         "label": "Верхотурье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30619,7 +30831,7 @@ const federalRegions = [
         "label": "Висим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30634,7 +30846,7 @@ const federalRegions = [
         "label": "Волчанск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30649,7 +30861,7 @@ const federalRegions = [
         "label": "Воронцовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30664,7 +30876,7 @@ const federalRegions = [
         "label": "Гари",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30679,7 +30891,7 @@ const federalRegions = [
         "label": "Дегтярск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30720,6 +30932,10 @@ const federalRegions = [
           {
             "label": "Чкаловский",
             "slug": "chkalovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -30729,7 +30945,7 @@ const federalRegions = [
         "label": "Ертарский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30744,7 +30960,7 @@ const federalRegions = [
         "label": "Заводоуспенское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30759,7 +30975,7 @@ const federalRegions = [
         "label": "Зыряновский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30774,7 +30990,7 @@ const federalRegions = [
         "label": "Зюзельский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30789,7 +31005,7 @@ const federalRegions = [
         "label": "Ивдель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30804,7 +31020,7 @@ const federalRegions = [
         "label": "Изумруд",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30819,7 +31035,7 @@ const federalRegions = [
         "label": "Ирбит",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30834,7 +31050,7 @@ const federalRegions = [
         "label": "Ис",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30849,7 +31065,7 @@ const federalRegions = [
         "label": "Каменск-Уральский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30864,7 +31080,7 @@ const federalRegions = [
         "label": "Камышлов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30879,7 +31095,7 @@ const federalRegions = [
         "label": "Карпинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30894,7 +31110,7 @@ const federalRegions = [
         "label": "Карпунинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30909,7 +31125,7 @@ const federalRegions = [
         "label": "Качканар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30924,7 +31140,7 @@ const federalRegions = [
         "label": "Кировград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30939,7 +31155,7 @@ const federalRegions = [
         "label": "Краснотурьинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30954,7 +31170,7 @@ const federalRegions = [
         "label": "Красноуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30969,7 +31185,7 @@ const federalRegions = [
         "label": "Красноуфимск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30984,7 +31200,7 @@ const federalRegions = [
         "label": "Кушва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -30999,7 +31215,7 @@ const federalRegions = [
         "label": "Лесной",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31014,7 +31230,7 @@ const federalRegions = [
         "label": "Михайловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31029,7 +31245,7 @@ const federalRegions = [
         "label": "Невьянск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31044,7 +31260,7 @@ const federalRegions = [
         "label": "Нижние Серги",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31069,6 +31285,10 @@ const federalRegions = [
           {
             "label": "Тагилстроевский",
             "slug": "tagilstroevskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31078,7 +31298,7 @@ const federalRegions = [
         "label": "Нижняя Салда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31093,7 +31313,7 @@ const federalRegions = [
         "label": "Нижняя Тура",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31108,7 +31328,7 @@ const federalRegions = [
         "label": "Новая Ляля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31123,7 +31343,7 @@ const federalRegions = [
         "label": "Новоуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31138,7 +31358,7 @@ const federalRegions = [
         "label": "Оус",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31153,7 +31373,7 @@ const federalRegions = [
         "label": "Первоуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31168,7 +31388,7 @@ const federalRegions = [
         "label": "Полевской",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31183,7 +31403,7 @@ const federalRegions = [
         "label": "Пышма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31198,7 +31418,7 @@ const federalRegions = [
         "label": "Ревда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31213,7 +31433,7 @@ const federalRegions = [
         "label": "Реж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31228,7 +31448,7 @@ const federalRegions = [
         "label": "Свердловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31243,7 +31463,7 @@ const federalRegions = [
         "label": "Североуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31258,7 +31478,7 @@ const federalRegions = [
         "label": "Серов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31273,7 +31493,7 @@ const federalRegions = [
         "label": "Сосьва",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31288,7 +31508,7 @@ const federalRegions = [
         "label": "Среднеуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31303,7 +31523,7 @@ const federalRegions = [
         "label": "Сухой Лог",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31318,7 +31538,7 @@ const federalRegions = [
         "label": "Сысерть",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31333,7 +31553,7 @@ const federalRegions = [
         "label": "Таборы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31348,7 +31568,7 @@ const federalRegions = [
         "label": "Тавда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31363,7 +31583,7 @@ const federalRegions = [
         "label": "Талица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31378,7 +31598,7 @@ const federalRegions = [
         "label": "Тугулым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31393,7 +31613,7 @@ const federalRegions = [
         "label": "Туринск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31408,7 +31628,7 @@ const federalRegions = [
         "label": "Туринская Слобода",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31430,7 +31650,7 @@ const federalRegions = [
         "label": "Алагир",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31445,7 +31665,7 @@ const federalRegions = [
         "label": "Ардон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31460,7 +31680,7 @@ const federalRegions = [
         "label": "Беслан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31475,7 +31695,7 @@ const federalRegions = [
         "label": "Бурон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31504,6 +31724,10 @@ const federalRegions = [
           {
             "label": "Северо-западный",
             "slug": "severo-zapadnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31513,7 +31737,7 @@ const federalRegions = [
         "label": "Дигора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31528,7 +31752,7 @@ const federalRegions = [
         "label": "Моздок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31543,7 +31767,7 @@ const federalRegions = [
         "label": "Орджоникидзе",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31558,7 +31782,7 @@ const federalRegions = [
         "label": "Чикола",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31580,7 +31804,7 @@ const federalRegions = [
         "label": "Велиж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31595,7 +31819,7 @@ const federalRegions = [
         "label": "Верхнеднепровский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31610,7 +31834,7 @@ const federalRegions = [
         "label": "Ворга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31625,7 +31849,7 @@ const federalRegions = [
         "label": "Вязьма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31640,7 +31864,7 @@ const federalRegions = [
         "label": "Гагарин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31655,7 +31879,7 @@ const federalRegions = [
         "label": "Глинка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31670,7 +31894,7 @@ const federalRegions = [
         "label": "Голынки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31685,7 +31909,7 @@ const federalRegions = [
         "label": "Демидов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31700,7 +31924,7 @@ const federalRegions = [
         "label": "Десногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31715,7 +31939,7 @@ const federalRegions = [
         "label": "Дорогобуж",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31730,7 +31954,7 @@ const federalRegions = [
         "label": "Духовщина",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31745,7 +31969,7 @@ const federalRegions = [
         "label": "Екимовичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31760,7 +31984,7 @@ const federalRegions = [
         "label": "Ельня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31775,7 +31999,7 @@ const federalRegions = [
         "label": "Ершичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31790,7 +32014,7 @@ const federalRegions = [
         "label": "Издешково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31805,7 +32029,7 @@ const federalRegions = [
         "label": "Кардымово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31820,7 +32044,7 @@ const federalRegions = [
         "label": "Красный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31835,7 +32059,7 @@ const federalRegions = [
         "label": "Монастырщина",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31850,7 +32074,7 @@ const federalRegions = [
         "label": "Новодугино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31865,7 +32089,7 @@ const federalRegions = [
         "label": "Починок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31880,7 +32104,7 @@ const federalRegions = [
         "label": "Рославль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31895,7 +32119,7 @@ const federalRegions = [
         "label": "Рудня",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31910,7 +32134,7 @@ const federalRegions = [
         "label": "Сафоново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31935,6 +32159,10 @@ const federalRegions = [
           {
             "label": "Промышленный",
             "slug": "promyshlennyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -31944,7 +32172,7 @@ const federalRegions = [
         "label": "Сычевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31959,7 +32187,7 @@ const federalRegions = [
         "label": "Угра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31974,7 +32202,7 @@ const federalRegions = [
         "label": "Хиславичи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -31989,7 +32217,7 @@ const federalRegions = [
         "label": "Холм-Жирковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32004,7 +32232,7 @@ const federalRegions = [
         "label": "Шумячи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32019,7 +32247,7 @@ const federalRegions = [
         "label": "Ярцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32041,7 +32269,7 @@ const federalRegions = [
         "label": "Александровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32056,7 +32284,7 @@ const federalRegions = [
         "label": "Арзгир",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32071,7 +32299,7 @@ const federalRegions = [
         "label": "Благодарный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32086,7 +32314,7 @@ const federalRegions = [
         "label": "Буденновск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32101,7 +32329,7 @@ const federalRegions = [
         "label": "Георгиевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32116,7 +32344,7 @@ const federalRegions = [
         "label": "Дивное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32131,7 +32359,7 @@ const federalRegions = [
         "label": "Домбай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32146,7 +32374,7 @@ const federalRegions = [
         "label": "Донское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32161,7 +32389,7 @@ const federalRegions = [
         "label": "Ессентуки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32176,7 +32404,7 @@ const federalRegions = [
         "label": "Железноводск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32191,7 +32419,7 @@ const federalRegions = [
         "label": "Зеленокумск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32206,7 +32434,7 @@ const federalRegions = [
         "label": "Изобильный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32221,7 +32449,7 @@ const federalRegions = [
         "label": "Иноземцево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32236,7 +32464,7 @@ const federalRegions = [
         "label": "Ипатово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32251,7 +32479,7 @@ const federalRegions = [
         "label": "Карачаевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32266,7 +32494,7 @@ const federalRegions = [
         "label": "Кисловодск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32281,7 +32509,7 @@ const federalRegions = [
         "label": "Кочубеевское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32296,7 +32524,7 @@ const federalRegions = [
         "label": "Красногвардейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32311,7 +32539,7 @@ const federalRegions = [
         "label": "Курсавка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32326,7 +32554,7 @@ const federalRegions = [
         "label": "Левокумское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32341,7 +32569,7 @@ const federalRegions = [
         "label": "Минеральные Воды",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32430,6 +32658,10 @@ const federalRegions = [
           {
             "label": "Центр",
             "slug": "centr"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32439,7 +32671,7 @@ const federalRegions = [
         "label": "Нефтекумск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32454,7 +32686,7 @@ const federalRegions = [
         "label": "Новоалександровск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32469,7 +32701,7 @@ const federalRegions = [
         "label": "Новоалександровская",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32484,7 +32716,7 @@ const federalRegions = [
         "label": "Новопавловск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32499,7 +32731,7 @@ const federalRegions = [
         "label": "Новоселицкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32514,7 +32746,7 @@ const federalRegions = [
         "label": "Преградная",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32529,7 +32761,7 @@ const federalRegions = [
         "label": "Пятигорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32544,7 +32776,7 @@ const federalRegions = [
         "label": "Светлоград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32559,7 +32791,7 @@ const federalRegions = [
         "label": "Солнечнодольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32584,6 +32816,10 @@ const federalRegions = [
           {
             "label": "Промышленный",
             "slug": "promyshlennyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32593,7 +32829,7 @@ const federalRegions = [
         "label": "Степное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32608,7 +32844,7 @@ const federalRegions = [
         "label": "Теберда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32623,7 +32859,7 @@ const federalRegions = [
         "label": "Усть-Джегута",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32638,7 +32874,7 @@ const federalRegions = [
         "label": "Хабез",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32653,7 +32889,7 @@ const federalRegions = [
         "label": "Черкесск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32675,7 +32911,7 @@ const federalRegions = [
         "label": "Бондари",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32690,7 +32926,7 @@ const federalRegions = [
         "label": "Гавриловка Вторая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32705,7 +32941,7 @@ const federalRegions = [
         "label": "Жердевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32720,7 +32956,7 @@ const federalRegions = [
         "label": "Знаменка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32735,7 +32971,7 @@ const federalRegions = [
         "label": "Инжавино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32750,7 +32986,7 @@ const federalRegions = [
         "label": "Кирсанов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32765,7 +33001,7 @@ const federalRegions = [
         "label": "Котовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32780,7 +33016,7 @@ const federalRegions = [
         "label": "Мичуринск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32795,7 +33031,7 @@ const federalRegions = [
         "label": "Мордово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32810,7 +33046,7 @@ const federalRegions = [
         "label": "Моршанск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32825,7 +33061,7 @@ const federalRegions = [
         "label": "Мучкапский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32840,7 +33076,7 @@ const federalRegions = [
         "label": "Первомайский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32855,7 +33091,7 @@ const federalRegions = [
         "label": "Петровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32870,7 +33106,7 @@ const federalRegions = [
         "label": "Пичаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32885,7 +33121,7 @@ const federalRegions = [
         "label": "Рассказово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32900,7 +33136,7 @@ const federalRegions = [
         "label": "Ржакса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32915,7 +33151,7 @@ const federalRegions = [
         "label": "Староюрьево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32940,6 +33176,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -32949,7 +33189,7 @@ const federalRegions = [
         "label": "Токаревка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32964,7 +33204,7 @@ const federalRegions = [
         "label": "Уварово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -32979,7 +33219,7 @@ const federalRegions = [
         "label": "Умет",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33001,7 +33241,7 @@ const federalRegions = [
         "label": "Агрыз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33016,7 +33256,7 @@ const federalRegions = [
         "label": "Азнакаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33031,7 +33271,7 @@ const federalRegions = [
         "label": "Аксубаево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33046,7 +33286,7 @@ const federalRegions = [
         "label": "Актюбинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33061,7 +33301,7 @@ const federalRegions = [
         "label": "Алексеевское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33076,7 +33316,7 @@ const federalRegions = [
         "label": "Альметьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33091,7 +33331,7 @@ const federalRegions = [
         "label": "Альметьевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33106,7 +33346,7 @@ const federalRegions = [
         "label": "Апастово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33121,7 +33361,7 @@ const federalRegions = [
         "label": "Арск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33136,7 +33376,7 @@ const federalRegions = [
         "label": "Бавлы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33151,7 +33391,7 @@ const federalRegions = [
         "label": "Базарные Матаки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33166,7 +33406,7 @@ const federalRegions = [
         "label": "Балтаси",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33181,7 +33421,7 @@ const federalRegions = [
         "label": "Богатые Сабы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33196,7 +33436,7 @@ const federalRegions = [
         "label": "Брежнев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33211,7 +33451,7 @@ const federalRegions = [
         "label": "Бугульма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33226,7 +33466,7 @@ const federalRegions = [
         "label": "Буинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33241,7 +33481,7 @@ const federalRegions = [
         "label": "Васильево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33256,7 +33496,7 @@ const federalRegions = [
         "label": "Верхний Услон",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33271,7 +33511,7 @@ const federalRegions = [
         "label": "Высокая Гора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33286,7 +33526,7 @@ const federalRegions = [
         "label": "Дербешкинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33301,7 +33541,7 @@ const federalRegions = [
         "label": "Елабуга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33316,7 +33556,7 @@ const federalRegions = [
         "label": "Заинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33331,7 +33571,7 @@ const federalRegions = [
         "label": "Зеленодольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33372,6 +33612,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -33381,7 +33625,7 @@ const federalRegions = [
         "label": "Камское Устье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33396,7 +33640,7 @@ const federalRegions = [
         "label": "Карабаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33411,7 +33655,7 @@ const federalRegions = [
         "label": "Куйбышев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33426,7 +33670,7 @@ const federalRegions = [
         "label": "Кукмод",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33441,7 +33685,7 @@ const federalRegions = [
         "label": "Кукмор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33456,7 +33700,7 @@ const federalRegions = [
         "label": "Лаишево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33471,7 +33715,7 @@ const federalRegions = [
         "label": "Лениногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33486,7 +33730,7 @@ const federalRegions = [
         "label": "Мамадыш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33501,7 +33745,7 @@ const federalRegions = [
         "label": "Менделеевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33516,7 +33760,7 @@ const federalRegions = [
         "label": "Мензелинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33531,7 +33775,7 @@ const federalRegions = [
         "label": "Муслюмово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33556,6 +33800,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -33565,7 +33813,7 @@ const federalRegions = [
         "label": "Нижнекамск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33580,7 +33828,7 @@ const federalRegions = [
         "label": "Новошешминск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33595,7 +33843,7 @@ const federalRegions = [
         "label": "Нурлат",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33610,7 +33858,7 @@ const federalRegions = [
         "label": "Пестрецы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33625,7 +33873,7 @@ const federalRegions = [
         "label": "Рыбная Слобода",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33640,7 +33888,7 @@ const federalRegions = [
         "label": "Сарманово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33655,7 +33903,7 @@ const federalRegions = [
         "label": "Старое Дрожжаное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33670,7 +33918,7 @@ const federalRegions = [
         "label": "Тетюши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33685,7 +33933,7 @@ const federalRegions = [
         "label": "Чистополь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33707,7 +33955,7 @@ const federalRegions = [
         "label": "Андреаполь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33722,7 +33970,7 @@ const federalRegions = [
         "label": "Бежецк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33737,7 +33985,7 @@ const federalRegions = [
         "label": "Белый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33752,7 +34000,7 @@ const federalRegions = [
         "label": "Белый Городок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33767,7 +34015,7 @@ const federalRegions = [
         "label": "Березайка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33782,7 +34030,7 @@ const federalRegions = [
         "label": "Бологое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33797,7 +34045,7 @@ const federalRegions = [
         "label": "Васильевский Мох",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33812,7 +34060,7 @@ const federalRegions = [
         "label": "Выползово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33827,7 +34075,7 @@ const federalRegions = [
         "label": "Вышний Волочек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33842,7 +34090,7 @@ const federalRegions = [
         "label": "Жарковский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33857,7 +34105,7 @@ const federalRegions = [
         "label": "Западная Двина",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33872,7 +34120,7 @@ const federalRegions = [
         "label": "Заречье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33887,7 +34135,7 @@ const federalRegions = [
         "label": "Зубцов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33902,7 +34150,7 @@ const federalRegions = [
         "label": "Изоплит",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33917,7 +34165,7 @@ const federalRegions = [
         "label": "Калашниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33932,7 +34180,7 @@ const federalRegions = [
         "label": "Калинин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33947,7 +34195,7 @@ const federalRegions = [
         "label": "Калязин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33962,7 +34210,7 @@ const federalRegions = [
         "label": "Кашин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33977,7 +34225,7 @@ const federalRegions = [
         "label": "Кесова Гора",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -33992,7 +34240,7 @@ const federalRegions = [
         "label": "Кимры",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34007,7 +34255,7 @@ const federalRegions = [
         "label": "Конаково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34022,7 +34270,7 @@ const federalRegions = [
         "label": "Красный Холм",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34037,7 +34285,7 @@ const federalRegions = [
         "label": "Кувшиново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34052,7 +34300,7 @@ const federalRegions = [
         "label": "Лесное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34067,7 +34315,7 @@ const federalRegions = [
         "label": "Лихославль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34082,7 +34330,7 @@ const federalRegions = [
         "label": "Максатиха",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34097,7 +34345,7 @@ const federalRegions = [
         "label": "Молоково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34112,7 +34360,7 @@ const federalRegions = [
         "label": "Нелидово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34127,7 +34375,7 @@ const federalRegions = [
         "label": "Оленино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34142,7 +34390,7 @@ const federalRegions = [
         "label": "Осташков",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34157,7 +34405,7 @@ const federalRegions = [
         "label": "Пено",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34172,7 +34420,7 @@ const federalRegions = [
         "label": "Рамешки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34187,7 +34435,7 @@ const federalRegions = [
         "label": "Ржев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34202,7 +34450,7 @@ const federalRegions = [
         "label": "Сандово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34217,7 +34465,7 @@ const federalRegions = [
         "label": "Селижарово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34232,7 +34480,7 @@ const federalRegions = [
         "label": "Сонково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34247,7 +34495,7 @@ const federalRegions = [
         "label": "Спирово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34262,7 +34510,7 @@ const federalRegions = [
         "label": "Старица",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34291,6 +34539,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -34300,7 +34552,7 @@ const federalRegions = [
         "label": "Торжок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34315,7 +34567,7 @@ const federalRegions = [
         "label": "Торопец",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34330,7 +34582,7 @@ const federalRegions = [
         "label": "Удомля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34345,7 +34597,7 @@ const federalRegions = [
         "label": "Фирово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34367,7 +34619,7 @@ const federalRegions = [
         "label": "Александровское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34382,7 +34634,7 @@ const federalRegions = [
         "label": "Асино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34397,7 +34649,7 @@ const federalRegions = [
         "label": "Бакчар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34412,7 +34664,7 @@ const federalRegions = [
         "label": "Батурино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34427,7 +34679,7 @@ const federalRegions = [
         "label": "Белый Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34442,7 +34694,7 @@ const federalRegions = [
         "label": "Зырянское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34457,7 +34709,7 @@ const federalRegions = [
         "label": "Итатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34472,7 +34724,7 @@ const federalRegions = [
         "label": "Каргасок",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34487,7 +34739,7 @@ const federalRegions = [
         "label": "Катайга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34502,7 +34754,7 @@ const federalRegions = [
         "label": "Кожевниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34517,7 +34769,7 @@ const federalRegions = [
         "label": "Колпашево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34532,7 +34784,7 @@ const federalRegions = [
         "label": "Кривошеино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34547,7 +34799,7 @@ const federalRegions = [
         "label": "Мельниково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34562,7 +34814,7 @@ const federalRegions = [
         "label": "Молчаново",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34577,7 +34829,7 @@ const federalRegions = [
         "label": "Парабель",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34592,7 +34844,7 @@ const federalRegions = [
         "label": "Первомайское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34607,7 +34859,7 @@ const federalRegions = [
         "label": "Подгорное",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34622,7 +34874,7 @@ const federalRegions = [
         "label": "Северск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34637,7 +34889,7 @@ const federalRegions = [
         "label": "Стрежевой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34666,6 +34918,10 @@ const federalRegions = [
           {
             "label": "Советский",
             "slug": "sovetskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -34675,7 +34931,7 @@ const federalRegions = [
         "label": "Тымск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34697,7 +34953,7 @@ const federalRegions = [
         "label": "Ак-Довурак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34712,7 +34968,7 @@ const federalRegions = [
         "label": "Бай Хаак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34727,7 +34983,7 @@ const federalRegions = [
         "label": "Кызыл",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34742,7 +34998,7 @@ const federalRegions = [
         "label": "Самагалтай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34757,7 +35013,7 @@ const federalRegions = [
         "label": "Сарыг-Сеп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34772,7 +35028,7 @@ const federalRegions = [
         "label": "Суть-Холь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34787,7 +35043,7 @@ const federalRegions = [
         "label": "Тоора-Хем",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34802,7 +35058,7 @@ const federalRegions = [
         "label": "Туран",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34817,7 +35073,7 @@ const federalRegions = [
         "label": "Тээли",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34832,7 +35088,7 @@ const federalRegions = [
         "label": "Хову-Аксы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34847,7 +35103,7 @@ const federalRegions = [
         "label": "Чадан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34862,7 +35118,7 @@ const federalRegions = [
         "label": "Шагонар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34877,7 +35133,7 @@ const federalRegions = [
         "label": "Эрзин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34899,7 +35155,7 @@ const federalRegions = [
         "label": "Агеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34914,7 +35170,7 @@ const federalRegions = [
         "label": "Алексин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34929,7 +35185,7 @@ const federalRegions = [
         "label": "Арсеньево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34944,7 +35200,7 @@ const federalRegions = [
         "label": "Барсуки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34959,7 +35215,7 @@ const federalRegions = [
         "label": "Бегичевский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34974,7 +35230,7 @@ const federalRegions = [
         "label": "Белев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -34989,7 +35245,7 @@ const federalRegions = [
         "label": "Богородицк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35004,7 +35260,7 @@ const federalRegions = [
         "label": "Болохово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35019,7 +35275,7 @@ const federalRegions = [
         "label": "Велегож",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35034,7 +35290,7 @@ const federalRegions = [
         "label": "Венев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35049,7 +35305,7 @@ const federalRegions = [
         "label": "Волово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35064,7 +35320,7 @@ const federalRegions = [
         "label": "Горелки",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35079,7 +35335,7 @@ const federalRegions = [
         "label": "Донской",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35094,7 +35350,7 @@ const federalRegions = [
         "label": "Дубна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35109,7 +35365,7 @@ const federalRegions = [
         "label": "Епифань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35124,7 +35380,7 @@ const federalRegions = [
         "label": "Ефремов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35139,7 +35395,7 @@ const federalRegions = [
         "label": "Заокский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35154,7 +35410,7 @@ const federalRegions = [
         "label": "Казановка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35169,7 +35425,7 @@ const federalRegions = [
         "label": "Кимовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35184,7 +35440,7 @@ const federalRegions = [
         "label": "Киреевск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35199,7 +35455,7 @@ const federalRegions = [
         "label": "Куркино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35214,7 +35470,7 @@ const federalRegions = [
         "label": "Ленинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35229,7 +35485,7 @@ const federalRegions = [
         "label": "Новомосковск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35244,7 +35500,7 @@ const federalRegions = [
         "label": "Одоев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35259,7 +35515,7 @@ const federalRegions = [
         "label": "Плавск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35274,7 +35530,7 @@ const federalRegions = [
         "label": "Суворов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35307,6 +35563,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -35316,7 +35576,7 @@ const federalRegions = [
         "label": "Узловая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35331,7 +35591,7 @@ const federalRegions = [
         "label": "Щекино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35346,7 +35606,7 @@ const federalRegions = [
         "label": "Ясногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35368,7 +35628,7 @@ const federalRegions = [
         "label": "Абатский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35383,7 +35643,7 @@ const federalRegions = [
         "label": "Аксарка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35398,7 +35658,7 @@ const federalRegions = [
         "label": "Армизонское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35413,7 +35673,7 @@ const federalRegions = [
         "label": "Аромашево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35428,7 +35688,7 @@ const federalRegions = [
         "label": "Белоярский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35443,7 +35703,7 @@ const federalRegions = [
         "label": "Бердюжье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35458,7 +35718,7 @@ const federalRegions = [
         "label": "Большое Сорокино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35473,7 +35733,7 @@ const federalRegions = [
         "label": "Вагай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35488,7 +35748,7 @@ const federalRegions = [
         "label": "Викулово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35503,7 +35763,7 @@ const federalRegions = [
         "label": "Винзили",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35518,7 +35778,7 @@ const federalRegions = [
         "label": "Голышманово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35533,7 +35793,7 @@ const federalRegions = [
         "label": "Губкинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35548,7 +35808,7 @@ const federalRegions = [
         "label": "Заводопетровский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35563,7 +35823,7 @@ const federalRegions = [
         "label": "Заводоуковск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35578,7 +35838,7 @@ const federalRegions = [
         "label": "Излучинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35593,7 +35853,7 @@ const federalRegions = [
         "label": "Исетское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35608,7 +35868,7 @@ const federalRegions = [
         "label": "Ишим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35623,7 +35883,7 @@ const federalRegions = [
         "label": "Казанское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35638,7 +35898,7 @@ const federalRegions = [
         "label": "Казым-Мыс",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35653,7 +35913,7 @@ const federalRegions = [
         "label": "Когалым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35668,7 +35928,7 @@ const federalRegions = [
         "label": "Кондинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35683,7 +35943,7 @@ const federalRegions = [
         "label": "Красноселькуп",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35698,7 +35958,7 @@ const federalRegions = [
         "label": "Лабытнанги",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35713,7 +35973,7 @@ const federalRegions = [
         "label": "Ларьяк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35728,7 +35988,7 @@ const federalRegions = [
         "label": "Мегион",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35743,7 +36003,7 @@ const federalRegions = [
         "label": "Мужи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35758,7 +36018,7 @@ const federalRegions = [
         "label": "Муравленко",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35773,7 +36033,7 @@ const federalRegions = [
         "label": "Надым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35788,7 +36048,7 @@ const federalRegions = [
         "label": "Находка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35803,7 +36063,7 @@ const federalRegions = [
         "label": "Нефтеюганск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35818,7 +36078,7 @@ const federalRegions = [
         "label": "Нижневартовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35833,7 +36093,7 @@ const federalRegions = [
         "label": "Нижняя Тавда",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35848,7 +36108,7 @@ const federalRegions = [
         "label": "Новый Уренгой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35863,7 +36123,7 @@ const federalRegions = [
         "label": "Ноябрьск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35878,7 +36138,7 @@ const federalRegions = [
         "label": "Нягань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35893,7 +36153,7 @@ const federalRegions = [
         "label": "Октябрьское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35908,7 +36168,7 @@ const federalRegions = [
         "label": "Омутинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35923,7 +36183,7 @@ const federalRegions = [
         "label": "Радужный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35938,7 +36198,7 @@ const federalRegions = [
         "label": "Салехард",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35953,7 +36213,7 @@ const federalRegions = [
         "label": "Сладково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35968,7 +36228,7 @@ const federalRegions = [
         "label": "Советский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35983,7 +36243,7 @@ const federalRegions = [
         "label": "Сургут",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -35998,7 +36258,7 @@ const federalRegions = [
         "label": "Тазовский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36013,7 +36273,7 @@ const federalRegions = [
         "label": "Тарко-Сале",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36028,7 +36288,7 @@ const federalRegions = [
         "label": "Тобольск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36057,6 +36317,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -36066,7 +36330,7 @@ const federalRegions = [
         "label": "Уват",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36081,7 +36345,7 @@ const federalRegions = [
         "label": "Унъюган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36096,7 +36360,7 @@ const federalRegions = [
         "label": "Упорово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36111,7 +36375,7 @@ const federalRegions = [
         "label": "Урай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36126,7 +36390,7 @@ const federalRegions = [
         "label": "Ханты-Мансийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36141,7 +36405,7 @@ const federalRegions = [
         "label": "Юрибей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36156,7 +36420,7 @@ const federalRegions = [
         "label": "Ялуторовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36171,7 +36435,7 @@ const federalRegions = [
         "label": "Яр-Сале",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36186,7 +36450,7 @@ const federalRegions = [
         "label": "Ярково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36208,7 +36472,7 @@ const federalRegions = [
         "label": "Алнаши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36223,7 +36487,7 @@ const federalRegions = [
         "label": "Балезино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36238,7 +36502,7 @@ const federalRegions = [
         "label": "Вавож",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36253,7 +36517,7 @@ const federalRegions = [
         "label": "Воткинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36268,7 +36532,7 @@ const federalRegions = [
         "label": "Глазов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36283,7 +36547,7 @@ const federalRegions = [
         "label": "Грахово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36298,7 +36562,7 @@ const federalRegions = [
         "label": "Дебесы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36313,7 +36577,7 @@ const federalRegions = [
         "label": "Завьялово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36328,7 +36592,7 @@ const federalRegions = [
         "label": "Игра",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36361,6 +36625,10 @@ const federalRegions = [
           {
             "label": "Устиновский",
             "slug": "ustinovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -36370,7 +36638,7 @@ const federalRegions = [
         "label": "Кама",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36385,7 +36653,7 @@ const federalRegions = [
         "label": "Камбарка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36400,7 +36668,7 @@ const federalRegions = [
         "label": "Каракулино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36415,7 +36683,7 @@ const federalRegions = [
         "label": "Кез",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36430,7 +36698,7 @@ const federalRegions = [
         "label": "Кизнер",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36445,7 +36713,7 @@ const federalRegions = [
         "label": "Киясово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36460,7 +36728,7 @@ const federalRegions = [
         "label": "Красногорское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36475,7 +36743,7 @@ const federalRegions = [
         "label": "Можга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36490,7 +36758,7 @@ const federalRegions = [
         "label": "Сарапул",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36505,7 +36773,7 @@ const federalRegions = [
         "label": "Селты",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36520,7 +36788,7 @@ const federalRegions = [
         "label": "Сюмси",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36535,7 +36803,7 @@ const federalRegions = [
         "label": "Ува",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36550,7 +36818,7 @@ const federalRegions = [
         "label": "Устинов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36565,7 +36833,7 @@ const federalRegions = [
         "label": "Шаркан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36580,7 +36848,7 @@ const federalRegions = [
         "label": "Юкаменское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36595,7 +36863,7 @@ const federalRegions = [
         "label": "Якшур-Бодья",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36610,7 +36878,7 @@ const federalRegions = [
         "label": "Яр",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36632,7 +36900,7 @@ const federalRegions = [
         "label": "Базарный Сызган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36647,7 +36915,7 @@ const federalRegions = [
         "label": "Барыш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36662,7 +36930,7 @@ const federalRegions = [
         "label": "Большое Нагаткино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36677,7 +36945,7 @@ const federalRegions = [
         "label": "Вешкайма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36692,7 +36960,7 @@ const federalRegions = [
         "label": "Глотовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36707,7 +36975,7 @@ const federalRegions = [
         "label": "Димитровград",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36722,7 +36990,7 @@ const federalRegions = [
         "label": "Игнатовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36737,7 +37005,7 @@ const federalRegions = [
         "label": "Измайлово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36752,7 +37020,7 @@ const federalRegions = [
         "label": "Инза",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36767,7 +37035,7 @@ const federalRegions = [
         "label": "Ишеевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36782,7 +37050,7 @@ const federalRegions = [
         "label": "Канадей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36797,7 +37065,7 @@ const federalRegions = [
         "label": "Карсун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36812,7 +37080,7 @@ const federalRegions = [
         "label": "Кузоватово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36827,7 +37095,7 @@ const federalRegions = [
         "label": "Майна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36842,7 +37110,7 @@ const federalRegions = [
         "label": "Новая Малыкла",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36857,7 +37125,7 @@ const federalRegions = [
         "label": "Новоспасское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36872,7 +37140,7 @@ const federalRegions = [
         "label": "Павловка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36887,7 +37155,7 @@ const federalRegions = [
         "label": "Радищево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36902,7 +37170,7 @@ const federalRegions = [
         "label": "Сенгилей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36917,7 +37185,7 @@ const federalRegions = [
         "label": "Старая Кулатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36932,7 +37200,7 @@ const federalRegions = [
         "label": "Старая Майна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36947,7 +37215,7 @@ const federalRegions = [
         "label": "Сурское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36962,7 +37230,7 @@ const federalRegions = [
         "label": "Тереньга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -36991,6 +37259,10 @@ const federalRegions = [
           {
             "label": "Ленинский",
             "slug": "leninskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37000,7 +37272,7 @@ const federalRegions = [
         "label": "Чердаклы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37022,7 +37294,7 @@ const federalRegions = [
         "label": "Амурск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37037,7 +37309,7 @@ const federalRegions = [
         "label": "Аян",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37052,7 +37324,7 @@ const federalRegions = [
         "label": "Березовый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37067,7 +37339,7 @@ const federalRegions = [
         "label": "Бикин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37082,7 +37354,7 @@ const federalRegions = [
         "label": "Бира",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37097,7 +37369,7 @@ const federalRegions = [
         "label": "Биракан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37112,7 +37384,7 @@ const federalRegions = [
         "label": "Богородское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37127,7 +37399,7 @@ const federalRegions = [
         "label": "Болонь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37142,7 +37414,7 @@ const federalRegions = [
         "label": "Ванино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37157,7 +37429,7 @@ const federalRegions = [
         "label": "Волочаевка Вторая",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37172,7 +37444,7 @@ const federalRegions = [
         "label": "Высокогорный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37187,7 +37459,7 @@ const federalRegions = [
         "label": "Вяземский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37202,7 +37474,7 @@ const federalRegions = [
         "label": "Горный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37217,7 +37489,7 @@ const federalRegions = [
         "label": "Гурское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37232,7 +37504,7 @@ const federalRegions = [
         "label": "Дормидонтовка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37247,7 +37519,7 @@ const federalRegions = [
         "label": "Заветы Ильича",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37262,7 +37534,7 @@ const federalRegions = [
         "label": "Известковый",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37277,7 +37549,7 @@ const federalRegions = [
         "label": "Иннокентьевка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37292,7 +37564,7 @@ const federalRegions = [
         "label": "Комсомольск-на-Амуре",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37307,7 +37579,7 @@ const federalRegions = [
         "label": "Ленинское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37322,7 +37594,7 @@ const federalRegions = [
         "label": "Нелькан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37337,7 +37609,7 @@ const federalRegions = [
         "label": "Николаевск-на-Амуре",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37352,7 +37624,7 @@ const federalRegions = [
         "label": "Облучье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37367,7 +37639,7 @@ const federalRegions = [
         "label": "Охотск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37382,7 +37654,7 @@ const federalRegions = [
         "label": "Переяславка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37397,7 +37669,7 @@ const federalRegions = [
         "label": "Смидович",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37412,7 +37684,7 @@ const federalRegions = [
         "label": "Советская Гавань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37427,7 +37699,7 @@ const federalRegions = [
         "label": "Софийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37442,7 +37714,7 @@ const federalRegions = [
         "label": "Троицкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37457,7 +37729,7 @@ const federalRegions = [
         "label": "Тугур",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37490,6 +37762,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37499,7 +37775,7 @@ const federalRegions = [
         "label": "Чегдомын",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37514,7 +37790,7 @@ const federalRegions = [
         "label": "Чумикан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37536,7 +37812,7 @@ const federalRegions = [
         "label": "Абакан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37551,7 +37827,7 @@ const federalRegions = [
         "label": "Саяногорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37573,7 +37849,7 @@ const federalRegions = [
         "label": "Агаповка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37588,7 +37864,7 @@ const federalRegions = [
         "label": "Аргаяш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37603,7 +37879,7 @@ const federalRegions = [
         "label": "Аша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37618,7 +37894,7 @@ const federalRegions = [
         "label": "Бакал",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37633,7 +37909,7 @@ const federalRegions = [
         "label": "Бреды",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37648,7 +37924,7 @@ const federalRegions = [
         "label": "Варна",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37663,7 +37939,7 @@ const federalRegions = [
         "label": "Верхнеуральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37678,7 +37954,7 @@ const federalRegions = [
         "label": "Верхний Уфалей",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37693,7 +37969,7 @@ const federalRegions = [
         "label": "Еманжелинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37708,7 +37984,7 @@ const federalRegions = [
         "label": "Златоуст",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37723,7 +37999,7 @@ const federalRegions = [
         "label": "Карабаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37738,7 +38014,7 @@ const federalRegions = [
         "label": "Карталы",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37753,7 +38029,7 @@ const federalRegions = [
         "label": "Касли",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37768,7 +38044,7 @@ const federalRegions = [
         "label": "Катав-Ивановск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37783,7 +38059,7 @@ const federalRegions = [
         "label": "Копейск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37798,7 +38074,7 @@ const federalRegions = [
         "label": "Коркино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37813,7 +38089,7 @@ const federalRegions = [
         "label": "Кунашак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37828,7 +38104,7 @@ const federalRegions = [
         "label": "Куса",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37843,7 +38119,7 @@ const federalRegions = [
         "label": "Кыштым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37868,6 +38144,10 @@ const federalRegions = [
           {
             "label": "Правобережный",
             "slug": "pravoberezhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37915,6 +38195,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -37924,7 +38208,7 @@ const federalRegions = [
         "label": "Озерск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37939,7 +38223,7 @@ const federalRegions = [
         "label": "Октябрьское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37954,7 +38238,7 @@ const federalRegions = [
         "label": "Пласт",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37969,7 +38253,7 @@ const federalRegions = [
         "label": "Сатка",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37984,7 +38268,7 @@ const federalRegions = [
         "label": "Сим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -37999,7 +38283,7 @@ const federalRegions = [
         "label": "Снежинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38014,7 +38298,7 @@ const federalRegions = [
         "label": "Трехгорный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38029,7 +38313,7 @@ const federalRegions = [
         "label": "Троицк",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38044,7 +38328,7 @@ const federalRegions = [
         "label": "Увельский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38059,7 +38343,7 @@ const federalRegions = [
         "label": "Уйское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38074,7 +38358,7 @@ const federalRegions = [
         "label": "Усть-Катав",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38089,7 +38373,7 @@ const federalRegions = [
         "label": "Фершампенуаз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38104,7 +38388,7 @@ const federalRegions = [
         "label": "Чебаркуль",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38145,6 +38429,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38154,7 +38442,7 @@ const federalRegions = [
         "label": "Чесма",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38169,7 +38457,7 @@ const federalRegions = [
         "label": "Южно-Уральск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38184,7 +38472,7 @@ const federalRegions = [
         "label": "Юрюзань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38206,7 +38494,7 @@ const federalRegions = [
         "label": "Карабулак",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38221,7 +38509,7 @@ const federalRegions = [
         "label": "Магас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38236,7 +38524,7 @@ const federalRegions = [
         "label": "Малгобек",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38251,7 +38539,7 @@ const federalRegions = [
         "label": "Назрань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38266,7 +38554,7 @@ const federalRegions = [
         "label": "Сунжа",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38288,7 +38576,7 @@ const federalRegions = [
         "label": "Аргун",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38303,7 +38591,7 @@ const federalRegions = [
         "label": "Грозный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38318,7 +38606,7 @@ const federalRegions = [
         "label": "Гудермес",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38333,7 +38621,7 @@ const federalRegions = [
         "label": "Курчалой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38348,7 +38636,7 @@ const federalRegions = [
         "label": "Урус-Мартан",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38363,7 +38651,7 @@ const federalRegions = [
         "label": "Шали",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38385,7 +38673,7 @@ const federalRegions = [
         "label": "Алатырь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38400,7 +38688,7 @@ const federalRegions = [
         "label": "Аликово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38415,7 +38703,7 @@ const federalRegions = [
         "label": "Батырева",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38430,7 +38718,7 @@ const federalRegions = [
         "label": "Буинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38445,7 +38733,7 @@ const federalRegions = [
         "label": "Вурнары",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38460,7 +38748,7 @@ const federalRegions = [
         "label": "Ибреси",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38475,7 +38763,7 @@ const federalRegions = [
         "label": "Канаш",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38490,7 +38778,7 @@ const federalRegions = [
         "label": "Киря",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38505,7 +38793,7 @@ const federalRegions = [
         "label": "Комсомольское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38520,7 +38808,7 @@ const federalRegions = [
         "label": "Красноармейское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38535,7 +38823,7 @@ const federalRegions = [
         "label": "Красные Четаи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38550,7 +38838,7 @@ const federalRegions = [
         "label": "Кугеси",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38565,7 +38853,7 @@ const federalRegions = [
         "label": "Мариинский Посад",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38580,7 +38868,7 @@ const federalRegions = [
         "label": "Моргауши",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38605,6 +38893,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38614,7 +38906,7 @@ const federalRegions = [
         "label": "Порецкое",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38629,7 +38921,7 @@ const federalRegions = [
         "label": "Урмары",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38644,7 +38936,7 @@ const federalRegions = [
         "label": "Цивильск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38673,6 +38965,10 @@ const federalRegions = [
           {
             "label": "Московский",
             "slug": "moskovskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -38682,7 +38978,7 @@ const federalRegions = [
         "label": "Шемурша",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38697,7 +38993,7 @@ const federalRegions = [
         "label": "Шумерля",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38712,7 +39008,7 @@ const federalRegions = [
         "label": "Ядрин",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38727,7 +39023,7 @@ const federalRegions = [
         "label": "Яльчики",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38742,7 +39038,7 @@ const federalRegions = [
         "label": "Янтиково",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38764,7 +39060,7 @@ const federalRegions = [
         "label": "Анадырь",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38779,7 +39075,7 @@ const federalRegions = [
         "label": "Билибино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38801,7 +39097,7 @@ const federalRegions = [
         "label": "Губкинский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38816,7 +39112,7 @@ const federalRegions = [
         "label": "Заполярный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38831,7 +39127,7 @@ const federalRegions = [
         "label": "Муравленко",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38846,7 +39142,7 @@ const federalRegions = [
         "label": "Надым",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38861,7 +39157,7 @@ const federalRegions = [
         "label": "Новый Уренгой",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38876,7 +39172,7 @@ const federalRegions = [
         "label": "Ноябрьск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38891,7 +39187,7 @@ const federalRegions = [
         "label": "Пуровск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38906,7 +39202,7 @@ const federalRegions = [
         "label": "Салехард",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38921,7 +39217,7 @@ const federalRegions = [
         "label": "Тарко",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38943,7 +39239,7 @@ const federalRegions = [
         "label": "Нарьян-Мар",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -38955,212 +39251,212 @@ const federalRegions = [
       {
         "type": "poselok",
         "label": "Амдерма",
-        "slug": ""
+        "slug": "amderma"
       },
       {
         "type": "derevnya",
         "label": "Андег",
-        "slug": ""
+        "slug": "andeg"
       },
       {
         "type": "derevnya",
         "label": "Белушье",
-        "slug": ""
+        "slug": "belushe"
       },
       {
         "type": "poselok",
         "label": "Бугрино",
-        "slug": ""
+        "slug": "bugrino"
       },
       {
         "type": "poselok",
         "label": "Варнек",
-        "slug": ""
+        "slug": "varnek"
       },
       {
         "type": "selo",
         "label": "Великовисочное",
-        "slug": ""
+        "slug": "velikovisochnoe"
       },
       {
         "type": "derevnya",
         "label": "Верхняя Пеша",
-        "slug": ""
+        "slug": "verhnyaya-pesha"
       },
       {
         "type": "derevnya",
         "label": "Вижас",
-        "slug": ""
+        "slug": "vizhas"
       },
       {
         "type": "derevnya",
         "label": "Волоковая",
-        "slug": ""
+        "slug": "volokovaya"
       },
       {
         "type": "derevnya",
         "label": "Волонга",
-        "slug": ""
+        "slug": "volonga"
       },
       {
         "type": "poselok",
         "label": "Выучейский",
-        "slug": ""
+        "slug": "vyucheyskiy"
       },
       {
         "type": "poselok",
         "label": "Индига",
-        "slug": ""
+        "slug": "indiga"
       },
       {
         "type": "working-poselok",
         "label": "Искателей",
-        "slug": ""
+        "slug": "iskateley"
       },
       {
         "type": "derevnya",
         "label": "Каменка",
-        "slug": ""
+        "slug": "kamenka"
       },
       {
         "type": "poselok",
         "label": "Каратайка",
-        "slug": ""
+        "slug": "karatayka"
       },
       {
         "type": "derevnya",
         "label": "Кия",
-        "slug": ""
+        "slug": "kiya"
       },
       {
         "type": "selo",
         "label": "Коткино",
-        "slug": ""
+        "slug": "kotkino"
       },
       {
         "type": "poselok",
         "label": "Красное",
-        "slug": ""
+        "slug": "krasnoe"
       },
       {
         "type": "derevnya",
         "label": "Куя",
-        "slug": ""
+        "slug": "kuya"
       },
       {
         "type": "selo",
         "label": "Лабожское",
-        "slug": ""
+        "slug": "labozhskoe"
       },
       {
         "type": "derevnya",
         "label": "Макарово",
-        "slug": ""
+        "slug": "makarovo"
       },
       {
         "type": "derevnya",
         "label": "Мгла",
-        "slug": ""
+        "slug": "mgla"
       },
       {
         "type": "poselok",
         "label": "Нельмин-Нос",
-        "slug": ""
+        "slug": "nelmin-nos"
       },
       {
         "type": "selo",
         "label": "Несь",
-        "slug": ""
+        "slug": "nes"
       },
       {
         "type": "selo",
         "label": "Нижняя Пеша",
-        "slug": ""
+        "slug": "nizhnyaya-pesha"
       },
       {
         "type": "selo",
         "label": "Оксино",
-        "slug": ""
+        "slug": "oksino"
       },
       {
         "type": "selo",
         "label": "Ома",
-        "slug": ""
+        "slug": "oma"
       },
       {
         "type": "derevnya",
         "label": "Осколково",
-        "slug": ""
+        "slug": "oskolkovo"
       },
       {
         "type": "derevnya",
         "label": "Пылемец",
-        "slug": ""
+        "slug": "pylemec"
       },
       {
         "type": "derevnya",
         "label": "Снопа",
-        "slug": ""
+        "slug": "snopa"
       },
       {
         "type": "selo",
         "label": "Тельвиска",
-        "slug": ""
+        "slug": "telviska"
       },
       {
         "type": "derevnya",
         "label": "Тошвиска",
-        "slug": ""
+        "slug": "toshviska"
       },
       {
         "type": "derevnya",
         "label": "Устье",
-        "slug": ""
+        "slug": "uste"
       },
       {
         "type": "poselok",
         "label": "Усть-Кара",
-        "slug": ""
+        "slug": "ust-kara"
       },
       {
         "type": "poselok",
         "label": "Харута",
-        "slug": ""
+        "slug": "haruta"
       },
       {
         "type": "poselok",
         "label": "Харьягинский",
-        "slug": ""
+        "slug": "haryaginskiy"
       },
       {
         "type": "poselok",
         "label": "Хонгурей",
-        "slug": ""
+        "slug": "hongurey"
       },
       {
         "type": "poselok",
         "label": "Хорей-Вер",
-        "slug": ""
+        "slug": "horey-ver"
       },
       {
         "type": "derevnya",
         "label": "Чёрная",
-        "slug": ""
+        "slug": "chyornaya"
       },
       {
         "type": "derevnya",
         "label": "Чижа",
-        "slug": ""
+        "slug": "chizha"
       },
       {
         "type": "selo",
         "label": "Шойна",
-        "slug": ""
+        "slug": "shoyna"
       },
       {
         "type": "derevnya",
         "label": "Щелино",
-        "slug": ""
+        "slug": "shchelino"
       }
     ]
   },
@@ -39175,7 +39471,7 @@ const federalRegions = [
         "label": "Аган",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39190,7 +39486,7 @@ const federalRegions = [
         "label": "Игрим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39205,7 +39501,7 @@ const federalRegions = [
         "label": "Излучинск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39220,7 +39516,7 @@ const federalRegions = [
         "label": "Лангепас",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39235,7 +39531,7 @@ const federalRegions = [
         "label": "Лянтор",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39250,7 +39546,7 @@ const federalRegions = [
         "label": "Мегион",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39265,7 +39561,7 @@ const federalRegions = [
         "label": "Нефтеюганск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39280,7 +39576,7 @@ const federalRegions = [
         "label": "Нижневартовск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39295,7 +39591,7 @@ const federalRegions = [
         "label": "Нягань",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39310,7 +39606,7 @@ const federalRegions = [
         "label": "Покачи",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39325,7 +39621,7 @@ const federalRegions = [
         "label": "Приобье",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39340,7 +39636,7 @@ const federalRegions = [
         "label": "Пыть-Ях",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39355,7 +39651,7 @@ const federalRegions = [
         "label": "Радужный",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39388,6 +39684,10 @@ const federalRegions = [
           {
             "label": "Центральный",
             "slug": "centralnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -39397,7 +39697,7 @@ const federalRegions = [
         "label": "Урай",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39412,7 +39712,7 @@ const federalRegions = [
         "label": "Ханты-Мансийск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39427,7 +39727,7 @@ const federalRegions = [
         "label": "Югорск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39449,7 +39749,7 @@ const federalRegions = [
         "label": "Андропов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39464,7 +39764,7 @@ const federalRegions = [
         "label": "Берендеево",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39479,7 +39779,7 @@ const federalRegions = [
         "label": "Большое Село",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39494,7 +39794,7 @@ const federalRegions = [
         "label": "Борисоглебский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39509,7 +39809,7 @@ const federalRegions = [
         "label": "Брейтово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39524,7 +39824,7 @@ const federalRegions = [
         "label": "Бурмакино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39539,7 +39839,7 @@ const federalRegions = [
         "label": "Варегово",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39554,7 +39854,7 @@ const federalRegions = [
         "label": "Волга",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39569,7 +39869,7 @@ const federalRegions = [
         "label": "Гаврилов Ям",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39584,7 +39884,7 @@ const federalRegions = [
         "label": "Данилов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39599,7 +39899,7 @@ const federalRegions = [
         "label": "Любим",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39614,7 +39914,7 @@ const federalRegions = [
         "label": "Мышкино",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39629,7 +39929,7 @@ const federalRegions = [
         "label": "Некрасовское",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39644,7 +39944,7 @@ const federalRegions = [
         "label": "Новый Некоуз",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39659,7 +39959,7 @@ const federalRegions = [
         "label": "Переславль-Залесский",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39674,7 +39974,7 @@ const federalRegions = [
         "label": "Пошехонье-Володарск",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39689,7 +39989,7 @@ const federalRegions = [
         "label": "Ростов",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39734,6 +40034,10 @@ const federalRegions = [
           {
             "label": "Южный",
             "slug": "yuzhnyy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       },
@@ -39743,7 +40047,7 @@ const federalRegions = [
         "label": "Тутаев",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39758,7 +40062,7 @@ const federalRegions = [
         "label": "Углич",
         "districts": [
           {
-            "label": "В городе",
+            "label": "В черте города",
             "slug": "inTown"
           },
           {
@@ -39795,6 +40099,10 @@ const federalRegions = [
           {
             "label": "Фрунзенский",
             "slug": "frunzenskiy"
+          },
+          {
+            "label": "Пригород",
+            "slug": "suburb"
           }
         ]
       }

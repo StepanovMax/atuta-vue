@@ -64,7 +64,7 @@
     ">
       <multiselect
         class="multiselect-search-main"
-        v-model="filterSelected.town"
+        v-model="townsList"
         :options="getFlatLocalitiesList"
         :show-labels="false"
         :allow-empty="false"
@@ -89,6 +89,7 @@
         :close-on-select="true"
         :multiple="false"
         :searchable="true"
+        :disabled="isDistrictsDisabled"
         label="label"
         track-by="label"
         placeholder="Район"
@@ -111,6 +112,8 @@ export default {
       isButtonShow: false,
       searchMainInputValue: null,
       hideSearch: true,
+      townsList: null,
+      isDistrictsDisabled: true,
     }
   },
   components: {
@@ -148,6 +151,14 @@ export default {
       },
       deep: true
     },
+    townsList: {
+      handler(value) {
+        this.filterSelected.town = value;
+        this.filterDataDefaultClone.district = value.districts;
+        this.isDistrictsDisabled = false;
+      },
+      deep: true
+    },
   },
   methods: {
     updateFilterState(data) {
@@ -175,8 +186,12 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
-  // mounted() {
-  //   console.info('Route ::', this.$router.history.current.name);
-  // },
+  mounted() {
+    if (this.$router.history.current.name === 'addObject') {
+      this.hideSearch = false;
+    } else {
+      this.hideSearch = true;
+    }
+  },
 };
 </script>

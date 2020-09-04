@@ -130,4 +130,14 @@
       top: calc(100% + 6px);
     }
   }
+
+  &.multiselect {
+    &--disabled {
+      .multiselect {
+        &__select {
+          background-color: $COLOR-GREY-DISABLED;
+        }
+      }
+    }
+  }
 }

@@ -21,6 +21,7 @@
       <div class="form form_add-object">
         <div class="form__row form__row_block-width form__row_block-width-half">
           <div class="form__block-width form__block-width-half">
+
             <div class="form__row">
               <h3 class="
                 form__title
@@ -73,12 +74,14 @@
                 <ul
                   v-if="suggestList.length > 0"
                   class="input-address__suggest-list"
+                  v-click-outside="hideSuggestionsList"
                 >
                   <li
                     class="input-address__suggest-list-item"
                     v-for="(item, index) in suggestList"
                     :key="'key-' + index"
                     @click="selectSuggestedAddress"
+                    v-click-outside.stop="hideSuggestionsList"
                   >
                     <p
                       class="input-address__suggest-list-item-text"
@@ -91,7 +94,7 @@
             </div>
           </div>
           <div class="form__block-width form__block-width-half">
-            <yandex-map 
+            <yandex-map
               class="add-object-page__map"
               :settings="settings"
               :coords="coordsTaganrog"
@@ -635,16 +638,10 @@ export default {
   watch: {
     townLabel: {
       handler(value) {
+        this.createdObject.town = value;
         const localityObject = this.getLocalityByLabel(value);
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
-        } else {
-          this.localityDistricts = [
-            {
-              label: 'Пригород',
-              slug: 'suburb',
-            }
-          ];
         }
       },
       deep: true
@@ -725,11 +722,13 @@ export default {
     this.createdObject.address = null; 
   },
   methods: {
+    hideSuggestionsList() {
+      this.suggestList = [];
+    },
     selectSuggestedAddress(event) {
-      console.log(event.target.innerText);
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
-      this.suggestList = [];
+      this.hideSuggestionsList;
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
