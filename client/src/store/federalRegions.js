@@ -8184,7 +8184,7 @@ const federalRegions = [
       {
         "type": "city",
         "slug": "taksio",
-        "label": "Такси��о",
+        "label": "Таксио",
         "districts": [
           {
             "label": "В черте города",

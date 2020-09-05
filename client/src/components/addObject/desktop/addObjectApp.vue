@@ -363,7 +363,6 @@ export default {
         return this.appAreaFullData;
       },
       set(value) {
-        console.log('test', value);
         this.appAreaFullData = this.validateNumbers(value);
         this.propCreatedObjectApp.area = this.appAreaFullData;
         this.validateArea();
