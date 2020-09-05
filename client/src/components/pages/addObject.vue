@@ -488,6 +488,10 @@
                   btn_middle
                   add-object-page__btn
                 "
+                :class="{
+                  'btn_disabled': formIsFilled
+                }"
+                :disabled="formIsFilled"
               >
                 Разместить объявление
               </button>
@@ -634,9 +638,18 @@ export default {
           phone: '+7 (928) 112-20-80',
         },
       ],
+      formIsFilled: true,
     }
   },
   watch: {
+    // formIsFilled: {
+    //   handler(value) {
+    //     if (value === true) {
+
+    //     }
+    //   },
+    //   deep: true
+    // },
     townLabel: {
       handler(value) {
         this.createdObject.town = value;
