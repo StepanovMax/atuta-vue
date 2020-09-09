@@ -22,7 +22,7 @@
     <draggable
       class="upload-images__list"
       ghost-class="ghost"
-      @sort="dragDetection($event)"
+      @sort="changeArrayOrder($event)"
       @start="dragging = true"
       @end="dragging = false"
       handle=".upload-images__handle"
@@ -106,6 +106,10 @@ export default {
       required: false,
     },
   },
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   data() {
     return {
       enabled: true,
@@ -114,6 +118,7 @@ export default {
       images: [],
       dataUploadedImages: [],
       filesArray: [],
+      urlArray: [],
     }
   },
   methods: {
@@ -207,6 +212,12 @@ export default {
               canvas.height = imagePHeight;
             }
             context.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+            // const newURL = canvas.toDataURL('image/jpeg', 0.2);
+            // vm.urlArray.push(newURL);
+            vm.filesArray[index].canvas = canvas;
+            // console.log('vm.urlArray ::', vm.urlArray);
+            vm.$emit('update:value', vm.filesArray);
           }
 
           // const currentUrl = URL.createObjectURL(fileList[index]);
@@ -221,7 +232,7 @@ export default {
     },
     rotateImage(way, index) {
       const image = new Image();
-      image.src = URL.createObjectURL(this.filesArray[index].object);
+      const currentUrl = image.src = URL.createObjectURL(this.filesArray[index].object);
       const imageRatio = this.filesArray[index].imageRatio;
       const imageID = this.filesArray[index].id;
       let currentDegree = this.calcDegree(way, index);
@@ -229,6 +240,7 @@ export default {
       let imageLHeight;
       let imagePWidth;
       let imagePHeight;
+      let vm = this;
 
       image.onload = function() {
         const canvas = document.getElementById(imageID);
@@ -363,14 +375,28 @@ export default {
         context.translate(translateX, translateY);
         context.rotate(currentDegree * Math.PI/180);
         context.drawImage(image, 0, 0, imageWidth, imageHeight);
+        const newURL = canvas.toDataURL('image/jpeg', 0.2);
+        // const newURL2 = URL.createObjectURL(value[0].object);
+        // vm.filesArray[index].object = canvas;
+        vm.filesArray[index].canvas = canvas;
+        // vm.urlArray[index] = newURL;
+        // console.log('newURL ::', newURL);
+        // const win = window.open(newURL, '_blank');
+        // win.focus();
         context.restore();
+        // vm.$emit('update:value', vm.filesArray);
+        vm.$emit('update:value', vm.filesArray);
       }
     },
     removeImage(index) {
       this.filesArray.splice(index, 1);
     },
+    updateValue() {
+      vm.$emit('update:value', vm.filesArray);
+    },
     changeArrayOrder(event) {
       this.filesArray = arrayMove(this.filesArray, event.oldIndex, event.newIndex);
+      this.$emit('update:value', this.filesArray);
     },
     drawRotated(image, degrees) {
       context.clearRect(0,0,canvas.width,canvas.height);

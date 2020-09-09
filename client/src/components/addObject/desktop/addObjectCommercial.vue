@@ -15,14 +15,19 @@
             form__title
             form__title_add-object
           ">
-            Тип объекта
+            <span>
+              Тип объекта
+            </span>
+            <span v-if="propCreatedObjectCommercial.type.required">
+              *
+            </span>
           </h3>
           <radioButtons
             key="objectCommercialTypeAddObject"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectCommercialTypeAddObject"
             :items="filterDataDefaultClone.commercialView"
-            :value.sync="propCreatedObjectCommercial.type"
+            :value.sync="propCreatedObjectCommercial.type.value"
           />
         </div>
       </div>
@@ -42,12 +47,17 @@
             form__title
             form__title_add-object
           ">
-            Площадь
+            <span>
+              Площадь
+            </span>
+            <span v-if="propCreatedObjectCommercial.area.required">
+              *
+            </span>
           </h3>
           <inputWithUnit
             propType="number"
             :propUnit="sectorUnit"
-            :value.sync="propCreatedObjectCommercial.area"
+            :value.sync="propCreatedObjectCommercial.area.value"
           />
         </div>
       </div>
@@ -55,8 +65,8 @@
 
     <div
       v-if="
-        propCreatedObjectCommercial.type
-        && propCreatedObjectCommercial.type.slug === 'sector'
+        propCreatedObjectCommercial.type.value
+        && propCreatedObjectCommercial.type.value.slug === 'sector'
       "
       class="form__row"
     >
@@ -64,7 +74,12 @@
         form__title
         form__title_add-object
       ">
-        Фасад
+        <span>
+          Фасад
+        </span>
+        <span v-if="propCreatedObjectCommercial.facade.required">
+          *
+        </span>
       </h3>
       <div class="
         form__row
@@ -78,7 +93,7 @@
           <inputWithUnit
             propType="number"
             propUnit="meter"
-            :value.sync="propCreatedObjectCommercial.facade"
+            :value.sync="propCreatedObjectCommercial.facade.value"
           />
         </div>
       </div>
@@ -98,14 +113,19 @@
             form__title
             form__title_add-object
           ">
-            Класс здания
+            <span>
+              Класс здания
+            </span>
+            <span v-if="propCreatedObjectCommercial.class.required">
+              *
+            </span>
           </h3>
           <radioButtons
             key="buildingTypeAddObject"
-            radioButtonsView="listVertical"
+            radioButtonsView="listHorizontal"
             radioButtonsId="buildingTypeAddObject"
             :items="filterDataDefaultClone.commercialClass"
-            :value.sync="propCreatedObjectCommercial.class"
+            :value.sync="propCreatedObjectCommercial.class.value"
           />
         </div>
       </div>
@@ -113,19 +133,21 @@
 
     <div
       v-if="
-        propCreatedObjectCommercial.type
-        && propCreatedObjectCommercial.type.slug !== 'sector'
+        propCreatedObjectCommercial.type.value
+        && propCreatedObjectCommercial.type.value.slug !== 'sector'
       "
       class="form__row"
     >
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Этажи
+        <span>
+          Этажи
+        </span>
+        <span v-if="propCreatedObjectCommercial.floor.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
@@ -136,10 +158,15 @@
             form__title
             form__title_add-object
           ">
-            Этаж*
+            <span>
+              Этаж
+            </span>
+            <span v-if="propCreatedObjectCommercial.floor.required">
+              *
+            </span>
           </h4>
           <multiselect
-            v-model="propCreatedObjectCommercial.floor"
+            v-model="propCreatedObjectCommercial.floor.value"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -159,7 +186,12 @@
             form__title
             form__title_add-object
           ">
-            Этажей всего*
+            <span>
+              Этажей всего
+            </span>
+            <span v-if="propCreatedObjectCommercial.floorAll.required">
+              *
+            </span>
           </h4>
           <multiselect
             v-model="floorAll"
@@ -204,8 +236,8 @@
 
     <div
       v-if="
-        propCreatedObjectCommercial.type
-        && propCreatedObjectCommercial.type.slug !== 'sector'
+        propCreatedObjectCommercial.type.value
+        && propCreatedObjectCommercial.type.value.slug !== 'sector'
       "
       class="form__row"
     >
@@ -312,8 +344,8 @@ export default {
     sectorUnit() {
       let sectorUnitSlug;
       if (
-        this.propCreatedObjectCommercial.type
-        && this.propCreatedObjectCommercial.type.slug === 'sector'
+        this.propCreatedObjectCommercial.type.value
+        && this.propCreatedObjectCommercial.type.value.slug === 'sector'
       ) {
         sectorUnitSlug = 'acr';
       } else {

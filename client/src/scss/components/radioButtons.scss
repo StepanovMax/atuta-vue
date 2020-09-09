@@ -52,6 +52,11 @@ $BORDER-RADIUS: 6px;
           width: 100%;
         }
       }
+
+      &_horizontal {
+        align-items: center;
+        margin-right: 20px;
+      }
     }
 
     &_float-right {
@@ -67,6 +72,10 @@ $BORDER-RADIUS: 6px;
 
     &_vertical {
       flex-direction: column;
+    }
+
+    &_horizontal {
+      flex-direction: row;
     }
   }
 

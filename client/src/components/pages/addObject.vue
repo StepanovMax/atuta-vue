@@ -27,13 +27,18 @@
                 form__title
                 form__title_add-object
               ">
-                Тип объекта*
+                <span>
+                  Тип объекта
+                </span>
+                <span v-if="createdObject.object.required">
+                  *
+                </span>
               </h3>
               <radioButtons
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectTypeAddObject"
                 :items="filterDataDefaultClone.object"
-                :value.sync="createdObject.object"
+                :value.sync="createdObject.object.value"
               />
             </div>
 
@@ -42,13 +47,18 @@
                 form__title
                 form__title_add-object
               ">
-                Тип сделки*
+                <span>
+                  Тип сделки
+                </span>
+                <span v-if="createdObject.deal.required">
+                  *
+                </span>
               </h3>
               <switcher
                 class="add-object-page__switcher"
                 switcherId="dealDesktop"
                 :items="filterDataDefaultClone.deal"
-                :value.sync="createdObject.deal"
+                :value.sync="dealVModel"
               />
             </div>
 
@@ -57,7 +67,12 @@
                 form__title
                 form__title_add-object
               ">
-                Адрес*
+                <span>
+                  Адрес
+                </span>
+                <span v-if="createdObject.address.required">
+                  *
+                </span>
               </h3>
               <div class="input-address">
                 <input
@@ -118,10 +133,15 @@
                 form__title
                 form__title_add-object
               ">
-                Район*
+                <span>
+                  Район
+                </span>
+                <span v-if="createdObject.district.required">
+                  *
+                </span>
               </h3>
               <multiselect
-                v-model="createdObject.district"
+                v-model="createdObject.district.value"
                 :options="localityDistricts"
                 :show-labels="false"
                 :allow-empty="false"
@@ -138,59 +158,65 @@
 
         <addObjectApp
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'app'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'app'
           "
           :propCreatedObject="createdObject"
         />
 
         <addObjectHouse
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'house'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'house'
           "
           :propCreatedObject="createdObject"
         />
 
         <addObjectRoom
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'room'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'room'
           "
           :propCreatedObject="createdObject"
         />
 
         <addObjectSector
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'sector'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'sector'
           "
           :propCreatedObject="createdObject"
         />
 
         <addObjectGarage
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'garage'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'garage'
           "
           :propCreatedObject="createdObject"
         />
 
         <addObjectCommercial
           v-if="
-            createdObject.deal
-            && createdObject.object
-            && createdObject.object.slug === 'commercial'
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'commercial'
           "
           :propCreatedObject="createdObject"
         />
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3 class="
@@ -200,43 +226,71 @@
                 form__title
                 form__title_add-object
               ">
-                Онлайн показ
+                <span>
+                  Онлайн показ
+                </span>
+                <span v-if="createdObject.onlineShow.required">
+                  *
+                </span>
               </h3>
               <switcher
                 class="add-object-page__switcher"
                 switcherId="onlineShowAddObject"
                 :items="filterDataDefaultClone.appOnlineShow"
-                :value.sync="createdObject.app.onlineShow"
+                :value.sync="createdObject.onlineShow.value"
               />
             </div>
           </div>
         </div>
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width">
               <h3 class="
                 form__title
                 form__title_add-object
               ">
-                Фотографии
+                <span>
+                  Фотографии
+                </span>
+                <span v-if="createdObject.photoGallery.required">
+                  *
+                </span>
               </h3>
               <upload-images
                 id="upload-images"
                 :propIsMultiple="true"
+                :value.sync="createdObject.photoGallery.value"
               />
             </div>
           </div>
         </div>
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width">
               <h3 class="
                 form__title
                 form__title_add-object
               ">
-                Описание
+                <span>
+                  Описание
+                </span>
+                <span v-if="createdObject.description.required">
+                  *
+                </span>
               </h3>
               <textarea
                 name=""
@@ -244,24 +298,35 @@
                 cols="30"
                 rows="10"
                 class="textarea"
-                v-model="createdObject.description"
+                v-model="createdObject.description.value"
               >
               </textarea>
             </div>
           </div>
         </div>
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-half">
             <div class="form__block-width form__block-width-half">
               <h3 class="
                 form__title
                 form__title_add-object
               ">
-                Телефон
+                <span>
+                  Телефон
+                </span>
+                <span v-if="createdObject.phone.required">
+                  *
+                </span>
               </h3>
               <multiselect
-                v-model="createdObject.phone"
+                v-model="createdObject.phone.value"
                 :options="phones"
                 :custom-label="labelWithPhone"
                 :show-labels="false"
@@ -277,14 +342,25 @@
           </div>
         </div>
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-half">
             <div class="form__block-width form__block-width-half">
               <h3 class="
                 form__title
                 form__title_add-object
               ">
-                Способ связи
+                <span>
+                  Способ связи
+                </span>
+                <span v-if="createdObject.connectionWay.required">
+                  *
+                </span>
               </h3>
               <checkboxes
                 checkboxId="connectionWayAddObject"
@@ -298,13 +374,13 @@
 
         <div
           v-if="
-            createdObject.deal
-            && createdObject.deal.slug === 'rent'
-            && createdObject.object
+            createdObject.deal.value
+            && createdObject.deal.value.slug === 'rent'
+            && createdObject.object.value
             && (
-              createdObject.object.slug === 'app'
-              || createdObject.object.slug === 'room'
-              || createdObject.object.slug === 'house'
+              createdObject.object.value.slug === 'app'
+              || createdObject.object.value.slug === 'room'
+              || createdObject.object.value.slug === 'house'
             )
           "
           class="form__row"
@@ -313,7 +389,12 @@
             form__title
             form__title_add-object
           ">
-            Срок аренды
+            <span>
+              Срок аренды
+            </span>
+            <span v-if="createdObject.rentType.required">
+              *
+            </span>
           </h3>
           <switcher
             class="add-object-page__switcher"
@@ -323,12 +404,18 @@
           />
         </div>
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <h3 class="
             form__title
             form__title_add-object
           ">
-            Цена
+            Цена*
           </h3>
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
@@ -344,15 +431,15 @@
               <inputWithUnit
                 propType="number"
                 propUnit="rouble"
-                :value.sync="createdObject.price"
+                :value.sync="createdObject.price.value"
               />
             </div>
             <div
               v-if="
-                createdObject.deal
-                && createdObject.deal.slug === 'rent'
-                && createdObject.object
-                && createdObject.object.slug === 'commercial'
+                createdObject.deal.value
+                && createdObject.deal.value.slug === 'rent'
+                && createdObject.object.value
+                && createdObject.object.value.slug === 'commercial'
               "
               class="form__block-width form__block-width-third"
             >
@@ -373,8 +460,8 @@
             </div>
             <div
               v-if="
-                createdObject.deal
-                && createdObject.deal.slug === 'rent'
+                createdObject.deal.value
+                && createdObject.deal.value.slug === 'rent'
               "
               class="form__block-width form__block-width-third"
             >
@@ -397,7 +484,13 @@
         </div>
 
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width">
             <div class="form__block-width">
               <h3 class="
@@ -423,7 +516,13 @@
         </div>
 
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width">
             <div class="form__block-width">
               <h3 class="
@@ -436,14 +535,20 @@
                 Услуга “Поднять объявление”
               </h3>
               <tarifs 
-                :value.sync="createdObject.tarif"
+                :value.sync="createdObject.tarif.value"
               />
             </div>
           </div>
         </div>
 
 
-        <div class="form__row">
+        <div
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+          "
+          class="form__row"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3 class="
@@ -461,7 +566,10 @@
         </div>
 
 
-        <div class="form__row">
+        <div
+          class="form__row"
+          v-if="formIsFilled"
+        >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <objectCardSample
@@ -481,7 +589,28 @@
               <p class="paragraph paragraph_mini">
                 Вот таким образом ваше объявление будет выглядеть после подачи.
               </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div
+          class="form__row"
+        >
+          <div class="form__row form__row_block-width form__row_block-width-third">
+            <div
+              class="
+                form__block-width
+                form__block-width-third
+              "
+            />
+            <div class="
+              form__block-width
+              form__block-width-two-third
+              form__block-width-third_to-bottom
+            ">
               <button
+                v-if="formIsFilled"
                 class="
                   btn
                   btn_blue
@@ -491,6 +620,19 @@
               >
                 Разместить объявление
               </button>
+              <button
+                v-else
+                class="
+                  btn
+                  btn_blue
+                  btn_middle
+                  add-object-page__btn
+                  btn_disabled
+                "
+                disabled="disabled"
+              >
+                Не заполнены поля
+              </button>
             </div>
           </div>
         </div>
@@ -499,6 +641,7 @@
 
 
       <div
+        v-local
         style="
           color: #444;
           font-size: 13px;
@@ -633,12 +776,14 @@ export default {
           phone: '+7 (928) 112-20-80',
         },
       ],
+      formIsFilled: false,
+      formIsFilledArray: [],
     }
   },
   watch: {
     townLabel: {
       handler(value) {
-        this.createdObject.town = value;
+        this.createdObject.address.town = value;
         const localityObject = this.getLocalityByLabel(value);
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
@@ -648,21 +793,46 @@ export default {
     },
     createdObject: {
       handler(value) {
-        // console.log('object', value);
-        // if (value.price) {
-        //   this.objectData.price = value.price;
-        // }
-        // if (value.address) {
-        //   this.objectData.address = value.address;
-        // }
-        // if (value.deal) {
-        //   this.objectData.dealType = value.deal;
-        // }
         this.objectData = value;
         this.createdObject = value;
-        this.objectData.agency = this.userData.name;
-        this.objectData.type = this.userData.type;
-        // console.log(this.objectData);
+        this.objectData.agency.name = this.userData.name;
+        this.objectData.agency.type = this.userData.type;
+
+        this.formIsFilledArray = [];
+        const obj1 = this.createdObject;
+        for (const key1 in obj1) {
+          if (!obj1.hasOwnProperty(key1)) continue;
+            const type = obj1.object.value;
+            const obj2 = obj1[key1];
+            if (obj2.hasOwnProperty('required')) {
+              if (obj2.required === true) {
+                if (obj2.value === null || obj2.value === '') {
+                  this.formIsFilledArray.push(key1);
+                }
+              }
+            } else {
+              if (type && type.slug === key1) {
+                for (const key2 in obj2) {
+                  const obj3 = obj2[key2];
+                  if (obj3 && obj3.required) {
+                    if (obj3.required === true) {
+                      if (obj3.value === null || obj3.value === '') {
+                        this.formIsFilledArray.push(key2);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+        }
+        console.log('formIsFilledArray ::', this.formIsFilledArray);
+
+        if (this.formIsFilledArray.length) {
+          this.formIsFilled = false;
+        } else {
+          this.formIsFilled = true;
+        }
+
       },
       deep: true
     },
@@ -676,21 +846,35 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
+    dealVModel: {
+      cache: false,
+      get() {
+        return this.createdObject.deal.value;
+      },
+      set(value) {
+        this.createdObject.deal.value = value;
+        if (this.createdObject.deal.value.slug === 'buy') {
+          this.createdObject.rentType.required = false;
+        } else if (this.createdObject.deal.value.slug === 'rent') {
+          this.createdObject.rentType.required = true;
+        }
+      }
+    },
     objectPrice: {
       cache: false,
       get() {
-        return this.objectData.price;
+        return this.objectData.price.value;
       },
       set(value) {
-        this.objectData.price = value;
-        this.createdObject.price = value;
+        this.objectData.price.value = value;
+        this.createdObject.price.value = value;
       }
     },
     priceTitle() {
       let titleLabel = 'Цена';
-      if (this.createdObject.deal && this.createdObject.deal.slug === 'buy') {
+      if (this.createdObject.deal.value && this.createdObject.deal.value.slug === 'buy') {
         titleLabel = 'Цена';
-      } else if (this.createdObject.deal && this.createdObject.deal.slug === 'rent') {
+      } else if (this.createdObject.deal.value && this.createdObject.deal.value.slug === 'rent') {
         titleLabel = 'Цена в месяц';
       }
       if (this.createdObject.rentType && this.createdObject.rentType.slug === 'per-day') {
@@ -709,8 +893,8 @@ export default {
     },
     totalPrice() {
       let selectedTarifPrice = 0;
-      if (this.createdObject.tarif) {
-        selectedTarifPrice = this.createdObject.tarif.price;
+      if (this.createdObject.tarif.value) {
+        selectedTarifPrice = this.createdObject.tarif.value.price;
       }
       const defaultPrice = 30;
       const sum = defaultPrice + selectedTarifPrice;
@@ -719,7 +903,7 @@ export default {
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
-    this.createdObject.address = null; 
+    this.createdObject.address.value = null; 
   },
   methods: {
     hideSuggestionsList() {
@@ -728,6 +912,9 @@ export default {
     selectSuggestedAddress(event) {
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
+      // console.log('event.target.innerText ::', event.target.innerText);
+      this.createdObject.address.value = event.target.innerText;
+      this.createdObject.address.coords = this.coordsTaganrog;
       this.hideSuggestionsList;
     },
     labelWithPhone ({ label, phone }) {
@@ -748,7 +935,7 @@ export default {
     },
     onInputEnter(event) {
       this.convertAddress(event.target.value);
-      console.log('event.target.value ::', event.target.value);
+      // console.log('event.target.value ::', event.target.value);
     },
     convertAddress(address) {
       ymaps.geocode(address).then(
@@ -788,7 +975,7 @@ export default {
               } else if (item.kind === 'locality') {
                 selectedAddressArray.push(item.name);
                 this.townLabel = item.name;
-                this.createdObject.town = this.townObject;
+                this.createdObject.address.town = this.townObject;
               } else {
                 if (item.kind === 'street' || item.kind === 'house') {
                   if (item.kind === 'street') {

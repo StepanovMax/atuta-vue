@@ -10,6 +10,14 @@ import App from './App.vue';
 import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
 
+Vue.directive(
+  'local',
+  el => {
+    if (!window.location.hostname.includes('localhost')) {
+      el.style.display = 'none';
+    }
+  }
+);
  
 Vue.use(vClickOutside);
  

@@ -8,13 +8,48 @@
             form__title
             form__title_add-object
           ">
-            Вид объекта*
+            <span>
+              Вид объекта
+            </span>
+            <span v-if="propCreatedObjectHouse.type.required">
+              *
+            </span>
           </h3>
           <radioButtons
             radioButtonsView="wrapHalf"
             radioButtonsId="objectViewAddObject"
             :items="filterDataDefaultClone.houseTypes"
-            :value.sync="propCreatedObjectHouse.type"
+            :value.sync="propCreatedObjectHouse.type.value"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__row form__row_block-width form__row_block-width-third">
+        <div class="form__block-width form__block-width-third">
+          <h3 class="
+            form__title
+            form__title_add-object
+          ">
+            <span>
+              Количество комнат
+            </span>
+            <span v-if="propCreatedObjectHouse.roomsCount.required">
+              *
+            </span>
+          </h3>
+          <multiselect
+            v-model="propCreatedObjectHouse.roomsCount.value"
+            :options="filterDataDefaultClone.houseRoomsCount"
+            :show-labels="false"
+            :allow-empty="false"
+            :close-on-select="true"
+            :multiple="false"
+            :searchable="true"
+            label="label"
+            track-by="label"
+            placeholder="Количество комнат"
           />
         </div>
       </div>
@@ -25,12 +60,17 @@
         form__title
         form__title_add-object
       ">
-        Год постройки
+        <span>
+          Год постройки
+        </span>
+        <span v-if="propCreatedObjectHouse.year.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectHouse.year"
+            v-model="propCreatedObjectHouse.year.value"
             :options="houseYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -52,35 +92,15 @@
             form__title
             form__title_add-object
           ">
-            Количество комнат*
+            <span>
+              Материал стен
+            </span>
+            <span v-if="propCreatedObjectHouse.wall.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.roomsCount"
-            :options="filterDataDefaultClone.houseRoomsCount"
-            :show-labels="false"
-            :allow-empty="false"
-            :close-on-select="true"
-            :multiple="false"
-            :searchable="true"
-            label="label"
-            track-by="label"
-            placeholder="Количество комнат"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="form__row">
-      <div class="form__row form__row_block-width form__row_block-width-third">
-        <div class="form__block-width form__block-width-third">
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            Материал стен
-          </h3>
-          <multiselect
-            v-model="propCreatedObjectHouse.wall"
+            v-model="propCreatedObjectHouse.wall.value"
             :options="filterDataDefaultClone.houseWall"
             :show-labels="false"
             :allow-empty="false"
@@ -97,13 +117,15 @@
 
     <div class="form__row">
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Площадь
+        <span>
+          Площадь
+        </span>
+        <span v-if="propCreatedObjectHouse.areaHouse.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
@@ -114,13 +136,18 @@
             form__title
             form__title_add-object
           ">
-            Площадь дома
+            <span>
+              Площадь дома
+            </span>
+            <span v-if="propCreatedObjectHouse.areaHouse.required">
+              *
+            </span>
           </h4>
           <div class="">
             <inputWithUnit
               propType="number"
               propUnit="meterSquare"
-              :value.sync="propCreatedObjectHouse.areaHouse"
+              :value.sync="propCreatedObjectHouse.areaHouse.value"
             />
           </div>
         </div>
@@ -132,12 +159,17 @@
             form__title
             form__title_add-object
           ">
-            Площадь участка
+            <span>
+              Площадь участка
+            </span>
+            <span v-if="propCreatedObjectHouse.areaLand.required">
+              *
+            </span>
           </h4>
           <inputWithUnit
             propType="number"
             propUnit="acr"
-            :value.sync="propCreatedObjectHouse.areaLand"
+            :value.sync="propCreatedObjectHouse.areaLand.value"
           />
         </div>
       </div>
@@ -150,10 +182,15 @@
             form__title
             form__title_add-object
           ">
-            Этажей всего
+            <span>
+              Этажей всего
+            </span>
+            <span v-if="propCreatedObjectHouse.floorAll.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.floorAll"
+            v-model="propCreatedObjectHouse.floorAll.value"
             :options="houseFloors"
             :show-labels="false"
             :allow-empty="false"
@@ -175,10 +212,15 @@
             form__title
             form__title_add-object
           ">
-            Расстояние до города
+            <span>
+              Расстояние до города
+            </span>
+            <span v-if="propCreatedObjectHouse.distance.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.distance"
+            v-model="propCreatedObjectHouse.distance.value"
             :options="getDistanceArray"
             :show-labels="false"
             :allow-empty="false"
@@ -195,8 +237,8 @@
 
     <addObjectComfort
       v-if="
-        propCreatedObject.deal
-        && propCreatedObject.deal.slug === 'rent'
+        propCreatedObject.deal.value
+        && propCreatedObject.deal.value.slug === 'rent'
       "
       :propCreatedObjectComfort="propCreatedObjectHouse"
     />

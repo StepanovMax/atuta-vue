@@ -5,19 +5,21 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Тип объекта*
+            <span>
+              Тип объекта
+            </span>
+            <span v-if="propCreatedObjectApp.type.required">
+              *
+            </span>
           </h3>
           <switcher
             class="add-object-page__switcher"
             switcherId="typeAddObject"
             :items="filterDataDefaultClone.appTypes"
-            :value.sync="propCreatedObjectApp.type"
+            :value.sync="propCreatedObjectApp.type.value"
           />
         </div>
       </div>
@@ -27,19 +29,21 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Вид дома
+            <span>
+              Вид дома
+            </span>
+            <span v-if="propCreatedObjectApp.view.required">
+              *
+            </span>
           </h3>
           <radioButtons
             radioButtonsView="wrapHalf"
             radioButtonsId="appViewAddObject"
             :items="filterDataDefaultClone.appView"
-            :value.sync="propCreatedObjectApp.view"
+            :value.sync="propCreatedObjectApp.view.value"
           />
         </div>
       </div>
@@ -49,16 +53,18 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Количество комнат*
+            <span>
+              Количество комнат
+            </span>
+            <span v-if="propCreatedObjectApp.roomsCount.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectApp.roomsCount"
+            v-model="propCreatedObjectApp.roomsCount.value"
             :options="filterDataDefaultClone.appRooms"
             :show-labels="false"
             :allow-empty="false"
@@ -75,13 +81,15 @@
 
     <div class="form__row">
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Этажи
+        <span>
+          Этажи
+        </span>
+        <span v-if="propCreatedObjectApp.floor.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
@@ -92,10 +100,15 @@
             form__title
             form__title_add-object
           ">
-            Этаж*
+            <span>
+              Этаж
+            </span>
+            <span v-if="propCreatedObjectApp.floor.required">
+              *
+            </span>
           </h4>
           <multiselect
-            v-model="propCreatedObjectApp.floor"
+            v-model="propCreatedObjectApp.floor.value"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -115,7 +128,12 @@
             form__title
             form__title_add-object
           ">
-            Этажей всего*
+            <span>
+              Этажей всего
+            </span>
+            <span v-if="propCreatedObjectApp.floorAll.required">
+              *
+            </span>
           </h4>
           <multiselect
             v-model="floorAll"
@@ -135,18 +153,20 @@
 
     <div class="form__row">
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Год постройки
+        <span>
+          Год постройки
+        </span>
+        <span v-if="propCreatedObjectApp.year.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectApp.year"
+            v-model="propCreatedObjectApp.year.value"
             :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -163,13 +183,15 @@
 
     <div class="form__row">
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Площадь
+        <span>
+          Площадь
+        </span>
+        <span v-if="propCreatedObjectApp.area.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
@@ -180,7 +202,12 @@
             form__title
             form__title_add-object
           ">
-            Общая площадь
+            <span>
+              Общая площадь
+            </span>
+            <span v-if="propCreatedObjectApp.area.required">
+              *
+            </span>
           </h4>
           <inputWithUnit
             propType="number"
@@ -199,7 +226,12 @@
             form__title
             form__title_add-object
           ">
-            Площадь кухни
+            <span>
+              Площадь кухни
+            </span>
+            <span v-if="propCreatedObjectApp.areaKitchen.required">
+              *
+            </span>
           </h4>
           <inputWithUnit
             propType="number"
@@ -218,7 +250,12 @@
             form__title
             form__title_add-object
           ">
-            Жилая площадь
+            <span>
+              Жилая площадь
+            </span>
+            <span v-if="propCreatedObjectApp.areaLiving.required">
+              *
+            </span>
           </h4>
           <inputWithUnit
             propType="number"
@@ -252,8 +289,8 @@
 
     <addObjectComfort
       v-if="
-        propCreatedObject.deal
-        && propCreatedObject.deal.slug === 'rent'
+        propCreatedObject.deal.value
+        && propCreatedObject.deal.value.slug === 'rent'
       "
       :propCreatedObjectComfort="propCreatedObjectApp"
     />
