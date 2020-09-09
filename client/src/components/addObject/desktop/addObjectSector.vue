@@ -6,7 +6,12 @@
         form__title
         form__title_add-object
       ">
-        Площадь участка
+        <span>
+          Площадь участка
+        </span>
+        <span v-if="propCreatedObjectSector.area.required">
+          *
+        </span>
       </h3>
       <div class="
         form__row
@@ -20,7 +25,7 @@
           <inputWithUnit
             propType="number"
             propUnit="acr"
-            :value.sync="propCreatedObjectSector.area"
+            :value.sync="propCreatedObjectSector.area.value"
           />
         </div>
       </div>
@@ -31,7 +36,12 @@
         form__title
         form__title_add-object
       ">
-        Фасад
+        <span>
+          Фасад
+        </span>
+        <span v-if="propCreatedObjectSector.facade.required">
+          *
+        </span>
       </h3>
       <div class="
         form__row
@@ -45,7 +55,7 @@
           <inputWithUnit
             propType="number"
             propUnit="meter"
-            :value.sync="propCreatedObjectSector.facade"
+            :value.sync="propCreatedObjectSector.facade.value"
           />
         </div>
       </div>
@@ -65,10 +75,15 @@
             form__title
             form__title_add-object
           ">
-            Тип участка
+            <span>
+              Тип участка
+            </span>
+            <span v-if="propCreatedObjectSector.type.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectSector.type"
+            v-model="propCreatedObjectSector.type.value"
             :options="filterDataDefaultClone.sectorType"
             :show-labels="false"
             :allow-empty="false"
@@ -90,10 +105,15 @@
             form__title
             form__title_add-object
           ">
-            Расстояние до города
+            <span>
+              Расстояние до города
+            </span>
+            <span v-if="propCreatedObjectSector.distance.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectSector.distance"
+            v-model="propCreatedObjectSector.distance.value"
             :options="getDistanceArray"
             :show-labels="false"
             :allow-empty="false"
@@ -115,13 +135,18 @@
             form__title
             form__title_add-object
           ">
-            Наличие строений
+            <span>
+              Наличие строений
+            </span>
+            <span v-if="propCreatedObjectSector.availabilityOfVuildings.required">
+              *
+            </span>
           </h3>
           <switcher
             class="add-object-page__switcher"
             switcherId="objectViewAddObject"
             :items="filterDataDefaultClone.appOnlineShow"
-            :value.sync="propCreatedObjectSector.onlineShow"
+            :value.sync="propCreatedObjectSector.availabilityOfVuildings"
           />
         </div>
       </div>

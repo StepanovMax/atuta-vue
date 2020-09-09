@@ -12,6 +12,7 @@
         { 'radio-buttons__list_wrap radio-buttons__list_wrap-add-object': radioButtonsView === 'wrapAddObject' },
         { 'radio-buttons__list_wrap radio-buttons__list_wrap-half': radioButtonsView === 'wrapHalf' },
         { 'radio-buttons__list_wrap radio-buttons__list_vertical': radioButtonsView === 'listVertical' },
+        { 'radio-buttons__list_wrap radio-buttons__list_horizontal': radioButtonsView === 'listHorizontal' },
       ]"
     >
       <li
@@ -21,6 +22,7 @@
           { 'radio-buttons__list-item_wrap radio-buttons__list-item_wrap-add-object': radioButtonsView === 'wrapAddObject' },
           { 'radio-buttons__list-item_wrap radio-buttons__list-item_wrap-half': radioButtonsView === 'wrapHalf' },
           { 'radio-buttons__list-item_vertical': radioButtonsView === 'listVertical' },
+          { 'radio-buttons__list-item_horizontal': radioButtonsView === 'listHorizontal' },
         ]"
         v-for="(item, index) in dataItemsChecked"
         :key="'key-' + radioButtonsId + '-' + index"

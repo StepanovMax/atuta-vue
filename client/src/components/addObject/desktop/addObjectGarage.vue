@@ -15,13 +15,18 @@
             form__title
             form__title_add-object
           ">
-            Тип объекта
+            <span>
+              Тип объекта
+            </span>
+            <span v-if="propCreatedObjectGarage.type.required">
+              *
+            </span>
           </h3>
           <radioButtons
             radioButtonsView="listVertical"
             radioButtonsId="garageAddObject"
             :items="filterDataDefaultClone.garage"
-            :value.sync="propCreatedObjectGarage.type"
+            :value.sync="typeVModel"
           />
         </div>
       </div>
@@ -29,8 +34,8 @@
 
     <div
       v-if="
-        propCreatedObjectGarage.type
-        && propCreatedObjectGarage.type.slug === 'garage'
+        propCreatedObjectGarage.type.value
+        && propCreatedObjectGarage.type.value.slug === 'garage'
       "
       class="form__row"
     >
@@ -47,14 +52,19 @@
             form__title
             form__title_add-object
           ">
-            Тип гаража
+            <span>
+              Тип гаража
+            </span>
+            <span v-if="propCreatedObjectGarage.garageType.required">
+              *
+            </span>
           </h3>
           <radioButtons
             key="garageTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="garageTypeAddObject"
             :items="filterDataDefaultClone.garageTypes"
-            :value.sync="propCreatedObjectGarage.garageType"
+            :value.sync="propCreatedObjectGarage.garageType.value"
           />
         </div>
       </div>
@@ -62,8 +72,8 @@
 
     <div
       v-if="
-        propCreatedObjectGarage.type
-        && propCreatedObjectGarage.type.slug === 'parking'
+        propCreatedObjectGarage.type.value
+        && propCreatedObjectGarage.type.value.slug === 'parking'
       "
       class="form__row"
     >
@@ -80,14 +90,19 @@
             form__title
             form__title_add-object
           ">
-            Тип машиноместа
+            <span>
+              Тип машиноместа
+            </span>
+            <span v-if="propCreatedObjectGarage.parkingType.required">
+              *
+            </span>
           </h3>
           <radioButtons
             key="parkingTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="parkingTypeAddObject"
             :items="filterDataDefaultClone.parkingTypes"
-            :value.sync="propCreatedObjectGarage.parkingType"
+            :value.sync="propCreatedObjectGarage.parkingType.value"
           />
         </div>
       </div>
@@ -95,8 +110,8 @@
 
     <div
       v-if="
-        propCreatedObjectGarage.type
-        && propCreatedObjectGarage.type.slug === 'garage'
+        propCreatedObjectGarage.type.value
+        && propCreatedObjectGarage.type.value.slug === 'garage'
       "
       class="form__row"
     >
@@ -104,7 +119,12 @@
         form__title
         form__title_add-object
       ">
-        Площадь гаража
+        <span>
+          Площадь гаража
+        </span>
+        <span v-if="propCreatedObjectGarage.area.required">
+          *
+        </span>
       </h3>
       <div class="
         form__row
@@ -118,7 +138,7 @@
           <inputWithUnit
             propType="number"
             propUnit="meterSquare"
-            :value.sync="propCreatedObjectGarage.area"
+            :value.sync="propCreatedObjectGarage.area.value"
           />
         </div>
       </div>
@@ -126,8 +146,8 @@
 
     <div
       v-if="
-        propCreatedObjectGarage.type
-        && propCreatedObjectGarage.type.slug === 'parking'
+        propCreatedObjectGarage.type.value
+        && propCreatedObjectGarage.type.value.slug === 'parking'
       "
       class="form__row"
     >
@@ -221,6 +241,22 @@ export default {
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
+    typeVModel: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectGarage.type.value;
+      },
+      set(value) {
+        this.propCreatedObjectGarage.type.value = value;
+        if (this.propCreatedObjectGarage.type.value.slug === 'garage') {
+          this.propCreatedObjectGarage.parkingType.required = false;
+          this.propCreatedObjectGarage.garageType.required = true;
+        } else if (this.propCreatedObjectGarage.type.value.slug === 'parking') {
+          this.propCreatedObjectGarage.parkingType.required = true;
+          this.propCreatedObjectGarage.garageType.required = false;
+        }
+      }
     },
   },
   methods: {

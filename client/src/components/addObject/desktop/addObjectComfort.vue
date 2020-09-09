@@ -21,7 +21,7 @@
             radioButtonsView="listVertical"
             radioButtonsId="roomСomfortAddObject"
             :items="filterDataDefaultClone.comfortType"
-            :value.sync="сreatedObjectComfort.comfortType"
+            :value.sync="сreatedObjectComfort.comfortType.value"
           />
         </div>
       </div>
@@ -29,8 +29,8 @@
 
     <div
       v-if="
-        Boolean(propCreatedObjectComfort.comfortType)
-        && Boolean(propCreatedObjectComfort.comfortType.slug === 'personal')
+        Boolean(propCreatedObjectComfort.comfortType.value)
+        && Boolean(propCreatedObjectComfort.comfortType.value.slug === 'personal')
       "
       class="form__row"
     >
@@ -52,7 +52,7 @@
             Количество кроватей
           </h4>
           <multiselect
-            v-model="propCreatedObjectComfort.bedCount"
+            v-model="propCreatedObjectComfort.bedCount.value"
             :options="roomBedCount"
             :show-labels="false"
             :allow-empty="false"
@@ -75,7 +75,7 @@
             Количество спальных мест
           </h4>
           <multiselect
-            v-model="propCreatedObjectComfort.sleepingPlacesCount"
+            v-model="propCreatedObjectComfort.sleepingPlacesCount.value"
             :options="roomSleepingPlacesCount"
             :show-labels="false"
             :allow-empty="false"
@@ -101,7 +101,7 @@
             checkboxId="appMultimediaDesktop"
             checkboxType="listVertical"
             :items="filterDataDefaultClone.roomMultimedia"
-            :value.sync="propCreatedObjectComfort.roomMultimedia"
+            :value.sync="propCreatedObjectComfort.roomMultimedia.value"
           />
         </div>
       </div>
@@ -120,7 +120,7 @@
             checkboxId="appEquipmentDesktop"
             checkboxType="listVertical"
             :items="filterDataDefaultClone.roomEquipment"
-            :value.sync="propCreatedObjectComfort.roomEquipment"
+            :value.sync="propCreatedObjectComfort.roomEquipment.value"
           />
         </div>
         <div class="form__block-width form__block-width-third">
@@ -137,7 +137,7 @@
             checkboxId="appComfortDesktop"
             checkboxType="listVertical"
             :items="filterDataDefaultClone.roomComfort"
-            :value.sync="propCreatedObjectComfort.roomComfort"
+            :value.sync="propCreatedObjectComfort.roomComfort.value"
           />
         </div>
         <div class="form__block-width form__block-width-third">
@@ -154,7 +154,7 @@
             checkboxId="appAdditionalDesktop"
             checkboxType="listVertical"
             :items="filterDataDefaultClone.roomAdditional"
-            :value.sync="propCreatedObjectComfort.roomAdditional"
+            :value.sync="propCreatedObjectComfort.roomAdditional.value"
           />
         </div>
       </div>

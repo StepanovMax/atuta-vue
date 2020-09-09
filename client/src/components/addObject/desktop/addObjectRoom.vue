@@ -5,18 +5,20 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Площадь комнаты
+            <span>
+              Площадь комнаты
+            </span>
+            <span v-if="propCreatedObjectRoom.area.required">
+              *
+            </span>
           </h3>
           <inputWithUnit
             propType="number"
             propUnit="meterSquare"
-            :value.sync="propCreatedObjectRoom.area"
+            :value.sync="propCreatedObjectRoom.area.value"
           />
         </div>
       </div>
@@ -26,16 +28,18 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Количество комнат*
+            <span>
+              Количество комнат
+            </span>
+            <span v-if="propCreatedObjectRoom.roomsCount.required">
+              *
+            </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectRoom.roomsCount"
+            v-model="propCreatedObjectRoom.roomsCount.value"
             :options="roomRooms"
             :show-labels="false"
             :allow-empty="false"
@@ -54,19 +58,21 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
-            title
-            title_h5
-            title_bold
             form__title
             form__title_add-object
           ">
-            Вид дома
+            <span>
+              Вид дома
+            </span>
+            <span v-if="propCreatedObjectRoom.view.required">
+              *
+            </span>
           </h3>
           <radioButtons
             radioButtonsView="wrapHalf"
             radioButtonsId="roomViewAddObject"
             :items="filterDataDefaultClone.appView"
-            :value.sync="propCreatedObjectRoom.view"
+            :value.sync="propCreatedObjectRoom.view.value"
           />
         </div>
       </div>
@@ -74,18 +80,20 @@
 
     <div class="form__row">
       <h3 class="
-        title
-        title_h5
-        title_bold
         form__title
         form__title_add-object
       ">
-        Год постройки
+        <span>
+          Год постройки
+        </span>
+        <span v-if="propCreatedObjectRoom.year.required">
+          *
+        </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectRoom.year"
+            v-model="propCreatedObjectRoom.year.value"
             :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
