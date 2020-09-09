@@ -63,6 +63,34 @@ const state = {
       type: null,
       required: false,
     },
+    comfortType: {
+      value: null,
+      required: false,
+    },
+    bedCount: {
+      value: null,
+      required: false,
+    },
+    sleepingPlacesCount: {
+      value: null,
+      required: false,
+    },
+    roomMultimedia: {
+      value: null,
+      required: false,
+    },
+    roomEquipment: {
+      value: null,
+      required: false,
+    },
+    roomComfort: {
+      value: null,
+      required: false,
+    },
+    roomAdditional: {
+      value: null,
+      required: false,
+    },
     app: {
       type: {
         value: null,
@@ -104,38 +132,6 @@ const state = {
         value: null,
         required: false,
       },
-      onlineShow: {
-        value: null,
-        required: false,
-      },
-      comfortType: {
-        value: null,
-        required: false,
-      },
-      bedCount: {
-        value: null,
-        required: false,
-      },
-      sleepingPlacesCount: {
-        value: null,
-        required: false,
-      },
-      roomMultimedia: {
-        value: null,
-        required: false,
-      },
-      roomEquipment: {
-        value: null,
-        required: false,
-      },
-      roomComfort: {
-        value: null,
-        required: false,
-      },
-      roomAdditional: {
-        value: null,
-        required: false,
-      },
     },
     house: {
       type: {
@@ -172,7 +168,7 @@ const state = {
       },
       floorAll: {
         value: null,
-        required: false,
+        required: true,
       },
       isIntoCity: {
         value: null,

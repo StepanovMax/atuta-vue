@@ -240,7 +240,7 @@
         propCreatedObject.deal.value
         && propCreatedObject.deal.value.slug === 'rent'
       "
-      :propCreatedObjectComfort="propCreatedObjectHouse"
+      :propCreatedObjectComfort="this.propCreatedObject"
     />
 
   </Fragment>

@@ -170,10 +170,10 @@
 
     <addObjectComfort
       v-if="
-        propCreatedObject.deal
-        && propCreatedObject.deal.slug === 'rent'
+        propCreatedObject.deal.value
+        && propCreatedObject.deal.value.slug === 'rent'
       "
-      :propCreatedObjectComfort="propCreatedObjectRoom"
+      :propCreatedObjectComfort="this.propCreatedObject"
     />
 
   </Fragment>
