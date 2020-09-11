@@ -22,7 +22,11 @@
         <div class="form__row form__row_block-width form__row_block-width-half">
           <div class="form__block-width form__block-width-half">
 
-            <div class="form__row">
+
+            <div
+              ref="object"
+              class="form__row"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -35,14 +39,28 @@
                 </span>
               </h3>
               <radioButtons
+                :class="{
+                  'radio-buttons_error': this.errorsMain.includes('object')
+                }"
+                errorClass=""
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectTypeAddObject"
                 :items="filterDataDefaultClone.object"
                 :value.sync="createdObject.object.value"
+                @change.native="clickOnMainFields()"
               />
+              <p
+                v-if="this.errorsMain.includes('object')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать тип объекта
+              </p>
             </div>
 
-            <div class="form__row">
+            <div
+              ref="deal"
+              class="form__row"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -56,13 +74,26 @@
               </h3>
               <switcher
                 class="add-object-page__switcher"
+                :class="{
+                  'switcher_error': this.errorsMain.includes('deal')
+                }"
                 switcherId="dealDesktop"
                 :items="filterDataDefaultClone.deal"
                 :value.sync="dealVModel"
+                @change.native="clickOnMainFields()"
               />
+              <p
+                v-if="this.errorsMain.includes('deal')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать тип сделки
+              </p>
             </div>
 
-            <div class="form__row">
+            <div
+              ref="address"
+              class="form__row"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -82,6 +113,9 @@
                     form__input
                     form__input_add-object
                   "
+                  :class="{
+                    'input_error': this.errorsMain.includes('address')
+                  }"
                   id="suggestAddress"
                   v-model="currentAddress"
                   @keypress="onInputType($event)"
@@ -106,6 +140,12 @@
                   </li>
                 </ul>
               </div>
+              <p
+                v-if="this.errorsMain.includes('address')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать адрес
+              </p>
             </div>
           </div>
           <div class="form__block-width form__block-width-half">
@@ -126,7 +166,14 @@
           </div>
         </div>
 
-        <div class="form__row">
+          <div
+            ref="district"
+            class="form__row"
+            v-if="
+              objectTypeAndDealTypeIsSelected
+              && createdObject.object.value.slug === 'app'
+            "
+          >
           <div class="form__row form__row_block-width form__row_block-width-third">
             <div class="form__block-width form__block-width-third">
               <h3 class="
@@ -141,6 +188,9 @@
                 </span>
               </h3>
               <multiselect
+                :class="{
+                  'multiselect_error': this.errorsMain.includes('district')
+                }"
                 v-model="createdObject.district.value"
                 :options="localityDistricts"
                 :show-labels="false"
@@ -152,20 +202,28 @@
                 track-by="slug"
                 placeholder="Район"
               />
+              <p
+                v-if="this.errorsMain.includes('district')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать район
+              </p>
             </div>
           </div>
         </div>
 
         <addObjectApp
+          ref="app"
           v-if="
-            createdObject.deal.value
-            && createdObject.object.value
+            objectTypeAndDealTypeIsSelected
             && createdObject.object.value.slug === 'app'
           "
           :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
         />
 
         <addObjectHouse
+          ref="house"
           v-if="
             createdObject.deal.value
             && createdObject.object.value
@@ -175,6 +233,7 @@
         />
 
         <addObjectRoom
+          ref="room"
           v-if="
             createdObject.deal.value
             && createdObject.object.value
@@ -184,6 +243,7 @@
         />
 
         <addObjectSector
+          ref="sector"
           v-if="
             createdObject.deal.value
             && createdObject.object.value
@@ -193,6 +253,7 @@
         />
 
         <addObjectGarage
+          ref="garage"
           v-if="
             createdObject.deal.value
             && createdObject.object.value
@@ -202,6 +263,7 @@
         />
 
         <addObjectCommercial
+          ref="commercial"
           v-if="
             createdObject.deal.value
             && createdObject.object.value
@@ -218,7 +280,10 @@
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
+            <div
+              ref="onlineShow"
+              class="form__block-width form__block-width-third"
+            >
               <h3 class="
                 title
                 title_h5
@@ -251,7 +316,10 @@
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width">
+            <div
+              ref="photoGallery"
+              class="form__block-width"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -280,7 +348,10 @@
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width">
+            <div
+              ref="description"
+              class="form__block-width"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -313,7 +384,10 @@
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-half">
-            <div class="form__block-width form__block-width-half">
+            <div
+              ref="phone"
+              class="form__block-width form__block-width-half"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -350,7 +424,10 @@
           class="form__row"
         >
           <div class="form__row form__row_block-width form__row_block-width-half">
-            <div class="form__block-width form__block-width-half">
+            <div
+              ref="connectionWay"
+              class="form__block-width form__block-width-half"
+            >
               <h3 class="
                 form__title
                 form__title_add-object
@@ -384,6 +461,7 @@
             )
           "
           class="form__row"
+          ref="rentType"
         >
           <h3 class="
             form__title
@@ -415,10 +493,20 @@
             form__title
             form__title_add-object
           ">
-            Цена*
+            <span>
+              Цена
+            </span>
+            <span v-if="createdObject.price.required">
+              *
+            </span>
           </h3>
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
+          <div
+            ref="price"
+            class="form__row form__row_block-width form__row_block-width-third"
+          >
+            <div
+              class="form__block-width form__block-width-third"
+            >
               <h4 class="
                 title
                 title_h6
@@ -426,13 +514,27 @@
                 form__title
                 form__title_add-object
               ">
-                {{ priceTitle }}
+                <span>
+                  {{ priceTitle }}
+                </span>
+                <span v-if="createdObject.price.required">
+                  *
+                </span>
               </h4>
               <inputWithUnit
                 propType="number"
                 propUnit="rouble"
+                :propErrorClass="{
+                  'input_error': this.errorsMain.includes('price')
+                }"
                 :value.sync="createdObject.price.value"
               />
+              <p
+                v-if="this.errorsMain.includes('price')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать цену
+              </p>
             </div>
             <div
               v-if="
@@ -450,13 +552,27 @@
                 form__title
                 form__title_add-object
               ">
-                Цена в год
+                <span>
+                  Цена в год
+                </span>
+                <span v-if="createdObject.price.required">
+                  *
+                </span>
               </h4>
               <inputWithUnit
                 propType="number"
                 propUnit="rouble"
-                :value.sync="createdObject.price"
+                :propErrorClass="{
+                  'input_error': this.errorsMain.includes('price')
+                }"
+                :value.sync="createdObject.price.value"
               />
+              <p
+                v-if="this.errorsMain.includes('price')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать цену
+              </p>
             </div>
             <div
               v-if="
@@ -464,6 +580,7 @@
                 && createdObject.deal.value.slug === 'rent'
               "
               class="form__block-width form__block-width-third"
+              ref="deposit"
             >
               <h4 class="
                 title
@@ -472,13 +589,27 @@
                 form__title
                 form__title_add-object
               ">
-                Залог
+                <span>
+                  Залог
+                </span>
+                <span v-if="createdObject.deposit.required">
+                  *
+                </span>
               </h4>
               <inputWithUnit
                 propType="number"
                 propUnit="rouble"
-                :value.sync="createdObject.deposit"
+                :propErrorClass="{
+                  'input_error': this.errorsMain.includes('deposit')
+                }"
+                :value.sync="createdObject.deposit.value"
               />
+              <p
+                v-if="this.errorsMain.includes('deposit')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать размер залога
+              </p>
             </div>
           </div>
         </div>
@@ -629,7 +760,7 @@
                   add-object-page__btn
                   btn_disabled
                 "
-                disabled="disabled"
+                @click="clickOnNonSubmitButton()"
               >
                 Не заполнены поля
               </button>
@@ -719,6 +850,11 @@ export default {
   },
   data() {
     return {
+      fieldsForValidating: [],
+      openChildComponent: false,
+      isClicked: false,
+      errorsOther: [],
+      errorsMain: [],
       suggestList: [],
       userData: {
         name: 'Агентство недвижимости №1',
@@ -781,6 +917,15 @@ export default {
     }
   },
   watch: {
+    currentAddress: {
+      handler(value) {
+        if (value === '') {
+          this.createdObject.address.value = null;
+          this.createdObject.address.coords = null;
+        }
+      },
+      deep: true
+    },
     townLabel: {
       handler(value) {
         this.createdObject.address.town = value;
@@ -826,11 +971,53 @@ export default {
             }
         }
         // console.log('formIsFilledArray ::', this.formIsFilledArray);
+        // console.log('us clicked ::', this.isClicked);
 
         if (this.formIsFilledArray.length) {
           this.formIsFilled = false;
         } else {
           this.formIsFilled = true;
+        }
+
+        // console.log('isClicked watch createdObject::', this.isClicked);
+
+        // While a user doesn't click to button at first time.
+        if (this.isClicked) {
+          // console.log('CreatedObject watch formIsFilledArray ::', this.formIsFilledArray);
+          this.errorsMain = [];
+          this.formIsFilledArray.forEach(
+            item => {
+              if (this.$refs[item]) {
+                // console.log('item :: >>', item);
+                this.errorsMain.push(item);
+              }
+            }
+          );
+        }
+
+        // this.openChildComponent = false;
+        console.log('this.formIsFilledArray ::', this.formIsFilledArray);
+
+        if (this.objectTypeAndDealTypeIsSelected && this.isClicked) {
+          // console.log('nextTick openChildComponent ::', this.openChildComponent);
+          this.$nextTick(
+            () => {
+              this.errorsOther = [];
+              const selectedObject = this.createdObject.object.value.slug;
+              this.formIsFilledArray.forEach(
+                item => {
+                  if (this.$refs[selectedObject].$refs[item]) {
+                    // console.log('item :: >>', item);
+                    this.errorsOther.push(item);
+                  }
+                }
+              );
+              if (this.openChildComponent) {
+                console.log('showOtherErrors ::');
+                this.showOtherErrors();
+              }
+            }
+          )
         }
 
       },
@@ -855,8 +1042,10 @@ export default {
         this.createdObject.deal.value = value;
         if (this.createdObject.deal.value.slug === 'buy') {
           this.createdObject.rentType.required = false;
+          this.createdObject.deposit.required = false;
         } else if (this.createdObject.deal.value.slug === 'rent') {
           this.createdObject.rentType.required = true;
+          this.createdObject.deposit.required = true;
         }
       }
     },
@@ -900,12 +1089,92 @@ export default {
       const sum = defaultPrice + selectedTarifPrice;
       return sum;
     },
+    objectTypeAndDealTypeIsSelected() {
+      return Boolean(
+        this.createdObject.object.value
+        && this.createdObject.object.value.slug
+        && this.createdObject.deal.value
+        && this.createdObject.deal.value.slug
+      );
+    },
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
     this.createdObject.address.value = null; 
   },
   methods: {
+    clickOnMainFields() {
+      console.log('clickOnMainFields ::');
+      if (this.objectTypeAndDealTypeIsSelected) {
+        this.openChildComponent = false;
+      }
+    },
+    clickOnNonSubmitButton() {
+      if (this.objectTypeAndDealTypeIsSelected) {
+        this.openChildComponent = true;
+      } else {
+        this.openChildComponent = false;
+      }
+      console.log('this.formIsFilledArray ::', this.formIsFilledArray);
+      this.isClicked = true;
+      this.showMainErrors();
+      if (this.objectTypeAndDealTypeIsSelected) {
+        this.showOtherErrors();
+      }
+
+      this.scrollTo();
+    },
+    scrollTo() {
+      const refName = this.formIsFilledArray[0];
+      const selectedObject = this.createdObject.object.value.slug;
+      let element = this.$refs[refName];
+      if (this.objectTypeAndDealTypeIsSelected && this.$refs[refName]) {
+        // console.log('1', selectedObject, refName, this.$refs);
+        element = this.$refs[refName];
+      } else if (this.objectTypeAndDealTypeIsSelected && this.$refs[selectedObject].$refs[refName]) {
+        // console.log('2');
+        element = this.$refs[selectedObject].$refs[refName];
+      }
+      if (element) {
+        const top = element.offsetTop;
+        window.scrollTo(0, top - 50);
+      } else {
+        console.log('No element', refName, this.$refs);
+      }
+    },
+    showOtherErrors() {
+      const selectedObject = this.createdObject.object.value.slug;
+      // console.log('selectedObject ::', selectedObject, this.$refs.app);
+      this.formIsFilledArray.forEach(
+        item => {
+          if (this.$refs[selectedObject].$refs[item]) {
+            // console.log('item ::', item);
+            this.errorsOther.push(item);
+          }
+        }
+      );
+      this.fieldsForValidating = this.errorsOther;
+    },
+    showMainErrors() {
+      this.formIsFilledArray.forEach(
+        item => {
+          if (this.$refs[item]) {
+            console.log('item ::', item);
+            this.errorsMain.push(item);
+          }
+        }
+      );
+      // console.log('showing error of this field');
+      // if (this.$refs.app.$refs[refName].classList) {
+      //   this.$refs.app.$refs[refName].classList.add('test-class');
+      // } else {
+      //   this.$refs.app.$refs[refName];
+      // }
+      // if (this.isClicked) {
+      //   this.isClicked = false;
+      //   this.fieldsForValidating = this.formIsFilledArray;
+      // }
+    },
     hideSuggestionsList() {
       this.suggestList = [];
     },

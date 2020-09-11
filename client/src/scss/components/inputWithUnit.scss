@@ -5,4 +5,8 @@
   &__input {
     margin-right: 10px;
   }
+
+  &_error {
+    @include validateError;
+  }
 }

@@ -56,3 +56,7 @@
     padding-right: 15px;
   }
 }
+
+@mixin validateError() {
+  border: 1px solid $COLOR-RED-INVALID;
+}

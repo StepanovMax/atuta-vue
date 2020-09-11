@@ -1,6 +1,8 @@
 $BORDER-RADIUS: 6px;
 
 .switcher {
+  display: inline-block;
+
   &__list {
     display: flex;
     flex-direction: row;
@@ -40,5 +42,9 @@ $BORDER-RADIUS: 6px;
 
   &__input-radio {
     display: none;
+  }
+
+  &_error {
+    @include validateError;
   }
 }
