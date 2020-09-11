@@ -20,7 +20,7 @@ const state = {
     },
     district: {
       value: null,
-      required: false,
+      required: true,
     },
     onlineShow: {
       value: null,
@@ -40,27 +40,6 @@ const state = {
     },
     connectionWay: {
       value: null,
-      required: false,
-    },
-    rentType: {
-      value: null,
-      required: true,
-    },
-    price: {
-      value: null,
-      required: true,
-    },
-    deposit: {
-      value: null,
-      required: false,
-    },
-    tarif: {
-      value: null,
-      required: false,
-    },
-    agency: {
-      name: null,
-      type: null,
       required: false,
     },
     comfortType: {
@@ -118,11 +97,11 @@ const state = {
       },
       areaKitchen: {
         value: null,
-        required: true,
+        required: false,
       },
       areaLiving: {
         value: null,
-        required: true,
+        required: false,
       },
       year: {
         value: null,
@@ -298,6 +277,27 @@ const state = {
         value: null,
         required: false,
       },
+    },
+    rentType: {
+      value: null,
+      required: true,
+    },
+    price: {
+      value: null,
+      required: true,
+    },
+    deposit: {
+      value: null,
+      required: true,
+    },
+    tarif: {
+      value: null,
+      required: false,
+    },
+    agency: {
+      name: null,
+      type: null,
+      required: false,
     },
   },
   filterDataSelected: {

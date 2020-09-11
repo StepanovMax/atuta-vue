@@ -3,6 +3,7 @@
     <input
       type="text"
       class="input input-with-unit__input"
+      :class="propErrorClass"
       @keypress="gIsNumber($event)"
       v-model="enteredValue"
     >
@@ -35,6 +36,7 @@ export default {
       default: '',
       required: true,
     },
+    propErrorClass: null,
   },
   data() {
     return {

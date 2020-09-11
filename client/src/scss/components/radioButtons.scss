@@ -92,4 +92,8 @@ $BORDER-RADIUS: 6px;
     padding: 0;
     color: $COLOR-BLUE-MAIN;
   }
+
+  &_error {
+    @include validateError;
+  }
 }

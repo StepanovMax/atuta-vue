@@ -61,6 +61,8 @@
     color: $COLOR-TEXT-DISABLED;
     background-color: $COLOR-GREY-LIGHT;
 
+    &:focus,
+    &:active,
     &:hover {
       cursor: default;
       background-color: $COLOR-GREY-LIGHT;
