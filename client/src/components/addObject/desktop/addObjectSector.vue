@@ -1,7 +1,59 @@
 <template>
   <div class="form__row">
 
-    <div class="form__row">
+    <div
+      ref="type"
+      class="form__row"
+    >
+      <div class="
+        form__row
+        form__row_block-width
+        form__row_block-width-third
+      ">
+        <div class="
+          form__block-width 
+          form__block-width-third
+        ">
+          <h3 class="
+            form__title
+            form__title_add-object
+          ">
+            <span>
+              Тип участка
+            </span>
+            <span v-if="propCreatedObjectSector.type.required">
+              *
+            </span>
+          </h3>
+          <multiselect
+            :class="{
+              'multiselect_error': this.errors.includes('type')
+            }"
+            v-model="propCreatedObjectSector.type.value"
+            :options="filterDataDefaultClone.sectorType"
+            :show-labels="false"
+            :allow-empty="false"
+            :close-on-select="true"
+            :multiple="false"
+            :searchable="true"
+            label="label"
+            track-by="label"
+            placeholder="Тип участка"
+          />
+          <p
+            v-if="this.errors.includes('type')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать тип участка
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      ref="area"
+      class="form__row"
+    >
       <h3 class="
         form__title
         form__title_add-object
@@ -26,7 +78,16 @@
             propType="number"
             propUnit="acr"
             :value.sync="propCreatedObjectSector.area.value"
+            :propErrorClass="{
+              'input_error': this.errors.includes('area')
+            }"
           />
+          <p
+            v-if="this.errors.includes('area')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать площадь участка
+          </p>
         </div>
       </div>
     </div>
@@ -56,43 +117,6 @@
             propType="number"
             propUnit="meter"
             :value.sync="propCreatedObjectSector.facade.value"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="form__row">
-      <div class="
-        form__row
-        form__row_block-width
-        form__row_block-width-third
-      ">
-        <div class="
-          form__block-width 
-          form__block-width-third
-        ">
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            <span>
-              Тип участка
-            </span>
-            <span v-if="propCreatedObjectSector.type.required">
-              *
-            </span>
-          </h3>
-          <multiselect
-            v-model="propCreatedObjectSector.type.value"
-            :options="filterDataDefaultClone.sectorType"
-            :show-labels="false"
-            :allow-empty="false"
-            :close-on-select="true"
-            :multiple="false"
-            :searchable="true"
-            label="label"
-            track-by="label"
-            placeholder="Тип участка"
           />
         </div>
       </div>
@@ -176,10 +200,15 @@ export default {
       default: {},
       required: true,
     },
+    propValidateErrors: {
+      type: Array,
+      default: [],
+      required: true,
+    },
   },
   data() {
     return {
-      // createdObject: {},
+      errors: [],
       propCreatedObjectSector: this.propCreatedObject.sector,
     }
   },
@@ -192,6 +221,20 @@ export default {
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
+  },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+    propValidateErrors: {
+      handler(value) {
+        this.errors = value;
+      },
+      deep: true
     },
   },
   methods: {

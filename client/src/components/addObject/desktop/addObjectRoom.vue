@@ -1,7 +1,10 @@
 <template>
   <Fragment>
 
-    <div class="form__row">
+    <div
+      ref="area"
+      class="form__row"
+    >
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
@@ -19,12 +22,24 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="propCreatedObjectRoom.area.value"
+            :propErrorClass="{
+              'input_error': this.errors.includes('area')
+            }"
           />
+          <p
+            v-if="this.errors.includes('area')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать площадь комнаты
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="roomsCount"
+      class="form__row"
+    >
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
@@ -39,6 +54,9 @@
             </span>
           </h3>
           <multiselect
+            :class="{
+              'multiselect_error': this.errors.includes('roomsCount')
+            }"
             v-model="propCreatedObjectRoom.roomsCount.value"
             :options="roomRooms"
             :show-labels="false"
@@ -50,6 +68,12 @@
             track-by="label"
             placeholder="Количество комнат"
           />
+          <p
+            v-if="this.errors.includes('roomsCount')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать количество комнат
+          </p>
         </div>
       </div>
     </div>
@@ -119,7 +143,10 @@
         Этажи
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
-        <div class="form__block-width form__block-width-third">
+        <div
+          ref="floor"
+          class="form__block-width form__block-width-third"
+        >
           <h4 class="
             title
             title_h6
@@ -130,7 +157,10 @@
             Этаж*
           </h4>
           <multiselect
-            v-model="propCreatedObjectRoom.floor"
+            :class="{
+              'multiselect_error': this.errors.includes('floor')
+            }"
+            v-model="propCreatedObjectRoom.floor.value"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -141,8 +171,17 @@
             track-by="label"
             placeholder="Этаж"
           />
+          <p
+            v-if="this.errors.includes('floor')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать этаж
+          </p>
         </div>
-        <div class="form__block-width form__block-width-third">
+        <div
+          ref="floorAll"
+          class="form__block-width form__block-width-third"
+        >
           <h4 class="
             title
             title_h6
@@ -153,6 +192,9 @@
             Этажей всего*
           </h4>
           <multiselect
+            :class="{
+              'multiselect_error': this.errors.includes('floorAll')
+            }"
             v-model="floorAll"
             :options="filterDataDefaultClone.appFloorAllList"
             :show-labels="false"
@@ -164,6 +206,12 @@
             track-by="label"
             placeholder="Этажей всего"
           />
+          <p
+            v-if="this.errors.includes('floorAll')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать общее количество этажей здания
+          </p>
         </div>
       </div>
     </div>
@@ -202,9 +250,15 @@ export default {
       default: {},
       required: true,
     },
+    propValidateErrors: {
+      type: Array,
+      default: [],
+      required: true,
+    },
   },
   data() {
     return {
+      errors: [],
       // createdObject: {},
       propCreatedObjectRoom: this.propCreatedObject.room,
     }
@@ -241,7 +295,7 @@ export default {
     floorAll: {
       cache: false,
       get() {
-        return this.propCreatedObjectRoom.floorAll;
+        return this.propCreatedObjectRoom.floorAll.value;
       },
       set(value) {
         // If a user select floorFull more than floorCurrent.
@@ -261,8 +315,23 @@ export default {
             }
           }
         )
-        this.propCreatedObjectRoom.floorAll = value;
+        this.propCreatedObjectRoom.floorAll.value = value;
       }
+    },
+  },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+    propValidateErrors: {
+      handler(value) {
+        console.log('propValidateErrors watch house ::', value);
+        this.errors = value;
+      },
+      deep: true
     },
   },
   methods: {
