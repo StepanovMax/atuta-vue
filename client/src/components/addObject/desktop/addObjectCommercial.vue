@@ -1,7 +1,10 @@
 <template>
   <div class="form__row">
 
-    <div class="form__row">
+    <div
+      ref="type"
+      class="form__row"
+    >
       <div class="
         form__row
         form__row_block-width
@@ -23,17 +26,29 @@
             </span>
           </h3>
           <radioButtons
+            :class="{
+              'radio-buttons_error': this.errors.includes('type')
+            }"
             key="objectCommercialTypeAddObject"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectCommercialTypeAddObject"
             :items="filterDataDefaultClone.commercialView"
             :value.sync="propCreatedObjectCommercial.type.value"
           />
+          <p
+            v-if="this.errors.includes('type')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать тип объекта
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="area"
+      class="form__row"
+    >
       <div class="
         form__row
         form__row_block-width
@@ -58,7 +73,16 @@
             propType="number"
             :propUnit="sectorUnit"
             :value.sync="propCreatedObjectCommercial.area.value"
+            :propErrorClass="{
+              'input_error': this.errors.includes('area')
+            }"
           />
+          <p
+            v-if="this.errors.includes('area')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать площадь
+          </p>
         </div>
       </div>
     </div>
@@ -99,7 +123,10 @@
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="class"
+      class="form__row"
+    >
       <div class="
         form__row
         form__row_block-width
@@ -121,12 +148,21 @@
             </span>
           </h3>
           <radioButtons
+            :class="{
+              'radio-buttons_error': this.errors.includes('class')
+            }"
             key="buildingTypeAddObject"
             radioButtonsView="listHorizontal"
             radioButtonsId="buildingTypeAddObject"
             :items="filterDataDefaultClone.commercialClass"
             :value.sync="propCreatedObjectCommercial.class.value"
           />
+          <p
+            v-if="this.errors.includes('class')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать класс здания
+          </p>
         </div>
       </div>
     </div>
@@ -328,9 +364,15 @@ export default {
       default: {},
       required: true,
     },
+    propValidateErrors: {
+      type: Array,
+      default: [],
+      required: true,
+    },
   },
   data() {
     return {
+      errors: [],
       propCreatedObjectCommercial: this.propCreatedObject.commercial,
     }
   },
@@ -400,6 +442,20 @@ export default {
         );
       }
       return yearsArray.reverse()
+    },
+  },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+    propValidateErrors: {
+      handler(value) {
+        this.errors = value;
+      },
+      deep: true
     },
   },
 };

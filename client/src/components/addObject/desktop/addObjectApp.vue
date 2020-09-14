@@ -147,6 +147,7 @@
             </span>
           </h4>
           <multiselect
+            key="appFloor"
             :class="{
               'multiselect_error': this.errors.includes('floor')
             }"
@@ -187,6 +188,7 @@
             </span>
           </h4>
           <multiselect
+            key="appFloorAllList"
             :class="{
               'multiselect_error': this.errors.includes('floorAll')
             }"
@@ -280,7 +282,7 @@
             propUnit="meterSquare"
             :value.sync="appAreaFull"
             :propErrorClass="{
-              'input_error': this.errors.includes('area')
+              'input_error': this.errors.includes('area') || this.errorsArea.includes('area')
             }"
           />
           <p
@@ -313,7 +315,7 @@
             propUnit="meterSquare"
             :value.sync="appAreaKitchen"
             :class="{
-              'input_error': this.errors.includes('appAreaKitchen')
+              'input_error': this.errorsArea.includes('appAreaKitchen')
             }"
           />
         </div>
@@ -340,25 +342,25 @@
             propUnit="meterSquare"
             :value.sync="appAreaLiving"
             :class="{
-              'input_error': this.errors.includes('appAreaLiving')
+              'input_error': this.errorsArea.includes('appAreaLiving')
             }"
           />
         </div>
       </div>
       <p
-        v-if="this.errors.includes('appAreaFull')"
+        v-if="this.errorsArea.includes('appAreaFull')"
         class="paragraph paragraph_invalid"
       >
         Сумма жилой площади и площади кухни не может быть больше или равна общей площади
       </p>
       <p
-        v-if="this.errors.includes('appAreaLiving')"
+        v-if="this.errorsArea.includes('appAreaLiving')"
         class="paragraph paragraph_invalid"
       >
         Жилая площадь не может быть больше или равна общей площади
       </p>
       <p
-        v-if="this.errors.includes('appAreaKitchen')"
+        v-if="this.errorsArea.includes('appAreaKitchen')"
         class="paragraph paragraph_invalid"
       >
         Площадь кухни не может быть больше или равна общей площади
@@ -412,6 +414,7 @@ export default {
   data() {
     return {
       errors: [],
+      errorsArea: [],
       createdObject: {},
       appAreaFullData: null,
       appAreaKitchenData: null,
@@ -440,7 +443,7 @@ export default {
     floorAll: {
       cache: false,
       get() {
-        return this.propCreatedObjectApp.floorAll;
+        return this.propCreatedObjectApp.floorAll.value;
       },
       set(value) {
         // If a user select floorFull more than floorCurrent.
@@ -460,7 +463,7 @@ export default {
             }
           }
         )
-        this.propCreatedObjectApp.floorAll = value;
+        this.propCreatedObjectApp.floorAll.value = value;
       }
     },
     appYearsList() {
@@ -484,7 +487,7 @@ export default {
       },
       set(value) {
         this.appAreaFullData = this.validateNumbers(value);
-        this.propCreatedObjectApp.area = this.appAreaFullData;
+        this.propCreatedObjectApp.area.value = this.appAreaFullData;
         this.validateArea();
       }
     },
@@ -495,7 +498,7 @@ export default {
       },
       set(value) {
         this.appAreaKitchenData = this.validateNumbers(value);
-        this.propCreatedObjectApp.areaKitchen = this.appAreaKitchenData;
+        this.propCreatedObjectApp.areaKitchen.value = this.appAreaKitchenData;
         this.validateArea();
       }
     },
@@ -506,13 +509,13 @@ export default {
       },
       set(value) {
         if (value === '0') {
-          this.errors.push('appAreaLiving');
+          this.errorsArea.push('appAreaLiving');
         } else {
-          const index = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(index, 1);
+          const index = this.errorsArea.indexOf('appAreaLiving');
+          this.errorsArea.splice(index, 1);
         }
         this.appAreaLivingData = this.validateNumbers(value);
-        this.propCreatedObjectApp.areaLiving = this.appAreaLivingData;
+        this.propCreatedObjectApp.areaLiving.value = this.appAreaLivingData;
         this.validateArea();
       }
     },
@@ -526,7 +529,6 @@ export default {
     },
     propValidateErrors: {
       handler(value) {
-        console.log('propValidateErrors watch ::', value);
         this.errors = value;
       },
       deep: true
@@ -540,35 +542,35 @@ export default {
     validateArea() {
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen)) {
         if (this.appAreaFull <= this.appAreaKitchen) {
-          this.errors.push('appAreaKitchen');
+          this.errorsArea.push('appAreaKitchen');
         } else {
-          const indexAppAreaKitchen = this.errors.indexOf('appAreaKitchen');
-          this.errors.splice(indexAppAreaKitchen, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
+          const indexAppAreaKitchen = this.errorsArea.indexOf('appAreaKitchen');
+          this.errorsArea.splice(indexAppAreaKitchen, 1);
+          const indexAppAreaFull = this.errorsArea.indexOf('appAreaFull');
+          this.errorsArea.splice(indexAppAreaFull, 1);
         }
       }
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaLiving)) {
         if (this.appAreaFull <= this.appAreaLiving) {
-          this.errors.push('appAreaLiving');
+          this.errorsArea.push('appAreaLiving');
         } else {
-          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaLiving, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
+          const indexAppAreaLiving = this.errorsArea.indexOf('appAreaLiving');
+          this.errorsArea.splice(indexAppAreaLiving, 1);
+          const indexAppAreaFull = this.errorsArea.indexOf('appAreaFull');
+          this.errorsArea.splice(indexAppAreaFull, 1);
         }
       }
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen) && Boolean(this.appAreaLiving)) {
         const sumKitchenWithLiving = +this.appAreaKitchen + +this.appAreaLiving;
         if (this.appAreaFull <= sumKitchenWithLiving) {
-          this.errors.push('appAreaFull');
+          this.errorsArea.push('appAreaFull');
         } else {
-          const indexAppAreaKitchen = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaKitchen, 1);
-          const indexAppAreaLiving = this.errors.indexOf('appAreaLiving');
-          this.errors.splice(indexAppAreaLiving, 1);
-          const indexAppAreaFull = this.errors.indexOf('appAreaFull');
-          this.errors.splice(indexAppAreaFull, 1);
+          const indexAppAreaKitchen = this.errorsArea.indexOf('appAreaLiving');
+          this.errorsArea.splice(indexAppAreaKitchen, 1);
+          const indexAppAreaLiving = this.errorsArea.indexOf('appAreaLiving');
+          this.errorsArea.splice(indexAppAreaLiving, 1);
+          const indexAppAreaFull = this.errorsArea.indexOf('appAreaFull');
+          this.errorsArea.splice(indexAppAreaFull, 1);
         }
       }
     },

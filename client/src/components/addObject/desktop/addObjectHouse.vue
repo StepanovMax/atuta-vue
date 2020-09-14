@@ -1,7 +1,10 @@
 <template>
   <Fragment>
 
-    <div class="form__row">
+    <div
+      ref="type"
+      class="form__row"
+    >
       <div class="form__row form__row_block-width form__row_block-width-half">
         <div class="form__block-width form__block-width-half">
           <h3 class="
@@ -16,16 +19,28 @@
             </span>
           </h3>
           <radioButtons
+            :class="{
+              'radio-buttons_error': this.errors.includes('type')
+            }"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectViewAddObject"
             :items="filterDataDefaultClone.houseTypes"
             :value.sync="propCreatedObjectHouse.type.value"
           />
+          <p
+            v-if="this.errors.includes('type')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать вид объекта
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="roomsCount"
+      class="form__row"
+    >
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
@@ -40,6 +55,9 @@
             </span>
           </h3>
           <multiselect
+            :class="{
+              'multiselect_error': this.errors.includes('roomsCount')
+            }"
             v-model="propCreatedObjectHouse.roomsCount.value"
             :options="filterDataDefaultClone.houseRoomsCount"
             :show-labels="false"
@@ -51,6 +69,12 @@
             track-by="label"
             placeholder="Количество комнат"
           />
+          <p
+            v-if="this.errors.includes('roomsCount')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать количество комнат
+          </p>
         </div>
       </div>
     </div>
@@ -115,7 +139,10 @@
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="areaHouse"
+      class="form__row"
+    >
       <h3 class="
         form__title
         form__title_add-object
@@ -128,7 +155,10 @@
         </span>
       </h3>
       <div class="form__row form__row_block-width form__row_block-width-third">
-        <div class="form__block-width form__block-width-third">
+        <div
+          ref="areaHouse"
+          class="form__block-width form__block-width-third"
+        >
           <h4 class="
             title
             title_h6
@@ -148,10 +178,22 @@
               propType="number"
               propUnit="meterSquare"
               :value.sync="propCreatedObjectHouse.areaHouse.value"
+              :propErrorClass="{
+                'input_error': this.errors.includes('areaHouse')
+              }"
             />
+            <p
+              v-if="this.errors.includes('areaHouse')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать площадь дома
+            </p>
           </div>
         </div>
-        <div class="form__block-width form__block-width-third">
+        <div
+          ref="areaLand"
+          class="form__block-width form__block-width-third"
+        >
           <h4 class="
             title
             title_h6
@@ -170,12 +212,24 @@
             propType="number"
             propUnit="acr"
             :value.sync="propCreatedObjectHouse.areaLand.value"
+            :propErrorClass="{
+              'input_error': this.errors.includes('areaLand')
+            }"
           />
+          <p
+            v-if="this.errors.includes('areaLand')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать площадь участка
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="form__row">
+    <div
+      ref="floorAll"
+      class="form__row"
+    >
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <h3 class="
@@ -190,6 +244,9 @@
             </span>
           </h3>
           <multiselect
+            :class="{
+              'multiselect_error': this.errors.includes('floorAll')
+            }"
             v-model="propCreatedObjectHouse.floorAll.value"
             :options="houseFloors"
             :show-labels="false"
@@ -201,6 +258,12 @@
             track-by="label"
             placeholder="Этажей всего"
           />
+          <p
+            v-if="this.errors.includes('floorAll')"
+            class="paragraph paragraph_invalid"
+          >
+            Необходимо указать общее количество этажей здания
+          </p>
         </div>
       </div>
     </div>
@@ -269,9 +332,15 @@ export default {
       default: {},
       required: true,
     },
+    propValidateErrors: {
+      type: Array,
+      default: [],
+      required: true,
+    },
   },
   data() {
     return {
+      errors: [],
       createdObject: {},
       propCreatedObjectHouse: this.propCreatedObject.house,
     }
@@ -305,6 +374,21 @@ export default {
         );
       }
       return yearsArray.reverse()
+    },
+  },
+  watch: {
+    currentAddress: {
+      handler(value) {
+        this.createdObject.address = value;
+      },
+      deep: true
+    },
+    propValidateErrors: {
+      handler(value) {
+        console.log('propValidateErrors watch house ::', value);
+        this.errors = value;
+      },
+      deep: true
     },
   },
   methods: {

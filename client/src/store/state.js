@@ -40,7 +40,7 @@ const state = {
     },
     connectionWay: {
       value: null,
-      required: false,
+      required: true,
     },
     comfortType: {
       value: null,

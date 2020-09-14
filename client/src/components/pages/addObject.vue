@@ -42,7 +42,6 @@
                 :class="{
                   'radio-buttons_error': this.errorsMain.includes('object')
                 }"
-                errorClass=""
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectTypeAddObject"
                 :items="filterDataDefaultClone.object"
@@ -171,7 +170,6 @@
             class="form__row"
             v-if="
               objectTypeAndDealTypeIsSelected
-              && createdObject.object.value.slug === 'app'
             "
           >
           <div class="form__row form__row_block-width form__row_block-width-third">
@@ -225,11 +223,11 @@
         <addObjectHouse
           ref="house"
           v-if="
-            createdObject.deal.value
-            && createdObject.object.value
+            objectTypeAndDealTypeIsSelected
             && createdObject.object.value.slug === 'house'
           "
           :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
         />
 
         <addObjectRoom
@@ -240,16 +238,7 @@
             && createdObject.object.value.slug === 'room'
           "
           :propCreatedObject="createdObject"
-        />
-
-        <addObjectSector
-          ref="sector"
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-            && createdObject.object.value.slug === 'sector'
-          "
-          :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
         />
 
         <addObjectGarage
@@ -260,6 +249,18 @@
             && createdObject.object.value.slug === 'garage'
           "
           :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
+        />
+
+        <addObjectSector
+          ref="sector"
+          v-if="
+            createdObject.deal.value
+            && createdObject.object.value
+            && createdObject.object.value.slug === 'sector'
+          "
+          :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
         />
 
         <addObjectCommercial
@@ -270,6 +271,7 @@
             && createdObject.object.value.slug === 'commercial'
           "
           :propCreatedObject="createdObject"
+          :propValidateErrors="fieldsForValidating"
         />
 
         <div
@@ -443,8 +445,14 @@
                 checkboxId="connectionWayAddObject"
                 checkboxType="listVertical"
                 :items="filterDataDefaultClone.connectionWay"
-                :value.sync="createdObject.connectionWay"
+                :value.sync="createdObject.connectionWay.value"
               />
+              <p
+                v-if="this.errorsMain.includes('connectionWay')"
+                class="paragraph paragraph_invalid"
+              >
+                Необходимо указать способ связи
+              </p>
             </div>
           </div>
         </div>
@@ -1126,7 +1134,10 @@ export default {
     },
     scrollTo() {
       const refName = this.formIsFilledArray[0];
-      const selectedObject = this.createdObject.object.value.slug;
+      let selectedObject;
+      if (this.createdObject.object.value) {
+        selectedObject = this.createdObject.object.value.slug;
+      }
       let element = this.$refs[refName];
       if (this.objectTypeAndDealTypeIsSelected && this.$refs[refName]) {
         // console.log('1', selectedObject, refName, this.$refs);

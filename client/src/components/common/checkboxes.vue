@@ -124,6 +124,9 @@ export default {
       this.updateValue(valueArray);
     },
     updateValue(data) {
+      if (data.length === 0) {
+        data = null;
+      }
       this.$emit('update:value', data);
     },
     trigger(i) {
