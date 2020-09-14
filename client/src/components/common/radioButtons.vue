@@ -40,7 +40,8 @@
         <label
           class="radio-buttons__label"
           :class="[
-            { 'radio-buttons__label_active': item.checked }
+            { 'radio-buttons__label_active': item.checked },
+            { 'radio-buttons__label_error': propErrorClass },
           ]"
           :for="'id-' + radioButtonsId + '-' + index"
         >
@@ -74,6 +75,7 @@ export default {
       type: String,
       required: false
     },
+    propErrorClass: '',
   },
   data() {
     return {
@@ -95,6 +97,12 @@ export default {
             this.dataItemsChecked[i].checked = false;
           }
         }
+      },
+      deep: true
+    },
+    propErrorClass: {
+      handler(value) {
+        console.log('value ::', value);
       },
       deep: true
     },

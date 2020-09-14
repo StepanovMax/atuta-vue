@@ -93,6 +93,7 @@
             </span>
           </h3>
           <radioButtons
+            :propErrorClass="errors.includes('view')"
             radioButtonsView="wrapHalf"
             radioButtonsId="roomViewAddObject"
             :items="filterDataDefaultClone.appView"

@@ -19,9 +19,7 @@
             </span>
           </h3>
           <radioButtons
-            :class="{
-              'radio-buttons_error': this.errors.includes('type')
-            }"
+            :propErrorClass="errors.includes('type')"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectViewAddObject"
             :items="filterDataDefaultClone.houseTypes"
