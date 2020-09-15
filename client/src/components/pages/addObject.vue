@@ -440,13 +440,14 @@
                 </span>
               </h3>
               <checkboxes
+                :propErrorClass="errorsMain.includes('connectionWay')"
                 checkboxId="connectionWayAddObject"
                 checkboxType="listVertical"
                 :items="filterDataDefaultClone.connectionWay"
                 :value.sync="createdObject.connectionWay.value"
               />
               <p
-                v-if="this.errorsMain.includes('connectionWay')"
+                v-if="errorsMain.includes('connectionWay')"
                 class="paragraph paragraph_invalid"
               >
                 Необходимо указать способ связи
@@ -1105,7 +1106,6 @@ export default {
   },
   methods: {
     clickOnMainFields() {
-      console.log('clickOnMainFields ::');
       if (this.objectTypeAndDealTypeIsSelected) {
         this.openChildComponent = false;
       }

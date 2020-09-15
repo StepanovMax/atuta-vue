@@ -75,7 +75,7 @@ export default {
       type: String,
       required: false
     },
-    propErrorClass: '',
+    propErrorClass: false,
   },
   data() {
     return {
@@ -97,12 +97,6 @@ export default {
             this.dataItemsChecked[i].checked = false;
           }
         }
-      },
-      deep: true
-    },
-    propErrorClass: {
-      handler(value) {
-        console.log('value ::', value);
       },
       deep: true
     },

@@ -1,12 +1,6 @@
 .checkboxes {
   margin-top: 5px;
 
-  &__icon {
-    &-wrap {
-      display: flex;
-    }
-  }
-
   &__list {
     display: flex;
     flex-direction: row;
@@ -80,6 +74,10 @@
     box-sizing: border-box;
     flex: none;
 
+    &-wrap {
+      display: flex;
+    }
+
     &_checked {
       border-width: 0;
     }
@@ -91,6 +89,10 @@
 
     &_disabled {
       border-color: $COLOR-GREY-DISABLED;
+    }
+
+    &_error {
+      @include validateError;
     }
   }
 
