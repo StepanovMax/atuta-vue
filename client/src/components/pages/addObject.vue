@@ -39,11 +39,9 @@
                 </span>
               </h3>
               <radioButtons
-                :class="{
-                  'radio-buttons_error': this.errorsMain.includes('object')
-                }"
                 radioButtonsView="wrapAddObject"
                 radioButtonsId="objectTypeAddObject"
+                :propErrorClass="errorsMain.includes('object')"
                 :items="filterDataDefaultClone.object"
                 :value.sync="createdObject.object.value"
                 @change.native="clickOnMainFields()"
@@ -442,13 +440,14 @@
                 </span>
               </h3>
               <checkboxes
+                :propErrorClass="errorsMain.includes('connectionWay')"
                 checkboxId="connectionWayAddObject"
                 checkboxType="listVertical"
                 :items="filterDataDefaultClone.connectionWay"
                 :value.sync="createdObject.connectionWay.value"
               />
               <p
-                v-if="this.errorsMain.includes('connectionWay')"
+                v-if="errorsMain.includes('connectionWay')"
                 class="paragraph paragraph_invalid"
               >
                 Необходимо указать способ связи
@@ -991,12 +990,10 @@ export default {
 
         // While a user doesn't click to button at first time.
         if (this.isClicked) {
-          // console.log('CreatedObject watch formIsFilledArray ::', this.formIsFilledArray);
           this.errorsMain = [];
           this.formIsFilledArray.forEach(
             item => {
               if (this.$refs[item]) {
-                // console.log('item :: >>', item);
                 this.errorsMain.push(item);
               }
             }
@@ -1004,7 +1001,6 @@ export default {
         }
 
         // this.openChildComponent = false;
-        console.log('this.formIsFilledArray ::', this.formIsFilledArray);
 
         if (this.objectTypeAndDealTypeIsSelected && this.isClicked) {
           // console.log('nextTick openChildComponent ::', this.openChildComponent);
@@ -1015,13 +1011,11 @@ export default {
               this.formIsFilledArray.forEach(
                 item => {
                   if (this.$refs[selectedObject].$refs[item]) {
-                    // console.log('item :: >>', item);
                     this.errorsOther.push(item);
                   }
                 }
               );
               if (this.openChildComponent) {
-                console.log('showOtherErrors ::');
                 this.showOtherErrors();
               }
             }
@@ -1112,7 +1106,6 @@ export default {
   },
   methods: {
     clickOnMainFields() {
-      console.log('clickOnMainFields ::');
       if (this.objectTypeAndDealTypeIsSelected) {
         this.openChildComponent = false;
       }
@@ -1123,7 +1116,6 @@ export default {
       } else {
         this.openChildComponent = false;
       }
-      console.log('this.formIsFilledArray ::', this.formIsFilledArray);
       this.isClicked = true;
       this.showMainErrors();
       if (this.objectTypeAndDealTypeIsSelected) {
@@ -1155,11 +1147,9 @@ export default {
     },
     showOtherErrors() {
       const selectedObject = this.createdObject.object.value.slug;
-      // console.log('selectedObject ::', selectedObject, this.$refs.app);
       this.formIsFilledArray.forEach(
         item => {
           if (this.$refs[selectedObject].$refs[item]) {
-            // console.log('item ::', item);
             this.errorsOther.push(item);
           }
         }
@@ -1170,21 +1160,10 @@ export default {
       this.formIsFilledArray.forEach(
         item => {
           if (this.$refs[item]) {
-            console.log('item ::', item);
             this.errorsMain.push(item);
           }
         }
       );
-      // console.log('showing error of this field');
-      // if (this.$refs.app.$refs[refName].classList) {
-      //   this.$refs.app.$refs[refName].classList.add('test-class');
-      // } else {
-      //   this.$refs.app.$refs[refName];
-      // }
-      // if (this.isClicked) {
-      //   this.isClicked = false;
-      //   this.fieldsForValidating = this.formIsFilledArray;
-      // }
     },
     hideSuggestionsList() {
       this.suggestList = [];
@@ -1192,7 +1171,6 @@ export default {
     selectSuggestedAddress(event) {
       // this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
-      // console.log('event.target.innerText ::', event.target.innerText);
       this.createdObject.address.value = event.target.innerText;
       this.createdObject.address.coords = this.coordsTaganrog;
       this.hideSuggestionsList;

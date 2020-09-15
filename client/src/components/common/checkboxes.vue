@@ -28,6 +28,9 @@
           <div
             v-else
             class="checkboxes__icon checkboxes__icon_active"
+            :class="{
+              'checkboxes__icon_error': propErrorClass
+            }"
           />
         </div>
         <input
@@ -78,6 +81,7 @@ export default {
       default: 'default',
       required: false
     },
+    propErrorClass: false,
   },
   data() {
     return {

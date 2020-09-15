@@ -26,9 +26,7 @@
             </span>
           </h3>
           <radioButtons
-            :class="{
-              'radio-buttons_error': this.errors.includes('type')
-            }"
+            :propErrorClass="errors.includes('type')"
             key="objectCommercialTypeAddObject"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectCommercialTypeAddObject"
@@ -148,9 +146,7 @@
             </span>
           </h3>
           <radioButtons
-            :class="{
-              'radio-buttons_error': this.errors.includes('class')
-            }"
+            :propErrorClass="errors.includes('class')"
             key="buildingTypeAddObject"
             radioButtonsView="listHorizontal"
             radioButtonsId="buildingTypeAddObject"

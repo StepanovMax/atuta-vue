@@ -52,9 +52,7 @@
             </span>
           </h3>
           <radioButtons
-            :class="{
-              'radio-buttons_error': this.errors.includes('view')
-            }"
+            :propErrorClass="errors.includes('view')"
             radioButtonsView="wrapHalf"
             radioButtonsId="appViewAddObject"
             :items="filterDataDefaultClone.appView"

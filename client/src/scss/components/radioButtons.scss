@@ -15,7 +15,6 @@ $BORDER-RADIUS: 6px;
     align-items: flex-start;
 
     &-item {
-      padding: 5px 0;
       cursor: pointer;
       flex-shrink: 1;
       display: flex;
@@ -80,20 +79,49 @@ $BORDER-RADIUS: 6px;
   }
 
   &__label {
-    padding: 0 0 0 6px;
+    padding: 5px 0 5px 22px;
     font-size: 14px;
     cursor: pointer;
     display: block;
     text-align: left;
+    position: relative;
+    flex-grow: 1;
+
+    &:before {
+      content: '';
+      top: 4px;
+      left: 0;
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      border-radius: 100%;
+      border: 1px solid $COLOR-BLUE-MAIN;
+    }
+
+    &_active {
+      &:after {
+        content: '';
+        top: 6px;
+        left: 2px;
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        border-radius: 100%;
+        border: 4px solid $COLOR-BLUE-MAIN;
+      }
+    }
+
+    &_error {
+      &:before {
+        @include validateError;
+      }
+    }
   }
 
   &__input-radio {
+    display: none;
     margin: 0;
     padding: 0;
     color: $COLOR-BLUE-MAIN;
-  }
-
-  &_error {
-    @include validateError;
   }
 }
