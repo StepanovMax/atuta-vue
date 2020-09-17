@@ -924,6 +924,7 @@ export default {
   watch: {
     currentAddress: {
       handler(value) {
+        alert('test');
         this.onInputType();
         if (value === '') {
           this.createdObject.address.value = null;
