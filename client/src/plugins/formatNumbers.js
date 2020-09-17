@@ -11,7 +11,7 @@ const formatNumbers = {
           numberFormatted = numberFormatted.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
           return numberFormatted;
         },
-        formatNumbers(value) {
+        gFormatNumbers(value) {
           const numberString = value.toString();
           const numberFormatted = numberString.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
           return numberFormatted;
@@ -56,6 +56,19 @@ const formatNumbers = {
             slug: maxNumber + '+',
           });
           return resultedArray;
+        },
+        gConvertDate(value) {
+          let day = value.getDate();
+          let month = value.getMonth() + 1;
+          const year = value.getFullYear();
+          if (`${month}`.length < 2) {
+            month = 0 + `${month}`;
+          }
+          if (`${day}`.length < 2) {
+            day = 0 + `${day}`;
+          }
+          const toDayDate = day + '.' + month + '.' + year;
+          return toDayDate;
         },
       }
     });

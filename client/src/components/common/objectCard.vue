@@ -30,7 +30,7 @@
           >
             <p class="object-card__price">
               <span class="object-card__price_number">
-                {{ formatNumbers(dataObjectData.price) }} ₽
+                {{ gFormatNumbers(dataObjectData.price) }} ₽
               </span>
               <span
                 v-if="dataObjectData.deal && (dataObjectData.deal.slug === 'rent')"

@@ -4,6 +4,7 @@ const state = {
   count: 11.7,
   isFilterOpen: false,
   objectDataSelected: {
+    id: 71628571265,
     object: {
       value: null,
       required: true,
@@ -529,7 +530,7 @@ const state = {
       },
       {
         slug: 'freePlan',
-        label: 'Своб.планировка',
+        label: 'Своб. планировка',
       },
       {
         slug: '1',

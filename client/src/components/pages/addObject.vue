@@ -713,9 +713,8 @@
               <objectCardSample
                 key="key-preview-add-object"
                 class="object-card_fixed-width"
-                :propObjectData="objectData"
+                :propObjectData="createdObject"
                 propObjectView=""
-                propObjectType="app"
               />
             </div>
 
@@ -945,8 +944,11 @@ export default {
     },
     createdObject: {
       handler(value) {
+        // console.log('createdObject WATCH ::', value);
         this.objectData = value;
+        // TODO: Why?
         this.createdObject = value;
+        // console.log('createdObject WATCH this.createdObject ::', this.createdObject);
         this.objectData.agency.name = this.userData.name;
         this.objectData.agency.type = this.userData.type;
 
@@ -982,6 +984,7 @@ export default {
 
         if (this.formIsFilledArray.length) {
           this.formIsFilled = false;
+          console.log('formIsFilledArray ::', this.formIsFilledArray);
         } else {
           this.formIsFilled = true;
         }
@@ -1021,6 +1024,11 @@ export default {
             }
           )
         }
+
+        // if (this.createdObject.photoGallery.value) {
+        //   const url = URL.createObjectURL(this.createdObject.photoGallery.value[0].object.value);
+        //   console.log('url 2 ::', url);
+        // }
 
       },
       deep: true
@@ -1102,7 +1110,9 @@ export default {
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
-    this.createdObject.address.value = null; 
+    this.createdObject.address.value = null;
+    const toDayDate = this.gConvertDate(new Date());
+    this.createdObject.date = toDayDate;
   },
   methods: {
     clickOnMainFields() {
