@@ -93,9 +93,6 @@
               </span>
             </div>
             <div
-              v-if="
-                dataObjectData.object.value.slug === 'app'
-              "
               class="object-card__wrap-info-details-item object-card__wrap-info-details-item_floor"
               :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
             >
@@ -166,6 +163,307 @@
               </span>
               <span>
                 &nbsp;сот.
+              </span>
+            </div>
+          </div>
+          <div
+            v-if="
+              dataObjectData.object.value.slug === 'room'
+            "
+            class="object-card__wrap-info-details"
+            :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
+          >
+            <div
+              v-if="
+                dataObjectData.room.roomsCount.value
+              "
+              class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
+              :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+            >
+              <span>
+                {{ dataObjectData.room.roomsCount.value.label }}
+              </span>
+              <span
+                v-if="
+                  dataObjectData.room.roomsCount.value.slug != 'studio'
+                  && dataObjectData.room.roomsCount.value.slug != 'freePlan'
+                "
+              >
+                &nbsp;к.кв
+              </span>
+            </div>
+            <div
+              class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
+              :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+            >
+              <span v-if="dataObjectData.room.area.value">
+                {{ dataObjectData.room.area.value }} 
+              </span>
+              <span>
+                &nbsp;м²
+              </span>
+            </div>
+            <div
+              class="object-card__wrap-info-details-item object-card__wrap-info-details-item_floor"
+              :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+            >
+              <span
+                v-if="dataObjectData.room.floor.value"
+              >
+                {{ dataObjectData.room.floor.value.slug }}
+              </span>/
+              <span
+                v-if="dataObjectData.room.floorAll.value"
+              >
+                {{ dataObjectData.room.floorAll.value.slug }}
+              </span>
+              <span>
+                &nbsp;этаж
+              </span>
+            </div>
+          </div>
+          <div
+            v-if="
+              dataObjectData.object.value.slug === 'garage'
+            "
+            class="object-card__wrap-info-details"
+            :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
+          >
+            <div
+              v-if="
+                dataObjectData.garage.type.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+                object-card__wrap-info-details-item_garage
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+              ]"
+            >
+              <span
+                v-if="
+                  dataObjectData.garage.type.value.slug === 'garage'
+                  && dataObjectData.garage.garageType.value
+                "
+              >
+                {{ dataObjectData.garage.garageType.value.label }}
+              </span>
+              <span
+                v-if="
+                  dataObjectData.garage.type.value.slug === 'parking'
+                  && dataObjectData.garage.parkingType.value
+                "
+              >
+                {{ dataObjectData.garage.parkingType.value.label }}
+              </span>
+            </div>
+            <div
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+                object-card__wrap-info-details-item_garage
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+              ]"
+            >
+              <span v-if="dataObjectData.garage.area.value">
+                {{ dataObjectData.garage.area.value }} 
+              </span>
+              <span>
+                &nbsp;м²
+              </span>
+            </div>
+          </div>
+          <div
+            v-if="
+              dataObjectData.object.value.slug === 'sector'
+            "
+            class="object-card__wrap-info-details"
+            :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
+          >
+            <div
+              v-if="
+                dataObjectData.sector.type.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+                object-card__wrap-info-details-item_garage
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+              ]"
+            >
+              <span
+                v-if="dataObjectData.sector.type.value.labelShort"
+              >
+                {{ dataObjectData.sector.type.value.labelShort }}
+              </span>
+              <span
+                v-else
+              >
+                {{ dataObjectData.sector.type.value.label }}
+              </span>
+            </div>
+            <div
+              v-if="
+                dataObjectData.sector.area.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+                object-card__wrap-info-details-item_garage
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+              ]"
+            >
+              <span>
+                {{ dataObjectData.sector.area.value }} сот.
+              </span>
+            </div>
+          </div>
+          <div
+            v-if="
+              dataObjectData.object.value.slug === 'commercial'
+            "
+            class="object-card__wrap-info-details"
+            :class="[
+              {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
+              {'object-card__wrap-info-details_grid': dataObjectData.object.value.slug === 'commercial'}
+            ]"
+          >
+            <div
+              v-if="
+                dataObjectData.commercial.type.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
+              ]"
+            >
+              <span>
+                {{ dataObjectData.commercial.type.value.label }}
+              </span>
+            </div>
+            <div
+              v-if="
+                dataObjectData.commercial.area.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
+              ]"
+            >
+              <span
+                v-if="dataObjectData.commercial.type.value.slug === 'sector'"
+              >
+                <span>
+                  {{ dataObjectData.commercial.area.value }}
+                </span>
+                <span>
+                  &nbsp;сот.
+                </span>
+              </span>
+              <span
+                v-else
+              >
+                <span>
+                  {{ dataObjectData.commercial.area.value }}
+                </span>
+                <span>
+                  &nbsp;м²
+                </span>
+              </span>
+            </div>
+            <div
+              v-if="
+                dataObjectData.commercial.class.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
+              ]"
+            >
+              <span>
+                Класс {{ dataObjectData.commercial.class.value.label }}
+              </span>
+            </div>
+            <div
+              v-if="
+                dataObjectData.commercial.floor.value
+                && dataObjectData.commercial.floorAll.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
+              ]"
+            >
+              <span
+                v-if="dataObjectData.commercial.floor.value"
+              >
+                {{ dataObjectData.commercial.floor.value.slug }}
+              </span>/
+              <span
+                v-if="dataObjectData.commercial.floorAll.value"
+              >
+                {{ dataObjectData.commercial.floorAll.value.slug }}
+              </span>
+              <span>
+                &nbsp;этаж
+              </span>
+            </div>
+          </div>
+          <div
+            v-if="
+              dataObjectData.object.value.slug === 'commercial'
+            "
+            class="object-card__wrap-info-details object-card__wrap-info-details_last"
+            :class="[
+              {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
+            ]"
+          >
+            <div
+              v-if="
+                dataObjectData.commercial.tenant.value
+              "
+              class="
+                object-card__wrap-info-details-item
+                object-card__wrap-info-details-item_area
+              "
+              :class="[
+                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
+              ]"
+            >
+              <span
+                v-if="dataObjectData.commercial.tenant.value.slug === 'yes'"
+              >
+                С арендатором
+              </span>
+              <span
+                v-if="dataObjectData.commercial.tenant.value.slug === 'no'"
+              >
+                Без арендатора
               </span>
             </div>
           </div>

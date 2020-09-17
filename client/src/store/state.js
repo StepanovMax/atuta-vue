@@ -272,7 +272,7 @@ const state = {
       },
       tenant: {
         value: null,
-        required: false,
+        required: true,
       },
       facade: {
         value: null,
@@ -404,6 +404,7 @@ const state = {
       {
         label: 'Сельсхозназначения(СНТ, ДНП)',
         slug: 'agricultural',
+        labelShort: 'С/х (СНТ, ДНП)',
       },
       {
         label: 'Промназначения',

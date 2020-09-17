@@ -1,4 +1,4 @@
-$UPLOAD-IMAGE-WIDTH: 200px;
+$UPLOAD-IMAGE-WIDTH: 234px;
 
 .object-card {
   border-width: 1px;
@@ -95,6 +95,10 @@ $UPLOAD-IMAGE-WIDTH: 200px;
           align-items: flex-end;
           border-left: 1px solid $COLOR-TITLE;
 
+          &_garage {
+            width: 50%;
+          }
+
           &_list-view {
             width: auto;
             text-align: left;
@@ -108,10 +112,30 @@ $UPLOAD-IMAGE-WIDTH: 200px;
           &:nth-child(1) {
             border-left: 0;
           }
+
+          &_grid {
+            width: auto;
+            border-left: 0;
+            margin-bottom: 4px;
+
+            &:nth-child(2n + 2) {
+              border-left: 1px solid $COLOR-TITLE;
+            }
+          }
         }
 
         &_list-view {
           justify-content: flex-start;
+        }
+
+        &_grid {
+          display: grid;
+          grid-template-columns: 50% 50%;
+          margin-bottom: 0;
+        }
+
+        &_last {
+          justify-content: center;
         }
       }
 
@@ -286,7 +310,7 @@ $UPLOAD-IMAGE-WIDTH: 200px;
   }
 
   &_fixed-width {
-    width: 100%;
+    width: 250px;
 
     @include media(mobile) {
       align-self: center;
