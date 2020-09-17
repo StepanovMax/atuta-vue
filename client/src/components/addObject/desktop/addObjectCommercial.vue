@@ -255,12 +255,17 @@
             form__title
             form__title_add-object
           ">
-            Наличие арендатора
+            <span>
+              Наличие арендатора
+            </span>
+            <span v-if="propCreatedObjectCommercial.tenant.required">
+              *
+            </span>
           </h3>
           <switcher
             switcherId="tenantAddObject"
             :items="filterDataDefaultClone.tenant"
-            :value.sync="propCreatedObjectCommercial.tenant"
+            :value.sync="propCreatedObjectCommercial.tenant.value"
           />
         </div>
       </div>
@@ -402,13 +407,13 @@ export default {
     floorAll: {
       cache: false,
       get() {
-        return this.propCreatedObjectCommercial.floorAll;
+        return this.propCreatedObjectCommercial.floorAll.value;
       },
       set(value) {
         // If a user select floorFull more than floorCurrent.
-        if (this.propCreatedObjectCommercial.floor && value.slug < this.propCreatedObjectCommercial.floor.slug) {
+        if (this.propCreatedObjectCommercial.floor.value && value.slug < this.propCreatedObjectCommercial.floor.value.slug) {
           // Then floorCurrent will be a null.
-          this.propCreatedObjectCommercial.floor = null;
+          this.propCreatedObjectCommercial.floor.value = null;
         }
         // All floors that bigger than selected floorAll value will be disabled.
         this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
@@ -422,7 +427,7 @@ export default {
             }
           }
         )
-        this.propCreatedObjectCommercial.floorAll = value;
+        this.propCreatedObjectCommercial.floorAll.value = value;
       }
     },
     appYearsList() {

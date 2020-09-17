@@ -18,7 +18,6 @@
             Вид удобств
           </h3>
           <radioButtons
-            :propErrorClass="errors.includes('comfortType')"
             radioButtonsView="listVertical"
             radioButtonsId="roomСomfortAddObject"
             :items="filterDataDefaultClone.comfortType"

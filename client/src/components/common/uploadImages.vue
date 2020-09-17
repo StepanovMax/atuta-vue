@@ -118,6 +118,7 @@ export default {
       images: [],
       dataUploadedImages: [],
       filesArray: [],
+      filesArrayResult: [],
       urlArray: [],
     }
   },
@@ -183,6 +184,8 @@ export default {
           let imageHeight = image.height;
 
           const currentUrl = image.src = URL.createObjectURL(fileList[i]);
+          this.filesArray[index].object.url = currentUrl;
+          vm.$emit('update:value', vm.filesArray);
 
           image.onload = function() {
             const canvas = document.getElementById(canvasID);
@@ -213,20 +216,16 @@ export default {
             }
             context.drawImage(this, 0, 0, imageWidth, imageHeight);
 
-            // const newURL = canvas.toDataURL('image/jpeg', 0.2);
-            // vm.urlArray.push(newURL);
-            vm.filesArray[index].canvas = canvas;
-            // console.log('vm.urlArray ::', vm.urlArray);
-            vm.$emit('update:value', vm.filesArray);
+            // canvas.toBlob(
+            //   function (blob) {
+            //     vm.filesArray[index].object.url = URL.createObjectURL(blob);
+            //     vm.$emit('update:value', vm.filesArray);
+            //     URL.revokeObjectURL(blob);
+            //   },
+            //   'image/jpeg',
+            //   1
+            // );
           }
-
-          // const currentUrl = URL.createObjectURL(fileList[index]);
-          // this.dataUploadedImages.push({
-          //   id: i,
-          //   url: currentUrl,
-          // });
-
-          URL.revokeObjectURL(fileList[index]);
         }
       }
     },
@@ -372,27 +371,40 @@ export default {
             canvas.height = imagePHeight;
           }
         }
+
         context.translate(translateX, translateY);
         context.rotate(currentDegree * Math.PI/180);
         context.drawImage(image, 0, 0, imageWidth, imageHeight);
-        const newURL = canvas.toDataURL('image/jpeg', 0.2);
-        // const newURL2 = URL.createObjectURL(value[0].object);
-        // vm.filesArray[index].object = canvas;
-        vm.filesArray[index].canvas = canvas;
-        // vm.urlArray[index] = newURL;
-        // console.log('newURL ::', newURL);
-        // const win = window.open(newURL, '_blank');
-        // win.focus();
+
+        vm.filesArray[index].object.image = image;
+        vm.filesArray[index].object.currentDegree = vm.filesArray[index].degrees;
+        vm.filesArray[index].object.imageWidth = imageWidth;
+        vm.filesArray[index].object.imageHeight = imageHeight;
+        vm.filesArray[index].object.translateX = translateX;
+        vm.filesArray[index].object.translateY = translateY;
+        vm.filesArray[index].object.canvasWidth = canvas.width;
+        vm.filesArray[index].object.canvasHeight = canvas.height;
+        vm.$emit('update:value', 'a');
+
+        canvas.toBlob(
+          function(blob) {
+            const url = URL.createObjectURL(blob);
+            vm.filesArray[index].object.url = url;
+            vm.$emit('update:value', vm.filesArray);
+            URL.revokeObjectURL(blob);
+          },
+          'image/jpeg',
+          1
+        );
         context.restore();
-        // vm.$emit('update:value', vm.filesArray);
-        vm.$emit('update:value', vm.filesArray);
       }
     },
     removeImage(index) {
       this.filesArray.splice(index, 1);
+      this.updateFilesArray();
     },
-    updateValue() {
-      vm.$emit('update:value', vm.filesArray);
+    updateFilesArray() {
+      this.$emit('update:value', this.filesArray);
     },
     changeArrayOrder(event) {
       this.filesArray = arrayMove(this.filesArray, event.oldIndex, event.newIndex);
