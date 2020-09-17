@@ -115,7 +115,7 @@
                   }"
                   id="suggestAddress"
                   v-model="currentAddress"
-                  @keypress="onInputType($event)"
+                  @keypress.passive="onInputType($event)"
                 >
                 <ul
                   v-if="suggestList.length > 0"
