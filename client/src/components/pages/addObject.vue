@@ -115,7 +115,6 @@
                   }"
                   id="suggestAddress"
                   v-model="currentAddress"
-                  @keypress.passive="onInputType($event)"
                 >
                 <ul
                   v-if="suggestList.length > 0"
@@ -925,6 +924,7 @@ export default {
   watch: {
     currentAddress: {
       handler(value) {
+        this.onInputType();
         if (value === '') {
           this.createdObject.address.value = null;
           this.createdObject.address.coords = null;
