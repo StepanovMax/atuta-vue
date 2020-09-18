@@ -114,7 +114,8 @@
                     'input_error': this.errorsMain.includes('address')
                   }"
                   id="suggestAddress"
-                  v-model="currentAddress"
+                  :value="currentAddress"
+                  @input="currentAddress = $event.target.value"
                 >
                 <ul
                   v-if="suggestList.length > 0"
@@ -886,7 +887,8 @@ export default {
       controls: [
         'zoomControl',
       ],
-      // currentAddress: '',
+      currentAddress: '',
+      currentAddressValue: '',
       errors: [],
       objectData: {
         price: 0,
@@ -919,7 +921,6 @@ export default {
       ],
       formIsFilled: false,
       formIsFilledArray: [],
-      currentAddressValue: '',
     }
   },
   watch: {
@@ -934,6 +935,16 @@ export default {
     //   },
     //   deep: true
     // },
+    currentAddress: {
+      handler(value) {
+        this.onInputType();
+        if (value === '') {
+          this.createdObject.address.value = null;
+          this.createdObject.address.coords = null;
+        }
+      },
+      deep: true
+    },
     townLabel: {
       handler(value) {
         this.createdObject.address.town = value;
@@ -1045,21 +1056,21 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
-    currentAddress: {
-      cache: false,
-      get() {
-        alert('get currentAddress');
-        return this.currentAddressValue;
-      },
-      set(value) {
-        this.onInputType();
-        if (value === '') {
-          this.createdObject.address.value = null;
-          this.createdObject.address.coords = null;
-        }
-        this.currentAddressValue = value;
-      }
-    },
+    // currentAddress: {
+    //   cache: false,
+    //   get() {
+    //     // alert('get currentAddress');
+    //     return this.currentAddressValue;
+    //   },
+    //   set(value) {
+    //     this.onInputType();
+    //     if (value === '') {
+    //       this.createdObject.address.value = null;
+    //       this.createdObject.address.coords = null;
+    //     }
+    //     this.currentAddressValue = value;
+    //   }
+    // },
     dealVModel: {
       cache: false,
       get() {
@@ -1236,14 +1247,14 @@ export default {
       );
     },
     onInputType(event) {
-      alert('onInputType');
+      // alert('onInputType');
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
-          alert('res success');
+          // alert('res success');
         },
         error => {
-          alert('res error');
+          // alert('res error');
           console.error('Rejected [Suggest error] ::', error);
         }
       );
