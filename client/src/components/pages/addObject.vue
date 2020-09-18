@@ -794,6 +794,7 @@
         >
           Данные созданного объекта:
         </h3>
+        <pre>{{ suggestList }}</pre>
         <pre>{{ createdObject }}</pre>
       </div>
 
@@ -1247,14 +1248,14 @@ export default {
       );
     },
     onInputType(event) {
-      // alert('onInputType');
+      alert('onInputType');
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
-          // alert('res success');
+          alert('res success');
         },
         error => {
-          // alert('res error');
+          alert('res error');
           console.error('Rejected [Suggest error] ::', error);
         }
       );
