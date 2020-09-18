@@ -126,7 +126,7 @@
                     class="input-address__suggest-list-item"
                     v-for="(item, index) in suggestList"
                     :key="'key-' + index"
-                    @click="selectSuggestedAddress"
+                    @click.native="selectSuggestedAddress"
                     v-click-outside.stop="hideSuggestionsList"
                   >
                     <p
@@ -1250,10 +1250,8 @@ export default {
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
-          alert(this.suggestList.length);
         },
         error => {
-          alert('res error');
           console.error('Rejected [Suggest error] ::', error);
         }
       );
