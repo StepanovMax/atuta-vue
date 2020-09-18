@@ -1251,7 +1251,7 @@ export default {
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
-          alert('res success');
+          alert(res);
         },
         error => {
           alert('res error');
