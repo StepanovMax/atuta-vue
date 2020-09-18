@@ -989,7 +989,7 @@ export default {
         if (this.formIsFilledArray.length) {
           this.formIsFilled = false;
           // TODO
-          // console.log('formIsFilledArray ::', this.formIsFilledArray);
+          console.log('formIsFilledArray ::', this.formIsFilledArray);
         } else {
           this.formIsFilled = true;
         }
@@ -1173,6 +1173,8 @@ export default {
       }
       if (element) {
         const top = element.offsetTop;
+        alert(refName);
+        alert(element.offsetTop);
         window.scrollTo(0, top - 50);
       } else {
         console.log('No element', refName, this.$refs);
