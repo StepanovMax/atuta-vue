@@ -1210,8 +1210,7 @@ export default {
       this.convertAddress(event.target.innerText);
       this.createdObject.address.value = event.target.innerText;
       this.createdObject.address.coords = this.coordsTaganrog;
-      alert(event.target.innerText);
-      // this.hideSuggestionsList;
+      // alert(event.target.innerText);
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
@@ -1240,6 +1239,7 @@ export default {
           const coords = firstGeoObject.geometry.getCoordinates();
           this.coordsTaganrog = coords;
           this.getAddress(this.coordsTaganrog);
+          this.hideSuggestionsList;
         },
         error => {
           console.error('Rejected [Geocode error] ::', error);
