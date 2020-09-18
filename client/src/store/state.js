@@ -1126,10 +1126,12 @@ const state = {
       {
         label: 'Телефон',
         slug: 'phone',
+        checked: true,
       },
       {
         label: 'Сообщения',
         slug: 'messages',
+        checked: true,
       },
     ],
     comfortType: [

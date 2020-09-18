@@ -85,19 +85,30 @@ export default {
   },
   data() {
     return {
-      picked: [],
+      picked: [...this.items].map(function(item) {
+        if (item.checked === true) {
+          return item;
+        }
+        return null;
+      }),
       itemsCopy: [...this.items].map(function(item) {
-        item.checked = false;
+        if (!(item.checked === true || item.checked === false)) {
+          item.checked = false;
+        }
         return item;
       }),
     }
   },
   watch: {
     picked: {
-      handler() {
+      handler(value) {
+        // The copy of all items.
         let itemsCopy = [...this.itemsCopy];
+        // The copy of selected items.
         let pickedCopy = [...this.picked];
+        // Iteration of all the items.
         itemsCopy.forEach(function(item, index) {
+          // If an iterated item is the same as a picked item.
           const catchedElement = pickedCopy.some(
             itemPicked => {
               if (item.slug === itemPicked.slug) {
@@ -106,6 +117,7 @@ export default {
               return null;
             }
           );
+          // If an iterated item is the same as a picked item, then switch it tio checked.
           if (catchedElement) {
             item.checked = true;
           } else {
@@ -136,6 +148,11 @@ export default {
     trigger(i) {
       this.$refs.checkboxinput[i].click();
     },
+  },
+  mounted() {
+    if (this.picked.length) {
+      this.$emit('update:value', this.picked);
+    }
   },
 };
 </script>
