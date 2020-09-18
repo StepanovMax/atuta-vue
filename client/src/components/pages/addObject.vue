@@ -777,6 +777,7 @@
 
 
       <div
+        v-local
         style="
           color: #444;
           font-size: 13px;
@@ -885,7 +886,7 @@ export default {
       controls: [
         'zoomControl',
       ],
-      // currentAddress: '',
+      currentAddress: '',
       errors: [],
       objectData: {
         price: 0,
@@ -918,21 +919,20 @@ export default {
       ],
       formIsFilled: false,
       formIsFilledArray: [],
-      currentAddressValue: '',
     }
   },
   watch: {
-    // currentAddress: {
-    //   handler(value) {
-    //     alert('test');
-    //     this.onInputType();
-    //     if (value === '') {
-    //       this.createdObject.address.value = null;
-    //       this.createdObject.address.coords = null;
-    //     }
-    //   },
-    //   deep: true
-    // },
+    currentAddress: {
+      handler(value) {
+        alert('test');
+        this.onInputType();
+        if (value === '') {
+          this.createdObject.address.value = null;
+          this.createdObject.address.coords = null;
+        }
+      },
+      deep: true
+    },
     townLabel: {
       handler(value) {
         this.createdObject.address.town = value;
@@ -1044,21 +1044,6 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
-    currentAddress: {
-      cache: false,
-      get() {
-        // alert('test');
-        return this.currentAddressValue;
-      },
-      set(value) {
-        if (value === '') {
-          this.createdObject.address.value = null;
-          this.createdObject.address.coords = null;
-        }
-        this.currentAddressValue = value;
-        this.onInputType();
-      }
-    },
     dealVModel: {
       cache: false,
       get() {
@@ -1235,11 +1220,14 @@ export default {
       );
     },
     onInputType(event) {
+      alert('onInputType');
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
+          alert('res success');
         },
         error => {
+          alert('res error');
           console.error('Rejected [Suggest error] ::', error);
         }
       );
