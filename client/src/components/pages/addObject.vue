@@ -1210,7 +1210,8 @@ export default {
       this.convertAddress(event.target.innerText);
       this.createdObject.address.value = event.target.innerText;
       this.createdObject.address.coords = this.coordsTaganrog;
-      this.hideSuggestionsList;
+      alert(event.target.innerText);
+      // this.hideSuggestionsList;
     },
     labelWithPhone ({ label, phone }) {
       return `${label}: ${phone}`
