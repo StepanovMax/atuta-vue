@@ -1247,7 +1247,7 @@ export default {
       );
     },
     onInputType(event) {
-      alert('onInputType');
+      alert(this.currentAddress);
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
