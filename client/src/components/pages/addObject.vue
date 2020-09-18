@@ -120,7 +120,6 @@
                 <ul
                   v-if="suggestList.length > 0"
                   class="input-address__suggest-list"
-                  v-click-outside="hideSuggestionsList"
                 >
                   <li
                     class="input-address__suggest-list-item"
@@ -1251,7 +1250,7 @@ export default {
       ymaps.suggest(this.currentAddress).then(
         res => {
           this.suggestList = res;
-          alert(res);
+          alert(typeof res);
         },
         error => {
           alert('res error');
