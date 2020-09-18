@@ -778,6 +778,7 @@
 
 
       <div
+        v-local
         style="
           color: #444;
           font-size: 13px;
