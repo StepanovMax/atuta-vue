@@ -60,7 +60,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
       @include media(mobile) {
         margin-right: 0;
-        width: calc(50% - 15px);
+        // width: calc(50% - 15px);
       }
     }
 
