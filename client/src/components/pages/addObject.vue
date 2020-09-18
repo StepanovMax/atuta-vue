@@ -115,7 +115,8 @@
                   }"
                   id="suggestAddress"
                   :value="currentAddress"
-                  @input="currentAddress = $event.target.value"
+                  @input="currentAddressUpdate($event)"
+                  @focus="addressSelected = false"
                 >
                 <ul
                   v-if="suggestList.length > 0"
@@ -918,28 +919,21 @@ export default {
           phone: '+7 (928) 112-20-80',
         },
       ],
+      addressSelected: false,
       formIsFilled: false,
       formIsFilledArray: [],
     }
   },
   watch: {
-    // currentAddress: {
-    //   handler(value) {
-    //     alert('test');
-    //     this.onInputType();
-    //     if (value === '') {
-    //       this.createdObject.address.value = null;
-    //       this.createdObject.address.coords = null;
-    //     }
-    //   },
-    //   deep: true
-    // },
     currentAddress: {
       handler(value) {
-        this.onInputType();
         if (value === '') {
           this.createdObject.address.value = null;
           this.createdObject.address.coords = null;
+          this.addressSelected = false;
+        }
+        if (!this.addressSelected) {
+          this.onInputType();
         }
       },
       deep: true
@@ -991,12 +985,11 @@ export default {
               }
             }
         }
-        // console.log('formIsFilledArray ::', this.formIsFilledArray);
-        // console.log('us clicked ::', this.isClicked);
 
         if (this.formIsFilledArray.length) {
           this.formIsFilled = false;
-          console.log('formIsFilledArray ::', this.formIsFilledArray);
+          // TODO
+          // console.log('formIsFilledArray ::', this.formIsFilledArray);
         } else {
           this.formIsFilled = true;
         }
@@ -1142,6 +1135,9 @@ export default {
     this.createdObject.date = toDayDate;
   },
   methods: {
+    currentAddressUpdate(event) {
+      this.currentAddress = event.target.value;
+    },
     clickOnMainFields() {
       if (this.objectTypeAndDealTypeIsSelected) {
         this.openChildComponent = false;
@@ -1210,7 +1206,7 @@ export default {
       this.convertAddress(event.target.innerText);
       this.createdObject.address.value = event.target.innerText;
       this.createdObject.address.coords = this.coordsTaganrog;
-      // alert(event.target.innerText);
+      this.addressSelected = true;
       this.hideSuggestionsList();
     },
     labelWithPhone ({ label, phone }) {
