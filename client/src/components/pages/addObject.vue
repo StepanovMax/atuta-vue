@@ -886,7 +886,7 @@ export default {
       controls: [
         'zoomControl',
       ],
-      currentAddress: '',
+      // currentAddress: '',
       errors: [],
       objectData: {
         price: 0,
@@ -919,20 +919,21 @@ export default {
       ],
       formIsFilled: false,
       formIsFilledArray: [],
+      currentAddressValue: '',
     }
   },
   watch: {
-    currentAddress: {
-      handler(value) {
-        alert('test');
-        this.onInputType();
-        if (value === '') {
-          this.createdObject.address.value = null;
-          this.createdObject.address.coords = null;
-        }
-      },
-      deep: true
-    },
+    // currentAddress: {
+    //   handler(value) {
+    //     alert('test');
+    //     this.onInputType();
+    //     if (value === '') {
+    //       this.createdObject.address.value = null;
+    //       this.createdObject.address.coords = null;
+    //     }
+    //   },
+    //   deep: true
+    // },
     townLabel: {
       handler(value) {
         this.createdObject.address.town = value;
@@ -1044,6 +1045,21 @@ export default {
       'objectDataSelected',
       'filterDataSelected',
     ]),
+    currentAddress: {
+      cache: false,
+      get() {
+        alert('get currentAddress');
+        return this.currentAddressValue;
+      },
+      set(value) {
+        this.onInputType();
+        if (value === '') {
+          this.createdObject.address.value = null;
+          this.createdObject.address.coords = null;
+        }
+        this.currentAddressValue = value;
+      }
+    },
     dealVModel: {
       cache: false,
       get() {
