@@ -8,7 +8,14 @@
     >
       <div
         class="object-card__wrap-img-sample"
-        :class="{'object-card__wrap-img_list-view': propObjectView === 'list'}"
+        :class="[
+          {'object-card__wrap-img_list-view': propObjectView === 'list'},
+          {'object-card__wrap-img-sample_default':
+            !(dataObjectData.photoGallery.value
+            && dataObjectData.photoGallery.value.length
+            && dataObjectData.photoGallery.value[0].object)
+          }
+        ]"
       >
         <img
           v-if="
@@ -21,7 +28,11 @@
           alt=""
         >
         <span v-else>
-          Картинка не загружена
+          <img
+            class="img object-card__img"
+            src="src/images/logo/logo_desktop.png"
+            alt=""
+          >
         </span>
 
       </div>

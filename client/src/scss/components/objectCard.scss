@@ -58,6 +58,10 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       border-radius: 4px;
       overflow: hidden;
 
+      &_default {
+        background-color: #fff;
+      }
+
       @include media(mobile) {
         margin-right: 0;
         // width: calc(50% - 15px);
