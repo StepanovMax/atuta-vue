@@ -1158,27 +1158,35 @@ export default {
       this.scrollTo();
     },
     scrollTo() {
-      const refName = this.formIsFilledArray[0];
-      let selectedObject;
-      if (this.createdObject.object.value) {
-        selectedObject = this.createdObject.object.value.slug;
-      }
-      let element = this.$refs[refName];
-      if (this.objectTypeAndDealTypeIsSelected && this.$refs[refName]) {
-        // console.log('1', selectedObject, refName, this.$refs);
-        element = this.$refs[refName];
-      } else if (this.objectTypeAndDealTypeIsSelected && this.$refs[selectedObject].$refs[refName]) {
-        // console.log('2');
-        element = this.$refs[selectedObject].$refs[refName];
-      }
-      if (element) {
-        const top = element.offsetTop;
-        alert(refName);
-        alert(element.offsetTop);
-        window.scrollTo(0, top - 50);
-      } else {
-        console.log('No element', refName, this.$refs);
-      }
+      const position = this.detectHighestElement();
+      window.scrollTo(0, position - 50);
+    },
+    detectHighestElement() {
+      let arrayMin = [];
+      this.formIsFilledArray.forEach(
+        item => {
+          let position;
+          let selectedObject;
+          if (this.createdObject.object.value) {
+            selectedObject = this.createdObject.object.value.slug;
+          }
+          let element = this.$refs[item];
+
+          if (this.objectTypeAndDealTypeIsSelected && this.$refs[item]) {
+            element = this.$refs[item];
+          } else if (this.objectTypeAndDealTypeIsSelected && this.$refs[selectedObject].$refs[item]) {
+            element = this.$refs[selectedObject].$refs[item];
+          }
+
+          if (element) {
+            position = element.offsetTop;
+            arrayMin.push(position);
+          }
+        }
+      )
+
+      const min = Math.min( ...arrayMin );
+      return min;
     },
     showOtherErrors() {
       const selectedObject = this.createdObject.object.value.slug;
