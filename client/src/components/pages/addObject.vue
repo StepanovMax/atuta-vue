@@ -126,8 +126,7 @@
                     class="input-address__suggest-list-item"
                     v-for="(item, index) in suggestList"
                     :key="'key-' + index"
-                    @click.native="selectSuggestedAddress($event)"
-                    v-click-outside.stop="hideSuggestionsList"
+                    @click="selectSuggestedAddress($event)"
                   >
                     <p
                       class="input-address__suggest-list-item-text"
