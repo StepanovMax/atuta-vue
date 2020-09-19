@@ -59,7 +59,9 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       overflow: hidden;
 
       &_default {
-        background-color: #fff;
+        background-color: $COLOR-WHITE;
+        border: 1px solid $COLOR-GREY-BORDER;
+        box-sizing: border-box;
       }
 
       @include media(mobile) {
