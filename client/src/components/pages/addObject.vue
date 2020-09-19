@@ -264,8 +264,7 @@
         <addObjectCommercial
           ref="commercial"
           v-if="
-            createdObject.deal.value
-            && createdObject.object.value
+            createdObject.object.value
             && createdObject.object.value.slug === 'commercial'
           "
           :propCreatedObject="createdObject"
