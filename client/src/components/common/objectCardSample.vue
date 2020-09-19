@@ -469,12 +469,12 @@
               <span
                 v-if="dataObjectData.commercial.tenant.value.slug === 'yes'"
               >
-                С арендатором
+                С арендатором: Да
               </span>
               <span
                 v-if="dataObjectData.commercial.tenant.value.slug === 'no'"
               >
-                Без арендатора
+                С арендатором: Нет
               </span>
             </div>
           </div>
