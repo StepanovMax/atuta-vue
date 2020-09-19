@@ -55,6 +55,50 @@
             </div>
 
             <div
+              v-if="
+                createdObject.object.value
+                && createdObject.object.value.slug === 'commercial'
+              "
+              ref="type"
+              class="form__row"
+            >
+              <div class="
+                form__row
+                form__row_block-width
+              ">
+                <div class="
+                  form__block-width 
+                ">
+                  <h3 class="
+                    form__title
+                    form__title_add-object
+                  ">
+                    <span>
+                      Вид коммерческого объекта
+                    </span>
+                    <span v-if="createdObject.commercial.type.required">
+                      *
+                    </span>
+                  </h3>
+                  <radioButtons
+                    :propErrorClass="errorsMain.includes('type')"
+                    key="objectCommercialTypeAddObject"
+                    radioButtonsView="wrapHalf"
+                    radioButtonsId="objectCommercialTypeAddObject"
+                    :items="filterDataDefaultClone.commercialView"
+                    :value.sync="createdObject.commercial.type.value"
+                  />
+                  <p
+                    v-if="this.errorsMain.includes('type')"
+                    class="paragraph paragraph_invalid"
+                  >
+                    Необходимо указать вид коммерческого объекта
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
               ref="deal"
               class="form__row"
             >
@@ -264,7 +308,8 @@
         <addObjectCommercial
           ref="commercial"
           v-if="
-            createdObject.object.value
+            createdObject.deal.value
+            && createdObject.object.value
             && createdObject.object.value.slug === 'commercial'
           "
           :propCreatedObject="createdObject"

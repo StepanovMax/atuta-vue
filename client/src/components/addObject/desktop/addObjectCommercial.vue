@@ -2,48 +2,6 @@
   <div class="form__row">
 
     <div
-      ref="type"
-      class="form__row"
-    >
-      <div class="
-        form__row
-        form__row_block-width
-        form__row_block-width-half
-      ">
-        <div class="
-          form__block-width 
-          form__block-width-half
-        ">
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            <span>
-              Тип объекта
-            </span>
-            <span v-if="propCreatedObjectCommercial.type.required">
-              *
-            </span>
-          </h3>
-          <radioButtons
-            :propErrorClass="errors.includes('type')"
-            key="objectCommercialTypeAddObject"
-            radioButtonsView="wrapHalf"
-            radioButtonsId="objectCommercialTypeAddObject"
-            :items="filterDataDefaultClone.commercialView"
-            :value.sync="propCreatedObjectCommercial.type.value"
-          />
-          <p
-            v-if="this.errors.includes('type')"
-            class="paragraph paragraph_invalid"
-          >
-            Необходимо указать тип объекта
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div
       ref="area"
       class="form__row"
     >
