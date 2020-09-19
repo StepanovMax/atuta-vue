@@ -39,7 +39,9 @@
     >
       <span class="unit">
         <span class="unit__name unit__name_rouble">
-          <iconRouble />
+          <iconRouble
+            :propColor="propColor"
+          />
         </span>
       </span>
     </p>
@@ -59,6 +61,11 @@ export default {
       type: String,
       default: '',
       required: true,
+    },
+    propColor: {
+      type: String,
+      default: '',
+      required: false,
     },
   },
   computed: {

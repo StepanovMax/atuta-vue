@@ -30,6 +30,7 @@
           {{ tarifsArray[0].price }}
           <unit
             propUnit="rouble"
+            :propColor="this.selectedTarifName === tarifsArray[0].slug ? 'white' : ''"
           />
         </p>
         <iconCrown
@@ -77,6 +78,7 @@
           {{ tarifsArray[1].price }}
           <unit
             propUnit="rouble"
+            :propColor="this.selectedTarifName === tarifsArray[1].slug ? 'white' : ''"
           />
         </p>
         <iconDiamond

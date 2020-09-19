@@ -478,43 +478,123 @@
               </span>
             </div>
           </div>
-          <p
-            class="object-card__wrap-info__item object-card__address"
-            :class="{'object-card__address_list-view': propObjectView === 'list'}"
+          <div
+            v-if="
+              dataObjectData.tarif.value
+              && (dataObjectData.tarif.value.slug === 'premium' || dataObjectData.tarif.value.slug === 'vip')
+            "
+            class="object-card__icons-block"
           >
-            <span
-              v-if="dataObjectData.address.value"
+            <div class="object-card__icons-block-item">
+              <p
+                class="object-card__wrap-info__item object-card__address"
+                :class="{'object-card__address_list-view': propObjectView === 'list'}"
+              >
+                <span
+                  v-if="dataObjectData.address.value"
+                >
+                  {{ dataObjectData.address.value }}
+                </span>
+              </p>
+              <p class="object-card__wrap-info__item object-card__district">
+                <span>
+                  р-н
+                </span>
+                <span
+                  v-if="dataObjectData.district.value"
+                >
+                  {{ dataObjectData.district.value.label }}
+                </span>
+              </p>
+              <p class="object-card__wrap-info__item object-card__date object-card__date_number">
+                <span
+                  v-if="dataObjectData.id"
+                >
+                  <span>
+                    №
+                  </span>
+                  <span>
+                    {{ dataObjectData.id }}
+                  </span>
+                </span>
+              </p>
+            </div>
+            <div
+              class="
+                object-card__icons-block-item
+                object-card__icons-block-item_icon
+              "
             >
-              {{ dataObjectData.address.value }}
-            </span>
-          </p>
-          <p class="object-card__wrap-info__item object-card__district">
-            <span>
-              р-н
-            </span>
-            <span
-              v-if="dataObjectData.district.value"
+              <iconCrown
+                v-if="
+                  dataObjectData.tarif.value
+                  && dataObjectData.tarif.value.slug === 'vip'
+                "
+                class="object-card__icon"
+              />
+              <iconDiamond
+                v-if="
+                  dataObjectData.tarif.value
+                  && dataObjectData.tarif.value.slug === 'premium'
+                "
+                class="object-card__icon"
+              />
+              <p class="object-card__wrap-info__item object-card__date">
+                <span
+                  v-if="dataObjectData.date"
+                >
+                  {{ dataObjectData.date }}
+                </span>
+              </p>
+            </div>
+          </div>
+          <div
+            v-if="
+              !dataObjectData.tarif.value
+            "
+            class="
+              object-card__icons-block
+              object-card__icons-block_no
+            "
+          >
+            <p
+              class="object-card__wrap-info__item object-card__address"
+              :class="{'object-card__address_list-view': propObjectView === 'list'}"
             >
-              {{ dataObjectData.district.value.label }}
-            </span>
-          </p>
-          <p class="object-card__wrap-info__item object-card__date">
-            <span
-              v-if="dataObjectData.id"
-            >
-              <span>
-                №
+              <span
+                v-if="dataObjectData.address.value"
+              >
+                {{ dataObjectData.address.value }}
               </span>
+            </p>
+            <p class="object-card__wrap-info__item object-card__district">
               <span>
-                {{ dataObjectData.id }}
+                р-н
               </span>
-            </span>
-            <span
-              v-if="dataObjectData.date"
-            >
-              {{ dataObjectData.date }}
-            </span>
-          </p>
+              <span
+                v-if="dataObjectData.district.value"
+              >
+                {{ dataObjectData.district.value.label }}
+              </span>
+            </p>
+            <p class="object-card__wrap-info__item object-card__date object-card__date_number">
+              <span
+                v-if="dataObjectData.id"
+              >
+                <span>
+                  №
+                </span>
+                <span>
+                  {{ dataObjectData.id }}
+                </span>
+              </span>
+              <span
+                v-if="dataObjectData.date"
+              >
+                {{ dataObjectData.date }}
+              </span>
+            </p>
+          </div>
           <p
             class="object-card__agency"
             :class="{'object-card__agency_list-view': propObjectView === 'list'}"
@@ -533,10 +613,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import iconHeartStroke from '../icons/iconHeartStroke.vue';
 import showPhoneNumber from './showPhoneNumber.vue';
 import moveToFavorites from './moveToFavorites.vue';
 import socialSharing from './socialSharing.vue';
+import iconCrown from '../icons/iconCrown.vue'
+import iconDiamond from '../icons/iconDiamond.vue'
+import iconHeartStroke from '../icons/iconHeartStroke.vue';
 
 export default {
   name: 'grid',
@@ -547,6 +629,8 @@ export default {
     }
   },
   components: {
+    iconCrown,
+    iconDiamond,
     iconHeartStroke,
     showPhoneNumber,
     moveToFavorites,
