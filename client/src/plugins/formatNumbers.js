@@ -70,6 +70,20 @@ const formatNumbers = {
           const toDayDate = day + '.' + month + '.' + year;
           return toDayDate;
         },
+        gTimestampToDateConverter(UNIX_timestamp){
+          const date = new Date(UNIX_timestamp * 1000);
+          const year = date.getFullYear();
+          let month = date.getMonth();
+          if (month < 10) {
+            month = '0' + month;
+          }
+          let day = date.getDate();
+          if (day < 10) {
+            day = '0' + day;
+          }
+          const convertedDate = day + '.' + month + '.' + year;
+          return convertedDate;
+        },
       }
     });
   }

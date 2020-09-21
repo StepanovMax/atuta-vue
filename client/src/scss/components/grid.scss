@@ -88,11 +88,15 @@
       @include media(desktop) {
         grid-template-columns: 1fr 1fr 1fr;
       }
-  
+
       @include media(tablet-landscape) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
-  
+
+      @include media(tablet-portrait) {
+        grid-template-columns: 1fr 1fr;
+      }
+
       @include media(mobile) {
         grid-template-columns: 1fr;
       }
