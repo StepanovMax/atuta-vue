@@ -41,17 +41,17 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i, 
+        test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-              publicPath: 'img',
+              name: '/[name]-[hash:8].[ext]',
+              publicPath: '',
               outputPath: 'img',
               useRelativePath: true
             }
