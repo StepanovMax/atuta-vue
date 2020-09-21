@@ -3,6 +3,18 @@
     class="object-card"
   >
     <div
+      v-if="
+        dataObjectData.tarif.value
+      "
+      class="object-card__bg"
+      :class="[
+        {'object-card__bg_premium': dataObjectData.tarif.value.slug === 'premium'},
+        {'object-card__bg_vip': dataObjectData.tarif.value.slug === 'vip'},
+      ]"
+    >
+
+    </div>
+    <div
       class="object-card__wrap"
       :class="{'object-card__wrap_list-view': propObjectView === 'list'}"
     >
@@ -531,6 +543,7 @@
                   && dataObjectData.tarif.value.slug === 'vip'
                 "
                 class="object-card__icon"
+                propColor="blue"
               />
               <iconDiamond
                 v-if="
@@ -538,6 +551,7 @@
                   && dataObjectData.tarif.value.slug === 'premium'
                 "
                 class="object-card__icon"
+                propColor="orange"
               />
               <p class="object-card__wrap-info__item object-card__date">
                 <span
@@ -597,7 +611,11 @@
           </div>
           <p
             class="object-card__agency"
-            :class="{'object-card__agency_list-view': propObjectView === 'list'}"
+            :class="[
+              {'object-card__agency_list-view': propObjectView === 'list'},
+              {'object-card__agency_premium': dataObjectData.tarif.value && dataObjectData.tarif.value.slug === 'premium'},
+              {'object-card__agency_vip': dataObjectData.tarif.value && dataObjectData.tarif.value.slug === 'vip'},
+            ]"
           >
             <span
               v-if="dataObjectData.agency.name"
