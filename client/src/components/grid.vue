@@ -40,6 +40,7 @@
           :propObjectView="dataGridView"
           :key="'key-' + item.id + '-' + index"
           :propObjectData="item"
+          :propIsSample="false"
         />
       </li>
     </ul>

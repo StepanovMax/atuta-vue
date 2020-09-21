@@ -11,9 +11,8 @@
         {'object-card__bg_premium': dataObjectData.tarif.value.slug === 'premium'},
         {'object-card__bg_vip': dataObjectData.tarif.value.slug === 'vip'},
       ]"
-    >
+    />
 
-    </div>
     <div
       class="object-card__wrap"
       :class="{'object-card__wrap_list-view': propObjectView === 'list'}"
@@ -46,8 +45,9 @@
             alt=""
           >
         </span>
-
       </div>
+
+
       <div
         class="object-card__wrap-info"
         :class="{'object-card__wrap-info_list-view': propObjectView === 'list'}"
@@ -259,7 +259,7 @@
               class="
                 object-card__wrap-info-details-item
                 object-card__wrap-info-details-item_area
-                object-card__wrap-info-details-item_garage
+                object-card__wrap-info-details-item_width-half
               "
               :class="[
                 {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
@@ -286,7 +286,7 @@
               class="
                 object-card__wrap-info-details-item
                 object-card__wrap-info-details-item_area
-                object-card__wrap-info-details-item_garage
+                object-card__wrap-info-details-item_width-half
               "
               :class="[
                 {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
@@ -314,7 +314,7 @@
               class="
                 object-card__wrap-info-details-item
                 object-card__wrap-info-details-item_area
-                object-card__wrap-info-details-item_garage
+                object-card__wrap-info-details-item_width-half
               "
               :class="[
                 {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
@@ -338,7 +338,7 @@
               class="
                 object-card__wrap-info-details-item
                 object-card__wrap-info-details-item_area
-                object-card__wrap-info-details-item_garage
+                object-card__wrap-info-details-item_width-half
               "
               :class="[
                 {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
@@ -625,6 +625,8 @@
           </p>
         </div>
       </div>
+
+
     </div>
   </div>
 </template>

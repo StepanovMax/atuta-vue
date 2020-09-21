@@ -1,4 +1,6 @@
 .switcher-grid {
+  width: 100px;
+
   &__btn {
     margin: 0;
     padding: 5px 7px;
@@ -43,8 +45,12 @@
     flex-direction: row;
     justify-content: flex-start;
   }
-  
+
   @include media(tablet-landscape) {
+    display: none;
+  }
+
+  @include media(tablet-portrait) {
     display: none;
   }
 
