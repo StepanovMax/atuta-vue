@@ -85,11 +85,10 @@ export default {
   },
   data() {
     return {
-      picked: [...this.items].map(function(item) {
+      picked: [...this.items].filter(function(item) {
         if (item.checked === true) {
           return item;
         }
-        return null;
       }),
       itemsCopy: [...this.items].map(function(item) {
         if (!(item.checked === true || item.checked === false)) {
@@ -114,7 +113,6 @@ export default {
               if (item.slug === itemPicked.slug) {
                 return item;
               }
-              return null;
             }
           );
           // If an iterated item is the same as a picked item, then switch it tio checked.
