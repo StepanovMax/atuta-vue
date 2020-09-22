@@ -121,7 +121,10 @@ const testObjects = [
     id: 7125647175,
     urlPreview: 'objects/8993850241.jpg',
     phoneNumber: '79612701887',
-    tarif: null,
+    tarif: {
+      label: 'Up',
+      slug: 'up',
+    },
     price: '26000',
     date: '1596317207',
     agency: 'АН "Гармония"',

@@ -30,11 +30,53 @@
     &_blue {
       fill: #B783FD;
     }
+
+    &_green {
+      fill: #b5bb77;
+    }
   }
 
   &__path-stroke {
     stroke: $COLOR-TEXT-DISABLED;
     transition: fill 0.5s ease;
+
+    &_white {
+      stroke: $COLOR-WHITE;
+    }
+
+    &_orange {
+      stroke: #B7D406;
+    }
+
+    &_blue {
+      stroke: #B783FD;
+    }
+
+    &_green {
+      stroke: #b5bb77;
+    }
+  
+    &_default {
+      stroke: $COLOR-TEXT-DISABLED;
+    }
+
+    &_fill {
+      &-orange {
+        fill: #B7D406;
+      }
+  
+      &-blue {
+        fill: #B783FD;
+      }
+  
+      &-green {
+        fill: #b5bb77;
+      }
+  
+      &-default {
+        fill: $COLOR-TEXT-DISABLED;
+      }
+    }
   }
 
   &_active &__path {
@@ -49,12 +91,6 @@
   &_heart {
     width: 100%;
     fill: none;
-
-    &:hover {
-      .icon__path-stroke {
-        stroke: $COLOR-TEXT;
-      }
-    }
 
     &-filled {
       fill: $COLOR-TEXT-DISABLED;

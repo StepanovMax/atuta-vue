@@ -20,12 +20,20 @@ $UPLOAD-IMAGE-WIDTH: 234px;
     background-size: cover;
     background-repeat: no-repeat;
 
-    &_vip {
-      background-image: url('../../src/images/object/bg_vip.svg');
+    &_vip-vertical {
+      background-image: url('../../src/images/object/bg_vip_vertical.svg');
     }
 
-    &_premium {
-      background-image: url('../../src/images/object/bg_premium.svg');
+    &_premium-vertical {
+      background-image: url('../../src/images/object/bg_premium_vertical.svg');
+    }
+
+    &_vip-horizontal {
+      background-image: url('../../src/images/object/bg_vip_horizontal.svg');
+    }
+
+    &_premium-horizontal {
+      background-image: url('../../src/images/object/bg_premium_horizontal.svg');
     }
   }
 
@@ -33,7 +41,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-bottom: 10px;
 
     &_no {
@@ -46,7 +54,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       &_icon {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
         justify-content: flex-end;
         flex-grow: 1;
         height: 100%;
@@ -55,7 +63,8 @@ $UPLOAD-IMAGE-WIDTH: 234px;
   }
 
   &__icon {
-    width: 40px;
+    width: 20px;
+    height: 20px;
     margin-bottom: 5px;
   }
 
@@ -242,6 +251,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
       &_list-view {
         width: 100%;
+        height: auto;
         max-width: 340px;
         justify-content: flex-start;
       }
@@ -281,8 +291,8 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
   &__btn {
     &_favorites {
-      width: 20px;
-      padding: 0;
+      width: 30px;
+      padding: 0 0 0 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -294,6 +304,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       padding: 5px 10px;
       background-color: $COLOR-TEXT-DISABLED;
       margin-bottom: 10px;
+      font-size: 12px;
 
       &:hover {
         background-color: $COLOR-BLUE-LIGHT;
@@ -304,6 +315,8 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       letter-spacing: 0;
       padding: 5px 10px;
       background-color: $COLOR-TEXT-DISABLED;
+      margin-bottom: 6px;
+      font-size: 12px;
 
       &:hover {
         background-color: $COLOR-BLUE-LIGHT;
@@ -376,6 +389,12 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       color: $COLOR-WHITE;
       background-color: #B7D406;
     }
+
+    &_up {
+      font-weight: 500;
+      color: $COLOR-WHITE;
+      background-color: #b5bb77;
+    }
   }
 
   &__text {
@@ -386,6 +405,13 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
   &__action {
     display: none;
+
+    &-top {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
 
     &_list-view {
       display: flex;

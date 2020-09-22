@@ -8,8 +8,10 @@
       "
       class="object-card__bg"
       :class="[
-        {'object-card__bg_premium': dataObjectData.tarif.slug === 'premium'},
-        {'object-card__bg_vip': dataObjectData.tarif.slug === 'vip'},
+        {'object-card__bg_vip-vertical': dataObjectData.tarif.slug === 'vip' && propObjectView !== 'list'},
+        {'object-card__bg_premium-vertical': dataObjectData.tarif.slug === 'premium' && propObjectView !== 'list'},
+        {'object-card__bg_vip-horizontal': dataObjectData.tarif.slug === 'vip' && propObjectView === 'list'},
+        {'object-card__bg_premium-horizontal': dataObjectData.tarif.slug === 'premium' && propObjectView === 'list'},
       ]"
     />
 
@@ -55,31 +57,31 @@
         :class="{'object-card__wrap-info_list-view': propObjectView === 'list'}"
       >
 
-        <router-link
-          class="object-card__link"
-          :to="{ name: 'objectPage' }"
-          title="Перейти подробнее"
+        <div
+          class="object-card__wrap-info_top"
+          :class="{'object-card__wrap-info_top_list-view': propObjectView === 'list'}"
         >
-          <div
-            class="object-card__wrap-info_top"
-            :class="{'object-card__wrap-info_top_list-view': propObjectView === 'list'}"
-          >
-            <p class="object-card__price">
-              <span
-                v-if="dataObjectData.price"
-                class="object-card__price_number"
-              >
-                {{ gFormatNumbers(dataObjectData.price) }} ₽
-              </span>
-              <span
-                v-if="dataObjectData.deal && (dataObjectData.deal.slug === 'rent')"
-                class="object-card__price_text"
-              >
-                в месяц
-              </span>
-            </p>
-          </div>
-        </router-link>
+          <p class="object-card__price">
+            <span
+              v-if="dataObjectData.price"
+              class="object-card__price_number"
+            >
+              {{ gFormatNumbers(dataObjectData.price) }} ₽
+            </span>
+            <span
+              v-if="dataObjectData.deal && (dataObjectData.deal.slug === 'rent')"
+              class="object-card__price_text"
+            >
+              в месяц
+            </span>
+          </p>
+          <button class="btn object-card__btn object-card__btn_favorites">
+            <moveToFavorites
+              v-if="propObjectView !== 'list'"
+              :propColor="moveToFavColor"
+            />
+          </button>
+        </div>
 
         <div
           class="object-card__wrap-info_bottom"
@@ -116,7 +118,7 @@
                     && dataObjectData.roomsCount.slug != 'freePlan'
                   "
                 >
-                  &nbsp;к.кв
+                  &nbsp;комн.
                 </span>
               </div>
               <div
@@ -234,7 +236,7 @@
                     && dataObjectData.roomsCount.slug != 'freePlan'
                   "
                 >
-                  &nbsp;к.кв
+                  &nbsp;комн.
                 </span>
               </div>
               <div
@@ -468,7 +470,7 @@
             <div
               v-if="
                 dataObjectData.tarif
-                && (dataObjectData.tarif.slug === 'premium' || dataObjectData.tarif.slug === 'vip')
+                && (dataObjectData.tarif.slug === 'premium' || dataObjectData.tarif.slug === 'vip' || dataObjectData.tarif.slug === 'up')
               "
               class="object-card__icons-block"
             >
@@ -513,6 +515,7 @@
                   "
                   class="object-card__icon"
                   propColor="blue"
+                  title="Это VIP объявление"
                 />
                 <iconDiamond
                   v-if="
@@ -521,8 +524,20 @@
                   "
                   class="object-card__icon"
                   propColor="orange"
+                  title="Это премиум объявление"
                 />
-                <p class="object-card__wrap-info__item object-card__date">
+                <iconArrowUp
+                  v-if="
+                    dataObjectData.tarif
+                    && dataObjectData.tarif.slug === 'up'
+                  "
+                  class="object-card__icon"
+                  propColor="green"
+                  title="Это объявление было поднято в поиске"
+                />
+                <p
+                  class="object-card__wrap-info__item object-card__date"
+                >
                   <span
                     v-if="dataObjectData.date"
                   >
@@ -584,6 +599,7 @@
                 {'object-card__agency_list-view': propObjectView === 'list'},
                 {'object-card__agency_premium': dataObjectData.tarif && dataObjectData.tarif.slug === 'premium'},
                 {'object-card__agency_vip': dataObjectData.tarif && dataObjectData.tarif.slug === 'vip'},
+                {'object-card__agency_up': dataObjectData.tarif && dataObjectData.tarif.slug === 'up'},
               ]"
             >
               <span
@@ -613,6 +629,10 @@
         <div
           class="object-card__action-top"
         >
+          <moveToFavorites
+            v-if="propObjectView === 'list'"
+            :propColor="moveToFavColor"
+          />
           <showPhoneNumber
             propClass="object-card__btn_show-phone"
             v-if="dataObjectData.phoneNumber"
@@ -643,6 +663,7 @@ import moveToFavorites from './moveToFavorites.vue';
 import socialSharing from './socialSharing.vue';
 import unit from './unit.vue';
 import iconCrown from '../icons/iconCrown.vue'
+import iconArrowUp from '../icons/iconArrowUp.vue'
 import iconDiamond from '../icons/iconDiamond.vue'
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
 
@@ -660,6 +681,7 @@ export default {
     showPhoneNumber,
     moveToFavorites,
     iconCrown,
+    iconArrowUp,
     iconDiamond,
     iconHeartStroke,
   },
@@ -716,6 +738,21 @@ export default {
     ...mapState([
       'filterDataSelected',
     ]),
+    moveToFavColor() {
+      let color;
+      if (this.dataObjectData.tarif) {
+        if (this.dataObjectData.tarif.slug === 'premium') {
+          color = 'orange';
+        } else if (this.dataObjectData.tarif.slug === 'vip') {
+          color = 'blue';
+        } else if (this.dataObjectData.tarif.slug === 'up') {
+          color = 'green';
+        }
+      } else {
+        color = 'default';
+      }
+      return color;
+    },
   },
 };
 </script>
