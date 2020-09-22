@@ -412,7 +412,7 @@
             </div>
             <div
               v-if="
-                dataObjectData.commercial.class.value
+                dataObjectData.commercial.tenant.value
               "
               class="
                 object-card__wrap-info-details-item
@@ -423,8 +423,15 @@
                 {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
               ]"
             >
-              <span>
-                Класс {{ dataObjectData.commercial.class.value.label }}
+              <span
+                v-if="dataObjectData.commercial.tenant.value.slug === 'yes'"
+              >
+                С арендатором: Да
+              </span>
+              <span
+                v-if="dataObjectData.commercial.tenant.value.slug === 'no'"
+              >
+                С арендатором: Нет
               </span>
             </div>
             <div
@@ -453,40 +460,6 @@
               </span>
               <span>
                 &nbsp;этаж
-              </span>
-            </div>
-          </div>
-          <div
-            v-if="
-              dataObjectData.object.value.slug === 'commercial'
-            "
-            class="object-card__wrap-info-details object-card__wrap-info-details_last"
-            :class="[
-              {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
-            ]"
-          >
-            <div
-              v-if="
-                dataObjectData.commercial.tenant.value
-              "
-              class="
-                object-card__wrap-info-details-item
-                object-card__wrap-info-details-item_area
-              "
-              :class="[
-                {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                {'object-card__wrap-info-details-item_grid': dataObjectData.object.value.slug === 'commercial'}
-              ]"
-            >
-              <span
-                v-if="dataObjectData.commercial.tenant.value.slug === 'yes'"
-              >
-                С арендатором: Да
-              </span>
-              <span
-                v-if="dataObjectData.commercial.tenant.value.slug === 'no'"
-              >
-                С арендатором: Нет
               </span>
             </div>
           </div>
