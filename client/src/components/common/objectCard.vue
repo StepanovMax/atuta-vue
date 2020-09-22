@@ -422,7 +422,11 @@
                 </span>
               </div>
               <div
-                v-if="dataObjectData.class"
+                v-if="
+                  dataObjectData.object.slug === 'commercial'
+                  && dataObjectData.type.slug !== 'sector'
+                  && dataObjectData.tenant
+                "
                 class="
                   object-card__wrap-info-details-item
                   object-card__wrap-info-details-item_area
@@ -432,8 +436,15 @@
                   {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
                 ]"
               >
-                <span>
-                  Класс {{ dataObjectData.class.label }}
+                <span
+                  v-if="dataObjectData.tenant.slug === 'yes'"
+                >
+                  С арендатором: Да
+                </span>
+                <span
+                  v-if="dataObjectData.tenant.slug === 'no'"
+                >
+                  С арендатором: Нет
                 </span>
               </div>
               <div
@@ -462,6 +473,38 @@
                 </span>
                 <span>
                   &nbsp;этаж
+                </span>
+              </div>
+            </div>
+
+
+            <!-- last -->
+            <div
+              v-if="
+                dataObjectData.object.slug === 'commercial'
+                && dataObjectData.type.slug === 'sector'
+              "
+              class="object-card__wrap-info-details object-card__wrap-info-details_last"
+              :class="[
+                {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
+              ]"
+            >
+              <div
+                v-if="dataObjectData.tenant"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_area
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                ]"
+              >
+                <span v-if="dataObjectData.tenant.slug === 'yes'">
+                  С арендатором: Да
+                </span>
+                <span v-if="dataObjectData.tenant.slug === 'no'">
+                  С арендатором: Нет
                 </span>
               </div>
             </div>

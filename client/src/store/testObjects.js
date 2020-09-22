@@ -219,6 +219,52 @@ const testObjects = [
       label: '30',
       slug: '30',
     },
+    tenant: {
+      label: 'Да',
+      slug: 'yes',
+    },
+    urlPreview: 'objects/8993850241.jpg',
+    phoneNumber: '79612701887',
+    tarif: null,
+    price: '2300000',
+    date: '1596317207',
+    agency: '"Тандем" Риелторская компания',
+  },
+  {
+    id: 3234667,
+    object: {
+      slug: 'commercial',
+      label: 'Коммерция',
+    },
+    deal: {
+      slug: 'buy',
+      label: 'Купить',
+    },
+    address: 'Ростовская область, Таганрог, ул. Чехова, 218',
+    district: {
+      label: 'Северный',
+      slug: 'severniy',
+    },
+    type: {
+      "slug": "stock",
+      "label": "Склад",
+    },
+    floor: {
+      label: '4',
+      slug: '4',
+    },
+    floorAll: {
+      label: '6',
+      slug: '6',
+    },
+    area: {
+      label: '30',
+      slug: '30',
+    },
+    tenant: {
+      label: 'Да',
+      slug: 'yes',
+    },
     urlPreview: 'objects/8993850241.jpg',
     phoneNumber: '79612701887',
     tarif: null,
