@@ -558,13 +558,16 @@
             <div
               class="form__block-width form__block-width-third"
             >
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
+              <h4
+                v-if="createdObject.deal.value.slug === 'rent'"
+                class="
+                  title
+                  title_h6
+                  title_bold
+                  form__title
+                  form__title_add-object
+                "
+              >
                 <span>
                   {{ priceTitle }}
                 </span>
