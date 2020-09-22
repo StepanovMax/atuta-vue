@@ -142,10 +142,6 @@
           "
         />
 
-        <pre style="font-size: 10px;">
-          {{ this.filterSelected }}
-        </pre>
-
       </div>
     </div>
   </div>
