@@ -33,7 +33,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-bottom: 10px;
 
     &_no {
@@ -56,6 +56,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
   &__icon {
     width: 40px;
+    height: 40px;
     margin-bottom: 5px;
   }
 
@@ -281,8 +282,8 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
   &__btn {
     &_favorites {
-      width: 20px;
-      padding: 0;
+      width: 40px;
+      padding: 0 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -375,6 +376,12 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       font-weight: 500;
       color: $COLOR-WHITE;
       background-color: #B7D406;
+    }
+
+    &_up {
+      font-weight: 500;
+      color: $COLOR-WHITE;
+      background-color: #b5bb77;
     }
   }
 

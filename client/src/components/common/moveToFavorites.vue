@@ -7,6 +7,7 @@
     >
       <iconHeartStroke
         :propIsIconFilled="dataIsIconFilled"
+        :propColor="propColor"
       />
     </button>
   </div>
@@ -25,11 +26,11 @@ export default {
     event: 'change'
   },
   props: {
-    // item: {
-    //   default: {},
-    //   type: Object,
-    //   required: true
-    // },
+    propColor: {
+      default: '',
+      type: String,
+      required: false
+    },
   },
   data() {
     return {
@@ -38,7 +39,6 @@ export default {
   },
   methods: {
     clickOnHeartIcon() {
-      console.log('dataIsIconFilled', this.dataIsIconFilled);
       this.dataIsIconFilled = !this.dataIsIconFilled;
     }
   },

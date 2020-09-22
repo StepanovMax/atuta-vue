@@ -98,7 +98,7 @@
                   && dataObjectData.app.roomsCount.value.slug != 'freePlan'
                 "
               >
-                &nbsp;к.кв
+                &nbsp;комн.
               </span>
             </div>
             <div
@@ -212,7 +212,7 @@
                   && dataObjectData.room.roomsCount.value.slug != 'freePlan'
                 "
               >
-                &nbsp;к.кв
+                &nbsp;комн.
               </span>
             </div>
             <div
@@ -634,7 +634,6 @@
 <script>
 import { mapState } from 'vuex';
 import showPhoneNumber from './showPhoneNumber.vue';
-import moveToFavorites from './moveToFavorites.vue';
 import socialSharing from './socialSharing.vue';
 import iconCrown from '../icons/iconCrown.vue'
 import iconDiamond from '../icons/iconDiamond.vue'
@@ -653,7 +652,6 @@ export default {
     iconDiamond,
     iconHeartStroke,
     showPhoneNumber,
-    moveToFavorites,
     socialSharing,
   },
   props: {
