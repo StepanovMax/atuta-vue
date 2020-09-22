@@ -8,8 +8,8 @@
       "
       class="object-card__bg"
       :class="[
-        {'object-card__bg_premium': dataObjectData.tarif.value.slug === 'premium'},
-        {'object-card__bg_vip': dataObjectData.tarif.value.slug === 'vip'},
+        {'object-card__bg_premium-vertical': dataObjectData.tarif.value.slug === 'premium'},
+        {'object-card__bg_vip-vertical': dataObjectData.tarif.value.slug === 'vip'},
       ]"
     />
 

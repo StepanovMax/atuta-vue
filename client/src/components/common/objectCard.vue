@@ -8,8 +8,10 @@
       "
       class="object-card__bg"
       :class="[
-        {'object-card__bg_premium': dataObjectData.tarif.slug === 'premium'},
-        {'object-card__bg_vip': dataObjectData.tarif.slug === 'vip'},
+        {'object-card__bg_vip-vertical': dataObjectData.tarif.slug === 'vip' && propObjectView !== 'list'},
+        {'object-card__bg_premium-vertical': dataObjectData.tarif.slug === 'premium' && propObjectView !== 'list'},
+        {'object-card__bg_vip-horizontal': dataObjectData.tarif.slug === 'vip' && propObjectView === 'list'},
+        {'object-card__bg_premium-horizontal': dataObjectData.tarif.slug === 'premium' && propObjectView === 'list'},
       ]"
     />
 
@@ -75,6 +77,7 @@
           </p>
           <button class="btn object-card__btn object-card__btn_favorites">
             <moveToFavorites
+              v-if="propObjectView !== 'list'"
               :propColor="moveToFavColor"
             />
           </button>
@@ -512,6 +515,7 @@
                   "
                   class="object-card__icon"
                   propColor="blue"
+                  title="Это VIP объявление"
                 />
                 <iconDiamond
                   v-if="
@@ -520,6 +524,7 @@
                   "
                   class="object-card__icon"
                   propColor="orange"
+                  title="Это премиум объявление"
                 />
                 <iconArrowUp
                   v-if="
@@ -528,8 +533,11 @@
                   "
                   class="object-card__icon"
                   propColor="green"
+                  title="Это объявление было поднято в поиске"
                 />
-                <p class="object-card__wrap-info__item object-card__date">
+                <p
+                  class="object-card__wrap-info__item object-card__date"
+                >
                   <span
                     v-if="dataObjectData.date"
                   >
@@ -621,6 +629,10 @@
         <div
           class="object-card__action-top"
         >
+          <moveToFavorites
+            v-if="propObjectView === 'list'"
+            :propColor="moveToFavColor"
+          />
           <showPhoneNumber
             propClass="object-card__btn_show-phone"
             v-if="dataObjectData.phoneNumber"
