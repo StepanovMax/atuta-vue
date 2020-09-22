@@ -86,7 +86,7 @@
                     radioButtonsView="wrapHalf"
                     radioButtonsId="objectCommercialTypeAddObject"
                     :items="filterDataDefaultClone.commercialView"
-                    :value.sync="createdObject.commercial.type.value"
+                    :value.sync="commerceSubTypeVModel"
                   />
                   <p
                     v-if="this.errorsMain.includes('type')"
@@ -1174,6 +1174,33 @@ export default {
         && this.createdObject.deal.value
         && this.createdObject.deal.value.slug
       );
+    },
+    commerceSubTypeVModel: {
+      cache: false,
+      get() {
+        return this.createdObject.commercial.type.value;
+      },
+      set(value) {
+        this.createdObject.commercial.type.value = value;
+        const indexFloor = this.formIsFilledArray.indexOf('floor');
+        const indexFloorAll = this.formIsFilledArray.indexOf('floorAll');
+        if (this.createdObject.commercial.type.value.slug === 'sector') {
+          console.log('test', indexFloor, indexFloorAll);
+          if (indexFloor > -1) {
+            console.log('test 1');
+            // this.formIsFilledArray.splice(indexFloor, 1);
+            this.createdObject.commercial.floor.required = false;
+          }
+          if (indexFloorAll > -1) {
+            console.log('test 2');
+            // this.formIsFilledArray.splice(indexFloorAll, 1);
+            this.createdObject.commercial.floorAll.required = false;
+          }
+        } else {
+          this.createdObject.commercial.floor.required = true;
+          this.createdObject.commercial.floorAll.required = true;
+        }
+      }
     },
   },
   created() {
