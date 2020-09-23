@@ -31,7 +31,12 @@
       >
         <router-link
           class="object-card__link"
-          :to="{ name: 'objectPage' }"
+          :to="{
+            name: 'objectPage',
+            params: {
+              id: dataObjectData.id
+            }
+          }"
           title="Перейти подробнее"
         >
           <img

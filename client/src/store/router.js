@@ -23,6 +23,11 @@ const router = new Router({
       component: Home
     },
     {
+      path: '/object/:id',
+      name:'objectPage',
+      component: objectPage
+    },
+    {
       path: '/styleGuide',
       name:'styleGuide',
       component: StyleGuide
@@ -46,11 +51,6 @@ const router = new Router({
       path: '/add-object',
       name:'addObject',
       component: addObject
-    },
-    {
-      path: '/object-page',
-      name:'objectPage',
-      component: objectPage
     },
     {
       path: '/get-districts',
