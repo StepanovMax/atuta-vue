@@ -84,6 +84,12 @@ const formatNumbers = {
           const convertedDate = day + '.' + month + '.' + year;
           return convertedDate;
         },
+        gCapitalizeFirstLetter(string) {
+          return string.charAt(0).toUpperCase() + string.slice(1);
+        },
+        gLowerCaseFirstLetter(string) {
+          return string.charAt(0).toLowerCase() + string.slice(1);
+        },
       }
     });
   }
