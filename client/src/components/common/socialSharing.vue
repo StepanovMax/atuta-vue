@@ -26,10 +26,28 @@
       <li>
         <a
           href=""
+          title="Поделиться в Twitter"
+          @click.stop.prevent
+        >
+          <iconSocialTwitter />
+        </a>
+      </li>
+      <li>
+        <a
+          href=""
           title="Поделиться в Одноклассники"
           @click.stop.prevent
         >
           <iconSocialOK />
+        </a>
+      </li>
+      <li>
+        <a
+          href=""
+          title="Поделиться в Mail"
+          @click.stop.prevent
+        >
+          <iconSocialMail />
         </a>
       </li>
       <li>
@@ -57,6 +75,8 @@
 <script>
 import iconSocialVK from '../icons/social/iconSocialVK.vue';
 import iconSocialFB from '../icons/social/iconSocialFB.vue';
+import iconSocialMail from '../icons/social/iconSocialMail.vue';
+import iconSocialTwitter from '../icons/social/iconSocialTwitter.vue';
 import iconSocialOK from '../icons/social/iconSocialOK.vue';
 import iconSocialViber from '../icons/social/iconSocialViber.vue';
 import iconSocialWhatsapp from '../icons/social/iconSocialWhatsapp.vue';
@@ -66,6 +86,8 @@ export default {
   components: {
     iconSocialVK,
     iconSocialFB,
+    iconSocialMail,
+    iconSocialTwitter,
     iconSocialOK,
     iconSocialViber,
     iconSocialWhatsapp,
