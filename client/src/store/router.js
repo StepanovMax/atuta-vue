@@ -16,6 +16,7 @@ import favoritesPage from '../components/pages/favoritesPage.vue';
 
 const router = new Router({
   mode: 'history',
+  base: '/',
   routes: [
     {
       path: '/',
@@ -23,7 +24,7 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/object/:id',
+      path: '/:id',
       name:'objectPage',
       component: objectPage
     },
