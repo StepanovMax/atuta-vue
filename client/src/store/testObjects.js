@@ -30,7 +30,6 @@ const testObjects = [
       label: '5',
       slug: '5',
     },
-    id: 7125647174,
     urlPreview: 'objects/8993850262.jpg',
     phoneNumber: '79612701887',
     tarif: {
@@ -43,7 +42,7 @@ const testObjects = [
     metaTitle: "Продам квартиру 3 000 000₽ [3комн., 100м², этаж 3/13]",
   },
   {
-    id: 3234667,
+    id: 873590,
     object: {
       slug: 'house',
       label: 'Дом',
@@ -77,7 +76,6 @@ const testObjects = [
       label: '3',
       slug: '3',
     },
-    id: 7125647175,
     urlPreview: 'objects/8993850286.jpg',
     phoneNumber: '79612701887',
     tarif: {
@@ -90,7 +88,7 @@ const testObjects = [
     metaTitle: "Продам дом 2 750 000₽ [3комн., 100м², 4сот.]",
   },
   {
-    id: 3234667,
+    id: 873591,
     object: {
       slug: 'room',
       label: 'Комната',
@@ -120,7 +118,6 @@ const testObjects = [
       label: '5',
       slug: '5',
     },
-    id: 7125647175,
     urlPreview: 'objects/8993850241.jpg',
     phoneNumber: '79612701887',
     tarif: {
@@ -133,7 +130,7 @@ const testObjects = [
     metaTitle: "Продам комнату 1 100 000₽ [3комн., 100м², этаж 3/13]",
   },
   {
-    id: 3234667,
+    id: 873592,
     object: {
       slug: 'garage',
       label: 'Гараж',
@@ -160,7 +157,6 @@ const testObjects = [
       label: '30',
       slug: '30',
     },
-    id: 7125647175,
     urlPreview: 'objects/8993850241.jpg',
     phoneNumber: '79612701887',
     tarif: null,
@@ -170,7 +166,7 @@ const testObjects = [
     metaTitle: "Продам гараж 580 000₽ [ж/б, 100м²]",
   },
   {
-    id: 3234667,
+    id: 873593,
     object: {
       slug: 'sector',
       label: 'Участок',
@@ -202,7 +198,7 @@ const testObjects = [
     metaTitle: "Продам участок 1 230 000₽ [ИЖС, 20сот.]",
   },
   {
-    id: 3234667,
+    id: 873594,
     object: {
       slug: 'commercial',
       label: 'Коммерция',
@@ -237,7 +233,7 @@ const testObjects = [
     metaTitle: "Продам участок под коммерцию 1 230 000₽ [30сот., Арендатор: да]",
   },
   {
-    id: 3234667,
+    id: 873595,
     object: {
       slug: 'commercial',
       label: 'Коммерция',
