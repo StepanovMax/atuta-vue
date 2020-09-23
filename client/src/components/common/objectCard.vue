@@ -677,12 +677,12 @@
             :propColor="moveToFavColor"
           />
           <showPhoneNumber
-            propClass="object-card__btn_show-phone"
+            propClass="object-card__btn object-card__btn_show-phone"
             v-if="dataObjectData.phoneNumber"
             :propPhoneNumber="dataObjectData.phoneNumber"
           />
           <button
-            class="btn object-card__btn_write-message"
+            class="btn object-card__btn object-card__btn_write-message"
             @click.stop.prevent
           >
             Написать сообщение
@@ -691,7 +691,9 @@
         <div
           class="object-card__action-bottom"
         >
-          <socialSharing />
+          <socialSharing
+            :propObject="dataObjectData"
+          />
         </div>
       </div>
 

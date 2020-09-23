@@ -1083,6 +1083,9 @@ export default {
         //   console.log('url 2 ::', url);
         // }
 
+        if (this.formIsFilled === true) {
+          this.createMetaTitle();
+        }
       },
       deep: true
     },
@@ -1210,6 +1213,39 @@ export default {
     this.createdObject.date = toDayDate;
   },
   methods: {
+    createMetaTitle() {
+      const typeSlug = this.createdObject.object.value.slug;
+      const deal = this.createdObject.deal.value.slug;
+      if (typeSlug === 'app') {
+        let metaTitle = '';
+        const typeLabel = 'квартиру';
+        let dealAction = '';
+        const objectPrice = this.gFormatPrice(this.createdObject.price.value) + '₽';
+        if (deal === 'buy') {
+          dealAction = 'Продам';
+        } else if (deal === 'rent') {
+          dealAction = 'Сдам в аренду';
+        }
+        let roomsCount = '';
+        let roomsLabel = '';
+        let rooms = '';
+        if (
+          this.createdObject.app.roomsCount.value.slug === 'studio'
+          || this.createdObject.app.roomsCount.value.slug === 'freePlan'
+        ) {
+          roomsCount = this.createdObject.app.roomsCount.value.label;
+          rooms = roomsCount;
+        } else {
+          roomsLabel = 'комн.';
+          rooms = this.createdObject.app.roomsCount.value.slug + roomsLabel;
+        }
+        const floor = 'этаж ' + this.createdObject.app.floor.value.slug + '/' +  this.createdObject.app.floorAll.value.slug;
+        const objectData = rooms + ', ' + this.createdObject.app.area.value + 'м²' + ', ' + floor;
+        metaTitle = dealAction + ' ' + typeLabel + ' ' + objectPrice + ' [' + objectData + ']';
+        console.log('metaTitle ::', metaTitle);
+        this.createdObject.metaTitle = metaTitle;
+      }
+    },
     currentAddressUpdate(event) {
       this.currentAddress = event.target.value;
     },
