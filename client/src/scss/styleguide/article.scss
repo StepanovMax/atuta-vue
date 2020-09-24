@@ -1,7 +1,25 @@
 .article {
   grid-area: article;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 
   @include media(mobile) {
     margin-bottom: 30px;
+  }
+
+  &__side {
+    &-left {
+      width: 70%;
+    }
+
+    &-right {
+      width: 30%;
+    }
+  }
+
+  &_social-sharing {
+    margin-bottom: 15px;
   }
 }

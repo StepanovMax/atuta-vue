@@ -7,10 +7,8 @@
   }
 
   &__list {
-    gap: 0 8px;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-auto-flow: column;
+    gap: 0 5px;
+    display: flex;
+    justify-content: flex-end;
   }
 }

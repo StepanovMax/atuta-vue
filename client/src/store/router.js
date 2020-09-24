@@ -12,21 +12,19 @@ import profilePage from '../components/pages/profilePage.vue';
 import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
+import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
 
 const router = new Router({
   mode: 'history',
-  base: '/',
   routes: [
     {
       path: '/',
       name:'home',
-      component: Home
-    },
-    {
-      path: '/:id',
-      name:'objectPage',
-      component: objectPage
+      component: Home,
+      meta: {
+        title: 'Атута исклаи?',
+      },
     },
     {
       path: '/styleGuide',
@@ -51,14 +49,35 @@ const router = new Router({
     {
       path: '/add-object',
       name:'addObject',
-      component: addObject
+      component: addObject,
+      meta: {
+        title: 'Создать объект',
+      },
+    },
+    {
+      path: '/:id',
+      name:'objectPage',
+      component: objectPage
     },
     {
       path: '/get-districts',
       name:'getDistricts',
       component: getDistricts
     },
+    {
+      path: '*',
+      component: notFoundComponent
+    }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  } else {
+    document.title = 'Заголовок';
+  }
+  next();
 });
 
 export default router;

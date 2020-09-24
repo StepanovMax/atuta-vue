@@ -99,8 +99,8 @@ export default {
     iconSocialWhatsapp,
   },
   props: {
-    propObject: {
-      default: null,
+    propObjectData: {
+      default: {},
       type: Object,
       required: true
     },
@@ -113,7 +113,7 @@ export default {
   computed: {
     objectDescription() {
       let description;
-      description += this.propObject.metaTitle;
+      description += this.propObjectData.metaTitle;
       return description;
     },
   },
@@ -121,9 +121,9 @@ export default {
     share(url, title, text, img) {
       let urlResult = 'http://vkontakte.ru/share.php?';
       urlResult += 'url='    + encodeURIComponent(url);
-      urlResult += '&title=' + encodeURIComponent(this.propObject.metaTitle);
+      urlResult += '&title=' + encodeURIComponent(this.propObjectData.metaTitle);
       urlResult += '&image=' + encodeURIComponent(img);
-      console.log('urlResult', urlResult);
+      // console.log('urlResult', urlResult);
       this.popup(urlResult);
     },
     popup(url) {
@@ -131,7 +131,7 @@ export default {
     },
   },
   mounted() {
-    console.log('propObject ::', this.propObject);
+    // console.log('propObjectData ::', this.propObjectData);
   },
 };
 </script>
