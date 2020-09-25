@@ -28,9 +28,19 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/test', function (req, res) {
-  return res.status(200).send({
-    message: 'Welcome !!!'
+// app.get('/test-message', (req, res) => res.status(200).send({
+//   message: 'Test message GET request'
+// }));
+
+app.get('/test-message', function (req, res) {
+  res.status(200).send({
+    message: 'Test message GET request'
+  });
+});
+
+app.post('/test-message', function (req, res) {
+  res.status(200).send({
+    message: 'Test message POST request'
   });
 });
 
