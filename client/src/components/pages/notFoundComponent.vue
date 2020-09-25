@@ -11,10 +11,10 @@ export default {
   components: {
     // iconArrowLeft,
   },
-  // model: {
-  //   prop: 'value',
-  //   event: 'change'
-  // },
+  model: {
+    // prop: 'value',
+    // event: 'change'
+  },
   props: {
     // item: {
     //   default: {},

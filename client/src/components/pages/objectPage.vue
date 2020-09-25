@@ -13,11 +13,18 @@
           ID объекта: {{ $route.params.id }}
         </h2>
         <p class="paragraph">
+          {{ message.message }}
+        </p>
+        <p
+          v-if="objectData"
+          class="paragraph"
+        >
           {{ objectData.description }}
         </p>
       </div>
       <div class="article__side-right">
         <socialSharing
+          v-if="objectData"
           class="article_social-sharing"
           :propObjectData="objectData"
         />
@@ -42,6 +49,26 @@ import socialSharing from '../common/socialSharing.vue';
 import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 
 export default {
+  metaInfo: {
+    title: 'My Example App',
+    meta: [
+      {
+        vmid: 'description',
+        property: 'description',
+        content: 'Vue App'
+      },
+      {
+        vmid: 'og:title',
+        property: 'og:title',
+        content: 'Vue App'
+      },
+      {
+        vmid: 'og:description',
+        property: 'og:description',
+        content: 'Vue App'
+      },
+    ],
+  },
   name: 'objectPage',
   components: {
     ads2,
@@ -50,19 +77,30 @@ export default {
   },
   data() {
     return {
-      objectData: {}
+      objectData: null,
+      message: {},
     }
   },
   created() {
     if (this.$route.params.objectData) {
-      console.log('params good');
       this.objectData = this.$route.params.objectData;
     } else {
-      this.objectData = {};
-      console.log('params NO');
-    }
+      const url = 'http://localhost:9001/test-message';
+      fetch(url)
+        .then(
+          response => {
+            response.json().then(
+              data => {
+                this.message = data;
+                // console.log(data);
+              }
+            );
+            console.log('response', response);
+          }
+        );
+      }
   },
-  mounted() {
+  async mounted() {
   },
 };
 </script>

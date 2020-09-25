@@ -20,8 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 routes(app);
 
-app.get('*', (req, res) => res.status(200).send({
+app.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to the my first Bookstore Vue/Postgres CRUD app.'
+}));
+
+app.get('/test-message', (req, res) => res.status(200).send({
+  message: 'Welcome !!!'
 }));
 
 server.listen(

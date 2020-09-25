@@ -57,7 +57,20 @@ const router = new Router({
     {
       path: '/:id',
       name:'objectPage',
-      component: objectPage
+      component: objectPage,
+      meta: {
+        title: 'Страница объекта',
+        metaTags: [
+          {
+            name: 'description',
+            content: 'The home page of our example app.'
+          },
+          {
+            property: 'og:description',
+            content: 'The home page of our example app.'
+          }
+        ]
+      },
     },
     {
       path: '/get-districts',
