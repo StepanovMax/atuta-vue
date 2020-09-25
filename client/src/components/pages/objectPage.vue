@@ -5,22 +5,30 @@
   >
     <div class="article">
       <div class="article__side-left">
+
         <getBackToPrevUrl />
-        <h1 class="title title_h1">
-          Страница объекта
-        </h1>
-        <h2 class="title title_h2">
-          ID объекта: {{ $route.params.id }}
+
+        <h2
+          v-if="objectData"
+          class="title title_h2"
+        >
+          {{ objectData.metaTitle }}
         </h2>
+
         <p class="paragraph">
           {{ message.message }}
         </p>
-        <p
+
+        <pre
           v-if="objectData"
-          class="paragraph"
-        >
-          {{ objectData.description }}
-        </p>
+          style="
+            width: 500px;
+            height: 600px;
+            font-size: 12px;
+            overflow-x: scroll;
+          "
+        >{{ objectData }}</pre>
+
       </div>
       <div class="article__side-right">
         <socialSharing
@@ -28,15 +36,6 @@
           class="article_social-sharing"
           :propObjectData="objectData"
         />
-        <pre
-          v-if="$route.params.objectData"
-          style="
-            width: 300px;
-            height: 400px;
-            font-size: 12px;
-            overflow-x: scroll;
-          "
-        >{{ $route.params.objectData }}</pre>
       </div>
     </div>
     <ads2 />
@@ -79,28 +78,53 @@ export default {
     return {
       objectData: null,
       message: {},
+      objectID: this.$route.params.id,
     }
   },
   created() {
-    if (this.$route.params.objectData) {
-      this.objectData = this.$route.params.objectData;
-    } else {
-      const url = 'http://localhost:9001/test-message';
-      fetch(url)
-        .then(
-          response => {
-            response.json().then(
-              data => {
-                this.message = data;
-                // console.log(data);
-              }
-            );
-            console.log('response', response);
-          }
-        );
-      }
+    this.getObjectOnPageReload();
   },
-  async mounted() {
+  methods: {
+    // Get an object when the page has been reload.
+    getObjectOnPageReload() {
+      // If it's a route transition then load an object through params.
+      if (this.$route.params.objectData) {
+        this.objectData = this.$route.params.objectData;
+      } else {
+        const url = 'http://localhost:9001/objects/get-object-by-id';
+        fetch(
+          url,
+          {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({
+              id: this.objectID
+            })
+          }
+        )
+          .then(
+            response => {
+              if (response.status !== 200) {
+                console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
+                return;
+              }
+              response.json()
+                .then(
+                  response => {
+                    this.objectData = response;
+                  }
+                )
+                .catch(
+                  err => {
+                    console.error('Request failed ::', err)
+                  }
+                );
+            }
+          );
+      }
+    }
   },
 };
 </script>
