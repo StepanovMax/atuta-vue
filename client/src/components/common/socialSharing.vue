@@ -10,12 +10,7 @@
         <a
           href=""
           title="Поделиться Вконтакте"
-          @click.prevent="share(
-            'http://dev.atyta.ru/favorites',
-            '2-к квартира в Таганроге',
-            'Шарим фотку',
-            'http://dev.atyta.ru/src/images/objects/8993850262.jpg'
-          )"
+          @click.prevent="shareVK()"
         >
           <iconSocialVK />
         </a>
@@ -24,7 +19,7 @@
         <a
           href=""
           title="Поделиться в Facebook"
-          @click.stop.prevent
+          @click.prevent="shareFB()"
         >
           <iconSocialFB />
         </a>
@@ -99,8 +94,8 @@ export default {
     iconSocialWhatsapp,
   },
   props: {
-    propObject: {
-      default: null,
+    propObjectData: {
+      default: {},
       type: Object,
       required: true
     },
@@ -108,30 +103,37 @@ export default {
   data() {
     return {
       domain: window.location.hostname,
+      image: 'http://dev.atyta.ru/src/images/objects/8993850262.jpg',
+      url: 'http://dev.atyta.ru/',
     }
   },
   computed: {
     objectDescription() {
       let description;
-      description += this.propObject.metaTitle;
+      description += this.propObjectData.metaTitle;
       return description;
     },
   },
   methods: {
-    share(url, title, text, img) {
+    shareVK() {
       let urlResult = 'http://vkontakte.ru/share.php?';
-      urlResult += 'url='    + encodeURIComponent(url);
-      urlResult += '&title=' + encodeURIComponent(this.propObject.metaTitle);
-      urlResult += '&image=' + encodeURIComponent(img);
-      console.log('urlResult', urlResult);
+      urlResult += 'url='    + encodeURIComponent(this.url);
+      urlResult += '&title=' + encodeURIComponent(this.propObjectData.metaTitle);
+      urlResult += '&image=' + encodeURIComponent(this.image);
+      // console.log('urlResult', urlResult);
+      this.popup(urlResult);
+    },
+    shareFB() {
+      let urlResult = 'https://www.facebook.com/sharer/sharer.php?u=' + this.url;
+      console.log('document.URL', document.URL);
       this.popup(urlResult);
     },
     popup(url) {
-      window.open(url,'','toolbar=0,status=0,width=626,height=436');
+      window.open(url,'','toolbar=0, status=0, width=626, height=436');
     },
   },
   mounted() {
-    console.log('propObject ::', this.propObject);
+    // console.log('propObjectData ::', this.propObjectData);
   },
 };
 </script>

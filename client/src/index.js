@@ -10,6 +10,8 @@ import App from './App.vue';
 import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
 
+import Meta from 'vue-meta';
+
 Vue.directive(
   'local',
   el => {
@@ -18,6 +20,8 @@ Vue.directive(
     }
   }
 );
+
+Vue.use(Meta);
  
 Vue.use(vClickOutside);
  

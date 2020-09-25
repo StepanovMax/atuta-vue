@@ -34,10 +34,11 @@
           :to="{
             name: 'objectPage',
             params: {
-              id: dataObjectData.id
+              id: dataObjectData.id,
+              objectData: dataObjectData,
             }
           }"
-          title="Перейти подробнее"
+          title="Перейти подробнее 1"
         >
           <img
             v-if="
@@ -95,8 +96,14 @@
 
           <router-link
             class="object-card__link"
-            :to="{ name: 'objectPage' }"
-            title="Перейти подробнее"
+            :to="{
+              name: 'objectPage',
+              params: {
+                id: dataObjectData.id,
+                objectData: dataObjectData,
+              }
+            }"
+            title="Перейти подробнее 3"
           >
 
             <!-- app -->
@@ -697,7 +704,7 @@
           class="object-card__action-bottom"
         >
           <socialSharing
-            :propObject="dataObjectData"
+            :propObjectData="dataObjectData"
           />
         </div>
       </div>
