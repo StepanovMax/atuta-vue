@@ -5,6 +5,10 @@
   justify-content: space-between;
   align-items: flex-start;
 
+  &_add {
+    display: block;
+  }
+
   @include media(mobile) {
     margin-bottom: 30px;
   }
