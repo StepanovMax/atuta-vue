@@ -6,7 +6,7 @@
 
     <ads1 />
 
-    <div class="article">
+    <div class="article article_add">
       <h1
         class="
           title
