@@ -45,7 +45,7 @@
               dataObjectData.urlPreview
             "
             class="img object-card__img"
-            :src="'src/images/' + dataObjectData.urlPreview"
+            :src="dataObjectData.urlPreview"
             alt=""
           >
           <img

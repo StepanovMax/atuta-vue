@@ -23,7 +23,7 @@ const router = new Router({
       name:'home',
       component: Home,
       meta: {
-        title: 'Атута исклаи?',
+        title: 'Атута смотрели?',
       },
     },
     {

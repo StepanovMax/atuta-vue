@@ -39,8 +39,7 @@
   }
 
   &-single {
-    margin: auto;
-    max-width: 1280px;
+    @include containerWidth;
   
     display: grid;
     grid-template-rows: 1fr;
