@@ -785,13 +785,20 @@
               </p>
             </div>
 
-            <lineChart
+            <yandex-map
               v-if="objectData"
-              style="
-                width: 99%;
-                height: 200px;
-              "
-            />
+              class="add-object-page__map"
+              :settings="settings"
+              :coords="objectData.coords"
+              :zoom="15"
+              :controls="controls"
+              style="width: 100%; height: 300px;"
+            >
+              <ymap-marker 
+                :coords="objectData.coords"
+                marker-id="PointID"
+              />
+            </yandex-map>
 
           </div>
 
@@ -812,20 +819,13 @@
 
           <div class="object-page__side-right">
 
-            <yandex-map
+            <lineChart
               v-if="objectData"
-              class="add-object-page__map"
-              :settings="settings"
-              :coords="objectData.coords"
-              :zoom="15"
-              :controls="controls"
-              style="width: 100%; height: 300px;"
-            >
-              <ymap-marker 
-                :coords="objectData.coords"
-                marker-id="PointID"
-              />
-            </yandex-map>
+              style="
+                width: 99%;
+                height: 200px;
+              "
+            />
 
           </div>
 
