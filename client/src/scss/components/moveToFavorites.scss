@@ -2,7 +2,14 @@
   margin-bottom: 10px;
 
   &__btn {
-    width: 20px;
     padding: 0;
+
+    &_big {
+      width: 30px;
+    }
+
+    &_mini {
+      width: 20px;
+    }
   }
 }

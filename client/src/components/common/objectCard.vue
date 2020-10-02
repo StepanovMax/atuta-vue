@@ -692,13 +692,8 @@
             propClass="object-card__btn object-card__btn_show-phone"
             v-if="dataObjectData.phoneNumber"
             :propPhoneNumber="dataObjectData.phoneNumber"
+            propPhoneView="mini"
           />
-          <button
-            class="btn object-card__btn object-card__btn_write-message"
-            @click.stop.prevent
-          >
-            Написать сообщение
-          </button>
         </div>
         <div
           class="object-card__action-bottom"

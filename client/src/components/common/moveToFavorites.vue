@@ -2,7 +2,14 @@
   <div class="move-to-favorites">
     <button
       title="Добавить в избранное"
-      class="btn move-to-favorites__btn"
+      class="
+        btn
+        move-to-favorites__btn
+      "
+      :class="[
+        {'move-to-favorites__btn_big': propIconView === 'big'},
+        {'move-to-favorites__btn_mini': propIconView === 'mini'},
+      ]"
       @click.stop.prevent="clickOnHeartIcon()"
     >
       <iconHeartStroke
@@ -30,6 +37,11 @@ export default {
       default: '',
       type: String,
       required: false
+    },
+    propIconView: {
+      type: String,
+      default: '',
+      required: true
     },
   },
   data() {

@@ -3,14 +3,39 @@
 
   @extend .container-single;
 
+  &__user {
+    font-size: 14px;
+  }
+
+  &__category {
+    &-text {
+      font-size: 14px;
+    }
+  }
+
+  &__map {
+    margin-bottom: 25px;
+  }
+
+  &__address {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: $COLOR-TEXT;
+  }
+
   &__title {
     font-weight: 700;
   }
 
   &__price {
     font-weight: 700;
-    font-size: 32px;
-    margin-bottom: 15px;
+    font-size: 40px;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+
+    @include media(mobile) {
+      font-size: 20px;
+    }
   }
 
   &__row {
@@ -45,7 +70,7 @@
 
   &__characteristics {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
 
   &__characteristics-item {
@@ -86,10 +111,10 @@
       // @include media(tablet) {
       //   flex-direction: column;
       // }
-  
-      // @include media(mobile) {
-      //   flex-direction: column;
-      // }
+
+      @include media(mobile) {
+        margin-bottom: 15px;
+      }
     }
 
     &-right {
@@ -102,6 +127,7 @@
 
       @include media(desktop) {
         width: 30%;
+        margin-bottom: 15px;
       }
     }
   }

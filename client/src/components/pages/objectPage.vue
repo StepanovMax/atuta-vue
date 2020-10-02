@@ -59,16 +59,11 @@
               v-if="objectData && objectData.phoneNumber"
               propClass="object-card__btn object-card__btn_show-phone"
               :propPhoneNumber="objectData.phoneNumber"
+              propPhoneView="big"
             />
 
-            <button
-              class="btn object-card__btn object-card__btn_write-message"
-              @click.stop.prevent
-            >
-              Написать сообщение
-            </button>
-
             <moveToFavorites
+              propIconView="big"
               propColor="default"
             />
 
@@ -785,21 +780,6 @@
               </p>
             </div>
 
-            <yandex-map
-              v-if="objectData"
-              class="add-object-page__map"
-              :settings="settings"
-              :coords="objectData.coords"
-              :zoom="15"
-              :controls="controls"
-              style="width: 100%; height: 300px;"
-            >
-              <ymap-marker 
-                :coords="objectData.coords"
-                marker-id="PointID"
-              />
-            </yandex-map>
-
           </div>
 
         </div>
@@ -818,6 +798,29 @@
           </div>
 
           <div class="object-page__side-right">
+
+            <p class="object-page__address">
+              {{ objectData.address }}
+            </p>
+            
+            <yandex-map
+              v-if="objectData"
+              class="object-page__map"
+              :settings="settings"
+              :coords="objectData.coords"
+              :zoom="15"
+              :controls="controls"
+              style="width: 100%; height: 300px;"
+            >
+              <ymap-marker 
+                :coords="objectData.coords"
+                marker-id="PointID"
+              />
+            </yandex-map>
+
+            <p class="paragraph object-page__user">
+              {{ objectData.user.type.label }}: {{ objectData.user.name }}
+            </p>
 
             <lineChart
               v-if="objectData"
