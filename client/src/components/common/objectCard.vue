@@ -95,7 +95,10 @@
         >
 
           <router-link
-            class="object-card__link"
+            class="
+              object-card__link
+              object-card__link_details
+            "
             :to="{
               name: 'objectPage',
               params: {
@@ -646,7 +649,7 @@
             href="http://an1tag.ru"
             class="object-card__link"
             target="_blank"
-            :title="'Перейти на сайт ' + `${dataObjectData.agency}`"
+            :title="'Перейти на страницу ' + `${dataObjectData.user}`"
           >
             <p
               class="object-card__agency"
@@ -658,9 +661,9 @@
               ]"
             >
               <span
-                v-if="dataObjectData.agency"
+                v-if="dataObjectData.user"
               >
-                {{ dataObjectData.agency }}
+                {{ dataObjectData.user.name }}
               </span>
             </p>
           </a>

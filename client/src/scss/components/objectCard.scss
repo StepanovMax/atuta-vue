@@ -70,6 +70,13 @@ $UPLOAD-IMAGE-WIDTH: 234px;
 
   &__link {
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &_details {
+      flex-grow: 1;
+    }
   }
 
   &__wrap {
@@ -144,7 +151,7 @@ $UPLOAD-IMAGE-WIDTH: 234px;
       align-items: flex-start;
       align-self: center;
       width: 100%;
-      height: 50%;
+      height: 55%;
 
       &__item {
         margin-bottom: 8px;
