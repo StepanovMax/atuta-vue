@@ -1,15 +1,23 @@
 .get-back-to-prev-url {
   text-decoration: none;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   font-size: 14px;
 
+  @include media(desktop) {
+    margin-bottom: 20px;
+  }
+
+  @include media(mobile) {
+    margin-bottom: 15px;
+  }
+
   &__icon {
     height: auto;
     width: 8px;
     margin-right: 4px;
+    margin-top: 2px;
   }
 
   &__text {
