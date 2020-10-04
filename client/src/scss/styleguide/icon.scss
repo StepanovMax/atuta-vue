@@ -19,6 +19,10 @@
       }
     }
 
+    &_black {
+      fill: $COLOR-BLACK;
+    }
+
     &_white {
       fill: $COLOR-WHITE;
     }
@@ -84,8 +88,10 @@
   }
 
   &_rouble {
-    width: 16px;
-    height: 16px;
+    width: auto;
+    display: inline-block;
+    font-size: inherit;
+    height: 0.7em;
   }
 
   &_heart {
