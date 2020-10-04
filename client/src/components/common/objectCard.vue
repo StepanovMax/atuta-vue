@@ -85,6 +85,7 @@
             <moveToFavorites
               v-if="propObjectView !== 'list'"
               :propColor="moveToFavColor"
+              propIconView="mini"
             />
           </button>
         </div>
@@ -690,6 +691,7 @@
           <moveToFavorites
             v-if="propObjectView === 'list'"
             :propColor="moveToFavColor"
+            propIconView="mini"
           />
           <showPhoneNumber
             propClass="object-card__btn object-card__btn_show-phone"
