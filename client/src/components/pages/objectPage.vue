@@ -12,13 +12,26 @@
 
             <getBackToPrevUrl />
 
-            <div class="object-page__category">
-              <p
-                v-if="objectData"
-                class="object-page__category-text"
-              >
-                {{ objectData.object.label }} / {{ objectData.deal.label }}
-              </p>
+            <div class="object-page__mobile-wrap">
+
+              <div class="object-page__category">
+                <p
+                  v-if="objectData"
+                  class="object-page__category-text"
+                >
+                  {{ objectData.object.label }} / {{ objectData.deal.label }}
+                </p>
+              </div>
+
+              <div class="object-page__mobile-price">
+                <priceWithUnit
+                  v-if="objectData"
+                  :propNumber="parseInt(objectData.price)"
+                  propUnit="rouble"
+                  class="object-page__price"
+                />
+              </div>
+
             </div>
 
           </div>
@@ -32,11 +45,11 @@
               v-if="objectData"
               class="
               title
-              title_h2
+              title_h3
               object-page__title
               "
             >
-              {{ objectData.metaTitle }}
+              {{ objectData.title }}
             </h2>
 
             <imagesCarousel
