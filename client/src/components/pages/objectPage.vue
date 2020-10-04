@@ -23,12 +23,14 @@
                 </p>
               </div>
 
-              <div class="object-page__mobile-price">
+              <div class="
+                object-page__price
+                object-page__price_mobile
+              ">
                 <priceWithUnit
                   v-if="objectData"
                   :propNumber="parseInt(objectData.price)"
                   propUnit="rouble"
-                  class="object-page__price"
                 />
               </div>
 
@@ -61,12 +63,16 @@
 
           <div class="object-page__side-right">
 
-            <priceWithUnit
-              v-if="objectData"
-              :propNumber="parseInt(objectData.price)"
-              propUnit="rouble"
-              class="object-page__price"
-            />
+            <div class="
+              object-page__price
+              object-page__price_desktop
+            ">
+              <priceWithUnit
+                v-if="objectData"
+                :propNumber="parseInt(objectData.price)"
+                propUnit="rouble"
+              />
+            </div>
 
             <showPhoneNumber
               v-if="objectData && objectData.phoneNumber"
@@ -186,6 +192,9 @@
                   <span>
                     {{ objectData.area.slug }}
                   </span>
+                  <span>
+                    &nbsp;
+                  </span>
                   <unit propUnit="meterSquare" />
                 </span>
               </p>
@@ -203,6 +212,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.areaKitchen.slug }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit propUnit="meterSquare" />
                 </span>
@@ -224,6 +236,9 @@
                   <span>
                     {{ objectData.areaLiving.slug }}
                   </span>
+                  <span>
+                    &nbsp;
+                  </span>
                   <unit propUnit="meterSquare" />
                 </span>
               </p>
@@ -241,7 +256,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}г.
+                  {{ objectData.year.label }}&nbsp;г.
                 </span>
               </p>
             </div>
@@ -298,7 +313,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}г.
+                  {{ objectData.year.label }}&nbsp;г.
                 </span>
               </p>
 
@@ -331,6 +346,9 @@
                   <span>
                     {{ objectData.areaHouse.label }}
                   </span>
+                  <span>
+                    &nbsp;
+                  </span>
                   <unit propUnit="meterSquare" />
                 </span>
               </p>
@@ -346,6 +364,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.areaSector.label }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit propUnit="acr" />
                 </span>
@@ -381,6 +402,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.area.label }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit propUnit="meterSquare" />
                 </span>
@@ -425,7 +449,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}г.
+                  {{ objectData.year.label }}&nbsp;г.
                 </span>
               </p>
 
@@ -520,6 +544,9 @@
                   <span>
                     {{ objectData.area.label }}
                   </span>
+                  <span>
+                    &nbsp;
+                  </span>
                   <unit propUnit="meterSquare" />
                 </span>
               </p>
@@ -568,6 +595,9 @@
                   <span>
                     {{ objectData.area.label }}
                   </span>
+                  <span>
+                    &nbsp;
+                  </span>
                   <unit propUnit="meterSquare" />
                 </span>
               </p>
@@ -583,6 +613,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.facade.value }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit propUnit="meter" />
                 </span>
@@ -631,6 +664,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.area.label }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit
                     v-if="objectData.type.slug === 'sector'"
@@ -708,7 +744,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}г.
+                  {{ objectData.year.label }}&nbsp;г.
                 </span>
               </p>
             </div>
@@ -729,6 +765,9 @@
                 <span class="object-page__characteristics-item_right">
                   <span>
                     {{ objectData.distance.value }}
+                  </span>
+                  <span>
+                    &nbsp;
                   </span>
                   <unit propUnit="km" />
                 </span>
