@@ -5,5 +5,12 @@
 .images-carousel {
   @include media(mobile) {
     // margin-bottom: 20px;
+    border: 1px solid $COLOR-GREY-ACTIVE;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .lingallery_thumbnails {
+      background-color: $COLOR-GREY-ACTIVE;
+    }
   }
 }

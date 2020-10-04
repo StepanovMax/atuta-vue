@@ -31,7 +31,7 @@ export default {
     return {
       width: 600,
       height: 400,
-      mobileHeight: 400,
+      mobileHeight: 200,
       mobileBreakPoint: 768,
       items: null,
       currentId: 'imagesGallery',
