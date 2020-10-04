@@ -30,9 +30,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/vue-fontawesome": "^2.0.0",
     "array-move": "^3.0.1",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
@@ -48,7 +45,6 @@
     "v-click-outside": "^3.1.0",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
-    "vue-fontawesome": "^0.0.2",
     "vue-fragment": "^1.5.1",
     "vue-meta": "^2.4.0",
     "vue-multiselect": "^2.1.6",
