@@ -60,3 +60,8 @@
 @mixin validateError() {
   border: 1px solid $COLOR-RED-INVALID;
 }
+
+@mixin containerWidth() {
+  margin: auto;
+  max-width: 1280px;
+}

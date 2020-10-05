@@ -162,7 +162,7 @@
             <span>
               Наличие строений
             </span>
-            <span v-if="propCreatedObjectSector.availabilityOfVuildings.required">
+            <span v-if="propCreatedObjectSector.availabilityOfBuildings.required">
               *
             </span>
           </h3>
@@ -170,7 +170,7 @@
             class="add-object-page__switcher"
             switcherId="objectViewAddObject"
             :items="filterDataDefaultClone.appOnlineShow"
-            :value.sync="propCreatedObjectSector.availabilityOfVuildings"
+            :value.sync="propCreatedObjectSector.availabilityOfBuildings"
           />
         </div>
       </div>

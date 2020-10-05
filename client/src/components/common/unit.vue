@@ -34,6 +34,16 @@
       </span>
     </p>
     <p
+      v-if="propUnit === 'km'"
+      class="unit"
+    >
+      <span class="unit">
+        <span class="unit__name unit__name_meter">
+          км.
+        </span>
+      </span>
+    </p>
+    <p
       v-if="propUnit === 'rouble'"
       class="unit"
     >
@@ -66,48 +76,6 @@ export default {
       type: String,
       default: '',
       required: false,
-    },
-  },
-  computed: {
-    unitName() {
-      let unit;
-      if (this.propUnit === 'meterSquare') {
-        unit = `
-          <span class="unit">
-            <span class="unit__name unit__name_meter-square">
-              м
-            </span>
-            <sup class="unit__sup">
-              2
-            </sup>
-          </span>
-        `;
-      } else if (this.propUnit === 'acr') {
-        unit = `
-          <span class="unit">
-            <span class="unit__name unit__name_acr">
-              сот.
-            </span>
-          </span>
-        `;
-      } else if (this.propUnit === 'meter') {
-        unit = `
-          <span class="unit">
-            <span class="unit__name unit__name_meter">
-              м
-            </span>
-          </span>
-        `;
-      } else if (this.propUnit === 'rouble') {
-        unit = `
-          <span class="unit">
-            <span class="unit__name unit__name_rouble">
-              <iconRouble />
-            </span>
-          </span>
-        `;
-      }
-      return unit;
     },
   },
 };

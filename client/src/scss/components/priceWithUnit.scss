@@ -1,0 +1,15 @@
+.price-with-unit {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 700;
+
+  &__number {
+    // font-size: 32px;
+  }
+
+  &__text {
+    font-size: 24px;
+  }
+}

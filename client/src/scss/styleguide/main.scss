@@ -2,6 +2,16 @@
   &-wrap {
     @include padding;
     flex: 1 0 auto;
+
+    @include media(tablet-portrait) {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+
+    @include media(mobile) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
   }
 
   @extend .container;
@@ -9,21 +19,21 @@
   width: 100%;
   box-sizing: border-box;
   font-size: 16px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  // padding-top: 50px;
+  // padding-bottom: 50px;
   flex: 1 0 auto;
 
   @include media(desktop) {
     padding-top: 50px;
   }
 
-  @include media(tablet-portrait) {
-    padding-top: 25px;
-    padding-bottom: 25px;
-  }
+  // @include media(tablet-portrait) {
+  //   padding-top: 25px;
+  //   padding-bottom: 25px;
+  // }
 
-  @include media(mobile) {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
+  // @include media(mobile) {
+  //   padding-top: 70px;
+  //   padding-bottom: 70px;
+  // }
 }

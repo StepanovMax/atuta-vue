@@ -45,7 +45,7 @@
               dataObjectData.urlPreview
             "
             class="img object-card__img"
-            :src="'src/images/' + dataObjectData.urlPreview"
+            :src="dataObjectData.urlPreview"
             alt=""
           >
           <img
@@ -85,6 +85,7 @@
             <moveToFavorites
               v-if="propObjectView !== 'list'"
               :propColor="moveToFavColor"
+              propIconView="mini"
             />
           </button>
         </div>
@@ -95,7 +96,10 @@
         >
 
           <router-link
-            class="object-card__link"
+            class="
+              object-card__link
+              object-card__link_details
+            "
             :to="{
               name: 'objectPage',
               params: {
@@ -646,7 +650,7 @@
             href="http://an1tag.ru"
             class="object-card__link"
             target="_blank"
-            :title="'Перейти на сайт ' + `${dataObjectData.agency}`"
+            :title="'Перейти на страницу ' + `${dataObjectData.user}`"
           >
             <p
               class="object-card__agency"
@@ -658,9 +662,9 @@
               ]"
             >
               <span
-                v-if="dataObjectData.agency"
+                v-if="dataObjectData.user"
               >
-                {{ dataObjectData.agency }}
+                {{ dataObjectData.user.name }}
               </span>
             </p>
           </a>
@@ -687,18 +691,14 @@
           <moveToFavorites
             v-if="propObjectView === 'list'"
             :propColor="moveToFavColor"
+            propIconView="mini"
           />
           <showPhoneNumber
             propClass="object-card__btn object-card__btn_show-phone"
             v-if="dataObjectData.phoneNumber"
             :propPhoneNumber="dataObjectData.phoneNumber"
+            propPhoneView="mini"
           />
-          <button
-            class="btn object-card__btn object-card__btn_write-message"
-            @click.stop.prevent
-          >
-            Написать сообщение
-          </button>
         </div>
         <div
           class="object-card__action-bottom"

@@ -63,9 +63,11 @@
 @import "./components/inputWithUnit.scss";
 @import "./components/inputAddress.scss";
 @import "./components/uploadImages.scss";
+@import "./components/priceWithUnit.scss";
+@import "./components/imagesCarousel.scss";
 
 // Pages
-@import "./components/objectPage.scss";
+@import "./pages/objectPage.scss";
 @import "./pages/addObjectPage.scss";
 
 // Components node_modules

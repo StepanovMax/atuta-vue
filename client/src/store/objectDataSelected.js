@@ -231,7 +231,7 @@ const objectDataSelected = {
       value: null,
       required: false,
     },
-    availabilityOfVuildings: {
+    availabilityOfBuildings: {
       value: null,
       required: false,
     }
