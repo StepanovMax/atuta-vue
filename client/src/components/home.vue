@@ -51,14 +51,9 @@ export default {
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url = 'http://localhost:9001/objects/get-objects';
+      const url = '//localhost:9001/objects/get-objects';
       alert('fetch');
-      fetch(
-        url,
-        {
-          method: 'get'
-        }
-      )
+      fetch(url)
         .then(
           response => {
             alert('then');
