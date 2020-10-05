@@ -1000,7 +1000,7 @@ export default {
       if (this.$route.params.objectData) {
         this.objectData = this.$route.params.objectData;
       } else {
-        const url = 'http://localhost:9001/objects/get-object-by-id';
+        const url = '//localhost:9001/objects/get-object-by-id';
         fetch(
           url,
           {
