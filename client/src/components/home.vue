@@ -61,17 +61,20 @@ export default {
         .then(
           response => {
             if (response.status !== 200) {
+              alert('error1');
               console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
               return;
             }
             response.json()
               .then(
                 response => {
+                  alert('Success');
                   this.storedObjects = JSON.parse(JSON.stringify(response));
                 }
               )
               .catch(
                 err => {
+                  alert('error2');
                   console.error('Request failed ::', err);
                 }
               );
