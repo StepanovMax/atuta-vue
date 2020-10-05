@@ -3,7 +3,10 @@
     id="objectPage"
     class="object-page"
   >
-    <div class="object-page__content">
+    <div
+      v-if="objectData"
+      class="object-page__content"
+    >
 
       <div class="object-page__header">
 
@@ -623,7 +626,7 @@
 
               <!-- Availability of buildings -->
               <p
-                v-if="objectData.availabilityOfBuildings"
+                v-if="objectData && objectData.availabilityOfBuildings"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
