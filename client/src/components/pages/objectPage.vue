@@ -626,7 +626,7 @@
 
               <!-- Availability of buildings -->
               <p
-                v-if="objectData && objectData.availabilityOfBuildings"
+                v-if="objectData.availabilityOfBuildings"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -865,7 +865,7 @@
               :coords="objectData.coords"
               :zoom="15"
               :controls="controls"
-              style="width: 100%; height: 300px;"
+              style="width: 100%;"
             >
               <ymap-marker 
                 :coords="objectData.coords"
