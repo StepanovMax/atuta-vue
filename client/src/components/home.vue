@@ -38,6 +38,15 @@ export default {
   created() {
     // Calling the fetching method.
     this.getObjectsOnLoad();
+    alert(this.storedObjects);
+  },
+  watch: {
+    storedObjects: {
+      handler(value) {
+        alert(value);
+      },
+      deep: true
+    },
   },
   methods: {
     // Fetch objects on the page load.
