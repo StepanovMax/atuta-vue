@@ -52,6 +52,7 @@ export default {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
       const url = 'http://localhost:9001/objects/get-objects';
+      alert('fetch');
       fetch(
         url,
         {
@@ -60,6 +61,7 @@ export default {
       )
         .then(
           response => {
+            alert('then');
             if (response.status !== 200) {
               alert('error1');
               console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
