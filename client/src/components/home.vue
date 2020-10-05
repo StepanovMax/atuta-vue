@@ -22,6 +22,7 @@
 import ads2 from './ads-2.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
+import axios from 'axios';
 
 export default {
   name: 'home',
@@ -51,32 +52,42 @@ export default {
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url = '//localhost:9001/objects/get-objects';
-      alert('fetch');
-      fetch(url)
-        .then(
-          response => {
-            alert('then');
-            if (response.status !== 200) {
-              alert('error1');
-              console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
-              return;
-            }
-            response.json()
-              .then(
-                response => {
-                  alert('Success');
-                  this.storedObjects = JSON.parse(JSON.stringify(response));
-                }
-              )
-              .catch(
-                err => {
-                  alert('error2');
-                  console.error('Request failed ::', err);
-                }
-              );
-          }
-        );
+      const url = 'http://localhost:9001/objects/get-objects';
+      alert('axios');
+
+      axios.get(url)
+        .then(res => {
+          alert('Success');
+          alert(res.data);
+          this.storedObjects = JSON.parse(JSON.stringify(res.data));
+        }).catch(err => {
+          alert('err');
+        })
+
+      // fetch(url)
+      //   .then(
+      //     response => {
+      //       alert('then');
+      //       if (response.status !== 200) {
+      //         alert('error1');
+      //         console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
+      //         return;
+      //       }
+      //       response.json()
+      //         .then(
+      //           response => {
+      //             alert('Success');
+      //             this.storedObjects = JSON.parse(JSON.stringify(response));
+      //           }
+      //         )
+      //         .catch(
+      //           err => {
+      //             alert('error2');
+      //             console.error('Request failed ::', err);
+      //           }
+      //         );
+      //     }
+      //   );
     }
   },
 };
