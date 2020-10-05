@@ -68,7 +68,7 @@ const testData = [
       label: 'Premium',
       slug: 'premium',
     },
-    price: '26000',
+    price: '2100000',
     date: '1596317207',
     user: {
       type: {

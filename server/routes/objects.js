@@ -26,4 +26,17 @@ router.post(
   }
 );
 
+router.get(
+  '/get-objects',
+  (req, res) => {
+    if (testData) {
+      res.status(200).send(testData);
+    } else {
+      res.status(404).send({
+        message: 'Object not found'
+      });
+    }
+  }
+);
+
 export default router;

@@ -8,6 +8,7 @@
     </div>
     <div class="article">
       <grid
+        v-if="storedObjects"
         :propGridView="'net'"
         :propGridItems="storedObjects"
       />
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 import ads2 from './ads-2.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
@@ -29,13 +30,45 @@ export default {
     grid,
     filterDesktop,
   },
-  computed: {
-    ...mapState([
-      'testObjects',
-    ]),
-    storedObjects() {
-      return JSON.parse(JSON.stringify(this.testObjects));
-    },
+  data() {
+    return {
+      storedObjects: null,
+    }
+  },
+  created() {
+    // Calling the fetching method.
+    this.getObjectsOnLoad();
+  },
+  methods: {
+    // Fetch objects on the page load.
+    getObjectsOnLoad() {
+      const url = 'http://localhost:9001/objects/get-objects';
+      fetch(
+        url,
+        {
+          method: 'get'
+        }
+      )
+        .then(
+          response => {
+            if (response.status !== 200) {
+              console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
+              return;
+            }
+            response.json()
+              .then(
+                response => {
+                  this.storedObjects = JSON.parse(JSON.stringify(response));
+                }
+              )
+              .catch(
+                err => {
+                  console.error('Request failed ::', err);
+                }
+              );
+          }
+        );
+    }
   },
 };
 </script>
