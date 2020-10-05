@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "array-move": "^3.0.1",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "chart.js": "^2.9.3",
     "connect-history-api-fallback": "^1.6.0",
     "esri-leaflet-geocoder": "^2.3.3",
