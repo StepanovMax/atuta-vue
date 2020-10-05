@@ -852,7 +852,9 @@
 
           </div>
 
-          <div class="object-page__side-right">
+          <div
+            class="object-page__side-right"
+          >
 
             <p class="object-page__address">
               {{ objectData.address }}
@@ -880,7 +882,7 @@
             <lineChart
               v-if="objectData"
               style="
-                width: 99%;
+                width: 280px;
                 height: 200px;
               "
             />
