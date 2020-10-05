@@ -26,6 +26,18 @@
 
   &__map {
     margin-bottom: 25px;
+
+    @include media(desktop) {
+      height: 250px;
+    }
+
+    @include media(tablet) {
+      height: 200px;
+    }
+
+    @include media(mobile) {
+      height: 150px;
+    }
   }
 
   &__address {

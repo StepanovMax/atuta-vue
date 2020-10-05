@@ -3,7 +3,10 @@
     id="objectPage"
     class="object-page"
   >
-    <div class="object-page__content">
+    <div
+      v-if="objectData"
+      class="object-page__content"
+    >
 
       <div class="object-page__header">
 
@@ -849,7 +852,9 @@
 
           </div>
 
-          <div class="object-page__side-right">
+          <div
+            class="object-page__side-right"
+          >
 
             <p class="object-page__address">
               {{ objectData.address }}
@@ -862,7 +867,7 @@
               :coords="objectData.coords"
               :zoom="15"
               :controls="controls"
-              style="width: 100%; height: 300px;"
+              style="width: 100%;"
             >
               <ymap-marker 
                 :coords="objectData.coords"
@@ -877,7 +882,7 @@
             <lineChart
               v-if="objectData"
               style="
-                width: 99%;
+                width: 280px;
                 height: 200px;
               "
             />

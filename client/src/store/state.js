@@ -1,5 +1,4 @@
 import federalRegions from './federalRegions.js';
-import testObjects from './testObjects.js';
 import objectDataSelected from './objectDataSelected.js';
 import filterDataSelected from './filterDataSelected.js';
 import filterDataDefault from './filterDataDefault.js';
@@ -7,7 +6,6 @@ import filterDataDefault from './filterDataDefault.js';
 const state = {
   count: 11.7,
   isFilterOpen: false,
-  testObjects: testObjects,
   federalRegions: federalRegions,
   filterDataDefault: filterDataDefault,
   objectDataSelected: objectDataSelected,
