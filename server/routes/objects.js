@@ -6,8 +6,9 @@ const router = Router();
 router.post(
   '/get-object-by-id',
   (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const { body } = req;
     const objectID = parseInt(body.id);
     let object;
@@ -31,8 +32,9 @@ router.post(
 router.get(
   '/get-objects',
   (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     if (testData) {
       res.status(200).send(testData);
     } else {
