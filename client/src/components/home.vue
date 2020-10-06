@@ -56,11 +56,15 @@ export default {
 
       alert('before axios');
 
-      axios.get(url)
+      axios({
+        method: 'get',
+        url: url,
+        responseType: 'stream'
+      })
         .then(response => {
           alert('Success');
-          alert(res.data);
-          this.storedObjects = JSON.parse(JSON.stringify(res.data));
+          alert(response.data);
+          this.storedObjects = JSON.parse(JSON.stringify(response.data));
         })
         .catch(error => {
           alert('error');
