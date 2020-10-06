@@ -6,7 +6,7 @@ const router = Router();
 router.post(
   '/get-object-by-id',
   (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:9001');
+    res.set('Access-Control-Allow-Origin', '*');
     res.set("Access-Control-Allow-Headers", "Content-Type");
     const { body } = req;
     const objectID = parseInt(body.id);
@@ -31,7 +31,7 @@ router.post(
 router.get(
   '/get-objects',
   (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:9001');
+    res.set('Access-Control-Allow-Origin', '*');
     res.set("Access-Control-Allow-Headers", "Content-Type");
     if (testData) {
       res.status(200).send(testData);
