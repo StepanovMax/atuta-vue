@@ -59,20 +59,27 @@ export default {
       axios({
         method: 'get',
         url: url,
-        responseType: 'stream'
+        responseType: 'stream',
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true"
+        },
       })
         .then(response => {
           alert('Success');
           alert(response.data);
           this.storedObjects = JSON.parse(JSON.stringify(response.data));
         })
-        .catch(error => {
-          alert('error');
-          alert(error);
-        })
-        .then(function () {
-          alert('always executed');
-        });
+          .catch(error => {
+            alert('error');
+            alert(error);
+          })
+          .then(function () {
+            alert('always executed');
+          });
 
 
       // fetch(url)
