@@ -52,17 +52,23 @@ export default {
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url = 'http://localhost:9001/objects/get-objects';
-      alert('axios');
+      const url = 'http://dev.atyta.ru/:9001/objects/get-objects';
+
+      alert('before axios');
 
       axios.get(url)
-        .then(res => {
+        .then(response => {
           alert('Success');
           alert(res.data);
           this.storedObjects = JSON.parse(JSON.stringify(res.data));
-        }).catch(err => {
-          alert('err');
         })
+        .catch(error => {
+          alert('error');
+        })
+        .then(function () {
+          alert('always executed');
+        });
+
 
       // fetch(url)
       //   .then(
