@@ -52,7 +52,7 @@ export default {
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url = 'http://dev.atyta.ru/:9001/objects/get-objects';
+      const url = 'http://dev.atyta.ru:9001/objects/get-objects';
 
       alert('before axios');
 
