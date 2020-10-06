@@ -1,10 +1,17 @@
 import { Router } from 'express';
 import testData from './testData';
+import cors from 'cors';
+
+const corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 const router = Router();
 
 router.post(
   '/get-object-by-id',
+  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -31,6 +38,7 @@ router.post(
 
 router.get(
   '/get-objects',
+  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
