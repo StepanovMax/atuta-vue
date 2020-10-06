@@ -67,8 +67,8 @@ export default {
           this.storedObjects = JSON.parse(JSON.stringify(response.data));
         })
         .catch(error => {
-          alert(response.status);
           alert('error');
+          alert(error);
         })
         .then(function () {
           alert('always executed');
