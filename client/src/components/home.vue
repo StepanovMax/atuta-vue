@@ -63,8 +63,8 @@ export default {
       })
         .then(response => {
           alert('Success');
-          alert(res.data);
-          this.storedObjects = JSON.parse(JSON.stringify(res.data));
+          alert(response.data);
+          this.storedObjects = JSON.parse(JSON.stringify(response.data));
         })
         .catch(error => {
           alert('error');
