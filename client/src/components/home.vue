@@ -56,7 +56,11 @@ export default {
 
       alert('before axios');
 
-      axios.get(url)
+      axios({
+        method: 'get',
+        url: url,
+        responseType: 'stream'
+      })
         .then(response => {
           alert('Success');
           alert(res.data);
