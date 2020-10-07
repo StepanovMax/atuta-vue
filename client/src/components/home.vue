@@ -6,6 +6,10 @@
     <div class="filter">
       <filterDesktop />
     </div>
+    <p>
+      {{ response }}
+      {{ error }}
+    </p>
     <div class="article">
       <grid
         v-if="storedObjects"
@@ -34,17 +38,19 @@ export default {
   data() {
     return {
       storedObjects: null,
+      response: '',
+      error: '',
     }
   },
   created() {
     // Calling the fetching method.
     this.getObjectsOnLoad();
-    alert(this.storedObjects);
+    // alert(this.storedObjects);
   },
   watch: {
     storedObjects: {
       handler(value) {
-        alert(value);
+        // alert(value);
       },
       deep: true
     },
@@ -52,34 +58,28 @@ export default {
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url = 'http://localhost:9001/objects/get-objects';
-
-      alert('before axios');
+      const url1 = 'http://localhost:9001/objects/get-objects';
+      const url2 = 'https://jsonplaceholder.typicode.com/posts';
+      const url3 = 'http://127.0.0.1:9001/objects/asd';
 
       axios({
         method: 'get',
-        url: url,
-        responseType: 'stream',
+        url: url1,
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true"
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
         },
       })
         .then(response => {
-          alert('Success');
-          alert(response.data);
+          this.response = 'Success!';
           this.storedObjects = JSON.parse(JSON.stringify(response.data));
         })
           .catch(error => {
-            alert('error');
-            alert(error);
+            this.error = error;
           })
-          .then(function () {
-            alert('always executed');
-          });
+            .then(function () {
+              // alert('always executed');
+            });
 
 
       // fetch(url)
