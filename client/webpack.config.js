@@ -1,5 +1,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -66,15 +67,28 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     port: 9000,
+    inline: true,
+    host: '192.168.0.100',
+    disableHostCheck: true,
     historyApiFallback: true,
     contentBase: path.join(__dirname),
+    overlay:{
+      warnings: true,
+      errors: true
+    },
+    clientLogLevel: 'error',
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // new BrowserSyncPlugin({
+    //   host: '192.168.0.100',
+    //   port: 9000,
+    //   proxy: 'http://192.168.0.100:9000/'
+    // }),
   ],
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //     'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+  //   },
+  // },
 }
