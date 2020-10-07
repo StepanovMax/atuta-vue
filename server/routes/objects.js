@@ -3,11 +3,36 @@ import testData from './testData';
 import cors from 'cors';
 
 const corsOptions = {
-  origin: 'http://example.com',
+  origin: 'http://localhost:9001',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 const router = Router();
+
+router.get(
+  '/asd',
+  (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.status(200).send({
+      message: 'Хей-хей ?!'
+    });
+  }
+);
+
+router.get(
+  '/get-objects',
+  cors(corsOptions),
+  (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    if (testData) {
+      res.status(200).send(testData);
+    } else {
+      res.status(404).send({
+        message: 'Object not found'
+      });
+    }
+  }
+);
 
 router.post(
   '/get-object-by-id',
@@ -28,23 +53,6 @@ router.post(
     );
     if (object) {
       res.status(200).send(object);
-    } else {
-      res.status(404).send({
-        message: 'Object not found'
-      });
-    }
-  }
-);
-
-router.get(
-  '/get-objects',
-  cors(corsOptions),
-  (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    if (testData) {
-      res.status(200).send(testData);
     } else {
       res.status(404).send({
         message: 'Object not found'
