@@ -12,6 +12,7 @@ import profilePage from '../components/pages/profilePage.vue';
 import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
+import companiesPage from '../components/pages/companiesPage.vue';
 import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
 
@@ -55,6 +56,19 @@ const router = new Router({
       },
     },
     {
+      path: '/get-districts',
+      name:'getDistricts',
+      component: getDistricts
+    },
+    {
+      path: '/companies',
+      name:'companiesPage',
+      component: companiesPage,
+      meta: {
+        title: 'Список компаний',
+      },
+    },
+    {
       path: '/:id',
       name:'objectPage',
       component: objectPage,
@@ -71,11 +85,6 @@ const router = new Router({
           }
         ]
       },
-    },
-    {
-      path: '/get-districts',
-      name:'getDistricts',
-      component: getDistricts
     },
     {
       path: '*',

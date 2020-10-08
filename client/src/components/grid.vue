@@ -18,32 +18,31 @@
     <ul
       class="grid__list"
       :class="[
-        {
-          'grid__list_net': dataGridView === 'net'
-        },
-        {
-          'grid__list_list': dataGridView === 'list'
-        },
+        {'grid__list_net': dataGridView === 'net'},
+        { 'grid__list_list': dataGridView === 'list'},
       ]"
     >
       <li
         class="grid__list-item"
         :class="[
-          {
-            'grid__list-item_net': dataGridView === 'net'
-          },
-          {
-            'grid__list-item_list': dataGridView === 'list'
-          },
+          {'grid__list-item_net': dataGridView === 'net'},
+          {'grid__list-item_list': dataGridView === 'list'},
         ]"
         v-for="(item, index) in dataGridItems"
         :key="'key-' + item.id + '-' + index"
       >
-        <objectCard
+        <cardObject
+          v-if="propItemType === 'object'"
           :propObjectView="dataGridView"
           :key="'key-' + item.id + '-' + index"
           :propObjectData="item"
           :propIsSample="false"
+        />
+
+        <cardCompany
+          v-if="propItemType === 'company'"
+          :key="'key-' + item.id + '-' + index"
+          :propCompanyData="item"
         />
       </li>
     </ul>
@@ -52,7 +51,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import objectCard from './common/objectCard.vue';
+import cardObject from './common/cardObject.vue';
+import cardCompany from './common/cardCompany.vue';
 import sortObjects from './common/sortObjects.vue';
 import switcherGrid from './common/switcherGrid.vue';
 
@@ -60,13 +60,14 @@ export default {
   name: 'grid',
   components: {
     sortObjects,
+    cardObject,
+    cardCompany,
     switcherGrid,
-    objectCard,
   },
   data() {
     return {
       dataGridView: this.propGridView,
-      dataGridItems: this.propGridItems,
+      dataGridItems: [],
       dataSortedObjects: null,
     }
   },
@@ -86,6 +87,11 @@ export default {
       default: false,
       required: true,
     },
+    propItemType: {
+      type: String,
+      default: '',
+      required: true,
+    },
   },
   watch: {
     dataSortedObjects: {
@@ -94,6 +100,17 @@ export default {
       },
       deep: true
     },
+  },
+  beforeMount() {
+    // console.log('beforeMount grid ::');
+    console.log('[Grid] | beforeMount | propGridItems ::', this.propGridItems);
+    console.log('[Grid] | beforeMount | dataGridItems ::', this.dataGridItems);
+    this.dataGridItems = this.propGridItems;
+  },
+  mounted() {
+    console.log('[Grid] | mounted | propGridItems ::', this.propGridItems);
+    console.log('[Grid] | mounted | dataGridItems ::', this.dataGridItems);
+    this.dataGridItems = this.propGridItems;
   },
 };
 </script>
