@@ -3,6 +3,18 @@
 
   @extend .container-single;
 
+  &__same-objects {
+    &-title {
+      @extend .title;
+      @extend .title_h3;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__description {
+    margin-bottom: 60px;
+  }
+
   &__mobile-wrap {
     display: flex;
     flex-direction: row;
