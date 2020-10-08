@@ -15,6 +15,7 @@
         v-if="storedObjects"
         :propGridView="'net'"
         :propGridItems="storedObjects"
+        :propGridSorting="true"
       />
     </div>
     <ads2 />

@@ -1,7 +1,10 @@
 <template>
   <div class="grid">
-    <div class="grid__buttons">
 
+    <div
+      v-if="propGridSorting"
+      class="grid__buttons"
+    >
       <switcherGrid
         :value.sync="dataGridView"
       />
@@ -10,8 +13,8 @@
         :propObjectsForSorting="propGridItems"
         :value.sync="dataSortedObjects"
       />
-
     </div>
+
     <ul
       class="grid__list"
       :class="[
@@ -77,7 +80,12 @@ export default {
       type: Array,
       default: [],
       required: true,
-    }
+    },
+    propGridSorting: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
   },
   watch: {
     dataSortedObjects: {

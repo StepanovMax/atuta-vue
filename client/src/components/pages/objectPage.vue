@@ -835,6 +835,10 @@
               </p>
             </div>
 
+            <p class="paragraph object-page__user">
+              {{ objectData.user.type.label }}: {{ objectData.user.name }}
+            </p>
+
           </div>
 
         </div>
@@ -846,9 +850,27 @@
             class="object-page__side-left"
           >
 
-            <p class="paragraph">
+            <p
+              class="
+                paragraph
+                object-page__description
+              "
+            >
               {{ objectData.description }}
             </p>
+
+            <div class="object-page__same-objects">
+              <h3 class="object-page__same-objects-title">
+                Похожие объекты
+              </h3>
+
+              <grid
+                v-if="storedObjects"
+                :propGridView="'net'"
+                :propGridItems="storedObjects"
+                :propGridSorting="false"
+              />
+            </div>
 
           </div>
 
@@ -874,10 +896,6 @@
                 marker-id="PointID"
               />
             </yandex-map>
-
-            <p class="paragraph object-page__user">
-              {{ objectData.user.type.label }}: {{ objectData.user.name }}
-            </p>
 
             <lineChart
               v-if="objectData"
@@ -926,6 +944,7 @@
 </template>
 
 <script>
+import grid from '../grid.vue';
 import ads2 from '../ads-2.vue';
 import unit from '../common/unit.vue';
 import lineChart from '../common/lineChart.vue';
@@ -935,6 +954,8 @@ import moveToFavorites from '../common/moveToFavorites.vue';
 import showPhoneNumber from '../common/showPhoneNumber.vue';
 import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 import imagesCarousel from '../common/imagesCarousel.vue';
+
+import axios from 'axios';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
@@ -962,6 +983,7 @@ export default {
   components: {
     ads2,
     unit,
+    grid,
     yandexMap,
     ymapMarker,
     lineChart,
@@ -988,51 +1010,52 @@ export default {
         apiKey: '6d871862-9fd6-4a24-b967-4a75bef3fdfd',
         apiKeyOld: '511c4fe7-bda5-4cea-b1e2-bdb28ea527c9',
       },
+      data: {},
+      storedObjects: false,
     }
-  },
-  created() {
-    this.getObjectOnPageReload();
   },
   methods: {
     // Get an object when the page has been reload.
-    getObjectOnPageReload() {
-      // If it's a route transition then load an object through params.
-      if (this.$route.params.objectData) {
-        this.objectData = this.$route.params.objectData;
-      } else {
-        const url = '//localhost:9001/objects/get-object-by-id';
-        fetch(
-          url,
-          {
-            method: 'post',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-              id: this.objectID
-            })
-          }
-        )
-          .then(
-            response => {
-              if (response.status !== 200) {
-                console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
-                return;
-              }
-              response.json()
-                .then(
-                  response => {
-                    this.objectData = response;
-                  }
-                )
-                .catch(
-                  err => {
-                    console.error('Request failed ::', err)
-                  }
-                );
-            }
-          );
+    async getObjectOnPageReload() {
+      const url = '//localhost:9001/objects/get-object-by-id';
+      const result = await axios.post(
+        url,
+        {
+          id: this.objectID
+        }
+      )
+        .then(function (response) {
+          return response;
+        })
+          .catch(function (error) {
+            console.error(error);
+          });
+      if (result) {
+        this.objectData = result.data;
       }
+    },
+    // Get an object when the page has been reload.
+    async getSameObjects() {
+      const url = '//localhost:9001/objects/get-objects';
+      const result = await axios.get(url)
+        .then(function (response) {
+          return response;
+        })
+          .catch(function (error) {
+            console.error(error);
+          });
+      if (result) {
+        this.storedObjects = result.data;
+      }
+    },
+  },
+  beforeMount(){
+    this.getSameObjects();
+    // If it's a route transition then load an object through params.
+    if (this.$route.params.objectData) {
+      this.objectData = this.$route.params.objectData;
+    } else {
+      this.getObjectOnPageReload();
     }
   },
 };
