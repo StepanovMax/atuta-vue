@@ -1,0 +1,37 @@
+.card-company {
+  margin-top: 15px;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  padding: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-image {
+      margin-right: 15px;
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-info {
+      &-header {
+        margin-bottom: 5px;
+
+        &-title {
+          @extend .title;
+          @extend .title_h3;
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,22 @@
   <ul class="menu menu_right">
     <li class="menu__item">
       <router-link
-        v-slot="{ href, route, navigate, isActive }"
+        v-slot="{ href, navigate, isActive }"
+        :to="{ name: 'companiesPage' }"
+        class="link"
+      >
+        <a
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+        >
+          Компании
+        </a>
+      </router-link>
+    </li>
+    <li class="menu__item">
+      <router-link
+        v-slot="{ href, navigate, isActive }"
         :to="{ name: 'favorites' }"
         class="link"
       >

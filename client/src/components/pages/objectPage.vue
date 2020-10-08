@@ -869,6 +869,7 @@
                 :propGridView="'net'"
                 :propGridItems="storedObjects"
                 :propGridSorting="false"
+                propItemType="object"
               />
             </div>
 

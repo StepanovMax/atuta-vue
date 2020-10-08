@@ -65,10 +65,12 @@
 @import "./components/uploadImages.scss";
 @import "./components/priceWithUnit.scss";
 @import "./components/imagesCarousel.scss";
+@import "./components/cardCompany.scss";
 
 // Pages
 @import "./pages/objectPage.scss";
 @import "./pages/addObjectPage.scss";
+@import "./pages/companiesPage.scss";
 
 // Components node_modules
 @import "./node-modules/multiselect.scss";

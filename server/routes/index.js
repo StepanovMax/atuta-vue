@@ -1,4 +1,5 @@
 import objects from './objects';
+import companies from './companies';
 import Users from '../controllers/user';
 
 const routes = app => {
@@ -15,6 +16,7 @@ const routes = app => {
 
   // Import API Routes
   app.use('/objects', objects);
+  app.use('/companies', companies);
 }
 
 export default routes;

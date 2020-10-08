@@ -16,6 +16,7 @@
         :propGridView="'net'"
         :propGridItems="storedObjects"
         :propGridSorting="true"
+        propItemType="object"
       />
     </div>
     <ads2 />
@@ -46,15 +47,6 @@ export default {
   created() {
     // Calling the fetching method.
     this.getObjectsOnLoad();
-    // alert(this.storedObjects);
-  },
-  watch: {
-    storedObjects: {
-      handler(value) {
-        // alert(value);
-      },
-      deep: true
-    },
   },
   methods: {
     // Fetch objects on the page load.
@@ -112,6 +104,9 @@ export default {
       //     }
       //   );
     }
+  },
+  mounted() {
+    console.log('home page mounted storedObjects ::', this.storedObjects);
   },
 };
 </script>
