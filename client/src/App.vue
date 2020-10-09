@@ -39,7 +39,7 @@ export default {
   },
   watch: {
     $route() {
-      // this.closeMobileMenus();
+      this.closeMobileMenus();
     }
   },
   methods: {
