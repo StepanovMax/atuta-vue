@@ -3,7 +3,7 @@
     id="app"
     class="app"
     :class="[
-      { 'app_hidden': this.isFilterOpen }
+      { 'app_hidden': this.isFilterOpen || this.isUserMenuMobileOpen }
     ]"
   >
     <headerDesktop />
@@ -34,7 +34,18 @@ export default {
   computed: {
     ...mapState([
       'isFilterOpen',
+      'isUserMenuMobileOpen',
     ]),
+  },
+  watch: {
+    $route() {
+      this.closeMobileMenus();
+    }
+  },
+  methods: {
+    closeMobileMenus() {
+      this.$store.commit('closeMobileMenus');
+    },
   },
 };
 </script>

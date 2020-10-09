@@ -1,8 +1,13 @@
 .companies-page {
   grid-area: article;
-  padding-top: 50px;
 
   @extend .container-3-columns;
+
+  &__wrap {
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
+  }
 
   &__header {
     display: flex;
@@ -22,5 +27,9 @@
 
   &__content {
     display: flex;
+  }
+  
+  @include media(desktop) {
+    padding-top: 50px;
   }
 }

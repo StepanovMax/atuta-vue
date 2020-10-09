@@ -1,5 +1,5 @@
 <template>
-  <div class="ads">
+  <div class="ads ads_left">
     <a
       class="link ads__link"
       href="https://www.open.ru/"
@@ -18,6 +18,6 @@
 <script>
 
 export default {
-  name: 'ads1',
+  name: 'adsLeft',
 };
 </script>

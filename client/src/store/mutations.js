@@ -2,6 +2,13 @@ const mutations = {
   switchFilter(state, data) {
     state.isFilterOpen = data;
   },
+  switchUserMenuMobile(state, data) {
+    state.isUserMenuMobileOpen = data;
+  },
+  closeMobileMenus(state) {
+    state.isFilterOpen = false;
+    state.isUserMenuMobileOpen = false;
+  },
   resetFilter(state) {
     let obj = {
       ...state.filterDataDefault

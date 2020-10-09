@@ -6,6 +6,7 @@ import filterDataDefault from './filterDataDefault.js';
 const state = {
   count: 11.7,
   isFilterOpen: false,
+  isUserMenuMobileOpen: false,
   federalRegions: federalRegions,
   filterDataDefault: filterDataDefault,
   objectDataSelected: objectDataSelected,

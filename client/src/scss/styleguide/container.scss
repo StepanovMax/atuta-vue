@@ -9,7 +9,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
     grid-template-columns: 20% 1fr 15%;
-    grid-template-areas: "filter article ads";
+    grid-template-areas: "filter article adsRight";
     gap: 0 30px;
   }
 
@@ -17,7 +17,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
     grid-template-columns: 20% 1fr 15%;
-    grid-template-areas: "filter article ads";
+    grid-template-areas: "filter article adsRight";
     gap: 0 20px;
   }
 
@@ -32,9 +32,7 @@
   @include media(mobile) {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
-    grid-template-areas: 
-      "article"
-      "ads";
+    grid-template-areas: "article adsRight";
     gap: 1px;
   }
 
@@ -47,25 +45,20 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: 1fr 15%;
-      grid-template-areas:
-      "article"
-      "ads";
+      grid-template-areas: "article adsRight";
       gap: 0 30px;
     }
   
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
       grid-template-columns: 1fr 15%;
-      grid-template-areas:
-      "article";
+      grid-template-areas: "article";
       gap: 0 20px;
     }
   
     @include media(mobile) {
       grid-template-columns: 1fr;
-      grid-template-areas:
-        "article"
-        "ads";
+      grid-template-areas: "article adsRight";
       gap: 1px;
     }
   }
@@ -79,10 +72,14 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: 15% 1fr 15%;
-      grid-template-areas:
-        "ads"
-        "article"
-        "ads";
+      grid-template-areas: "adsLeft article adsRight";
+      gap: 0 30px;
+    }
+  
+    @include media(mobile) {
+      grid-template-rows: 1fr 15% 15%;
+      grid-template-columns: 1fr;
+      grid-template-areas: "article" "adsLeft" "adsRight";
       gap: 0 30px;
     }
   }
@@ -114,7 +111,7 @@
       grid-template-columns: 1fr;
       grid-template-areas: 
         "article"
-        "ads";
+        "adsRight";
       gap: 1px;
     }
   }

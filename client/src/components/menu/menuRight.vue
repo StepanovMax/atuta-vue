@@ -31,7 +31,7 @@
       </router-link>
     </li>
     <li class="menu__item">
-      Мои объекты
+      Мои объявления
     </li>
     <li class="menu__item">
       <router-link
