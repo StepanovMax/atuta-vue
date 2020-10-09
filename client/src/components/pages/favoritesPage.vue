@@ -15,18 +15,18 @@
         Товарищи! начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке модели развития. С другой стороны дальнейшее развитие различных форм деятельности позволяет выполнять важные задания по разработке новых предложений.
       </p>
     </div>
-    <ads2 />
+    <adsRight />
   </div>
 </template>
 
 <script>
-import ads2 from '../ads-2.vue';
+import adsRight from '../adsRight.vue';
 import filterDesktop from '../filters/filterDesktop.vue';
 
 export default {
   name: 'favoritesPage',
   components: {
-    ads2,
+    adsRight,
     filterDesktop,
   },
 };

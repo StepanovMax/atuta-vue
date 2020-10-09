@@ -4,7 +4,7 @@
     class="companies-page"
   >
 
-    <ads1 />
+    <adsLeft />
 
     <div class="companies-page__wrap">
 
@@ -29,7 +29,7 @@
 
     </div>
 
-    <ads2 />
+    <adsRight />
 
   </div>
 </template>
@@ -38,15 +38,15 @@
 import axios from 'axios';
 
 import grid from '../grid.vue';
-import ads1 from '../ads-1.vue';
-import ads2 from '../ads-2.vue';
+import adsLeft from '../adsLeft.vue';
+import adsRight from '../adsRight.vue';
 import filterDesktop from '../filters/filterDesktop.vue';
 
 export default {
   name: 'favoritesPage',
   components: {
-    ads1,
-    ads2,
+    adsLeft,
+    adsRight,
     grid,
     filterDesktop,
   },

@@ -8,6 +8,14 @@
     height: auto;
   }
 
+  &_left {
+    grid-area: adsLeft;
+  }
+
+  &_right {
+    grid-area: adsRight;
+  }
+
   @include media(desktop) {
 
   }
@@ -21,6 +29,6 @@
   }
 
   @include media(mobile) {
-
+    margin-bottom: 25px;
   }
 }

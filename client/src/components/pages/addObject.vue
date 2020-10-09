@@ -4,7 +4,7 @@
     class="main add-object-page"
   >
 
-    <ads1 />
+    <adsLeft />
 
     <div class="article article_add">
       <h1
@@ -848,7 +848,7 @@
 
     </div>
 
-    <ads2 />
+    <adsRight />
 
   </div>
 </template>
@@ -860,8 +860,8 @@ import multiselect from 'vue-multiselect';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
-import ads1 from '../ads-1.vue';
-import ads2 from '../ads-2.vue';
+import adsLeft from '../adsLeft.vue';
+import adsRight from '../adsRight.vue';
 import tarifs from '../tarifs.vue';
 import iconCross from '../icons/iconCross.vue';
 import switcher from '../common/switcher.vue';
@@ -880,8 +880,8 @@ import addObjectCommercial from '../addObject/desktop/addObjectCommercial.vue';
 export default {
   name: 'addObject',
   components: {
-    ads1,
-    ads2,
+    adsLeft,
+    adsRight,
     tarifs,
     switcher,
     yandexMap,

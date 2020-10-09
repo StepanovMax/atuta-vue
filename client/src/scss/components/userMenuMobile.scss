@@ -1,0 +1,112 @@
+.user-menu-mobile {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity .3s ease .9s, left .3s ease .9s;
+
+  &_open {
+    left: 0;
+    opacity: 1;
+    z-index: 4;
+    transition: opacity .3s ease;
+  }
+
+  &__overlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0;
+    z-index: -1;
+    opacity: 0;
+    background-color: #000000;
+    transition: opacity .5s ease;
+
+    &_open {
+      z-index: 2;
+      opacity: .1;
+      height: 100vh;
+    }
+  }
+
+  &__wrap {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    width: 100vw;
+    background-color: $COLOR-WHITE;
+    transition: left .3s ease;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &_open {
+      left: 0;
+      z-index: 3;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    height: $MENU-USER-MOBILE-HEADER-HEIGHT;
+    padding: 20px;
+    background-color: $COLOR-BLUE-MAIN;
+    box-sizing: border-box;
+  }
+
+  &__user-name {
+    color: $COLOR-WHITE;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 20px;
+    height: calc(100% - #{$MENU-USER-MOBILE-HEADER-HEIGHT} - #{$MENU-MOBILE-HEIGHT});
+  }
+
+  &__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &-item {
+      font-size: 16px;
+      color: $COLOR-TEXT;
+      margin-bottom: 15px;
+    }
+  }
+
+  @include media(desktop) {
+    display: none;
+  }
+
+  @include media(tablet-portrait) {
+    display: none;
+  }
+
+  @include media(tablet-landscape) {
+    display: none;
+  }
+
+  @include media(mobile) {
+    display: flex;
+  }
+}

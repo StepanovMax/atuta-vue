@@ -19,13 +19,13 @@
         propItemType="object"
       />
     </div>
-    <ads2 />
+    <adsRight />
   </div>
 </template>
 
 <script>
 // import { mapState } from 'vuex';
-import ads2 from './ads-2.vue';
+import adsRight from './adsRight.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
 import axios from 'axios';
@@ -33,7 +33,7 @@ import axios from 'axios';
 export default {
   name: 'home',
   components: {
-    ads2,
+    adsRight,
     grid,
     filterDesktop,
   },

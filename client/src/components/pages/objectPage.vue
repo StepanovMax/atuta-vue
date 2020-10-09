@@ -939,14 +939,14 @@
 
     </div>
 
-    <ads2 />
+    <adsRight />
 
   </div>
 </template>
 
 <script>
 import grid from '../grid.vue';
-import ads2 from '../ads-2.vue';
+import adsRight from '../adsRight.vue';
 import unit from '../common/unit.vue';
 import lineChart from '../common/lineChart.vue';
 import socialSharing from '../common/socialSharing.vue';
@@ -982,7 +982,7 @@ export default {
   },
   name: 'objectPage',
   components: {
-    ads2,
+    adsRight,
     unit,
     grid,
     yandexMap,
