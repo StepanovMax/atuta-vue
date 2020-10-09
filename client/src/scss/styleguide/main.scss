@@ -3,9 +3,14 @@
     @include padding;
     flex: 1 0 auto;
 
-    @include media(tablet-portrait) {
+    @include media(tablet-landscape) {
       padding-top: 25px;
       padding-bottom: 25px;
+    }
+
+    @include media(tablet-portrait) {
+      padding-top: $OFFSET-MAIN-TOP-TABLET-PORTRAIT;
+      padding-bottom: $OFFSET-MAIN-TOP-TABLET-PORTRAIT;
     }
 
     @include media(mobile) {

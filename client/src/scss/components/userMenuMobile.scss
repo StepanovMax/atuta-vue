@@ -98,12 +98,12 @@
     display: none;
   }
 
-  @include media(tablet-portrait) {
+  @include media(tablet-landscape) {
     display: none;
   }
 
-  @include media(tablet-landscape) {
-    display: none;
+  @include media(tablet-portrait) {
+    display: flex;
   }
 
   @include media(mobile) {

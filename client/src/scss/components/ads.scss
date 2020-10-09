@@ -16,18 +16,6 @@
     grid-area: adsRight;
   }
 
-  @include media(desktop) {
-
-  }
-
-  @include media(tablet-landscape) {
-    display: block;
-  }
-
-  @include media(tablet-portrait) {
-    display: none;
-  }
-
   @include media(mobile) {
     margin-bottom: 25px;
   }
