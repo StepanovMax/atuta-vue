@@ -102,14 +102,9 @@ export default {
     },
   },
   beforeMount() {
-    // console.log('beforeMount grid ::');
-    console.log('[Grid] | beforeMount | propGridItems ::', this.propGridItems);
-    console.log('[Grid] | beforeMount | dataGridItems ::', this.dataGridItems);
     this.dataGridItems = this.propGridItems;
   },
   mounted() {
-    console.log('[Grid] | mounted | propGridItems ::', this.propGridItems);
-    console.log('[Grid] | mounted | dataGridItems ::', this.dataGridItems);
     this.dataGridItems = this.propGridItems;
   },
 };
