@@ -7,6 +7,7 @@ import store from './store/store.js';
 
 import App from './App.vue';
 // plugins
+import getHost from './plugins/getHost.js';
 import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
 
@@ -22,10 +23,9 @@ Vue.directive(
 );
 
 Vue.use(Meta);
- 
 Vue.use(vClickOutside);
- 
 Vue.use(formatNumbers);
+Vue.use(getHost);
 
 Vue.config.productionTip = false;
 

@@ -42,22 +42,28 @@ export default {
       storedObjects: null,
       response: '',
       error: '',
+      host: '',
     }
   },
   created() {
     // Calling the fetching method.
     this.getObjectsOnLoad();
   },
+  computed: {
+    url() {
+      const host = this.getHost();
+      const url = `${host}` + '/objects/get-objects/';
+      return url;
+    },
+  },
   methods: {
     // Fetch objects on the page load.
     getObjectsOnLoad() {
-      const url1 = 'http://localhost:9001/objects/get-objects';
-      const url2 = 'https://jsonplaceholder.typicode.com/posts';
-      const url3 = 'http://127.0.0.1:9001/objects/asd';
+      // const url2 = 'https://jsonplaceholder.typicode.com/posts';
 
       axios({
         method: 'get',
-        url: url1,
+        url: this.url,
         responseType: 'stream',
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +112,7 @@ export default {
     }
   },
   mounted() {
-    console.log('home page mounted storedObjects ::', this.storedObjects);
+    // console.log('home page mounted storedObjects ::', this.storedObjects);
   },
 };
 </script>

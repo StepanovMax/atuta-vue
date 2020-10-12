@@ -1,3 +1,4 @@
+import express from 'express';
 import { Router } from 'express';
 import testData from './testData';
 import cors from 'cors';
@@ -9,8 +10,22 @@ const corsOptions = {
 
 const router = Router();
 
+
+router.get(
+  '/',
+  cors(corsOptions),
+  (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.status(200).send({
+      message: 'Objects response OK - 200'
+    });
+  }
+);
+
+
 router.get(
   '/asd',
+  cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.status(200).send({

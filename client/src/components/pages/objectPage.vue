@@ -1015,12 +1015,24 @@ export default {
       storedObjects: false,
     }
   },
+  computed: {
+    urlGetObjectById() {
+      const host = this.getHost();
+      const url = `${host}` + '/objects/get-object-by-id';
+      return url;
+    },
+    urlGetAllObjects() {
+      const host = this.getHost();
+      const url = `${host}` + '/objects/get-objects';
+      return url;
+    },
+  },
   methods: {
     // Get an object when the page has been reload.
     async getObjectOnPageReload() {
-      const url = '//localhost:9001/objects/get-object-by-id';
+      // const url = '//localhost:9001/objects/get-object-by-id';
       const result = await axios.post(
-        url,
+        this.urlGetObjectById,
         {
           id: this.objectID
         }
@@ -1037,8 +1049,8 @@ export default {
     },
     // Get an object when the page has been reload.
     async getSameObjects() {
-      const url = '//localhost:9001/objects/get-objects';
-      const result = await axios.get(url)
+      // const url = '//localhost:9001/objects/get-objects';
+      const result = await axios.get(this.urlGetAllObjects)
         .then(function (response) {
           return response;
         })

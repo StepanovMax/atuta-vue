@@ -56,11 +56,18 @@ export default {
       companiesList: null,
     }
   },
+  computed: {
+    url() {
+      const host = this.getHost();
+      const url = `${host}` + '/companies/get-companies-all';
+      return url;
+    },
+  },
   methods: {
     // Get an object when the page has been reload.
     async getCompaniesAll() {
-      const url = '//localhost:9001/companies/get-companies-all';
-      const result = await axios.get(url)
+      // const url = '//localhost:9001/companies/get-companies-all';
+      const result = await axios.get(this.url)
         .then(function (response) {
           return response;
         })

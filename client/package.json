@@ -11,7 +11,9 @@
     "build": "webpack --progress --colors --no-watch",
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server --progress --colors --inline --hot --watch",
-    "dev": "webpack-dev-server"
+    "prod":  "webpack-dev-server --mode production",
+    "dev":   "webpack-dev-server --mode development",
+    "local": "webpack-dev-server --mode none"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -34,6 +36,7 @@
     "axios": "^0.20.0",
     "chart.js": "^2.9.3",
     "connect-history-api-fallback": "^1.6.0",
+    "dotenv-webpack": "^1.7.0",
     "esri-leaflet-geocoder": "^2.3.3",
     "express": "^4.17.1",
     "leaflet": "^1.6.0",

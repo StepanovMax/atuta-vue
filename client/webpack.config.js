@@ -1,10 +1,13 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
-  mode: 'development',
+  // mode: 'development',
+  // node: {
+  //   fs: "empty"
+  // },
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
@@ -80,11 +83,7 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    // new BrowserSyncPlugin({
-    //   host: '192.168.0.100',
-    //   port: 9000,
-    //   proxy: 'http://192.168.0.100:9000/'
-    // }),
+    new Dotenv(),
   ],
   // resolve: {
   //   alias: {
