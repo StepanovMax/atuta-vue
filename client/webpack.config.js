@@ -1,6 +1,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -82,7 +82,7 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new Dotenv(),
+    // new Dotenv(),
   ],
   // resolve: {
   //   alias: {
