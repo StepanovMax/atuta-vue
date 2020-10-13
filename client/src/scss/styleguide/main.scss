@@ -2,6 +2,8 @@
   &-wrap {
     @include padding;
     flex: 1 0 auto;
+    z-index: 1;
+    position: relative;
 
     @include media(tablet-landscape) {
       padding-top: 25px;

@@ -6,10 +6,6 @@
     <div class="filter">
       <filterDesktop />
     </div>
-    <p>
-      {{ response }}
-      {{ error }}
-    </p>
     <div class="article">
       <grid
         v-if="storedObjects"
@@ -83,32 +79,6 @@ export default {
             .then(function () {
               // alert('always executed');
             });
-
-
-      // fetch(url)
-      //   .then(
-      //     response => {
-      //       alert('then');
-      //       if (response.status !== 200) {
-      //         alert('error1');
-      //         console.error('Looks like there was a problem. :: ' + 'Status Code ' + response.status);
-      //         return;
-      //       }
-      //       response.json()
-      //         .then(
-      //           response => {
-      //             alert('Success');
-      //             this.storedObjects = JSON.parse(JSON.stringify(response));
-      //           }
-      //         )
-      //         .catch(
-      //           err => {
-      //             alert('error2');
-      //             console.error('Request failed ::', err);
-      //           }
-      //         );
-      //     }
-      //   );
     }
   },
   mounted() {
