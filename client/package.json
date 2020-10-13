@@ -13,7 +13,8 @@
     "start": "webpack-dev-server --progress --colors --inline --hot --watch",
     "prod":  "webpack-dev-server --mode production",
     "dev":   "webpack-dev-server --mode development",
-    "local": "webpack-dev-server --mode none"
+    "local": "webpack-dev-server --mode none",
+    "build-dev": "webpack --mode development --progress --colors --no-watch"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
