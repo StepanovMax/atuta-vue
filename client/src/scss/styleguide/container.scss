@@ -58,7 +58,10 @@
   
     @include media(mobile) {
       grid-template-columns: 1fr;
-      grid-template-areas: "article adsRight";
+      grid-template-areas:
+        "article"
+        "adsRight"
+      ;
       gap: 1px;
     }
   }
