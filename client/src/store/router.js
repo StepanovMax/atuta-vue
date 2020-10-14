@@ -12,6 +12,7 @@ import profilePage from '../components/pages/profilePage.vue';
 import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
+import companyPage from '../components/pages/companyPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
 import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
@@ -82,6 +83,24 @@ const router = new Router({
           {
             property: 'og:description',
             content: 'The home page of our example app.'
+          }
+        ]
+      },
+    },
+    {
+      path: '/:id',
+      name:'companyPage',
+      component: companyPage,
+      meta: {
+        title: 'Страница компании',
+        metaTags: [
+          {
+            name: 'description',
+            content: 'metaTags name Страница компании'
+          },
+          {
+            property: 'og:description',
+            content: 'metaTags property Страница компании'
           }
         ]
       },
