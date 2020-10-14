@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import companiesList from './companiesList';
+import testCompanies from '../testData/testCompanies';
 import cors from 'cors';
 
 const corsOptions = {
@@ -15,8 +15,8 @@ router.get(
   (req, res) => {
     console.log('===');
     res.header("Access-Control-Allow-Origin", "*");
-    if (companiesList) {
-      res.status(200).send(companiesList);
+    if (testCompanies) {
+      res.status(200).send(testCompanies);
     } else {
       res.status(404).send({
         message: 'Companies not found'
