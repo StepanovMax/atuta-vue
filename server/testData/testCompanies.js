@@ -1,4 +1,4 @@
-const companiesList = [
+const testCompanies = [
   {
     id: 1,
     name: {
@@ -37,4 +37,4 @@ const companiesList = [
   },
 ];
 
-export default companiesList;
+export default testCompanies;

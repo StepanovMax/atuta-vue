@@ -1,6 +1,6 @@
 import express from 'express';
 import { Router } from 'express';
-import testData from './testData';
+import testObjects from '../testData/testObjects';
 import cors from 'cors';
 
 const corsOptions = {
@@ -39,8 +39,8 @@ router.get(
   cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    if (testData) {
-      res.status(200).send(testData);
+    if (testObjects) {
+      res.status(200).send(testObjects);
     } else {
       res.status(404).send({
         message: 'Object not found'
@@ -59,7 +59,7 @@ router.post(
     const { body } = req;
     const objectID = parseInt(body.id);
     let object;
-    testData.map(
+    testObjects.map(
       item => {
         if (item.id === objectID) {
           object = item;

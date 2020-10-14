@@ -1,4 +1,4 @@
-const testData = [
+const testObjects = [
   {
     id: 873589,
     object: {
@@ -605,4 +605,4 @@ const testData = [
   },
 ];
 
-export default testData;
+export default testObjects;
