@@ -1018,12 +1018,12 @@ export default {
   computed: {
     urlGetObjectById() {
       const host = this.getHost();
-      const url = `${host}` + '/objects/get-object-by-id';
+      const url = `${host.api}` + '/objects/get-object-by-id';
       return url;
     },
     urlGetAllObjects() {
       const host = this.getHost();
-      const url = `${host}` + '/objects/get-objects';
+      const url = `${host.api}` + '/objects/get-objects';
       return url;
     },
   },

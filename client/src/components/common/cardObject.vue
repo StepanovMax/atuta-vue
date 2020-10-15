@@ -25,7 +25,9 @@
         :class="[
           {'object-card__wrap-img_list-view': propObjectView === 'list'},
           {'object-card__wrap-img-sample_default':
-            !(dataObjectData.urlPreview)
+            (
+              dataObjectData.photoGallery.length === 0
+            )
           }
         ]"
       >
@@ -41,17 +43,15 @@
           title="Перейти подробнее 1"
         >
           <img
-            v-if="
-              dataObjectData.urlPreview
-            "
+            v-if="dataObjectData.photoGallery.length === 0"
             class="img object-card__img"
-            :src="dataObjectData.urlPreview"
+            :src="hostResulted"
             alt=""
           >
           <img
             v-else
             class="img object-card__img"
-            src="src/images/logo/logo_desktop.png"
+            :src="hostResulted"
             alt=""
           >
         </router-link>
@@ -730,6 +730,7 @@ export default {
     return {
       dataObjectData: this.propObjectData,
       dataIsShowPhoneNumber: false,
+      host: this.getHost(),
     }
   },
   components: {
@@ -768,7 +769,6 @@ export default {
     propObjectData: {
       handler(value) {
         if (!!value) {
-          // console.log('2 ::', value);
           this.dataObjectData = value;
         }
       },
@@ -809,6 +809,12 @@ export default {
         color = 'default';
       }
       return color;
+    },
+    hostResulted() {
+      if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
+        this.dataObjectData.urlPreview = '/src/images/logo/logo_desktop.png';
+      }
+      return this.host.front + this.dataObjectData.urlPreview
     },
   },
 };

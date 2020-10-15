@@ -5,6 +5,11 @@
     z-index: 1;
     position: relative;
 
+    @include media(desktop) {
+      padding-top: 30px;
+      padding-bottom: 50px;
+    }
+
     @include media(tablet-landscape) {
       padding-top: 25px;
       padding-bottom: 25px;
@@ -29,10 +34,6 @@
   // padding-top: 50px;
   // padding-bottom: 50px;
   flex: 1 0 auto;
-
-  @include media(desktop) {
-    padding-top: 50px;
-  }
 
   // @include media(tablet-portrait) {
   //   padding-top: 25px;

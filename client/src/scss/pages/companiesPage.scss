@@ -27,6 +27,7 @@
 
   &__content {
     display: flex;
+    margin-bottom: 30px;
   }
   
   @include media(desktop) {

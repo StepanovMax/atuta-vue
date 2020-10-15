@@ -105,7 +105,7 @@ export default {
     this.dataGridItems = this.propGridItems;
   },
   mounted() {
-    this.dataGridItems = this.propGridItems;
+    // this.dataGridItems = this.propGridItems;
   },
 };
 </script>

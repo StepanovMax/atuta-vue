@@ -1,0 +1,120 @@
+.company-page {
+  grid-area: article;
+
+  @extend .container-3-columns;
+
+  &__wrap {
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    @include media(desktop) {
+      margin-bottom: 22px;
+    }
+
+    @include media(tablet-landscape) {
+      margin-bottom: 18px;
+    }
+
+    @include media(tablet-portrait) {
+      margin-bottom: 16px;
+    }
+
+    @include media(mobile) {
+      margin-bottom: 15px;
+    }
+
+    &-title {
+      @extend .title;
+      @extend .title_h1;
+      margin: 0;
+    }
+  
+    &-bottom {
+      display: flex;
+
+      @include media(desktop) {
+        flex-direction: row;
+      }
+
+      @include media(tablet-landscape) {
+        flex-direction: row;
+      }
+
+      @include media(tablet-portrait) {
+        flex-direction: row;
+      }
+
+      @include media(mobile) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  &__image {
+    width: 100%;
+
+    &-wrap {
+      width: 150px;
+      height: 150px;
+
+      @include media(desktop) {
+        margin-right: 20px;
+      }
+
+      @include media(tablet-landscape) {
+        margin-right: 20px;
+      }
+
+      @include media(tablet-portrait) {
+        margin-right: 20px;
+      }
+
+      @include media(mobile) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &-description {
+      display: flex;
+      flex-direction: column;
+
+      @include media(mobile) {
+        text-align: center;
+      }
+    }
+  }
+
+  &__description {
+    margin-bottom: 15px;
+  }
+
+  &__same-objects {
+    &-header {
+      margin-bottom: 10px;
+    }
+
+    &-title {
+      @extend .title;
+      @extend .title_h3;
+      font-size: 22px;
+    }
+  }
+
+  @include media(desktop) {
+    padding-top: 50px;
+  }
+}

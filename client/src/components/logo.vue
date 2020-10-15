@@ -10,7 +10,7 @@
   >
     <img
       class="img logo__img"
-      src="src/images/logo/logo_desktop.png"
+      src="/src/images/logo/logo_desktop.png"
     >
   </router-link>
 </template>
