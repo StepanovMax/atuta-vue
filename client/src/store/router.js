@@ -70,7 +70,7 @@ const router = new Router({
       },
     },
     {
-      path: '/:id',
+      path: '/objects/:id',
       name:'objectPage',
       component: objectPage,
       meta: {
@@ -88,7 +88,7 @@ const router = new Router({
       },
     },
     {
-      path: '/:id',
+      path: '/companies/:id',
       name:'companyPage',
       component: companyPage,
       meta: {

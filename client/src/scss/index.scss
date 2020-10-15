@@ -67,11 +67,13 @@
 @import "./components/imagesCarousel.scss";
 @import "./components/cardCompany.scss";
 @import "./components/userMenuMobile.scss";
+@import "./components/breadcrumbs.scss";
 
 // Pages
 @import "./pages/objectPage.scss";
 @import "./pages/addObjectPage.scss";
 @import "./pages/companiesPage.scss";
+@import "./pages/companyPage.scss";
 
 // Components node_modules
 @import "./node-modules/multiselect.scss";

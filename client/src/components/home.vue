@@ -48,7 +48,7 @@ export default {
   computed: {
     url() {
       const host = this.getHost();
-      const url = `${host}` + '/objects/get-objects/';
+      const url = `${host.api}` + '/objects/get-objects/';
       return url;
     },
   },

@@ -108,8 +108,12 @@ $UPLOAD-IMAGE-WIDTH: 234px;
         height: 150px;
       }
     
+      @include media(tablet-portrait) {
+        height: 200px;
+      }
+    
       @include media(mobile) {
-        height: 240px;
+        height: 200px;
       }
 
       &_list-view {

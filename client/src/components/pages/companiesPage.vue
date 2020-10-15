@@ -54,12 +54,13 @@ export default {
     return {
       companiesCount: null,
       companiesList: null,
+      host: this.getHost(),
     }
   },
   computed: {
     url() {
       const host = this.getHost();
-      const url = `${host}` + '/companies/get-companies-all';
+      const url = `${host.api}` + '/companies/get-companies-all';
       return url;
     },
   },

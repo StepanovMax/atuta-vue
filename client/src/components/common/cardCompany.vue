@@ -17,20 +17,20 @@
         <div class="card-company__image">
           <div
             class="card-company__image-wrap"
-            :class="{'card-company__image-wrap_white': !propCompanyData.urlPreview}"
+            :class="{'card-company__image-wrap_white': urlPreviewEmpty}"
           >
 
             <img
-              v-if="propCompanyData.urlPreview"
+              v-if="!urlPreviewEmpty"
               class="img card-company__image-wrap-img"
-              :src="propCompanyData.urlPreview"
+              :src="hostResulted"
               alt=""
             >
 
             <img
               v-else
               class="img card-company__image-wrap-img"
-              src="src/images/logo/logo_desktop.png"
+              :src="hostResulted"
               alt=""
             >
 
@@ -69,7 +69,8 @@ export default {
   name: 'cardCompany',
   data() {
     return {
-      // dataIsShowPhoneNumber: false,
+      host: this.getHost(),
+      urlPreviewEmpty: false,
     }
   },
   props: {
@@ -77,6 +78,15 @@ export default {
       type: Object,
       default: {},
       required: true,
+    },
+  },
+  computed: {
+    hostResulted() {
+      if (!this.propCompanyData.urlPreview || this.propCompanyData.urlPreview.length === 0) {
+        this.propCompanyData.urlPreview = '/src/images/logo/logo_desktop.png';
+        this.urlPreviewEmpty = true;
+      }
+      return this.host.front + this.propCompanyData.urlPreview
     },
   },
 };

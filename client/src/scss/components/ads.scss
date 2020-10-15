@@ -1,4 +1,6 @@
 .ads {
+  margin-bottom: 15px;
+
   &__link {
     display: block;
   }
@@ -6,6 +8,36 @@
   &__img {
     width: 100%;
     height: auto;
+
+    &_vertical {
+      @include media(desktop) {
+        display: block;
+      }
+      @include media(tablet-landscape) {
+        display: block;
+      }
+      @include media(tablet-portrait) {
+        display: none;
+      }
+      @include media(mobile) {
+        display: none;
+      }
+    }
+
+    &_horizontal {
+      @include media(desktop) {
+        display: none;
+      }
+      @include media(tablet-landscape) {
+        display: none;
+      }
+      @include media(tablet-portrait) {
+        display: block;
+      }
+      @include media(mobile) {
+        display: block;
+      }
+    }
   }
 
   &_left {
@@ -14,6 +46,10 @@
 
   &_right {
     grid-area: adsRight;
+  }
+
+  @include media(tablet-portrait) {
+    margin-bottom: 30px;
   }
 
   @include media(mobile) {

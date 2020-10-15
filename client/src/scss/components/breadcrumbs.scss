@@ -1,0 +1,14 @@
+.breadcrumbs {
+  margin-bottom: 15px;
+
+  &__link {
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: underline;
+    color: $COLOR-BLUE-MAIN;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
