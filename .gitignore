@@ -6,3 +6,5 @@ server/node_modules/
 server/yarn.lock
 server/yarn-error.log
 
+index.html
+
