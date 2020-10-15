@@ -73,7 +73,10 @@
               <span class="">
                 Объявления
               </span>
-              <span class="">
+              <span
+                v-if="storedObjects"
+                class=""
+              >
                 {{ storedObjects.length }}
               </span>
             </h4>
