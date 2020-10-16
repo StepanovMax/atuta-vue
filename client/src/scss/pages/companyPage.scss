@@ -9,6 +9,50 @@
     }
   }
 
+  &__paragraph {
+    @extend .paragraph;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  &__website {
+    margin-top: 10px;
+  }
+
+  &__address {
+    margin-top: 10px;
+  }
+
+  &__contacts {
+    width: 250px;
+    font-size: 14px;
+    align-self: flex-end;
+
+    &-title {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    @include media(mobile) {
+      align-self: center;
+    }
+  }
+
+  &__phones {
+    &-item {
+      margin-bottom: 4px;
+    }
+
+    &-link {
+      color: $COLOR-BLUE-MAIN;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
   &__header {
     display: flex;
     flex-direction: column;
@@ -91,6 +135,7 @@
     &-description {
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
 
       @include media(mobile) {
         text-align: center;
