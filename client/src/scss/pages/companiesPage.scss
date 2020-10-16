@@ -11,8 +11,18 @@
 
   &__header {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     margin-bottom: 30px;
+
+    &-top {
+
+    }
+
+    &-bottom {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+    }
 
     &-title {
       @extend .title;

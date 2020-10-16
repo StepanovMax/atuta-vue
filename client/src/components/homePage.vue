@@ -27,7 +27,7 @@ import filterDesktop from './filters/filterDesktop.vue';
 import axios from 'axios';
 
 export default {
-  name: 'home',
+  name: 'homePage',
   components: {
     adsRight,
     grid,

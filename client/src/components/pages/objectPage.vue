@@ -13,9 +13,7 @@
         <div class="object-page__row">
           <div class="object-page__side-left">
 
-            <breadcrumbs
-              propPageName="home"
-            />
+            <breadcrumbs />
 
             <div class="object-page__mobile-wrap">
 

@@ -5,7 +5,7 @@
       { 'logo_header': this.location === 'header' },
       { 'logo_footer': this.location === 'footer' }
     ]"
-    :to="{ name: 'home' }"
+    :to="{ name: 'homePage' }"
     title="Приобретите свою недвижимость вместе с Атута"
   >
     <img
