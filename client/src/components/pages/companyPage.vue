@@ -39,6 +39,47 @@
               {{ companyData.descriptionShort.label }}
             </p>
 
+            <div class="company-page__contacts">
+
+              <h4 class="company-page__contacts-title">
+                Контакты
+              </h4>
+
+              <ul class="list company-page__phones">
+                <li
+                  class="list__item company-page__phones-item"
+                  v-for="(item, index) in companyData.phoneNumbers"
+                  :key="index"
+                >
+                  <a
+                    :href="'tel:' + item"
+                    class="company-page__phones-link"
+                  >
+                    {{ item }}
+                  </a>
+                </li>
+              </ul>
+
+              <p class="company-page__website">
+                <span class="">
+                  <a
+                    target="_blank"
+                    href="companyData.url.value"
+                    class="company-page__phones-link"
+                  >
+                    {{ companyData.url.value }}
+                  </a>
+                </span>
+              </p>
+
+              <div class="company-page__address">
+                <p class="company-page__paragraph">
+                  {{ companyData.address }}
+                </p>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
@@ -50,20 +91,6 @@
         <div class="company-page__description">
           <p class="paragraph">
             {{ companyData.description.label }}
-          </p>
-          <p class="paragraph">
-            <span class="">
-              Сайт компании:
-            </span>
-            <span class="">
-              <a
-                target="_blank"
-                href="companyData.url.value"
-                class=""
-              >
-                {{ companyData.url.value }}
-              </a>
-            </span>
           </p>
         </div>
 

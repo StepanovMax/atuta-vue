@@ -13,9 +13,14 @@ const testCompanies = [
     },
     urlPreview: '/src/images/companies/an1.png',
     objectsCount: 416,
+    phoneNumbers: [
+      '+7 8634 39-41-37',
+      '+7 928 760-38-35',
+    ],
     url: {
       value: 'http://an1tag.ru',
     },
+    address: 'Таганрог, г. Таганрог, ул.Чехова, 50, Центральный',
   },
   {
     id: 2,
@@ -31,9 +36,14 @@ const testCompanies = [
     },
     urlPreview: '/src/images/objects/8993850262.jpg',
     objectsCount: 113,
+    phoneNumbers: [
+      '+7 8634 39-41-37',
+      '+7 928 760-38-35',
+    ],
     url: {
       value: 'https://taganrog.restate.ru',
     },
+    address: 'Таганрог, г. Таганрог, ул.Чехова, 50, Центральный',
   },
   {
     id: 3,
@@ -49,9 +59,14 @@ const testCompanies = [
     },
     urlPreview: '/src/images/objects/8993850241.jpg',
     objectsCount: 21,
+    phoneNumbers: [
+      '+7 8634 39-41-37',
+      '+7 928 760-38-35',
+    ],
     url: {
       value: 'https://rosrealt.ru',
     },
+    address: 'Таганрог, г. Таганрог, ул.Чехова, 50, Центральный',
   },
 ];
 

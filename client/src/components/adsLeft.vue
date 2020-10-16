@@ -16,7 +16,7 @@
         "
       >
       <img
-        :src="host.front + '/src/images/ads/ads_horizontal.png'"
+        :src="host.front + '/src/images/ads/ads_horizontal_mubarak.png'"
         alt="Реклама"
         class="
           image
