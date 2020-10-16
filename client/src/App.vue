@@ -9,7 +9,7 @@
     <headerDesktop />
     <searchMobile />
     <div class="main-wrap">
-      <router-view class=""></router-view>
+      <router-view></router-view>
     </div>
     <menuMobile />
     <footerDesktop />
