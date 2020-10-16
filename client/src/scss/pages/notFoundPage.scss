@@ -1,0 +1,21 @@
+.not-found-page {
+  grid-area: article;
+
+  @extend .container-3-columns;
+
+  &__title {
+    @extend .title;
+    @extend .title_h1;
+  }
+
+  &__subtitle {
+    @extend .title;
+    @extend .title_h3;
+  }
+
+  &__wrap {
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
+  }
+}
