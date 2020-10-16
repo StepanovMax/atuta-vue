@@ -13,7 +13,9 @@
         <div class="object-page__row">
           <div class="object-page__side-left">
 
-            <getBackToPrevUrl />
+            <breadcrumbs
+              propPageName="home"
+            />
 
             <div class="object-page__mobile-wrap">
 
@@ -955,6 +957,7 @@ import moveToFavorites from '../common/moveToFavorites.vue';
 import showPhoneNumber from '../common/showPhoneNumber.vue';
 import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 import imagesCarousel from '../common/imagesCarousel.vue';
+import breadcrumbs from '../common/breadcrumbs.vue';
 
 import axios from 'axios';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
@@ -982,6 +985,7 @@ export default {
   },
   name: 'objectPage',
   components: {
+    breadcrumbs,
     adsRight,
     unit,
     grid,
