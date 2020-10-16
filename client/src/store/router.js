@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 // Pages
-import Home from '../components/home.vue';
+import HomePage from '../components/homePage.vue';
 import addObject from '../components/pages/addObject.vue';
 import StyleGuide from '../components/pages/styleGuide.vue';
 import objectPage from '../components/pages/objectPage.vue';
@@ -14,6 +14,8 @@ import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
 import companyPage from '../components/pages/companyPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
+import helpPage from '../components/pages/helpPage.vue';
+import answer from '../components/common/answer.vue';
 import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
 
@@ -22,8 +24,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name:'home',
-      component: Home,
+      name:'homePage',
+      component: HomePage,
       meta: {
         title: 'Атута смотрели?',
       },
@@ -68,6 +70,19 @@ const router = new Router({
       meta: {
         title: 'Список компаний',
       },
+    },
+    {
+      path: '/help',
+      name:'helpPage',
+      component: helpPage,
+      meta: {
+        title: 'Помощь',
+      },
+      children: [{
+        path: '/help/:id',
+        name:'answer',
+        component: answer,
+      }],
     },
     {
       path: '/objects/:id',

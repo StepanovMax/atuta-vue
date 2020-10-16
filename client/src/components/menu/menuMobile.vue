@@ -6,7 +6,7 @@
       <li class="menu-mobile__list-item list__item">
         <router-link
           v-slot="{ href, route, navigate, isActive }"
-          :to="{ name: 'home' }"
+          :to="{ name: 'homePage' }"
           class="link menu-mobile__link"
           exact
         >

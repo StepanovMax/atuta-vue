@@ -1,19 +1,32 @@
 <template>
   <div class="breadcrumbs">
-    <router-link
-      class="breadcrumbs__link"
-      :to="{
-        name: pageObject.name
-      }"
-      :title="`Перейти подробнее ${pageObject.label}`"
-    >
-      <iconArrowLeft
-        class="get-back-to-prev-url__icon"
-      />
-      <span>
-        Назад на {{ pageObject.label }}
-      </span>
-    </router-link>
+    <ul class="breadcrumbs__list">
+      <li class="breadcrumbs__list-item">
+        <router-link
+          class="breadcrumbs__link"
+          :to="{
+            name: 'homePage'
+          }"
+          title="Главная"
+        >
+          На главную
+        </router-link>
+      </li>
+      <li
+        v-if="propPageName"
+        class="breadcrumbs__list-item"
+      >
+        <router-link
+          class="breadcrumbs__link"
+          :to="{
+            name: pageObject.name
+          }"
+          :title="`Перейти подробнее ${pageObject.label}`"
+        >
+          {{ pageObject.label }}
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -26,7 +39,7 @@ export default {
     propPageName: {
       type: String,
       default: '',
-      required: true,
+      required: false,
     },
   },
   components: {
@@ -42,10 +55,10 @@ export default {
       let pageObject = {};
       if (this.propPageName === 'companiesPage') {
         pageObject.name = 'companiesPage';
-        pageObject.label = 'список компаний';
-      } else if (this.propPageName === 'home') {
-        pageObject.name = 'home';
-        pageObject.label = 'главную';
+        pageObject.label = 'Cписок компаний';
+      } else if (this.propPageName === 'helpPage') {
+        pageObject.name = 'helpPage';
+        pageObject.label = 'Помощь';
       }
       return pageObject;
     }

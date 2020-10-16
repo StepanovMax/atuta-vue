@@ -1,0 +1,66 @@
+.help-page {
+  grid-area: article;
+
+  @extend .container-3-columns;
+
+  &__wrap {
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__title {
+    @extend .title;
+    @extend .title_h1;
+  }
+
+  @include media(desktop) {
+    padding-top: 50px;
+  }
+
+  &__link {
+    font-size: 17px;
+    font-weight: 400;
+    text-decoration: underline;
+    color: $COLOR-BLUE-MAIN;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include media(desktop) {
+      padding-top: 50px;
+    }
+  }
+
+  &__questions {
+    width: 250px;
+    min-width: 250px;
+    margin-right: 15px;
+
+    @include media(mobile) {
+      width: 100px;
+      min-width: 100px;
+    }
+
+    &-list {
+      &-item {
+        margin-top: 8px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &__answers {
+    
+  }
+}

@@ -9,15 +9,29 @@
     <div class="companies-page__wrap">
 
       <header class="companies-page__header">
-        <h1 class="companies-page__header-title">
-          Компании
-        </h1>
-        <p class="companies-page__header-title-count">
-          &nbsp;{{ this.companiesCount }}
-        </p>
+
+        <div class="companies-page__header-top">
+
+          <breadcrumbs />
+
+        </div>
+
+        <div class="companies-page__header-bottom">
+
+          <h1 class="companies-page__header-title">
+            Компании
+          </h1>
+
+          <p class="companies-page__header-title-count">
+            &nbsp;{{ this.companiesCount }}
+          </p>
+
+        </div>
+
       </header>
 
       <div class="companies-page__content">
+
         <grid
           v-if="companiesList"
           propGridView="list"
@@ -25,6 +39,7 @@
           :propGridSorting="false"
           propItemType="company"
         />
+
       </div>
 
     </div>
@@ -41,13 +56,15 @@ import grid from '../grid.vue';
 import adsLeft from '../adsLeft.vue';
 import adsRight from '../adsRight.vue';
 import filterDesktop from '../filters/filterDesktop.vue';
+import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
   name: 'favoritesPage',
   components: {
+    grid,
     adsLeft,
     adsRight,
-    grid,
+    breadcrumbs,
     filterDesktop,
   },
   data() {
