@@ -7,13 +7,18 @@
       }"
       :title="`Перейти подробнее ${pageObject.label}`"
     >
-      &lt; Назад на {{ pageObject.label }}
+      <iconArrowLeft
+        class="get-back-to-prev-url__icon"
+      />
+      <span>
+        Назад на {{ pageObject.label }}
+      </span>
     </router-link>
   </div>
 </template>
 
 <script>
-import iconRouble from '../icons/iconRouble.vue';
+import iconArrowLeft from '../icons/iconArrowLeft.vue'
 
 export default {
   name: 'breadcrumbs',
@@ -23,6 +28,9 @@ export default {
       default: '',
       required: true,
     },
+  },
+  components: {
+    iconArrowLeft,
   },
   data() {
     return {
@@ -35,6 +43,9 @@ export default {
       if (this.propPageName === 'companiesPage') {
         pageObject.name = 'companiesPage';
         pageObject.label = 'список компаний';
+      } else if (this.propPageName === 'home') {
+        pageObject.name = 'home';
+        pageObject.label = 'главную';
       }
       return pageObject;
     }

@@ -6,6 +6,8 @@
     font-weight: 300;
     text-decoration: underline;
     color: $COLOR-BLUE-MAIN;
+    display: flex;
+    
 
     &:hover {
       text-decoration: none;
