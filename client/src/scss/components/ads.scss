@@ -42,17 +42,21 @@
 
   &_left {
     grid-area: adsLeft;
+
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
   }
 
   &_right {
     grid-area: adsRight;
+
+    @include media(mobile) {
+      margin-bottom: 0;
+    }
   }
 
   @include media(tablet-portrait) {
     margin-bottom: 30px;
-  }
-
-  @include media(mobile) {
-    margin-bottom: 25px;
   }
 }
