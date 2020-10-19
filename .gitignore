@@ -7,4 +7,5 @@ server/yarn.lock
 server/yarn-error.log
 
 client/index.html
+Jenkinsfile
 
