@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import headerDesktop from './components/header/header.vue'
-import footerDesktop from './components/footerDesktop.vue'
-import searchMobile from './components/search/searchMobile.vue'
-import menuMobile from './components/menu/menuMobile.vue'
+import headerDesktop from './components/header/header.vue';
+import footerDesktop from './components/footerDesktop.vue';
+import searchMobile from './components/search/searchMobile.vue';
+import menuMobile from './components/menu/menuMobile.vue';
 import { mapState } from 'vuex';
 
 export default {
@@ -34,17 +34,30 @@ export default {
   computed: {
     ...mapState([
       'isFilterOpen',
+      'mobileQuestionClosed',
       'isUserMenuMobileOpen',
     ]),
   },
   watch: {
-    $route() {
+    $route(to, from) {
       this.closeMobileMenus();
+      console.log('to ::', to);
+      this.changeMobileQuestionStateOnWatch(to);
     }
   },
   methods: {
     closeMobileMenus() {
       this.$store.commit('closeMobileMenus');
+    },
+    changeMobileQuestionState(state) {
+      this.$store.commit('changeMobileQuestionState', state);
+    },
+    changeMobileQuestionStateOnWatch(to) {
+      if (to.name === 'answer') {
+        this.changeMobileQuestionState(false);
+      } else {
+        this.changeMobileQuestionState(true);
+      }
     },
   },
 };

@@ -1,4 +1,7 @@
 const mutations = {
+  changeMobileQuestionState(state, data) {
+    state.mobileQuestionState = data;
+  },
   switchFilter(state, data) {
     state.isFilterOpen = data;
   },

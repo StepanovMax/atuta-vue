@@ -1,3 +1,4 @@
+import help from './help';
 import objects from './objects';
 import companies from './companies';
 import Users from '../controllers/user';
@@ -15,6 +16,7 @@ const routes = app => {
   app.get('/api/users/get-all', Users.getAllUsers);
 
   // Import API Routes
+  app.use('/help', help);
   app.use('/objects', objects);
   app.use('/companies', companies);
 }

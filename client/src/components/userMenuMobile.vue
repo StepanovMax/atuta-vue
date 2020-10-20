@@ -68,6 +68,25 @@
               Компании
             </router-link>
           </li>
+          <li
+            class="
+              menu__item
+              user-menu-mobile__menu-item
+            "
+          >
+            <router-link
+              :to="{
+                name: 'helpPage'
+              }"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              @click="clickOnLink()"
+            >
+              Помощь
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>
