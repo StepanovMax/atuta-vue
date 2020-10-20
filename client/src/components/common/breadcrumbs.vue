@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import iconArrowLeft from '../icons/iconArrowLeft.vue'
 
 export default {
@@ -51,15 +53,22 @@ export default {
     }
   },
   computed: {
+    ...mapState([
+      'mobileQuestionState',
+    ]),
     pageObject() {
       let pageObject = {};
       if (this.propPageName === 'companiesPage') {
         pageObject.name = 'companiesPage';
         pageObject.label = 'Cписок компаний';
-      } else if (this.propPageName === 'helpPage') {
+      } else if (this.propPageName === 'helpPage' && !this.mobileQuestionState) {
         pageObject.name = 'helpPage';
         pageObject.label = 'Помощь';
+      } else {
+        pageObject.name = '';
+        pageObject.label = '';
       }
+      console.log('this.mobileQuestionState ::', this.mobileQuestionState);
       return pageObject;
     }
   },

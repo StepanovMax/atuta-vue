@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import testCompanies from '../testData/testCompanies';
+import testHelpData from '../testData/testHelpData';
 import cors from 'cors';
 
 const corsOptions = {
@@ -10,42 +10,42 @@ const corsOptions = {
 const router = Router();
 
 router.get(
-  '/get-companies-all',
+  '/get-help-all',
   cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    if (testCompanies) {
-      res.status(200).send(testCompanies);
+    if (testHelpData) {
+      res.status(200).send(testHelpData);
     } else {
       res.status(404).send({
-        message: 'Companies not found'
+        message: 'Help data not found'
       });
     }
   }
 );
 
 router.post(
-  '/get-company-by-id',
+  '/get-help-by-id',
   cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const { body } = req;
-    const companyID = parseInt(body.id);
-    let company;
-    testCompanies.map(
+    const helpID = parseInt(body.id);
+    let help;
+    testHelpData.map(
       item => {
-        if (item.id === companyID) {
-          company = item;
+        if (item.id === helpID) {
+          help = item;
         }
       }
     );
-    if (company) {
-      res.status(200).send(company);
+    if (help) {
+      res.status(200).send(help);
     } else {
       res.status(404).send({
-        message: 'Company not found'
+        message: 'Help not found'
       });
     }
   }
