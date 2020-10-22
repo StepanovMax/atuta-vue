@@ -5,17 +5,18 @@ Vue.use(Router);
 
 // Pages
 import HomePage from '../components/homePage.vue';
+import answer from '../components/common/answer.vue';
+import helpPage from '../components/pages/helpPage.vue';
 import addObject from '../components/pages/addObject.vue';
-import StyleGuide from '../components/pages/styleGuide.vue';
+import styleGuide from '../components/pages/styleGuide.vue';
 import objectPage from '../components/pages/objectPage.vue';
 import profilePage from '../components/pages/profilePage.vue';
+import companyPage from '../components/pages/companyPage.vue';
 import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
-import companyPage from '../components/pages/companyPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
-import helpPage from '../components/pages/helpPage.vue';
-import answer from '../components/common/answer.vue';
+import registrationPage from '../components/pages/registrationPage.vue';
 import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
 
@@ -33,7 +34,12 @@ const router = new Router({
     {
       path: '/styleGuide',
       name:'styleGuide',
-      component: StyleGuide
+      component: styleGuide
+    },
+    {
+      path: '/registration',
+      name:'registrationPage',
+      component: registrationPage
     },
     {
       path: '/favorites',

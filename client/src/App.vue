@@ -41,8 +41,8 @@ export default {
   watch: {
     $route(to, from) {
       this.closeMobileMenus();
-      console.log('to ::', to);
       this.changeMobileQuestionStateOnWatch(to);
+      console.log('to ::', to);
     }
   },
   methods: {

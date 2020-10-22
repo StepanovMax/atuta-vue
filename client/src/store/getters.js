@@ -39,6 +39,14 @@ const getters = {
     }
     return resultedArray;
   },
+  getUserRoles: state => {
+    state.federalRegions.forEach(
+      item => {
+        flatLocalitiesList = [...flatLocalitiesList, ...item.localities];
+      }
+    );
+    return flatLocalitiesList;
+  },
 }
 
 export default getters;

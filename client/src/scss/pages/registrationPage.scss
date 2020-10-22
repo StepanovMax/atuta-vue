@@ -1,0 +1,47 @@
+.registration-page {
+  @extend .container-3-columns;
+  grid-area: article;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+
+    @include media(mobile) {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__title {
+    &_row {
+      @extend .template-page__title_row;
+      font-size: 18px;
+      color: $COLOR-TEXT;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__content {
+    @extend .template-page__content;
+    max-width: 500px;
+  }
+
+  &__input {
+    width: 100%;
+    max-width: 300px;
+
+    &-block {
+      margin-right: 5px;
+
+    }
+
+    &-wrap {
+      display: flex;
+    }
+  }
+
+  &__icon {
+    &_ok {
+      width: 20px;
+    }
+  }
+}
