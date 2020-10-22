@@ -29,12 +29,20 @@ const formatNumbers = {
         // Help to avoid non numeric symbols(apart from dot) while entering a data to input field.
         gIsNumber(evt) {
           evt = (evt) ? evt : window.event;
-          var charCode = (evt.which) ? evt.which : evt.keyCode;
+          const charCode = (evt.which) ? evt.which : evt.keyCode;
           if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
             evt.preventDefault();
           } else {
             return true;
           }
+        },
+        gFilterSpecialCharacters(value) {
+          console.log('gFilterSpecialCharacters ::');
+          const mask = /\W|_/g;
+          console.log('value ::', value);
+          const maskResult = value.replace(/[^\w\s]/gi, '') // /\W|_/g
+          console.log('maskResult ::', maskResult);
+          return maskResult;
         },
         gConvertRangeToArray(range) {
           let resultedArray = [];

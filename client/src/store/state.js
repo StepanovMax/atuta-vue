@@ -1,3 +1,4 @@
+import userRoles from './data/userRoles.js';
 import federalRegions from './federalRegions.js';
 import objectDataSelected from './objectDataSelected.js';
 import filterDataSelected from './filterDataSelected.js';
@@ -8,6 +9,7 @@ const state = {
   isFilterOpen: false,
   mobileQuestionState: true,
   isUserMenuMobileOpen: false,
+  userRoles: userRoles,
   federalRegions: federalRegions,
   filterDataDefault: filterDataDefault,
   objectDataSelected: objectDataSelected,

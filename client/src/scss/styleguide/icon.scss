@@ -36,7 +36,7 @@
     }
 
     &_green {
-      fill: #b5bb77;
+      fill: $COLOR-GREEN;
     }
   }
 
@@ -57,7 +57,7 @@
     }
 
     &_green {
-      stroke: #b5bb77;
+      stroke: $COLOR-GREEN;
     }
   
     &_default {
@@ -74,7 +74,7 @@
       }
   
       &-green {
-        fill: #b5bb77;
+        fill: $COLOR-GREEN;
       }
   
       &-default {

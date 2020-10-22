@@ -1,7 +1,25 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      Вход / регистрация
+      <span class="">
+        Вход
+      </span>
+      <span class="">
+        /
+      </span>
+      <router-link
+        v-slot="{ href, navigate, isActive }"
+        :to="{ name: 'registrationPage' }"
+        class="link"
+      >
+        <a
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+        >
+          Регистрация
+        </a>
+      </router-link>
     </li>
   </ul>
 </template>

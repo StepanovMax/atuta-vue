@@ -4,8 +4,9 @@
 
   &_h1 {
     @include media(desktop) {
-      font-size: 32px;
-      margin-bottom: 50px;
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 15px;
     }
 
     @include media(tablet-landscape) {
@@ -93,7 +94,7 @@
 
     @include media(tablet-landscape) {
       font-size: 20px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
   
     @include media(mobile) {
