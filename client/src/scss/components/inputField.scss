@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 
   &__input {
     @extend .input;
@@ -12,5 +13,19 @@
   &__currency {
     @extend .paragraph;
     font-size: 22px;
+  }
+
+  &__eye {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    padding: 0 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
