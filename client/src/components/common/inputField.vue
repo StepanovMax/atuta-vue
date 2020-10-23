@@ -21,7 +21,7 @@
     >
     <input
       v-if="propType === 'password'"
-      type="password"
+      :type="passwordType"
       class="input password"
       :class="propClass"
       v-model="filteredValue"
@@ -30,12 +30,31 @@
       :name="propKey"
       @blur="blur($event)"
     >
+    <div
+      v-if="propType === 'password' && filteredValue"
+      class="input-field__eye"
+      @click="switchShowingPassword"
+    >
+      <iconEyeOpened
+        v-if="passwordType === 'text'"
+      />
+      <iconEyeClosed
+        v-if="passwordType === 'password'"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import iconEyeOpened from '../icons/iconEyeOpened.vue';
+import iconEyeClosed from '../icons/iconEyeClosed.vue';
+
 export default {
   name: 'inputField',
+  components: {
+    iconEyeOpened,
+    iconEyeClosed,
+  },
   model: {
     prop: 'value',
     event: 'change'
@@ -60,21 +79,19 @@ export default {
   data() {
     return {
       filteredValue: '',
+      passwordType: 'password',
     }
   },
   computed: {
     enteredValue: {
       cache: false,
       get() {
-        console.log('this.filteredValue 2 ::', this.filteredValue);
         return this.filteredValue;
       },
       set(value) {
-        console.log('value ::', value);
         if (this.propType === 'numbers') {
           this.filteredValue = this.gFormatPrice(value);
         }
-        console.log('this.filteredValue 1 ::', this.filteredValue);
         this.$emit('update:value', this.filteredValue);
       }
     },
@@ -92,6 +109,16 @@ export default {
     blur(event) {
       this.$root.$emit('blur', event.target.value, event.target.name);
     },
+    switchShowingPassword() {
+      if (this.passwordType === 'text') {
+        this.passwordType = 'password';
+      } else if (this.passwordType === 'password') {
+        this.passwordType = 'text';
+      }
+    },
+  },
+  mounted() {
+    console.log('filteredValue ::', this.filteredValue);
   },
 };
 </script>

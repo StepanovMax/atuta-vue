@@ -74,9 +74,9 @@
 
           <div class="registration-page__input-wrap">
             <inputField
-              propType="password"
               class="registration-page__input-block"
               propClass="registration-page__input"
+              propType="password"
               propKey="password"
               :value.sync="userData.password"
             />
@@ -101,9 +101,9 @@
 
           <div class="registration-page__input-wrap">
             <inputField
-              propType="password"
               class="registration-page__input-block"
               propClass="registration-page__input"
+              propType="password"
               propKey="repassword"
               :value.sync="userData.repassword"
             />

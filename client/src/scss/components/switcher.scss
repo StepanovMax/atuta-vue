@@ -12,10 +12,11 @@ $BORDER-RADIUS: 6px;
     &-item {
       cursor: pointer;
       background-color: #F1F1F1;
+      border-left: 1px solid $COLOR-TEXT-DISABLED;
 
       &:first-child {
         border-radius: $BORDER-RADIUS 0 0 $BORDER-RADIUS;
-        border-right: 1px solid $COLOR-TEXT-DISABLED;
+        border-left: none;
       }
 
       &:last-child {
