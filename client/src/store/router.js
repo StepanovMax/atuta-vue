@@ -16,7 +16,11 @@ import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
+// Reg section
+import loginPage from '../components/pages/loginPage.vue';
+import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
 import registrationPage from '../components/pages/registrationPage.vue';
+// 404
 import notFoundComponent from '../components/pages/notFoundComponent.vue';
 
 
@@ -40,6 +44,16 @@ const router = new Router({
       path: '/registration',
       name:'registrationPage',
       component: registrationPage
+    },
+    {
+      path: '/login',
+      name:'loginPage',
+      component: loginPage
+    },
+    {
+      path: '/forgot-password',
+      name:'forgotPasswordPage',
+      component: forgotPasswordPage
     },
     {
       path: '/favorites',

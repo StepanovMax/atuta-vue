@@ -1,9 +1,12 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      <span class="">
-        Вход
-      </span>
+      <router-link
+        :to="{ name: 'loginPage' }"
+        class="link"
+      >
+        Войти
+      </router-link>
       <span class="">
         /
       </span>

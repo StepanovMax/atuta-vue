@@ -65,6 +65,27 @@
             propKey="login"
             :value.sync="userData.login"
           />
+
+          <p
+            v-if="
+              formState.login.firstBlur &&
+              !userData.login
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Логин обязателен к заполнению
+          </p>
+
+          <p
+            v-if="
+              formState.login.firstBlur &&
+              !formState.login.length &&
+              userData.login
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Минимальная длина 6 символов
+          </p>
         </div>
 
         <div class="template-page__content-row">
@@ -87,10 +108,23 @@
           </div>
 
           <p
-            v-if="formState.password.firstBlur && !formState.password.filled"
+            v-if="
+              formState.password.firstBlur &&
+              !formState.password.filled
+            "
             class="paragraph paragraph_invalid"
           >
-            Минимальная длина пароля 8 символов.
+            Минимальная длина пароля 8 символов
+          </p>
+
+          <p
+            v-if="
+              formState.password.firstBlur &&
+              !userData.password
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Пароль обязателен для заполнения
           </p>
         </div>
 
@@ -119,11 +153,136 @@
           >
             Пароль не совпадает
           </p>
+
+          <p
+            v-if="
+              formState.repassword.firstBlur &&
+              !userData.repassword
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Пароль обязателен для заполнения
+          </p>
+        </div>
+
+        <div class="template-page__content-row">
+          <h3 class="registration-page__title_row">
+            Email
+          </h3>
+
+          <div class="registration-page__input-wrap">
+            <inputField
+              propClass="registration-page__input"
+              propType="email"
+              propKey="email"
+              :value.sync="userData.email"
+            />
+          </div>
+
+          <p
+            v-if="
+              formState.email.firstBlur &&
+              !formState.email.syntax &&
+              userData.email
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Email должен быть такого типа: info@test.ru
+          </p>
+
+          <p
+            v-if="
+              formState.email.firstBlur &&
+              !formState.email.required &&
+              !userData.email
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Email обязателен к заполнению
+          </p>
+        </div>
+
+        <div class="template-page__content-row">
+          <h3 class="registration-page__title_row">
+            Телефон
+          </h3>
+          <div class="registration-page__input-wrap">
+            <inputField
+              propClass="registration-page__input"
+              propType="phone"
+              propKey="phone"
+              :value.sync="userData.phone"
+            />
+          </div>
+
+          <p
+            v-if="
+              formState.phone.firstBlur &&
+              !formState.phone.required
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Телефон обязателен к заполнению
+          </p>
+        </div>
+
+        <div class="template-page__content-row">
+          <h3 class="registration-page__title_row">
+            Телефон
+          </h3>
+          <upload-images
+            id="upload-images"
+            :propIsMultiple="false"
+            :value.sync="userData.photo"
+          />
+        </div>
+
+        <div class="template-page__content-row">
+          <div
+            class="
+              registration-page__btn-wrap
+              registration-page__btn-wrap_buttons
+            "
+          >
+            <button
+              class="
+                btn
+                btn_blue
+                btn_middle
+                registration-page__btn
+                registration-page__btn_submit
+              "
+            >
+              Регистрация
+            </button>
+          </div>
+          <div
+            class="
+              registration-page__btn-wrap
+              registration-page__btn-wrap_links
+            "
+          >
+            <router-link
+              :to="{ name: 'loginPage' }"
+              class="link"
+            >
+              Войти
+            </router-link>
+            <span class="">
+              &nbsp;/&nbsp;
+            </span>
+            <router-link
+              :to="{ name: 'forgotPasswordPage' }"
+              class="link"
+            >
+              Забыли пароль
+            </router-link>
+          </div>
         </div>
 
       </div>
 
-      <pre v-if="false">{{ userData }}</pre>
+      <pre v-if="true">{{ userData }}</pre>
 
     </div>
 
@@ -139,6 +298,7 @@ import breadcrumbs from '../common/breadcrumbs.vue';
 import switcher from '../common/switcher.vue';
 import inputField from '../common/inputField.vue';
 import iconOk from '../icons/iconOk.vue';
+import uploadImages from '../common/uploadImages.vue';
 
 import { mapState } from 'vuex';
 
@@ -151,6 +311,7 @@ export default {
     breadcrumbs,
     switcher,
     inputField,
+    uploadImages,
   },
   data() {
     return {
@@ -161,11 +322,18 @@ export default {
         password: null,
         repassword: null,
         companyName: null,
+        email: null,
+        phone: null,
+        photo: null,
       },
       userRolesModified: [],
       formState: {
         companyName: false,
-        login: false,
+        login: {
+          length: 6,
+          filled: false,
+          firstBlur: false,
+        },
         password: {
           filled: false,
           length: 8,
@@ -177,7 +345,22 @@ export default {
           length: 8,
           firstBlur: false,
         },
+        email: {
+          syntax: false,
+          required: false,
+          firstBlur: false,
+        },
+        phone: {
+          required: false,
+          firstBlur: false,
+        },
+        photo: {
+          required: false,
+          firstBlur: false,
+        },
       },
+      email: '',
+      correctEmail: '',
       firstValidationCheck: false,
     }
   },
@@ -186,7 +369,6 @@ export default {
       'userRoles',
     ]),
     passwordsCorrect() {
-      console.log(this.formState.password.filled, this.formState.repassword.filled, this.formState.password.length === this.formState.repassword.length);
       if (
         this.formState.password.filled &&
         this.formState.repassword.filled &&
@@ -252,7 +434,36 @@ export default {
       } else {
         this.formState.repassword.matched = false;
       }
-    }
+    },
+    handleEmail(value) {
+      this.email = value;
+      this.correctEmail = this.validateEmail(this.email);
+      if (this.correctEmail) {
+        this.formState.email.syntax = true;
+        this.formState.email.requried = true;
+      } else {
+        this.formState.email.syntax = false;
+        this.formState.email.requried = false;
+      }
+    },
+    handleLogin(value) {
+      if (value.length >= 6) {
+        this.formState.login.length = true;
+      } else {
+        this.formState.login.length = false;
+      }
+    },
+    validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
+    handlePhone(value) {
+      if (value.length !== 17) {
+        this.formState.phone.required = false;
+      } else {
+        this.formState.phone.required = true;
+      }
+    },
   },
   watch: {
     // Watching password typing
@@ -273,6 +484,15 @@ export default {
       }
       this.validateSamePasswords();
     },
+    'userData.email'(value) {
+      this.handleEmail(value);
+    },
+    'userData.login'(value) {
+      this.handleLogin(value);
+    },
+    'userData.phone'(value) {
+      this.handlePhone(value);
+    },
   },
   mounted() {
     // Listening the blur action from password fields.
@@ -282,6 +502,12 @@ export default {
         this.validatePasswordLength(value);
       } else if (name === 'repassword') {
         this.validateRepasswordLength(value);
+      } else if (name === 'email') {
+        this.formState.email.firstBlur = true;
+      } else if (name === 'login') {
+        this.formState.login.firstBlur = true;
+      } else if (name === 'phone') {
+        this.formState.phone.firstBlur = true;
       }
     });
   },

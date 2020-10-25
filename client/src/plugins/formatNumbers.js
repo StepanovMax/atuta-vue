@@ -11,6 +11,34 @@ const formatNumbers = {
           numberFormatted = numberFormatted.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
           return numberFormatted;
         },
+        gFormatPhone2(value) {
+          console.log('value ::', value);
+          const excludedNonNumbers = value.replace(/\D/g, '');
+          // Dividing on groups
+          const x = excludedNonNumbers.match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+          const formattedPhoneNumber = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+          console.log('formattedPhoneNumber ::', formattedPhoneNumber, typeof formattedPhoneNumber);
+          return formattedPhoneNumber;
+        },
+        gFormatPhone(value) {
+          const firstSymbol = value.charAt(0);
+          const excludedNonNumbers = value.replace(/\D/g, '');
+          if (excludedNonNumbers.length) {
+            // if (excludedNonNumbers.length > 11) {
+            //   const trimmedString = excludedNonNumbers.substring(0, 11);
+            // }
+            // Dividing on groups
+            const x = excludedNonNumbers.match(/(\d{1})(\d{0,3})(\d{0,3})(\d{0,4})/);
+            // console.log('x ::', x);
+            const formattedPhoneNumber = !x[3] ? x[1] + ' ' + x[2] : x[1] + ' ' + '(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
+            // console.log('formattedPhoneNumber ::', formattedPhoneNumber);
+            return  '+' + formattedPhoneNumber;
+          } else if (firstSymbol === '+' && value.length > 1) {
+            return '+';
+          } else {
+            return '';
+          }
+        },
         gFormatNumbers(value) {
           const numberString = value.toString();
           const numberFormatted = numberString.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
