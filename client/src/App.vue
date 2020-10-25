@@ -42,7 +42,6 @@ export default {
     $route(to, from) {
       this.closeMobileMenus();
       this.changeMobileQuestionStateOnWatch(to);
-      console.log('to ::', to);
     }
   },
   methods: {

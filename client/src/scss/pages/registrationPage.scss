@@ -22,7 +22,7 @@
 
   &__content {
     @extend .template-page__content;
-    max-width: 500px;
+    max-width: 600px;
   }
 
   &__input {
@@ -42,6 +42,27 @@
   &__icon {
     &_ok {
       width: 20px;
+    }
+  }
+
+  &__btn {
+    &-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      &_links {
+        font-size: 14px;
+      }
+
+      &_buttons {
+        margin-bottom: 5px;
+      }
+    }
+
+    &_submit {
+      font-size: 20px;
+      padding: 15px 50px;
     }
   }
 }

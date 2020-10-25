@@ -5,10 +5,11 @@
       type="text"
       class="input symbolsWithNumbers"
       :class="propClass"
-      v-model="filteredValue"
-      @input="handleInput($event)"
       :key="propKey"
       :name="propKey"
+      v-model="filteredValue"
+      @input="handleInput($event)"
+      @blur="blur($event)"
     >
     <input
       v-if="propType === 'numbers'"
@@ -29,6 +30,30 @@
       :key="propKey"
       :name="propKey"
       @blur="blur($event)"
+    >
+    <input
+      v-if="propType === 'email'"
+      type="email"
+      class="input email"
+      :class="propClass"
+      :value="filteredValue"
+      @input="handleEmail($event)"
+      :key="propKey"
+      :name="propKey"
+      @blur="blur($event)"
+    >
+    <input
+      v-if="propType === 'phone'"
+      type="tel"
+      class="input phone"
+      :class="propClass"
+      v-model="filteredValue"
+      @input="handlePhone($event)"
+      :key="propKey"
+      :name="propKey"
+      @blur="blur($event)"
+      @focus="focusPhone($event)"
+      placeholder="+7 (555) 555-5555"
     >
     <div
       v-if="propType === 'password' && filteredValue"
@@ -101,7 +126,7 @@ export default {
       const value = event.target.value;
       if (this.propType === 'symbolsWithNumbers') {
         this.filteredValue = value.replace(/[^\w\s]/gi, '') // /\W|_/g
-      } else if (this.propType === 'password') {
+      } else if (this.propType === 'password' || this.propType === 'email') {
         this.filteredValue = value;
       }
       this.$emit('update:value', this.filteredValue);
@@ -116,9 +141,23 @@ export default {
         this.passwordType = 'text';
       }
     },
+    handleEmail(event) {
+      const email = event.target.value;
+      this.$emit('update:value', email);
+    },
+    handlePhone(event) {
+      const phoneNumber = event.target.value;
+      this.filteredValue = this.gFormatPhone(phoneNumber);
+      this.$emit('update:value', this.filteredValue);
+    },
+    focusPhone() {
+      if (!this.filteredValue.length) {
+        this.filteredValue = '+7 ';
+      }
+    }
   },
   mounted() {
-    console.log('filteredValue ::', this.filteredValue);
+    // console.log('filteredValue ::', this.filteredValue);
   },
 };
 </script>
