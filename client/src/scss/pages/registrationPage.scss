@@ -63,6 +63,10 @@
     &_submit {
       font-size: 20px;
       padding: 15px 50px;
+
+      @include media(mobile) {
+        width: 100%;
+      }
     }
   }
 }

@@ -18,7 +18,26 @@
     >
       <div class="user-menu-mobile__header">
         <p class="user-menu-mobile__user-name">
-          Агентство недвижимости №1
+          <router-link
+            :to="{ name: 'loginPage' }"
+            class="
+              link
+              user-menu-mobile__link
+            "
+          >
+            Войти</router-link>
+          <span class="">
+            &nbsp;или&nbsp;
+          </span>
+          <router-link
+            :to="{ name: 'registrationPage' }"
+            class="
+              link
+              user-menu-mobile__link
+            "
+          >
+            зарегистрироваться
+          </router-link>
         </p>
       </div>
       <div class="user-menu-mobile__content">
