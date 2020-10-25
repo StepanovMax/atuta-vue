@@ -282,7 +282,7 @@
 
       </div>
 
-      <pre v-if="true">{{ userData }}</pre>
+      <pre v-local>{{ userData }}</pre>
 
     </div>
 

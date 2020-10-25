@@ -16,6 +16,14 @@
     transition: opacity .3s ease;
   }
 
+  &__link {
+    color: $COLOR-WHITE;
+
+    &:visited {
+      color: $COLOR-WHITE;
+    }
+  }
+
   &__overlay {
     top: 0;
     left: 0;
