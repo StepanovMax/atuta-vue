@@ -50,7 +50,7 @@
               Внимание!
             </p>
             <p class="paragraph registration-page__banner-text">
-              Статус "Агенство" платное - 1000руб
+              Статус "{{ userData.role.label }}" платное - 1000руб
             </p>
           </div>
         </div>
