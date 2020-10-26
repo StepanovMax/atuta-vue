@@ -30,7 +30,7 @@
 
         <div class="template-page__content-row">
           <h3 class="registration-page__title_row">
-            Выберите свою роль
+            Выберите свой статус
           </h3>
 
           <switcher
@@ -41,7 +41,25 @@
           />
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          v-if="userData.role.slug === 'agency' || userData.role.slug === 'builder'"
+          class="template-page__content-row"
+        >
+          <div class="registration-page__banner">
+            <p class="paragraph registration-page__banner-text">
+              Внимание!
+            </p>
+            <p class="paragraph registration-page__banner-text">
+              Статус "Агенство" платное - 1000руб
+            </p>
+          </div>
+        </div>
+
+        <div
+          ref="companyName"
+          v-show="userData.role.slug === 'agency' || userData.role.slug === 'builder'"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Название компании
           </h3>
@@ -50,11 +68,53 @@
             propType="symbolsWithNumbers"
             propClass="registration-page__input"
             propKey="companyName"
+            key="companyName"
             :value.sync="userData.companyName"
           />
+
+          <p
+            v-if="
+              formState.companyName.firstBlur &&
+              !userData.companyName
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Название компании обязательно к заполнению
+          </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="personalName"
+          v-show="userData.role.slug === 'personal' || userData.role.slug === 'agent'"
+          class="template-page__content-row"
+        >
+          <h3 class="registration-page__title_row">
+            ФИО
+          </h3>
+
+          <inputField
+            propType="symbolsWithNumbers"
+            propClass="registration-page__input"
+            propKey="personalName"
+            key="personalName"
+            :value.sync="userData.personalName"
+          />
+
+          <p
+            v-if="
+              formState.personalName.firstBlur &&
+              !userData.personalName
+            "
+            class="paragraph paragraph_invalid"
+          >
+            ФИО обязательно к заполнению
+          </p>
+        </div>
+
+        <div
+          ref="login"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Логин
           </h3>
@@ -69,6 +129,7 @@
           <p
             v-if="
               formState.login.firstBlur &&
+              !formState.login.filled &&
               !userData.login
             "
             class="paragraph paragraph_invalid"
@@ -79,7 +140,7 @@
           <p
             v-if="
               formState.login.firstBlur &&
-              !formState.login.length &&
+              !formState.login.filled &&
               userData.login
             "
             class="paragraph paragraph_invalid"
@@ -88,7 +149,10 @@
           </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="password"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Пароль
           </h3>
@@ -128,7 +192,10 @@
           </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="repassword"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Подтвердить пароль
           </h3>
@@ -165,7 +232,10 @@
           </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="email"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Email
           </h3>
@@ -193,7 +263,7 @@
           <p
             v-if="
               formState.email.firstBlur &&
-              !formState.email.required &&
+              !formState.email.filled &&
               !userData.email
             "
             class="paragraph paragraph_invalid"
@@ -202,7 +272,10 @@
           </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="phone"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
             Телефон
           </h3>
@@ -218,7 +291,7 @@
           <p
             v-if="
               formState.phone.firstBlur &&
-              !formState.phone.required
+              !formState.phone.filled
             "
             class="paragraph paragraph_invalid"
           >
@@ -226,15 +299,29 @@
           </p>
         </div>
 
-        <div class="template-page__content-row">
+        <div
+          ref="logo"
+          class="template-page__content-row"
+        >
           <h3 class="registration-page__title_row">
-            Телефон
+            Логотип
           </h3>
+
           <upload-images
             id="upload-images"
             :propIsMultiple="false"
-            :value.sync="userData.photo"
+            :value.sync="userData.logo"
           />
+
+          <p
+            v-if="
+              formState.logo.firstBlur &&
+              !formState.logo.filled
+            "
+            class="paragraph paragraph_invalid"
+          >
+            Логотип нужен обязательно
+          </p>
         </div>
 
         <div class="template-page__content-row">
@@ -252,6 +339,7 @@
                 registration-page__btn
                 registration-page__btn_submit
               "
+              @click="submit"
             >
               Регистрация
             </button>
@@ -283,6 +371,7 @@
       </div>
 
       <pre v-local>{{ userData }}</pre>
+      <pre v-local>{{ formState }}</pre>
 
     </div>
 
@@ -322,41 +411,58 @@ export default {
         password: null,
         repassword: null,
         companyName: null,
+        personalName: null,
         email: null,
         phone: null,
-        photo: null,
+        logo: null,
       },
       userRolesModified: [],
+      erroredElementsArray: [],
       formState: {
-        companyName: false,
+        companyName: {
+          firstBlur: false,
+          filled: false,
+          required: true,
+        },
+        personalName: {
+          firstBlur: false,
+          filled: false,
+          required: true,
+        },
         login: {
           length: 6,
           filled: false,
           firstBlur: false,
+          required: true,
         },
         password: {
           filled: false,
           length: 8,
           firstBlur: false,
+          required: true,
         },
         repassword: {
           matched: false,
           filled: false,
           length: 8,
           firstBlur: false,
+          required: true,
         },
         email: {
           syntax: false,
-          required: false,
+          filled: false,
           firstBlur: false,
+          required: true,
         },
         phone: {
-          required: false,
+          filled: false,
           firstBlur: false,
+          required: true,
         },
-        photo: {
-          required: false,
+        logo: {
+          filled: false,
           firstBlur: false,
+          required: true,
         },
       },
       email: '',
@@ -381,7 +487,7 @@ export default {
     }
   },
   beforeMount() {
-    this.addCheckedPropertyForUserRoles('agent');
+    this.addCheckedPropertyForUserRoles('personal');
   },
   methods: {
     // Add checked property and make Agent as default
@@ -440,17 +546,17 @@ export default {
       this.correctEmail = this.validateEmail(this.email);
       if (this.correctEmail) {
         this.formState.email.syntax = true;
-        this.formState.email.requried = true;
+        this.formState.email.filled = true;
       } else {
         this.formState.email.syntax = false;
-        this.formState.email.requried = false;
+        this.formState.email.filled = false;
       }
     },
     handleLogin(value) {
       if (value.length >= 6) {
-        this.formState.login.length = true;
+        this.formState.login.filled = true;
       } else {
-        this.formState.login.length = false;
+        this.formState.login.filled = false;
       }
     },
     validateEmail(email) {
@@ -459,13 +565,95 @@ export default {
     },
     handlePhone(value) {
       if (value.length !== 17) {
-        this.formState.phone.required = false;
+        this.formState.phone.filled = false;
       } else {
-        this.formState.phone.required = true;
+        this.formState.phone.filled = true;
+      }
+    },
+    handleLogo(value) {
+      if (value.length) {
+        this.formState.logo.filled = true;
+      } else {
+        this.formState.logo.filled = false;
+      }
+    },
+    submit() {
+      const resultFormValidation = this.formValidation();
+    },
+    updateFormState() {
+      if (this.userData.role.slug === 'personal' || this.userData.role.slug === 'agent') {
+        this.formState.personalName.required = true;
+        this.formState.companyName.required = false;
+      } else if (this.userData.role.slug === 'agency' || this.userData.role.slug === 'builder') {
+        this.formState.personalName.required = false;
+        this.formState.companyName.required = true;
+      }
+    },
+    formValidation() {
+      const obj = this.formState;
+      for (const key in this.formState) {
+        if (!obj.hasOwnProperty(key)) continue;
+        const subObj = obj[key];
+        if (subObj.required && !subObj.filled) {
+          subObj.firstBlur = true;
+        }
+      }
+      this.scrollToErroredElement();
+    },
+    scrollToErroredElement() {
+      const position = this.detectHighestErroredElement();
+      window.scrollTo(0, position - 50);
+    },
+    detectErroredElements() {
+      const obj = this.formState;
+      this.erroredElementsArray = [];
+      for (const key in this.formState) {
+        if (!obj.hasOwnProperty(key)) continue;
+        const subObj = obj[key];
+        if (subObj.required && !subObj.filled) {
+          this.erroredElementsArray.push(key);
+        }
+      }
+      return this.erroredElementsArray;
+    },
+    detectHighestErroredElement() {
+      let arrayMin = [];
+      const erroredItemsArray = this.detectErroredElements();
+      erroredItemsArray.forEach(
+        item => {
+          let position;
+          let selectedObject;
+          let element = this.$refs[item];
+
+          if (element) {
+            position = element.offsetTop;
+            arrayMin.push(position);
+          }
+        }
+      )
+
+      const min = Math.min( ...arrayMin );
+      return min;
+    },
+    handleCompanyName(value) {
+      if (value) {
+        this.formState.companyName.filled = true;
+      } else {
+        this.formState.companyName.filled = false;
+      }
+    },
+    handlePersonalName(value) {
+      if (value) {
+        this.formState.personalName.filled = true;
+      } else {
+        this.formState.personalName.filled = false;
       }
     },
   },
   watch: {
+    'userData.role'() {
+      this.updateFormState();
+    },
     // Watching password typing
     'userData.password'(value) {
       const isPasswordLengthEnough = this.detectFieldLength(value);
@@ -493,8 +681,18 @@ export default {
     'userData.phone'(value) {
       this.handlePhone(value);
     },
+    'userData.logo'(value) {
+      this.handleLogo(value);
+    },
+    'userData.companyName'(value) {
+      this.handleCompanyName(value);
+    },
+    'userData.personalName'(value) {
+      this.handlePersonalName(value);
+    },
   },
   mounted() {
+    this.updateFormState();
     // Listening the blur action from password fields.
     this.$root.$on('blur', (value, name) => {
       const isPasswordLengthEnough = this.detectFieldLength(value, name);
@@ -508,6 +706,10 @@ export default {
         this.formState.login.firstBlur = true;
       } else if (name === 'phone') {
         this.formState.phone.firstBlur = true;
+      } else if (name === 'personalName') {
+        this.formState.personalName.firstBlur = true;
+      } else if (name === 'companyName') {
+        this.formState.companyName.firstBlur = true;
       }
     });
   },
