@@ -69,4 +69,15 @@
       }
     }
   }
+
+  &__banner {
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: $COLOR-GREEN-DARK;
+
+    &-text {
+      color: $COLOR-WHITE;
+    }
+  }
 }
