@@ -1,5 +1,8 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const TerserPlugin = require('terser-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -80,13 +83,34 @@ module.exports = {
     },
     clientLogLevel: 'error',
   },
+  // optimization: {
+  //   minimize: false,
+  // },
+  // optimization: {
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       cache: true,
+  //       parallel: true,
+  //       sourceMap: true, // Must be set to true if using source-maps in production
+  //     }),
+  //   ],
+  // },
+  // optimization: {
+  //   minimizer: [
+  //     (compiler) => {
+  //       const TerserPlugin = require('terser-webpack-plugin');
+  //       new TerserPlugin({ /* your config */ }).apply(compiler);
+  //     }
+  //   ],
+  // },
   plugins: [
     new VueLoaderPlugin(),
+    // new BundleAnalyzerPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   minimize: true
+    // })
     // new Dotenv(),
   ],
-  // optimization: {
-  //   minimize: true
-  // },
   // resolve: {
   //   alias: {
   //     'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
