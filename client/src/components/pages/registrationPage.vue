@@ -19,7 +19,7 @@
         <div class="template-page__header-bottom">
 
           <h1 class="template-page__title">
-            Регистрация
+            Регистрация 11 22 33
           </h1>
 
         </div>
@@ -712,6 +712,7 @@ export default {
         this.formState.companyName.firstBlur = true;
       }
     });
+    console.log('process.env.NODE_ENV !! ::', process.env.DB_HOST);
   },
 };
 </script>
