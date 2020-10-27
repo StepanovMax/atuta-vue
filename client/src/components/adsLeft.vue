@@ -7,7 +7,7 @@
       target="_blank"
     >
       <img
-        :src="host.front + '/src/images/ads/external-content.duckduckgo.com2.jpeg'"
+        :src="hostEnv + '/src/images/ads/external-content.duckduckgo.com2.jpeg'"
         alt="Реклама"
         class="
           image
@@ -35,6 +35,7 @@ export default {
   data() {
     return {
       host: this.getHost(),
+      hostEnv: process.env.DB_HOST,
     }
   },
 };
