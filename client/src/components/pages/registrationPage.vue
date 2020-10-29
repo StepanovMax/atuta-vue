@@ -712,7 +712,7 @@ export default {
         this.formState.companyName.firstBlur = true;
       }
     });
-    console.log('process.env.NODE_ENV !! ::', process.env.DB_HOST);
+    console.log('process.env.host ::', process.env.HOST);
   },
 };
 </script>
