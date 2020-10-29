@@ -8,13 +8,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "local-build":  "webpack              --config webpack/local-build.config.js --progress --colors --no-watch",
-    "build-local2": "webpack              --config webpack.local.config.js --progress --colors --no-watch",
+    "local-build":   "webpack             --config webpack/local-build.config.js --progress --colors --no-watch",
+    "local-build-2": "webpack             --config webpack.local.config.js --progress --colors --no-watch",
 
     "local-start":  "webpack-dev-server   --config webpack/local-start.config.js --mode none --progress --colors --inline --hot --watch",
     "start-local2": "webpack-dev-server   --config webpack.local.config.js --mode none --progress --colors --inline --hot --watch",
 
-    "dev-build":    "webpack              --config webpack.dev.config.js --progress --colors --no-watch",
+    "dev-build":    "webpack              --config webpack.dev.config.js",
 
     "build": "webpack            --progress --colors --no-watch",
     "watch": "webpack            --progress --colors --watch",

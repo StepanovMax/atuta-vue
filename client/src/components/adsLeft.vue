@@ -7,7 +7,7 @@
       target="_blank"
     >
       <img
-        :src="hostEnv + '/src/images/ads/external-content.duckduckgo.com2.jpeg'"
+        :src="host.front + '/src/images/ads/external-content.duckduckgo.com2.jpeg'"
         alt="Реклама"
         class="
           image
