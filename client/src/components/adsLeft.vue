@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       host: this.getHost(),
-      hostEnv: process.env.DB_HOST,
+      hostEnv: process.env.HOST,
     }
   },
 };

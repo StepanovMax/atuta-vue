@@ -2,6 +2,9 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+// Pass .env to webpack
 const webpack = require('webpack');
 const dotenv = require('dotenv').config({
   path: path.join(__dirname, '.env.local')
