@@ -17,7 +17,16 @@
       ]"
     >
       <div class="user-menu-mobile__header">
-        <p class="user-menu-mobile__user-name">
+        <p
+          v-if="isLoggedIn"
+          class="user-menu-mobile__user-name"
+        >
+          {{ userData.name.label }}
+        </p>
+        <p
+          v-if="!isLoggedIn"
+          class="user-menu-mobile__user-name"
+        >
           <router-link
             :to="{ name: 'loginPage' }"
             class="
@@ -48,6 +57,7 @@
           "
         >
           <li
+            v-if="isLoggedIn"
             class="
               menu__item
               user-menu-mobile__menu-item
@@ -61,6 +71,7 @@
             </router-link>
           </li>
           <li
+            v-if="isLoggedIn"
             class="
               menu__item
               user-menu-mobile__menu-item
@@ -106,6 +117,29 @@
               Помощь
             </router-link>
           </li>
+          <li
+            v-if="isLoggedIn"
+            class="
+              menu__item
+              user-menu-mobile__menu-item
+            "
+          >
+            <router-link
+              :to="{
+                name: 'homePage'
+              }"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+            >
+              <a
+                @click="logout"
+              >
+                Выйти
+              </a>
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -113,12 +147,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters, store, commit } from 'vuex';
+import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'userMenuMobile',
   computed: {
     ...mapState([
+      'userData',
+      'isLoggedIn',
       'isUserMenuMobileOpen',
     ]),
   },
@@ -128,6 +164,11 @@ export default {
     },
     clickOnLink() {
       this.closeUserMenuMobile();
+    },
+    logout() {
+      this.$store.commit('updateLoggedInState', false);
+      this.$store.commit('updateUserDataState', null);
+      this.$root.$emit('closeMobileMenu');
     }
   },
 };

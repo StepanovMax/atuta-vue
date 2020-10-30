@@ -1,9 +1,26 @@
 <template>
-  <ul
-    v-if="!isLoggedIn"
-    class="menu"
-  >
-    <li class="menu__item">
+  <ul class="menu">
+    <li
+      v-if="isLoggedIn"
+      class="menu__item"
+    >
+      <router-link
+        :to="{
+          name: 'homePage'
+        }"
+        class="link"
+      >
+        <a
+          @click="logout"
+        >
+          Выйти
+        </a>
+      </router-link>
+    </li>
+    <li
+      v-if="!isLoggedIn"
+      class="menu__item"
+    >
       <router-link
         :to="{ name: 'loginPage' }"
         class="link"
@@ -31,14 +48,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'menuEnter',
   computed: {
     ...mapState([
+      'userData',
       'isLoggedIn',
     ]),
+  },
+  methods: {
+    logout() {
+      this.$store.commit('updateLoggedInState', false);
+      this.$store.commit('updateUserDataState', null);
+    }
   },
 };
 </script>
