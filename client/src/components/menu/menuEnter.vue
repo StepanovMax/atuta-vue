@@ -1,5 +1,8 @@
 <template>
-  <ul class="menu">
+  <ul
+    v-if="!isLoggedIn"
+    class="menu"
+  >
     <li class="menu__item">
       <router-link
         :to="{ name: 'loginPage' }"
@@ -28,7 +31,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'menuEnter',
+  computed: {
+    ...mapState([
+      'isLoggedIn',
+    ]),
+  },
 };
 </script>

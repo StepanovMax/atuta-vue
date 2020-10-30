@@ -1,4 +1,7 @@
 const mutations = {
+  updateLoggedInState(state, data) {
+    state.isLoggedIn = data;
+  },
   changeMobileQuestionState(state, data) {
     state.mobileQuestionState = data;
   },

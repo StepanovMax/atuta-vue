@@ -1,0 +1,42 @@
+.login-page {
+  &__content {
+    @extend .registration-page__content;
+    max-width: 300px;
+
+    @include media(mobile) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__input {
+    @extend .registration-page__input;
+
+    &-block {
+      @extend .registration-page__input-block;
+      width: 100%;
+    }
+
+    @include media(mobile) {
+      max-width: 100%;
+    }
+  }
+
+  &__btn {
+    &-wrap {
+      @extend .registration-page__btn-wrap;
+
+      &_links {
+        @extend .registration-page__btn-wrap_links;
+      }
+
+      &_buttons {
+        @extend .registration-page__btn-wrap_buttons;
+      }
+    }
+
+    &_submit {
+      @extend .registration-page__btn_submit;
+    }
+  }
+}

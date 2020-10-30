@@ -125,9 +125,7 @@ export default {
     handleInput(event) {
       const value = event.target.value;
       if (this.propType === 'symbolsWithNumbers') {
-        console.log('value ::', value);
-        this.filteredValue = value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/gi, '')
-        console.log('value ::', value);
+        this.filteredValue = value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/gi, '');
       } else if (this.propType === 'password' || this.propType === 'email') {
         this.filteredValue = value;
       }

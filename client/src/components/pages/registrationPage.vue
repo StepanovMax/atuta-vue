@@ -430,7 +430,7 @@ export default {
           required: true,
         },
         login: {
-          length: 6,
+          length: 2,
           filled: false,
           firstBlur: false,
           required: true,
@@ -712,7 +712,7 @@ export default {
         this.formState.companyName.firstBlur = true;
       }
     });
-    console.log('process.env.host ::', process.env.HOST);
+    // console.log('process.env.host ::', process.env.HOST);
   },
 };
 </script>
