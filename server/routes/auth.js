@@ -1,6 +1,5 @@
-import express from 'express';
 import { Router } from 'express';
-import testObjects from '../testData/testObjects';
+import testUsers from '../testData/testUsers';
 import cors from 'cors';
 
 const corsOptions = {
@@ -18,8 +17,20 @@ router.post(
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const { body } = req;
-    if (body.login === 'admin' && body.password === '12345678') {
-      res.status(200).send(true);
+    let userData = null;
+    testUsers.forEach(
+      (item, index) => {
+        if (
+          body.login === item.login &&
+          body.password === item.password
+        ) {
+          userData = testUsers[index];
+          console.log('userData', userData);
+        }
+      }
+    )
+    if (userData) {
+      res.status(200).send(userData);
     } else {
       res.status(404).send(false);
     }
