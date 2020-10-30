@@ -7,6 +7,7 @@ import filterDataDefault from './filterDataDefault.js';
 const state = {
   count: 11.7,
   isLoggedIn: false,
+  userData: null,
   isFilterOpen: false,
   mobileQuestionState: true,
   isUserMenuMobileOpen: false,

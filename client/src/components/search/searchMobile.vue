@@ -101,5 +101,10 @@ export default {
       'isUserMenuMobileOpen',
     ]),
   },
+  mounted() {
+    this.$root.$on('closeMobileMenu', () => {
+      this.closeUserMenuMobile();
+    });
+  },
 };
 </script>

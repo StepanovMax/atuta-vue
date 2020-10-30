@@ -15,7 +15,10 @@
         </a>
       </router-link>
     </li>
-    <li class="menu__item">
+    <li
+      v-if="isLoggedIn"
+      class="menu__item"
+    >
       <router-link
         v-slot="{ href, navigate, isActive }"
         :to="{ name: 'favorites' }"
@@ -30,10 +33,16 @@
         </a>
       </router-link>
     </li>
-    <li class="menu__item">
+    <li
+      v-if="isLoggedIn"
+      class="menu__item"
+    >
       Мои объявления
     </li>
-    <li class="menu__item">
+    <li
+      v-if="isLoggedIn"
+      class="menu__item"
+    >
       <router-link
         v-slot="{ href, navigate, isActive }"
         :to="{ name: 'addObject' }"
@@ -55,7 +64,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'menuRight',
+  computed: {
+    ...mapState([
+      'isLoggedIn',
+    ]),
+  },
 };
 </script>

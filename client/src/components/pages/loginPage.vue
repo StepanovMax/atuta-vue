@@ -277,7 +277,8 @@ export default {
             return false;
           });
       if (loginResult.data) {
-        this.$store.commit('updateLoggedInState', loginResult.data);
+        this.$store.commit('updateLoggedInState', true);
+        this.$store.commit('updateUserDataState', loginResult.data);
         this.$router.push({ name: 'homePage'});
       }
     },
