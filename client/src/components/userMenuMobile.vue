@@ -18,7 +18,7 @@
     >
       <div class="user-menu-mobile__header">
         <p
-          v-if="isLoggedIn"
+          v-if="isLoggedIn && userData"
           class="user-menu-mobile__user-name"
         >
           {{ userData.name.label }}
@@ -167,7 +167,7 @@ export default {
     },
     logout() {
       this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', null);
+      this.$store.commit('updateUserDataState', {});
       this.$root.$emit('closeMobileMenu');
     }
   },
