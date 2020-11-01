@@ -1,19 +1,53 @@
 <template>
-  <div id="messagesPage">
-    <h1 class="title title_h1">
-      Мои сообщения
-    </h1>
-    <p class="paragraph">
-      Разнообразный и богатый опыт консультация с широким активом позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. С другой стороны укрепление и развитие структуры требуют от нас анализа соответствующий условий активизации. Равным образом постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание новых предложений. Товарищи! новая модель организационной деятельности влечет за собой процесс внедрения и модернизации систем массового участия. Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности позволяет оценить значение системы обучения кадров, соответствует насущным потребностям. С другой стороны консультация с широким активом играет важную роль в формировании соответствующий условий активизации.
-    </p>
+  <div
+    id="messagesPage"
+    class="template-page"
+  >
+
+    <adsLeft />
+
+    <div class="template-page__wrap">
+
+      <header class="template-page__header">
+
+        <div class="template-page__header-top">
+
+          <breadcrumbs />
+
+        </div>
+
+        <div class="template-page__header-bottom">
+
+          <h1 class="template-page__title">
+            Мои сообщения
+          </h1>
+
+        </div>
+
+      </header>
+
+      <div class="template-page__content">
+
+      </div>
+
+    </div>
+
+    <adsRight />
+
   </div>
 </template>
 
 <script>
+import adsLeft from '../adsLeft.vue';
+import adsRight from '../adsRight.vue';
+import breadcrumbs from '../common/breadcrumbs.vue';
+
 export default {
   name: 'messagesPage',
   components: {
-    // Greeting
+    adsLeft,
+    adsRight,
+    breadcrumbs,
   },
 };
 </script>

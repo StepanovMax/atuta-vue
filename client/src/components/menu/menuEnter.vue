@@ -1,21 +1,108 @@
 <template>
-  <ul class="menu">
+  <ul
+    class="
+      menu
+      menu_right
+    "
+  >
     <li
       v-if="isLoggedIn"
       class="menu__item"
     >
-      <router-link
-        :to="{
-          name: 'homePage'
-        }"
-        class="link"
+      <a
+        class="
+          link
+          menu__link
+        "
+        @click="toggleMenu"
       >
-        <a
-          @click="logout"
+        {{ userData.name.label }}
+      </a>
+      <ul
+        v-if="menuIsOpen"
+        class="menu_sub"
+        v-click-outside="onClickOutside"
+      >
+        <li
+          class="
+            menu__item
+            menu__item_sub
+          "
         >
-          Выйти
-        </a>
-      </router-link>
+          <router-link
+            v-slot="{ href, navigate, isActive }"
+            :to="{ name: 'messagesPage' }"
+            class="link"
+          >
+            <a
+              :active="isActive"
+              :href="href"
+              @click="navigate"
+            >
+              Сообщения
+            </a>
+          </router-link>
+        </li>
+        <li
+          class="
+            menu__item
+            menu__item_sub
+          "
+        >
+          <router-link
+            v-slot="{ href, navigate, isActive }"
+            :to="{ name: 'pocketPage' }"
+            class="link"
+          >
+            <a
+              :active="isActive"
+              :href="href"
+              @click="navigate"
+            >
+              Кошелёк
+            </a>
+          </router-link>
+        </li>
+        <li
+          class="
+            menu__item
+            menu__item_sub
+          "
+        >
+          <router-link
+            v-slot="{ href, navigate, isActive }"
+            :to="{ name: 'settingsPage' }"
+            class="link"
+          >
+            <a
+              :active="isActive"
+              :href="href"
+              @click="navigate"
+            >
+              Настройки
+            </a>
+          </router-link>
+        </li>
+        <li
+          class="
+            menu__item
+            menu__item_sub
+          "
+        >
+          <router-link
+            :to="{
+              name: 'homePage'
+            }"
+            class="link"
+          >
+            <a
+              @click="logout"
+            >
+              Выйти
+            </a>
+          </router-link>
+        </li>
+      </ul>
     </li>
     <li
       v-if="!isLoggedIn"
@@ -52,6 +139,11 @@ import { mapState, store, commit } from 'vuex';
 
 export default {
   name: 'menuEnter',
+  data() {
+    return {
+      menuIsOpen: false,
+    }
+  },
   computed: {
     ...mapState([
       'userData',
@@ -62,7 +154,13 @@ export default {
     logout() {
       this.$store.commit('updateLoggedInState', false);
       this.$store.commit('updateUserDataState', {});
-    }
+    },
+    toggleMenu() {
+      this.menuIsOpen = !this.menuIsOpen;
+    },
+    onClickOutside() {
+      this.menuIsOpen = false;
+    },
   },
 };
 </script>

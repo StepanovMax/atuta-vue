@@ -19,7 +19,7 @@
         <div class="template-page__header-bottom">
 
           <h1 class="template-page__title">
-            Избранное
+            Мои объявления
           </h1>
 
         </div>
