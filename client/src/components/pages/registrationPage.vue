@@ -19,7 +19,7 @@
         <div class="template-page__header-bottom">
 
           <h1 class="template-page__title">
-            Регистрация 11 22 33
+            Регистрация
           </h1>
 
         </div>
