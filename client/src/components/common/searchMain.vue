@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapActions, store } from 'vuex';
 import multiselect from 'vue-multiselect';
 import checkbox from '../common/checkbox.vue'
 import iconSearchGlass from '../icons/iconSearchGlass.vue';
@@ -179,6 +179,9 @@ export default {
       'filterDataDefault',
       'filterDataSelected',
     ]),
+    ...mapActions([
+      'getTowns',
+    ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
@@ -186,7 +189,8 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
-  mounted() {
+  async mounted() {
+    await this.$store.dispatch('getTowns');
     if (this.$router.history.current.name === 'addObject') {
       this.hideSearch = false;
     } else {

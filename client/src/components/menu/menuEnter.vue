@@ -61,7 +61,7 @@ export default {
   methods: {
     logout() {
       this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', null);
+      this.$store.commit('updateUserDataState', {});
     }
   },
 };

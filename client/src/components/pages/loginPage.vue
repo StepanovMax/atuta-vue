@@ -141,14 +141,13 @@
 
 <script>
 import axios from 'axios';
-import { mapState } from 'vuex';
+import { mapState, store } from 'vuex';
 
 import adsLeft from '../adsLeft.vue';
 import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 import inputField from '../common/inputField.vue';
 import iconOk from '../icons/iconOk.vue';
-// import router from '../../store/router.js';
 
 export default {
   name: 'loginPage',

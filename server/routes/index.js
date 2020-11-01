@@ -1,5 +1,6 @@
 import auth from './auth';
 import help from './help';
+import data from './data';
 import objects from './objects';
 import companies from './companies';
 import Users from '../controllers/user';
@@ -19,6 +20,7 @@ const routes = app => {
   // Import API Routes
   app.use('/help', help);
   app.use('/auth', auth);
+  app.use('/data', data);
   app.use('/objects', objects);
   app.use('/companies', companies);
 }
