@@ -68,7 +68,7 @@ export default {
         pageObject.name = '';
         pageObject.label = '';
       }
-      console.log('this.mobileQuestionState ::', this.mobileQuestionState);
+      // console.log('this.mobileQuestionState ::', this.mobileQuestionState);
       return pageObject;
     }
   },

@@ -75,7 +75,7 @@ export default {
     },
   },
   beforeMount() {
-    console.log('beforeMount ::');
+    // console.log('beforeMount ::');
     // If it's a route transition then load an object through params.
     if (this.$route.params.data) {
       this.helpData = this.$route.params.data;

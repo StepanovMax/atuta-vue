@@ -16,6 +16,9 @@ import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import favoritesPage from '../components/pages/favoritesPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
+import myObjectsPage from '../components/pages/myObjectsPage.vue';
+import settingsPage from '../components/pages/settingsPage.vue';
+import pocketPage from '../components/pages/pocketPage.vue';
 // Reg section
 import loginPage from '../components/pages/loginPage.vue';
 import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
@@ -61,9 +64,24 @@ const router = new Router({
       component: favoritesPage
     },
     {
+      path: '/my-objects',
+      name:'myObjectsPage',
+      component: myObjectsPage
+    },
+    {
       path: '/messages',
-      name:'messages',
+      name:'messagesPage',
       component: messagesPage
+    },
+    {
+      path: '/settings',
+      name:'settingsPage',
+      component: settingsPage
+    },
+    {
+      path: '/pocket',
+      name:'pocketPage',
+      component: pocketPage
     },
     {
       path: '/profile',

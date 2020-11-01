@@ -1,6 +1,6 @@
 <template>
   <div
-    id="favorites"
+    id="settingsPage"
     class="template-page"
   >
 
@@ -19,7 +19,7 @@
         <div class="template-page__header-bottom">
 
           <h1 class="template-page__title">
-            Избранное
+            Мои настройки
           </h1>
 
         </div>

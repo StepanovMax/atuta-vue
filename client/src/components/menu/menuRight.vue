@@ -37,7 +37,19 @@
       v-if="isLoggedIn"
       class="menu__item"
     >
-      Мои объявления
+      <router-link
+        v-slot="{ href, navigate, isActive }"
+        :to="{ name: 'myObjectsPage' }"
+        class="link"
+      >
+        <a
+          :active="isActive"
+          :href="href"
+          @click="navigate"
+        >
+          Мои объявления
+        </a>
+      </router-link>
     </li>
     <li
       v-if="isLoggedIn"

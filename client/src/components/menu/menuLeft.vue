@@ -1,9 +1,6 @@
 <template>
   <ul class="menu">
     <li class="menu__item">
-      Компании
-    </li>
-    <li class="menu__item">
       <router-link
         v-slot="{ href, navigate, isActive }"
         :to="{ name: 'helpPage' }"
