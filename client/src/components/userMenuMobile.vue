@@ -77,7 +77,17 @@
               user-menu-mobile__menu-item
             "
           >
-            Мои объявления
+            <router-link
+              :to="{
+                name: 'myObjectsPage'
+              }"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+            >
+              Мои объявления
+            </router-link>
           </li>
           <li
             class="
@@ -99,6 +109,48 @@
             </router-link>
           </li>
           <li
+            v-if="isLoggedIn"
+            class="
+              menu__item
+              user-menu-mobile__menu-item
+            "
+          >
+            <router-link
+              v-slot="{ href, navigate, isActive }"
+              :to="{ name: 'messagesPage' }"
+              class="link"
+            >
+              <a
+                :active="isActive"
+                :href="href"
+                @click="navigate"
+              >
+                Сообщения
+              </a>
+            </router-link>
+          </li>
+          <li
+            v-if="isLoggedIn"
+            class="
+              menu__item
+              user-menu-mobile__menu-item
+            "
+          >
+            <router-link
+              v-slot="{ href, navigate, isActive }"
+              :to="{ name: 'pocketPage' }"
+              class="link"
+            >
+              <a
+                :active="isActive"
+                :href="href"
+                @click="navigate"
+              >
+                Кошелёк
+              </a>
+            </router-link>
+          </li>
+          <li
             class="
               menu__item
               user-menu-mobile__menu-item
@@ -115,6 +167,25 @@
               @click="clickOnLink()"
             >
               Помощь
+            </router-link>
+          </li>
+          <li
+            v-if="isLoggedIn"
+            class="
+              menu__item
+              user-menu-mobile__menu-item
+            "
+          >
+            <router-link
+              :to="{
+                name: 'settingsPage'
+              }"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+            >
+              Настройки
             </router-link>
           </li>
           <li
