@@ -11,6 +11,7 @@ const state = {
   mobileQuestionState: true,
   isUserMenuMobileOpen: false,
   userRoles: userRoles,
+  federalRegionsAlphabetical: [],
   federalRegions: [],
   filterDataDefault: filterDataDefault,
   objectDataSelected: objectDataSelected,

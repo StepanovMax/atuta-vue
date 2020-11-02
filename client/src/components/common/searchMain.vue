@@ -65,7 +65,7 @@
       <multiselect
         class="multiselect-search-main"
         v-model="townsList"
-        :options="getFlatLocalitiesList"
+        :options="federalRegionsAlphabetical"
         :show-labels="false"
         :allow-empty="false"
         :close-on-select="true"
@@ -74,6 +74,7 @@
         label="label"
         track-by="label"
         placeholder="Город"
+        :options-limit="3000"
       />
     </div>
     <div class="
@@ -172,15 +173,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      'getFlatLocalitiesList',
-    ]),
     ...mapState([
       'filterDataDefault',
       'filterDataSelected',
-    ]),
-    ...mapActions([
-      'getTowns',
+      'federalRegionsAlphabetical',
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
@@ -189,8 +185,7 @@ export default {
   created() {
     this.filterSelected = JSON.parse(JSON.stringify(this.filterDataSelected));
   },
-  async mounted() {
-    await this.$store.dispatch('getTowns');
+  mounted() {
     if (this.$router.history.current.name === 'addObject') {
       this.hideSearch = false;
     } else {

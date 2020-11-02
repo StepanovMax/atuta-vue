@@ -21,7 +21,7 @@ import headerDesktop from './components/header/header.vue';
 import footerDesktop from './components/footerDesktop.vue';
 import searchMobile from './components/search/searchMobile.vue';
 import menuMobile from './components/menu/menuMobile.vue';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -36,6 +36,9 @@ export default {
       'isFilterOpen',
       'mobileQuestionClosed',
       'isUserMenuMobileOpen',
+    ]),
+    ...mapActions([
+      'getTowns',
     ]),
   },
   watch: {
@@ -58,6 +61,9 @@ export default {
         this.changeMobileQuestionState(true);
       }
     },
+  },
+  async mounted() {
+    await this.$store.dispatch('getTowns');
   },
 };
 </script>
