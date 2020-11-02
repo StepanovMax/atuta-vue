@@ -44,11 +44,9 @@ export default {
           src: item,
           thumbnail: item,
         }
-        console.log('imageObject', imageObject);
         return imageObject;
       }
     )
-    console.log('items', items);
     this.items = items;
   }
 }

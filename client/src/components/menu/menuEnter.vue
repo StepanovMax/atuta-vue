@@ -71,7 +71,7 @@
         >
           <router-link
             v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'settingsPage' }"
+            :to="{ name: 'profilePage' }"
             class="link"
           >
             <a
@@ -79,7 +79,7 @@
               :href="href"
               @click="navigate"
             >
-              Настройки
+              Профиль
             </a>
           </router-link>
         </li>

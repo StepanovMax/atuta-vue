@@ -1,16 +1,55 @@
 <template>
-  <div id="profilePage">
-    <h1 class="title title_h1">
-      Профиль
-    </h1>
-    <p class="paragraph">
-      Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности позволяет оценить значение форм развития. Задача организации, в особенности же постоянный количественный рост и сфера нашей активности представляет собой интересный эксперимент проверки соответствующий условий активизации. Товарищи! дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и модернизации модели развития.
-    </p>
+  <div
+    id="profilePage"
+    class="template-page"
+  >
+
+    <adsLeft />
+
+    <div class="template-page__wrap">
+
+      <header class="template-page__header">
+
+        <div class="template-page__header-top">
+
+          <breadcrumbs />
+
+        </div>
+
+        <div class="template-page__header-bottom">
+
+          <h1 class="template-page__title">
+            Профиль
+          </h1>
+
+        </div>
+
+      </header>
+
+      <div class="template-page__content">
+
+      </div>
+
+    </div>
+
+    <adsRight />
+
   </div>
 </template>
 
 <script>
+import adsLeft from '../adsLeft.vue';
+import adsRight from '../adsRight.vue';
+import breadcrumbs from '../common/breadcrumbs.vue';
+import filterDesktop from '../filters/filterDesktop.vue';
+
 export default {
-  name: 'profilePage',
+  name: 'favoritesPage',
+  components: {
+    adsLeft,
+    adsRight,
+    breadcrumbs,
+    filterDesktop,
+  },
 };
 </script>
