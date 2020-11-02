@@ -2,17 +2,28 @@ import axios from 'axios';
 
 const actions = {
   getTowns: async (context, commit) => {
-    const { data } = await axios.get(
-      'http://localhost:9001/help/get-help-all'
-    )
-    .then(function (response) {
-      console.log('Response ::', response);
-      return response;
+    const { data } = axios({
+      method: 'get',
+      url: 'http://localhost:9001/data/get-towns',
+      responseType: 'stream',
+      mode: 'no-cors',
+      credentials: 'same-origin',
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true"
+      },
     })
-    .catch(function (error) {
-      console.log('GetTowns error ::', error);
-      return false;
-    });
+      .then(function (response) {
+        console.log('Response ::', error);
+        return response;
+      })
+      .catch(function (error) {
+        console.log('GetTowns error ::', error);
+        return false;
+      });
 
     let flatLocalitiesList = [];
     for (let key in data) {
