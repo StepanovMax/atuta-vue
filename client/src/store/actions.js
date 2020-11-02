@@ -4,7 +4,7 @@ const actions = {
   getTowns: async (context, commit) => {
     const { data } = axios({
       method: 'get',
-      url: 'http://localhost:9001/data/get-towns',
+      url: 'http://dev-api.atyta.ru:9001/data/get-towns',
       responseType: 'stream',
       mode: 'no-cors',
       credentials: 'same-origin',
