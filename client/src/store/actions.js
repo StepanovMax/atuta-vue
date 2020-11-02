@@ -3,7 +3,7 @@ import axios from 'axios';
 const actions = {
   getTowns: async (context, commit) => {
     const { data } = await axios.get(
-      'http://localhost:9001/data/get-towns'
+      'http://localhost:9001/help/get-help-all'
     )
     .then(function (response) {
       console.log('Response ::', response);
