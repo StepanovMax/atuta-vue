@@ -2,26 +2,14 @@ import axios from 'axios';
 
 const actions = {
   getTowns: async (context, commit) => {
-    const { data } = axios({
-      method: 'get',
-      url: 'http://dev-api.atyta.ru:9001/data/get-towns',
-      responseType: 'stream',
-      mode: 'no-cors',
-      credentials: 'same-origin',
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Access-Control-Allow-Credentials": "true"
-      },
-    })
+    const { data } = await axios.get(
+      'http://dev-api.atyta.ru:9001/data/get-towns'
+    )
       .then(function (response) {
-        console.log('Response ::', error);
         return response;
       })
       .catch(function (error) {
-        console.log('GetTowns error ::', error);
+        console.log('Error getTowns ::', error);
         return false;
       });
 
