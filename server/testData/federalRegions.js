@@ -14515,8 +14515,8 @@ const federalRegions = [
     "localities": [
       {
         "type": "city",
-        "slug": "",
-        "label": "",
+        "slug": "Karachaevsk",
+        "label": "Карачаевск",
         "districts": [
           {
             "label": "В черте города",
@@ -14530,8 +14530,8 @@ const federalRegions = [
       },
       {
         "type": "city",
-        "slug": "",
-        "label": "",
+        "slug": "Teberda",
+        "label": "Теберда",
         "districts": [
           {
             "label": "В черте города",
@@ -14545,8 +14545,8 @@ const federalRegions = [
       },
       {
         "type": "city",
-        "slug": "",
-        "label": "",
+        "slug": "Ust-Djeguta",
+        "label": "Усть-Джегута",
         "districts": [
           {
             "label": "В черте города",
@@ -14560,8 +14560,8 @@ const federalRegions = [
       },
       {
         "type": "city",
-        "slug": "",
-        "label": "",
+        "slug": "Cherkessk",
+        "label": "Черкесск",
         "districts": [
           {
             "label": "В черте города",
@@ -17413,7 +17413,7 @@ const federalRegions = [
       {
         "type": "city",
         "slug": "zheleznogorsk",
-        "label": " Железногорск",
+        "label": "Железногорск",
         "districts": [
           {
             "label": "В черте города",
@@ -33637,7 +33637,7 @@ const federalRegions = [
       {
         "type": "city",
         "slug": "karabash",
-        "label": "Карабаш",
+        "label": "Карабаш (Татарстан)",
         "districts": [
           {
             "label": "В черте города",
@@ -37996,7 +37996,7 @@ const federalRegions = [
       {
         "type": "city",
         "slug": "karabash",
-        "label": "Карабаш",
+        "label": "Карабаш (Челяб.)",
         "districts": [
           {
             "label": "В черте города",
