@@ -3,15 +3,15 @@ import axios from 'axios';
 const actions = {
   getTowns: async (context, commit) => {
     const { data } = await axios.get(
-      'http://localhost:9001/data/get-towns/'
+      'http://localhost:9001/data/get-towns'
     )
       .then(function (response) {
         return response;
       })
-        .catch(function (error) {
-          console.log('error ::', error);
-          return false;
-        });
+      .catch(function (error) {
+        console.log('GetTowns error ::', error);
+        return false;
+      });
 
     let flatLocalitiesList = [];
     for (let key in data) {
