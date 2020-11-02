@@ -68,9 +68,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getFlatLocalitiesList',
-    ]),
     ...mapState([
       'federalRegions',
       'filterDataDefault',
@@ -492,8 +489,7 @@ export default {
     });
   },
   async mounted() {
-    console.log('federalRegions.length', this.federalRegions.length);
-    console.log('getFlatLocalitiesList.length', this.getFlatLocalitiesList.length);
+    // console.log('federalRegions.length', this.federalRegions.length);
     const url = 'https://nominatim.openstreetmap.org/reverse';
     const url2 = 'https://nominatim.openstreetmap.org/reverse?format=geojson&pretty=1&lat=47.215266&lon=38.908182&zoom=18&addressdetails=1&accept-language=ru';
 

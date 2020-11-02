@@ -5,15 +5,6 @@ const getters = {
     );
     return townsRostov[0].localities;
   },
-  getFlatLocalitiesList: state => {
-    let flatLocalitiesList = [];
-    state.federalRegions.forEach(
-      item => {
-        flatLocalitiesList = [...flatLocalitiesList, ...item.localities];
-      }
-    );
-    return flatLocalitiesList;
-  },
   getDistanceArray: state => {
     let array = state.filterDataDefault.distance;
     let resultedArray = [];

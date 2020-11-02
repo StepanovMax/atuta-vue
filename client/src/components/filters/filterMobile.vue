@@ -27,7 +27,7 @@
             </h3>
             <multiselect
               v-model="townsList"
-              :options="getFlatLocalitiesList"
+              :options="federalRegionsAlphabetical"
               :show-labels="false"
               :allow-empty="false"
               :close-on-select="true"
@@ -203,9 +203,7 @@ export default {
       'isFilterOpen',
       'filterDataDefault',
       'filterDataSelected',
-    ]),
-    ...mapGetters([
-      'getFlatLocalitiesList',
+      'federalRegionsAlphabetical',
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
