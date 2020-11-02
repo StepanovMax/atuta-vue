@@ -1091,13 +1091,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      'getFlatLocalitiesList',
-    ]),
     ...mapState([
       'filterDataDefault',
       'objectDataSelected',
       'filterDataSelected',
+      'federalRegionsAlphabetical',
     ]),
     // currentAddress: {
     //   cache: false,
@@ -1334,7 +1332,7 @@ export default {
       return `${label}: ${phone}`
     },
     getLocalityByLabel(label) {
-      const localityObjects = this.getFlatLocalitiesList;
+      const localityObjects = this.federalRegionsAlphabetical;
       const foundedLocalityObject = localityObjects.filter(
         item => {
           return item.label === label
