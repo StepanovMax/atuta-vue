@@ -64,7 +64,7 @@
             "
           >
             <router-link
-              :to="{ name: 'favorites' }"
+              :to="{ name: 'favoritesSubPage' }"
               class="link"
               @click.native="clickOnLink()"
             >
@@ -80,7 +80,7 @@
           >
             <router-link
               :to="{
-                name: 'myObjectsPage'
+                name: 'myObjectsSubPage'
               }"
               class="
                 link
@@ -118,7 +118,7 @@
             "
           >
             <router-link
-              :to="{ name: 'messagesPage' }"
+              :to="{ name: 'messagesSubPage' }"
               class="link"
               @click.native="clickOnLink()"
             >
@@ -133,7 +133,7 @@
             "
           >
             <router-link
-              :to="{ name: 'pocketPage' }"
+              :to="{ name: 'pocketSubPage' }"
               class="link"
               @click.native="clickOnLink()"
             >
@@ -168,7 +168,7 @@
           >
             <router-link
               :to="{
-                name: 'profilePage'
+                name: 'settingsSubPage'
               }"
               class="
                 link

@@ -21,7 +21,7 @@
     >
       <router-link
         v-slot="{ href, navigate, isActive }"
-        :to="{ name: 'favorites' }"
+        :to="{ name: 'favoritesSubPage' }"
         class="link"
       >
         <a
@@ -39,7 +39,7 @@
     >
       <router-link
         v-slot="{ href, navigate, isActive }"
-        :to="{ name: 'myObjectsPage' }"
+        :to="{ name: 'myObjectsSubPage' }"
         class="link"
       >
         <a

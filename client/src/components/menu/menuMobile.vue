@@ -34,8 +34,8 @@
       </li>
       <li class="menu-mobile__list-item list__item">
         <router-link
-          v-slot="{ href, route, navigate, isActive }"
-          :to="{ name: 'favorites' }"
+          v-slot="{ href, navigate, isActive }"
+          :to="{ name: 'favoritesSubPage' }"
           class="link menu-mobile__link"
         >
           <a
@@ -91,7 +91,7 @@
       <li class="menu-mobile__list-item list__item">
         <router-link
           v-slot="{ href, navigate, isActive }"
-          :to="{ name: 'messagesPage' }"
+          :to="{ name: 'messagesSubPage' }"
           class="link menu-mobile__link"
         >
           <a
@@ -119,7 +119,7 @@
       <li class="menu-mobile__list-item list__item">
         <router-link
           v-slot="{ href, navigate, isActive }"
-          :to="{ name: 'profilePage' }"
+          :to="{ name: 'settingsSubPage' }"
           class="link menu-mobile__link"
         >
           <a
