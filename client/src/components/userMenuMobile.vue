@@ -66,6 +66,7 @@
             <router-link
               :to="{ name: 'favorites' }"
               class="link"
+              @click.native="clickOnLink()"
             >
               Избранное
             </router-link>
@@ -85,6 +86,7 @@
                 link
                 user-menu-mobile__menu-item-link
               "
+              @click.native="clickOnLink()"
             >
               Мои объявления
             </router-link>
@@ -103,7 +105,7 @@
                 link
                 user-menu-mobile__menu-item-link
               "
-              @click="clickOnLink()"
+              @click.native="clickOnLink()"
             >
               Компании
             </router-link>
@@ -116,17 +118,11 @@
             "
           >
             <router-link
-              v-slot="{ href, navigate, isActive }"
               :to="{ name: 'messagesPage' }"
               class="link"
+              @click.native="clickOnLink()"
             >
-              <a
-                :active="isActive"
-                :href="href"
-                @click="navigate"
-              >
-                Сообщения
-              </a>
+              Сообщения
             </router-link>
           </li>
           <li
@@ -137,17 +133,11 @@
             "
           >
             <router-link
-              v-slot="{ href, navigate, isActive }"
               :to="{ name: 'pocketPage' }"
               class="link"
+              @click.native="clickOnLink()"
             >
-              <a
-                :active="isActive"
-                :href="href"
-                @click="navigate"
-              >
-                Кошелёк
-              </a>
+              Кошелёк
             </router-link>
           </li>
           <li
@@ -164,7 +154,7 @@
                 link
                 user-menu-mobile__menu-item-link
               "
-              @click="clickOnLink()"
+              @click.native="clickOnLink()"
             >
               Помощь
             </router-link>
@@ -178,14 +168,15 @@
           >
             <router-link
               :to="{
-                name: 'settingsPage'
+                name: 'profilePage'
               }"
               class="
                 link
                 user-menu-mobile__menu-item-link
               "
+              @click.native="clickOnLink()"
             >
-              Настройки
+              Профиль
             </router-link>
           </li>
           <li
@@ -231,7 +222,7 @@ export default {
   },
   methods: {
     closeUserMenuMobile() {
-      this.$store.commit('switchUserMenuMobile', false);
+      this.$store.commit('closeMobileMenus');
     },
     clickOnLink() {
       this.closeUserMenuMobile();
