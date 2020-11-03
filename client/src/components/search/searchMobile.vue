@@ -58,7 +58,7 @@
 import iconSettings from '../icons/iconSettings.vue'
 import iconHamburger from '../icons/iconHamburger.vue'
 import filterMobile from '../filters/filterMobile.vue'
-import userMenuMobile from '../userMenuMobile.vue'
+import userMenuMobile from '../menu/userMenuMobile.vue'
 import { mapState, store, commit } from 'vuex';
 
 export default {
