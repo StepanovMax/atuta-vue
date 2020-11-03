@@ -59,7 +59,7 @@ import filterDesktop from '../filters/filterDesktop.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
-  name: 'favoritesPage',
+  name: 'companiesPage',
   components: {
     grid,
     adsLeft,

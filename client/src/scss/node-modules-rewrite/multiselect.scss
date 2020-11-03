@@ -145,3 +145,19 @@
     }
   }
 }
+
+.multiselect-profile {
+  min-height: 38px;
+
+  .multiselect {
+    &__tags,
+    &__select {
+      height: 38px;
+    }
+
+    &__tags,
+    &__option {
+      min-height: 38px;
+    }
+  }
+}

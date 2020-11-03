@@ -31,7 +31,7 @@
         >
           <router-link
             v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'messagesPage' }"
+            :to="{ name: 'messagesSubPage' }"
             class="link"
           >
             <a
@@ -51,7 +51,7 @@
         >
           <router-link
             v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'pocketPage' }"
+            :to="{ name: 'pocketSubPage' }"
             class="link"
           >
             <a
@@ -71,7 +71,7 @@
         >
           <router-link
             v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'profilePage' }"
+            :to="{ name: 'settingsSubPage' }"
             class="link"
           >
             <a

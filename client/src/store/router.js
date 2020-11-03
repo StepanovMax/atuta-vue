@@ -12,12 +12,14 @@ import styleGuide from '../components/pages/styleGuide.vue';
 import objectPage from '../components/pages/objectPage.vue';
 import profilePage from '../components/pages/profilePage.vue';
 import companyPage from '../components/pages/companyPage.vue';
-import messagesPage from '../components/pages/messagesPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
-import favoritesPage from '../components/pages/favoritesPage.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
-import myObjectsPage from '../components/pages/myObjectsPage.vue';
-import pocketPage from '../components/pages/pocketPage.vue';
+// Profile sub pages
+import pocket from '../components/pages/profile/pocket.vue';
+import settings from '../components/pages/profile/settings.vue';
+import messages from '../components/pages/profile/messages.vue';
+import myObjects from '../components/pages/profile/myObjects.vue';
+import favorites from '../components/pages/profile/favorites.vue';
 // Reg section
 import loginPage from '../components/pages/loginPage.vue';
 import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
@@ -58,31 +60,6 @@ const router = new Router({
       component: forgotPasswordPage
     },
     {
-      path: '/favorites',
-      name:'favorites',
-      component: favoritesPage
-    },
-    {
-      path: '/my-objects',
-      name:'myObjectsPage',
-      component: myObjectsPage
-    },
-    {
-      path: '/messages',
-      name:'messagesPage',
-      component: messagesPage
-    },
-    {
-      path: '/pocket',
-      name:'pocketPage',
-      component: pocketPage
-    },
-    {
-      path: '/profile',
-      name:'profilePage',
-      component: profilePage
-    },
-    {
       path: '/add-object',
       name:'addObject',
       component: addObject,
@@ -102,6 +79,38 @@ const router = new Router({
       meta: {
         title: 'Список компаний',
       },
+    },
+    {
+      path: '/profile',
+      name:'profilePage',
+      component: profilePage,
+      children: [
+        {
+          path: '/profile/settings',
+          name:'settingsSubPage',
+          component: settings,
+        },
+        {
+          path: '/profile/messages',
+          name:'messagesSubPage',
+          component: messages,
+        },
+        {
+          path: '/profile/pocket',
+          name:'pocketSubPage',
+          component: pocket,
+        },
+        {
+          path: '/profile/favorites',
+          name:'favoritesSubPage',
+          component: favorites,
+        },
+        {
+          path: '/profile/my-objects',
+          name:'myObjectsSubPage',
+          component: myObjects,
+        },
+      ],
     },
     {
       path: '/help',
