@@ -90,8 +90,8 @@
       </li>
       <li class="menu-mobile__list-item list__item">
         <router-link
-          v-slot="{ href, route, navigate, isActive }"
-          :to="{ name: 'messages' }"
+          v-slot="{ href, navigate, isActive }"
+          :to="{ name: 'messagesPage' }"
           class="link menu-mobile__link"
         >
           <a
@@ -118,8 +118,8 @@
       </li>
       <li class="menu-mobile__list-item list__item">
         <router-link
-          v-slot="{ href, route, navigate, isActive }"
-          :to="{ name: 'profile' }"
+          v-slot="{ href, navigate, isActive }"
+          :to="{ name: 'profilePage' }"
           class="link menu-mobile__link"
         >
           <a
