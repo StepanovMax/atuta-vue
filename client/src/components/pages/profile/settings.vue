@@ -244,7 +244,11 @@ export default {
   computed: {
     ...mapState([
       'userData',
+      'isLoggedIn',
     ]),
+  },
+  beforeMount() {
+    this.userDataLocal = this.userData;
   },
 };
 </script>

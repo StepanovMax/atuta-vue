@@ -153,7 +153,7 @@ export default {
   methods: {
     logout() {
       this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', {});
+      this.$store.commit('updateUserDataState', null);
     },
     toggleMenu() {
       this.menuIsOpen = !this.menuIsOpen;
