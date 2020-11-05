@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
-import breadcrumbs from '../common/breadcrumbs.vue';
+import adsLeft from '../../adsLeft.vue';
+import adsRight from '../../adsRight.vue';
+import breadcrumbs from '../../common/breadcrumbs.vue';
 
 export default {
   name: 'notFoundComponent',

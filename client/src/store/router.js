@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from './store.js';
 
 Vue.use(Router);
 
@@ -25,7 +26,8 @@ import loginPage from '../components/pages/loginPage.vue';
 import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
 import registrationPage from '../components/pages/registrationPage.vue';
 // 404
-import notFoundComponent from '../components/pages/notFoundComponent.vue';
+import notFoundComponent from '../components/pages/errors/notFoundComponent.vue';
+import userNotLoggedInComponent from '../components/pages/errors/userNotLoggedInComponent.vue';
 
 
 const router = new Router({
@@ -162,6 +164,16 @@ const router = new Router({
       },
     },
     {
+      path: '/404',
+      name:'404',
+      component: notFoundComponent
+    },
+    {
+      path: '/403',
+      name:'403',
+      component: userNotLoggedInComponent
+    },
+    {
       path: '*',
       component: notFoundComponent
     }
@@ -169,6 +181,13 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  // Redirect to 403 for profile pages if not logged in
+  if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
+    router.push({
+      name: '403'
+    });
+  }
+
   if (to.meta.title) {
     document.title = to.meta.title;
   } else {
