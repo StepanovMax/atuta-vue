@@ -1,79 +1,120 @@
 <template>
   <div
-    id="registrationPage"
-    class="template-page"
+    v-if="userDataLocal"
+    id="registrationForm"
+    class="registration-page__content"
   >
 
-    <adsLeft />
+    <div class="template-page__content-row">
+      <h3 class="registration-page__title_row">
+        Выберите свой статус
+      </h3>
 
-    <div class="template-page__wrap">
-
-      <header class="template-page__header">
-
-        <div class="template-page__header-top">
-
-          <breadcrumbs />
-
-        </div>
-
-        <div class="template-page__header-bottom">
-
-          <h1 class="template-page__title">
-            Регистрация
-          </h1>
-
-        </div>
-
-      </header>
-
-      <registrationForm
-        :propUserData="userData"
+      <switcher
+        switcherId="registrationSwitcher"
+        :items="userRolesModified"
+        :value.sync="userDataLocal.role"
       />
-
     </div>
 
-    <adsRight />
+    <div
+      v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
+      class="template-page__content-row"
+    >
+      <div class="registration-page__banner">
+        <p class="paragraph registration-page__banner-text">
+          Внимание!
+        </p>
+        <p class="paragraph registration-page__banner-text">
+          Статус "{{ userDataLocal.role.label }}" платное - 1000руб
+        </p>
+      </div>
+    </div>
+
+    <div
+      ref="name"
+      class="template-page__content-row"
+    >
+      <h3
+        v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
+        class="registration-page__title_row"
+      >
+        Название компании
+      </h3>
+      <h3
+        v-if="userData.role.slug === 'personal' || userData.role.slug === 'agent'"
+        class="registration-page__title_row"
+      >
+        ФИО
+      </h3>
+
+      <inputField
+        propType="symbolsWithNumbers"
+        propClass="registration-page__input"
+        propKey="name"
+        key="name"
+        :value.sync="userDataLocal.name.label"
+        :propValue="userDataLocal.name.label"
+      />
+
+      <p
+        v-if="
+          formState.name.firstBlur &&
+          !userDataLocal.name.label
+        "
+        class="paragraph paragraph_invalid"
+      >
+        <span
+          v-if="
+            userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'
+          "
+        >
+          Название компании обязательно к заполнению
+        </span>
+        <span
+          v-if="
+            userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'
+          "
+        >
+          ФИО обязательно к заполнению
+        </span>
+      </p>
+    </div>
+
+    <pre v-local>{{ userDataLocal }}</pre>
+    <pre v-local>{{ formState }}</pre>
 
   </div>
 </template>
 
 <script>
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
-import breadcrumbs from '../common/breadcrumbs.vue';
+import iconOk from '../icons/iconOk.vue';
 import switcher from '../common/switcher.vue';
 import inputField from '../common/inputField.vue';
-import iconOk from '../icons/iconOk.vue';
 import uploadImages from '../common/uploadImages.vue';
-import registrationForm from '../common/registrationForm.vue';
 
 import { mapState } from 'vuex';
+import { transliterate as tr, slugify } from 'transliteration';
 
 export default {
   name: 'registrationPage',
   components: {
     iconOk,
-    adsLeft,
-    adsRight,
-    breadcrumbs,
     switcher,
     inputField,
     uploadImages,
-    registrationForm,
+  },
+  props: {
+    propUserData: {
+      default: {},
+      type: Object,
+      required: true
+    },
   },
   data() {
     return {
+      userDataLocal: {},
       switcherValue: '',
-      userData: {
-        role: null,
-        login: null,
-        password: null,
-        repassword: null,
-        name: null,
-        email: null,
-        phone: null,
-        logo: null,
-      },
       userRolesModified: [],
       erroredElementsArray: [],
       formState: {
@@ -126,21 +167,19 @@ export default {
   computed: {
     ...mapState([
       'userRoles',
+      'userData',
     ]),
     passwordsCorrect() {
       if (
         this.formState.password.filled &&
         this.formState.repassword.filled &&
-        this.userData.password.length === this.userData.repassword.length
+        this.userDataLocal.password.length === this.userDataLocal.repassword.length
       ) {
         return true;
       } else {
         return false;
       }
-    }
-  },
-  beforeMount() {
-    this.addCheckedPropertyForUserRoles('personal');
+    },
   },
   methods: {
     // Add checked property and make Agent as default
@@ -150,7 +189,7 @@ export default {
           const itemModified = item;
           if (itemModified.slug === role) {
             itemModified.checked = true;
-            this.userData.role = itemModified;
+            this.userDataLocal.role = itemModified;
           } else {
             itemModified.checked = false;
           }
@@ -234,13 +273,7 @@ export default {
       const resultFormValidation = this.formValidation();
     },
     updateFormState() {
-      if (this.userData.role.slug === 'personal' || this.userData.role.slug === 'agent') {
-        this.formState.name.required = true;
-        this.formState.name.required = false;
-      } else if (this.userData.role.slug === 'agency' || this.userData.role.slug === 'builder') {
-        this.formState.name.required = false;
-        this.formState.name.required = true;
-      }
+      this.formState.name.required = true;
     },
     formValidation() {
       const obj = this.formState;
@@ -288,27 +321,23 @@ export default {
       const min = Math.min( ...arrayMin );
       return min;
     },
-    handlename(value) {
+    handleName(value) {
       if (value) {
         this.formState.name.filled = true;
+        this.userDataLocal.name.slug = slugify(value);
+        this.userDataLocal.name.checked = true;
       } else {
         this.formState.name.filled = false;
-      }
-    },
-    handlename(value) {
-      if (value) {
-        this.formState.name.filled = true;
-      } else {
-        this.formState.name.filled = false;
+        this.userDataLocal.name.slug = '';
       }
     },
   },
   watch: {
-    'userData.role'() {
+    'userDataLocal.role'() {
       this.updateFormState();
     },
     // Watching password typing
-    'userData.password'(value) {
+    'userDataLocal.password'(value) {
       const isPasswordLengthEnough = this.detectFieldLength(value);
       // If user made the first blur action from the password field.
       if (this.formState.password.firstBlur) {
@@ -317,7 +346,7 @@ export default {
       this.validateSamePasswords();
     },
     // Watching repassword typing
-    'userData.repassword'(value) {
+    'userDataLocal.repassword'(value) {
       const isRepasswordLengthEnough = this.detectFieldLength(value);
       // If user made the first blur action from the repassword field.
       if (this.formState.repassword.firstBlur) {
@@ -325,24 +354,26 @@ export default {
       }
       this.validateSamePasswords();
     },
-    'userData.email'(value) {
+    'userDataLocal.email'(value) {
       this.handleEmail(value);
     },
-    'userData.login'(value) {
+    'userDataLocal.login'(value) {
       this.handleLogin(value);
     },
-    'userData.phone'(value) {
+    'userDataLocal.phone'(value) {
       this.handlePhone(value);
     },
-    'userData.logo'(value) {
+    'userDataLocal.logo'(value) {
       this.handleLogo(value);
     },
-    'userData.name'(value) {
-      this.handlename(value);
+    'userDataLocal.name.label'(value) {
+      this.handleName(value);
     },
-    'userData.name'(value) {
-      this.handlename(value);
-    },
+  },
+  beforeMount() {
+    this.userDataLocal = this.userData;
+    this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
+    console.log('userDataLocal.name ::', this.userDataLocal.name);
   },
   mounted() {
     this.updateFormState();
