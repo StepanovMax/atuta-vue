@@ -100,6 +100,11 @@ export default {
       default: '',
       required: true,
     },
+    propValue: {
+      type: String,
+      default: '',
+      required: false,
+    },
   },
   data() {
     return {
@@ -154,6 +159,11 @@ export default {
       if (!this.filteredValue.length) {
         this.filteredValue = '+7 ';
       }
+    }
+  },
+  beforeMount() {
+    if (this.propValue) {
+      this.filteredValue = this.propValue;
     }
   },
   mounted() {

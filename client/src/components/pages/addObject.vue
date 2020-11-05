@@ -841,8 +841,8 @@
         >
           Данные созданного объекта:
         </h3>
-        <pre>{{ suggestList }}</pre>
-        <pre>{{ createdObject }}</pre>
+        <pre v-local>{{ suggestList }}</pre>
+        <pre v-local>{{ createdObject }}</pre>
       </div>
 
 

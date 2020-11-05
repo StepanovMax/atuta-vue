@@ -1,4 +1,18 @@
 .settings-sub-page {
+  &__title {
+    @extend .title;
+    @extend .title_h2;
+    margin: 0;
+
+    @include media(tablet-portrait) {
+      text-align: center;
+    }
+
+    @include media(mobile) {
+      text-align: center;
+    }
+  }
+
   &__form {
     &-row {
       display: flex;
@@ -17,6 +31,10 @@
 
         &_input {
           width: 200px;
+
+          &-address {
+            width: 350px;
+          }
         }
 
         @include media(mobile) {
@@ -30,7 +48,7 @@
         font-size: 16px;
 
         &-wrap {
-          width: 110px;
+          min-width: 110px;
 
           @include media(mobile) {
             margin-bottom: 10px;
@@ -62,7 +80,7 @@
   }
 
   &__header {
-
+    margin-bottom: 15px;
   }
 
   &__content {

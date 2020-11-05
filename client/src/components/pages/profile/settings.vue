@@ -5,13 +5,26 @@
   >
     <div class="settings-sub-page__row">
       <header class="settings-sub-page__header">
-        <h3 class="title title_h2">
+        <h3 class="settings-sub-page__title">
           Личная информация
         </h3>
       </header>
 
       <div class="settings-sub-page__content">
-        <div class="settings-sub-page__form">
+
+        <registrationForm
+          :propUserData="userData"
+        />
+
+        <pre v-local>
+          {{ userData }}
+        </pre>
+
+
+        <div
+          v-if="false"
+          class="settings-sub-page__form"
+        >
           <div class="settings-sub-page__form-row">
             <div class="settings-sub-page__form-row-label-wrap">
               <label
@@ -21,15 +34,15 @@
                   settings-sub-page__form-row-label
                 "
               >
-                Имя
+                ФИО
               </label>
             </div>
-              <div
-                class="
-                  settings-sub-page__form-row-column
-                  settings-sub-page__form-row-column_input
-                "
-              >
+            <div
+              class="
+                settings-sub-page__form-row-column
+                settings-sub-page__form-row-column_input
+              "
+            >
               <div class="settings-sub-page__form-row-input-wrap">
                 <input
                   key="userName"
@@ -64,6 +77,12 @@
                   settings-sub-page__form-row-column_input
                 "
               >
+                <inputField
+                  propClass="registration-page__input"
+                  propType="email"
+                  propKey="email"
+                  :value.sync="userData.email"
+                />
                 <input
                   key="userName"
                   id="userName"
@@ -134,9 +153,71 @@
               </div>
             </div>
           </div>
+
+          <div class="settings-sub-page__form-row">
+            <div class="settings-sub-page__form-row-label-wrap">
+              <label
+                for="userName"
+                class="
+                  checkbox__label
+                  settings-sub-page__form-row-label
+                "
+              >
+                Адрес
+              </label>
+            </div>
+            <div class="settings-sub-page__form-row-input-wrap">
+              <div
+                class="
+                  settings-sub-page__form-row-column
+                  settings-sub-page__form-row-column_input
+                  settings-sub-page__form-row-column_input-address
+                "
+              >
+                <input
+                  key="userName"
+                  id="userName"
+                  class="
+                    input
+                    settings-sub-page__form-row-input
+                  "
+                  type="text"
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
+
+    <div
+      class="settings-sub-page__row"
+    >
+      <header class="settings-sub-page__header">
+        <h3 class="settings-sub-page__title">
+          Пароль
+        </h3>
+      </header>
+
+      <div class="settings-sub-page__content">
+      </div>
+    </div>
+
+    <div
+      v-if="userData.role === 'agency'"
+      class="settings-sub-page__row"
+    >
+      <header class="settings-sub-page__header">
+        <h3 class="settings-sub-page__title">
+          Сотрудники
+        </h3>
+      </header>
+
+      <div class="settings-sub-page__content">
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -144,19 +225,25 @@
 import { mapState } from 'vuex';
 import multiselect from 'vue-multiselect';
 
+import switcher from '../../common/switcher.vue';
+import registrationForm from '../../common/registrationForm.vue';
+
 export default {
   name: 'settings',
   components: {
+    switcher,
     multiselect,
+    registrationForm,
   },
   data() {
     return {
       townsList: null,
+      userRolesModified: [],
     }
   },
   computed: {
     ...mapState([
-      'federalRegionsAlphabetical',
+      'userData',
     ]),
   },
 };
