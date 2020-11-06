@@ -131,7 +131,7 @@ export default {
       const value = event.target.value;
       if (this.propType === 'symbolsWithNumbers') {
         this.filteredValue = value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/gi, '');
-      } else if (this.propType === 'password' || this.propType === 'email') {
+      } else if (this.propType === 'password' || this.propType === 'email' || this.propType === 'website') {
         this.filteredValue = value;
       }
       this.$emit('update:value', this.filteredValue);

@@ -14,15 +14,20 @@ const testUsers = [
     descriptionShort: {
       label: 'Нас Вам посоветовали!',
     },
-    urlPreview: '/src/images/companies/an1.png',
-    objectsCount: 416,
-    phoneNumbers: [
-      '+7 8634 39-41-37',
-      '+7 928 760-38-35',
+    logo: [
+      {
+        "id": "canvas-0",
+        "object": {
+          "url": "/src/images/companies/an1.png"
+        },
+        "degrees": 0,
+        "imageRatio": 2.6246056782334386
+      }
     ],
-    url: {
-      value: 'http://an1tag.ru',
-    },
+    objectsCount: 416,
+    email: 'info@an1tag.ru',
+    phone: '+7 928 760-38-35',
+    website: 'http://an1tag.ru',
     address: 'Таганрог, г. Таганрог, ул.Чехова, 50, Центральный',
   },
 ];

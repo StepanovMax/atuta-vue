@@ -27,7 +27,7 @@
 
   &__input {
     width: 100%;
-    max-width: 300px;
+    box-shadow: none;
 
     &-block {
       margin-right: 5px;
@@ -36,6 +36,7 @@
 
     &-wrap {
       display: flex;
+      max-width: 300px;
     }
   }
 

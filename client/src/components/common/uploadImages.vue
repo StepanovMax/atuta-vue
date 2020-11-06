@@ -93,6 +93,10 @@ import iconArrowRotateRight from '../icons/iconArrowRotateRight.vue';
 
 export default {
   name: 'uploadImages',
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   components: {
     draggable,
     iconCross,
@@ -105,10 +109,11 @@ export default {
       default: false,
       required: false,
     },
-  },
-  model: {
-    prop: 'value',
-    event: 'change'
+    propValue: {
+      type: Array,
+      default: [],
+      required: false,
+    },
   },
   data() {
     return {
@@ -418,6 +423,11 @@ export default {
       context.drawImage(image,-image.width/2,-image.width/2);
       context.restore();
     },
+  },
+  beforeMount() {
+    if (this.propValue) {
+      this.filesArray = this.propValue;
+    }
   },
 };
 </script>
