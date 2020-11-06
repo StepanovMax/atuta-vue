@@ -14,7 +14,7 @@
       <div class="profile-page__user">
         <div class="profile-page__logo-wrap">
           <img
-            :src="userData.urlPreview"
+            :src="userData.logo[0].object.url"
             :alt="userData.name.label"
             class="profile-page__logo-img"
           />

@@ -31,6 +31,7 @@
       </div>
     </div>
 
+
     <div
       ref="name"
       class="template-page__content-row"
@@ -42,20 +43,22 @@
         Название компании
       </h3>
       <h3
-        v-if="userData.role.slug === 'personal' || userData.role.slug === 'agent'"
+        v-if="userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'"
         class="registration-page__title_row"
       >
         ФИО
       </h3>
 
-      <inputField
-        propType="symbolsWithNumbers"
-        propClass="registration-page__input"
-        propKey="name"
-        key="name"
-        :value.sync="userDataLocal.name.label"
-        :propValue="userDataLocal.name.label"
-      />
+      <div class="registration-page__input-wrap">
+        <inputField
+          propType="symbolsWithNumbers"
+          propClass="registration-page__input"
+          propKey="name"
+          key="name"
+          :value.sync="userDataLocal.name.label"
+          :propValue="userDataLocal.name.label"
+        />
+      </div>
 
       <p
         v-if="
@@ -81,8 +84,301 @@
       </p>
     </div>
 
+
+    <div
+      ref="login"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Логин
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          propType="symbolsWithNumbers"
+          propClass="registration-page__input"
+          propKey="login"
+          :value.sync="userDataLocal.login"
+          :propValue="userDataLocal.login"
+        />
+      </div>
+
+      <p
+        v-if="
+          formState.login.firstBlur &&
+          !formState.login.filled &&
+          !userDataLocal.login
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Логин обязателен к заполнению
+      </p>
+
+      <p
+        v-if="
+          formState.login.firstBlur &&
+          !formState.login.filled &&
+          userDataLocal.login
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Минимальная длина 6 символов
+      </p>
+    </div>
+
+
+    <div
+      ref="password"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Пароль
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          class="registration-page__input-block"
+          propClass="registration-page__input"
+          propType="password"
+          propKey="password"
+          :value.sync="userDataLocal.password"
+          :propValue="userDataLocal.password"
+        />
+        <iconOk
+          v-if="passwordsCorrect"
+          class="registration-page__icon_ok"
+        />
+      </div>
+
+      <p
+        v-if="
+          formState.password.firstBlur &&
+          !formState.password.filled
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Минимальная длина пароля 8 символов
+      </p>
+
+      <p
+        v-if="
+          formState.password.firstBlur &&
+          !userDataLocal.password
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Пароль обязателен для заполнения
+      </p>
+    </div>
+
+
+    <div
+      ref="repassword"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Подтвердить пароль
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          class="registration-page__input-block"
+          propClass="registration-page__input"
+          propType="password"
+          propKey="repassword"
+          :value.sync="userDataLocal.repassword"
+          :propValue="userDataLocal.password"
+        />
+        <iconOk
+          v-if="passwordsCorrect"
+          class="registration-page__icon_ok"
+        />
+      </div>
+
+      <p
+        v-if="formState.repassword.firstBlur && !formState.repassword.matched"
+        class="paragraph paragraph_invalid"
+      >
+        Пароль не совпадает
+      </p>
+
+      <p
+        v-if="
+          formState.repassword.firstBlur &&
+          !userDataLocal.repassword
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Пароль обязателен для заполнения
+      </p>
+    </div>
+
+
+    <div
+      ref="email"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Email
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          propClass="registration-page__input"
+          propType="email"
+          propKey="email"
+          :value.sync="userDataLocal.email"
+          :propValue="userDataLocal.email"
+        />
+      </div>
+
+      <p
+        v-if="
+          formState.email.firstBlur &&
+          !formState.email.syntax &&
+          userDataLocal.email
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Email должен быть такого типа: info@test.ru
+      </p>
+
+      <p
+        v-if="
+          formState.email.firstBlur &&
+          !formState.email.filled &&
+          !userDataLocal.email
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Email обязателен к заполнению
+      </p>
+    </div>
+
+
+    <div
+      ref="phone"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Телефон
+      </h3>
+      <div class="registration-page__input-wrap">
+        <inputField
+          propClass="registration-page__input"
+          propType="phone"
+          propKey="phone"
+          :value.sync="userDataLocal.phone"
+          :propValue="userDataLocal.phone"
+        />
+      </div>
+
+      <p
+        v-if="
+          formState.phone.firstBlur &&
+          !formState.phone.filled
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Телефон обязателен к заполнению
+      </p>
+    </div>
+
+
+    <div
+      ref="logo"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Логотип
+      </h3>
+
+      <upload-images
+        id="upload-images"
+        :propIsMultiple="false"
+        :value.sync="userDataLocal.logo"
+        :propValue="userDataLocal.logo"
+      />
+
+      <p
+        v-if="
+          formState.logo.firstBlur &&
+          !formState.logo.filled
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Логотип нужен обязательно
+      </p>
+    </div>
+
+
+    <div
+      ref="website"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Сайт
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          propClass="registration-page__input"
+          propType="symbolsWithNumbers"
+          propKey="website"
+          :value.sync="userDataLocal.website"
+          :propValue="userDataLocal.website"
+        />
+      </div>
+
+      <p
+        v-if="
+          formState.website.firstBlur &&
+          !formState.website.syntax &&
+          userDataLocal.website
+        "
+        class="paragraph paragraph_invalid"
+      >
+        Сайт должен быть такого типа: test.ru
+      </p>
+    </div>
+
+
+    <div
+      ref="address"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Адрес
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        <inputField
+          propClass="registration-page__input"
+          propType="symbolsWithNumbers"
+          propKey="address"
+          :value.sync="userDataLocal.address"
+          :propValue="userDataLocal.address"
+        />
+      </div>
+    </div>
+
+
+    <div
+      ref="address"
+      class="template-page__content-row"
+    >
+      <h3 class="registration-page__title_row">
+        Описание
+      </h3>
+
+      <div class="registration-page__input-wrap">
+        Описание
+      </div>
+    </div>
+
+
     <pre v-local>{{ userDataLocal }}</pre>
-    <pre v-local>{{ formState }}</pre>
+
 
   </div>
 </template>
@@ -113,6 +409,21 @@ export default {
   },
   data() {
     return {
+      userDataEmpty: {
+        role: {},
+        login: '',
+        password: '',
+        repassword: '',
+        name: {
+          label: '',
+          slug: '',
+        },
+        email: '',
+        phone: '',
+        logo: [],
+        website: '',
+        address: '',
+      },
       userDataLocal: {},
       switcherValue: '',
       userRolesModified: [],
@@ -124,7 +435,7 @@ export default {
           required: true,
         },
         login: {
-          length: 2,
+          length: 4,
           filled: false,
           firstBlur: false,
           required: true,
@@ -158,6 +469,16 @@ export default {
           firstBlur: false,
           required: true,
         },
+        website: {
+          filled: false,
+          firstBlur: false,
+          required: false,
+        },
+        address: {
+          filled: false,
+          firstBlur: false,
+          required: false,
+        },
       },
       email: '',
       correctEmail: '',
@@ -180,7 +501,7 @@ export default {
         return false;
       }
     },
-  },
+  }, 
   methods: {
     // Add checked property and make Agent as default
     addCheckedPropertyForUserRoles(role) {
@@ -245,7 +566,7 @@ export default {
       }
     },
     handleLogin(value) {
-      if (value.length >= 6) {
+      if (value.length >= this.formState.login.length) {
         this.formState.login.filled = true;
       } else {
         this.formState.login.filled = false;
@@ -372,8 +693,11 @@ export default {
   },
   beforeMount() {
     this.userDataLocal = this.userData;
-    this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
-    console.log('userDataLocal.name ::', this.userDataLocal.name);
+    if (this.userDataLocal) {
+      this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
+    } else {
+      this.userDataLocal = this.userDataEmpty;
+    }
   },
   mounted() {
     this.updateFormState();
@@ -392,6 +716,8 @@ export default {
         this.formState.phone.firstBlur = true;
       } else if (name === 'name') {
         this.formState.name.firstBlur = true;
+      } else if (name === 'website') {
+        this.formState.website.firstBlur = true;
       }
     });
     // console.log('process.env.host ::', process.env.HOST);
