@@ -105,6 +105,11 @@ export default {
       default: '',
       required: false,
     },
+    propFilterPhoneNumber: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
   },
   data() {
     return {
@@ -152,7 +157,9 @@ export default {
     },
     handlePhone(event) {
       const phoneNumber = event.target.value;
-      this.filteredValue = this.gFormatPhone(phoneNumber);
+      if (this.propFilterPhoneNumber) {
+        this.filteredValue = this.gFormatPhone(phoneNumber);
+      }
       this.$emit('update:value', this.filteredValue);
     },
     focusPhone() {

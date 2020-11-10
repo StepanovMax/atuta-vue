@@ -7,9 +7,10 @@
   >
     <li
       v-if="isLoggedIn"
-      class="menu__item"
+      class="menu__item true"
     >
       <a
+        v-if="userData"
         class="
           link
           menu__link
@@ -105,8 +106,8 @@
       </ul>
     </li>
     <li
-      v-if="!isLoggedIn"
-      class="menu__item"
+      v-else
+      class="menu__item false"
     >
       <router-link
         :to="{ name: 'loginPage' }"
@@ -154,6 +155,7 @@ export default {
     logout() {
       this.$store.commit('updateLoggedInState', false);
       this.$store.commit('updateUserDataState', null);
+      this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
     },
     toggleMenu() {
       this.menuIsOpen = !this.menuIsOpen;

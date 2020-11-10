@@ -279,6 +279,7 @@ export default {
         this.$store.commit('updateLoggedInState', true);
         this.$store.commit('updateUserDataState', loginResult.data);
         this.$router.push({ name: 'homePage'});
+        this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }
     },
   },

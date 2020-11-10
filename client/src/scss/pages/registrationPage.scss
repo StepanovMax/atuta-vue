@@ -31,12 +31,15 @@
 
     &-block {
       margin-right: 5px;
-
     }
 
     &-wrap {
       display: flex;
       max-width: 300px;
+
+      &_full-width {
+        max-width: 100%;
+      }
     }
   }
 
