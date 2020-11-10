@@ -1,0 +1,90 @@
+.content-editor {
+  width: 100%;
+  max-width: 600px;
+
+  &__header {
+    padding: 6px 10px 2px 10px;
+    border-radius: 2px 2px 0 0;
+    background-color: $COLOR-GREY-LIGHT;
+  }
+
+  &__content {
+    min-height: 150px;
+
+    text-indent: 0;
+    font-size: 14px;
+
+    strong {
+      font-weight: 700;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin-left: 14px;
+      list-style-type: disc;
+
+      li {
+        margin-bottom: 4px;
+      }
+    }
+
+    @extend .input;
+    height: auto;
+    padding: 8px 8px;
+  }
+
+  &__button {
+    @extend .btn;
+    @extend .btn_grey;
+    font-size: 11px;
+    padding: 2px 4px;
+    margin-bottom: 4px;
+  }
+
+  &__form {
+    z-index: 3;
+    position: absolute;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background-color: $COLOR-GREY-LIGHT;
+
+    @include media(mobile) {
+      left: 15px !important;
+      right: 15px !important;
+    }
+  }
+
+  &__input {
+    height: 26px;
+    font-size: 13px;
+  }
+}
+
+.ProseMirror {
+  height: 100%;
+  min-height: 150px;
+}

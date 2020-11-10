@@ -31,6 +31,7 @@ const user = {
 
 const state = {
   count: 11.7,
+  isLoggedIn2: false,
   isLoggedIn: false,
   userData: null,
   isFilterOpen: false,

@@ -371,8 +371,16 @@
         Описание
       </h3>
 
-      <div class="registration-page__input-wrap">
-        Описание
+      <div
+        class="
+          registration-page__input-wrap
+          registration-page__input-wrap_full-width
+        "
+      >
+        <content-editor
+          :propContentData="userDataLocal.description ? userDataLocal.description.label : ''"
+          :value.sync="userDataLocal.description.label"
+        />
       </div>
     </div>
 
@@ -388,6 +396,7 @@ import iconOk from '../icons/iconOk.vue';
 import switcher from '../common/switcher.vue';
 import inputField from '../common/inputField.vue';
 import uploadImages from '../common/uploadImages.vue';
+import contentEditor from './contentEditor.vue';
 
 import { mapState } from 'vuex';
 import { transliterate as tr, slugify } from 'transliteration';
@@ -399,6 +408,7 @@ export default {
     switcher,
     inputField,
     uploadImages,
+    contentEditor,
   },
   props: {
     propUserData: {
@@ -423,6 +433,9 @@ export default {
         logo: [],
         website: '',
         address: '',
+        description: {
+          label: '',
+        },
       },
       userDataLocal: {},
       switcherValue: '',
