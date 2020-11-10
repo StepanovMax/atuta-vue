@@ -182,11 +182,11 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   // Redirect to 403 for profile pages if not logged in
-  if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
-    router.push({
-      name: '403'
-    });
-  }
+  // if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
+  //   router.push({
+  //     name: '403'
+  //   });
+  // }
 
   if (to.meta.title) {
     document.title = to.meta.title;
