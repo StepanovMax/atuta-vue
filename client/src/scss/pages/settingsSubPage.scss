@@ -1,7 +1,7 @@
 .settings-sub-page {
   &__title {
     @extend .title;
-    @extend .title_h2;
+    @extend .title_h5;
     margin: 0;
 
     @include media(tablet-portrait) {

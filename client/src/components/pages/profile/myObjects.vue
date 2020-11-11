@@ -1,11 +1,18 @@
 <template>
   <div
-    id=""
-    class=""
+    id="myObjectsSubPage"
+    class="my-objects-sub-page"
   >
-    <h3 class="title title_h5">
-      Мои объекты
-    </h3>
+    <header class="template-page__header">
+      <h3 class="template-page__subtitle">
+        Мои объекты
+      </h3>
+    </header>
+
+    <div class="template-page__content">
+      
+    </div>
+
   </div>
 </template>
 

@@ -24,6 +24,12 @@
     }
   }
 
+  &__subtitle {
+    @extend .title;
+    @extend .title_h5;
+    margin-bottom: 0;
+  }
+
   &__header {
     display: flex;
     flex-direction: column;
