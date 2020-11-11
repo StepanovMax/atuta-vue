@@ -384,10 +384,6 @@
       </div>
     </div>
 
-
-    <pre v-local>{{ userDataLocal }}</pre>
-
-
   </div>
 </template>
 
