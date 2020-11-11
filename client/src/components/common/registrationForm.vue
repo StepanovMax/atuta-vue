@@ -323,7 +323,7 @@
       <div class="registration-page__input-wrap">
         <inputField
           propClass="registration-page__input"
-          propType="symbolsWithNumbers"
+          propType="website"
           propKey="website"
           :value.sync="userDataLocal.website"
           :propValue="userDataLocal.website"
@@ -479,6 +479,7 @@ export default {
           required: true,
         },
         website: {
+          syntax: false,
           filled: false,
           firstBlur: false,
           required: false,
@@ -491,6 +492,8 @@ export default {
       },
       email: '',
       correctEmail: '',
+      website: '',
+      correctWebsite: '',
       firstValidationCheck: false,
     }
   },
@@ -574,6 +577,17 @@ export default {
         this.formState.email.filled = false;
       }
     },
+    handleWebsite(value) {
+      this.website = value;
+      this.correctWebsite = this.validateWebsite(this.website);
+      if (this.correctWebsite) {
+        this.formState.website.syntax = true;
+        this.formState.website.filled = true;
+      } else {
+        this.formState.website.syntax = false;
+        this.formState.website.filled = false;
+      }
+    },
     handleLogin(value) {
       if (value.length >= this.formState.login.length) {
         this.formState.login.filled = true;
@@ -584,6 +598,13 @@ export default {
     validateEmail(email) {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
+    },
+    validateWebsite(website) {
+      const anyDomainMask = /^((http:\/\/|https:\/\/)?)((([a-zA-Z\-0-9]+\.)+(([a-zA-Z]{2,})(\/?))))/
+      if (anyDomainMask.test(website)) {
+        return true;
+      }
+      return false;
     },
     handlePhone(value) {
       if (value.length !== 17) {
@@ -686,6 +707,9 @@ export default {
     },
     'userDataLocal.email'(value) {
       this.handleEmail(value);
+    },
+    'userDataLocal.website'(value) {
+      this.handleWebsite(value);
     },
     'userDataLocal.login'(value) {
       this.handleLogin(value);
