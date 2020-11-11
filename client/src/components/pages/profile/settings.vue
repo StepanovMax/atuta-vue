@@ -289,7 +289,10 @@ export default {
       this.userData.employees.splice(index, 1);
     },
     editEmployeeItem(index) {
+      console.log('edit ::');
       this.stopEditingAllEmployeingItems();
+      this.closeAddingNewUser();
+      this.closeAddingEmployeeItem();
       this.userData.employees[index].isEdit = true;
     },
     stopEditingEmployeeItem(index) {
@@ -303,17 +306,29 @@ export default {
       )
     },
     addEmployeeItem() {
-      this.isAddNewItem = !this.isAddNewItem;
+      this.isAddNewItem = true;
+      this.closeAddingNewUser();
+    },
+    closeAddingEmployeeItem() {
+      this.isAddNewItem = false;
     },
     removeNewUser() {
+      this.clearNewUser();
+      this.addEmployeeItem();
+    },
+    clearNewUser() {
       this.newUser = {
         name: '',
         phoneNumber: '',
         isEdit: false,
       };
-      this.addEmployeeItem();
+    },
+    closeAddingNewUser() {
+      this.clearNewUser();
+      this.stopEditingAllEmployeingItems();
     },
     addUserToAnother() {
+      this.stopEditingAllEmployeingItems();
       this.userData.employees.push(this.newUser);
       this.newUser = {
         name: '',
@@ -321,7 +336,6 @@ export default {
         isEdit: false,
       };
       this.isAddNewItem = !this.isAddNewItem;
-      console.log('this.userData.employees ::', this.userData.employees);
     },
   },
 };

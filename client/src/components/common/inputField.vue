@@ -169,7 +169,6 @@ export default {
     handlePhone(number) {
       if (this.propType === 'phone') {
         this.filteredValue = this.gFormatPhone(number);
-        console.log('this.filteredValue ::', this.filteredValue);
       }
       this.$emit('update:value', this.filteredValue);
     },
@@ -183,7 +182,6 @@ export default {
     if (this.propValue) {
       // For the phone default value we should add a mask before enter into the input field.
       if (this.propType === 'phone') {
-        console.log('TEST AGAIN for PHONE', this.propValue);
         this.handlePhone(this.propValue);
       } else {
         // For another fields we've got no mask.
