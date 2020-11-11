@@ -48,7 +48,7 @@
       class="input phone"
       :class="propClass"
       v-model="filteredValue"
-      @input="handlePhone($event)"
+      @input="handlePhone($event.target.value)"
       :key="propKey"
       :name="propKey"
       @blur="blur($event)"
@@ -166,10 +166,10 @@ export default {
       const email = event.target.value;
       this.$emit('update:value', email);
     },
-    handlePhone(event) {
-      const phoneNumber = event.target.value;
-      if (this.propFilterPhoneNumber) {
-        this.filteredValue = this.gFormatPhone(phoneNumber);
+    handlePhone(number) {
+      if (this.propType === 'phone') {
+        this.filteredValue = this.gFormatPhone(number);
+        console.log('this.filteredValue ::', this.filteredValue);
       }
       this.$emit('update:value', this.filteredValue);
     },
@@ -181,11 +181,15 @@ export default {
   },
   beforeMount() {
     if (this.propValue) {
-      this.filteredValue = this.propValue;
+      // For the phone default value we should add a mask before enter into the input field.
+      if (this.propType === 'phone') {
+        console.log('TEST AGAIN for PHONE', this.propValue);
+        this.handlePhone(this.propValue);
+      } else {
+        // For another fields we've got no mask.
+        this.filteredValue = this.propValue;
+      }
     }
-  },
-  mounted() {
-    // console.log('filteredValue ::', this.filteredValue);
   },
 };
 </script>

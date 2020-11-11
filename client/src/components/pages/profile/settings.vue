@@ -156,8 +156,7 @@
                   propType="symbolsWithNumbers"
                   propClass="employees__input"
                   propKey="login"
-                  :value.sync="item.name"
-                  :propValue="item.name"
+                  :value.sync="newUser.name"
                 />
               </div>
               <div
@@ -173,8 +172,7 @@
                   "
                   propType="phone"
                   propKey="phone"
-                  :value.sync="item.phoneNumber"
-                  :propValue="item.phoneNumber"
+                  :value.sync="newUser.phoneNumber"
                   :propFilterPhoneNumber="false"
                 />
               </div>
@@ -185,15 +183,26 @@
                 "
               >
                 <button
-                  v-if="item.isEdit"
                   class="
                     btn
                     btn_grey
                     employees__btn
                   "
-                  @click="stopEditingEmployeeItem(index)"
+                  @click="addUserToAnother()"
                 >
                   Готово
+                </button>
+              </div>
+              <div class="employees__item-characteristic">
+                <button
+                  class="
+                    btn
+                    btn_grey
+                    employees__btn
+                  "
+                  @click="removeNewUser()"
+                >
+                  Удалить
                 </button>
               </div>
             </li>
@@ -205,6 +214,7 @@
                 btn_grey
                 employees__btn
               "
+              @click="addEmployeeItem()"
             >
               Добавить сотрудника
             </button>
@@ -242,6 +252,11 @@ export default {
       isAddNewItem: false,
       townsList: null,
       userRolesModified: [],
+      newUser: {
+        name: '',
+        phoneNumber: '',
+        isEdit: false,
+      },
     }
   },
   computed: {
@@ -249,13 +264,21 @@ export default {
       'userData',
       'isLoggedIn',
     ]),
+    newUserPhoneNumberCorrect() {
+      if (this.newUser.name.length >= 6 && this.newUser.phoneNumber.length === 17) {
+        return true
+      }
+      return false;
+    },
+    'newUser.phoneNumber'(value) {
+      this.handlePhone(value);
+    },
   },
   beforeMount() {
     this.userDataLocal = this.userData;
   },
   methods: {
     handlePhone(value) {
-      console.log('value ::', value);
       if (value.length !== 17) {
         this.formState.phone.filled = false;
       } else {
@@ -279,8 +302,26 @@ export default {
         }
       )
     },
-    addNewItem() {
+    addEmployeeItem() {
       this.isAddNewItem = !this.isAddNewItem;
+    },
+    removeNewUser() {
+      this.newUser = {
+        name: '',
+        phoneNumber: '',
+        isEdit: false,
+      };
+      this.addEmployeeItem();
+    },
+    addUserToAnother() {
+      this.userData.employees.push(this.newUser);
+      this.newUser = {
+        name: '',
+        phoneNumber: '',
+        isEdit: false,
+      };
+      this.isAddNewItem = !this.isAddNewItem;
+      console.log('this.userData.employees ::', this.userData.employees);
     },
   },
 };
