@@ -55,6 +55,17 @@
       @focus="focusPhone($event)"
       placeholder="+7 (555) 555-5555"
     >
+    <input
+      v-if="propType === 'website'"
+      type="text"
+      class="input website"
+      :class="propClass"
+      :value="filteredValue"
+      @input="handleEmail($event)"
+      :key="propKey"
+      :name="propKey"
+      @blur="blur($event)"
+    >
     <div
       v-if="propType === 'password' && filteredValue"
       class="input-field__eye"
