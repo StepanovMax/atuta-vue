@@ -8,4 +8,29 @@
   &:visited {
     color: $COLOR-BLUE-LIGHT;
   }
+
+  &_active {
+    &-menu {
+      color: $COLOR-BLUE-HOVER;
+      text-decoration: none;
+      font-weight: 500;
+
+      &-create-object {
+        font-weight: 400;
+        padding: 1px 5px;
+        border-radius: 3px;
+        color: $COLOR-WHITE;
+        text-decoration: none;
+        background-color: $COLOR-BLUE-LIGHT;
+
+        &:visited {
+          color: $COLOR-WHITE;
+        }
+      }
+
+      &:visited {
+        color: $COLOR-BLUE-HOVER;
+      }
+    }
+  }
 }

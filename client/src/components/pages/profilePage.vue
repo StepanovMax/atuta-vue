@@ -38,16 +38,22 @@
           "
         >
           <router-link
-            :to="{
-              name: 'settingsSubPage'
-            }"
-            class="
-              link
-              user-menu-mobile__menu-item-link
-            "
+            v-slot="{ navigate, href, isActive }"
+            :to="{ name: 'settingsSubPage' }"
             @click.native="clickOnLink()"
           >
-            Профиль
+            <a
+              :href="href"
+              :active="isActive"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              :class="{'link_active-menu': isActive}"
+              @click="navigate"
+            >
+              Профиль
+            </a>
           </router-link>
         </li>
         <li
@@ -57,11 +63,22 @@
           "
         >
           <router-link
+            v-slot="{ navigate, href, isActive }"
             :to="{ name: 'pocketSubPage' }"
-            class="link"
             @click.native="clickOnLink()"
           >
-            Кошелёк
+            <a
+              :href="href"
+              :active="isActive"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              :class="{'link_active-menu': isActive}"
+              @click="navigate"
+            >
+              Кошелёк
+            </a>
           </router-link>
         </li>
         <li
@@ -71,11 +88,22 @@
           "
         >
           <router-link
+            v-slot="{ navigate, href, isActive }"
             :to="{ name: 'favoritesSubPage' }"
-            class="link"
             @click.native="clickOnLink()"
           >
-            Избранное
+            <a
+              :href="href"
+              :active="isActive"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              :class="{'link_active-menu': isActive}"
+              @click="navigate"
+            >
+              Избранное
+            </a>
           </router-link>
         </li>
         <li
@@ -85,11 +113,22 @@
           "
         >
           <router-link
+            v-slot="{ navigate, href, isActive }"
             :to="{ name: 'messagesSubPage' }"
-            class="link"
             @click.native="clickOnLink()"
           >
-            Сообщения
+            <a
+              :href="href"
+              :active="isActive"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              :class="{'link_active-menu': isActive}"
+              @click="navigate"
+            >
+              Сообщения
+            </a>
           </router-link>
         </li>
         <li
@@ -99,16 +138,22 @@
           "
         >
           <router-link
-            :to="{
-              name: 'myObjectsSubPage'
-            }"
-            class="
-              link
-              user-menu-mobile__menu-item-link
-            "
+            v-slot="{ navigate, href, isActive }"
+            :to="{ name: 'myObjectsSubPage' }"
             @click.native="clickOnLink()"
           >
-            Мои объявления
+            <a
+              :href="href"
+              :active="isActive"
+              class="
+                link
+                user-menu-mobile__menu-item-link
+              "
+              :class="{'link_active-menu': isActive}"
+              @click="navigate"
+            >
+              Мои объявления
+            </a>
           </router-link>
         </li>
       </ul>
