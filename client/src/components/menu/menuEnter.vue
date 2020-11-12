@@ -39,6 +39,7 @@
               :active="isActive"
               :href="href"
               @click="navigate"
+              :class="{'link_active-menu': isActive}"
             >
               Сообщения
             </a>
@@ -59,6 +60,7 @@
               :active="isActive"
               :href="href"
               @click="navigate"
+              :class="{'link_active-menu': isActive}"
             >
               Кошелёк
             </a>
@@ -79,6 +81,7 @@
               :active="isActive"
               :href="href"
               @click="navigate"
+              :class="{'link_active-menu': isActive}"
             >
               Профиль
             </a>

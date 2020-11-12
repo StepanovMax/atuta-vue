@@ -10,6 +10,7 @@
           :active="isActive"
           :href="href"
           @click="navigate"
+          :class="{'link_active-menu': isActive}"
         >
           Компании
         </a>
@@ -28,6 +29,7 @@
           :active="isActive"
           :href="href"
           @click="navigate"
+          :class="{'link_active-menu': isActive}"
         >
           Избранное
         </a>
@@ -46,6 +48,7 @@
           :active="isActive"
           :href="href"
           @click="navigate"
+          :class="{'link_active-menu': isActive}"
         >
           Мои объявления
         </a>
@@ -58,15 +61,12 @@
       <router-link
         v-slot="{ href, navigate, isActive }"
         :to="{ name: 'addObject' }"
-        class="
-          btn
-          menu__btn
-        "
       >
         <a
           :active="isActive"
           :href="href"
           @click="navigate"
+          class="link_active-menu-create-object"
         >
           Подать объявление
         </a>
