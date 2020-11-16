@@ -22,7 +22,8 @@
         <label
           class="switcher__label"
           :class="[
-            { 'switcher__label_active': item.checked }
+            { 'switcher__label_active': item.checked },
+            { 'switcher__label_my-objects': propClass === 'myObjects' }
           ]"
           :for="'id-' + switcherId + '-' + index"
         >
@@ -49,6 +50,11 @@ export default {
     switcherId: {
       default: '',
       type: String
+    },
+    propClass: {
+      default: '',
+      type: String,
+      required: false,
     },
   },
   data() {
@@ -86,6 +92,17 @@ export default {
     updateValue(data) {
       this.$emit('update:value', data);
     },
+  },
+  mounted() {
+    [...this.items].forEach(
+      item => {
+        if (item.hasOwnProperty('checked')) {
+          if (item.checked === true) {
+            this.updateValue(item)
+          }
+        }
+      }
+    );
   },
 };
 </script>

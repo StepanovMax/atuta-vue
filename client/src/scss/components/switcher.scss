@@ -1,7 +1,9 @@
 $BORDER-RADIUS: 6px;
 
 .switcher {
+  width: 100%;
   display: inline-block;
+  margin-bottom: 15px;
 
   &__list {
     display: flex;
@@ -15,6 +17,7 @@ $BORDER-RADIUS: 6px;
     }
 
     &-item {
+      flex-grow: 1;
       cursor: pointer;
       background-color: #F1F1F1;
       border-left: 1px solid $COLOR-TEXT-DISABLED;
@@ -59,9 +62,10 @@ $BORDER-RADIUS: 6px;
   &__label {
     font-size: 14px;
     cursor: pointer;
-    padding: 12px 20px;
+    padding: 12px 0;
     display: block;
     text-align: center;
+    width: 100%;
 
     @include media(mobile) {
       text-align: left;
@@ -70,6 +74,10 @@ $BORDER-RADIUS: 6px;
 
     &_active {
       color: $COLOR-WHITE;
+    }
+
+    &_my-objects {
+      // padding: 12px 0;
     }
   }
 

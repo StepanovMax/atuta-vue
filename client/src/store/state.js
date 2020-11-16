@@ -43,6 +43,34 @@ const state = {
   filterDataDefault: filterDataDefault,
   objectDataSelected: objectDataSelected,
   filterDataSelected: filterDataSelected,
+  myObjects: [],
+  objectsStatuses: [
+    {
+      number: 0,
+      slug: 'onModeration',
+      label: 'На модерации',
+    },
+    {
+      number: 1,
+      slug: 'active',
+      label: 'Активные',
+    },
+    {
+      number: 2,
+      slug: 'awaitingForPayment',
+      label: 'Ожидают оплаты',
+    },
+    {
+      number: 3,
+      slug: 'declined',
+      label: 'Отклонено',
+    },
+    {
+      number: 4,
+      slug: 'completed',
+      label: 'Завершённые',
+    },
+  ],
 }
 
 export default state;

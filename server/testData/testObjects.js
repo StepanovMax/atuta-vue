@@ -1,5 +1,7 @@
 const testObjects = [
   {
+    parentID: 1,
+    status: 2,
     id: 873589,
     object: {
       slug: 'app',
@@ -89,6 +91,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 2,
     id: 873592,
     object: {
       slug: 'house',
@@ -170,6 +174,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 3,
     id: 873591,
     object: {
       slug: 'room',
@@ -246,6 +252,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 4,
     id: 873599,
     object: {
       slug: 'garage',
@@ -316,6 +324,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 3,
     id: 873593,
     object: {
       slug: 'sector',
@@ -385,6 +395,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 2,
     id: 873594,
     object: {
       slug: 'commercial',
@@ -454,6 +466,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 4,
     id: 873595,
     object: {
       slug: 'commercial',
@@ -527,6 +541,8 @@ const testObjects = [
     },
   },
   {
+    parentID: 1,
+    status: 1,
     id: 873596,
     object: {
       slug: 'commercial',

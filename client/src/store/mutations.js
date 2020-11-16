@@ -1,4 +1,7 @@
 const mutations = {
+  updateMyObjectsState(state, data) {
+    state.myObjects = data;
+  },
   updateFederalRegionsAlphabeticalState(state, data) {
     state.federalRegionsAlphabetical = data;
   },
