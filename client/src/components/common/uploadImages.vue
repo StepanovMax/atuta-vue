@@ -20,6 +20,7 @@
 
 
     <draggable
+      v-if="filesArray.length"
       class="upload-images__list"
       ghost-class="ghost"
       @sort="changeArrayOrder($event)"
@@ -111,7 +112,7 @@ export default {
     },
     propValue: {
       type: Array,
-      default: [],
+      default: () => [],
       required: false,
     },
   },
