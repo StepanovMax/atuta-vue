@@ -76,4 +76,31 @@ router.post(
   }
 );
 
+router.post(
+  '/get-objects-by-parent-id',
+  cors(corsOptions),
+  (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    const { body } = req;
+    const parentID = parseInt(body.id);
+    let objects = [];
+    testObjects.map(
+      item => {
+        if (item.parentID === parentID) {
+          objects.push(item);
+        }
+      }
+    );
+    if (objects) {
+      res.status(200).send(objects);
+    } else {
+      res.status(404).send({
+        message: 'Object not found'
+      });
+    }
+  }
+);
+
 export default router;

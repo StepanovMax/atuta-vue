@@ -1,51 +1,61 @@
 <template>
   <div class="grid">
-
     <div
-      v-if="propGridSorting"
-      class="grid__buttons"
+      v-if="propGridItems.length"
     >
-      <switcherGrid
-        :value.sync="dataGridView"
-      />
 
-      <sortObjects
-        :propObjectsForSorting="propGridItems"
-        :value.sync="dataSortedObjects"
-      />
+      <div
+        v-if="propGridSorting"
+        class="grid__buttons"
+      >
+        <switcherGrid
+          :value.sync="dataGridView"
+        />
+
+        <sortObjects
+          :propObjectsForSorting="propGridItems"
+          :value.sync="dataSortedObjects"
+        />
+      </div>
+
+      <ul
+        class="grid__list"
+        :class="[
+          {'grid__list_net': dataGridView === 'net'},
+          { 'grid__list_list': dataGridView === 'list'},
+        ]"
+      >
+        <li
+          class="grid__list-item"
+          :class="[
+            {'grid__list-item_net': dataGridView === 'net'},
+            {'grid__list-item_list': dataGridView === 'list'},
+          ]"
+          v-for="(item, index) in propGridItems"
+          :key="'key-' + item.id + '-' + index"
+        >
+          <cardObject
+            v-if="propItemType === 'object'"
+            :propObjectView="dataGridView"
+            :key="'key-' + item.id + '-' + index"
+            :propObjectData="item"
+            :propIsSample="false"
+          />
+
+          <cardCompany
+            v-if="propItemType === 'company'"
+            :key="'key-' + item.id + '-' + index"
+            :propCompanyData="item"
+          />
+        </li>
+      </ul>
     </div>
 
-    <ul
-      class="grid__list"
-      :class="[
-        {'grid__list_net': dataGridView === 'net'},
-        { 'grid__list_list': dataGridView === 'list'},
-      ]"
+    <p
+      v-if="!propGridItems.length"
     >
-      <li
-        class="grid__list-item"
-        :class="[
-          {'grid__list-item_net': dataGridView === 'net'},
-          {'grid__list-item_list': dataGridView === 'list'},
-        ]"
-        v-for="(item, index) in dataGridItems"
-        :key="'key-' + item.id + '-' + index"
-      >
-        <cardObject
-          v-if="propItemType === 'object'"
-          :propObjectView="dataGridView"
-          :key="'key-' + item.id + '-' + index"
-          :propObjectData="item"
-          :propIsSample="false"
-        />
-
-        <cardCompany
-          v-if="propItemType === 'company'"
-          :key="'key-' + item.id + '-' + index"
-          :propCompanyData="item"
-        />
-      </li>
-    </ul>
+      Объектов не найдено.
+    </p>
   </div>
 </template>
 
@@ -103,9 +113,6 @@ export default {
   },
   beforeMount() {
     this.dataGridItems = this.propGridItems;
-  },
-  mounted() {
-    // this.dataGridItems = this.propGridItems;
   },
 };
 </script>

@@ -167,5 +167,8 @@ export default {
       this.menuIsOpen = false;
     },
   },
+  mounted() {
+    // console.log('this.userData ::', this.userData);
+  },
 };
 </script>
