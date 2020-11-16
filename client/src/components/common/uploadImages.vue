@@ -164,7 +164,7 @@ export default {
           this.filesArray.forEach(
             item => {
               if (item.id === canvasID) {
-                console.log('canvasID catch ::', this.filesArray.length, i);
+                // console.log('canvasID catch ::', this.filesArray.length, i);
                 index = this.filesArray.length;
                 canvasID = 'canvas-' + index;
               }
