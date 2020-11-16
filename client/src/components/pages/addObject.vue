@@ -1186,14 +1186,14 @@ export default {
         const indexFloor = this.formIsFilledArray.indexOf('floor');
         const indexFloorAll = this.formIsFilledArray.indexOf('floorAll');
         if (this.createdObject.commercial.type.value.slug === 'sector') {
-          console.log('test', indexFloor, indexFloorAll);
+          // console.log('test', indexFloor, indexFloorAll);
           if (indexFloor > -1) {
-            console.log('test 1');
+            // console.log('test 1');
             // this.formIsFilledArray.splice(indexFloor, 1);
             this.createdObject.commercial.floor.required = false;
           }
           if (indexFloorAll > -1) {
-            console.log('test 2');
+            // console.log('test 2');
             // this.formIsFilledArray.splice(indexFloorAll, 1);
             this.createdObject.commercial.floorAll.required = false;
           }
