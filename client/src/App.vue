@@ -58,6 +58,7 @@ export default {
   },
   watch: {
     $route(to, from) {
+      this.$store.commit('updatePreviousPageState', from);
       this.closeMobileMenus();
       this.changeMobileQuestionStateOnWatch(to);
     }
