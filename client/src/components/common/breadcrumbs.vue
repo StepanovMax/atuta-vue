@@ -13,7 +13,7 @@
         </router-link>
       </li>
       <li
-        v-if="propPageName"
+        v-if="pageObject"
         class="breadcrumbs__list-item"
       >
         <router-link
@@ -64,11 +64,12 @@ export default {
       } else if (this.propPageName === 'helpPage' && !this.mobileQuestionState) {
         pageObject.name = 'helpPage';
         pageObject.label = 'Помощь';
+      } else if (this.propPageName === 'myObjectsSubPage') {
+        pageObject.name = 'myObjectsSubPage';
+        pageObject.label = 'Мои объявления';
       } else {
-        pageObject.name = '';
-        pageObject.label = '';
+        pageObject = null;
       }
-      // console.log('this.mobileQuestionState ::', this.mobileQuestionState);
       return pageObject;
     }
   },

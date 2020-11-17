@@ -1,4 +1,7 @@
 const mutations = {
+  updatePreviousPageState(state, data) {
+    state.previousPage = data;
+  },
   updateMyObjectsState(state, data) {
     state.myObjects = data;
   },

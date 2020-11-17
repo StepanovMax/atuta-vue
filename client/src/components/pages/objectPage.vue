@@ -13,7 +13,9 @@
         <div class="object-page__row">
           <div class="object-page__side-left">
 
-            <breadcrumbs />
+            <breadcrumbs
+              :propPageName="backToPage"
+            />
 
             <div class="object-page__mobile-wrap">
 
@@ -958,6 +960,7 @@ import imagesCarousel from '../common/imagesCarousel.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 import axios from 'axios';
+import { mapState, store, commit } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
@@ -999,6 +1002,7 @@ export default {
   },
   data() {
     return {
+      // backToPage: '',
       objectData: null,
       message: {},
       objectID: this.$route.params.id,
@@ -1017,7 +1021,29 @@ export default {
       storedObjects: false,
     }
   },
+  watch: {
+    backToPage: {
+      handler() {
+        if (this.previousPage) {
+          console.log('previousPage ::', this.previousPage);
+          // this.companiesPage
+        }
+      },
+      deep: true
+    },
+  },
   computed: {
+    ...mapState([
+      'previousPage',
+    ]),
+    backToPage() {
+      if (this.previousPage) {
+        console.log('previousPage ->', this.previousPage.name);
+        return this.previousPage.name;
+        // this.companiesPage
+      }
+      return '';
+    },
     urlGetObjectById() {
       const host = this.getHost();
       const url = `${host.api}` + '/objects/get-object-by-id';

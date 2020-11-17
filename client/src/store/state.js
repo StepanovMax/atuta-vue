@@ -30,6 +30,7 @@ const user = {
 };
 
 const state = {
+  previousPage: null,
   count: 11.7,
   isLoggedIn2: false,
   isLoggedIn: false,
