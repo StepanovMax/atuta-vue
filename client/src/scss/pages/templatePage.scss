@@ -1,6 +1,7 @@
 .template-page {
   grid-area: article;
   height: 100%;
+  padding-top: 50px;
 
   @extend .container-3-columns;
 
