@@ -1,9 +1,24 @@
 .template-page {
   grid-area: article;
   height: 100%;
-  padding-top: 50px;
 
   @extend .container-3-columns;
+
+  @include media(desktop) {
+    padding-top: 50px;
+  }
+
+  @include media(tablet-landscape) {
+    padding-top: 30px;
+  }
+
+  @include media(tablet-portrait) {
+    padding-top: 15px;
+  }
+
+  @include media(mobile) {
+    padding-top: 0;
+  }
 
   &__wrap {
     display: flex;

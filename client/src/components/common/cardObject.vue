@@ -787,11 +787,11 @@ export default {
     favValue: {
       handler(value) {
         if (value) {
-          console.log('Add to Fav ::', value);
-          console.log('Add to Fav ::', this.dataObjectData);
+          // console.log('Add to Fav ::', value);
+          // console.log('Add to Fav ::', this.dataObjectData);
           this.addItemToFavourites(this.dataObjectData);
         } else {
-          console.log('Remove from Fav ::', value);
+          // console.log('Remove from Fav ::', value);
           this.removeItemFromFavourites(this.dataObjectData.id);
         }
       },
@@ -804,14 +804,14 @@ export default {
       const itemAlreadyInFavs = this.favouriteObjects.some(
         item => {
           if (item.id === object.id) {
-            console.log('item.id', item.id);
-            console.log('object.id', object.id);
+            // console.log('item.id', item.id);
+            // console.log('object.id', object.id);
             return true;
           }
           return false;
         }
       )
-      console.log('itemAlreadyInFavs', itemAlreadyInFavs);
+      // console.log('itemAlreadyInFavs', itemAlreadyInFavs);
       if (!itemAlreadyInFavs) {
         newFavArray.push(object);
         this.$store.commit('updateFavouriteObjectsState', newFavArray);

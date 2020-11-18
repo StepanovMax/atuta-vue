@@ -22,7 +22,7 @@
 
     <div
       v-local
-      v-if="userData"
+      v-if="false && userData"
       class="local-output-data"
     >
       <h6 class="
@@ -39,7 +39,7 @@
 
     <div
       v-local
-      v-if="favouriteObjects"
+      v-if="false && favouriteObjects"
       class="local-output-data"
     >
       <h6 class="

@@ -66,6 +66,7 @@ $BORDER-RADIUS: 6px;
     display: block;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 
     @include media(mobile) {
       text-align: left;
@@ -74,10 +75,6 @@ $BORDER-RADIUS: 6px;
 
     &_active {
       color: $COLOR-WHITE;
-    }
-
-    &_my-objects {
-      // padding: 12px 0;
     }
   }
 
