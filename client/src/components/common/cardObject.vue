@@ -86,6 +86,8 @@
               v-if="propObjectView !== 'list'"
               :propColor="moveToFavColor"
               propIconView="mini"
+              :propIsSelected="propIsSelected"
+              :value.sync="favValue"
             />
           </button>
         </div>
@@ -692,6 +694,8 @@
             v-if="propObjectView === 'list'"
             :propColor="moveToFavColor"
             propIconView="mini"
+            :propIsSelected="propIsSelected"
+            :value.sync="favValue"
           />
           <showPhoneNumber
             propClass="object-card__btn object-card__btn_show-phone"
@@ -731,6 +735,7 @@ export default {
       dataObjectData: this.propObjectData,
       dataIsShowPhoneNumber: false,
       host: this.getHost(),
+      favValue: false,
     }
   },
   components: {
@@ -764,6 +769,11 @@ export default {
       default: false,
       required: false,
     },
+    propIsSelected: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   watch: {
     propObjectData: {
@@ -774,8 +784,60 @@ export default {
       },
       deep: true
     },
+    favValue: {
+      handler(value) {
+        if (value) {
+          console.log('Add to Fav ::', value);
+          console.log('Add to Fav ::', this.dataObjectData);
+          this.addItemToFavourites(this.dataObjectData);
+        } else {
+          console.log('Remove from Fav ::', value);
+          this.removeItemFromFavourites(this.dataObjectData.id);
+        }
+      },
+      deep: true
+    },
   },
   methods: {
+    addItemToFavourites(object) {
+      const newFavArray = [...this.favouriteObjects];
+      const itemAlreadyInFavs = this.favouriteObjects.some(
+        item => {
+          if (item.id === object.id) {
+            console.log('item.id', item.id);
+            console.log('object.id', object.id);
+            return true;
+          }
+          return false;
+        }
+      )
+      console.log('itemAlreadyInFavs', itemAlreadyInFavs);
+      if (!itemAlreadyInFavs) {
+        newFavArray.push(object);
+        this.$store.commit('updateFavouriteObjectsState', newFavArray);
+      }
+    },
+    removeItemFromFavourites(id) {
+      const newFavArray = [];
+      const newFavArrayID = [];
+      this.favouriteObjects.forEach(
+        item => {
+          if (item.id !== id) {
+            newFavArray.push(item);
+          }
+        }
+      )
+      this.userData.favouriteObjectsListID.forEach(
+        item => {
+          if (item !== id) {
+            newFavArrayID.push(item);
+          }
+        }
+      )
+      this.userData.favouriteObjectsListID = newFavArrayID;
+      this.$store.commit('updateUserDataState', this.userData);
+      this.$store.commit('updateFavouriteObjectsState', newFavArray);
+    },
     timeConverter(UNIX_timestamp){
       const a = new Date(UNIX_timestamp * 1000);
       const year = a.getFullYear();
@@ -793,6 +855,8 @@ export default {
   },
   computed: {
     ...mapState([
+      'userData',
+      'favouriteObjects',
       'filterDataSelected',
     ]),
     moveToFavColor() {

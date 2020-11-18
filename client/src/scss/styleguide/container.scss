@@ -8,14 +8,14 @@
   @include media(desktop) {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-columns: 20% 1fr 15%;
+    grid-template-columns: 20% 1fr 16%;
     grid-template-areas: "filter article adsRight";
     gap: 0 30px;
   }
 
   @include media(tablet-landscape) {
     grid-template-rows: 1fr;
-    grid-template-columns: 20% 1fr 15%;
+    grid-template-columns: 20% 1fr 16%;
     grid-template-areas: "filter article adsRight";
     gap: 0 20px;
   }
@@ -45,14 +45,14 @@
   
     @include media(desktop) {
       grid-template-rows: 1fr;
-      grid-template-columns: 1fr 15%;
+      grid-template-columns: 1fr 16%;
       grid-template-areas: "article adsRight";
       gap: 0 30px;
     }
   
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
-      grid-template-columns: 1fr 15%;
+      grid-template-columns: 1fr 16%;
       grid-template-areas: "article";
       gap: 0 20px;
     }
@@ -75,14 +75,14 @@
   
     @include media(desktop) {
       grid-template-rows: 1fr;
-      grid-template-columns: 15% 1fr 15%;
+      grid-template-columns: 16% 1fr 16%;
       grid-template-areas: "adsLeft article adsRight";
       gap: 0 30px;
     }
 
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
-      grid-template-columns: 15% 1fr 15%;
+      grid-template-columns: 16% 1fr 16%;
       grid-template-areas: "adsLeft article adsRight";
       gap: 0 20px;
     }
@@ -111,7 +111,7 @@
 
     @include media(desktop) {
       grid-template-rows: 1fr;
-      grid-template-columns: 20% 1fr 15%;
+      grid-template-columns: 20% 1fr 16%;
       grid-template-areas: "filter article adsRight";
       gap: 0 30px;
     }
@@ -144,7 +144,7 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-columns: 15% 1fr 15%;
+      grid-template-columns: 16% 1fr 16%;
       grid-template-areas: "adsLeft article adsRight";
       gap: 0 30px;
     }
@@ -152,7 +152,7 @@
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-columns: 15% 1fr 15%;
+      grid-template-columns: 16% 1fr 16%;
       grid-template-areas: "adsLeft article adsRight";
       gap: 0 20px;
     }
@@ -169,7 +169,7 @@
 
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
-      grid-template-columns: 15% 1fr 15%;
+      grid-template-columns: 16% 1fr 16%;
       grid-template-areas: "adsLeft article adsRight";
       gap: 0 20px;
     }

@@ -43,6 +43,11 @@ export default {
       default: '',
       required: true
     },
+    propIsSelected: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
@@ -52,6 +57,17 @@ export default {
   methods: {
     clickOnHeartIcon() {
       this.dataIsIconFilled = !this.dataIsIconFilled;
+      if (this.dataIsIconFilled) {
+        this.$emit('update:value', 1);
+      } else {
+        console.log('this.dataIsIconFilled', this.dataIsIconFilled);
+        this.$emit('update:value', 0);
+      }
+    },
+  },
+  mounted() {
+    if (this.propIsSelected) {
+      this.dataIsIconFilled = this.propIsSelected;
     }
   },
 };

@@ -40,6 +40,7 @@
             :key="'key-' + item.id + '-' + index"
             :propObjectData="item"
             :propIsSample="false"
+            :propIsSelected="propIsSelected"
           />
 
           <cardCompany
@@ -101,6 +102,11 @@ export default {
       type: String,
       default: '',
       required: true,
+    },
+    propIsSelected: {
+      type: Boolean,
+      default: false,
+      required: false,
     },
   },
   watch: {

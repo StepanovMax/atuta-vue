@@ -29,15 +29,6 @@
       />
     </div>
 
-    <div>
-      <pre
-        v-if="false"
-        v-local
-      >
-        {{ objectsGroupedByStatuses }}
-      </pre>
-    </div>
-
   </div>
 </template>
 
@@ -106,28 +97,6 @@ export default {
       return array;
     },
   },
-  watch: {
-    // Get objects from server by the parentID.
-    // async userDataComputed(value) {
-    //   // console.log('myObjects -> userData ::', value.id);
-    //   const result = await axios.post(
-    //     this.urlGetObjectsByParentId,
-    //     {
-    //       id: value.id
-    //     }
-    //   )
-    //     .then(function (response) {
-    //       return response;
-    //     })
-    //     .catch(function (error) {
-    //       console.error('Error ::', error);
-    //     });
-    //   if (result) {
-    //     console.log('this.objectsGroupedByStatuses :::', this.objectsGroupedByStatuses);
-    //     this.arrayWithCountedStatuses = this.toCountArray(result.data);
-    //   }
-    // },
-  },
   methods: {
     // Divide objects by statuses into arrays.
     toCountArray(objects) {
@@ -166,7 +135,6 @@ export default {
       return arrayWithCountedStatuses;
     },
     async checkUsersObjects(value) {
-      // console.log('checkUsersObjects ::');
       const result = await axios.post(
         this.urlGetObjectsByParentId,
         {
@@ -184,17 +152,9 @@ export default {
         this.$store.commit('updateMyObjectsState', result.data);
         this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
       }
-      // console.log('watch selectedStatus', value);
     },
   },
-  // async created() {
-  //   // console.log('myObjects created ::');
-  //   if (this.userDataComputed) {
-  //     // console.log('userDataComputed ::', this.userDataComputed);
-  //   }
-  // },
   mounted() {
-    // console.log('userData >>', this.userData);
     // If we got objects already.
     if (this.myObjects.length) {
       // console.log('If we got objects already!', 'this.selectedStatus >>', this.selectedStatus);
@@ -203,8 +163,9 @@ export default {
     } else if (this.userData) {
       // console.log('If we don\'t get objects yet');
       this.checkUsersObjects(this.userData);
+    } else {
+      // console.log('Else');
     }
-    // console.log('myObjects mounted ::');
   },
 };
 </script>

@@ -10,6 +10,7 @@ import App from './App.vue';
 import getHost from './plugins/getHost.js';
 import formatNumbers from './plugins/formatNumbers.js';
 import cookie from './plugins/cookie.js';
+import login from './plugins/login.js';
 import './scss/index.scss';
 
 import Meta from 'vue-meta';
@@ -25,9 +26,11 @@ Vue.directive(
 
 Vue.use(Meta);
 Vue.use(vClickOutside);
-Vue.use(formatNumbers);
+
+Vue.use(login);
 Vue.use(cookie);
 Vue.use(getHost);
+Vue.use(formatNumbers);
 
 Vue.config.productionTip = false;
 
