@@ -1,4 +1,7 @@
 const mutations = {
+  updateFavouriteObjectsState(state, data) {
+    state.favouriteObjects = data;
+  },
   updatePreviousPageState(state, data) {
     state.previousPage = data;
   },

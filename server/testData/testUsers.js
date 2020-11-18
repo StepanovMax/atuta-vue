@@ -77,7 +77,8 @@ const testUsers = [
         phoneNumber: '+79612701891',
         isEdit: false,
       },
-    ]
+    ],
+    favouriteObjectsListID: [873589, 873592, 873596],
   },
 ];
 

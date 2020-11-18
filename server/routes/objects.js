@@ -103,4 +103,35 @@ router.post(
   }
 );
 
+router.post(
+  '/get-favourite-objects-by-id',
+  cors(corsOptions),
+  (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    const { body } = req;
+    const idsArray = body.idsArray;
+    let objects = [];
+    testObjects.map(
+      item => {
+        idsArray.forEach(
+          subItem => {
+            if (item.id === subItem) {
+              objects.push(item);
+            }
+          }
+        )
+      }
+    );
+    if (objects) {
+      res.status(200).send(objects);
+    } else {
+      res.status(404).send({
+        message: 'Object not found'
+      });
+    }
+  }
+);
+
 export default router;

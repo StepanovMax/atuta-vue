@@ -278,9 +278,15 @@ export default {
       if (loginResult.data) {
         this.$store.commit('updateLoggedInState', true);
         this.$store.commit('updateUserDataState', loginResult.data);
+        this.addFavouriteObjectsToState(loginResult.data.favouriteObjectsListID);
         this.$router.push({ name: 'homePage'});
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }
+    },
+    addFavouriteObjectsToState(array) {
+      const newFavArray = [...this.favouriteObjects];
+      newFavArray.push(object);
+      this.$store.commit('updateFavouriteObjectsState', newFavArray);
     },
   },
   mounted() {

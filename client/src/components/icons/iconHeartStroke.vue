@@ -40,13 +40,5 @@ export default {
       required: false
     },
   },
-  watch: {
-    propIsIconFilled: {
-      handler(value) {
-        console.log('propColor', this.propColor, this.propIsIconFilled);
-      },
-      deep: true
-    }
-  },
 };
 </script>

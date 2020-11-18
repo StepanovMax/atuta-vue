@@ -84,7 +84,6 @@ export default {
       )
         .then(
           response => {
-            // console.log('App created Response.data ::', response.data);
             return response.data;
           }
         )
@@ -96,45 +95,28 @@ export default {
         );
       return getUserDataResult;
     },
-    async timeOut() {
-      let promise = await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          console.log('setTimeout result ::');
-          resolve("setTimeout result!");
-        }, 4000);
-      });
-
-
-      const data = await Promise.resolve({ id: this.$route.params.id });
-
-
-      if (promise) {
-        console.log('promise ::', promise);
-        return promise;
-      }
-    },
-  },
-  beforeCreate() {
-    // console.log('beforeCreate ::');
-    // console.log(this.getCookie('isLoggedIn'));
   },
   async created() {
-    // console.log('app -> created ::');
-    // console.log('created ::');
+    // TEMP
+    // If user has cookie with the TRUE loggedIn data,
     if (this.getCookie('isLoggedIn') === 'true') {
+      // then update state to true.
       this.$store.commit('updateLoggedInState', true);
+    // If not,
     } else {
+      // then update state to false.
       this.$store.commit('updateLoggedInState', false);
     }
 
+    // If the state loggedIn data is TRUE,
     if (this.isLoggedIn) {
+      // then loading data from the server.
       const loginResult = await axios.post(
         this.urlLogin,
         this.loginData
       )
         .then(
           response => {
-            // console.log('Response.data ::', response.data);
             return response;
           }
         )
@@ -144,22 +126,20 @@ export default {
               return false;
             }
           );
-      // console.log('loginResult ::', loginResult);
+      // If the data has loaded,
       if (loginResult.data) {
-        // alert('test');
+        // then fill out to TRUE loggedIn statement.
         this.$store.commit('updateLoggedInState', true);
+        // then fill out userData statement.
         this.$store.commit('updateUserDataState', loginResult.data);
+        // then loading the user's favourite objects.
+        this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
+        // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
+        // then get towns list.
+        await this.$store.dispatch('getTowns');
       }
     }
-  },
-  beforeMount() {
-    // console.log('beforeMount isLoggedIn ::');
-    // console.log(this.getCookie('isLoggedIn'));
-  },
-  async mounted() {
-    // console.log('App mounted ::');
-    await this.$store.dispatch('getTowns');
   },
 };
 </script>
