@@ -224,9 +224,23 @@
       </div>
     </div>
 
-    <pre v-local>
-      {{ userData }}
-    </pre>
+
+    <div
+      v-local
+      v-if="false && userData"
+      class="local-output-data"
+    >
+      <h6 class="
+        title
+        title_h6
+        title_bold
+      ">
+        userData
+      </h6>
+      <pre>
+        {{ userData }}
+      </pre>
+    </div>
 
   </div>
 </template>
