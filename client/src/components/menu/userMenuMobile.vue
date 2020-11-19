@@ -118,7 +118,7 @@
             "
           >
             <router-link
-              :to="{ name: 'messagesSubPage' }"
+              :to="{ name: 'dialogsSubPage' }"
               class="link"
               @click.native="clickOnLink()"
             >

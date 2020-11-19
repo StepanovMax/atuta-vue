@@ -114,7 +114,7 @@
         >
           <router-link
             v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'messagesSubPage' }"
+            :to="{ name: 'dialogsSubPage' }"
             @click.native="clickOnLink()"
           >
             <a
@@ -165,7 +165,9 @@
 
         <div class="template-page__header-top">
 
-          <breadcrumbs />
+          <breadcrumbs
+            :propPageName="pageName"
+          />
 
         </div>
 
@@ -210,14 +212,30 @@ export default {
     breadcrumbs,
     filterDesktop,
   },
+  data() {
+    return {
+      pageName: '',
+    }
+  },
+  watch: { 
+    '$route': {
+      handler: function(value) {
+        // console.log('route ::', value);
+        if (value.name === 'dialogSubPageSingle') {
+          this.pageName = 'dialogsSubPage';
+          // console.log('pageName', value.name);
+        } else {
+          this.pageName = '';
+        }
+      },
+      deep: true,
+    }
+  },
   computed: {
     ...mapState([
       'userData',
       'isLoggedIn',
     ]),
-  },
-  created() {
-    
   },
   methods: {
     closeUserMenuMobile() {

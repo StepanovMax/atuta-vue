@@ -24,4 +24,12 @@
     color: $COLOR-WHITE;
     background-color: $COLOR-BLUE-LIGHT;
   }
+
+  &_align-right {
+    text-align: right;
+  }
+
+  &_bold {
+    font-weight: 700;
+  }
 }

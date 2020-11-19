@@ -134,6 +134,8 @@ export default {
         this.$store.commit('updateUserDataState', loginResult.data);
         // then loading the user's favourite objects.
         this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
+        // then loading the user's dialogs.
+        this.getDialogsByUserID(loginResult.data.id);
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
         // then get towns list.

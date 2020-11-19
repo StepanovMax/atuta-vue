@@ -7,10 +7,11 @@ import store from './store/store.js';
 
 import App from './App.vue';
 // plugins
-import getHost from './plugins/getHost.js';
-import formatNumbers from './plugins/formatNumbers.js';
-import cookie from './plugins/cookie.js';
 import login from './plugins/login.js';
+import cookie from './plugins/cookie.js';
+import getHost from './plugins/getHost.js';
+import dialogs from './plugins/dialogs.js';
+import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
 
 import Meta from 'vue-meta';
@@ -24,12 +25,20 @@ Vue.directive(
   }
 );
 
+Vue.directive(
+  'hide',
+  el => {
+    el.style.display = 'none';
+  }
+);
+
 Vue.use(Meta);
 Vue.use(vClickOutside);
 
 Vue.use(login);
 Vue.use(cookie);
 Vue.use(getHost);
+Vue.use(dialogs);
 Vue.use(formatNumbers);
 
 Vue.config.productionTip = false;

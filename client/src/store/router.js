@@ -18,7 +18,8 @@ import companiesPage from '../components/pages/companiesPage.vue';
 // Profile sub pages
 import pocket from '../components/pages/profile/pocket.vue';
 import settings from '../components/pages/profile/settings.vue';
-import messages from '../components/pages/profile/messages.vue';
+import dialogsSubPage from '../components/pages/profile/dialogsSubPage.vue';
+import dialogSubPageSingle from '../components/pages/profile/dialogSubPageSingle.vue';
 import myObjects from '../components/pages/profile/myObjects.vue';
 import favorites from '../components/pages/profile/favorites.vue';
 // Reg section
@@ -93,9 +94,9 @@ const router = new Router({
           component: settings,
         },
         {
-          path: '/profile/messages',
-          name:'messagesSubPage',
-          component: messages,
+          path: '/profile/dialogs',
+          name:'dialogsSubPage',
+          component: dialogsSubPage,
         },
         {
           path: '/profile/pocket',
@@ -111,6 +112,11 @@ const router = new Router({
           path: '/profile/my-objects',
           name:'myObjectsSubPage',
           component: myObjects,
+        },
+        {
+          path: '/profile/dialog/:id',
+          name:'dialogSubPageSingle',
+          component: dialogSubPageSingle,
         },
       ],
     },
