@@ -57,6 +57,7 @@ export default {
       'userData',
       'myObjects',
       'objectsStatuses',
+      'favouriteObjects',
     ]),
     userDataComputed() {
       if (this.userData) {
@@ -148,7 +149,6 @@ export default {
           console.error('Error ::', error);
         });
       if (result) {
-        // console.log('this.objectsGroupedByStatuses :::', this.objectsGroupedByStatuses);
         this.$store.commit('updateMyObjectsState', result.data);
         this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
       }
@@ -157,14 +157,7 @@ export default {
   mounted() {
     // If we got objects already.
     if (this.myObjects.length) {
-      // console.log('If we got objects already!', 'this.selectedStatus >>', this.selectedStatus);
       this.selectedStatus = 'all';
-    // If we don't get objects yet.
-    } else if (this.userData) {
-      // console.log('If we don\'t get objects yet');
-      this.checkUsersObjects(this.userData);
-    } else {
-      // console.log('Else');
     }
   },
 };
