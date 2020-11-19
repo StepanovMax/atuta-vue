@@ -279,16 +279,11 @@ export default {
       if (loginResult.data) {
         this.$store.commit('updateLoggedInState', true);
         this.$store.commit('updateUserDataState', loginResult.data);
-        this.addFavouriteObjectsToState(loginResult.data.favouriteObjectsListID);
+        // Call the plugin for fav.objects
+        this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         this.$router.push({ name: 'homePage'});
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }
-    },
-    addFavouriteObjectsToState(array) {
-      // console.log('this.favouriteObjects ::', typeof this.favouriteObjects);
-      // const newFavArray = [...this.favouriteObjects];
-      // newFavArray.push(object);
-      this.$store.commit('updateFavouriteObjectsState', array);
     },
   },
   mounted() {
