@@ -195,6 +195,7 @@ export default {
   computed: {
     ...mapState([
       'isLoggedIn',
+      'favouriteObjects',
     ]),
     passwordCorrect() {
       if (
@@ -284,9 +285,10 @@ export default {
       }
     },
     addFavouriteObjectsToState(array) {
-      const newFavArray = [...this.favouriteObjects];
-      newFavArray.push(object);
-      this.$store.commit('updateFavouriteObjectsState', newFavArray);
+      // console.log('this.favouriteObjects ::', typeof this.favouriteObjects);
+      // const newFavArray = [...this.favouriteObjects];
+      // newFavArray.push(object);
+      this.$store.commit('updateFavouriteObjectsState', array);
     },
   },
   mounted() {

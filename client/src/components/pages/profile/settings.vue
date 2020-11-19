@@ -23,7 +23,8 @@
 
     <div
       v-if="
-        userData.role.slug === 'agency'
+        userData.role
+        || userData.role.slug === 'agency'
         || userData.role.slug === 'builder'
       "
       class="settings-sub-page__row"
