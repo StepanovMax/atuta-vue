@@ -1,4 +1,7 @@
 const mutations = {
+  updateDialogsState(state, data) {
+    state.dialogs = data;
+  },
   updateFavouriteObjectsState(state, data) {
     state.favouriteObjects = data;
   },

@@ -30,6 +30,7 @@ const user = {
 };
 
 const state = {
+  dialogs: [],
   favouriteObjects: [],
   previousPage: null,
   count: 11.7,

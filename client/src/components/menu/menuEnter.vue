@@ -32,7 +32,7 @@
         >
           <router-link
             v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'messagesSubPage' }"
+            :to="{ name: 'dialogsSubPage' }"
             class="link"
           >
             <a

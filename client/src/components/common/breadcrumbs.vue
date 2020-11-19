@@ -67,6 +67,9 @@ export default {
       } else if (this.propPageName === 'myObjectsSubPage') {
         pageObject.name = 'myObjectsSubPage';
         pageObject.label = 'Мои объявления';
+      } else if (this.propPageName === 'dialogsSubPage') {
+        pageObject.name = 'dialogsSubPage';
+        pageObject.label = 'Мои сообщения';
       } else {
         pageObject = null;
       }

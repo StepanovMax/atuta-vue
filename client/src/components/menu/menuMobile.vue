@@ -91,7 +91,7 @@
       <li class="menu-mobile__list-item list__item">
         <router-link
           v-slot="{ href, navigate, isActive }"
-          :to="{ name: 'messagesSubPage' }"
+          :to="{ name: 'dialogsSubPage' }"
           class="link menu-mobile__link"
         >
           <a
