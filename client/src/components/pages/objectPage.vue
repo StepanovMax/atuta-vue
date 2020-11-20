@@ -1038,7 +1038,7 @@ export default {
     ]),
     backToPage() {
       if (this.previousPage) {
-        console.log('previousPage ->', this.previousPage.name);
+        // console.log('previousPage ->', this.previousPage.name);
         return this.previousPage.name;
         // this.companiesPage
       }

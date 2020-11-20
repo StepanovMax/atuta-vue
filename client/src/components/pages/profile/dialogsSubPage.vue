@@ -55,7 +55,19 @@
                   :title="`Перейти в ${item.dialogTitle}`"
                 >
                   <div class="card-messages__inner-wrap">
-                    {{ item.dialogTitle }}
+                    <div class="card-messages__inner-wrap-center">
+                      <p class="paragraph">
+                        {{ item.clientTitle }}
+                      </p>
+                      <p class="paragraph">
+                        {{ item.dialogTitle }}
+                      </p>
+                    </div>
+                    <div class="card-messages__inner-wrap-right">
+                      <p class="paragraph">
+                        {{ gTimestampToDateConverter(item.dialogDate) }}
+                      </p>
+                    </div>
                   </div>
                 </router-link>
               </div>
@@ -90,7 +102,7 @@
                       center
                     </div>
                     <div class="card-messages__inner-wrap-right">
-                      right
+                      {{ gTimestampToDateConverter() }}
                     </div>
                   </div>
                 </router-link>
@@ -119,7 +131,7 @@ export default {
   },
   watch: {
     dialogs(newValue, oldValue) {
-      console.log('newValue ::', newValue);
+      // console.log('newValue ::', newValue);
       // this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
     },
   },
