@@ -5,8 +5,8 @@ const testDialogs = [
     clientTitle: 'Сергей Махов',
     dialogID: 1,
     dialogTitle: 'Радиаторы чугунные',
-    dialogImageUrl: 'http://127.0.0.1:9000/src/images/objects/8993850241.jpg',
-    dialogDate: '12.11.2020',
+    dialogImageUrl: '/src/images/objects/8993850241.jpg',
+    dialogDate: 1605802723,
     dialogArray: [
       {
         text: 'А продай, бабуся, бычка.',
@@ -46,8 +46,8 @@ const testDialogs = [
     clientTitle: 'Виктор Иванов',
     dialogID: 2,
     dialogTitle: 'Телевизор дёшево',
-    dialogImageUrl: 'http://127.0.0.1:9000/src/images/objects/8993850241.jpg',
-    dialogDate: '12.11.2020',
+    dialogImageUrl: '/src/images/objects/8993850241.jpg',
+    dialogDate: 1615802723,
     dialogArray: [
       {
         text: 'Теперь бы хорошо проехаться в коляске куда-нибудь за город',
@@ -87,8 +87,8 @@ const testDialogs = [
     clientTitle: 'Виктор Иванов',
     dialogID: 3,
     dialogTitle: 'Телевизор дёшево',
-    dialogImageUrl: 'http://127.0.0.1:9000/src/images/objects/8993850241.jpg',
-    dialogDate: '12.11.2020',
+    dialogImageUrl: '/src/images/objects/8993850241.jpg',
+    dialogDate: 1605822723,
     dialogArray: [
       {
         text: 'Привет!',
