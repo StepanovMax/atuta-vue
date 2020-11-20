@@ -220,13 +220,7 @@ export default {
   watch: { 
     '$route': {
       handler: function(value) {
-        // console.log('route ::', value);
-        if (value.name === 'dialogSubPageSingle') {
-          this.pageName = 'dialogsSubPage';
-          // console.log('pageName', value.name);
-        } else {
-          this.pageName = '';
-        }
+        this.checkPageName(value.name);
       },
       deep: true,
     }
@@ -244,6 +238,16 @@ export default {
     clickOnLink() {
       this.closeUserMenuMobile();
     },
+    checkPageName(name) {
+      if (name === 'dialogSubPageSingle') {
+        this.pageName = 'dialogsSubPage';
+      } else {
+        this.pageName = '';
+      }
+    },
+  },
+  mounted() {
+    this.checkPageName(this.$route.name);
   },
 };
 </script>
