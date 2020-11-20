@@ -9,17 +9,20 @@
       </h2>
     </header>
 
-    <div class="template-page__content">
+    <div
+      v-if="isDialogDataLoaded"
+      class="template-page__content"
+    >
       <h3 class="title title_h4">
-        {{ $route.params.data.dialogTitle }}
+        {{ dialogData.dialogTitle }}
       </h3>
       <ul
-        v-if="dialogsArray.length"
+        v-if="dialogData.dialogArray.length"
         class="list"
       >
         <li
           class="list__item"
-          v-for="(item, index) in dialogsArray"
+          v-for="(item, index) in dialogData.dialogArray"
           :key="'key-' + index"
         >
           <p
@@ -35,7 +38,7 @@
               'paragraph_align-right': item.position === 'client'
             }"
           >
-            {{ $route.params.data.clientTitle }}
+            {{ dialogData.clientTitle }}
           </p>
           <p
             class="paragraph"
@@ -47,7 +50,19 @@
           </p>
         </li>
       </ul>
+      <p
+        v-else
+        class="paragraph"
+      >
+        Что-то пошло не так с самими диалогами...
+      </p>
     </div>
+    <p
+      v-else
+      class="paragraph"
+    >
+      Что-то пошло не так с данными диалога...
+    </p>
   </div>
 </template>
 
@@ -59,8 +74,43 @@ export default {
   name: 'dialogSubPageSingle',
   data() {
     return {
+      dialogData: {},
       dialogsArray: [],
     }
+  },
+  computed: {
+    ...mapState([
+      'dialogs',
+      'userData',
+    ]),
+    isPropsWereSended() {
+      const flag = Boolean(this.$route && this.$route.params && this.$route.params.data && this.$route.params.data.dialogArray);
+      return flag;
+    },
+    isDialogDataLoaded() {
+      const flag = !this.isObjectEmpty(this.dialogData);
+      return flag;
+    },
+  },
+  watch: {
+    dialogs(newValue) {
+      // this.dialogData = this.$route.params.data;
+      newValue.forEach(
+        item => {
+          if (item.dialogID === parseInt(this.$route.params.id)) {
+            this.dialogData = item;
+            // Sort dialog messages when the data is here.
+            this.dialogData.dialogArray = this.sortDialogsArray(item.dialogArray);
+          }
+        }
+      );
+    },
+    userData(newValue) {
+      if (!this.isPropsWereSended) {
+        // then loading user's dialogs.
+        this.getDialogsByUserID(newValue.id);
+      }
+    },
   },
   methods: {
     // Sort dialog messages by date.
@@ -74,9 +124,11 @@ export default {
     },
   },
   mounted() {
-    // Sort dialog messages when the data is here.
-    this.dialogsArray = this.sortDialogsArray(this.$route.params.data.dialogArray);
-    // console.log();
+    if (this.isPropsWereSended) {
+      this.dialogData = this.$route.params.data;
+      // Sort dialog messages when the data is here.
+      this.dialogData.dialogArray = this.sortDialogsArray(this.$route.params.data.dialogArray);
+    }
   },
 };
 </script>

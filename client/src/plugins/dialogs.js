@@ -22,7 +22,6 @@ const dialogs = {
               console.error('[MS] Getting dialogs error ::', error);
             });
           if (result) {
-            console.log('[Plugin] Getting dialogs result ::', result.data);
             this.$store.commit('updateDialogsState', result.data);
           }
         },
