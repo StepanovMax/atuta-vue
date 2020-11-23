@@ -1,4 +1,4 @@
-$BORDER-RADIUS: 6px;
+$BORDER-RADIUS: 4px;
 
 .switcher {
   width: 100%;
@@ -75,6 +75,13 @@ $BORDER-RADIUS: 6px;
 
     &_active {
       color: $COLOR-WHITE;
+    }
+
+    &_filter-dialogs {
+      padding: 0 10px;
+      height: 40px;
+      display: flex;
+      align-items: center;
     }
   }
 

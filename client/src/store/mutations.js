@@ -1,6 +1,9 @@
 const mutations = {
-  updateDialogsState(state, data) {
-    state.dialogs = data;
+  updateDialogsFilterState(state, data) {
+    state.filterDialogsSwitcherValue = data;
+  },
+  updateDialogsListState(state, data) {
+    state.dialogsListState = data;
   },
   updateFavouriteObjectsState(state, data) {
     state.favouriteObjects = data;

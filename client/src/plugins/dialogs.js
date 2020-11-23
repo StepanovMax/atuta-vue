@@ -22,7 +22,7 @@ const dialogs = {
               console.error('[MS] Getting dialogs error ::', error);
             });
           if (result) {
-            this.$store.commit('updateDialogsState', result.data);
+            this.$store.commit('updateDialogsListState', result.data);
           }
         },
       }

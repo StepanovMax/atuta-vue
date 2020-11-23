@@ -1,9 +1,14 @@
 <template>
   <div
     id="dialogsSubPage"
-    class=""
+    class="dialogs-sub-page"
   >
-    <header class="template-page__header">
+    <header
+      class="
+        template-page__header
+        template-page__header_subtitle
+      "
+    >
       <h3 class="template-page__subtitle">
         Мои сообщения
       </h3>
@@ -11,33 +16,66 @@
 
     <div class="template-page__content">
 
-      <div class="messages-block">
+      <div class="dialogs-list">
 
-        <div class="">
-          <div class="">
-            <p class="">
-              Все сообщения
-            </p>
-            <p class="">
-              Фильтр
-            </p>
+        <div class="dialogs-list__filter-bar">
+          <div
+            class="
+              dialogs-list__filter-bar-item
+              dialogs-list__filters
+            "
+          >
+            <div class="dialogs-list__filters-item">
+              <switcher
+                class="dialogs-list__switcher"
+                switcherId="filterDialogs"
+                propClass="filterDialogs"
+                :items="filterLabels"
+                :value.sync="filterDialogsValue"
+              />
+            </div>
+            <div class="dialogs-list__filters-item">
+              <multiselect
+                class="dialogs-list__multiselect"
+                v-model="filterSelectValue"
+                :options="filterSelectOptionsValue"
+                :show-labels="false"
+                :allow-empty="false"
+                :close-on-select="true"
+                :multiple="false"
+                :searchable="false"
+                label="label"
+                track-by="slug"
+                placeholder="Фильтр"
+              />
+            </div>
           </div>
 
-          <input
-            type="text"
-            class="input"
-            placeholder="Поиск по сообщениям"
+          <div
+            class="
+              dialogs-list__filter-bar-item
+              dialogs-list__search
+            "
           >
+            <input
+              type="text"
+              class="
+                input
+                dialogs-list__input
+              "
+              placeholder="Поиск по сообщениям"
+            >
+          </div>
         </div>
 
-        <div class="">
+        <div class="dialogs-list__items">
           <ul
-            v-if="dialogs.length"
+            v-if="dialogsList.length"
             class="list"
           >
             <li
               class="list__item"
-              v-for="(item, index) in dialogs"
+              v-for="(item, index) in dialogsList"
               :key="'key-' + index"
             >
               <div
@@ -121,19 +159,104 @@
 <script>
 // import axios from 'axios';
 import { mapState } from 'vuex';
+import multiselect from 'vue-multiselect';
+import switcher from '../../common/switcher.vue';
 
 export default {
   name: 'dialogsSubPage',
-  computed: {
-    ...mapState([
-      'dialogs',
-    ]),
+  components: {
+    switcher,
+    multiselect,
+  },
+  data() {
+    return {
+      filterLabels: [],
+      dialogsList: [],
+      filterLabelsDefault: [
+        {
+          label: 'Все',
+          slug: 'all',
+        },
+        {
+          label: 'Чёрный список',
+          slug: 'blackList',
+        },
+      ],
+      filterDialogsValue: '',
+      filterSelectOptionsValue: [
+        {
+          label: 'Все',
+          slug: 'all',
+        },
+        {
+          label: 'Непрочитанные',
+          slug: 'unread',
+        },
+        {
+          label: 'Только мои',
+          slug: 'onlyMine',
+        },
+      ],
+      filterSelectValue: '',
+    }
   },
   watch: {
-    dialogs(newValue, oldValue) {
+    filterDialogsValue: {
+      handler(value) {
+        this.$store.commit('updateDialogsFilterState', value);
+        this.updateDialogsList();
+      },
+      deep: true
+    },
+    dialogsListState(newValue, oldValue) {
       // console.log('newValue ::', newValue);
+      this.updateDialogsList();
       // this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
     },
+  },
+  computed: {
+    ...mapState([
+      'dialogsListState',
+      'filterDialogsSwitcherValue',
+    ]),
+  },
+  methods: {
+    detectCheckedItemsForFilter() {
+      this.filterLabels = this.filterLabelsDefault.map(
+        item => {
+          if (item.slug === this.filterDialogsSwitcherValue.slug) {
+            // console.log('item ::', item);
+            item.checked = true;
+          }
+          return item;
+        }
+      );
+    },
+    updateDialogsList() {
+      if (this.filterDialogsSwitcherValue.slug === 'all') {
+        this.dialogsList = this.dialogsListState;
+        console.log('all ::', this.dialogsListState);
+      } else if (this.filterDialogsSwitcherValue.slug === 'blackList') {
+        const array = [...this.dialogsListState];
+        array.forEach(
+          item => {
+            if (!item.blackList) {
+              return item;
+            }
+          }
+        );
+        this.dialogsList = array;
+        console.log('blackList ::', this.dialogsList);
+      }
+    },
+  },
+  beforeMount() {
+    this.detectCheckedItemsForFilter();
+    this.updateDialogsList();
+    this.$store.commit('updateDialogsListState', this.dialogsList);
+  },
+  mounted() {
+    // console.log('this.dialogsList ::', this.dialogsList);
   },
 };
 </script>

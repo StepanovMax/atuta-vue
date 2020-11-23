@@ -30,7 +30,12 @@ const user = {
 };
 
 const state = {
-  dialogs: [],
+  filterDialogsSwitcherValue: {
+    label: 'Все',
+    slug: 'all',
+    checked: false,
+  },
+  dialogsListState: [],
   favouriteObjects: [],
   previousPage: null,
   count: 11.7,
