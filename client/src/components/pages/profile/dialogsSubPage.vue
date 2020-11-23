@@ -3,7 +3,12 @@
     id="dialogsSubPage"
     class="dialogs-sub-page"
   >
-    <header class="template-page__header">
+    <header
+      class="
+        template-page__header
+        template-page__header_subtitle
+      "
+    >
       <h3 class="template-page__subtitle">
         Мои сообщения
       </h3>

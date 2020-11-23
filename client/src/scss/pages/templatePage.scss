@@ -44,6 +44,10 @@
     @extend .title;
     @extend .title_h5;
     margin-bottom: 0;
+
+    @include media(mobile) {
+      text-align: center;
+    }
   }
 
   &__header {
@@ -73,7 +77,13 @@
     }
 
     @include media(mobile) {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    &_subtitle {
+      @include media(mobile) {
+        margin-bottom: 25px;
+      }
     }
   }
 
