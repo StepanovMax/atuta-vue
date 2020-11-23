@@ -71,18 +71,24 @@
         <div class="dialogs-list__items">
           <ul
             v-if="dialogsList.length"
-            class="list"
+            class="
+              list
+              dialogs-list__items-list
+            "
           >
             <li
-              class="list__item"
+              class="
+                list__item
+                dialogs-list__items-list-item
+              "
               v-for="(item, index) in dialogsList"
               :key="'key-' + index"
             >
               <div
-                class="card-messages"
+                class="card-dialog"
               >
                 <router-link
-                  class="card-messages__link"
+                  class="card-dialog__link"
                   :to="{
                     name: 'dialogSubPageSingle',
                     params: {
@@ -92,19 +98,52 @@
                   }"
                   :title="`Перейти в ${item.dialogTitle}`"
                 >
-                  <div class="card-messages__inner-wrap">
-                    <div class="card-messages__inner-wrap-center">
-                      <p class="paragraph">
-                        {{ item.clientTitle }}
-                      </p>
-                      <p class="paragraph">
+                  <div class="card-dialog__inner-wrap">
+                    <div class="card-dialog__inner-wrap-center">
+                      <h3
+                        class="
+                          title
+                          title_h5
+                          card-dialog__title
+                        "
+                      >
                         {{ item.dialogTitle }}
-                      </p>
+                      </h3>
+                      <h4
+                        class="
+                          title
+                          title_h6
+                          card-dialog__subtitle
+                        "
+                      >
+                        {{ item.clientTitle }}
+                      </h4>
                     </div>
-                    <div class="card-messages__inner-wrap-right">
-                      <p class="paragraph">
+                    <div class="card-dialog__inner-wrap-right">
+                      <p
+                        class="
+                          paragraph
+                          card-dialog__date
+                        "
+                      >
                         {{ gTimestampToDateConverter(item.dialogDate) }}
                       </p>
+                      <div class="card-dialog__icon-marked">
+                        <iconMarkedDouble
+                          v-if="item.lastItemIsRead"
+                          class="
+                            card-dialog__icon-read
+                            card-dialog__icon-read_double
+                          "
+                        />
+                        <iconMarkedSingle
+                          v-else
+                          class="
+                            card-dialog__icon-read
+                            card-dialog__icon-read_single
+                          "
+                        />
+                      </div>
                     </div>
                   </div>
                 </router-link>
@@ -112,34 +151,34 @@
 
               <div
                 v-hide
-                class="card-messages"
+                class="card-dialog"
               >
                 <router-link
-                  class="card-messages__link"
+                  class="card-dialog__link"
                   :to="{
                     name: 'objectPage',
                   }"
                   title="Перейти подробнее 1"
                 >
-                  <div class="card-messages__inner-wrap">
-                    <div class="card-messages__inner-wrap-left">
+                  <div class="card-dialog__inner-wrap">
+                    <div class="card-dialog__inner-wrap-left">
                       <img
                         v-if="true"
-                        class="img card-messages__img"
+                        class="img card-dialog__img"
                         src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
                         alt=""
                       >
                       <img
                         v-else
-                        class="imgcard-messages__img"
+                        class="imgcard-dialog__img"
                         src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
                         alt=""
                       >
                     </div>
-                    <div class="card-messages__inner-wrap-center">
+                    <div class="card-dialog__inner-wrap-center">
                       center
                     </div>
-                    <div class="card-messages__inner-wrap-right">
+                    <div class="card-dialog__inner-wrap-right">
                       {{ gTimestampToDateConverter() }}
                     </div>
                   </div>
@@ -161,12 +200,16 @@
 import { mapState } from 'vuex';
 import multiselect from 'vue-multiselect';
 import switcher from '../../common/switcher.vue';
+import iconMarkedDouble from '../../icons/iconMarkedDouble.vue';
+import iconMarkedSingle from '../../icons/iconMarkedSingle.vue';
 
 export default {
   name: 'dialogsSubPage',
   components: {
     switcher,
     multiselect,
+    iconMarkedDouble,
+    iconMarkedSingle,
   },
   data() {
     return {
@@ -235,7 +278,7 @@ export default {
     updateDialogsList() {
       if (this.filterDialogsSwitcherValue.slug === 'all') {
         this.dialogsList = this.dialogsListState;
-        console.log('all ::', this.dialogsListState);
+        // console.log('all ::', this.dialogsListState);
       } else if (this.filterDialogsSwitcherValue.slug === 'blackList') {
         const array = [...this.dialogsListState];
         array.forEach(

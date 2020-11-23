@@ -40,6 +40,7 @@ const testDialogs = [
       },
     ],
     blackList: false,
+    lastItemIsRead: false,
   },
   {
     userID: 1,
@@ -82,6 +83,7 @@ const testDialogs = [
       },
     ],
     blackList: true,
+    lastItemIsRead: true,
   },
   {
     userID: 2,
@@ -124,6 +126,7 @@ const testDialogs = [
       },
     ],
     blackList: true,
+    lastItemIsRead: false,
   },
 ];
 

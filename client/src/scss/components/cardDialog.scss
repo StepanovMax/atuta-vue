@@ -1,0 +1,45 @@
+.card-dialog {
+  @extend .card;
+
+  &__inner-wrap {
+    display: flex;
+    justify-content: space-between;
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+    @extend .card__title;
+  }
+
+  &__subtitle {
+    margin: 0;
+    @extend .card__subtitle;
+  }
+
+  &__date {
+    @extend .card__date;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    &-read {
+      &_double {
+        @extend .card__icon-read_double;
+      }
+
+      &_single {
+        @extend .card__icon-read_single;
+      }
+    }
+  }
+}

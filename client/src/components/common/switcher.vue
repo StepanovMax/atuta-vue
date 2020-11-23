@@ -95,7 +95,7 @@ export default {
     },
   },
   mounted() {
-    console.log('mounted sw ::');
+    // console.log('mounted sw ::');
     [...this.items].forEach(
       item => {
         if (item.hasOwnProperty('checked')) {
