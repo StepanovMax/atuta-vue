@@ -1,0 +1,39 @@
+.card {
+  border-width: 1px;
+  border-style: solid;
+  border-color: $COLOR-GREY-BORDER;
+  border-radius: 4px;
+  padding: 8px;
+
+  &__title {
+    color: $COLOR-TITLE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    color: $COLOR-TITLE;
+  }
+
+  &__date {
+    font-size: 13px;
+    color: $COLOR-BASE;
+  }
+
+  &__icon {
+    &-read {
+      &_double {
+        width: 22px;
+      }
+
+      &_single {
+        width: 14px;
+      }
+    }
+  }
+}
