@@ -39,6 +39,7 @@ const testDialogs = [
         position: 'user',
       },
     ],
+    blackList: false,
   },
   {
     userID: 1,
@@ -80,6 +81,7 @@ const testDialogs = [
         position: 'client',
       },
     ],
+    blackList: true,
   },
   {
     userID: 2,
@@ -121,6 +123,7 @@ const testDialogs = [
         position: 'client',
       },
     ],
+    blackList: true,
   },
 ];
 

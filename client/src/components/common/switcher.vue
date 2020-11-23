@@ -23,7 +23,8 @@
           class="switcher__label"
           :class="[
             { 'switcher__label_active': item.checked },
-            { 'switcher__label_my-objects': propClass === 'myObjects' }
+            { 'switcher__label_my-objects': propClass === 'myObjects' },
+            { 'switcher__label_filter-dialogs': propClass === 'filterDialogs' },
           ]"
           :for="'id-' + switcherId + '-' + index"
         >
@@ -94,6 +95,7 @@ export default {
     },
   },
   mounted() {
+    console.log('mounted sw ::');
     [...this.items].forEach(
       item => {
         if (item.hasOwnProperty('checked')) {
