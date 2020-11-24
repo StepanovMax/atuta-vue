@@ -1,9 +1,15 @@
 const mutations = {
-  updateDialogsFilterState(state, data) {
-    state.filterDialogsSwitcherValue = data;
+  updateFilterDialogsDropdownState(state, data) {
+    state.filterDialogsDropdownState = data;
   },
-  updateDialogsListState(state, data) {
-    state.dialogsListState = data;
+  updateFilterDialogsBlacklistState(state, data) {
+    state.filterDialogsBlacklistState = data;
+  },
+  updateCurrentDialogsListOfUserState(state, data) {
+    state.currentDialogsListOfUserState = data;
+  },
+  updateAllDialogsListOfUserState(state, data) {
+    state.allDialogsListOfUserState = data;
   },
   updateFavouriteObjectsState(state, data) {
     state.favouriteObjects = data;

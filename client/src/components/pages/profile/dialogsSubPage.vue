@@ -31,14 +31,14 @@
                 switcherId="filterDialogs"
                 propClass="filterDialogs"
                 :items="filterLabels"
-                :value.sync="filterDialogsValue"
+                :value.sync="filterDialogsBlacklistValue"
               />
             </div>
             <div class="dialogs-list__filters-item">
               <multiselect
                 class="dialogs-list__multiselect"
-                v-model="filterSelectValue"
-                :options="filterSelectOptionsValue"
+                v-model="filterDialogsDropdownValue"
+                :options="filterDialogsDropdownOptionsValue"
                 :show-labels="false"
                 :allow-empty="false"
                 :close-on-select="true"
@@ -52,6 +52,7 @@
           </div>
 
           <div
+            v-if="false"
             class="
               dialogs-list__filter-bar-item
               dialogs-list__search
@@ -99,6 +100,20 @@
                   :title="`Перейти в ${item.dialogTitle}`"
                 >
                   <div class="card-dialog__inner-wrap">
+                    <div class="card-dialog__inner-wrap-left">
+                      <img
+                        v-if="true"
+                        class="img card-dialog__img"
+                        src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
+                        alt=""
+                      >
+                      <img
+                        v-else
+                        class="img card-dialog__img"
+                        src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
+                        alt=""
+                      >
+                    </div>
                     <div class="card-dialog__inner-wrap-center">
                       <h3
                         class="
@@ -116,7 +131,7 @@
                           card-dialog__subtitle
                         "
                       >
-                        {{ item.clientTitle }}
+                        {{ item.clientName }}
                       </h4>
                     </div>
                     <div class="card-dialog__inner-wrap-right">
@@ -130,7 +145,7 @@
                       </p>
                       <div class="card-dialog__icon-marked">
                         <iconMarkedDouble
-                          v-if="item.lastItemIsRead"
+                          v-if="!item.unread"
                           class="
                             card-dialog__icon-read
                             card-dialog__icon-read_double
@@ -144,42 +159,6 @@
                           "
                         />
                       </div>
-                    </div>
-                  </div>
-                </router-link>
-              </div>
-
-              <div
-                v-hide
-                class="card-dialog"
-              >
-                <router-link
-                  class="card-dialog__link"
-                  :to="{
-                    name: 'objectPage',
-                  }"
-                  title="Перейти подробнее 1"
-                >
-                  <div class="card-dialog__inner-wrap">
-                    <div class="card-dialog__inner-wrap-left">
-                      <img
-                        v-if="true"
-                        class="img card-dialog__img"
-                        src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
-                        alt=""
-                      >
-                      <img
-                        v-else
-                        class="imgcard-dialog__img"
-                        src="http://127.0.0.1:9000/src/images/objects/8993850241.jpg"
-                        alt=""
-                      >
-                    </div>
-                    <div class="card-dialog__inner-wrap-center">
-                      center
-                    </div>
-                    <div class="card-dialog__inner-wrap-right">
-                      {{ gTimestampToDateConverter() }}
                     </div>
                   </div>
                 </router-link>
@@ -225,8 +204,8 @@ export default {
           slug: 'blackList',
         },
       ],
-      filterDialogsValue: '',
-      filterSelectOptionsValue: [
+      filterDialogsBlacklistValue: '',
+      filterDialogsDropdownOptionsValue: [
         {
           label: 'Все',
           slug: 'all',
@@ -237,69 +216,91 @@ export default {
         },
         {
           label: 'Только мои',
-          slug: 'onlyMine',
+          slug: 'mine',
         },
       ],
-      filterSelectValue: '',
+      filterDialogsDropdownValue: '',
+      currentDialogsListOfUserValue: [],
     }
   },
+  computed: {
+    ...mapState([
+      'allDialogsListOfUserState',
+      'currentDialogsListOfUserState',
+      'filterDialogsBlacklistState',
+      'filterDialogsDropdownState',
+    ]),
+  },
   watch: {
-    filterDialogsValue: {
+    // Listen the Switcher
+    filterDialogsBlacklistValue: {
       handler(value) {
-        this.$store.commit('updateDialogsFilterState', value);
+        this.$store.commit('updateFilterDialogsBlacklistState', value);
+        this.updateDialogsList();
+        // this.$store.commit('updateCurrentDialogsListOfUserState', this.dialogsList);
+      },
+      deep: true
+    },
+    filterDialogsDropdownValue: {
+      handler(value) {
+        this.$store.commit('updateFilterDialogsDropdownState', value);
         this.updateDialogsList();
       },
       deep: true
     },
-    dialogsListState(newValue, oldValue) {
-      // console.log('newValue ::', newValue);
-      this.updateDialogsList();
-      // this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
+    'allDialogsListOfUserState'() {
+      this.updateDialogsListToDefault();
     },
-  },
-  computed: {
-    ...mapState([
-      'dialogsListState',
-      'filterDialogsSwitcherValue',
-    ]),
+    'currentDialogsListOfUserState'() {
+      this.dialogsList = this.currentDialogsListOfUserState;
+    },
   },
   methods: {
     detectCheckedItemsForFilter() {
       this.filterLabels = this.filterLabelsDefault.map(
         item => {
-          if (item.slug === this.filterDialogsSwitcherValue.slug) {
-            // console.log('item ::', item);
+          if (item.slug === this.filterDialogsBlacklistState.slug) {
             item.checked = true;
           }
           return item;
         }
       );
     },
+    updateDialogsListToDefault() {
+      this.dialogsList = this.allDialogsListOfUserState;
+      this.$store.commit('updateCurrentDialogsListOfUserState', this.dialogsList);
+    },
     updateDialogsList() {
-      if (this.filterDialogsSwitcherValue.slug === 'all') {
-        this.dialogsList = this.dialogsListState;
-        // console.log('all ::', this.dialogsListState);
-      } else if (this.filterDialogsSwitcherValue.slug === 'blackList') {
-        const array = [...this.dialogsListState];
-        array.forEach(
-          item => {
-            if (!item.blackList) {
-              return item;
-            }
-          }
+      this.updateDialogsListWithBlacklist()
+        .then(this.updateDialogsListWithDropdown())
+        .then(this.$store.commit('updateCurrentDialogsListOfUserState', this.currentDialogsListOfUserValue));
+    },
+    async updateDialogsListWithBlacklist() {
+      if (this.filterDialogsBlacklistState.slug === 'all') {
+        this.currentDialogsListOfUserValue = this.allDialogsListOfUserState;
+      } else if (this.filterDialogsBlacklistState.slug === 'blackList') {
+        const array = [...this.allDialogsListOfUserState];
+        this.currentDialogsListOfUserValue = array.filter(
+          item => item.blackList
         );
-        this.dialogsList = array;
-        console.log('blackList ::', this.dialogsList);
+      }
+    },
+    updateDialogsListWithDropdown() {
+      const array = [...this.currentDialogsListOfUserValue];
+      if (this.filterDialogsDropdownState.slug === 'unread') {
+        this.currentDialogsListOfUserValue = array.filter(
+          item => item.unread
+        );
+      } else if (this.filterDialogsDropdownState.slug === 'mine') {
+        this.currentDialogsListOfUserValue = array.filter(
+          item => item.mine
+        );
       }
     },
   },
   beforeMount() {
     this.detectCheckedItemsForFilter();
-    this.updateDialogsList();
-    this.$store.commit('updateDialogsListState', this.dialogsList);
-  },
-  mounted() {
-    // console.log('this.dialogsList ::', this.dialogsList);
+    this.$store.commit('updateCurrentDialogsListOfUserState', this.dialogsList);
   },
 };
 </script>

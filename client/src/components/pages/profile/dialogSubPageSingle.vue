@@ -80,7 +80,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'dialogsListState',
+      'currentDialogsListOfUserState',
       'userData',
     ]),
     isPropsWereSended() {
