@@ -30,12 +30,18 @@ const user = {
 };
 
 const state = {
-  filterDialogsSwitcherValue: {
+  filterDialogsDropdownState: {
     label: 'Все',
     slug: 'all',
     checked: false,
   },
-  dialogsListState: [],
+  filterDialogsBlacklistState: {
+    label: 'Все',
+    slug: 'all',
+    checked: false,
+  },
+  currentDialogsListOfUserState: [],
+  allDialogsListOfUserState: [],
   favouriteObjects: [],
   previousPage: null,
   count: 11.7,
