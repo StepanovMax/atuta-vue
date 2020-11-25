@@ -13,49 +13,58 @@
       v-if="isDialogDataLoaded"
       class="template-page__content"
     >
-      <h3 class="title title_h4">
-        {{ dialogData.dialogTitle }}
-      </h3>
-      <ul
-        v-if="dialogData.dialogArray.length"
-        class="list"
-      >
-        <li
-          class="list__item"
-          v-for="(item, index) in dialogData.dialogArray"
-          :key="'key-' + index"
-        >
-          <p
-            v-if="item.position === 'user'"
-            class="paragraph paragraph_bold"
+      <section class="dialogs-list">
+        <header class="dialogs-list__header">
+          <h3 class="dialogs-list__title">
+            {{ dialogData.dialogTitle }}
+          </h3>
+        </header>
+        <div class="dialogs-list__content">
+          <ul
+            v-if="dialogData.dialogArray.length"
+            class="list"
           >
-            Я
-          </p>
+            <li
+              class="list__item"
+              v-for="(item, index) in dialogData.dialogArray"
+              :key="'key-' + index"
+            >
+              <p
+                v-if="item.position === 'user'"
+                class="paragraph paragraph_bold"
+              >
+                Я
+              </p>
+              <p
+                v-if="item.position === 'client'"
+                class="paragraph paragraph_bold"
+                :class="{
+                  'paragraph_align-right': item.position === 'client'
+                }"
+              >
+                {{ dialogData.clientTitle }}
+              </p>
+              <p
+                class="paragraph"
+                :class="{
+                  'paragraph_align-right': item.position === 'client'
+                }"
+              >
+                {{ item.text }}
+              </p>
+            </li>
+          </ul>
           <p
-            v-if="item.position === 'client'"
-            class="paragraph paragraph_bold"
-            :class="{
-              'paragraph_align-right': item.position === 'client'
-            }"
-          >
-            {{ dialogData.clientTitle }}
-          </p>
-          <p
+            v-else
             class="paragraph"
-            :class="{
-              'paragraph_align-right': item.position === 'client'
-            }"
           >
-            {{ item.text }}
+            Что-то пошло не так с самими диалогами...
           </p>
-        </li>
-      </ul>
-      <p
-        v-else
-        class="paragraph"
-      >
-        Что-то пошло не так с самими диалогами...
-      </p>
+        </div>
+        <footer class="dialogs-list__footer">
+          Отправка сообщений
+        </footer>
+      </section>
     </div>
     <p
       v-else
