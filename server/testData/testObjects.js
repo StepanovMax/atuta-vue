@@ -89,6 +89,12 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 2,
+        clientID: 1,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -172,6 +178,12 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 2,
+        clientID: 1,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -250,6 +262,16 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 1,
+        clientID: 1,
+      },
+      {
+        dialogID: 2,
+        clientID: 2,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -322,6 +344,7 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [],
   },
   {
     parentID: 1,
@@ -393,6 +416,16 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 1,
+        clientID: 1,
+      },
+      {
+        dialogID: 2,
+        clientID: 2,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -464,6 +497,12 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 1,
+        clientID: 1,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -539,6 +578,16 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 1,
+        clientID: 1,
+      },
+      {
+        dialogID: 2,
+        clientID: 2,
+      },
+    ],
   },
   {
     parentID: 1,
@@ -614,6 +663,16 @@ const testObjects = [
       slug: 'yes',
       label: 'Да',
     },
+    dialogsList: [
+      {
+        dialogID: 1,
+        clientID: 1,
+      },
+      {
+        dialogID: 2,
+        clientID: 2,
+      },
+    ],
   },
 ];
 

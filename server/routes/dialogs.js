@@ -37,4 +37,32 @@ router.post(
   }
 );
 
+
+router.post(
+  '/get-dialog-by-id',
+  cors(corsOptions),
+  (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    const { body } = req;
+    const dialogID = body.dialogID;
+    let myDialog = {};
+    testDialogs.map(
+      item => {
+        if (item.dialogID === dialogID) {
+          myDialog = item;
+        }
+      }
+    );
+    if (myDialog) {
+      res.status(200).send(myDialog);
+    } else {
+      res.status(404).send({
+        message: 'Object not found'
+      });
+    }
+  }
+);
+
 export default router;

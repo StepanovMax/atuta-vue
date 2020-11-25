@@ -45,7 +45,7 @@
       </p>
     </div>
     <button
-      @click.stop.prevent
+      @click="moveToDialog"
       class="
         btn
         show-phone-number__btn
@@ -80,6 +80,11 @@ export default {
       default: '',
       required: true
     },
+    propObjectData: {
+      type: Object,
+      default: () => ({}),
+      required: false,
+    },
   },
   data() {
     return {
@@ -89,7 +94,17 @@ export default {
   methods: {
     togglePhoneNumber() {
       this.isShowPhoneNumber = !this.isShowPhoneNumber;
-    }
+    },
+    moveToDialog() {
+      // console.log('moveToDialog ::', this.propObjectData);
+      this.$router.push({
+        name: 'dialogSubPageSingle',
+        params: {
+          id: this.propObjectData.dialogsList[0].dialogID,
+          dialogsList: this.propObjectData.dialogsList,
+        },
+      });
+    },
   },
 };
 </script>
