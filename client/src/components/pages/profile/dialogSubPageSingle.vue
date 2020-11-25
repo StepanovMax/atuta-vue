@@ -89,11 +89,11 @@ export default {
   },
   computed: {
     ...mapState([
-      'currentDialogsListOfUserState',
+      'allDialogsListOfUserState',
       'userData',
     ]),
     isPropsWereSended() {
-      const flag = Boolean(this.$route && this.$route.params && this.$route.params.data && this.$route.params.data.dialogArray);
+      const flag = Boolean(this.$route && this.$route.params && this.$route.params.dialogArray);
       return flag;
     },
     isDialogDataLoaded() {
@@ -102,23 +102,17 @@ export default {
     },
   },
   watch: {
-    dialogs(newValue) {
-      // this.dialogData = this.$route.params.data;
-      newValue.forEach(
-        item => {
-          if (item.dialogID === parseInt(this.$route.params.id)) {
-            this.dialogData = item;
-            // Sort dialog messages when the data is here.
-            this.dialogData.dialogArray = this.sortDialogsArray(item.dialogArray);
-          }
-        }
-      );
+    'allDialogsListOfUserState'(value) {
+      this.getDialog(value);
     },
-    userData(newValue) {
+    'userData'(value) {
       if (!this.isPropsWereSended) {
         // then loading user's dialogs.
-        this.getDialogsByUserID(newValue.id);
+        this.getDialogsByUserID(value.id);
       }
+    },
+    '$route.params.data.dialogsList'(value) {
+      console.log('$route.params.data.dialogsList', value);
     },
   },
   methods: {
@@ -131,13 +125,27 @@ export default {
       );
       return sortedDialogsArray;
     },
+    getDialog(value) {
+      value.forEach(
+        item => {
+          if (item.dialogID === parseInt(this.$route.params.id)) {
+            this.dialogData = item;
+            // Sort dialog messages when the data is here.
+            this.dialogData.dialogArray = this.sortDialogsArray(item.dialogArray);
+          }
+        }
+      );
+    },
+  },
+  created() {
+    this.getDialog(this.allDialogsListOfUserState);
   },
   mounted() {
-    if (this.isPropsWereSended) {
-      this.dialogData = this.$route.params.data;
-      // Sort dialog messages when the data is here.
-      this.dialogData.dialogArray = this.sortDialogsArray(this.$route.params.data.dialogArray);
-    }
+    // if (this.isPropsWereSended) {
+    //   this.dialogData = this.$route.params.data;
+    //   // Sort dialog messages when the data is here.
+    //   this.dialogData.dialogArray = this.sortDialogsArray(this.$route.params.data.dialogArray);
+    // }
   },
 };
 </script>
