@@ -84,6 +84,7 @@
               propClass="object-card__btn object-card__btn_show-phone"
               :propPhoneNumber="objectData.phoneNumber"
               propPhoneView="big"
+              :propObjectData="objectData"
             />
 
             <moveToFavorites
@@ -1019,6 +1020,9 @@ export default {
       },
       data: {},
       storedObjects: false,
+      // objectDataProp: {
+      //   title: this.objectData.title,
+      // },
     }
   },
   watch: {
