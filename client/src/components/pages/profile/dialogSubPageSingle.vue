@@ -13,13 +13,13 @@
       v-if="isDialogDataLoaded"
       class="template-page__content"
     >
-      <section class="dialogs-list">
-        <header class="dialogs-list__header">
-          <h3 class="dialogs-list__title">
+      <section class="dialog-single">
+        <header class="dialog-single__header">
+          <h3 class="dialog-single__title">
             {{ dialogData.dialogTitle }}
           </h3>
         </header>
-        <div class="dialogs-list__content">
+        <div class="dialog-single__content">
           <ul
             v-if="dialogData.dialogArray.length"
             class="list"
@@ -61,7 +61,7 @@
             Что-то пошло не так с самими диалогами...
           </p>
         </div>
-        <footer class="dialogs-list__footer">
+        <footer class="dialog-single__footer">
           Отправка сообщений
         </footer>
       </section>
