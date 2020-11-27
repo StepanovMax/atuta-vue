@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'showPhoneNumber',
   props: {
@@ -89,19 +91,48 @@ export default {
   data() {
     return {
       isShowPhoneNumber: false,
+      dialogID: null,
     }
+  },
+  computed: {
+    ...mapState([
+      'userData',
+    ]),
   },
   methods: {
     togglePhoneNumber() {
       this.isShowPhoneNumber = !this.isShowPhoneNumber;
     },
-    moveToDialog() {
-      // console.log('moveToDialog ::', this.propObjectData);
+    async detectDialogID() {
+      let data;
+      let dialogID = null;
+      // Trying to catch matching with already created dialogs.
+      this.propObjectData.dialogsList.some(
+        item => {
+          if (item.clientID === this.userData.id) {
+            dialogID = item.dialogID;
+            return true;
+          }
+        }
+      );
+      // If there is no matching, then trying to get full length of the dialogs array.
+      if (!dialogID) {
+        data = await this.getAllDialogsLength();
+      }
+      if (data && data.data && data.data.length) {
+        dialogID = data.data.length;
+      }
+      return dialogID;
+    },
+    async moveToDialog() {
+      this.dialogID = await this.detectDialogID();
+      this.dialogID += 1;
+      // console.log('dialogID ::', this.dialogID + 1);
       this.$router.push({
         name: 'dialogSubPageSingle',
         params: {
-          id: this.propObjectData.dialogsList[0].dialogID,
-          dialogsList: this.propObjectData.dialogsList,
+          id: this.dialogID,
+          objectData: this.propObjectData,
         },
       });
     },

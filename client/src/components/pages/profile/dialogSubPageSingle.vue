@@ -10,7 +10,6 @@
     </header>
 
     <div
-      v-if="isDialogDataLoaded"
       class="template-page__content"
     >
       <section class="dialog-single">
@@ -21,7 +20,7 @@
         </header>
         <div class="dialog-single__content">
           <ul
-            v-if="dialogData.dialogArray.length"
+            v-if="dialogData && dialogData.dialogArray && dialogData.dialogArray.length"
             class="list"
           >
             <li
@@ -54,29 +53,16 @@
               </p>
             </li>
           </ul>
-          <p
-            v-else
-            class="paragraph"
-          >
-            Что-то пошло не так с самими диалогами...
-          </p>
         </div>
         <footer class="dialog-single__footer">
           Отправка сообщений
         </footer>
       </section>
     </div>
-    <p
-      v-else
-      class="paragraph"
-    >
-      Что-то пошло не так с данными диалога...
-    </p>
   </div>
 </template>
 
 <script>
-// import axios from 'axios';
 import { mapState } from 'vuex';
 
 export default {
@@ -103,21 +89,20 @@ export default {
   },
   watch: {
     'allDialogsListOfUserState'(value) {
+      console.log('watch allDialogsListOfUserState');
       this.getDialog(value);
     },
-    'userData'(value) {
-      if (!this.isPropsWereSended) {
-        // then loading user's dialogs.
-        this.getDialogsByUserID(value.id);
-      }
-    },
-    '$route.params.data.dialogsList'(value) {
-      console.log('$route.params.data.dialogsList', value);
-    },
+    // 'userData'(value) {
+    //   if (!this.isPropsWereSended) {
+    //     // In case reloading the page
+    //     // we need to load all dialogs for this 
+    //     this.getDialogsByUserID(value.id);
+    //   }
+    // },
   },
   methods: {
     // Sort dialog messages by date.
-    sortDialogsArray(array) {
+    sortDialogMessages(array) {
       const sortedDialogsArray = array.sort(
         (a, b) => {
           return a.date > b.date ? 1 : -1;
@@ -129,23 +114,21 @@ export default {
       value.forEach(
         item => {
           if (item.dialogID === parseInt(this.$route.params.id)) {
+            // console.log('YYES dialogs');
             this.dialogData = item;
             // Sort dialog messages when the data is here.
-            this.dialogData.dialogArray = this.sortDialogsArray(item.dialogArray);
+            this.dialogData.dialogArray = this.sortDialogMessages(item.dialogArray);
+          } else {
+            // this.dialogData.dialogTitle = this.$route.params.objectData.title;
           }
         }
       );
     },
   },
   created() {
+    console.log('dialog ID ::', this.$route.params.id);
+    console.log('all dialogs array ::', this.allDialogsListOfUserState);
     this.getDialog(this.allDialogsListOfUserState);
-  },
-  mounted() {
-    // if (this.isPropsWereSended) {
-    //   this.dialogData = this.$route.params.data;
-    //   // Sort dialog messages when the data is here.
-    //   this.dialogData.dialogArray = this.sortDialogsArray(this.$route.params.data.dialogArray);
-    // }
   },
 };
 </script>
