@@ -48,6 +48,26 @@ const dialogs = {
             // this.$store.commit('updateAllDialogsListOfUserState', result.data);
           }
         },
+        // Loading all dialogs length.
+        async getAllDialogsLength() {
+          const host = this.getHost();
+          const url = `${host.api}` + '/dialogs/get-all-dialogs-length';
+
+          const result = await axios.get(
+            url
+          )
+            .then(function (response) {
+              // console.log('[MS] Getting all dialogs length response ::', response);
+              return response;
+            })
+            .catch(function (error) {
+              console.error('[MS] Getting all dialogs length error ::', error);
+            });
+          return result;
+          // if (result) {
+          //   this.$store.commit('updateAllDialogsListOfUserState', result.data);
+          // }
+        },
       }
     });
   }
