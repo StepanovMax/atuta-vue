@@ -702,6 +702,7 @@
             v-if="dataObjectData.phoneNumber"
             :propPhoneNumber="dataObjectData.phoneNumber"
             propPhoneView="mini"
+            :propObjectData="dataObjectData"
           />
         </div>
         <div
