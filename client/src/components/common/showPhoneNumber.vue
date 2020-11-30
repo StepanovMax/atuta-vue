@@ -124,10 +124,14 @@ export default {
       }
       return dialogID;
     },
+    setObjectToCookie(object) {
+      // then update cookie with the TRUE value.
+      this.setCookie('objectForDialog', JSON.stringify(object), {secure: true, 'max-age': 3600});
+    },
     async moveToDialog() {
       this.dialogID = await this.detectDialogID();
       this.dialogID += 1;
-      // console.log('dialogID ::', this.dialogID + 1);
+      this.setObjectToCookie(this.propObjectData);
       this.$router.push({
         name: 'dialogSubPageSingle',
         params: {
