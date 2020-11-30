@@ -9,7 +9,6 @@ const cookie = {
           return matches ? decodeURIComponent(matches[1]) : undefined;
         },
         setCookie(name, value, options = {}) {
-          console.log('setCookie');
           options = {
             path: '/',
           };
