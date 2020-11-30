@@ -118,12 +118,7 @@ export default {
     'allDialogsListOfUserState'(value) {
       const dialogFindResult = this.getDialog(value);
       if (!dialogFindResult) {
-        const cookieResult = this.getCookie('objectForDialog');
-        console.log('cookieResult ::', cookieResult);
-        if (cookieResult) {
-          const cookieResultJSON = JSON.parse(cookieResult);
-          this.dialogData.dialogTitle = cookieResultJSON.title;
-        }
+        this.callCookieForUnkniwnID();
       }
     },
   },
@@ -161,9 +156,19 @@ export default {
         this.dialogData.dialogArray.push(messageObject);
       }
     },
+    callCookieForUnkniwnID() {
+      const cookieResult = this.getCookie('objectForDialog');
+      if (cookieResult) {
+        const cookieResultJSON = JSON.parse(cookieResult);
+        this.dialogData.dialogTitle = cookieResultJSON.title;
+      }
+    },
   },
   created() {
-    this.getDialog(this.allDialogsListOfUserState);
+    const dialogResult = this.getDialog(this.allDialogsListOfUserState);
+    if (!dialogResult) {
+      this.callCookieForUnkniwnID();
+    }
   },
 };
 </script>
