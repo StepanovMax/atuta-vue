@@ -127,6 +127,7 @@ export default {
     setObjectToCookie(object) {
       // then update cookie with the TRUE value.
       this.setCookie('objectForDialog', JSON.stringify(object), {secure: true, 'max-age': 3600});
+      console.log('getCookie objectForDialog ::', this.getCookie('objectForDialog'));
     },
     async moveToDialog() {
       this.dialogID = await this.detectDialogID();
