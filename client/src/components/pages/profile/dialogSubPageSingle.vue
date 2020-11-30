@@ -118,8 +118,11 @@ export default {
     'allDialogsListOfUserState'(value) {
       const dialogFindResult = this.getDialog(value);
       if (!dialogFindResult) {
-        const object = JSON.parse(this.getCookie('objectForDialog'));
-        this.dialogData.dialogTitle = object.title;
+        const cookieResult = this.getCookie('objectForDialog');
+        console.log('cookieResult ::', cookieResult);
+        if (cookieResult) {
+          this.dialogData.dialogTitle = cookieResult.title;
+        }
       }
     },
   },
