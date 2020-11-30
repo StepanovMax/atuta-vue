@@ -119,7 +119,7 @@ export default {
       const dialogFindResult = this.getDialog(value);
       if (!dialogFindResult) {
         const cookieResult = this.getCookie('objectForDialog');
-        console.log('cookieResult ::', JSON.parse(cookieResult));
+        console.log('cookieResult ::', cookieResult);
         if (cookieResult) {
           const cookieResultJSON = JSON.parse(cookieResult);
           this.dialogData.dialogTitle = cookieResultJSON.title;
