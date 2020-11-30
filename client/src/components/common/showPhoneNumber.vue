@@ -132,6 +132,7 @@ export default {
       this.dialogID = await this.detectDialogID();
       this.dialogID += 1;
       this.setObjectToCookie(this.propObjectData);
+      console.log('test', this.propObjectData);
       this.$router.push({
         name: 'dialogSubPageSingle',
         params: {
