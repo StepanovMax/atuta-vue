@@ -119,9 +119,10 @@ export default {
       const dialogFindResult = this.getDialog(value);
       if (!dialogFindResult) {
         const cookieResult = this.getCookie('objectForDialog');
-        console.log('cookieResult ::', cookieResult);
+        console.log('cookieResult ::', JSON.parse(cookieResult));
         if (cookieResult) {
-          this.dialogData.dialogTitle = cookieResult.title;
+          const cookieResultJSON = JSON.parse(cookieResult);
+          this.dialogData.dialogTitle = cookieResultJSON.title;
         }
       }
     },
