@@ -41,7 +41,7 @@
                   'paragraph_align-right': item.position === 'client'
                 }"
               >
-                {{ dialogData.clientTitle }}
+                {{ dialogData.clientName }}
               </p>
               <p
                 class="paragraph"
@@ -55,7 +55,27 @@
           </ul>
         </div>
         <footer class="dialog-single__footer">
-          Отправка сообщений
+          <div class="send-messages">
+            <input
+              type="text"
+              class="input"
+              v-model="currentMessageValue"
+              @keyup.enter="sendMessage()"
+            >
+            <button
+              class="
+                btn
+                btn_blue
+                btn_middle
+              "
+              :class="{
+                'btn_active': this.newMessage
+              }"
+              @click="sendMessage()"
+            >
+              Отправить
+            </button>
+          </div>
         </footer>
       </section>
     </div>
@@ -69,8 +89,12 @@ export default {
   name: 'dialogSubPageSingle',
   data() {
     return {
-      dialogData: {},
+      dialogData: {
+        dialogTitle: '',
+        dialogArray: [],
+      },
       dialogsArray: [],
+      currentMessageValue: '',
     }
   },
   computed: {
@@ -86,19 +110,18 @@ export default {
       const flag = !this.isObjectEmpty(this.dialogData);
       return flag;
     },
+    newMessage() {
+      return this.currentMessageValue !== '';
+    }
   },
   watch: {
     'allDialogsListOfUserState'(value) {
-      console.log('watch allDialogsListOfUserState');
-      this.getDialog(value);
+      const dialogFindResult = this.getDialog(value);
+      if (!dialogFindResult) {
+        const object = JSON.parse(this.getCookie('objectForDialog'));
+        this.dialogData.dialogTitle = object.title;
+      }
     },
-    // 'userData'(value) {
-    //   if (!this.isPropsWereSended) {
-    //     // In case reloading the page
-    //     // we need to load all dialogs for this 
-    //     this.getDialogsByUserID(value.id);
-    //   }
-    // },
   },
   methods: {
     // Sort dialog messages by date.
@@ -111,23 +134,31 @@ export default {
       return sortedDialogsArray;
     },
     getDialog(value) {
-      value.forEach(
+      return value.some(
         item => {
           if (item.dialogID === parseInt(this.$route.params.id)) {
-            // console.log('YYES dialogs');
             this.dialogData = item;
             // Sort dialog messages when the data is here.
             this.dialogData.dialogArray = this.sortDialogMessages(item.dialogArray);
+            return true;
           } else {
             // this.dialogData.dialogTitle = this.$route.params.objectData.title;
           }
         }
       );
     },
+    sendMessage() {
+      if (this.currentMessageValue) {
+        const messageObject = {
+          text: this.currentMessageValue,
+          date: Date.now(),
+          position: 'user',
+        };
+        this.dialogData.dialogArray.push(messageObject);
+      }
+    },
   },
   created() {
-    console.log('dialog ID ::', this.$route.params.id);
-    console.log('all dialogs array ::', this.allDialogsListOfUserState);
     this.getDialog(this.allDialogsListOfUserState);
   },
 };
