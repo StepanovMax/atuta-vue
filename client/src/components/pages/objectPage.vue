@@ -839,7 +839,25 @@
             </div>
 
             <p class="paragraph object-page__user">
-              {{ objectData.user.type.label }}: {{ objectData.user.name }}
+              <span>
+                {{ objectData.user.type.label }}:
+              </span>
+              <span>
+                {{ objectData.user.name }}
+              </span>
+            </p>
+
+            <p
+              v-if="
+                (
+                  objectData.user.type.slug === 'agency'
+                  || objectData.user.type.slug === 'builder'
+                )
+                && objectData.user.contact
+              "
+              class="paragraph object-page__user"
+            >
+              {{ objectData.user.contact.label }}
             </p>
 
           </div>
