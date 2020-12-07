@@ -11,6 +11,19 @@
         </h3>
       </header>
 
+      <router-link
+        class="help-page__link"
+        :to="{
+          name: 'test',
+        }"
+      >
+        test
+      </router-link>
+
+      <router-view
+        :key="$route.fullPath"
+      />
+
       <div class="settings-sub-page__content">
 
         <registrationForm

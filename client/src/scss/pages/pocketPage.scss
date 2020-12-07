@@ -1,0 +1,74 @@
+.pocket-page {
+  &__balance{
+    margin-bottom: 15px;
+
+    &-add {
+      display: flex;
+      flex-direction: column;
+
+      &-content {
+        display: flex;
+      }
+    }
+  }
+
+  &__input {
+    &_money {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__button {
+    &_submit {
+      @extend .btn;
+      @extend .btn_blue;
+      @extend .btn_middle;
+      height: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 13px;
+    @extend .registration-page__title_row;
+  }
+
+  &__list {
+    @extend .list;
+    width: 100%;
+
+    &-paragraph {
+      @extend .paragraph;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+
+    &-item {
+      display: flex;
+
+      &:nth-child(2n) {
+        background-color: $COLOR-GREY-DISABLED;
+      }
+
+      &-cell {
+        padding: 5px 10px;
+
+        &_head {
+          font-weight: 700;
+          font-size: 15px;
+        }
+
+        &_date {
+          width: 20%;
+        }
+  
+        &_name {
+          width: 60%;
+        }
+  
+        &_summ {
+          width: 20%;
+        }
+      }
+    }
+  }
+}

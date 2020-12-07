@@ -84,7 +84,7 @@ export default {
     }
   },
   mount() {
-    console.log('this.helpData ::', this.helpData);
+    console.log('answer mount ::');
   },
 };
 </script>

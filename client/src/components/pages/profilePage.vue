@@ -183,9 +183,7 @@
 
       <div class="template-page__content">
 
-        <router-view
-          :key="$route.fullPath"
-        />
+        <router-view />
 
       </div>
 
