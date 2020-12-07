@@ -1,0 +1,24 @@
+.table {
+  width: 100%;
+
+  &__head {
+
+  }
+
+  &__body {
+
+  }
+
+  &__row {
+
+  }
+
+  &__cell {
+    padding: 5px 10px;
+    text-align: center;
+  
+    &_head {
+
+    }
+  }
+}

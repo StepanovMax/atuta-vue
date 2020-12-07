@@ -14,6 +14,7 @@ const state = {
     slug: 'all',
     checked: false,
   },
+  pocketSwitcherValue: '',
   currentDialogsListOfUserState: [],
   allDialogsListOfUserState: [],
   favouriteObjects: [],

@@ -81,7 +81,7 @@ import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
-  name: 'companyPage',
+  name: 'helpPage',
   components: {
     adsLeft,
     adsRight,

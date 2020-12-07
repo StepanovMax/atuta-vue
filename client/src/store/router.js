@@ -16,7 +16,11 @@ import companyPage from '../components/pages/companyPage.vue';
 import getDistricts from '../components/pages/getDistricts.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
 // Profile sub pages
-import pocket from '../components/pages/profile/pocket.vue';
+import pocketSubPage from '../components/pages/profile/pocketSubPage.vue';
+import pocketAddMoneySubPage from '../components/pages/profile/pocketAddMoneySubPage.vue';
+import pocketHistorySubPage from '../components/pages/profile/pocketHistorySubPage.vue';
+import test from '../components/pages/profile/test.vue';
+import pocketSubscriptionSubPage from '../components/pages/profile/pocketSubscriptionSubPage.vue';
 import settings from '../components/pages/profile/settings.vue';
 import dialogsSubPage from '../components/pages/profile/dialogsSubPage.vue';
 import dialogSubPageSingle from '../components/pages/profile/dialogSubPageSingle.vue';
@@ -92,16 +96,18 @@ const router = new Router({
           path: '/profile/settings',
           name:'settingsSubPage',
           component: settings,
+          children: [
+            {
+              path: '/profile/settings/test',
+              name:'test',
+              component: test,
+            },
+          ],
         },
         {
           path: '/profile/dialogs',
           name:'dialogsSubPage',
           component: dialogsSubPage,
-        },
-        {
-          path: '/profile/pocket',
-          name:'pocketSubPage',
-          component: pocket,
         },
         {
           path: '/profile/favorites',
@@ -118,6 +124,31 @@ const router = new Router({
           name:'dialogSubPageSingle',
           component: dialogSubPageSingle,
         },
+        {
+          path: '/profile/pocket',
+          name:'pocketSubPage',
+          component: pocketSubPage,
+          redirect: {
+            name: 'pocketHistorySubPage'
+          },
+          children: [
+            {
+              path: '/profile/pocket/history',
+              name:'pocketHistorySubPage',
+              component: pocketHistorySubPage,
+            },
+            {
+              path: '/profile/pocket/subscription',
+              name:'pocketSubscriptionSubPage',
+              component: pocketSubscriptionSubPage,
+            },
+            {
+              path: '/profile/pocket/add-money',
+              name:'pocketAddMoneySubPage',
+              component: pocketAddMoneySubPage,
+            },
+          ],
+        },
       ],
     },
     {
@@ -127,11 +158,13 @@ const router = new Router({
       meta: {
         title: 'Помощь',
       },
-      children: [{
-        path: '/help/:id',
-        name:'answer',
-        component: answer,
-      }],
+      children: [
+        {
+          path: '/help/:id',
+          name:'answer',
+          component: answer,
+        },
+      ],
     },
     {
       path: '/objects/:id',
