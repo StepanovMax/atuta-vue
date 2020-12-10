@@ -5,6 +5,7 @@ import objects from './objects';
 import dialogs from './dialogs';
 import companies from './companies';
 import Users from '../controllers/user';
+import tutorial from './tutorial.routes';
 
 const routes = app => {
   app.use(function (req, res, next) {
@@ -24,6 +25,7 @@ const routes = app => {
   app.use('/data', data);
   app.use('/objects', objects);
   app.use('/dialogs', dialogs);
+  app.use('/tutorial', tutorial);
   app.use('/companies', companies);
 }
 
