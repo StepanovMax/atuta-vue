@@ -11,6 +11,12 @@ const port = 9001;
 const server = http.createServer(app);
 const hostname = server.address();
 
+const db = require("./models");
+
+db.sequelize.sync({force: true}).then(result => {
+  console.log('Sync success ::');
+})
+.catch(err=> console.log(err));
 
 app.use(cors({origin: true}));
 app.options('*');
