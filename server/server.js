@@ -13,7 +13,7 @@ const hostname = server.address();
 
 const db = require("./models");
 
-db.sequelize.sync({force: true}).then(result => {
+db.sequelize.sync().then(result => {
   console.log('Sync success ::');
 })
 .catch(err=> console.log(err));
