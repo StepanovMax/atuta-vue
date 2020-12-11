@@ -11,6 +11,7 @@
       </h3>
 
       <switcher
+        class="add-object-page__switcher"
         switcherId="registrationSwitcher"
         :items="userRolesModified"
         :value.sync="userDataLocal.role"
@@ -684,7 +685,7 @@ export default {
     },
   },
   watch: {
-    'userDataLocal.role'() {
+    'userDataLocal.role'(value) {
       this.updateFormState();
     },
     // Watching password typing
@@ -726,11 +727,10 @@ export default {
   },
   beforeMount() {
     this.userDataLocal = this.userData;
-    if (this.userDataLocal) {
-      this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
-    } else {
+    if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
+    this.addCheckedPropertyForUserRoles('personal');
   },
   mounted() {
     this.updateFormState();
