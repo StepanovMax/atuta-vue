@@ -1,5 +1,5 @@
 import { Router } from 'express';
-const tutorials = require("../controllers/tutorial.controller.js");
+import tutorials from "../server/controllers/tutorial.controller.js";
 
 const router = Router();
 
