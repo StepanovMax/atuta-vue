@@ -1,6 +1,17 @@
 import { Router } from 'express';
 import testUsers from '../testData/testUsers';
 import cors from 'cors';
+// import multer from 'multer';
+import { createUser } from '../server/controllers/user.controller';
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './public/images/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + file.originalname);
+//   }
+// });
 
 const corsOptions = {
   origin: 'http://localhost:9001',
@@ -8,6 +19,8 @@ const corsOptions = {
 };
 
 const router = Router();
+
+router.post('/registration', createUser);
 
 router.post(
   '/login',

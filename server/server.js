@@ -4,6 +4,7 @@ import logger from 'morgan';
 import routes from './routes';
 import cors from 'cors';
 import http from 'http';
+import db from './server/models/index.js';
 
 
 const app = express();
@@ -11,7 +12,6 @@ const port = 9001;
 const server = http.createServer(app);
 const hostname = server.address();
 
-const db = require("./models");
 
 db.sequelize.sync().then(result => {
   console.log('Sync success ::');

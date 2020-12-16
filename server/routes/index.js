@@ -4,7 +4,7 @@ import data from './data';
 import objects from './objects';
 import dialogs from './dialogs';
 import companies from './companies';
-import Users from '../controllers/user';
+import Users from '../server/controllers/user';
 import tutorial from './tutorial.routes';
 
 const routes = app => {
