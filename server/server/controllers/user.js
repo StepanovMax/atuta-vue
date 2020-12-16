@@ -1,5 +1,5 @@
 // import model from '../models';
-const model = require('../models');
+import model from '../models';
 
 const { User } = model;
 

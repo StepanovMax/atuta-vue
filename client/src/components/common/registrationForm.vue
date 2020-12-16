@@ -365,7 +365,7 @@
 
 
     <div
-      ref="address"
+      ref="description"
       class="template-page__content-row"
     >
       <h3 class="registration-page__title_row">
@@ -385,6 +385,21 @@
       </div>
     </div>
 
+    <div class="template-page__content-row">
+      <button
+        class="
+          btn
+          btn_blue
+          btn_middle
+          login-page__btn
+          login-page__btn_submit
+        "
+        @click="submit"
+      >
+        Регистрация
+      </button>
+    </div>
+
   </div>
 </template>
 
@@ -395,6 +410,7 @@ import inputField from '../common/inputField.vue';
 import uploadImages from '../common/uploadImages.vue';
 import contentEditor from './contentEditor.vue';
 
+import axios from 'axios';
 import { mapState } from 'vuex';
 import { transliterate as tr, slugify } from 'transliteration';
 
@@ -416,6 +432,7 @@ export default {
   },
   data() {
     return {
+      formIsNotFilled: false,
       userDataEmpty: {
         role: {},
         login: '',
@@ -503,6 +520,11 @@ export default {
       'userRoles',
       'userData',
     ]),
+    urlAxios() {
+      const host = this.getHost();
+      const url = `${host.api}` + '/auth/registration';
+      return url;
+    },
     passwordsCorrect() {
       if (
         this.formState.password.filled &&
@@ -514,8 +536,29 @@ export default {
         return false;
       }
     },
-  }, 
+  },
   methods: {
+    async sendUserData() {
+      const sendUserDataResult = await axios.post(
+        this.urlAxios,
+        {
+          email: this.userDataLocal.email
+        }
+      )
+        .then(
+          response => {
+            console.log('response.data ::', response.data);
+            return response.data;
+          }
+        )
+        .catch(
+          error => {
+            console.error('Error [Registration] ::', error);
+            return false;
+          }
+        );
+      return sendUserDataResult;
+    },
     // Add checked property and make Agent as default
     addCheckedPropertyForUserRoles(role) {
       this.userRoles.forEach(
@@ -623,20 +666,34 @@ export default {
     },
     submit() {
       const resultFormValidation = this.formValidation();
+      console.log('this.userDataLocal ::', this.userDataLocal);
+      if (resultFormValidation) {
+        this.sendUserData();
+        console.log('resultFormValidation 1 ::', resultFormValidation);
+      } else {
+        console.log('resultFormValidation 2 ::', resultFormValidation);
+      }
     },
     updateFormState() {
       this.formState.name.required = true;
     },
     formValidation() {
       const obj = this.formState;
-      for (const key in this.formState) {
+      let formIsFilledArray = [];
+      for (const key in obj) {
         if (!obj.hasOwnProperty(key)) continue;
+        // console.log('obj ::', key, obj[key].filled);
         const subObj = obj[key];
         if (subObj.required && !subObj.filled) {
           subObj.firstBlur = true;
         }
+        formIsFilledArray.push(!obj[key].filled);
       }
-      this.scrollToErroredElement();
+      this.formIsNotFilled = formIsFilledArray.some(
+        item => item
+      );
+      // console.log('formIsNotFilled ::', this.formIsNotFilled);
+      return !this.formIsNotFilled;
     },
     scrollToErroredElement() {
       const position = this.detectHighestErroredElement();
@@ -685,6 +742,13 @@ export default {
     },
   },
   watch: {
+    'userDataLocal.address'(value) {
+      if (value.length) {
+        this.formState.address.filled = true;
+      } else {
+        this.formState.address.filled = false;
+      }
+    },
     'userDataLocal.role'(value) {
       this.updateFormState();
     },
