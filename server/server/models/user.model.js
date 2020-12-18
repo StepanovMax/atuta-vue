@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("user", {
-    name: {
+  const User = sequelize.define("User", {
+    role: {
       type: Sequelize.STRING,
       allowNull: {
         args: false,
-        msg: 'Please enter your name'
+        msg: 'Please enter your role'
       }
     },
     login: {
@@ -35,6 +35,13 @@ module.exports = (sequelize, Sequelize) => {
         },
       },
     },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your name'
+      }
+    },
     email: {
       type: Sequelize.STRING,
       unique: {
@@ -57,6 +64,17 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter your phone'
       }
     },
+    logo: {
+      type: Sequelize.STRING,
+      unique: {
+        args: true,
+        msg: 'Logo already exists'
+      },
+      allowNull: {
+        args: false,
+        msg: 'Please enter your logo'
+      }
+    },
     website: {
       type: Sequelize.STRING,
       allowNull: {
@@ -70,6 +88,13 @@ module.exports = (sequelize, Sequelize) => {
         args: false,
         msg: 'Please enter an address'
       },
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your description'
+      }
     },
   });
 

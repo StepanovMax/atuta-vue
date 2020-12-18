@@ -379,8 +379,8 @@
         "
       >
         <content-editor
-          :propContentData="userDataLocal.description ? userDataLocal.description.label : ''"
-          :value.sync="userDataLocal.description.label"
+          :propContentData="userDataLocal.description"
+          :value.sync="userDataLocal.description"
         />
       </div>
     </div>
@@ -447,9 +447,7 @@ export default {
         logo: [],
         website: '',
         address: '',
-        description: {
-          label: '',
-        },
+        description: '',
       },
       userDataLocal: {},
       switcherValue: '',
@@ -538,11 +536,31 @@ export default {
     },
   },
   methods: {
+    prepareUserDataForSending() {
+      const data = {...this.userDataLocal};
+      const role = data.role.slug;
+      console.log('data.logo[0].object.url ::', data.logo[0].object.url);
+      console.log('data.name.label ::', data.name.label);
+      console.log('this.userDataLocal.name ::', this.userDataLocal.name);
+      const logo = data.logo[0].object.url;
+      const name = data.name.label;
+      const phone = this.gFormatPhoneRevert(data.phone);
+      
+      data.phone = phone;
+      data.role = role;
+      data.logo = logo;
+      data.name = name;
+      console.log('this.userDataLocal.name ::', this.userDataLocal.name);
+      console.log('data ::', data);
+      return data;
+    },
     async sendUserData() {
+      const data = this.prepareUserDataForSending();
+      console.log('this.userDataLocal ::', this.userDataLocal);
       const sendUserDataResult = await axios.post(
         this.urlAxios,
         {
-          email: this.userDataLocal.email
+          data: data
         }
       )
         .then(
@@ -666,9 +684,10 @@ export default {
     },
     submit() {
       const resultFormValidation = this.formValidation();
-      console.log('this.userDataLocal ::', this.userDataLocal);
+      console.log('this.userDataLocal 1 ::', this.userDataLocal);
       if (resultFormValidation) {
         this.sendUserData();
+        console.log('this.userDataLocal 2 ::', this.userDataLocal);
         console.log('resultFormValidation 1 ::', resultFormValidation);
       } else {
         console.log('resultFormValidation 2 ::', resultFormValidation);

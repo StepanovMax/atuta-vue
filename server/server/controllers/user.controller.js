@@ -9,29 +9,37 @@ const createUser = async (req, res) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
+  console.log(' ');
+  console.log('createUser 1 ::', req.body.data);
+
   // Validate request
-  if (!req.body.email) {
+  if (!req.body.data) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
 
+  console.log(' ');
+  console.log('createUser 2 ::');
+
   // Create a User
-  const userData = {
-    email: req.body.email,
-  };
+  const userData = req.body.data;
+
+  console.log(' ');
+  console.log('-= userData =-', userData);
+  console.log(' ');
 
   try {
     let findUser = await User.findOne({
       where: {
-        email: req.body.email
+        email: userData.email
       }
     });
 
     console.log(' ');
     console.log('-= findUser =-', findUser);
-    console.log(' ');
+
     if (!findUser) {
       // Save User in the database
       try {
@@ -41,6 +49,8 @@ const createUser = async (req, res) => {
             console.log('Send method in action ::', data);
           })
           .catch(err => {
+            console.log(' ');
+            console.log('Catch error ::', err.message);
             res.status(500).send({
               message:
                 err.message || "Some error occurred while creating the User."
@@ -54,6 +64,8 @@ const createUser = async (req, res) => {
         console.error('error ::', error)
       }
     } else {
+      console.log(' ');
+      console.log('else ::');
       res.send(false);
     }
   } catch(error) {
