@@ -20,6 +20,9 @@ const corsOptions = {
 
 const router = Router();
 
+console.log(' ');
+console.log('registration ::');
+
 router.post('/registration', createUser);
 
 router.post(

@@ -1,4 +1,4 @@
-module.exports = {
+{
   "localhost": {
     "username": "maxgresql",
     "password": "2128506",

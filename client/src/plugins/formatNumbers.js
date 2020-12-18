@@ -39,6 +39,10 @@ const formatNumbers = {
             return '';
           }
         },
+        gFormatPhoneRevert(value) {
+          const numbers = value.replace(/\D/g,'');
+          return parseInt(numbers);
+        },
         gFormatNumbers(value) {
           const numberString = value.toString();
           const numberFormatted = numberString.replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
