@@ -156,6 +156,7 @@ export default {
       return currentAngle;
     },
     uploadImages(fileList) {
+      console.log('fileList ::', fileList);
       if (fileList && fileList.length > 0) {
         for (let i = 0; i < fileList.length; i++) {
           let canvasID = 'canvas-' + i;
@@ -192,6 +193,8 @@ export default {
           const currentUrl = image.src = URL.createObjectURL(fileList[i]);
           this.filesArray[index].object.url = currentUrl;
           vm.$emit('update:value', vm.filesArray);
+          console.log('vm.filesArray ::', vm.filesArray);
+          // vm.$emit('update:value', fileList[0]);
 
           image.onload = function() {
             const canvas = document.getElementById(canvasID);
