@@ -1,17 +1,24 @@
 import { Router } from 'express';
 import testUsers from '../testData/testUsers';
 import cors from 'cors';
-// import multer from 'multer';
+import multer from 'multer';
 import { createUser } from '../server/controllers/user.controller';
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './public/images/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + file.originalname);
-//   }
-// });
+const suffix = 'image-' +  Date.now();
+
+let storageConfig = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, '../client/uploads');
+  },
+  filename: function (req, file, callback) {
+    req.suffix = suffix;
+    callback(null, suffix);
+  }
+});
+
+let upload = multer({
+  storage: storageConfig
+});
 
 const corsOptions = {
   origin: 'http://localhost:9001',
@@ -20,18 +27,23 @@ const corsOptions = {
 
 const router = Router();
 
-console.log(' ');
-console.log('registration ::');
-
-router.post('/registration', createUser);
+router.post(
+  '/registration',
+  cors(corsOptions),
+  upload.fields([
+    { name: 'file', maxCount: 1 },
+    { name: 'userData', maxCount: 1 },
+  ]),
+  createUser,
+);
 
 router.post(
   '/login',
   cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     const { body } = req;
     let userData = null;
     testUsers.forEach(
@@ -41,7 +53,6 @@ router.post(
           body.password === item.password
         ) {
           userData = testUsers[index];
-          console.log('userData', userData);
         }
       }
     )
