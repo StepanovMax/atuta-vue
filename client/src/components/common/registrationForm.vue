@@ -4,402 +4,413 @@
     id="registrationForm"
     class="registration-page__content"
   >
-
-    <div class="template-page__content-row">
-      <h3 class="registration-page__title_row">
-        Выберите свой статус
-      </h3>
-
-      <switcher
-        class="add-object-page__switcher"
-        switcherId="registrationSwitcher"
-        :items="userRolesModified"
-        :value.sync="userDataLocal.role"
-      />
-    </div>
-
-    <div
-      v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
-      class="template-page__content-row"
+    <form
+      @submit.prevent="onSubmit"
+      enctype="multipart/form-data"
     >
-      <div class="registration-page__banner">
-        <p class="paragraph registration-page__banner-text">
-          Внимание!
-        </p>
-        <p class="paragraph registration-page__banner-text">
-          Статус "{{ userDataLocal.role.label }}" платное - 1000руб
-        </p>
-      </div>
-    </div>
 
+      <div class="template-page__content-row">
+        <h3 class="registration-page__title_row">
+          Выберите свой статус
+        </h3>
 
-    <div
-      ref="name"
-      class="template-page__content-row"
-    >
-      <h3
-        v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
-        class="registration-page__title_row"
-      >
-        Название компании
-      </h3>
-      <h3
-        v-if="userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'"
-        class="registration-page__title_row"
-      >
-        ФИО
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          propType="symbolsWithNumbers"
-          propClass="registration-page__input"
-          propKey="name"
-          key="name"
-          :value.sync="userDataLocal.name.label"
-          :propValue="userDataLocal.name.label"
+        <switcher
+          class="add-object-page__switcher"
+          switcherId="registrationSwitcher"
+          :items="userRolesModified"
+          :value.sync="userDataLocal.role"
         />
       </div>
-
-      <p
-        v-if="
-          formState.name.firstBlur &&
-          !userDataLocal.name.label
-        "
-        class="paragraph paragraph_invalid"
-      >
-        <span
-          v-if="
-            userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'
-          "
-        >
-          Название компании обязательно к заполнению
-        </span>
-        <span
-          v-if="
-            userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'
-          "
-        >
-          ФИО обязательно к заполнению
-        </span>
-      </p>
-    </div>
-
-
-    <div
-      ref="login"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Логин
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          propType="symbolsWithNumbers"
-          propClass="registration-page__input"
-          propKey="login"
-          :value.sync="userDataLocal.login"
-          :propValue="userDataLocal.login"
-        />
-      </div>
-
-      <p
-        v-if="
-          formState.login.firstBlur &&
-          !formState.login.filled &&
-          !userDataLocal.login
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Логин обязателен к заполнению
-      </p>
-
-      <p
-        v-if="
-          formState.login.firstBlur &&
-          !formState.login.filled &&
-          userDataLocal.login
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Минимальная длина 6 символов
-      </p>
-    </div>
-
-
-    <div
-      ref="password"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Пароль
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          class="registration-page__input-block"
-          propClass="registration-page__input"
-          propType="password"
-          propKey="password"
-          :value.sync="userDataLocal.password"
-          :propValue="userDataLocal.password"
-        />
-        <iconOk
-          v-if="passwordsCorrect"
-          class="registration-page__icon_ok"
-        />
-      </div>
-
-      <p
-        v-if="
-          formState.password.firstBlur &&
-          !formState.password.filled
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Минимальная длина пароля 8 символов
-      </p>
-
-      <p
-        v-if="
-          formState.password.firstBlur &&
-          !userDataLocal.password
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Пароль обязателен для заполнения
-      </p>
-    </div>
-
-
-    <div
-      ref="repassword"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Подтвердить пароль
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          class="registration-page__input-block"
-          propClass="registration-page__input"
-          propType="password"
-          propKey="repassword"
-          :value.sync="userDataLocal.repassword"
-          :propValue="userDataLocal.password"
-        />
-        <iconOk
-          v-if="passwordsCorrect"
-          class="registration-page__icon_ok"
-        />
-      </div>
-
-      <p
-        v-if="formState.repassword.firstBlur && !formState.repassword.matched"
-        class="paragraph paragraph_invalid"
-      >
-        Пароль не совпадает
-      </p>
-
-      <p
-        v-if="
-          formState.repassword.firstBlur &&
-          !userDataLocal.repassword
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Пароль обязателен для заполнения
-      </p>
-    </div>
-
-
-    <div
-      ref="email"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Email
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          propClass="registration-page__input"
-          propType="email"
-          propKey="email"
-          :value.sync="userDataLocal.email"
-          :propValue="userDataLocal.email"
-        />
-      </div>
-
-      <p
-        v-if="
-          formState.email.firstBlur &&
-          !formState.email.syntax &&
-          userDataLocal.email
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Email должен быть такого типа: info@test.ru
-      </p>
-
-      <p
-        v-if="
-          formState.email.firstBlur &&
-          !formState.email.filled &&
-          !userDataLocal.email
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Email обязателен к заполнению
-      </p>
-    </div>
-
-
-    <div
-      ref="phone"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Телефон
-      </h3>
-      <div class="registration-page__input-wrap">
-        <inputField
-          propClass="registration-page__input"
-          propType="phone"
-          propKey="phone"
-          :value.sync="userDataLocal.phone"
-          :propValue="userDataLocal.phone"
-        />
-      </div>
-
-      <p
-        v-if="
-          formState.phone.firstBlur &&
-          !formState.phone.filled
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Телефон обязателен к заполнению
-      </p>
-    </div>
-
-
-    <div
-      ref="logo"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Логотип
-      </h3>
-
-      <upload-images
-        id="upload-images"
-        :propIsMultiple="false"
-        :value.sync="userDataLocal.logo"
-        :propValue="userDataLocal.logo"
-      />
-
-      <p
-        v-if="
-          formState.logo.firstBlur &&
-          !formState.logo.filled
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Логотип нужен обязательно
-      </p>
-    </div>
-
-
-    <div
-      ref="website"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Сайт
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          propClass="registration-page__input"
-          propType="website"
-          propKey="website"
-          :value.sync="userDataLocal.website"
-          :propValue="userDataLocal.website"
-        />
-      </div>
-
-      <p
-        v-if="
-          formState.website.firstBlur &&
-          !formState.website.syntax &&
-          userDataLocal.website
-        "
-        class="paragraph paragraph_invalid"
-      >
-        Сайт должен быть такого типа: test.ru
-      </p>
-    </div>
-
-
-    <div
-      ref="address"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Адрес
-      </h3>
-
-      <div class="registration-page__input-wrap">
-        <inputField
-          propClass="registration-page__input"
-          propType="symbolsWithNumbers"
-          propKey="address"
-          :value.sync="userDataLocal.address"
-          :propValue="userDataLocal.address"
-        />
-      </div>
-    </div>
-
-
-    <div
-      ref="description"
-      class="template-page__content-row"
-    >
-      <h3 class="registration-page__title_row">
-        Описание
-      </h3>
 
       <div
-        class="
-          registration-page__input-wrap
-          registration-page__input-wrap_full-width
-        "
+        v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
+        class="template-page__content-row"
       >
-        <content-editor
-          :propContentData="userDataLocal.description"
-          :value.sync="userDataLocal.description"
-        />
+        <div class="registration-page__banner">
+          <p class="paragraph registration-page__banner-text">
+            Внимание!
+          </p>
+          <p class="paragraph registration-page__banner-text">
+            Статус "{{ userDataLocal.role.label }}" платное - 1000руб
+          </p>
+        </div>
       </div>
-    </div>
 
-    <div class="template-page__content-row">
-      <button
-        class="
-          btn
-          btn_blue
-          btn_middle
-          login-page__btn
-          login-page__btn_submit
-        "
-        @click="submit"
+
+      <div
+        ref="name"
+        class="template-page__content-row"
       >
-        Регистрация
-      </button>
-    </div>
+        <h3
+          v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
+          class="registration-page__title_row"
+        >
+          Название компании
+        </h3>
+        <h3
+          v-if="userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'"
+          class="registration-page__title_row"
+        >
+          ФИО
+        </h3>
 
+        <div class="registration-page__input-wrap">
+          <inputField
+            propType="symbolsWithNumbers"
+            propClass="registration-page__input"
+            propKey="name"
+            key="name"
+            :value.sync="userDataLocal.name.label"
+            :propValue="userDataLocal.name.label"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.name.firstBlur &&
+            !userDataLocal.name.label
+          "
+          class="paragraph paragraph_invalid"
+        >
+          <span
+            v-if="
+              userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'
+            "
+          >
+            Название компании обязательно к заполнению
+          </span>
+          <span
+            v-if="
+              userDataLocal.role.slug === 'personal' || userDataLocal.role.slug === 'agent'
+            "
+          >
+            ФИО обязательно к заполнению
+          </span>
+        </p>
+      </div>
+
+
+      <div
+        ref="login"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Логин
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            propType="symbolsWithNumbers"
+            propClass="registration-page__input"
+            propKey="login"
+            :value.sync="userDataLocal.login"
+            :propValue="userDataLocal.login"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.login.firstBlur &&
+            !formState.login.filled &&
+            !userDataLocal.login
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Логин обязателен к заполнению
+        </p>
+
+        <p
+          v-if="
+            formState.login.firstBlur &&
+            !formState.login.filled &&
+            userDataLocal.login
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Минимальная длина 6 символов
+        </p>
+      </div>
+
+
+      <div
+        ref="password"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Пароль
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            class="registration-page__input-block"
+            propClass="registration-page__input"
+            propType="password"
+            propKey="password"
+            :value.sync="userDataLocal.password"
+            :propValue="userDataLocal.password"
+          />
+          <iconOk
+            v-if="passwordsCorrect"
+            class="registration-page__icon_ok"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.password.firstBlur &&
+            !formState.password.filled
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Минимальная длина пароля 8 символов
+        </p>
+
+        <p
+          v-if="
+            formState.password.firstBlur &&
+            !userDataLocal.password
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Пароль обязателен для заполнения
+        </p>
+      </div>
+
+
+      <div
+        ref="repassword"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Подтвердить пароль
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            class="registration-page__input-block"
+            propClass="registration-page__input"
+            propType="password"
+            propKey="repassword"
+            :value.sync="userDataLocal.repassword"
+            :propValue="userDataLocal.password"
+          />
+          <iconOk
+            v-if="passwordsCorrect"
+            class="registration-page__icon_ok"
+          />
+        </div>
+
+        <p
+          v-if="formState.repassword.firstBlur && !formState.repassword.matched"
+          class="paragraph paragraph_invalid"
+        >
+          Пароль не совпадает
+        </p>
+
+        <p
+          v-if="
+            formState.repassword.firstBlur &&
+            !userDataLocal.repassword
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Пароль обязателен для заполнения
+        </p>
+      </div>
+
+
+      <div
+        ref="email"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Email
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            propClass="registration-page__input"
+            propType="email"
+            propKey="email"
+            :value.sync="userDataLocal.email"
+            :propValue="userDataLocal.email"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.email.firstBlur &&
+            !formState.email.syntax &&
+            userDataLocal.email
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Email должен быть такого типа: info@test.ru
+        </p>
+
+        <p
+          v-if="
+            formState.email.firstBlur &&
+            !formState.email.filled &&
+            !userDataLocal.email
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Email обязателен к заполнению
+        </p>
+      </div>
+
+
+      <div
+        ref="phone"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Телефон
+        </h3>
+        <div class="registration-page__input-wrap">
+          <inputField
+            propClass="registration-page__input"
+            propType="phone"
+            propKey="phone"
+            :value.sync="userDataLocal.phone"
+            :propValue="userDataLocal.phone"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.phone.firstBlur &&
+            !formState.phone.filled
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Телефон обязателен к заполнению
+        </p>
+      </div>
+
+
+      <div
+        ref="logo"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Логотип
+        </h3>
+
+        <upload-images
+          id="upload-images"
+          :propIsMultiple="false"
+          :value.sync="userDataLocal.logo"
+          :propValue="userDataLocal.logo"
+        />
+
+        <input
+          ref="file"
+          type="file"
+          name="file"
+          @change="inputFile()"
+        >
+
+        <p
+          v-if="
+            formState.logo.firstBlur &&
+            !formState.logo.filled
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Логотип нужен обязательно
+        </p>
+      </div>
+
+
+      <div
+        ref="website"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Сайт
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            propClass="registration-page__input"
+            propType="website"
+            propKey="website"
+            :value.sync="userDataLocal.website"
+            :propValue="userDataLocal.website"
+          />
+        </div>
+
+        <p
+          v-if="
+            formState.website.firstBlur &&
+            !formState.website.syntax &&
+            userDataLocal.website
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Сайт должен быть такого типа: test.ru
+        </p>
+      </div>
+
+
+      <div
+        ref="address"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Адрес
+        </h3>
+
+        <div class="registration-page__input-wrap">
+          <inputField
+            propClass="registration-page__input"
+            propType="symbolsWithNumbers"
+            propKey="address"
+            :value.sync="userDataLocal.address"
+            :propValue="userDataLocal.address"
+          />
+        </div>
+      </div>
+
+
+      <div
+        ref="description"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Описание
+        </h3>
+
+        <div
+          class="
+            registration-page__input-wrap
+            registration-page__input-wrap_full-width
+          "
+        >
+          <content-editor
+            :propContentData="userDataLocal.description"
+            :value.sync="userDataLocal.description"
+          />
+        </div>
+      </div>
+
+      <div class="template-page__content-row">
+        <button
+          class="
+            btn
+            btn_blue
+            btn_middle
+            login-page__btn
+            login-page__btn_submit
+          "
+          type="submit"
+        >
+          Регистрация
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -432,6 +443,15 @@ export default {
   },
   data() {
     return {
+      inputtedFile: null,
+      defaultLogo: {
+        name: "someName",
+        lastModified: "1602838486310",
+        size: 51224,
+        type: "image/png",
+        url: "blob:http://localhost:9000/6ebc2222-a9a5-4210-9ec9-3a733a0abc5d",
+        webkitRelativePath: "",
+      },
       formIsNotFilled: false,
       userDataEmpty: {
         role: {},
@@ -536,46 +556,51 @@ export default {
     },
   },
   methods: {
+    inputFile() {
+      // console.log('inputFile() ::', this.$refs.file.files[0]);
+      this.inputtedFile = this.$refs.file.files[0];
+    },
     prepareUserDataForSending() {
       const data = {...this.userDataLocal};
       const role = data.role.slug;
-      console.log('data.logo[0].object.url ::', data.logo[0].object.url);
-      console.log('data.name.label ::', data.name.label);
-      console.log('this.userDataLocal.name ::', this.userDataLocal.name);
-      const logo = data.logo[0].object.url;
+      const logo = data.logo[0].object;
       const name = data.name.label;
       const phone = this.gFormatPhoneRevert(data.phone);
-      
       data.phone = phone;
       data.role = role;
-      data.logo = logo;
       data.name = name;
-      console.log('this.userDataLocal.name ::', this.userDataLocal.name);
+      data.date = Date.now();
       console.log('data ::', data);
       return data;
     },
     async sendUserData() {
       const data = this.prepareUserDataForSending();
-      console.log('this.userDataLocal ::', this.userDataLocal);
-      const sendUserDataResult = await axios.post(
-        this.urlAxios,
-        {
-          data: data
-        }
-      )
-        .then(
-          response => {
-            console.log('response.data ::', response.data);
-            return response.data;
-          }
+      const formData = new FormData();
+      formData.append('file', this.inputtedFile);
+      formData.append('userData', JSON.stringify(data));
+
+      try {
+        const sendUserDataResult = await axios.post(
+          this.urlAxios,
+          formData
         )
-        .catch(
-          error => {
-            console.error('Error [Registration] ::', error);
-            return false;
-          }
-        );
-      return sendUserDataResult;
+          .then(
+            response => {
+              console.log('response.data ::', response.data);
+              return response.data;
+            }
+          )
+          .catch(
+            error => {
+              console.error('Error [Registration] ::');
+              console.error(error);
+              return false;
+            }
+          );
+        return sendUserDataResult;
+      } catch(error) {
+        console.error('Something went wrong ::', error);
+      }
     },
     // Add checked property and make Agent as default
     addCheckedPropertyForUserRoles(role) {
@@ -682,13 +707,13 @@ export default {
         this.formState.logo.filled = false;
       }
     },
-    submit() {
+    onSubmit() {
       const resultFormValidation = this.formValidation();
-      console.log('this.userDataLocal 1 ::', this.userDataLocal);
+      // console.log('this.userDataLocal 1 ::', this.userDataLocal)y;
       if (resultFormValidation) {
         this.sendUserData();
-        console.log('this.userDataLocal 2 ::', this.userDataLocal);
-        console.log('resultFormValidation 1 ::', resultFormValidation);
+        // console.log('this.userDataLocal 2 ::', this.userDataLocal);
+        // console.log('resultFormValidation 1 ::', resultFormValidation);
       } else {
         console.log('resultFormValidation 2 ::', resultFormValidation);
       }

@@ -1,52 +1,47 @@
 import db from '../models';
 
 const User = db.user;
-// const Op = db.Sequelize.Op;
 
 // Create and Save a new User
-const createUser = async (req, res) => {
+const createUser = async (req, res, file) => {
+  console.log('req ::');
+  console.log(req.suffix);
+  console.log(' ');
   res.header('Access-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-  console.log(' ');
-  console.log('createUser 1 ::', req.body.data);
+  const userData = req.body.userData;
 
   // Validate request
-  if (!req.body.data) {
+  if (!userData) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
 
-  console.log(' ');
-  console.log('createUser 2 ::');
-
   // Create a User
-  const userData = req.body.data;
-
-  console.log(' ');
-  console.log('-= userData =-', userData);
-  console.log(' ');
+  const userDataParsed = JSON.parse(userData);
+  userDataParsed.logo = '/uploads/' + req.suffix;
 
   try {
+    console.log(' ');
+    console.log('userDataParsed.email ::', userDataParsed);
     let findUser = await User.findOne({
       where: {
-        email: userData.email
+        email: userDataParsed.email,
+        phone: userDataParsed.phone,
       }
     });
 
-    console.log(' ');
-    console.log('-= findUser =-', findUser);
-
     if (!findUser) {
+      console.log('User not found ::');
       // Save User in the database
       try {
-        let createData = await User.create(userData)
+        let createData = await User.create(userDataParsed)
           .then(data => {
             res.send(data);
-            console.log('Send method in action ::', data);
           })
           .catch(err => {
             console.log(' ');
@@ -65,7 +60,8 @@ const createUser = async (req, res) => {
       }
     } else {
       console.log(' ');
-      console.log('else ::');
+      console.log('User already exist! ::');
+      console.log(' ');
       res.send(false);
     }
   } catch(error) {
