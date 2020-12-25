@@ -4,9 +4,6 @@ const User = db.user;
 
 // Create and Save a new User
 const createUser = async (req, res, file) => {
-  console.log('req ::');
-  console.log(req.suffix);
-  console.log(' ');
   res.header('Access-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -26,8 +23,8 @@ const createUser = async (req, res, file) => {
   userDataParsed.logo = '/uploads/' + req.suffix;
 
   try {
-    console.log(' ');
-    console.log('userDataParsed.email ::', userDataParsed);
+    // console.log(' ');
+    // console.log('userDataParsed.email ::', userDataParsed);
     let findUser = await User.findOne({
       where: {
         email: userDataParsed.email,
@@ -36,7 +33,11 @@ const createUser = async (req, res, file) => {
     });
 
     if (!findUser) {
+      console.log(' ');
       console.log('User not found ::');
+      console.log(' ');
+      console.log('file ::', req.files['file'][0]);
+      console.log(' ');
       // Save User in the database
       try {
         let createData = await User.create(userDataParsed)
