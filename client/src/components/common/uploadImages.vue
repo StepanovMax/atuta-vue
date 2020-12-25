@@ -191,7 +191,7 @@ export default {
           let imageHeight = image.height;
 
           const currentUrl = image.src = URL.createObjectURL(fileList[i]);
-          this.filesArray[index].object.url = currentUrl;
+          // this.filesArray[index].object.url = currentUrl;
           vm.$emit('update:value', vm.filesArray);
           console.log('vm.filesArray ::', vm.filesArray);
           // vm.$emit('update:value', fileList[0]);
@@ -385,21 +385,23 @@ export default {
         context.rotate(currentDegree * Math.PI/180);
         context.drawImage(image, 0, 0, imageWidth, imageHeight);
 
-        vm.filesArray[index].object.image = image;
-        vm.filesArray[index].object.currentDegree = vm.filesArray[index].degrees;
-        vm.filesArray[index].object.imageWidth = imageWidth;
-        vm.filesArray[index].object.imageHeight = imageHeight;
-        vm.filesArray[index].object.translateX = translateX;
-        vm.filesArray[index].object.translateY = translateY;
-        vm.filesArray[index].object.canvasWidth = canvas.width;
-        vm.filesArray[index].object.canvasHeight = canvas.height;
-        vm.$emit('update:value', 'a');
+        // vm.filesArray[index].object.image = image;
+        // vm.filesArray[index].object.currentDegree = vm.filesArray[index].degrees;
+        // vm.filesArray[index].object.imageWidth = imageWidth;
+        // vm.filesArray[index].object.imageHeight = imageHeight;
+        // vm.filesArray[index].object.translateX = translateX;
+        // vm.filesArray[index].object.translateY = translateY;
+        // vm.filesArray[index].object.canvasWidth = canvas.width;
+        // vm.filesArray[index].object.canvasHeight = canvas.height;
+        console.log('update:value 1 ::', vm.filesArray);
+        // vm.$emit('update:value', vm.filesArray);
 
         canvas.toBlob(
           function(blob) {
             const url = URL.createObjectURL(blob);
             vm.filesArray[index].object.url = url;
-            vm.$emit('update:value', vm.filesArray);
+            console.log('update:value 2');
+            vm.$emit('update:value', blob);
             URL.revokeObjectURL(blob);
           },
           'image/jpeg',
