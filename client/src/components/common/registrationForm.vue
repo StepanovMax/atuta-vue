@@ -305,13 +305,6 @@
           :propValue="userDataLocal.logo"
         />
 
-        <input
-          ref="file"
-          type="file"
-          name="file"
-          @change="inputFile()"
-        >
-
         <p
           v-if="
             formState.logo.firstBlur &&
@@ -572,14 +565,12 @@ export default {
       data.role = role;
       data.name = name;
       data.date = Date.now();
-      console.log('data ::', data);
       return data;
     },
     async sendUserData() {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
-      console.log('this.blobImage ::', this.blobImage);
-      formData.append('file', this.blobImage);
+      formData.append('file', this.blobImage[0].blob);
       formData.append('userData', JSON.stringify(data));
 
       try {
