@@ -128,6 +128,19 @@ export default {
       urlArray: [],
     }
   },
+  computed: {
+    allowToUpload() {
+      if (this.propIsMultiple) {
+        return true;
+      } else {
+        if (this.filesArray.length === 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
+  },
   methods: {
     calcDegree(way, index) {
       let currentDegree;
@@ -156,84 +169,87 @@ export default {
       return currentAngle;
     },
     uploadImages(fileList) {
-      console.log('fileList ::', fileList);
-      if (fileList && fileList.length > 0) {
-        for (let i = 0; i < fileList.length; i++) {
-          let canvasID = 'canvas-' + i;
-          let index = i;
+      if (this.allowToUpload) {
+        console.log('fileList ::', fileList);
+        if (fileList && fileList.length > 0) {
+          for (let i = 0; i < fileList.length; i++) {
+            let canvasID = 'canvas-' + i;
+            let index = i;
 
-          this.filesArray.forEach(
-            item => {
-              if (item.id === canvasID) {
-                // console.log('canvasID catch ::', this.filesArray.length, i);
-                index = this.filesArray.length;
-                canvasID = 'canvas-' + index;
+            this.filesArray.forEach(
+              item => {
+                if (item.id === canvasID) {
+                  // console.log('canvasID catch ::', this.filesArray.length, i);
+                  index = this.filesArray.length;
+                  canvasID = 'canvas-' + index;
+                }
               }
+            )
+
+            this.filesArray.push({
+              id: canvasID,
+              object: fileList[i],
+              degrees: 0,
+              imageRatio: 0,
+            });
+
+            let currentDegree = 0;
+            const image = new Image();
+            let vm = this;
+            let imageRatio;
+            let imageLWidth;
+            let imageLHeight;
+            let imagePWidth;
+            let imagePHeight;
+            let imageWidth = image.width;
+            let imageHeight = image.height;
+
+            const currentUrl = image.src = URL.createObjectURL(fileList[i]);
+            // this.filesArray[index].object.url = currentUrl;
+            // vm.$emit('update:value', vm.filesArray);
+            // console.log('vm.filesArray ::', vm.filesArray);
+            // vm.$emit('update:value', fileList[0]);
+
+            image.onload = function() {
+              const canvas = document.getElementById(canvasID);
+              canvas.height = 1600;
+              canvas.width = 2400;
+              const context = canvas.getContext('2d');
+
+              imageRatio = image.width / image.height;
+              vm.filesArray[index].imageRatio = imageRatio;
+              imageLWidth = canvas.width;
+              imageLHeight = canvas.width / imageRatio;
+              imagePWidth = canvas.height * imageRatio;
+              imagePHeight = canvas.height;
+
+              // Landscape view
+              if (imageRatio >= 1.5) {
+                imageWidth = imageLWidth;
+                imageHeight = imageLHeight;
+                canvas.width = imageLWidth;
+                canvas.height = imageLHeight;
+              }
+              // Portrait view
+              else {
+                imageWidth = imagePWidth;
+                imageHeight = imagePHeight;
+                canvas.width = imagePWidth;
+                canvas.height = imagePHeight;
+              }
+              context.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+              canvas.toBlob(
+                function (blob) {
+                  vm.filesArray[index].object.url = URL.createObjectURL(blob);
+                  vm.filesArray[index].blob = blob;
+                  vm.$emit('update:value', vm.filesArray);
+                  URL.revokeObjectURL(blob);
+                },
+                'image/jpeg',
+                1
+              );
             }
-          )
-
-          this.filesArray.push({
-            id: canvasID,
-            object: fileList[i],
-            degrees: 0,
-            imageRatio: 0,
-          });
-
-          let currentDegree = 0;
-          const image = new Image();
-          let vm = this;
-          let imageRatio;
-          let imageLWidth;
-          let imageLHeight;
-          let imagePWidth;
-          let imagePHeight;
-          let imageWidth = image.width;
-          let imageHeight = image.height;
-
-          const currentUrl = image.src = URL.createObjectURL(fileList[i]);
-          // this.filesArray[index].object.url = currentUrl;
-          vm.$emit('update:value', vm.filesArray);
-          console.log('vm.filesArray ::', vm.filesArray);
-          // vm.$emit('update:value', fileList[0]);
-
-          image.onload = function() {
-            const canvas = document.getElementById(canvasID);
-            canvas.height = 1600;
-            canvas.width = 2400;
-            const context = canvas.getContext('2d');
-
-            imageRatio = image.width / image.height;
-            vm.filesArray[index].imageRatio = imageRatio;
-            imageLWidth = canvas.width;
-            imageLHeight = canvas.width / imageRatio;
-            imagePWidth = canvas.height * imageRatio;
-            imagePHeight = canvas.height;
-
-            // Landscape view
-            if (imageRatio >= 1.5) {
-              imageWidth = imageLWidth;
-              imageHeight = imageLHeight;
-              canvas.width = imageLWidth;
-              canvas.height = imageLHeight;
-            }
-            // Portrait view
-            else {
-              imageWidth = imagePWidth;
-              imageHeight = imagePHeight;
-              canvas.width = imagePWidth;
-              canvas.height = imagePHeight;
-            }
-            context.drawImage(this, 0, 0, imageWidth, imageHeight);
-
-            // canvas.toBlob(
-            //   function (blob) {
-            //     vm.filesArray[index].object.url = URL.createObjectURL(blob);
-            //     vm.$emit('update:value', vm.filesArray);
-            //     URL.revokeObjectURL(blob);
-            //   },
-            //   'image/jpeg',
-            //   1
-            // );
           }
         }
       }
@@ -385,14 +401,14 @@ export default {
         context.rotate(currentDegree * Math.PI/180);
         context.drawImage(image, 0, 0, imageWidth, imageHeight);
 
-        // vm.filesArray[index].object.image = image;
-        // vm.filesArray[index].object.currentDegree = vm.filesArray[index].degrees;
-        // vm.filesArray[index].object.imageWidth = imageWidth;
-        // vm.filesArray[index].object.imageHeight = imageHeight;
-        // vm.filesArray[index].object.translateX = translateX;
-        // vm.filesArray[index].object.translateY = translateY;
-        // vm.filesArray[index].object.canvasWidth = canvas.width;
-        // vm.filesArray[index].object.canvasHeight = canvas.height;
+        vm.filesArray[index].object.image = image;
+        vm.filesArray[index].object.currentDegree = vm.filesArray[index].degrees;
+        vm.filesArray[index].object.imageWidth = imageWidth;
+        vm.filesArray[index].object.imageHeight = imageHeight;
+        vm.filesArray[index].object.translateX = translateX;
+        vm.filesArray[index].object.translateY = translateY;
+        vm.filesArray[index].object.canvasWidth = canvas.width;
+        vm.filesArray[index].object.canvasHeight = canvas.height;
         console.log('update:value 1 ::', vm.filesArray);
         // vm.$emit('update:value', vm.filesArray);
 
@@ -400,8 +416,9 @@ export default {
           function(blob) {
             const url = URL.createObjectURL(blob);
             vm.filesArray[index].object.url = url;
+            vm.filesArray[index].blob = blob;
             console.log('update:value 2');
-            vm.$emit('update:value', blob);
+            vm.$emit('update:value', vm.filesArray);
             URL.revokeObjectURL(blob);
           },
           'image/jpeg',
