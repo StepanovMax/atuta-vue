@@ -301,7 +301,7 @@
         <upload-images
           id="upload-images"
           :propIsMultiple="false"
-          :value.sync="userDataLocal.logo"
+          :value.sync="blobImage"
           :propValue="userDataLocal.logo"
         />
 
@@ -443,6 +443,7 @@ export default {
   },
   data() {
     return {
+      blobImage: null,
       inputtedFile: null,
       defaultLogo: {
         name: "someName",
@@ -557,7 +558,7 @@ export default {
   },
   methods: {
     inputFile() {
-      // console.log('inputFile() ::', this.$refs.file.files[0]);
+      console.log('inputFile() ::', this.$refs.file.files[0]);
       this.inputtedFile = this.$refs.file.files[0];
     },
     prepareUserDataForSending() {
@@ -566,6 +567,7 @@ export default {
       const logo = data.logo[0].object;
       const name = data.name.label;
       const phone = this.gFormatPhoneRevert(data.phone);
+      data.logo = logo;
       data.phone = phone;
       data.role = role;
       data.name = name;
@@ -576,7 +578,8 @@ export default {
     async sendUserData() {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
-      formData.append('file', this.inputtedFile);
+      console.log('this.blobImage ::', this.blobImage);
+      formData.append('file', this.blobImage);
       formData.append('userData', JSON.stringify(data));
 
       try {
@@ -710,7 +713,7 @@ export default {
     onSubmit() {
       const resultFormValidation = this.formValidation();
       // console.log('this.userDataLocal 1 ::', this.userDataLocal)y;
-      if (resultFormValidation) {
+      if (!resultFormValidation) {
         this.sendUserData();
         // console.log('this.userDataLocal 2 ::', this.userDataLocal);
         // console.log('resultFormValidation 1 ::', resultFormValidation);
@@ -827,6 +830,7 @@ export default {
       this.handlePhone(value);
     },
     'userDataLocal.logo'(value) {
+      console.log('value ::', value);
       this.handleLogo(value);
     },
     'userDataLocal.name.label'(value) {
