@@ -1,11 +1,14 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 // Pass .env to the frontend
 const Dotenv = require('dotenv-webpack');
 
+// const TerserPlugin = require('terser-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const webpack = require("webpack");
+
+const timestamp = new Date().getTime();
 
 module.exports = {
   entry: path.join(__dirname, './src/index.js'),
@@ -15,7 +18,7 @@ module.exports = {
   mode: 'development',
 
   output: {
-    filename: 'bundle.js',
+    filename: `bundle-${timestamp}.js`,
     publicPath: '/build/',
     path: path.join(__dirname, 'build'),
   },
@@ -72,15 +75,53 @@ module.exports = {
     ]
   },
 
-  optimization: {
-    minimize: true,
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       uglifyOptions: {
+  //         output: {
+  //           comments: false
+  //         },
+  //         minify: {},
+  //         compress: {
+  //           booleans: true,
+  //           //...
+  //         }
+  //       }
+  //     })
+  //   ],
+  // },
+
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     // new UglifyJsPlugin({
+  //     //   include: /\.min\.js$/
+  //     // }),
+  //     // new TerserPlugin({
+  //     //   parallel: true
+  //     // }),
+  //     new TerserPlugin({
+  //       cache: true,
+  //       parallel: 8,
+  //       sourceMap: true, // Must be set to true if using source-maps in production
+  //       // terserOptions: {
+  //       //   // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+  //       // }
+  //     }),
+  //   ]
+  // },
 
   resolve: {
     extensions: ['*', '.js', '.vue', '.json']
   },
 
   plugins: [
+    // new webpack.optimize.UglifyJsPlugin({
+    //   include: /\.min\.js$/,
+    //   minimize: true
+    // }),
+
     new VueLoaderPlugin(),
 
     // Pass .env to the frontend
@@ -91,6 +132,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
       host: process.env.HOST,
+      timestamp: timestamp,
       filename: 'index.html',
       template: 'index-template.html',
       inject: false,
