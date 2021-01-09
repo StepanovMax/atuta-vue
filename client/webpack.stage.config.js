@@ -92,8 +92,8 @@ module.exports = {
   //   ],
   // },
 
-  // optimization: {
-  //   minimize: true,
+  optimization: {
+    minimize: true,
   //   minimizer: [
   //     // new UglifyJsPlugin({
   //     //   include: /\.min\.js$/
@@ -110,7 +110,7 @@ module.exports = {
   //       // }
   //     }),
   //   ]
-  // },
+  },
 
   resolve: {
     extensions: ['*', '.js', '.vue', '.json']
