@@ -132,7 +132,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
       host: process.env.HOST,
-      mode: 'dev',
+      mode: 'stage',
       timestamp: timestamp,
       filename: '../index.html',
       template: 'index-template.html',

@@ -102,6 +102,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Локальная версия',
       host: process.env.HOST,
+      mode: 'local',
       filename: '../index.html',
       template: 'index-template.html',
       inject: false,
