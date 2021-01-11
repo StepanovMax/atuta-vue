@@ -8,7 +8,7 @@ const getHost = {
           if (process.env.NODE_ENV === 'development') {
             host.front = 'http://dev.atyta.ru';
             host.api = 'http://dev-api.atyta.ru:9001';
-          } else if (process.env.NODE_ENV === 'stage') {
+          } else if (process.env.NODE_ENV === 'stage' || process.env.NODE_ENV === 'production') {
             host.front = 'http://stage.atyta.ru';
             host.api = 'http://stage-api.atyta.ru:9001';
           } else if (process.env.NODE_ENV === 'localhost') {
