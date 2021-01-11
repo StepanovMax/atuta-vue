@@ -15,7 +15,7 @@ module.exports = {
 
   devtool: 'none',
 
-  mode: 'development',
+  mode: 'production',
 
   output: {
     filename: `bundle-${timestamp}.js`,
