@@ -703,7 +703,7 @@ export default {
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
-      // console.log('this.userDataLocal 1 ::', this.userDataLocal)y;
+      // console.log('this.userDataLocal 1 ::', this.userDataLocal);
       if (resultFormValidation) {
         console.log('resultFormValidation 1 ::', resultFormValidation);
         this.sendUserData();
