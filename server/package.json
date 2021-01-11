@@ -7,7 +7,9 @@
   "author": "Stepanov Max",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node server.js",
+    "local-start": "NODE_ENV=localhost nodemon --exec babel-node server.js",
+    "dev-start": "NODE_ENV=development nodemon --exec babel-node server.js",
+    "stage-start": "NODE_ENV=stage nodemon --exec babel-node server.js",
     "start": "yarn build && node server.js",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "deb": "babel-node --presets es2015 app.js"
@@ -18,6 +20,7 @@
     "body-parser": "^1.19.0",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
     "morgan": "^1.9.1",

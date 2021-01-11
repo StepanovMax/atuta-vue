@@ -8,3 +8,7 @@ server/yarn-error.log
 
 client/index.html
 *.code-workspace
+
+server/.env
+server/.env.localhost
+server/.env.development
