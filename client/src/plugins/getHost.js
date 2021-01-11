@@ -7,14 +7,14 @@ const getHost = {
           if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
             host.front = 'http://dev.atyta.ru';
             host.api = 'http://dev-api.atyta.ru:9001';
+          } else if (process.env.NODE_ENV === 'stage') {
+            host.front = 'http://stage.atyta.ru';
+            host.api = 'http://stage-api.atyta.ru:9001';
           } else {
             host.front = 'http://127.0.0.1:9000';
             host.api = 'http://127.0.0.1:9001';
           }
-          // else if (process.env.NODE_ENV === 'stage') {
-          //   host.front = 'http://stage.atyta.ru';
-          //   host.api = 'http://stage-api.atyta.ru:9001';
-          // }
+          console.log('host ::', host);
           // else if (process.env.NODE_ENV === 'production') {
           //   host.front = 'http://prod.atyta.ru';
           //   host.api = 'http://prod-api.atyta.ru:9001';
