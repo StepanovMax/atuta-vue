@@ -19,6 +19,12 @@ const routes = app => {
 
   app.get('/api/users/get-all', Users.getAllUsers);
 
+  app.get(
+    '/testapi', (req, res) => res.status(200).send({
+      message: 'Welcome to the Atuta API!'
+    })
+  );
+
   // Import API Routes
   app.use('/help', help);
   app.use('/auth', auth);
