@@ -1,19 +1,27 @@
 // import config from "../config/config";
-const config = require("../config/config");
+// const config = require("../config/config");
 import Sequelize from "sequelize";
 
-const sequelize = new Sequelize(config.localhost.database, config.localhost.username, config.localhost.password, {
-  host: config.localhost.host,
-  dialect: config.localhost.dialect,
-  operatorsAliases: false,
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
-  pool: {
-    max: config.localhost.pool.max,
-    min: config.localhost.pool.min,
-    acquire: config.localhost.pool.acquire,
-    idle: config.localhost.pool.idle
+
+const sequelize = new Sequelize(
+  process.env.pg_database,
+  process.env.pg_username,
+  process.env.pg_password,
+  {
+    host: process.env.pg_host,
+    dialect: process.env.pg_dialect,
+    operatorsAliases: process.env.pg_operatorsAliases,
+
+    pool: {
+      max: parseInt(process.env.pg_pool_max),
+      min: parseInt(process.env.pg_pool_min),
+      idle: parseInt(process.env.pg_pool_idle),
+      acquire: parseInt(process.env.pg_pool_acquire),
+    }
   }
-});
+);
 
 const db = {};
 
