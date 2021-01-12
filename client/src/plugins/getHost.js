@@ -14,6 +14,9 @@ const getHost = {
           } else if (process.env.NODE_ENV === 'localhost') {
             host.front = 'http://127.0.0.1:9000';
             host.api = 'http://127.0.0.1:9001';
+          } else {
+            host.front = 'http://127.0.0.1:9000';
+            host.api = 'http://127.0.0.1:9001';
           }
           console.log('host ::', host);
           // else if (process.env.NODE_ENV === 'production') {
