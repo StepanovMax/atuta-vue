@@ -1,4 +1,10 @@
 import db from '../models';
+import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 
 const User = db.user;
 
@@ -9,6 +15,8 @@ const createUser = async (req, res, file) => {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
   const userData = req.body.userData;
+  const saltRounds = parseInt(process.env.db_salt_rounds);
+  const saltCommon = parseInt(process.env.db_salt);
 
   // Validate request
   if (!userData) {
@@ -21,6 +29,27 @@ const createUser = async (req, res, file) => {
   // Create a User
   const userDataParsed = JSON.parse(userData);
   userDataParsed.logo = '/uploads/' + req.suffix;
+
+  userDataParsed.salt = bcrypt.genSaltSync(saltRounds);
+  console.log(' ');
+  console.log('   >> salt', userDataParsed.salt);
+  console.log(' ');
+
+  const hash = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt);
+  console.log(' ');
+  console.log('   >> hash', hash);
+  console.log(' ');
+
+  userDataParsed.password = bcrypt.hashSync(hash, saltCommon);
+  console.log(' ');
+  console.log('   >> userDataParsed.password', userDataParsed.password);
+  console.log(' ');
+
+  bcrypt.compare(userDataParsed.password, userDataParsed.password, function(err, result) {
+    console.log(' ');
+    console.log('   >> result', result);
+    console.log(' ');
+  });
 
   try {
     // console.log(' ');

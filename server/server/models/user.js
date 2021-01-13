@@ -1,107 +1,105 @@
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
-    {
-      role: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your role'
-        }
+'use strict';
+module.exports = (sequelize, Sequelize) => {
+  const newUser = sequelize.define('user', {
+    role: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your role'
+      }
+    },
+    login: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your name'
       },
-      login: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your login'
-        }
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter a password'
-        },
-        validate: {
-          isNotShort: (value) => {
-            if (value.length < 8) {
-              throw new Error('Password should be at least 8 characters');
-            }
-          },
-        },
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your name'
-        }
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your email address'
-        },
-        validate: {
-          isEmail: {
-            args: true,
-            msg: 'Please enter a valid email address'
+      validate: {
+        isNotShort: (value) => {
+          if (value.length < 4) {
+            throw new Error('Login should be at least 4 characters');
           }
         },
       },
-      phone: {
-        type: DataTypes.INTEGER,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your phone'
-        }
-      },
-      logo: {
-        type: DataTypes.STRING,
-        unique: {
-          args: true,
-          msg: 'Logo already exists'
-        },
-        allowNull: {
-          args: false,
-          msg: 'Please enter your logo'
-        }
-      },
-      website: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your website'
-        }
-      },
-      address: {
-        type: DataTypes.STRING,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your website'
-        }
-      },
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: {
-          args: false,
-          msg: 'Please enter your website'
-        }
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter a password'
       },
     },
-    {}
-  );
-
-  User.associate = (models) => {
-    // associations can be defined here
-    User.hasMany(
-      models.Book,
-      {
-        foreignKey: 'userId'
+    salt: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Salt is required'
       }
-    );
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your name'
+      }
+    },
+    email: {
+      type: Sequelize.STRING,
+      unique: {
+        args: true,
+        msg: 'Email already exists'
+      },
+      allowNull: {
+        args: false,
+        msg: 'Please enter your email'
+      }
+    },
+    phone: {
+      type: Sequelize.BIGINT,
+      unique: {
+        args: true,
+        msg: 'Phone already exists'
+      },
+      allowNull: {
+        args: false,
+        msg: 'Please enter your phone'
+      }
+    },
+    logo: {
+      type: Sequelize.STRING,
+      unique: {
+        args: true,
+        msg: 'Logo already exists'
+      },
+      allowNull: {
+        args: false,
+        msg: 'Please enter your logo'
+      }
+    },
+    website: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter a website'
+      },
+    },
+    address: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter an address'
+      },
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your description'
+      }
+    },
+  }, {});
+  newUser.associate = function(models) {
+    // associations can be defined here
   };
-
-  return User;
+  return newUser;
 };
