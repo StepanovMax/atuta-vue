@@ -1,6 +1,7 @@
 client/build/*
 client/node_modules/
 client/yarn.lock
+client/uploads/
 
 server/node_modules/
 server/yarn.lock
@@ -11,4 +12,5 @@ client/index.html
 
 server/.env
 server/.env.localhost
+server/.env.stage
 server/.env.development

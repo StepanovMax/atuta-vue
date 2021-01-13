@@ -8,7 +8,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.bold() }"
-          @click="commands.bold"
+          @click.prevent="commands.bold"
         >
           Жирный
         </button>
@@ -16,7 +16,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.italic() }"
-          @click="commands.italic"
+          @click.prevent="commands.italic"
         >
           Наклонный
         </button>
@@ -24,7 +24,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.underline() }"
-          @click="commands.underline"
+          @click.prevent="commands.underline"
         >
           Подчёркивание
         </button>
@@ -32,7 +32,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.paragraph() }"
-          @click="commands.paragraph"
+          @click.prevent="commands.paragraph"
         >
           Параграф
         </button>
@@ -40,7 +40,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click="commands.heading({ level: 1 })"
+          @click.prevent="commands.heading({ level: 1 })"
         >
           H1
         </button>
@@ -48,7 +48,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click="commands.heading({ level: 2 })"
+          @click.prevent="commands.heading({ level: 2 })"
         >
           H2
         </button>
@@ -56,7 +56,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click="commands.heading({ level: 3 })"
+          @click.prevent="commands.heading({ level: 3 })"
         >
           H3
         </button>
@@ -64,7 +64,7 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
+          @click.prevent="commands.bullet_list"
         >
           Список
         </button>
@@ -72,21 +72,21 @@
         <button
           class="content-editor__button"
           :class="{ 'is-active': isActive.link() }"
-          @click="showLinkMenu(getMarkAttrs('link'))"
+          @click.prevent="showLinkMenu(getMarkAttrs('link'))"
         >
           <span>{{ isActive.link() ? 'Обновить ссылку' : 'Добавить ссылку'}}</span>
         </button>
 
         <button
           class="content-editor__button"
-          @click="commands.undo"
+          @click.prevent="commands.undo"
         >
           Назад
         </button>
 
         <button
           class="content-editor__button"
-          @click="commands.redo"
+          @click.prevent="commands.redo"
         >
           Вперёд
         </button>
