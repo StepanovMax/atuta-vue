@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
-  const newUser = sequelize.define('user', {
+  const user = sequelize.define('user', {
     role: {
       type: Sequelize.STRING,
       allowNull: {
@@ -98,8 +98,8 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
   }, {});
-  newUser.associate = function(models) {
+  user.associate = function(models) {
     // associations can be defined here
   };
-  return newUser;
+  return user;
 };

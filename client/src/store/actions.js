@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 const actions = {
+//   checkAuth: async (context, commit) => {
+//     console.log('getter checkAuth');
+//   },
   getTowns: async (context, commit) => {
     console.log('test');
     const { data } = await axios.get(

@@ -265,23 +265,29 @@ export default {
       return this.erroredElementsArray;
     },
     async login() {
-      const loginResult = await axios.post(
+      const transport = axios.create({
+        withCredentials: true
+      });
+      const loginResult = await transport.post(
         this.urlLogin,
-        this.loginData
+        this.loginData,
       )
         .then(function (response) {
+          console.log('Response ::', response);
           return response;
         })
           .catch(function (error) {
-            console.log('error ::', error);
+            console.log('Error login page ::', error);
             return false;
           });
       if (loginResult.data) {
         this.$store.commit('updateLoggedInState', true);
+        console.log('loginResult.data ::', loginResult.data);
         this.$store.commit('updateUserDataState', loginResult.data);
         // Call the plugin for fav.objects
-        this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
+        // this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         this.$router.push({ name: 'homePage'});
+        // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }
     },
