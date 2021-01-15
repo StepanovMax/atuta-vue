@@ -1,17 +1,10 @@
 import { Router } from 'express';
 import testHelpData from '../testData/testHelpData';
-import cors from 'cors';
-
-const corsOptions = {
-  origin: 'http://localhost:9001',
-  optionsSuccessStatus: 200,
-};
 
 const router = Router();
 
 router.get(
   '/get-help-all',
-  cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     if (testHelpData) {
@@ -26,7 +19,6 @@ router.get(
 
 router.post(
   '/get-help-by-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");

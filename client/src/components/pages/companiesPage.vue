@@ -84,7 +84,7 @@ export default {
   methods: {
     // Get an object when the page has been reload.
     async getCompaniesAll() {
-      // const url = '//localhost:9001/companies/get-companies-all';
+      // const url = '//127.0.0.1:9001/companies/get-companies-all';
       const result = await axios.get(this.url)
         .then(function (response) {
           return response;

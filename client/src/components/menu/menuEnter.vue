@@ -17,7 +17,7 @@
         "
         @click="toggleMenu"
       >
-        {{ userData.name.label }}
+        {{ userData.name }}
       </a>
       <ul
         v-if="menuIsOpen"
@@ -147,6 +147,11 @@ export default {
     return {
       menuIsOpen: false,
     }
+  },
+  watch: {
+    'userData': function(value) {
+      // console.log('this.userData value ::', value);
+    },
   },
   computed: {
     ...mapState([

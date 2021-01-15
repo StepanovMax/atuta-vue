@@ -6,6 +6,7 @@ import cors from 'cors';
 import http from 'http';
 import db from './server/models/index.js';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -14,10 +15,12 @@ const port = 9001;
 const server = http.createServer(app);
 // const hostname = server.address();
 
-// const corsOptions = {
-//   origin: 'http://localhost:9001',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
+const corsOptions = {
+  // origin: true,
+  origin: 'http://127.0.0.1:9000',
+  credentials: true,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 db.sequelize.sync().then(result => {
   console.log(' ');
@@ -26,11 +29,12 @@ db.sequelize.sync().then(result => {
 })
 .catch(err=> console.log(err));
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './public')));
 
-app.use(cors({origin: true}));
+app.use(cors(corsOptions));
 app.options('*');
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -18,9 +18,9 @@ const login = {
             .then(function (response) {
               return response;
             })
-            .catch(function (error) {
-              console.error('[MS] Login error ::', error);
-            });
+              .catch(function (error) {
+                console.error('[getFavouritesObjectsByListID] Error ::', error);
+              });
           if (result) {
             this.$store.commit('updateFavouriteObjectsState', result.data);
           }

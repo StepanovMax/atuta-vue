@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       loginData: {
-        login: 'admin',
+        login: 'stepanov-maxim',
         password: '12345678',
       },
     }
@@ -89,7 +89,7 @@ export default {
         )
         .catch(
           error => {
-            console.log('Error [Login] ::', error);
+            console.log('Error [getUserData] ::', error);
             return false;
           }
         );
@@ -97,6 +97,24 @@ export default {
     },
   },
   async created() {
+    const transport = axios.create({
+      withCredentials: true
+    });
+    const checkTokenResult = await transport.get(
+      this.getHost().api + '/auth/checkToken'
+    )
+      .then(
+        response => {
+          console.log('Response checkToken ::', response);
+          return response;
+        }
+      )
+        .catch(
+          error => {
+            console.error('Error [App :: Created :: checkToken] ::', error);
+            return false;
+          }
+        );
     // TEMP
     // If user has cookie with the TRUE loggedIn data,
     if (this.getCookie('isLoggedIn') === 'true') {
@@ -110,6 +128,9 @@ export default {
 
     // If the state loggedIn data is TRUE,
     if (this.isLoggedIn) {
+      console.log(' ');
+      console.log('   >> this.loginData ::', this.loginData);
+      console.log(' ');
       // then loading data from the server.
       const loginResult = await axios.post(
         this.urlLogin,
@@ -122,7 +143,7 @@ export default {
         )
           .catch(
             error => {
-              console.log('Error [Login] ::', error);
+              console.log('Error [App :: Created :: Login] ::', error);
               return false;
             }
           );
