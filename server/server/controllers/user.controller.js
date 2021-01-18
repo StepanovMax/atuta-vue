@@ -210,103 +210,106 @@ const checkToken = async (req, res) => {
   console.log('   >> accessToken ::', accessToken);
   console.log(' ');
 
-  // Trying to verify the token and send data back to user.
-  try {
-    const dateNow = new Date().getTime() / 1000 | 0;
-    decodedAccessToken = jwt.verify(accessToken, jwtSecret);
-    const userData = Object.assign({}, decodedAccessToken);
-    const accessTokenData = Object.assign({}, decodedAccessToken);
-    const refreshTokenData = Object.assign({}, decodedAccessToken);
-    const accessTokenDate = dateNow + accessTokenExpiredIn;
-    const refreshTokenDate = dateNow + refreshTokenExpiredIn;
-    accessTokenData.expireDate = accessTokenDate;
-    refreshTokenData.expireDate = refreshTokenDate;
-    // Remove an important info.
-    delete decodedAccessToken.expireDate;
-    delete decodedAccessToken.iat;
+  if (accessToken) {
+    // Trying to verify the token and send data back to user.
+    try {
+      const dateNow = new Date().getTime() / 1000 | 0;
+      decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+      const userData = Object.assign({}, decodedAccessToken);
+      const accessTokenData = Object.assign({}, decodedAccessToken);
+      const refreshTokenData = Object.assign({}, decodedAccessToken);
+      const accessTokenDate = dateNow + accessTokenExpiredIn;
+      const refreshTokenDate = dateNow + refreshTokenExpiredIn;
+      accessTokenData.expireDate = accessTokenDate;
+      refreshTokenData.expireDate = refreshTokenDate;
+      // Remove an important info.
+      delete decodedAccessToken.expireDate;
+      delete decodedAccessToken.iat;
 
-    // Check if the users browser token is equal to DB users token.
-    await User.findOne({
-      where: {
-        id: decodedAccessToken.id,
-      }
-    })
-      .then(function(user) {
-        // Checking.
-        if (user.dataValues.accessToken === accessToken) {
-          const decodedRefreshToken = jwt.verify(user.dataValues.refreshToken, jwtSecret);
-          console.log(' ');
-          console.log('   >> dn ::', dateNow);
-          console.log('   >> at ::', userData.expireDate);
-          console.log('   >> rt ::', decodedRefreshToken.expireDate);
-          console.log(' ');
-          // Check if token expire date is moer than now.
-          if (dateNow < userData.expireDate && dateNow < decodedRefreshToken.expireDate) {
-            console.log(' ');
-            console.log('   >> accessToken is OK ::');
-            console.log(' ');
-            res.status(200).send(decodedAccessToken);
-          } else if (userData.expireDate <= dateNow && dateNow < decodedRefreshToken.expireDate) {
-            console.log(' ');
-            console.log('   >> accessToken is EXPIRED, but refreshToken is OK ::');
-            console.log(' ');
-
-            // Create tokens.
-            const accessToken = jwt.sign(
-              accessTokenData,
-              jwtSecret
-            );
-            // Create tokens.
-            const refreshToken = jwt.sign(
-              refreshTokenData,
-              jwtSecret
-            );
-            // Create a cookie.
-            res.cookie(
-              'accessToken',
-              accessToken,
-              {
-                expiresIn: accessTokenDate,
-                httpOnly: true,
-              }
-            );
-
-            const updateValues = {
-              accessToken: accessToken,
-              refreshToken: refreshToken,
-            };
-            user.update(updateValues).then( function(self) {
-              console.log(' ');
-              console.log('   >> Auth tokens has been updated ::');
-              console.log(' ');
-            });
-            res.status(200).send(decodedAccessToken);
-          } else if (dateNow > decodedRefreshToken.expireDate) {
-            console.log(' ');
-            console.log('   >> both tokens has been EXPIRED ::');
-            console.log(' ');
-            const updateValues = {
-              accessToken: null,
-              refreshToken: null,
-            };
-            user.update(updateValues).then( function(self) {
-              console.log(' ');
-              console.log('   >> Auth tokens has been cleared ::');
-              console.log(' ');
-            });
-            res.status(200).send(false);
-          }
-        } else {
-          console.log(' ');
-          console.log('   >> User access token is not equal to db token.');
-          console.log(' ');
-          res.status(404).send(false);
+      // Check if the users browser token is equal to DB users token.
+      await User.findOne({
+        where: {
+          id: decodedAccessToken.id,
         }
-      });
-  } catch(error) {
-    console.error('Error [Backend :: user.controller :: checkToken] ::', error);
+      })
+        .then(function(user) {
+          // Checking.
+          if (user.dataValues.accessToken === accessToken) {
+            const decodedRefreshToken = jwt.verify(user.dataValues.refreshToken, jwtSecret);
+            console.log(' ');
+            console.log('   >> dn ::', dateNow);
+            console.log('   >> at ::', userData.expireDate);
+            console.log('   >> rt ::', decodedRefreshToken.expireDate);
+            console.log(' ');
+            // Check if token expire date is moer than now.
+            if (dateNow < userData.expireDate && dateNow < decodedRefreshToken.expireDate) {
+              console.log(' ');
+              console.log('   >> accessToken is OK ::');
+              console.log(' ');
+              res.status(200).send(decodedAccessToken);
+            } else if (userData.expireDate <= dateNow && dateNow < decodedRefreshToken.expireDate) {
+              console.log(' ');
+              console.log('   >> accessToken is EXPIRED, but refreshToken is OK ::');
+              console.log(' ');
+  
+              // Create tokens.
+              const accessToken = jwt.sign(
+                accessTokenData,
+                jwtSecret
+              );
+              // Create tokens.
+              const refreshToken = jwt.sign(
+                refreshTokenData,
+                jwtSecret
+              );
+              // Create a cookie.
+              res.cookie(
+                'accessToken',
+                accessToken,
+                {
+                  expiresIn: accessTokenDate,
+                  httpOnly: true,
+                }
+              );
+  
+              const updateValues = {
+                accessToken: accessToken,
+                refreshToken: refreshToken,
+              };
+              user.update(updateValues).then( function(self) {
+                console.log(' ');
+                console.log('   >> Auth tokens has been updated ::');
+                console.log(' ');
+              });
+              res.status(200).send(decodedAccessToken);
+            } else if (dateNow > decodedRefreshToken.expireDate) {
+              console.log(' ');
+              console.log('   >> both tokens has been EXPIRED ::');
+              console.log(' ');
+              const updateValues = {
+                accessToken: null,
+                refreshToken: null,
+              };
+              user.update(updateValues).then( function(self) {
+                console.log(' ');
+                console.log('   >> Auth tokens has been cleared ::');
+                console.log(' ');
+              });
+              res.status(200).send(false);
+            }
+          } else {
+            console.log(' ');
+            console.log('   >> User access token is not equal to db token.');
+            console.log(' ');
+            res.status(404).send(false);
+          }
+        });
+    } catch(error) {
+      console.error('Error [Backend :: user.controller :: checkToken] ::', error);
+    }
+  } else {
+    res.status(200).send(false);
   }
-
 }
 
 export {createUser, findUser, checkToken};
