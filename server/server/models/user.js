@@ -97,6 +97,20 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter your description'
       }
     },
+    accessToken: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: true,
+        msg: 'Please enter an accessToken'
+      },
+    },
+    refreshToken: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: true,
+        msg: 'Please enter an refreshToken'
+      },
+    },
   }, {});
   user.associate = function(models) {
     // associations can be defined here
