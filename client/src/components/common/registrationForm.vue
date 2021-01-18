@@ -570,7 +570,8 @@ export default {
     async sendUserData() {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
-      formData.append('file', this.blobImage[0].blob);
+      console.log('data.logo ::', data.logo);
+      formData.append('file', data.logo);
       formData.append('userData', JSON.stringify(data));
 
       try {
@@ -700,17 +701,18 @@ export default {
       } else {
         this.formState.logo.filled = false;
       }
+      this.formState.logo.filled = true;
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
       // console.log('this.userDataLocal 1 ::', this.userDataLocal);
       if (resultFormValidation) {
-        console.log('resultFormValidation 1 ::', resultFormValidation);
+        // console.log('resultFormValidation 1 ::', resultFormValidation);
         this.sendUserData();
         // console.log('this.userDataLocal 2 ::', this.userDataLocal);
         // console.log('resultFormValidation 1 ::', resultFormValidation);
       } else {
-        console.log('resultFormValidation 2 ::', resultFormValidation);
+        console.error('onSubmit resultFormValidation failed ::');
       }
     },
     updateFormState() {
@@ -822,7 +824,7 @@ export default {
       this.handlePhone(value);
     },
     'userDataLocal.logo'(value) {
-      console.log('value ::', value);
+      // console.log('value ::', value);
       this.handleLogo(value);
     },
     'userDataLocal.name.label'(value) {

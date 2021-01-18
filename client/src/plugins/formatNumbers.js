@@ -12,7 +12,7 @@ const formatNumbers = {
           return numberFormatted;
         },
         gFormatPhone2(value) {
-          console.log('value ::', value);
+          // console.log('value ::', value);
           const excludedNonNumbers = value.replace(/\D/g, '');
           // Dividing on groups
           const x = excludedNonNumbers.match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
@@ -71,7 +71,7 @@ const formatNumbers = {
         gFilterSpecialCharacters(value) {
           console.log('gFilterSpecialCharacters ::');
           const mask = /\W|_/g;
-          console.log('value ::', value);
+          // console.log('value ::', value);
           const maskResult = value.replace(/[^\w\s]/gi, '') // /\W|_/g
           console.log('maskResult ::', maskResult);
           return maskResult;

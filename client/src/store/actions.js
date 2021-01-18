@@ -5,7 +5,6 @@ const actions = {
 //     console.log('getter checkAuth');
 //   },
   getTowns: async (context, commit) => {
-    console.log('test');
     const { data } = await axios.get(
       'http://dev-api.atyta.ru:9001/data/get-towns'
     )

@@ -4,6 +4,7 @@
       menu
       menu_right
     "
+    :class="{ 'menu_logged_in': isLoggedIn }"
   >
     <li
       v-if="isLoggedIn"

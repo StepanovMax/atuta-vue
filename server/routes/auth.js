@@ -1,17 +1,15 @@
 import { Router } from 'express';
-import cors from 'cors';
 import multer from 'multer';
 import { createUser, findUser, checkToken } from '../server/controllers/user.controller';
-
-const suffix = 'image-' +  Date.now();
 
 let storageConfig = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, '../client/uploads');
   },
   filename: function (req, file, callback) {
-    req.suffix = suffix;
-    callback(null, suffix);
+    const name = 'image-' + Date.now();
+    req.suffix = name;
+    callback(null, name);
   }
 });
 

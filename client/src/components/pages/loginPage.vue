@@ -280,7 +280,7 @@ export default {
             console.log('Error login page ::', error);
             return false;
           });
-      if (loginResult.data) {
+      if (loginResult && loginResult.data) {
         this.$store.commit('updateLoggedInState', true);
         console.log('loginResult.data ::', loginResult.data);
         this.$store.commit('updateUserDataState', loginResult.data);
