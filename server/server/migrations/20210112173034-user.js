@@ -11,14 +11,6 @@ module.exports = {
           allowNull: true,
         },
       ),
-      queryInterface.addColumn(
-        'users',
-        'hash',
-        {
-          type: Sequelize.STRING,
-          allowNull: true,
-        },
-      ),
     ]);
   },
 
@@ -26,7 +18,6 @@ module.exports = {
     // logic for reverting the changes
     return Promise.all([
       queryInterface.removeColumn('users', 'salt'),
-      queryInterface.removeColumn('users', 'hash'),
     ]);
   }
 };
