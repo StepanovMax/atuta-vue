@@ -129,18 +129,13 @@ module.exports = {
     new VueLoaderPlugin(),
 
     new Dotenv({
-      path: path.resolve(__dirname, '.env.development'),
+      path: path.resolve(__dirname, '../env/.env.development'),
     }),
 
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
       }
-    }),
-
-    // Pass .env to the frontend
-    new Dotenv({
-      path: path.resolve(__dirname, '.env.local')
     }),
 
     new HtmlWebpackPlugin({
