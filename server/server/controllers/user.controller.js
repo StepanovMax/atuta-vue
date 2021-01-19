@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 dotenv.config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `../env/.env.${process.env.NODE_ENV}`
 });
 
 const User = db.user;

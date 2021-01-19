@@ -105,7 +105,7 @@ module.exports = {
     // }),
 
     new Dotenv({
-      path: path.resolve(__dirname, '.env.localhost'),
+      path: path.resolve(__dirname, '../env/.env.localhost'),
     }),
 
     new HtmlWebpackPlugin({

@@ -10,12 +10,4 @@ server/yarn-error.log
 client/index.html
 *.code-workspace
 
-server/.env
-server/.env.localhost
-server/.env.development
-server/.env.stage
-
-client/.env
-client/.env.localhost
-client/.env.development
-client/.env.stage
+env/*

@@ -138,11 +138,6 @@ module.exports = {
       }
     }),
 
-    // Pass .env to the frontend
-    new Dotenv({
-      path: path.resolve(__dirname, '.env.local')
-    }),
-
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
       host: process.env.HOST_FRONT,
