@@ -263,6 +263,8 @@ export default {
       const transport = axios.create({
         withCredentials: true
       });
+      console.log('process.env.HOST_API ::', process.env.HOST_API);
+      console.log('process.env.HOST_API ::', process.env.HOST_API + '/auth/login');
       const loginResult = await transport.post(
         process.env.HOST_API + '/auth/login',
         this.loginData,
