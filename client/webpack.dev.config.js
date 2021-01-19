@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 
 // const TerserPlugin = require('terser-webpack-plugin');
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const webpack = require("webpack");
+const webpack = require("webpack");
 
 const timestamp = new Date().getTime();
 
