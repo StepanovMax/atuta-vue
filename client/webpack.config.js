@@ -103,6 +103,11 @@ module.exports = {
   //     }
   //   ],
   // },
+
+  node: {
+    fs: "empty"
+  },
+
   plugins: [
     new VueLoaderPlugin(),
     // new BundleAnalyzerPlugin(),

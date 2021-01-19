@@ -116,6 +116,10 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
 
+  node: {
+    fs: "empty"
+  },
+
   plugins: [
     // new webpack.optimize.UglifyJsPlugin({
     //   include: /\.min\.js$/,
@@ -124,6 +128,16 @@ module.exports = {
 
     new VueLoaderPlugin(),
 
+    new Dotenv({
+      path: path.resolve(__dirname, '.env.stage'),
+    }),
+
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'stage') // default value if not specified
+      }
+    }),
+
     // Pass .env to the frontend
     new Dotenv({
       path: path.resolve(__dirname, '.env.local')
@@ -131,7 +145,7 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
-      host: process.env.HOST,
+      host: process.env.HOST_FRONT,
       mode: 'stage',
       timestamp: timestamp,
       filename: '../index.html',

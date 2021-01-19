@@ -12,5 +12,10 @@ client/index.html
 
 server/.env
 server/.env.localhost
-server/.env.stage
 server/.env.development
+server/.env.stage
+
+client/.env
+client/.env.localhost
+client/.env.development
+client/.env.stage
