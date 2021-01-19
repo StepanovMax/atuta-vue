@@ -149,6 +149,12 @@ import breadcrumbs from '../common/breadcrumbs.vue';
 import inputField from '../common/inputField.vue';
 import iconOk from '../icons/iconOk.vue';
 
+import dotenv from 'dotenv';
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+console.log('>> process.env.host_api', process.env.host_api);
+
 export default {
   name: 'loginPage',
   components: {
