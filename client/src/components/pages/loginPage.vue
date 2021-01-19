@@ -207,11 +207,6 @@ export default {
         return false;
       }
     },
-    urlLogin() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/auth/login';
-      return url;
-    },
   },
   methods: {
     handleLogin(value) {
@@ -269,7 +264,7 @@ export default {
         withCredentials: true
       });
       const loginResult = await transport.post(
-        this.urlLogin,
+        process.env.HOST_API + '/auth/login',
         this.loginData,
       )
         .then(function (response) {

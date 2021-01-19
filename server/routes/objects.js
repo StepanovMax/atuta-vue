@@ -29,7 +29,9 @@ router.get(
 router.get(
   '/get-objects',
   (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     if (testObjects) {
       res.status(200).send(testObjects);
     } else {

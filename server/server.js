@@ -7,8 +7,13 @@ import http from 'http';
 import db from './server/models/index.js';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
+console.log('process.env.host_api ::', process.env.host_api);
 
 const app = express();
 const port = 9001;
@@ -17,7 +22,7 @@ const server = http.createServer(app);
 
 const corsOptions = {
   // origin: true,
-  origin: 'http://127.0.0.1:9000',
+  origin: process.env.host_front,
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };

@@ -1,10 +1,11 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const Dotenv = require('dotenv-webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Pass .env to webpack
-// const webpack = require('webpack');
+const webpack = require('webpack');
 // const dotenv = require('dotenv').config({
 //   path: path.join(__dirname, '.env.local')
 // });
@@ -92,6 +93,10 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json']
   },
 
+  node: {
+    fs: "empty"
+  },
+
   plugins: [
     new VueLoaderPlugin(),
 
@@ -99,9 +104,13 @@ module.exports = {
     //   "process.env": dotenv.parsed
     // }),
 
+    new Dotenv({
+      path: path.resolve(__dirname, '.env.localhost'),
+    }),
+
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Локальная версия',
-      host: process.env.HOST,
+      host: process.env.HOST_FRONT,
       mode: 'local',
       filename: '../index.html',
       template: 'index-template.html',

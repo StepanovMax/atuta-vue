@@ -91,7 +91,7 @@ const createUser = async (req, res, file) => {
 };
 
 // Create and Save a new User
-const findUser = async (req, res) => {
+const login = async (req, res) => {
   // res.header('Access-Control-Allow-Origin', '*');
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -174,6 +174,10 @@ const findUser = async (req, res) => {
               httpOnly: true,
             }
           );
+          console.log(' ');
+          console.log('   >> accessToken ::', accessToken);
+          console.log('   >> refreshToken ::', refreshToken);
+          console.log(' ');
           let updateValues = {
             accessToken: accessToken,
             refreshToken: refreshToken,
@@ -186,9 +190,9 @@ const findUser = async (req, res) => {
           // Send user to the client.
           res.status(200).send(responseUser);
         } else {
-          console.log(' ');
-          console.log('   >> Passwords is NOT equal ::', body.password, user.password, result);
-          console.log(' ');
+          console.error(' ');
+          console.error('   >> Passwords is NOT equal ::', body.password, user.password, result);
+          console.error(' ');
           res.status(404).send(false);
         }
       });
@@ -196,12 +200,48 @@ const findUser = async (req, res) => {
 }
 
 
+const logout = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> Logout > accessToken ::', accessToken);
+  console.log(' ');
+  // If the accessToken is not a null.
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+    // Clear cookie.
+    res.clearCookie('accessToken');
+
+    try {
+      // Find the user in DB.
+      await User.findOne({
+        where: {
+          id: decodedAccessToken.id,
+        }
+      })
+      .then(function(user) {
+        let updateValues = {
+          accessToken: null,
+          refreshToken: null,
+        };
+        user.update(updateValues).then( function(self) {
+          console.log(' ');
+          console.log('   >> Auth tokens has been cleared ::');
+          console.log(' ');
+        });
+        res.status(200).send(true);
+      });
+    } catch(error) {
+      console.error('Error [Backend :: user.controller :: logout] ::', error);
+    }
+  }
+}
+
+
 // Cheking the token.
 const checkToken = async (req, res) => {
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Credentials', true);
-
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
   let decodedAccessToken;
@@ -210,10 +250,12 @@ const checkToken = async (req, res) => {
   console.log('   >> accessToken ::', accessToken);
   console.log(' ');
 
+  // If the accessToken is not a null.
   if (accessToken) {
     // Trying to verify the token and send data back to user.
     try {
       const dateNow = new Date().getTime() / 1000 | 0;
+      // Checking and decoding the token.
       decodedAccessToken = jwt.verify(accessToken, jwtSecret);
       const userData = Object.assign({}, decodedAccessToken);
       const accessTokenData = Object.assign({}, decodedAccessToken);
@@ -222,6 +264,7 @@ const checkToken = async (req, res) => {
       const refreshTokenDate = dateNow + refreshTokenExpiredIn;
       accessTokenData.expireDate = accessTokenDate;
       refreshTokenData.expireDate = refreshTokenDate;
+
       // Remove an important info.
       delete decodedAccessToken.expireDate;
       delete decodedAccessToken.iat;
@@ -233,6 +276,9 @@ const checkToken = async (req, res) => {
         }
       })
         .then(function(user) {
+          console.error(' ');
+          console.error('   >> >', user.dataValues);
+          console.error(' ');
           // Checking.
           if (user.dataValues.accessToken === accessToken) {
             const decodedRefreshToken = jwt.verify(user.dataValues.refreshToken, jwtSecret);
@@ -298,10 +344,10 @@ const checkToken = async (req, res) => {
               res.status(200).send(false);
             }
           } else {
-            console.log(' ');
-            console.log('   >> User access token is not equal to db token.');
-            console.log(' ');
-            res.status(404).send(false);
+            console.error(' ');
+            console.error('   >> User access token is not equal to db token.');
+            console.error(' ');
+            res.status(200).send(false);
           }
         });
     } catch(error) {
@@ -312,4 +358,4 @@ const checkToken = async (req, res) => {
   }
 }
 
-export {createUser, findUser, checkToken};
+export {createUser, login, logout, checkToken};
