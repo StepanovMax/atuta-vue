@@ -3,7 +3,7 @@ import axios from 'axios';
 const actions = {
   getTowns: async (context, commit) => {
     const { data } = await axios.get(
-      process.env.HOST_API + '/data/get-towns'
+      process.env.host_api + '/data/get-towns'
     )
       .then(function (response) {
         return response;
@@ -37,7 +37,7 @@ const actions = {
       withCredentials: true
     });
     await transport.get(
-      process.env.HOST_API + '/auth/logout'
+      process.env.host_api + '/auth/logout'
     )
       .then(
         response => {
