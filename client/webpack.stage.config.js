@@ -125,7 +125,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
-      host: process.env.HOST_FRONT,
+      host: process.env.host_front,
       mode: 'stage',
       timestamp: timestamp,
       filename: '../index.html',
