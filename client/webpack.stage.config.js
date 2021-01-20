@@ -1,28 +1,22 @@
 const path = require('path');
+const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// Pass .env to the frontend
 const Dotenv = require('dotenv-webpack');
-
 // const TerserPlugin = require('terser-webpack-plugin');
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const webpack = require("webpack");
 
 const timestamp = new Date().getTime();
 
 module.exports = {
   entry: path.join(__dirname, './src/index.js'),
-
   devtool: 'none',
-
   mode: 'production',
-
   output: {
     filename: `bundle-${timestamp}.js`,
     publicPath: '/build/',
     path: path.join(__dirname, 'build'),
   },
-
   module: {
     rules: [
       {
@@ -74,7 +68,6 @@ module.exports = {
       }
     ]
   },
-
   // optimization: {
   //   minimizer: [
   //     new UglifyJsPlugin({
@@ -91,7 +84,6 @@ module.exports = {
   //     })
   //   ],
   // },
-
   optimization: {
     minimize: true,
   //   minimizer: [
@@ -111,33 +103,26 @@ module.exports = {
   //     }),
   //   ]
   },
-
   resolve: {
     extensions: ['*', '.js', '.vue', '.json']
   },
-
   node: {
     fs: "empty"
   },
-
   plugins: [
     // new webpack.optimize.UglifyJsPlugin({
     //   include: /\.min\.js$/,
     //   minimize: true
     // }),
-
     new VueLoaderPlugin(),
-
     new Dotenv({
-      path: path.resolve(__dirname, '.env.stage'),
+      path: path.resolve(__dirname, 'env/.env.stage'),
     }),
-
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'stage') // default value if not specified
       }
     }),
-
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
       host: process.env.HOST_FRONT,

@@ -42,11 +42,6 @@ export default {
     ...mapActions([
       'getTowns',
     ]),
-    urlLogin() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/auth/login';
-      return url;
-    },
   },
   watch: {
     $route(to, from) {
@@ -78,7 +73,6 @@ export default {
       const transport = axios.create({
         withCredentials: true
       });
-      // console.log('process.env.HOST_FRONT ::', process.env.HOST_FRONT);
       // Check the token.
       const checkTokenResult = await transport.get(
         this.getHost().api + '/auth/checkToken'

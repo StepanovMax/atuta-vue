@@ -859,7 +859,6 @@ export default {
         this.formState.website.firstBlur = true;
       }
     });
-    // console.log('process.env.host ::', process.env.HOST_FRONT);
   },
 };
 </script>

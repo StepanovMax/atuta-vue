@@ -1,23 +1,13 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const Dotenv = require('dotenv-webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// Pass .env to webpack
 const webpack = require('webpack');
-// const dotenv = require('dotenv').config({
-//   path: path.join(__dirname, '.env.local')
-// });
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: path.join(__dirname, './src/index.js'),
-
   devtool: 'eval',
-
   mode: 'none',
-
   devServer: {
     port: 9000,
     inline: true,
@@ -30,13 +20,11 @@ module.exports = {
     },
     clientLogLevel: 'error',
   },
-
   output: {
     filename: 'bundle.js',
     publicPath: '/build/',
     path: path.join(__dirname, 'build'),
   },
-
   module: {
     rules: [
       {
@@ -88,29 +76,23 @@ module.exports = {
       }
     ]
   },
-
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
+    alias: {
+      'rootEnv': path.resolve(__dirname, 'env'),
+    }
   },
-
   node: {
     fs: "empty"
   },
-
   plugins: [
-    new VueLoaderPlugin(),
-
-    // new webpack.DefinePlugin({
-    //   "process.env": dotenv.parsed
-    // }),
-
     new Dotenv({
-      path: path.resolve(__dirname, '../env/.env.localhost'),
+      path: path.resolve(__dirname, 'env/.env.localhost'),
     }),
-
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Локальная версия',
-      host: process.env.HOST_FRONT,
+      host: process.env.host_front,
       mode: 'local',
       filename: '../index.html',
       template: 'index-template.html',
