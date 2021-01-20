@@ -79,7 +79,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'rootEnv': path.resolve(__dirname, 'env'),
+      'rootEnv': path.resolve(__dirname, '/env'),
     }
   },
   node: {
@@ -87,7 +87,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, 'env/.env.localhost'),
+      path: path.resolve(__dirname, '/env/.env.localhost'),
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
