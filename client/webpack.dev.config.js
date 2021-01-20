@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const env = require('./env/env.development.js');
 const Dotenv = require('dotenv-webpack');
 
 // const TerserPlugin = require('terser-webpack-plugin');
