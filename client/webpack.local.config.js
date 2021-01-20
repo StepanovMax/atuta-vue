@@ -87,7 +87,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, '/env/.env.localhost'),
+      path: path.resolve(__dirname, 'env/.env.localhost'),
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
