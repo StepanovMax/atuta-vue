@@ -129,7 +129,7 @@ module.exports = {
     new VueLoaderPlugin(),
 
     new Dotenv({
-      path: path.resolve(__dirname, '..', 'env/.env.development'),
+      path: path.join(__dirname, '..', 'env/.env.development'),
     }),
 
     new webpack.DefinePlugin({
