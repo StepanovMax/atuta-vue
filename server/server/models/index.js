@@ -1,9 +1,11 @@
-// import config from "../config/config";
-// const config = require("../config/config");
+import dotenv from 'dotenv';
 import Sequelize from "sequelize";
 
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+dotenv.config({
+  path: `env/.env.${process.env.NODE_ENV}`
+});
 
+console.log('process.env.pg_database ::', process.env.pg_database);
 
 const sequelize = new Sequelize(
   process.env.pg_database,
@@ -29,6 +31,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-db.user = require("./newuser.js")(sequelize, Sequelize);
+db.user = require("./user.js")(sequelize, Sequelize);
 
 export default db;

@@ -1,6 +1,7 @@
 client/build/*
 client/node_modules/
 client/yarn.lock
+client/uploads/
 
 server/node_modules/
 server/yarn.lock
@@ -9,6 +10,4 @@ server/yarn-error.log
 client/index.html
 *.code-workspace
 
-server/.env
-server/.env.localhost
-server/.env.development
+env/*

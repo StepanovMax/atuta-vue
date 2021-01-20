@@ -368,7 +368,6 @@ export default {
         this.formState.name.firstBlur = true;
       }
     });
-    // console.log('process.env.host ::', process.env.HOST);
   },
 };
 </script>

@@ -1,19 +1,12 @@
 import express from 'express';
 import { Router } from 'express';
 import testObjects from '../testData/testObjects';
-import cors from 'cors';
-
-const corsOptions = {
-  origin: 'http://localhost:9001',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 const router = Router();
 
 
 router.get(
   '/',
-  cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.status(200).send({
@@ -25,7 +18,6 @@ router.get(
 
 router.get(
   '/asd',
-  cors(corsOptions),
   (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.status(200).send({
@@ -36,9 +28,10 @@ router.get(
 
 router.get(
   '/get-objects',
-  cors(corsOptions),
   (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     if (testObjects) {
       res.status(200).send(testObjects);
     } else {
@@ -51,7 +44,6 @@ router.get(
 
 router.post(
   '/get-object-by-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -78,7 +70,6 @@ router.post(
 
 router.post(
   '/get-objects-by-parent-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -105,7 +96,6 @@ router.post(
 
 router.post(
   '/get-favourite-objects-by-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");

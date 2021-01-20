@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const actions = {
   getTowns: async (context, commit) => {
-    console.log('test');
     const { data } = await axios.get(
-      'http://dev-api.atyta.ru:9001/data/get-towns'
+      process.env.host_api + '/data/get-towns'
     )
       .then(function (response) {
         return response;
@@ -32,6 +31,26 @@ const actions = {
         context.commit('updateFederalRegionsAlphabeticalState', alphabeticalArray);
       }
     }
+  },
+  logout: async (context, commit) => {
+    const transport = axios.create({
+      withCredentials: true
+    });
+    await transport.get(
+      process.env.host_api + '/auth/logout'
+    )
+      .then(
+        response => {
+          console.log('logout response ::', response);
+          return response;
+        }
+      )
+      .catch(
+        error => {
+          console.log('Error logout ::', error);
+          return false;
+        }
+      );
   },
 }
 

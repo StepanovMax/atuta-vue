@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from './store.js';
+import store from './store';
+import axios from 'axios';
+// import getHost from '../plugins/getHost';
 
 Vue.use(Router);
+// Vue.use(getHost);
 
 // Pages
 import HomePage from '../components/homePage.vue';
@@ -219,6 +222,27 @@ const router = new Router({
   ]
 });
 
+const transport = axios.create({
+  withCredentials: true
+});
+
+// const guard = function(to, from, next) {
+//   // const url = `${host.api}` + '/auth/login';
+//   // store.getters.checkAuth;
+//   const IsAuthenticated = store.actions.checkAuth;
+//   console.log('guard ::', IsAuthenticated);
+//   // check for valid auth token
+//   // axios.post('/api/checkAuthToken')
+//   //   .then(response => {
+//   //     // Token is valid, so continue
+//   //     next();
+//   //   })
+//   //     .catch(error => {
+//   //       // There was an error so redirect
+//   //       window.location.href = "/login";
+//   //     })
+// };
+
 router.beforeEach((to, from, next) => {
   // Redirect to 403 for profile pages if not logged in
   // if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
@@ -226,6 +250,8 @@ router.beforeEach((to, from, next) => {
   //     name: '403'
   //   });
   // }
+
+  // guard(to, from, next);
 
   if (to.meta.title) {
     document.title = to.meta.title;

@@ -1080,7 +1080,7 @@ export default {
   methods: {
     // Get an object when the page has been reload.
     async getObjectOnPageReload() {
-      // const url = '//localhost:9001/objects/get-object-by-id';
+      // const url = '//127.0.0.1:9001/objects/get-object-by-id';
       const result = await axios.post(
         this.urlGetObjectById,
         {
@@ -1099,7 +1099,7 @@ export default {
     },
     // Get an object when the page has been reload.
     async getSameObjects() {
-      // const url = '//localhost:9001/objects/get-objects';
+      // const url = '//127.0.0.1:9001/objects/get-objects';
       const result = await axios.get(this.urlGetAllObjects)
         .then(function (response) {
           return response;

@@ -1,18 +1,11 @@
 import { Router } from 'express';
 import testDialogs from '../testData/testDialogs';
-import cors from 'cors';
-
-const corsOptions = {
-  origin: 'http://localhost:9001',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 const router = Router();
 
 
 router.post(
   '/get-dialogs-by-user-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -40,7 +33,6 @@ router.post(
 
 router.post(
   '/get-dialog-by-id',
-  cors(corsOptions),
   (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -68,7 +60,6 @@ router.post(
 
 router.get(
   '/get-all-dialogs-length',
-  cors(corsOptions),
   (req, res) => {
     console.log('router ::');
     res.header('Access-Control-Allow-Origin', '*');

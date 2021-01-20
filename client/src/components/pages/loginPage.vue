@@ -207,11 +207,6 @@ export default {
         return false;
       }
     },
-    urlLogin() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/auth/login';
-      return url;
-    },
   },
   methods: {
     handleLogin(value) {
@@ -265,23 +260,30 @@ export default {
       return this.erroredElementsArray;
     },
     async login() {
-      const loginResult = await axios.post(
-        this.urlLogin,
-        this.loginData
+      const transport = axios.create({
+        withCredentials: true
+      });
+      console.log('process.env.host_api ::', process.env.host_api);
+      const loginResult = await transport.post(
+        process.env.host_api + '/auth/login',
+        this.loginData,
       )
         .then(function (response) {
+          console.log('Response ::', response);
           return response;
         })
           .catch(function (error) {
-            console.log('error ::', error);
+            console.log('Error login page ::', error);
             return false;
           });
-      if (loginResult.data) {
+      if (loginResult && loginResult.data) {
         this.$store.commit('updateLoggedInState', true);
+        console.log('loginResult.data ::', loginResult.data);
         this.$store.commit('updateUserDataState', loginResult.data);
         // Call the plugin for fav.objects
-        this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
+        // this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         this.$router.push({ name: 'homePage'});
+        // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }
     },

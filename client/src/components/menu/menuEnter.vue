@@ -4,6 +4,7 @@
       menu
       menu_right
     "
+    :class="{ 'menu_logged_in': isLoggedIn }"
   >
     <li
       v-if="isLoggedIn"
@@ -17,7 +18,7 @@
         "
         @click="toggleMenu"
       >
-        {{ userData.name.label }}
+        {{ userData.name }}
       </a>
       <ul
         v-if="menuIsOpen"
@@ -148,6 +149,11 @@ export default {
       menuIsOpen: false,
     }
   },
+  watch: {
+    'userData': function(value) {
+      // console.log('this.userData value ::', value);
+    },
+  },
   computed: {
     ...mapState([
       'userData',
@@ -155,10 +161,11 @@ export default {
     ]),
   },
   methods: {
-    logout() {
+    async logout() {
       this.$store.commit('updateLoggedInState', false);
       this.$store.commit('updateUserDataState', null);
       this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
+      await this.$store.dispatch('logout');
     },
     toggleMenu() {
       this.menuIsOpen = !this.menuIsOpen;

@@ -1,28 +1,23 @@
 const path = require('path');
+const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// Pass .env to the frontend
 const Dotenv = require('dotenv-webpack');
 
 // const TerserPlugin = require('terser-webpack-plugin');
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const webpack = require("webpack");
 
 const timestamp = new Date().getTime();
 
 module.exports = {
   entry: path.join(__dirname, './src/index.js'),
-
   devtool: 'none',
-
   mode: 'development',
-
   output: {
     filename: `bundle-${timestamp}.js`,
     publicPath: '/build/',
     path: path.join(__dirname, 'build'),
   },
-
   module: {
     rules: [
       {
@@ -74,7 +69,6 @@ module.exports = {
       }
     ]
   },
-
   // optimization: {
   //   minimizer: [
   //     new UglifyJsPlugin({
@@ -91,7 +85,6 @@ module.exports = {
   //     })
   //   ],
   // },
-
   optimization: {
     minimize: true,
   //   minimizer: [
@@ -111,27 +104,32 @@ module.exports = {
   //     }),
   //   ]
   },
-
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
+    alias: {
+      'rootEnv': path.resolve(__dirname, '/env'),
+    }
   },
-
+  node: {
+    fs: "empty"
+  },
   plugins: [
     // new webpack.optimize.UglifyJsPlugin({
     //   include: /\.min\.js$/,
     //   minimize: true
     // }),
-
     new VueLoaderPlugin(),
-
-    // Pass .env to the frontend
     new Dotenv({
-      path: path.resolve(__dirname, '.env.local')
+      path: path.resolve(__dirname, 'env/.env.development'),
     }),
-
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
-      host: process.env.HOST,
+      host: process.env.host_front,
       mode: 'dev',
       timestamp: timestamp,
       filename: '../index.html',
