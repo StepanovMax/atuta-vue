@@ -107,7 +107,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'rootEnv': path.resolve(__dirname, 'env'),
+      'rootEnv': path.resolve(__dirname, '/env'),
     }
   },
   node: {
@@ -120,7 +120,7 @@ module.exports = {
     // }),
     new VueLoaderPlugin(),
     new Dotenv({
-      path: path.join(__dirname, '..', 'env/.env.development'),
+      path: path.resolve(__dirname, '/env/.env.development'),
     }),
     new webpack.DefinePlugin({
       "process.env": {
@@ -129,7 +129,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Сайт Атута | Для разработчиков',
-      host: env.host_front,
+      host: process.env.host_front,
       mode: 'dev',
       timestamp: timestamp,
       filename: '../index.html',
