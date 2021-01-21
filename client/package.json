@@ -57,7 +57,7 @@
     "regenerator-runtime": "^0.13.7",
     "reset-css": "^5.0.1",
     "search-osm-geocode": "^0.0.8",
-    "tiptap": "^1.30.0",
+    "tiptap": "1.18.0",
     "tiptap-extensions": "^1.33.2",
     "transliteration": "^2.1.11",
     "v-click-outside": "^3.1.0",
