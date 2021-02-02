@@ -13,6 +13,10 @@ dotenv.config({
   path: `env/.env.${process.env.NODE_ENV}`
 });
 
+console.log(' ');
+console.log('   >> process.env.mailinblue_key 1: ', process.env.mailinblue_key);
+console.log('  ');
+
 console.log('process.env.host_api ::', process.env.host_api);
 console.log('process.env.host_front ::', process.env.host_front);
 
