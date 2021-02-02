@@ -33,6 +33,7 @@ import favorites from '../components/pages/profile/favorites.vue';
 import loginPage from '../components/pages/loginPage.vue';
 import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
 import registrationPage from '../components/pages/registrationPage.vue';
+import verifyPage from '../components/pages/verifyPage.vue';
 // 404
 import notFoundComponent from '../components/pages/errors/notFoundComponent.vue';
 import userNotLoggedInComponent from '../components/pages/errors/userNotLoggedInComponent.vue';
@@ -53,6 +54,11 @@ const router = new Router({
       path: '/styleGuide',
       name:'styleGuide',
       component: styleGuide
+    },
+    {
+      path: '/verify/:userId/:secretCode',
+      name:'verifyPage',
+      component: verifyPage
     },
     {
       path: '/registration',

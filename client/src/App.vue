@@ -79,7 +79,7 @@ export default {
       )
         .then(
           response => {
-            console.log('Response checkToken ::', response);
+            // console.log('Response checkToken ::', response);
             return response;
           }
         )

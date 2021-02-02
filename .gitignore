@@ -6,6 +6,7 @@ client/uploads/
 server/node_modules/
 server/yarn.lock
 server/yarn-error.log
+server/env
 
 client/index.html
 *.code-workspace
