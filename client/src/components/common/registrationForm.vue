@@ -389,6 +389,17 @@
         </div>
       </div>
 
+      <div
+        v-if="formSended"
+        class="template-page__content-row"
+      >
+        <div class="registration-page__banner">
+          <p class="paragraph registration-page__banner-text">
+            Для подтверждения регистрации проверьте свою почту.
+          </p>
+        </div>
+      </div>
+
       <div class="template-page__content-row">
         <button
           class="
@@ -436,6 +447,7 @@ export default {
   },
   data() {
     return {
+      formSended: false,
       blobImage: null,
       inputtedFile: null,
       defaultLogo: {
@@ -532,11 +544,6 @@ export default {
       'userRoles',
       'userData',
     ]),
-    urlAxios() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/auth/registration';
-      return url;
-    },
     passwordsCorrect() {
       if (
         this.formState.password.filled &&
@@ -576,7 +583,7 @@ export default {
 
       try {
         const sendUserDataResult = await axios.post(
-          this.urlAxios,
+          process.env.host_api + '/auth/registration',
           formData
         )
           .then(
@@ -592,7 +599,13 @@ export default {
               return false;
             }
           );
-        return sendUserDataResult;
+        if (sendUserDataResult) {
+          this.formSended = true;
+          console.log('sendUserDataResult 1 ::', sendUserDataResult);
+        } else {
+          this.formSended = false;
+          console.log('sendUserDataResult 2 ::', sendUserDataResult);
+        }
       } catch(error) {
         console.error('Something went wrong ::', error);
       }
@@ -705,14 +718,12 @@ export default {
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
-      // console.log('this.userDataLocal 1 ::', this.userDataLocal);
+      console.log('resultFormValidation ::', resultFormValidation);
       if (resultFormValidation) {
-        // console.log('resultFormValidation 1 ::', resultFormValidation);
+        console.log('nSubmit -> resultFormValidation => success ::');
         this.sendUserData();
-        // console.log('this.userDataLocal 2 ::', this.userDataLocal);
-        // console.log('resultFormValidation 1 ::', resultFormValidation);
       } else {
-        console.error('onSubmit resultFormValidation failed ::');
+        console.error('onSubmit -> resultFormValidation => failed ::');
       }
     },
     updateFormState() {

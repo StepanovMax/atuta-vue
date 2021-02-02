@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { createUser, login, logout, checkToken } from '../server/controllers/user.controller';
+import { registration, login, logout, checkToken, verifyRegistrationLink, removeUser } from '../server/controllers/user.controller';
 
 let storageConfig = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -25,7 +25,7 @@ router.post(
     { name: 'file', maxCount: 1 },
     { name: 'userData', maxCount: 1 },
   ]),
-  createUser,
+  registration,
 );
 
 router.post(
@@ -42,5 +42,16 @@ router.get(
   '/checkToken',
   checkToken,
 );
+
+router.get(
+  '/verify/:userId/:secretCode',
+  verifyRegistrationLink,
+);
+
+router.get(
+  '/removeUser',
+  removeUser,
+);
+
 
 export default router;

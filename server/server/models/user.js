@@ -111,6 +111,27 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter an refreshToken'
       },
     },
+    status: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+        msg: 'Please enter an status'
+      },
+    },
+    expireRegDate: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+        msg: 'Please enter an expireRegDate'
+      },
+    },
+    regKey: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: true,
+        msg: 'Please enter an regKey'
+      },
+    },
   }, {});
   user.associate = function(models) {
     // associations can be defined here

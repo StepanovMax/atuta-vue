@@ -2,6 +2,7 @@ import db from '../models';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+const sendinblue = require('../../sendinblue');
 
 dotenv.config({
   path: `../env/.env.${process.env.NODE_ENV}`
@@ -11,9 +12,190 @@ const User = db.user;
 const jwtSecret = process.env.jwt_secret;
 const saltRounds = parseInt(process.env.db_salt_rounds);
 const saltLocal = process.env.db_salt;
-
 const accessTokenExpiredIn = parseInt(process.env.access_token_life_time);
 const refreshTokenExpiredIn = parseInt(process.env.refresh_token_life_time);
+
+
+const handlePasswordHashing = (plainPassword, salt) => {
+  let hashed = bcrypt.hashSync(plainPassword, salt)
+
+  if (hashed.includes("/")) {
+    hashed = this.handlePasswordHashing(plainPassword, salt)
+  }
+
+  return hashed;
+}
+
+
+const verifyRegistrationLink = async (req, res) => {
+  try {
+    const findUser = await User.findOne({
+      where: {
+        id: req.params.userId,
+      }
+    });
+    if (!findUser) {
+      res.status(200).send({
+        message: 'not found'
+      });
+    } else {
+      const dateNow = new Date().getTime() / 1000 | 0;
+      if (req.params.secretCode === findUser.regKey) {
+        if (findUser.expireRegDate > dateNow) {
+          if (findUser.status === 'pending') {
+            const userData = findUser.dataValues;
+            // console.log('   userData 1 ::', userData);
+            // Create a copy of the founed user.
+            let responseUser = Object.assign({}, userData);
+            delete responseUser.salt;
+            delete responseUser.regKey;
+            delete responseUser.password;
+            delete responseUser.accessToken;
+            delete responseUser.refreshToken;
+            // console.log('   responseUser 2 ::', responseUser);
+            const updateValues = {
+              status: 'active',
+            };
+            findUser.update(updateValues).then( function(self) {
+              console.log(' ');
+              console.log('   >> Status changed to active ::');
+              console.log(' ');
+            });
+            res.status(200).send({
+              message: 'ok',
+              user: responseUser
+            });
+          } else if (findUser.status === 'active') {
+            res.status(200).send({
+              message: 'created'
+            });
+          }
+        } else {
+          res.status(200).send({
+            message: 'expired'
+          });
+          findUser.destroy();
+        }
+      } else {
+        res.status(200).send({
+          message: 'wrong code'
+        });
+        findUser.destroy();
+      }
+    }
+  } catch(error) {
+    console.error('findUser verifyRegistrationLink error ::', error)
+  }
+};
+
+
+const registration = async (req, res, file) => {
+  console.log('registration ::');
+  // Collect the user data.
+  const userData = req.body.userData;
+  // 1. Check for an empty data.
+  if (!userData) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  } else {
+    const userDataParsed = JSON.parse(userData);
+    // 2. Check whether this user is present in the DB.
+    try {
+      let findUser = await User.findOne({
+        where: {
+          email: userDataParsed.email,
+          phone: userDataParsed.phone,
+        }
+      });
+      // 3.1 If user is upsent.
+      if (!findUser) {
+        let regKey = jwt.sign(
+          {
+            id: userDataParsed.id,
+            email: userDataParsed.email,
+            website: userDataParsed.website,
+            address: userDataParsed.address,
+            description: userDataParsed.description,
+            expireDate: userDataParsed,
+          },
+          jwtSecret
+        );
+        regKey = regKey.replace(/\./g,'')
+        console.log('regKey ::', regKey);
+        const dateNow = new Date().getTime() / 1000 | 0;
+        const expirateRegDate = dateNow + 600;
+        // 3.1.1 then create secret key, expiration date and status 'pending'.
+        userDataParsed.logo = '/uploads/' + req.suffix;
+        userDataParsed.salt = bcrypt.genSaltSync(saltRounds);
+        userDataParsed.password = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt + saltLocal);
+        userDataParsed.status = 'pending';
+        userDataParsed.expireRegDate = expirateRegDate;
+        userDataParsed.regKey = regKey;
+        // 3.1.2 create user in DB.
+        try {
+          const userCreated = await User.create(userDataParsed)
+            .then(data => {
+              const reglink = process.env.host_front + '/verify/' + data.id + '/' + regKey;
+              console.log(' ');
+              console.log('reglink ::', reglink);
+              console.log(' ');
+              console.log("   >> Message sent to " + userDataParsed.email, userDataParsed.name);
+
+              const configEmail = {
+                to: [{
+                  email: userDataParsed.email
+                }],
+                templateId: 3,
+                params: {
+                  FIRSTNAME: userDataParsed.name,
+                  CODE: reglink,
+                },
+              };
+
+              sendinblue(configEmail);
+
+              res.status(200).send(data);
+            })
+              .catch(err => {
+                console.log(' ');
+                console.log('User creating error ::', err.message);
+                res.status(500).send({
+                  message: err.message || "Some error occurred while creating the User."
+                });
+              });
+
+          if (userCreated) {
+            console.log("   >> userCreated", userCreated);
+          }
+        } catch(error) {
+          console.error(' ');
+          console.error('error ::', error);
+          console.error(' ');
+        }
+      } else {
+        console.log(' ');
+        console.log('User already exist! ::');
+        console.log(' ');
+        res.send(false);
+      }
+    } catch(error) {
+      console.error('findUser error ::', error)
+    }
+  }
+  // 3.1.4 showing to the user  message to verify his email.
+  // 3.2   if user is present in DB.
+  // 3.2.1 showing message to user that this email/phone already has been registered.
+  // 3.3   waiting 600 seconds.
+  // 3.4.1 if the user click on link.
+  // 3.4.2 change users status to active.
+  // 3.4.3 showing for user message that registration was successfull.
+  // 3.4.4 make a redirect for user to home page.
+  // 3.4.5 login user to the website.
+  // 3.5.1 if the user didn't click on link.
+  // 3.5.2 remove users record from DB.
+};
+
 
 // Create and Save a new User
 const createUser = async (req, res, file) => {
@@ -39,10 +221,6 @@ const createUser = async (req, res, file) => {
 
   userDataParsed.password = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt + saltLocal);
 
-  // userDataParsed.password = bcrypt.hashSync(hash, saltLocal);
-  // console.log(' ');
-  // console.log('   >> userDataParsed.password', userDataParsed.password);
-  // console.log(' ');
 
   try {
     // console.log(' ');
@@ -200,6 +378,41 @@ const login = async (req, res) => {
 }
 
 
+const removeUser = async (req, res) => {
+  console.log('   removeUser ::');
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> RemoveUser > accessToken ::', accessToken);
+  console.log(' ');
+  // If the accessToken is not a null.
+  if (accessToken) {
+    console.log('   if (accessToken) ::');
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+    // Clear cookie.
+    res.clearCookie('accessToken');
+
+    try {
+      // Find the user in DB.
+      const user = await User.findOne({
+        where: {
+          id: decodedAccessToken.id,
+        }
+      })
+      .then(function(user) {
+        console.log('   then ::');
+        user.destroy();
+        res.status(200).send(true);
+      });
+    } catch(error) {
+      console.error('Error [Backend :: user.controller :: removeUser] ::', error);
+    }
+  }
+}
+
+
 const logout = async (req, res) => {
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
@@ -242,6 +455,11 @@ const logout = async (req, res) => {
 
 // Cheking the token.
 const checkToken = async (req, res) => {
+  // res.header('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Credentials', true);
+
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
   let decodedAccessToken;
@@ -268,6 +486,7 @@ const checkToken = async (req, res) => {
       // Remove an important info.
       delete decodedAccessToken.expireDate;
       delete decodedAccessToken.iat;
+      console.error('   decodedAccessToken.id ::', decodedAccessToken.id);
 
       // Check if the users browser token is equal to DB users token.
       await User.findOne({
@@ -277,7 +496,7 @@ const checkToken = async (req, res) => {
       })
         .then(function(user) {
           console.error(' ');
-          console.error('   >> >', user.dataValues);
+          console.error('   [checkToken] > founded user ::');
           console.error(' ');
           // Checking.
           if (user.dataValues.accessToken === accessToken) {
@@ -349,13 +568,24 @@ const checkToken = async (req, res) => {
             console.error(' ');
             res.status(200).send(false);
           }
-        });
+        })
+          .catch(err => {
+            console.log(' ');
+            console.log('User from access token not founded ::');
+            console.log(' ');
+            // Clear cookie.
+            res.clearCookie('accessToken');
+            res.status(200).send(false);
+          });
     } catch(error) {
+      // Clear cookie.
+      res.clearCookie('accessToken');
       console.error('Error [Backend :: user.controller :: checkToken] ::', error);
+      res.status(200).send(false);
     }
   } else {
     res.status(200).send(false);
   }
 }
 
-export {createUser, login, logout, checkToken};
+export {registration, login, logout, checkToken, verifyRegistrationLink, removeUser};
