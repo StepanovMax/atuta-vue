@@ -250,6 +250,7 @@
 
         <p
           v-if="
+            !formState.email.exist &&
             formState.email.firstBlur &&
             !formState.email.filled &&
             !userDataLocal.email
@@ -257,6 +258,15 @@
           class="paragraph paragraph_invalid"
         >
           Email обязателен к заполнению
+        </p>
+
+        <p
+          v-if="
+            formState.email.exist
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Такой email уже существует
         </p>
       </div>
 
@@ -286,6 +296,15 @@
           class="paragraph paragraph_invalid"
         >
           Телефон обязателен к заполнению
+        </p>
+
+        <p
+          v-if="
+            formState.phone.exist
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Такой номер телефона уже существует
         </p>
       </div>
 
@@ -413,6 +432,10 @@
         >
           Регистрация
         </button>
+        <br>
+<pre>
+  {{ formState }}
+</pre>
       </div>
     </form>
   </div>
@@ -505,12 +528,14 @@ export default {
           required: true,
         },
         email: {
+          exist: false,
           syntax: false,
           filled: false,
           firstBlur: false,
           required: true,
         },
         phone: {
+          exist: false,
           filled: false,
           firstBlur: false,
           required: true,
@@ -577,7 +602,7 @@ export default {
     async sendUserData() {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
-      console.log('data.logo ::', data.logo);
+      // console.log('data.logo ::', data.logo);
       formData.append('file', data.logo);
       formData.append('userData', JSON.stringify(data));
 
@@ -588,21 +613,29 @@ export default {
         )
           .then(
             response => {
-              console.log('response.data ::', response.data);
+              // console.log('response.data ::', response);
               return response.data;
             }
           )
-          .catch(
-            error => {
-              console.error('Error [Registration] ::');
-              console.error(error);
-              return false;
-            }
-          );
-        if (sendUserDataResult) {
+            .catch(
+              error => {
+                console.error('Error [Registration] ::', error);
+                return false;
+              }
+            );
+        if (sendUserDataResult.result) {
           this.formSended = true;
+          this.formState.phone.exist = false;
+          this.formState.email.exist = false;
           console.log('sendUserDataResult 1 ::', sendUserDataResult);
         } else {
+          if (sendUserDataResult.type === 'email') {
+            this.formState.phone.exist = false;
+            this.formState.email.exist = true;
+          } else if (sendUserDataResult.type === 'phone') {
+            this.formState.phone.exist = true;
+            this.formState.email.exist = false;
+          }
           this.formSended = false;
           console.log('sendUserDataResult 2 ::', sendUserDataResult);
         }
@@ -714,16 +747,17 @@ export default {
       } else {
         this.formState.logo.filled = false;
       }
-      this.formState.logo.filled = true;
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
       console.log('resultFormValidation ::', resultFormValidation);
       if (resultFormValidation) {
-        console.log('nSubmit -> resultFormValidation => success ::');
+        // console.log('onSubmit -> resultFormValidation => success ::');
         this.sendUserData();
       } else {
-        console.error('onSubmit -> resultFormValidation => failed ::');
+        // Make scroll to errored element.
+        this.scrollToErroredElement();
+        console.log('onSubmit -> resultFormValidation => FAILED ::');
       }
     },
     updateFormState() {
