@@ -433,7 +433,7 @@
           Регистрация
         </button>
         <br>
-<pre>
+<pre v-local>
   {{ formState }}
 </pre>
       </div>
@@ -605,13 +605,10 @@ export default {
       // console.log('data.logo ::', data.logo);
       formData.append('file', data.logo);
       formData.append('userData', JSON.stringify(data));
-      console.log('process.env.host_api ::', process.env.host_api);
-      const url1 = process.env.host_api + '/auth/registration';
-      const url2 = 'http://dev-api.atyta.ru:9001/auth/registration';
 
       try {
         const sendUserDataResult = await axios.post(
-          url2,
+          process.env.host_api + '/auth/registration',
           formData
         )
           .then(
