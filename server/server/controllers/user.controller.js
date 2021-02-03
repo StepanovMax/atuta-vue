@@ -109,78 +109,81 @@ const registration = async (req, res, file) => {
         }
       });
       // 3.1 If user is upsent.
-      if (!findUser) {
-        let regKey = jwt.sign(
-          {
-            id: userDataParsed.id,
-            email: userDataParsed.email,
-            website: userDataParsed.website,
-            address: userDataParsed.address,
-            description: userDataParsed.description,
-            expireDate: userDataParsed,
-          },
-          jwtSecret
-        );
-        regKey = regKey.replace(/\./g,'')
-        console.log('regKey ::', regKey);
-        const dateNow = new Date().getTime() / 1000 | 0;
-        const expirateRegDate = dateNow + 600;
-        // 3.1.1 then create secret key, expiration date and status 'pending'.
-        userDataParsed.logo = '/uploads/' + req.suffix;
-        userDataParsed.salt = bcrypt.genSaltSync(saltRounds);
-        userDataParsed.password = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt + saltLocal);
-        userDataParsed.status = 'pending';
-        userDataParsed.expireRegDate = expirateRegDate;
-        userDataParsed.regKey = regKey;
-        // 3.1.2 create user in DB.
-        try {
-          const userCreated = await User.create(userDataParsed)
-            .then(data => {
-              const reglink = process.env.host_front + '/verify/' + data.id + '/' + regKey;
-              console.log(' ');
-              console.log('reglink ::', reglink);
-              console.log(' ');
-              console.log("   >> Message sent to " + userDataParsed.email, userDataParsed.name);
+      let regKey = jwt.sign(
+        {
+          id: userDataParsed.id,
+          email: userDataParsed.email,
+          website: userDataParsed.website,
+          address: userDataParsed.address,
+          description: userDataParsed.description,
+          expireDate: userDataParsed,
+        },
+        jwtSecret
+      );
+      regKey = regKey.replace(/\./g,'')
+      console.log('regKey ::', regKey);
+      const dateNow = new Date().getTime() / 1000 | 0;
+      const expirateRegDate = dateNow + 600;
+      // 3.1.1 then create secret key, expiration date and status 'pending'.
+      userDataParsed.logo = '/uploads/' + req.suffix;
+      userDataParsed.salt = bcrypt.genSaltSync(saltRounds);
+      userDataParsed.password = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt + saltLocal);
+      userDataParsed.status = 'pending';
+      userDataParsed.expireRegDate = expirateRegDate;
+      userDataParsed.regKey = regKey;
+      // 3.1.2 create user in DB.
+      try {
+        await User.create(userDataParsed).then(
+          data => {
+            const reglink = process.env.host_front + '/verify/' + data.id + '/' + regKey;
+            console.log(' ');
+            console.log("   >> Message sent to " + userDataParsed.email, userDataParsed.name);
+            console.log(' ');
 
-              const configEmail = {
-                to: [{
-                  email: userDataParsed.email
-                }],
-                templateId: 3,
-                params: {
-                  FIRSTNAME: userDataParsed.name,
-                  CODE: reglink,
-                },
-              };
+            const configEmail = {
+              to: [{
+                email: userDataParsed.email
+              }],
+              templateId: 3,
+              params: {
+                FIRSTNAME: userDataParsed.name,
+                CODE: reglink,
+              },
+            };
 
+            try {
               sendinblue(configEmail);
-
-              res.status(200).send(data);
-            })
-              .catch(err => {
-                console.log(' ');
-                console.log('User creating error ::', err.message);
-                res.status(500).send({
-                  message: err.message || "Some error occurred while creating the User."
-                });
+              res.status(200).send({
+                result: true,
+                data: data,
               });
-
-          if (userCreated) {
-            console.log("   >> userCreated", userCreated);
+            } catch(error) {
+              console.error(' ');
+              console.error('[Sendinblue error]', error.message);
+              console.error(' ');
+              res.status(200).send({
+                result: false,
+                message: error.message,
+              });
+            }
           }
-        } catch(error) {
-          console.error(' ');
-          console.error('error ::', error);
-          console.error(' ');
-        }
-      } else {
-        console.log(' ');
-        console.log('User already exist! ::');
-        console.log(' ');
-        res.send(false);
+        );
+      } catch(error) {
+        console.error(' ');
+        console.error('[Create user error]', error.errors[0].path);
+        console.error(' ');
+        res.send({
+          result: false,
+          message: error.message,
+          type: error.errors[0].path,
+        });
       }
     } catch(error) {
-      console.error('findUser error ::', error)
+      console.error('[Find user error]', error.message);
+      res.send({
+        result: false,
+        message: error.message,
+      });
     }
   }
   // 3.1.4 showing to the user  message to verify his email.
