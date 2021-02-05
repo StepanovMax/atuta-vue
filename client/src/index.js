@@ -20,7 +20,7 @@ import Meta from 'vue-meta';
 Vue.directive(
   'local',
   el => {
-    if (!window.location.hostname.includes('localhost')) {
+    if (!window.location.hostname.includes('127.0.0.1')) {
       el.style.display = 'none';
     }
   }
