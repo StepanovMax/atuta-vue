@@ -323,16 +323,6 @@
           :value.sync="blobImage"
           :propValue="userDataLocal.logo"
         />
-
-        <p
-          v-if="
-            formState.logo.firstBlur &&
-            !formState.logo.filled
-          "
-          class="paragraph paragraph_invalid"
-        >
-          Логотип нужен обязательно
-        </p>
       </div>
 
 
@@ -433,9 +423,11 @@
           Регистрация
         </button>
         <br>
+
 <pre v-local>
-  {{ formState }}
+  {{ userDataLocal }}
 </pre>
+
       </div>
     </form>
   </div>
@@ -507,18 +499,21 @@ export default {
           firstBlur: false,
           filled: false,
           required: true,
+          temporary: false,
         },
         login: {
           length: 4,
           filled: false,
           firstBlur: false,
           required: true,
+          temporary: false,
         },
         password: {
           filled: false,
           length: 8,
           firstBlur: false,
           required: true,
+          temporary: false,
         },
         repassword: {
           matched: false,
@@ -526,6 +521,7 @@ export default {
           length: 8,
           firstBlur: false,
           required: true,
+          temporary: false,
         },
         email: {
           exist: false,
@@ -533,28 +529,39 @@ export default {
           filled: false,
           firstBlur: false,
           required: true,
+          temporary: false,
         },
         phone: {
           exist: false,
           filled: false,
           firstBlur: false,
           required: true,
+          temporary: false,
         },
         logo: {
           filled: false,
           firstBlur: false,
           required: true,
+          temporary: true,
         },
         website: {
           syntax: false,
           filled: false,
           firstBlur: false,
           required: false,
+          temporary: true,
         },
         address: {
           filled: false,
           firstBlur: false,
           required: false,
+          temporary: true,
+        },
+        description: {
+          filled: false,
+          firstBlur: false,
+          required: false,
+          temporary: true,
         },
       },
       email: '',
@@ -589,10 +596,12 @@ export default {
     prepareUserDataForSending() {
       const data = {...this.userDataLocal};
       const role = data.role.slug;
-      const logo = data.logo[0].object;
+      // const logo = data.logo[0].object;
       const name = data.name.label;
       const phone = this.gFormatPhoneRevert(data.phone);
-      data.logo = logo;
+      if (this.userDataLocal.role.slug === 'builder' || this.userDataLocal.role.slug === 'agency') {
+        data.logo = data.logo[0].object;
+      }
       data.phone = phone;
       data.role = role;
       data.name = name;
@@ -603,10 +612,13 @@ export default {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
       // console.log('data.logo ::', data.logo);
-      formData.append('file', data.logo);
+      if (this.userDataLocal.role.slug === 'personal' || this.userDataLocal.role.slug === 'agent') {
+        formData.append('file', data.logo);
+      }
       formData.append('userData', JSON.stringify(data));
 
       try {
+        console.log('process.env.host_api ::', process.env.host_api);
         const sendUserDataResult = await axios.post(
           process.env.host_api + '/auth/registration',
           formData
@@ -634,6 +646,9 @@ export default {
             this.formState.email.exist = true;
           } else if (sendUserDataResult.type === 'phone') {
             this.formState.phone.exist = true;
+            this.formState.email.exist = false;
+          } else {
+            this.formState.phone.exist = false;
             this.formState.email.exist = false;
           }
           this.formSended = false;
@@ -773,7 +788,9 @@ export default {
         if (subObj.required && !subObj.filled) {
           subObj.firstBlur = true;
         }
-        formIsFilledArray.push(!obj[key].filled);
+        if (!obj[key].temporary) {
+          formIsFilledArray.push(!obj[key].filled);
+        }
       }
       this.formIsNotFilled = formIsFilledArray.some(
         item => item
@@ -884,6 +901,7 @@ export default {
     this.addCheckedPropertyForUserRoles('personal');
   },
   mounted() {
+    console.log('process ::', process.env.host_api);
     this.updateFormState();
     // Listening the blur action from password fields.
     this.$root.$on('blur', (value, name) => {

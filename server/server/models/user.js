@@ -67,10 +67,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     logo: {
       type: Sequelize.STRING,
-      unique: {
-        args: true,
-        msg: 'Logo already exists'
-      },
       allowNull: {
         args: false,
         msg: 'Please enter your logo'
@@ -79,22 +75,19 @@ module.exports = (sequelize, Sequelize) => {
     website: {
       type: Sequelize.STRING,
       allowNull: {
-        args: false,
-        msg: 'Please enter a website'
+        args: true,
       },
     },
     address: {
       type: Sequelize.STRING,
       allowNull: {
-        args: false,
-        msg: 'Please enter an address'
+        args: true,
       },
     },
     description: {
       type: Sequelize.TEXT,
       allowNull: {
-        args: false,
-        msg: 'Please enter your description'
+        args: true,
       }
     },
     accessToken: {

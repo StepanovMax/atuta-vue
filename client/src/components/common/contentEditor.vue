@@ -219,8 +219,13 @@ export default {
           new History(),
         ],
         onUpdate: ({ getHTML }) => {
-          // console.log(getHTML(), getJSON());
-          this.$emit('update:value', getHTML());
+          let content;
+          if (getHTML() === '<p></p>') {
+            content = null;
+          } else {
+            content = getHTML();
+          }
+          this.$emit('update:value', content);
         }
       }),
       linkUrl: null,

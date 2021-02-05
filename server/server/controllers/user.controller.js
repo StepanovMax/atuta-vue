@@ -121,11 +121,16 @@ const registration = async (req, res, file) => {
         jwtSecret
       );
       regKey = regKey.replace(/\./g,'')
-      console.log('regKey ::', regKey);
+      // console.log('regKey ::', regKey);
       const dateNow = new Date().getTime() / 1000 | 0;
       const expirateRegDate = dateNow + 600;
       // 3.1.1 then create secret key, expiration date and status 'pending'.
-      userDataParsed.logo = '/uploads/' + req.suffix;
+      if (req.suffix) {
+        userDataParsed.logo = '/uploads/' + req.suffix;
+        console.log('userDataParsed.logo', userDataParsed.logo);
+      } else {
+        userDataParsed.logo = null;
+      }
       userDataParsed.salt = bcrypt.genSaltSync(saltRounds);
       userDataParsed.password = bcrypt.hashSync(userDataParsed.password, userDataParsed.salt + saltLocal);
       userDataParsed.status = 'pending';
