@@ -327,6 +327,7 @@
 
 
       <div
+        v-if="agencyOrBuilder"
         ref="website"
         class="template-page__content-row"
       >
@@ -358,6 +359,7 @@
 
 
       <div
+        v-if="agencyOrBuilder"
         ref="address"
         class="template-page__content-row"
       >
@@ -378,6 +380,7 @@
 
 
       <div
+        v-if="agencyOrBuilder"
         ref="description"
         class="template-page__content-row"
       >
@@ -582,6 +585,13 @@ export default {
         this.formState.repassword.filled &&
         this.userDataLocal.password.length === this.userDataLocal.repassword.length
       ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    agencyOrBuilder() {
+      if ((this.userDataLocal.role.slug === 'agency') || (this.userDataLocal.role.slug === 'builder')) {
         return true;
       } else {
         return false;

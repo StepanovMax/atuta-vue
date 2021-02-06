@@ -158,9 +158,18 @@ const registration = async (req, res, file) => {
 
             try {
               sendinblue(configEmail);
+              // Create a copy of the founed user.
+              const responseUser = JSON.parse(JSON.stringify(data));
+              // Remove an important info.
+              delete responseUser.salt;
+              delete responseUser.regKey;
+              delete responseUser.password;
+              delete responseUser.createdAt;
+              delete responseUser.updatedAt;
+              delete responseUser.expireRegDate;
               res.status(200).send({
                 result: true,
-                data: data,
+                data: responseUser,
               });
             } catch(error) {
               console.error(' ');
@@ -301,6 +310,7 @@ const login = async (req, res) => {
       // Remove an important info.
       delete responseUser.id;
       delete responseUser.salt;
+      delete responseUser.regKey;
       delete responseUser.password;
       delete responseUser.createdAt;
       delete responseUser.updatedAt;
