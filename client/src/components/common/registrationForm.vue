@@ -245,7 +245,7 @@
           "
           class="paragraph paragraph_invalid"
         >
-          Email должен быть такого типа: info@test.ru
+          Некорректный email(пример: ivanov@mail.ru)
         </p>
 
         <p
@@ -747,10 +747,6 @@ export default {
       } else {
         this.formState.login.filled = false;
       }
-    },
-    validateEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
     },
     validateWebsite(website) {
       const anyDomainMask = /^((http:\/\/|https:\/\/)?)((([a-zA-Z\-0-9]+\.)+(([a-zA-Z]{2,})(\/?))))/
