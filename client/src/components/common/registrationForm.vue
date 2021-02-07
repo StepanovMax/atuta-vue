@@ -91,43 +91,53 @@
 
 
       <div
-        ref="login"
+        ref="email"
         class="template-page__content-row"
       >
         <h3 class="registration-page__title_row">
-          Логин
+          Email
         </h3>
 
         <div class="registration-page__input-wrap">
           <inputField
-            propType="symbolsWithNumbers"
             propClass="registration-page__input"
-            propKey="login"
-            :value.sync="userDataLocal.login"
-            :propValue="userDataLocal.login"
+            propType="email"
+            propKey="email"
+            :value.sync="userDataLocal.email"
+            :propValue="userDataLocal.email"
           />
         </div>
 
         <p
           v-if="
-            formState.login.firstBlur &&
-            !formState.login.filled &&
-            !userDataLocal.login
+            formState.email.firstBlur &&
+            !formState.email.syntax &&
+            userDataLocal.email
           "
           class="paragraph paragraph_invalid"
         >
-          Логин обязателен к заполнению
+          Некорректный email(пример: ivanov@mail.ru)
         </p>
 
         <p
           v-if="
-            formState.login.firstBlur &&
-            !formState.login.filled &&
-            userDataLocal.login
+            !formState.email.exist &&
+            formState.email.firstBlur &&
+            !formState.email.filled &&
+            !userDataLocal.email
           "
           class="paragraph paragraph_invalid"
         >
-          Минимальная длина 6 символов
+          Email обязателен к заполнению
+        </p>
+
+        <p
+          v-if="
+            formState.email.exist
+          "
+          class="paragraph paragraph_invalid"
+        >
+          Такой email уже существует
         </p>
       </div>
 
@@ -215,58 +225,6 @@
           class="paragraph paragraph_invalid"
         >
           Пароль обязателен для заполнения
-        </p>
-      </div>
-
-
-      <div
-        ref="email"
-        class="template-page__content-row"
-      >
-        <h3 class="registration-page__title_row">
-          Email
-        </h3>
-
-        <div class="registration-page__input-wrap">
-          <inputField
-            propClass="registration-page__input"
-            propType="email"
-            propKey="email"
-            :value.sync="userDataLocal.email"
-            :propValue="userDataLocal.email"
-          />
-        </div>
-
-        <p
-          v-if="
-            formState.email.firstBlur &&
-            !formState.email.syntax &&
-            userDataLocal.email
-          "
-          class="paragraph paragraph_invalid"
-        >
-          Email должен быть такого типа: info@test.ru
-        </p>
-
-        <p
-          v-if="
-            !formState.email.exist &&
-            formState.email.firstBlur &&
-            !formState.email.filled &&
-            !userDataLocal.email
-          "
-          class="paragraph paragraph_invalid"
-        >
-          Email обязателен к заполнению
-        </p>
-
-        <p
-          v-if="
-            formState.email.exist
-          "
-          class="paragraph paragraph_invalid"
-        >
-          Такой email уже существует
         </p>
       </div>
 
@@ -479,7 +437,6 @@ export default {
       formIsNotFilled: false,
       userDataEmpty: {
         role: {},
-        login: '',
         password: '',
         repassword: '',
         name: {
@@ -504,8 +461,9 @@ export default {
           required: true,
           temporary: false,
         },
-        login: {
-          length: 4,
+        email: {
+          exist: false,
+          syntax: false,
           filled: false,
           firstBlur: false,
           required: true,
@@ -522,14 +480,6 @@ export default {
           matched: false,
           filled: false,
           length: 8,
-          firstBlur: false,
-          required: true,
-          temporary: false,
-        },
-        email: {
-          exist: false,
-          syntax: false,
-          filled: false,
           firstBlur: false,
           required: true,
           temporary: false,
@@ -741,17 +691,6 @@ export default {
         this.formState.website.filled = false;
       }
     },
-    handleLogin(value) {
-      if (value.length >= this.formState.login.length) {
-        this.formState.login.filled = true;
-      } else {
-        this.formState.login.filled = false;
-      }
-    },
-    validateEmail(email) {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    },
     validateWebsite(website) {
       const anyDomainMask = /^((http:\/\/|https:\/\/)?)((([a-zA-Z\-0-9]+\.)+(([a-zA-Z]{2,})(\/?))))/
       if (anyDomainMask.test(website)) {
@@ -889,9 +828,6 @@ export default {
     'userDataLocal.website'(value) {
       this.handleWebsite(value);
     },
-    'userDataLocal.login'(value) {
-      this.handleLogin(value);
-    },
     'userDataLocal.phone'(value) {
       this.handlePhone(value);
     },
@@ -922,8 +858,6 @@ export default {
         this.validateRepasswordLength(value);
       } else if (name === 'email') {
         this.formState.email.firstBlur = true;
-      } else if (name === 'login') {
-        this.formState.login.firstBlur = true;
       } else if (name === 'phone') {
         this.formState.phone.firstBlur = true;
       } else if (name === 'name') {

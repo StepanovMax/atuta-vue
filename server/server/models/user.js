@@ -8,20 +8,6 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter your role'
       }
     },
-    login: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter your name'
-      },
-      validate: {
-        isNotShort: (value) => {
-          if (value.length < 4) {
-            throw new Error('Login should be at least 4 characters');
-          }
-        },
-      },
-    },
     password: {
       type: Sequelize.STRING,
       allowNull: {
