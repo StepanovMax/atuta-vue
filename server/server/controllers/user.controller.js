@@ -300,7 +300,7 @@ const login = async (req, res) => {
 
   await User.findOne({
     where: {
-      login: body.login,
+      email: body.email,
     }
   })
     .then(function(user) {
