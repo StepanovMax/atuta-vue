@@ -33,36 +33,34 @@
           class="template-page__content-row"
         >
           <h3 class="registration-page__title_row">
-            Логин
+            Email
           </h3>
 
           <inputField
-            propType="symbolsWithNumbers"
+            propType="email"
             propClass="login-page__input"
             propKey="login"
-            :value.sync="loginData.login"
+            :value.sync="loginData.email"
           />
 
           <p
             v-if="
-              formState.login.firstBlur &&
-              !formState.login.filled &&
-              !loginData.login
+              formState.email.firstBlur &&
+              !formState.email.syntaxCorrect
             "
             class="paragraph paragraph_invalid"
           >
-            Логин обязателен к заполнению
+            Некорректный email(пример: ivanov@mail.ru)
           </p>
 
           <p
             v-if="
-              formState.login.firstBlur &&
-              !formState.login.filled &&
-              loginData.login
+              !formState.email.filled &&
+              formState.email.firstBlur
             "
             class="paragraph paragraph_invalid"
           >
-            Минимальная длина 6 символов
+            Поле email не должно быть пустым 
           </p>
         </div>
 
@@ -161,13 +159,13 @@ export default {
   data() {
     return {
       loginData: {
-        login: null,
+        email: null,
         password: null,
       },
       formState: {
-        login: {
-          length: 2,
+        email: {
           filled: false,
+          syntaxCorrect: false,
           firstBlur: false,
           required: true,
         },
@@ -181,9 +179,9 @@ export default {
     }
   },
   watch: {
-    // Watching login typing
-    'loginData.login'(value) {
-      this.handleLogin(value);
+    // Watching email typing
+    'loginData.email'(value) {
+      this.handleEmail(value);
     },
     // Watching password typing
     'loginData.password'(value) {
@@ -209,11 +207,17 @@ export default {
     },
   },
   methods: {
-    handleLogin(value) {
-      if (value.length >= this.formState.login.length) {
-        this.formState.login.filled = true;
+    handleEmail(value) {
+      const correctEmail = this.validateEmail(value);
+      if (correctEmail) {
+        this.formState.email.syntaxCorrect = true;
       } else {
-        this.formState.login.filled = false;
+        this.formState.email.syntaxCorrect = false;
+      }
+      if (value) {
+        this.formState.email.filled = true;
+      } else {
+        this.formState.email.filled = false;
       }
     },
     submit() {
@@ -223,7 +227,7 @@ export default {
       }
     },
     formValidation() {
-      if (this.formState.login.filled === true && this.formState.password.filled === true) {
+      if (this.formState.email.syntaxCorrect === true && this.formState.password.filled === true) {
         return true;
       } else {
         return false;
@@ -295,7 +299,7 @@ export default {
       if (name === 'password') {
         this.validatePasswordLength(value);
       } else if (name === 'login') {
-        this.formState.login.firstBlur = true;
+        this.formState.email.firstBlur = true;
       }
     });
   },
