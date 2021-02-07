@@ -90,7 +90,7 @@ const verifyRegistrationLink = async (req, res) => {
 
 
 const registration = async (req, res, file) => {
-  console.log('registration ::');
+  console.log('registration ::', req.body.userData);
   // Collect the user data.
   const userData = req.body.userData;
   // 1. Check for an empty data.
