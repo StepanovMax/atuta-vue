@@ -33,6 +33,7 @@ const actions = {
     }
   },
   logout: async (context, commit) => {
+    console.log('logout ::');
     const transport = axios.create({
       withCredentials: true
     });
@@ -51,6 +52,51 @@ const actions = {
           return false;
         }
       );
+  },
+  checkAuth: async (context, commit, dispatch) => {
+    // Get towns list.
+    await context.dispatch('getTowns');
+    const transport = axios.create({
+      withCredentials: true
+    });
+    // Check the token.
+    const checkTokenResult = await transport.get(
+      process.env.host_api + '/auth/checkToken'
+    )
+      .then(
+        response => {
+          console.log('checkAuth checkTokenResult ::', response);
+          // console.log('Response checkToken ::', response);
+          return response;
+        }
+      )
+        .catch(
+          error => {
+            console.error('Error :: After page refresh token is outdated', error);
+            return false;
+          }
+        );
+    // If the state loggedIn data is TRUE,
+    if (checkTokenResult.data) {
+      console.log('checkTokenResult.data ::', checkTokenResult.data);
+      // then fill out to TRUE loggedIn statement.
+      context.commit('updateLoggedInState', true);
+      // then fill out userData statement.
+      context.commit('updateUserDataState', checkTokenResult.data);
+      // if (checkTokenResult.data.favouriteObjectsListID) {
+      //   // then loading the user's favourite objects.
+      //   this.getFavouritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
+      // }
+      // // then loading user's dialogs.
+      // this.getDialogsByUserID(checkTokenResult.data.id);
+      return true;
+    } else {
+      console.log('checkToken else ::');
+      await context.dispatch('logout');
+      context.commit('updateLoggedInState', false);
+      context.commit('updateUserDataState', null);
+      return false;
+    }
   },
 }
 

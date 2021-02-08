@@ -847,7 +847,7 @@ export default {
     this.addCheckedPropertyForUserRoles('personal');
   },
   mounted() {
-    console.log('process ::', process.env.host_api);
+    // console.log('process ::', process.env.host_api);
     this.updateFormState();
     // Listening the blur action from password fields.
     this.$root.$on('blur', (value, name) => {
