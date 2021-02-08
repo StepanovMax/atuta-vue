@@ -34,13 +34,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'isLoggedIn',
       'isFilterOpen',
-      'mobileQuestionClosed',
       'isUserMenuMobileOpen',
-    ]),
-    ...mapActions([
-      'getTowns',
     ]),
   },
   watch: {
@@ -64,60 +59,6 @@ export default {
         this.changeMobileQuestionState(true);
       }
     },
-  },
-  async created() {
-    /*
-      In case of page reload.
-      Start.
-    */
-      const transport = axios.create({
-        withCredentials: true
-      });
-      // Check the token.
-      const checkTokenResult = await transport.get(
-        this.getHost().api + '/auth/checkToken'
-      )
-        .then(
-          response => {
-            // console.log('Response checkToken ::', response);
-            return response;
-          }
-        )
-          .catch(
-            error => {
-              console.error('Error :: After page refresh token is outdated', error);
-              return false;
-            }
-          );
-
-      // If the state loggedIn data is TRUE,
-      if (checkTokenResult) {
-        // If the data has loaded,
-        if (checkTokenResult.data) {
-          // then fill out to TRUE loggedIn statement.
-          this.$store.commit('updateLoggedInState', true);
-          // then fill out userData statement.
-          this.$store.commit('updateUserDataState', checkTokenResult.data);
-          if (checkTokenResult.data.favouriteObjectsListID) {
-            // then loading the user's favourite objects.
-            this.getFavouritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
-          }
-          // then loading user's dialogs.
-          this.getDialogsByUserID(checkTokenResult.data.id);
-          // then update cookie with the TRUE value.
-          this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
-          // then get towns list.
-          await this.$store.dispatch('getTowns');
-        }
-      } else {
-        this.$store.commit('updateLoggedInState', false);
-        this.$store.commit('updateUserDataState', null);
-        this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
-      }
-    /*
-      In case of page reload.
-      Stop.
-    */
   },
 };
 </script>

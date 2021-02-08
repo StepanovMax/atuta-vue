@@ -314,6 +314,7 @@ const login = async (req, res) => {
       delete responseUser.password;
       delete responseUser.createdAt;
       delete responseUser.updatedAt;
+      responseUser.expireDate = accessTokenDate;
 
       // Creation access tokens.
       const accessToken = jwt.sign(
@@ -502,7 +503,6 @@ const checkToken = async (req, res) => {
       refreshTokenData.expireDate = refreshTokenDate;
 
       // Remove an important info.
-      delete decodedAccessToken.expireDate;
       delete decodedAccessToken.iat;
       console.error('   decodedAccessToken.id ::', decodedAccessToken.id);
 
@@ -564,7 +564,8 @@ const checkToken = async (req, res) => {
                 console.log('   >> Auth tokens has been updated ::');
                 console.log(' ');
               });
-              res.status(200).send(decodedAccessToken);
+              userData.expireDate = accessTokenDate;
+              res.status(200).send(userData);
             } else if (dateNow > decodedRefreshToken.expireDate) {
               console.log(' ');
               console.log('   >> both tokens has been EXPIRED ::');
