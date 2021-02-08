@@ -1,11 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
-import axios from 'axios';
-// import getHost from '../plugins/getHost';
 
 Vue.use(Router);
-// Vue.use(getHost);
 
 // Pages
 import HomePage from '../components/homePage.vue';
@@ -228,43 +225,45 @@ const router = new Router({
   ]
 });
 
-const transport = axios.create({
-  withCredentials: true
-});
-
-// const guard = function(to, from, next) {
-//   // const url = `${host.api}` + '/auth/login';
-//   // store.getters.checkAuth;
-//   const IsAuthenticated = store.actions.checkAuth;
-//   console.log('guard ::', IsAuthenticated);
-//   // check for valid auth token
-//   // axios.post('/api/checkAuthToken')
-//   //   .then(response => {
-//   //     // Token is valid, so continue
-//   //     next();
-//   //   })
-//   //     .catch(error => {
-//   //       // There was an error so redirect
-//   //       window.location.href = "/login";
-//   //     })
-// };
-
-router.beforeEach((to, from, next) => {
-  // Redirect to 403 for profile pages if not logged in
-  // if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
-  //   router.push({
-  //     name: '403'
-  //   });
-  // }
-
-  // guard(to, from, next);
-
-  if (to.meta.title) {
-    document.title = to.meta.title;
-  } else {
-    document.title = 'Заголовок';
+const guard = async function(to, from, next) {
+  console.log('guard 1 ::');
+  console.log('store.state.userData ::', store.state.userData);
+  if (store.state.userData && store.state.userData.expireDate) {
+    const timestampNow = new Date().getTime() / 1000 | 0;
+    console.log('expireDate ::', store.state.userData.expireDate, timestampNow);
+    console.log('guard 2 ::');
+    if (store.state.userData.expireDate < timestampNow) {
+      console.log('expired ::');
+      try {
+        const hasPermission = await store.dispatch("checkAuth");
+        if (hasPermission) {
+          next();
+        }
+      } catch(error) {
+        console.log('Guard error ::', timestampNow, error);
+      }
+    }
   }
-  next();
-});
+};
+
+router.beforeEach(
+  async (to, from, next) => {
+    guard(to, from, next);
+
+    // Redirect to 403 for profile pages if not logged in
+    // if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
+    //   router.push({
+    //     name: '403'
+    //   });
+    // }
+
+    if (to.meta.title) {
+      document.title = to.meta.title;
+    } else {
+      document.title = 'Заголовок';
+    }
+    next();
+  }
+);
 
 export default router;

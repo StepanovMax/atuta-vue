@@ -9,7 +9,7 @@
       </div>
       <MenuLeft />
       <p class="paragraph">
-        &copy; 2020 Все права защищены.
+        &copy; {{ new Date().getFullYear() }} Все права защищены.
       </p>
     </div>
   </footer>
