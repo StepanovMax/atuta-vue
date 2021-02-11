@@ -19,6 +19,7 @@
 
         <registrationForm
           :propUserData="userData"
+          formType="edit"
         />
 
       </div>
@@ -232,7 +233,7 @@
 
     <div
       v-local
-      v-if="false && userData"
+      v-if="true && userData"
       class="local-output-data"
     >
       <h6 class="

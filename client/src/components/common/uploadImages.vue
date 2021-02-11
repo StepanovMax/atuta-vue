@@ -409,7 +409,7 @@ export default {
         vm.filesArray[index].object.translateY = translateY;
         vm.filesArray[index].object.canvasWidth = canvas.width;
         vm.filesArray[index].object.canvasHeight = canvas.height;
-        console.log('update:value 1 ::', vm.filesArray);
+        console.log('update:value 1 ::');
         // vm.$emit('update:value', vm.filesArray);
 
         canvas.toBlob(
@@ -417,8 +417,9 @@ export default {
             const url = URL.createObjectURL(blob);
             vm.filesArray[index].object.url = url;
             vm.filesArray[index].blob = blob;
-            console.log('update:value 2');
+            console.log('update:value 2', vm.filesArray);
             vm.$emit('update:value', vm.filesArray);
+            console.log('update:value 3');
             URL.revokeObjectURL(blob);
           },
           'image/jpeg',
