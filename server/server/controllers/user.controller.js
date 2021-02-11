@@ -607,4 +607,44 @@ const checkToken = async (req, res) => {
   }
 }
 
-export {registration, login, logout, checkToken, verifyRegistrationLink, removeUser};
+
+// Update user info
+const updateUser = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> UpdateUser > accessToken ::');
+  console.log(accessToken);
+  console.log(' ');
+  // If the accessToken is not a null.
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+    console.log(' ');
+    console.log('   >> UpdateUser > decodedAccessToken ::');
+    console.log(req.body);
+    console.log(' ');
+    try {
+      const updateValues = req.body;
+      const foundedUser = await User.findOne({
+        where: {
+          id: decodedAccessToken.id
+        }
+      });
+      console.log(' ');
+      console.log('   >> Status changed to active ::');
+      console.log(' ');
+      foundedUser.update(updateValues).then(
+        self => {
+          console.log(' ');
+          console.log('   >> Status changed to active ::');
+          console.log(' ');
+        }
+      );
+    } catch(error) {
+      console.error('[Error > updateUser] ::', error);
+    }
+  }
+}
+
+export {registration, login, logout, checkToken, verifyRegistrationLink, removeUser, updateUser};

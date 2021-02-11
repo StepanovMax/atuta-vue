@@ -5,11 +5,16 @@
     class="registration-page__content"
   >
     <form
+      autocomplete="off"
       @submit.prevent="onSubmit"
       enctype="multipart/form-data"
     >
 
-      <div class="template-page__content-row">
+      <div
+        v-if="formType === 'reg'"
+        ref="role"
+        class="template-page__content-row"
+      >
         <h3 class="registration-page__title_row">
           Выберите свой статус
         </h3>
@@ -60,15 +65,15 @@
             propClass="registration-page__input"
             propKey="name"
             key="name"
-            :value.sync="userDataLocal.name.label"
-            :propValue="userDataLocal.name.label"
+            :value.sync="userDataLocal.name"
+            :propValue="userDataLocal.name"
           />
         </div>
 
         <p
           v-if="
             formState.name.firstBlur &&
-            !userDataLocal.name.label
+            !userDataLocal.name
           "
           class="paragraph paragraph_invalid"
         >
@@ -143,6 +148,7 @@
 
 
       <div
+        v-if="formType === 'reg'"
         ref="password"
         class="template-page__content-row"
       >
@@ -168,7 +174,8 @@
         <p
           v-if="
             formState.password.firstBlur &&
-            !formState.password.filled
+            !formState.password.filled &&
+            firstSending
           "
           class="paragraph paragraph_invalid"
         >
@@ -178,7 +185,9 @@
         <p
           v-if="
             formState.password.firstBlur &&
-            !userDataLocal.password
+            formState.password.required &&
+            !userDataLocal.password &&
+            firstSending
           "
           class="paragraph paragraph_invalid"
         >
@@ -188,6 +197,7 @@
 
 
       <div
+        v-if="formType === 'reg'"
         ref="repassword"
         class="template-page__content-row"
       >
@@ -211,7 +221,11 @@
         </div>
 
         <p
-          v-if="formState.repassword.firstBlur && !formState.repassword.matched"
+          v-if="
+            formState.repassword.firstBlur &&
+            !formState.repassword.matched &&
+            firstSending
+          "
           class="paragraph paragraph_invalid"
         >
           Пароль не совпадает
@@ -220,7 +234,9 @@
         <p
           v-if="
             formState.repassword.firstBlur &&
-            !userDataLocal.repassword
+            formState.repassword.required &&
+            !userDataLocal.repassword &&
+            firstSending
           "
           class="paragraph paragraph_invalid"
         >
@@ -268,6 +284,7 @@
 
 
       <div
+        v-if="formType === 'reg'"
         ref="logo"
         class="template-page__content-row"
       >
@@ -370,7 +387,9 @@
         </div>
       </div>
 
-      <div class="template-page__content-row">
+      <div
+        class="template-page__content-row"
+      >
         <button
           class="
             btn
@@ -379,13 +398,17 @@
             login-page__btn
             login-page__btn_submit
           "
+          :class="{
+            'btn_disabled': !formChanged
+          }"
           type="submit"
         >
-          Регистрация
+          {{ buttonName }}
         </button>
         <br>
 
 <pre v-local>
+  {{ changedUserData }}
   {{ userDataLocal }}
 </pre>
 
@@ -420,9 +443,18 @@ export default {
       type: Object,
       required: true
     },
+    formType: {
+      default: 'reg',
+      type: String,
+      required: true
+    },
   },
   data() {
     return {
+      formChanged: false,
+      changedUserData: {},
+      userDataForDetection: null,
+      firstSending: false,
       formSended: false,
       blobImage: null,
       inputtedFile: null,
@@ -494,7 +526,7 @@ export default {
         logo: {
           filled: false,
           firstBlur: false,
-          required: true,
+          required: false,
           temporary: true,
         },
         website: {
@@ -522,6 +554,7 @@ export default {
       website: '',
       correctWebsite: '',
       firstValidationCheck: false,
+      buttonName: '',
     }
   },
   computed: {
@@ -556,11 +589,11 @@ export default {
     prepareUserDataForSending() {
       const data = {...this.userDataLocal};
       const role = data.role.slug;
-      // const logo = data.logo[0].object;
-      const name = data.name.label;
+      const name = data.name;
       const phone = this.gFormatPhoneRevert(data.phone);
-      if (this.userDataLocal.role.slug === 'builder' || this.userDataLocal.role.slug === 'agency') {
-        data.logo = data.logo[0].object;
+      if (this.formType === 'reg') {
+        data.logo = this.userDataLocal.logo[0].object;
+        console.log('data.logo ::', this.userDataLocal.logo[0].object.url);
       }
       data.phone = phone;
       data.role = role;
@@ -572,50 +605,83 @@ export default {
       const data = this.prepareUserDataForSending();
       const formData = new FormData();
       // console.log('data.logo ::', data.logo);
-      if (this.userDataLocal.role.slug === 'personal' || this.userDataLocal.role.slug === 'agent') {
+      if (this.formType === 'reg') {
         formData.append('file', data.logo);
       }
       formData.append('userData', JSON.stringify(data));
+      let userData;
+      if (this.formType === 'edit') {
+        userData = this.changedUserData;
+      } else if (this.formType === 'reg') {
+        userData = formData;
+      }
 
-      try {
-        console.log('process.env.host_api ::', process.env.host_api);
-        const sendUserDataResult = await axios.post(
-          process.env.host_api + '/auth/registration',
-          formData
-        )
-          .then(
-            response => {
-              // console.log('response.data ::', response);
-              return response.data;
-            }
+      if (this.formType === 'edit') {
+        try {
+          const transport = axios.create({
+            withCredentials: true
+          });
+          const sendUserDataResult = await transport.post(
+            process.env.host_api + '/user/edit',
+            userData
           )
-            .catch(
-              error => {
-                console.error('Error [Registration] ::', error);
-                return false;
+            .then(
+              response => {
+                console.log('response.data ::', response);
+                return response.data;
               }
-            );
-        if (sendUserDataResult.result) {
-          this.formSended = true;
-          this.formState.phone.exist = false;
-          this.formState.email.exist = false;
-          console.log('sendUserDataResult 1 ::', sendUserDataResult);
-        } else {
-          if (sendUserDataResult.type === 'email') {
-            this.formState.phone.exist = false;
-            this.formState.email.exist = true;
-          } else if (sendUserDataResult.type === 'phone') {
-            this.formState.phone.exist = true;
-            this.formState.email.exist = false;
-          } else {
-            this.formState.phone.exist = false;
-            this.formState.email.exist = false;
-          }
-          this.formSended = false;
-          console.log('sendUserDataResult 2 ::', sendUserDataResult);
+            )
+              .catch(
+                error => {
+                  console.error('Error [Editing] ::', error);
+                  return false;
+                }
+              );
+        } catch(error) {
+          console.error('Something went wrong with user editing ::', error);
         }
-      } catch(error) {
-        console.error('Something went wrong ::', error);
+      } else if (this.formType === 'reg') {
+        try {
+          const transport = axios.create({
+            withCredentials: true
+          });
+          const sendUserDataResult = await transport.post(
+            process.env.host_api + '/auth/registration',
+            formData
+          )
+            .then(
+              response => {
+                // console.log('response.data ::', response);
+                return response.data;
+              }
+            )
+              .catch(
+                error => {
+                  console.error('Error [Registration] ::', error);
+                  return false;
+                }
+              );
+          if (sendUserDataResult.result) {
+            this.formSended = true;
+            this.formState.phone.exist = false;
+            this.formState.email.exist = false;
+            console.log('sendUserDataResult 1 ::', sendUserDataResult);
+          } else {
+            if (sendUserDataResult.type === 'email') {
+              this.formState.phone.exist = false;
+              this.formState.email.exist = true;
+            } else if (sendUserDataResult.type === 'phone') {
+              this.formState.phone.exist = true;
+              this.formState.email.exist = false;
+            } else {
+              this.formState.phone.exist = false;
+              this.formState.email.exist = false;
+            }
+            this.formSended = false;
+          }
+        } catch(error) {
+          console.error('Something went wrong with user registration ::', error);
+        }
       }
     },
     // Add checked property and make Agent as default
@@ -706,22 +772,32 @@ export default {
       }
     },
     handleLogo(value) {
-      if (value.length) {
+      console.log('handleLogo ::', value[0].object, value.length);
+      if (value && value.length) {
+        console.log('handleLogo update ::', this.userDataLocal.logo);
+        console.log('handleLogo update ::', value[0].object.url);
         this.formState.logo.filled = true;
+        this.userDataLocal.logo = value;
+        this.userDataLocal.logo[0].object = value[0].object;
       } else {
         this.formState.logo.filled = false;
       }
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
-      console.log('resultFormValidation ::', resultFormValidation);
+      this.firstSending = true;
       if (resultFormValidation) {
-        // console.log('onSubmit -> resultFormValidation => success ::');
-        this.sendUserData();
+        if (this.formType === 'edit' && this.formChanged) {
+          console.log('onSubmit => success!');
+          this.sendUserData();
+        } else if (this.formType === 'reg') {
+          console.log('onSubmit => success!');
+          this.sendUserData();
+        }
       } else {
         // Make scroll to errored element.
         this.scrollToErroredElement();
-        console.log('onSubmit -> resultFormValidation => FAILED ::');
+        console.log('onSubmit => FAILED');
       }
     },
     updateFormState() {
@@ -732,24 +808,28 @@ export default {
       let formIsFilledArray = [];
       for (const key in obj) {
         if (!obj.hasOwnProperty(key)) continue;
-        // console.log('obj ::', key, obj[key].filled);
         const subObj = obj[key];
         if (subObj.required && !subObj.filled) {
           subObj.firstBlur = true;
         }
-        if (!obj[key].temporary) {
+        if (!obj[key].temporary && this.formType === 'edit') {
+          if (!(key === 'password' || key === 'repassword')) {
+            formIsFilledArray.push(!obj[key].filled);
+          }
+        } else if (!obj[key].temporary && this.formType === 'reg') {
           formIsFilledArray.push(!obj[key].filled);
         }
       }
       this.formIsNotFilled = formIsFilledArray.some(
         item => item
       );
-      // console.log('formIsNotFilled ::', this.formIsNotFilled);
       return !this.formIsNotFilled;
     },
     scrollToErroredElement() {
       const position = this.detectHighestErroredElement();
-      window.scrollTo(0, position - 50);
+      if (position) {
+        window.scrollTo(0, position - 50);
+      }
     },
     detectErroredElements() {
       const obj = this.formState;
@@ -779,30 +859,69 @@ export default {
         }
       )
 
-      const min = Math.min( ...arrayMin );
+      let min;
+      if (arrayMin.length) {
+        min = Math.min( ...arrayMin );
+      } else {
+        min = null;
+      }
       return min;
     },
     handleName(value) {
       if (value) {
         this.formState.name.filled = true;
-        this.userDataLocal.name.slug = slugify(value);
-        this.userDataLocal.name.checked = true;
       } else {
         this.formState.name.filled = false;
-        this.userDataLocal.name.slug = '';
+      }
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.name) {
+        this.changedUserData.name = value;
+      } else if (value === this.userDataForDetection.name) {
+        delete this.changedUserData.name;
+      }
+    },
+    watchChangedUserData() {
+      if (Boolean(Object.keys(this.changedUserData).length)) {
+        this.formChanged = true;
+      } else {
+        this.formChanged = false;
       }
     },
   },
   watch: {
-    'userDataLocal.address'(value) {
-      if (value.length) {
-        this.formState.address.filled = true;
-      } else {
-        this.formState.address.filled = false;
-      }
-    },
     'userDataLocal.role'(value) {
       this.updateFormState();
+      // Detection of the form changes.
+      if (value.slug != this.userDataForDetection.role.slug) {
+        this.changedUserData.role = value;
+      } else if (value.slug === this.userDataForDetection.role.slug) {
+        delete this.changedUserData.role;
+      }
+      this.watchChangedUserData();
+    },
+    'userDataLocal.name'(value) {
+      if (value) {
+        this.formState.name.filled = true;
+      } else {
+        this.formState.name.filled = false;
+      }
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.name) {
+        this.changedUserData.name = value;
+      } else if (value === this.userDataForDetection.name) {
+        delete this.changedUserData.name;
+      }
+      this.watchChangedUserData();
+    },
+    'userDataLocal.email'(value) {
+      this.handleEmail(value);
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.email) {
+        this.changedUserData.email = value;
+      } else if (value === this.userDataForDetection.email) {
+        delete this.changedUserData.email;
+      }
+      this.watchChangedUserData();
     },
     // Watching password typing
     'userDataLocal.password'(value) {
@@ -822,32 +941,51 @@ export default {
       }
       this.validateSamePasswords();
     },
-    'userDataLocal.email'(value) {
-      this.handleEmail(value);
+    'userDataLocal.address'(value) {
+      if (value.length) {
+        this.formState.address.filled = true;
+      } else {
+        this.formState.address.filled = false;
+      }
     },
     'userDataLocal.website'(value) {
       this.handleWebsite(value);
     },
     'userDataLocal.phone'(value) {
       this.handlePhone(value);
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.phone) {
+        this.changedUserData.phone = this.gFormatPhoneRevert(value);
+      } else if (value === this.userDataForDetection.phone) {
+        delete this.changedUserData.phone;
+      }
+      this.watchChangedUserData();
     },
-    'userDataLocal.logo'(value) {
-      // console.log('value ::', value);
-      this.handleLogo(value);
-    },
-    'userDataLocal.name.label'(value) {
-      this.handleName(value);
+    blobImage: {
+      handler(value) {
+        this.handleLogo(value);
+      },
+      deep: true
     },
   },
   beforeMount() {
-    this.userDataLocal = this.userData;
+    this.userDataLocal = JSON.parse(JSON.stringify(this.userData));
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
     this.addCheckedPropertyForUserRoles('personal');
   },
   mounted() {
-    // console.log('process ::', process.env.host_api);
+    this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
+    if (this.formType === 'reg') {
+      this.buttonName = 'Регистрация';
+    } else if (this.formType === 'edit') {
+      this.buttonName = 'Сохранить';
+      this.formState.password.required = false;
+      this.formState.repassword.required = false;
+    } else {
+      this.buttonName = 'Регистрация';
+    }
     this.updateFormState();
     // Listening the blur action from password fields.
     this.$root.$on('blur', (value, name) => {

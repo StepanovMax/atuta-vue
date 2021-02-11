@@ -1,3 +1,4 @@
+import user from './user';
 import auth from './auth';
 import help from './help';
 import data from './data';
@@ -30,6 +31,7 @@ const routes = app => {
   });
 
   // Import API Routes
+  app.use('/user', user);
   app.use('/help', help);
   app.use('/auth', auth);
   app.use('/data', data);

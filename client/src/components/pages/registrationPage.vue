@@ -28,6 +28,7 @@
 
       <registrationForm
         :propUserData="userData"
+        formType="reg"
       />
 
     </div>

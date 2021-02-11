@@ -12,7 +12,10 @@
       class="profile-page__nav"
     >
       <div class="profile-page__user">
-        <div class="profile-page__logo-wrap">
+        <div
+          v-if="userData.logo"
+          class="profile-page__logo-wrap"
+        >
           <img
             :src="userData.logo[0].object.url"
             :alt="userData.name.label"
