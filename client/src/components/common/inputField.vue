@@ -22,6 +22,9 @@
     >
     <input
       v-if="propType === 'password'"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
       :type="passwordType"
       class="input password"
       :class="propClass"
