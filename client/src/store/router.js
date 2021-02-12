@@ -252,6 +252,17 @@ const isTokenExpired = async function(to, from, next) {
       console.log(' >> Token is OK.');
       return true;
     }
+  } else {
+    const hasPermission = await store.dispatch("checkAuth");
+    if (hasPermission) {
+      console.log(' >> hasPermission true');
+      // return true;
+    } else {
+      console.log(' >> hasPermission false');
+      await store.dispatch('logout');
+      console.log(' >> dispatch logout');
+      // return false;
+    }
   }
 };
 
@@ -274,7 +285,7 @@ const collectRoutesHistory = (from) => {
 
 router.beforeEach(
   async (to, from, next) => {
-    const parentPageName = to.matched[0].name;
+    // const parentPageName = to.matched[0].name;
     // Each route we should to check expired token.
     await isTokenExpired();
     collectRoutesHistory(from);
