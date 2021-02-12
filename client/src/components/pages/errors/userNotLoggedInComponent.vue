@@ -36,12 +36,7 @@
         </p>
 
         <p class="paragraph">
-         Попробуйте залогиниться и ещё раз открыть страницу.
-        </p>
-
-        <p class="paragraph">
-          Не расстраивайтесь, выход есть!<br/>
-          Перейдите на <router-link :to="{name: 'loginPage'}" title="Вход на сайт">страницу логина</router-link>.
+         Попробуйте <router-link :to="{name: 'loginPage'}" title="Вход на сайт">залогиниться</router-link> и ещё раз открыть страницу.
         </p>
       </div>
 

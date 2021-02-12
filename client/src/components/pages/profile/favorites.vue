@@ -71,7 +71,9 @@ export default {
   watch: {
     // We are using Watcher for UserData because we waiting while this data has been loaded from the server.
     userData(newValue, oldValue) {
-      this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
+      if (newValue) {
+        this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
+      }
     },
   },
   computed: {

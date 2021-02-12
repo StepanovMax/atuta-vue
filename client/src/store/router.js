@@ -225,44 +225,88 @@ const router = new Router({
   ]
 });
 
-const guard = async function(to, from, next) {
-  console.log('guard 1 ::');
-  console.log('store.state.userData ::', store.state.userData);
+const isTokenExpired = async function(to, from, next) {
+  console.log(' >> isTokenExpired');
   if (store.state.userData && store.state.userData.expireDate) {
     const timestampNow = new Date().getTime() / 1000 | 0;
-    console.log('expireDate ::', store.state.userData.expireDate, timestampNow);
-    console.log('guard 2 ::');
+    // Token is expired
     if (store.state.userData.expireDate < timestampNow) {
-      console.log('expired ::');
+      // console.log('expired ::');
       try {
+        console.log(' >> try');
         const hasPermission = await store.dispatch("checkAuth");
         if (hasPermission) {
-          next();
+          console.log(' >> hasPermission true');
+          return true;
+        } else {
+          console.log(' >> hasPermission false');
+          await store.dispatch('logout');
+          console.log(' >> dispatch');
+          return false;
         }
       } catch(error) {
         console.log('Guard error ::', timestampNow, error);
       }
+    // Token is OK.
+    } else {
+      console.log(' >> Token is OK.');
+      return true;
     }
   }
 };
 
 router.beforeEach(
   async (to, from, next) => {
-    guard(to, from, next);
+    const parentPageName = to.matched[0].name;
+    // Each route we should to check expired token.
+    const isToken = await isTokenExpired();
+    // const isToken = false;
 
-    // Redirect to 403 for profile pages if not logged in
-    // if (to.matched[0].name === 'profilePage' && store.state.isLoggedIn === false) {
-    //   router.push({
-    //     name: '403'
-    //   });
+
+    console.log('parentPageName', parentPageName);
+    if (parentPageName === 'profilePage') {
+      console.log('1');
+      if (store.state.isLoggedIn) {
+        if (isToken) {
+          console.log('2');
+          next();
+        } else {
+          console.log('3');
+          next({
+            name: '403'
+          });
+        }
+      } else {
+        console.log('4');
+        next({
+          name: '403'
+        });
+      }
+    } else {
+      console.log('5');
+      next();
+    }
+
+
+    // console.log('isToken', isToken);
+    // if (isToken === true) {
+    //   console.log(' >> isToken');
+    //   if (parentPageName === 'profilePage' && !store.state.isLoggedIn) {
+    //     console.log(' >> isLoggedIn');
+    //     next({
+    //       name: '403'
+    //     })
+    //   }
+    // } else if (isToken === false) {
+    //   console.log(' >> NO isToken');
     // }
 
-    if (to.meta.title) {
-      document.title = to.meta.title;
-    } else {
-      document.title = 'Заголовок';
-    }
-    next();
+    // if (to.meta.title) {
+    //   document.title = to.meta.title;
+    // } else {
+    //   document.title = 'Заголовок';
+    // }
+    // next();
   }
 );
 
