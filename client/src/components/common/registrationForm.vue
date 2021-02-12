@@ -405,12 +405,25 @@
         >
           {{ buttonName }}
         </button>
+
         <br>
 
-<pre v-local>
-  {{ changedUserData }}
-  {{ userDataLocal }}
-</pre>
+        <div
+          v-local
+          v-if="true && userDataLocal"
+          class="local-output-data"
+        >
+          <h6 class="
+            title
+            title_h6
+            title_bold
+          ">
+            userDataLocal
+          </h6>
+          <pre>
+            {{ userDataLocal }}
+          </pre>
+        </div>
 
       </div>
     </form>
@@ -471,10 +484,7 @@ export default {
         role: {},
         password: '',
         repassword: '',
-        name: {
-          label: '',
-          slug: '',
-        },
+        name: '',
         email: '',
         phone: '',
         logo: [],
