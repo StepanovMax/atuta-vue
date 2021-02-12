@@ -436,7 +436,7 @@ const logout = async (req, res) => {
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
   console.log(' ');
-  console.log('   >> Logout > accessToken ::', accessToken);
+  console.log('   >> [Logout] accessToken ::', accessToken);
   console.log(' ');
   // If the accessToken is not a null.
   if (accessToken) {
@@ -460,7 +460,7 @@ const logout = async (req, res) => {
         };
         user.update(updateValues).then( function(self) {
           console.log(' ');
-          console.log('   >> Auth tokens has been cleared ::');
+          console.log('   >> [Logout] Auth tokens has been cleared ::');
           console.log(' ');
         });
         res.status(200).send(true);
@@ -468,6 +468,8 @@ const logout = async (req, res) => {
     } catch(error) {
       console.error('Error [Backend :: user.controller :: logout] ::', error);
     }
+  } else {
+    res.status(200).send(true);
   }
 }
 
@@ -576,7 +578,7 @@ const checkToken = async (req, res) => {
               };
               user.update(updateValues).then( function(self) {
                 console.log(' ');
-                console.log('   >> Auth tokens has been cleared ::');
+                console.log('   >> [CheckToken] Auth tokens has been cleared ::');
                 console.log(' ');
               });
               res.status(200).send(false);
