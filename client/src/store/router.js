@@ -226,7 +226,7 @@ const router = new Router({
 });
 
 const isTokenExpired = async function(to, from, next) {
-  console.log(' >> isTokenExpired');
+  console.log(' >> isTokenExpired', store.state);
   if (store.state.userData && store.state.userData.expireDate) {
     const timestampNow = new Date().getTime() / 1000 | 0;
     // Token is expired
@@ -237,12 +237,12 @@ const isTokenExpired = async function(to, from, next) {
         const hasPermission = await store.dispatch("checkAuth");
         if (hasPermission) {
           console.log(' >> hasPermission true');
-          return true;
+          // return true;
         } else {
           console.log(' >> hasPermission false');
           await store.dispatch('logout');
-          console.log(' >> dispatch');
-          return false;
+          console.log(' >> dispatch logout');
+          // return false;
         }
       } catch(error) {
         console.log('Guard error ::', timestampNow, error);
@@ -252,61 +252,51 @@ const isTokenExpired = async function(to, from, next) {
       console.log(' >> Token is OK.');
       return true;
     }
+  } else {
+    const hasPermission = await store.dispatch("checkAuth");
+    if (hasPermission) {
+      console.log(' >> hasPermission true');
+      // return true;
+    } else {
+      console.log(' >> hasPermission false');
+      await store.dispatch('logout');
+      console.log(' >> dispatch logout');
+      // return false;
+    }
   }
+};
+
+const collectRoutesHistory = (from) => {
+  let routesArray;
+  const arrayLength = 10;
+  if (!store.state.routesHistory.length) {
+    routesArray = [];
+  } else {
+    routesArray = store.state.routesHistory;
+  }
+  if (routesArray.length >= arrayLength) {
+    routesArray.pop();
+  }
+  if (from.name) {
+    routesArray.unshift(from.name);
+  }
+  store.commit('updateRoutesHistoryState', routesArray);
 };
 
 router.beforeEach(
   async (to, from, next) => {
-    const parentPageName = to.matched[0].name;
+    // const parentPageName = to.matched[0].name;
     // Each route we should to check expired token.
-    const isToken = await isTokenExpired();
-    // const isToken = false;
-
-
-    console.log('parentPageName', parentPageName);
-    if (parentPageName === 'profilePage') {
-      console.log('1');
-      if (store.state.isLoggedIn) {
-        if (isToken) {
-          console.log('2');
-          next();
-        } else {
-          console.log('3');
-          next({
-            name: '403'
-          });
-        }
-      } else {
-        console.log('4');
-        next({
-          name: '403'
-        });
-      }
-    } else {
-      console.log('5');
-      next();
-    }
-
-
-    // console.log('isToken', isToken);
-    // if (isToken === true) {
-    //   console.log(' >> isToken');
-    //   if (parentPageName === 'profilePage' && !store.state.isLoggedIn) {
-    //     console.log(' >> isLoggedIn');
-    //     next({
-    //       name: '403'
-    //     })
-    //   }
-    // } else if (isToken === false) {
-    //   console.log(' >> NO isToken');
-    // }
+    await isTokenExpired();
+    collectRoutesHistory(from);
 
     // if (to.meta.title) {
     //   document.title = to.meta.title;
     // } else {
     //   document.title = 'Заголовок';
     // }
-    // next();
+
+    next();
   }
 );
 

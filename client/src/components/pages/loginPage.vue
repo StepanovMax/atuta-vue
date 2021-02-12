@@ -194,6 +194,7 @@ export default {
     ...mapState([
       'isLoggedIn',
       'favouriteObjects',
+      'routesHistory',
     ]),
     passwordCorrect() {
       if (
@@ -286,7 +287,15 @@ export default {
         this.$store.commit('updateUserDataState', loginResult.data);
         // Call the plugin for fav.objects
         // this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
-        this.$router.push({ name: 'homePage'});
+        if (this.routesHistory.length > 1) {
+          this.$router.push({
+            name: this.routesHistory[0]
+          });
+        } else {
+          this.$router.push({
+            name: 'homePage'
+          });
+        }
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       }

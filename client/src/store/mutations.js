@@ -1,4 +1,7 @@
 const mutations = {
+  updateRoutesHistoryState(state, data) {
+    state.routesHistory = data;
+  },
   updateFilterDialogsDropdownState(state, data) {
     state.filterDialogsDropdownState = data;
   },
