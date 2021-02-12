@@ -6,6 +6,9 @@
       profile-page
     "
   >
+    <adsLeft
+      v-if="!isLoggedIn"
+    />
 
     <div
       v-if="isLoggedIn && userData"
@@ -17,7 +20,7 @@
           class="profile-page__logo-wrap"
         >
           <img
-            :src="userData.logo[0].object.url"
+            :src="userData.logo"
             :alt="userData.name.label"
             class="profile-page__logo-img"
           />
@@ -162,7 +165,14 @@
       </ul>
     </div>
 
-    <div class="template-page__wrap">
+    <errorPage403
+      v-if="!isLoggedIn"
+    />
+
+    <div
+      class="template-page__wrap"
+      v-if="isLoggedIn && userData"
+    >
 
       <header class="template-page__header">
 
@@ -202,6 +212,7 @@ import adsLeft from '../adsLeft.vue';
 import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 import filterDesktop from '../filters/filterDesktop.vue';
+import errorPage403 from '../pages/errors/userNotLoggedInComponent.vue';
 
 import { mapState } from 'vuex';
 
@@ -212,6 +223,7 @@ export default {
     adsRight,
     breadcrumbs,
     filterDesktop,
+    errorPage403,
   },
   data() {
     return {

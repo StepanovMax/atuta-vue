@@ -4,8 +4,6 @@
     class="not-found-page"
   >
 
-    <adsLeft />
-
     <div class="not-found-page__wrap">
 
       <header class="not-found-page__header">
@@ -32,7 +30,7 @@
 
       <div class="not-found-page__content">
         <p class="paragraph">
-          Вероятно, вы не вошли на сайт.
+          Вероятно, ваша сессия кончилась или вы не вошли на сайт.
         </p>
 
         <p class="paragraph">
@@ -41,8 +39,6 @@
       </div>
 
     </div>
-
-    <adsRight />
 
   </div>
 </template>
