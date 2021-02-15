@@ -23,6 +23,11 @@
         margin-top: 0;
       }
     }
+
+    &-name {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   &_right {
@@ -44,6 +49,12 @@
 
   &__link {
     cursor: pointer;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 160px; 
+    height: 1.2em; 
+    white-space: nowrap;
   }
 
   &_sub {
