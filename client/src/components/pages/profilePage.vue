@@ -162,6 +162,23 @@
             </a>
           </router-link>
         </li>
+        <li
+          class="
+            menu__item
+            profile-page__menu-item
+          "
+        >
+          <a
+            href=""
+            @click="logout"
+            class="
+              link
+              user-menu-mobile__menu-item-link
+            "
+          >
+            Выйти
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -245,6 +262,15 @@ export default {
     ]),
   },
   methods: {
+    async logout(e) {
+      this.$router.push({
+        name: 'homePage'
+      });
+      e.preventDefault();
+      this.$store.commit('updateLoggedInState', false);
+      this.$store.commit('updateUserDataState', null);
+      await this.$store.dispatch('logout');
+    },
     closeUserMenuMobile() {
       this.$store.commit('closeMobileMenus');
     },

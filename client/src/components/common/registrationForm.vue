@@ -408,6 +408,15 @@
 
         <br>
 
+        <p
+          v-if="editResult"
+          class="paragraph paragraph_success"
+        >
+          Ваши данные успешно обновлены.
+        </p>
+
+        <br>
+
         <div
           v-local
           v-if="true && userDataLocal"
@@ -464,6 +473,7 @@ export default {
   },
   data() {
     return {
+      editResult: false,
       formChanged: false,
       changedUserData: {},
       userDataForDetection: null,
@@ -628,6 +638,7 @@ export default {
 
       if (this.formType === 'edit') {
         try {
+          this.editResult = false;
           const transport = axios.create({
             withCredentials: true
           });
@@ -647,6 +658,11 @@ export default {
                   return false;
                 }
               );
+          if (sendUserDataResult) {
+            this.editResult = true;
+            this.$store.commit('updateUserDataState', sendUserDataResult);
+            console.log('sendUserDataResult edit ::', sendUserDataResult);
+          }
         } catch(error) {
           console.error('Something went wrong with user editing ::', error);
         }
@@ -797,13 +813,8 @@ export default {
       const resultFormValidation = this.formValidation();
       this.firstSending = true;
       if (resultFormValidation) {
-        if (this.formType === 'edit' && this.formChanged) {
-          console.log('onSubmit => success!');
-          this.sendUserData();
-        } else if (this.formType === 'reg') {
-          console.log('onSubmit => success!');
-          this.sendUserData();
-        }
+        console.log('onSubmit => success!');
+        this.sendUserData();
       } else {
         // Make scroll to errored element.
         this.scrollToErroredElement();

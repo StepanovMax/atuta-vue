@@ -74,14 +74,6 @@ export default {
       'isLoggedIn',
     ]),
   },
-  methods: {
-    async logout() {
-      this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', null);
-      this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
-      await this.$store.dispatch('logout');
-    },
-  },
   mounted() {
     // console.log('this.userData ::', this.userData);
   },
