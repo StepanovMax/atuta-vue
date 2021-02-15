@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+const transport = axios.create({
+  withCredentials: true
+});
+
 const actions = {
   getTowns: async (context, commit) => {
     const { data } = await axios.get(
@@ -34,9 +38,6 @@ const actions = {
   },
   logout: async (context, commit) => {
     console.log('logout ::');
-    const transport = axios.create({
-      withCredentials: true
-    });
     await transport.get(
       process.env.host_api + '/auth/logout'
     )
@@ -58,9 +59,6 @@ const actions = {
   checkAuth: async (context, commit, dispatch) => {
     // Get towns list.
     await context.dispatch('getTowns');
-    const transport = axios.create({
-      withCredentials: true
-    });
     // Check the token.
     const checkTokenResult = await transport.get(
       process.env.host_api + '/auth/checkToken'
@@ -100,6 +98,30 @@ const actions = {
       return false;
     }
   },
+  getUserByID: async (context, commit, dispatch) => {
+    try {
+      // get user info.
+      return await transport.get(
+        process.env.host_api + '/auth/getUser'
+      )
+        .then(
+          response => {
+            console.log('getUserInfo response ::', response.data);
+            context.commit('updateUserDataState', response.data);
+            return response;
+          }
+        )
+          .catch(
+            error => {
+              console.error('getUserInfo :: error', error);
+              return false;
+            }
+          );
+    } catch(error) {
+      console.log('getUserByID error ::', error);
+      return false;
+    }
+  }
 }
 
 export default actions;

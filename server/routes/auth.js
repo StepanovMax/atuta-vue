@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { registration, login, logout, checkToken, verifyRegistrationLink, removeUser } from '../server/controllers/user.controller';
+import { registration, login, logout, checkToken, verifyRegistrationLink, removeUser, getUserByID } from '../server/controllers/user.controller';
 
 let storageConfig = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -51,6 +51,11 @@ router.get(
 router.get(
   '/removeUser',
   removeUser,
+);
+
+router.get(
+  '/getUser',
+  getUserByID,
 );
 
 
