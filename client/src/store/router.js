@@ -34,6 +34,7 @@ import verifyPage from '../components/pages/verifyPage.vue';
 // 404
 import notFoundComponent from '../components/pages/errors/notFoundComponent.vue';
 import userNotLoggedInComponent from '../components/pages/errors/userNotLoggedInComponent.vue';
+import state from './state';
 
 
 const router = new Router({
@@ -290,11 +291,21 @@ router.beforeEach(
     await isTokenExpired();
     collectRoutesHistory(from);
 
+    // In case of the page reloading 
     if (!from.name) {
       console.log(' >> from.name ::');
       const getUserByID = await store.dispatch('getUserByID');
       console.log(' >> getUserByID', getUserByID);
       next();
+    }
+
+    // Restrict the registration and login pages for loggedin users.
+    if (store.state.isLoggedIn) {
+      if (to.name === 'registrationPage' || to.name === 'loginPage') {
+        router.push({
+          name: 'homePage'
+        });
+      }
     }
 
     // if (to.meta.title) {
