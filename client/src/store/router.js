@@ -290,6 +290,13 @@ router.beforeEach(
     await isTokenExpired();
     collectRoutesHistory(from);
 
+    if (!from.name) {
+      console.log(' >> from.name ::');
+      const getUserByID = await store.dispatch('getUserByID');
+      console.log(' >> getUserByID', getUserByID);
+      next();
+    }
+
     // if (to.meta.title) {
     //   document.title = to.meta.title;
     // } else {

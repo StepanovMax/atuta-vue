@@ -443,9 +443,6 @@ const logout = async (req, res) => {
     // Checking and decoding the token.
     const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
 
-    // Clear cookie.
-    res.clearCookie('accessToken');
-
     try {
       // Find the user in DB.
       await User.findOne({
@@ -565,9 +562,11 @@ const checkToken = async (req, res) => {
                 console.log(' ');
                 console.log('   >> Auth tokens has been updated ::');
                 console.log(' ');
+                self.expireDate = accessTokenDate;
+                res.status(200).send(self);
               });
-              userData.expireDate = accessTokenDate;
-              res.status(200).send(userData);
+              // userData.expireDate = accessTokenDate;
+              // res.status(200).send(userData);
             } else if (dateNow > decodedRefreshToken.expireDate) {
               console.log(' ');
               console.log('   >> both tokens has been EXPIRED ::');
@@ -641,12 +640,43 @@ const updateUser = async (req, res) => {
           console.log(' ');
           console.log('   >> Status changed to active ::');
           console.log(' ');
+          res.status(200).send(self);
         }
       );
     } catch(error) {
       console.error('[Error > updateUser] ::', error);
+      res.status(200).send(false);
     }
   }
 }
 
-export {registration, login, logout, checkToken, verifyRegistrationLink, removeUser, updateUser};
+
+const getUserByID = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> UpdateUser > accessToken ::');
+  console.log(accessToken);
+  console.log(' ');
+  // If the accessToken is not a null.
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+    try {
+      const foundedUser = await User.findOne({
+        where: {
+          id: decodedAccessToken.id
+        }
+      });
+      res.status(200).send(foundedUser);
+    } catch(error) {
+      console.error('[Error > getUserInfo] ::', error);
+      res.status(200).send(false);
+    }
+  } else {
+    res.status(200).send(false);
+  }
+}
+
+
+export { registration, login, logout, checkToken, verifyRegistrationLink, removeUser, updateUser, getUserByID };
