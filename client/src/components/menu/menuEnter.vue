@@ -10,104 +10,18 @@
       v-if="isLoggedIn"
       class="menu__item true"
     >
-      <a
-        v-if="userData"
-        class="
-          link
-          menu__link
-        "
-        @click="toggleMenu"
-      >
-        {{ userData.name }}
-      </a>
-      <ul
-        v-if="menuIsOpen"
-        class="menu_sub"
-        v-click-outside="onClickOutside"
-      >
-        <li
+      <div class="menu__item-name">
+        <router-link
+          v-if="userData"
+          :to="{ name: 'settingsSubPage' }"
           class="
-            menu__item
-            menu__item_sub
+            link
+            menu__link
           "
         >
-          <router-link
-            v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'dialogsSubPage' }"
-            class="link"
-          >
-            <a
-              :active="isActive"
-              :href="href"
-              @click="navigate"
-              :class="{'link_active-menu': isActive}"
-            >
-              Сообщения
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            menu__item_sub
-          "
-        >
-          <router-link
-            v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'pocketSubPage' }"
-            class="link"
-          >
-            <a
-              :active="isActive"
-              :href="href"
-              @click="navigate"
-              :class="{'link_active-menu': isActive}"
-            >
-              Кошелёк
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            menu__item_sub
-          "
-        >
-          <router-link
-            v-slot="{ href, navigate, isActive }"
-            :to="{ name: 'settingsSubPage' }"
-            class="link"
-          >
-            <a
-              :active="isActive"
-              :href="href"
-              @click="navigate"
-              :class="{'link_active-menu': isActive}"
-            >
-              Профиль
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            menu__item_sub
-          "
-        >
-          <router-link
-            :to="{
-              name: 'homePage'
-            }"
-            class="link"
-          >
-            <a
-              @click="logout"
-            >
-              Выйти
-            </a>
-          </router-link>
-        </li>
-      </ul>
+          {{ userData.name }}
+        </router-link>
+      </div>
     </li>
     <li
       v-else
@@ -166,12 +80,6 @@ export default {
       this.$store.commit('updateUserDataState', null);
       this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
       await this.$store.dispatch('logout');
-    },
-    toggleMenu() {
-      this.menuIsOpen = !this.menuIsOpen;
-    },
-    onClickOutside() {
-      this.menuIsOpen = false;
     },
   },
   mounted() {

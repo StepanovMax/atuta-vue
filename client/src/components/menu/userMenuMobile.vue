@@ -21,7 +21,7 @@
           v-if="isLoggedIn && userData"
           class="user-menu-mobile__user-name"
         >
-          {{ userData.name.label }}
+          {{ userData.name }}
         </p>
         <p
           v-if="!isLoggedIn"
