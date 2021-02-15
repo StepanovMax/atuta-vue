@@ -390,7 +390,7 @@ const login = async (req, res) => {
           console.error(' ');
           console.error('   >> Passwords is NOT equal ::', body.password, user.password, result);
           console.error(' ');
-          res.status(404).send(false);
+          res.status(200).send(false);
         }
       });
     });
