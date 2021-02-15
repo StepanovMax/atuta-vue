@@ -146,7 +146,7 @@ export default {
     }
   },
   beforeMount() {
-    this.addCheckedPropertyForUserRoles('personal');
+    // this.addCheckedPropertyForUserRoles('personal');
   },
   methods: {
     // Add checked property and make Agent as default

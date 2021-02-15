@@ -27,8 +27,23 @@
         />
       </div>
 
+
       <div
-        v-if="userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder'"
+        v-if="formType === 'edit'"
+        class="template-page__content-row"
+      >
+        <h3 class="registration-page__title_row">
+          Статус
+        </h3>
+
+        <p>
+          {{ userDataLocal.role.label }}
+        </p>
+      </div>
+
+
+      <div
+        v-if="formType === 'reg' && (userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder')"
         class="template-page__content-row"
       >
         <div class="registration-page__banner">
@@ -419,7 +434,7 @@
 
         <div
           v-local
-          v-if="true && userDataLocal"
+          v-if="false && changedUserData"
           class="local-output-data"
         >
           <h6 class="
@@ -427,10 +442,10 @@
             title_h6
             title_bold
           ">
-            userDataLocal
+            changedUserData
           </h6>
           <pre>
-            {{ userDataLocal }}
+            {{ changedUserData }}
           </pre>
         </div>
 
@@ -448,7 +463,6 @@ import contentEditor from './contentEditor.vue';
 
 import axios from 'axios';
 import { mapState } from 'vuex';
-import { transliterate as tr, slugify } from 'transliteration';
 
 export default {
   name: 'registrationPage',
@@ -491,7 +505,7 @@ export default {
       },
       formIsNotFilled: false,
       userDataEmpty: {
-        role: {},
+        role: '',
         password: '',
         repassword: '',
         name: '',
@@ -660,6 +674,8 @@ export default {
               );
           if (sendUserDataResult) {
             this.editResult = true;
+            this.changedUserData = {};
+            this.formChanged = false;
             this.$store.commit('updateUserDataState', sendUserDataResult);
             console.log('sendUserDataResult edit ::', sendUserDataResult);
           }
@@ -970,6 +986,12 @@ export default {
       }
     },
     'userDataLocal.website'(value) {
+      if (value != this.userDataForDetection.website) {
+        this.changedUserData.website = value;
+      } else if (value === this.userDataForDetection.website) {
+        delete this.changedUserData.website;
+      }
+      this.watchChangedUserData();
       this.handleWebsite(value);
     },
     'userDataLocal.phone'(value) {
@@ -979,6 +1001,24 @@ export default {
         this.changedUserData.phone = this.gFormatPhoneRevert(value);
       } else if (value === this.userDataForDetection.phone) {
         delete this.changedUserData.phone;
+      }
+      this.watchChangedUserData();
+    },
+    'userDataLocal.address'(value) {
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.address) {
+        this.changedUserData.address = value;
+      } else if (value === this.userDataForDetection.address) {
+        delete this.changedUserData.address;
+      }
+      this.watchChangedUserData();
+    },
+    'userDataLocal.description'(value) {
+      // Detection of the form changes.
+      if (value != this.userDataForDetection.description) {
+        this.changedUserData.description = value;
+      } else if (value === this.userDataForDetection.description) {
+        delete this.changedUserData.description;
       }
       this.watchChangedUserData();
     },
@@ -994,7 +1034,7 @@ export default {
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles('personal');
+    this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
   },
   mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
