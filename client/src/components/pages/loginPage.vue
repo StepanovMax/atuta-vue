@@ -125,6 +125,13 @@
           </div>
         </div>
 
+        <p
+          v-if="!authResult"
+          class="paragraph paragraph_invalid"
+        >
+          Логин или пароль неверные.
+        </p>
+
       </div>
 
       <pre v-local>{{ loginData }}</pre>
@@ -158,6 +165,7 @@ export default {
   },
   data() {
     return {
+      authResult: true,
       loginData: {
         email: null,
         password: null,
@@ -222,6 +230,7 @@ export default {
       }
     },
     submit() {
+      this.authResult = true;
       const resultFormValidation = this.formValidation();
       if (resultFormValidation) {
         this.login();
@@ -282,6 +291,7 @@ export default {
             return false;
           });
       if (loginResult && loginResult.data) {
+        this.authResult = true;
         this.$store.commit('updateLoggedInState', true);
         console.log('loginResult.data ::', loginResult.data);
         this.$store.commit('updateUserDataState', loginResult.data);
@@ -298,6 +308,8 @@ export default {
         }
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
+      } else {
+        this.authResult = false;
       }
     },
   },
