@@ -428,10 +428,6 @@
               <li
                 class="employees__item"
                 :class="[
-<<<<<<< HEAD
-                  {'employees__item_deleted': item.isDeleted },
-=======
->>>>>>> [AT-eb04dt] Add employee CRUD
                   {'employees__item_updated': item.isUpdated && !item.isDeleted },
                   {'employees__item_created': item.isCreated },
                 ]"
@@ -493,10 +489,7 @@
                   />
                 </div>
                 <div
-<<<<<<< HEAD
-=======
                   v-if="!item.isDeleted"
->>>>>>> [AT-eb04dt] Add employee CRUD
                   class="
                     employees__item-characteristic
                     employees__item-characteristic_edit-btn
