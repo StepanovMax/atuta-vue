@@ -42,7 +42,7 @@ const formatNumbers = {
         },
         gFormatPhoneRevert(value) {
           const numbers = value.replace(/\D/g,'');
-          return parseInt(numbers);
+          return numbers;
         },
         gFormatNumbers(value) {
           const numberString = value.toString();

@@ -22,6 +22,7 @@
     @include media(desktop) {
       display: flex;
       align-items: center;
+      justify-content: normal;
     }
 
     @include media(tablet-landscape) {
@@ -72,16 +73,12 @@
       }
     }
 
-    &_deleted {
-      background-color: #cccccc;
-    }
-
     &_updated {
       background-color: #eaeaea;
     }
 
     &_created {
-      background-color: #999999;
+      background-color: #cccccc;
     }
   }
 
