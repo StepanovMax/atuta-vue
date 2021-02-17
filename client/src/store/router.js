@@ -235,6 +235,7 @@ const isTokenExpired = async function(to, from, next) {
       try {
         console.log(' >> try');
         const hasPermission = await store.dispatch("checkAuth");
+        await store.dispatch('getEmployeeByUserID');
         if (hasPermission) {
           // console.log(' >> hasPermission true');
           // return true;
@@ -254,6 +255,7 @@ const isTokenExpired = async function(to, from, next) {
     }
   } else {
     const hasPermission = await store.dispatch("checkAuth");
+    await store.dispatch('getEmployeeByUserID');
     if (hasPermission) {
       // console.log(' >> hasPermission true');
       // return true;

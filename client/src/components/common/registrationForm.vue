@@ -428,7 +428,10 @@
               <li
                 class="employees__item"
                 :class="[
+<<<<<<< HEAD
                   {'employees__item_deleted': item.isDeleted },
+=======
+>>>>>>> [AT-eb04dt] Add employee CRUD
                   {'employees__item_updated': item.isUpdated && !item.isDeleted },
                   {'employees__item_created': item.isCreated },
                 ]"
@@ -490,6 +493,10 @@
                   />
                 </div>
                 <div
+<<<<<<< HEAD
+=======
+                  v-if="!item.isDeleted"
+>>>>>>> [AT-eb04dt] Add employee CRUD
                   class="
                     employees__item-characteristic
                     employees__item-characteristic_edit-btn
@@ -937,12 +944,16 @@ export default {
       console.log(' >>', item.name === this.userEmployees[index].name, item.name, this.userEmployees[index].name);
       console.log(' >>', item.phone === this.userEmployees[index].phone, item.phone, this.userEmployees[index].phone);
       if (!(item.name === this.userEmployees[index].name && item.phone === this.userEmployees[index].phone)) {
+        console.log('isUpdated true ::');
         this.employees[index].isUpdated = true;
       } else {
+        console.log('isUpdated false ::');
         this.employees[index].isUpdated = false;
       }
       if (item.phone !== this.userEmployees[index].phone) {
         item.phone = this.gFormatPhoneRevert(item.phone);
+        // console.log('item.phone ::', typeof this.gFormatPhoneRevert(item.phone).toString());
+        // console.log('item.phone ::', typeof +this.gFormatPhoneRevert(item.phone).toString());
       }
     },
     stopEditingAllEmployeingItems() {
