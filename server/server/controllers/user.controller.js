@@ -308,7 +308,6 @@ const login = async (req, res) => {
       const responseUser = Object.assign({}, user.dataValues);
 
       // Remove an important info.
-      delete responseUser.id;
       delete responseUser.salt;
       delete responseUser.regKey;
       delete responseUser.password;
@@ -632,9 +631,6 @@ const updateUser = async (req, res) => {
           id: decodedAccessToken.id
         }
       });
-      console.log(' ');
-      console.log('   >> Status changed to active ::');
-      console.log(' ');
       foundedUser.update(updateValues).then(
         self => {
           console.log(' ');
