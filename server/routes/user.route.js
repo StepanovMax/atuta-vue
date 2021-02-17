@@ -23,7 +23,7 @@ let upload = multer({
 const router = Router();
 
 router.post(
-  '/edit',
+  '/update',
   upload.fields([
     { name: 'file', maxCount: 1 },
     { name: 'userData', maxCount: 1 },

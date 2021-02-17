@@ -21,8 +21,9 @@ const formatNumbers = {
           return formattedPhoneNumber;
         },
         gFormatPhone(value) {
-          const firstSymbol = value.charAt(0);
-          const excludedNonNumbers = value.replace(/\D/g, '');
+          const number = value.toString();
+          const firstSymbol = number.charAt(0);
+          const excludedNonNumbers = number.replace(/\D/g, '');
           if (excludedNonNumbers.length) {
             // if (excludedNonNumbers.length > 11) {
             //   const trimmedString = excludedNonNumbers.substring(0, 11);
@@ -33,7 +34,7 @@ const formatNumbers = {
             const formattedPhoneNumber = !x[3] ? x[1] + ' ' + x[2] : x[1] + ' ' + '(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
             // console.log('formattedPhoneNumber ::', formattedPhoneNumber);
             return  '+' + formattedPhoneNumber;
-          } else if (firstSymbol === '+' && value.length > 1) {
+          } else if (firstSymbol === '+' && number.length > 1) {
             return '+';
           } else {
             return '';

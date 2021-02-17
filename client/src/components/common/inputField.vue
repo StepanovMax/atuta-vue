@@ -173,7 +173,11 @@ export default {
       if (this.propType === 'phone') {
         this.filteredValue = this.gFormatPhone(number);
       }
-      this.$emit('update:value', this.filteredValue);
+      if (this.filteredValue.length) {
+        this.$emit('update:value', this.filteredValue);
+      } else {
+        this.$emit('update:value', null);
+      }
     },
     focusPhone() {
       if (!this.filteredValue.length) {

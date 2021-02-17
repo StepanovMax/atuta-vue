@@ -227,7 +227,6 @@ const router = new Router({
 });
 
 const isTokenExpired = async function(to, from, next) {
-  console.log(' >> isTokenExpired', store.state);
   if (store.state.userData && store.state.userData.expireDate) {
     const timestampNow = new Date().getTime() / 1000 | 0;
     // Token is expired
@@ -237,12 +236,12 @@ const isTokenExpired = async function(to, from, next) {
         console.log(' >> try');
         const hasPermission = await store.dispatch("checkAuth");
         if (hasPermission) {
-          console.log(' >> hasPermission true');
+          // console.log(' >> hasPermission true');
           // return true;
         } else {
-          console.log(' >> hasPermission false');
+          // console.log(' >> hasPermission false');
           await store.dispatch('logout');
-          console.log(' >> dispatch logout');
+          // console.log(' >> dispatch logout');
           // return false;
         }
       } catch(error) {
@@ -256,10 +255,10 @@ const isTokenExpired = async function(to, from, next) {
   } else {
     const hasPermission = await store.dispatch("checkAuth");
     if (hasPermission) {
-      console.log(' >> hasPermission true');
+      // console.log(' >> hasPermission true');
       // return true;
     } else {
-      console.log(' >> hasPermission false');
+      // console.log(' >> hasPermission false');
       await store.dispatch('logout');
       console.log(' >> dispatch logout');
       // return false;
@@ -293,9 +292,8 @@ router.beforeEach(
 
     // In case of the page reloading 
     if (!from.name) {
-      console.log(' >> from.name ::');
-      const getUserByID = await store.dispatch('getUserByID');
-      console.log(' >> getUserByID', getUserByID);
+      await store.dispatch('getUserByID');
+      await store.dispatch('getEmployeeByUserID');
       next();
     }
 

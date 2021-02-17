@@ -6,7 +6,7 @@
   >
     <form
       autocomplete="off"
-      @submit.prevent="onSubmit"
+      @submit.prevent
       enctype="multipart/form-data"
     >
 
@@ -402,6 +402,231 @@
         </div>
       </div>
 
+
+
+      <div
+        v-if="
+          userDataLocal.role
+          || userDataLocal.role.slug === 'agency'
+          || userDataLocal.role.slug === 'builder'
+        "
+        class="template-page__content-row"
+      >
+        <header class="settings-sub-page__header">
+          <h3 class="settings-sub-page__title">
+            Сотрудники
+          </h3>
+        </header>
+
+        <div class="settings-sub-page__content">
+
+          <section class="employees">
+            <ul
+              v-if="employees"
+              class="employees__list"
+            >
+              <li
+                class="employees__item"
+                :class="[
+                  {'employees__item_deleted': item.isDeleted },
+                  {'employees__item_updated': item.isUpdated && !item.isDeleted },
+                  {'employees__item_created': item.isCreated },
+                ]"
+                v-for="(item, index) in employees"
+                :key="'key-' + index + '-' + item.phone"
+              >
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_name
+                  "
+                >
+                  <p
+                    v-if="!item.isEdit"
+                    class="
+                      paragraph
+                      employees__text
+                      employees__text_name
+                    "
+                  >
+                    {{ item.name }}
+                  </p>
+                  <inputField
+                    v-if="item.isEdit"
+                    propType="symbolsWithNumbers"
+                    propClass="employees__input"
+                    propKey="login"
+                    :value.sync="item.name"
+                    :propValue="item.name"
+                  />
+                </div>
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_phone
+                  "
+                >
+                  <p
+                    v-if="!item.isEdit && item.phone"
+                    class="
+                      paragraph
+                      employees__text
+                      employees__text_phone
+                    "
+                  >
+                    {{ gFormatPhone(item.phone) }}
+                  </p>
+                  <inputField
+                    v-if="item.isEdit"
+                    propClass="
+                      employees__input
+                      employees__input_phone
+                    "
+                    propType="phone"
+                    propKey="phone"
+                    :value.sync="item.phone"
+                    :propValue="item.phone"
+                    :propFilterPhoneNumber="false"
+                  />
+                </div>
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_edit-btn
+                  "
+                >
+                  <button
+                    v-if="item.isEdit"
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click="stopEditingEmployeeItem(index)"
+                  >
+                    Готово
+                  </button>
+                  <button
+                    v-if="!item.isEdit && !item.isDeleted"
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click.prevent="editEmployeeItem(index)"
+                  >
+                    Редактировать
+                  </button>
+                </div>
+                <div class="employees__item-characteristic">
+                  <button
+                    v-if="item.isDeleted"
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click="recoverEmployeeItem(index)"
+                  >
+                    Восстановить
+                  </button>
+                  <button
+                    v-else
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click="removeEmployeeItem(index)"
+                  >
+                    Удалить
+                  </button>
+                </div>
+              </li>
+              <li
+                v-if="isAddNewItem"
+                class="employees__item"
+              >
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_name
+                  "
+                >
+                  <inputField
+                    propType="symbolsWithNumbers"
+                    propClass="employees__input"
+                    propKey="login"
+                    :value.sync="newUser.name"
+                  />
+                </div>
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_phone
+                  "
+                >
+                  <inputField
+                    propClass="
+                      employees__input
+                      employees__input_phone
+                    "
+                    propType="phone"
+                    propKey="phone"
+                    :value.sync="newUser.phone"
+                    :propFilterPhoneNumber="false"
+                  />
+                </div>
+                <div
+                  class="
+                    employees__item-characteristic
+                    employees__item-characteristic_edit-btn
+                  "
+                >
+                  <button
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click="addUserToAnother()"
+                  >
+                    Готово
+                  </button>
+                </div>
+                <div class="employees__item-characteristic">
+                  <button
+                    class="
+                      btn
+                      btn_grey
+                      employees__btn
+                    "
+                    @click="removeNewUser()"
+                  >
+                    Удалить
+                  </button>
+                </div>
+              </li>
+            </ul>
+            <footer class="employees__footer">
+              <button
+                class="
+                  btn
+                  btn_grey
+                  employees__btn
+                "
+                @click="addEmployeeItem()"
+              >
+                Добавить сотрудника
+              </button>
+            </footer>
+          </section>
+
+        </div>
+      </div>
+
+
+
       <div
         class="template-page__content-row"
       >
@@ -416,7 +641,7 @@
           :class="{
             'btn_disabled': !formChanged
           }"
-          type="submit"
+          @click.prevent="onSubmit"
         >
           {{ buttonName }}
         </button>
@@ -434,7 +659,7 @@
 
         <div
           v-local
-          v-if="false && changedUserData"
+          v-if="true && employeesChanged"
           class="local-output-data"
         >
           <h6 class="
@@ -442,14 +667,53 @@
             title_h6
             title_bold
           ">
-            changedUserData
+            employeesChanged
           </h6>
           <pre>
-            {{ changedUserData }}
+            {{ employeesChanged }}
+          </pre>
+        </div>
+
+        <br>
+
+        <div
+          v-local
+          v-if="true && employees"
+          class="local-output-data"
+        >
+          <h6 class="
+            title
+            title_h6
+            title_bold
+          ">
+            employees
+          </h6>
+          <pre>
+            {{ employees }}
+          </pre>
+        </div>
+
+        <br>
+
+        <div
+          v-local
+          v-if="true && userEmployees"
+          class="local-output-data"
+        >
+          <h6 class="
+            title
+            title_h6
+            title_bold
+          ">
+            userEmployees
+          </h6>
+          <pre>
+            {{ userEmployees }}
           </pre>
         </div>
 
       </div>
+
     </form>
   </div>
 </template>
@@ -457,9 +721,9 @@
 <script>
 import iconOk from '../icons/iconOk.vue';
 import switcher from '../common/switcher.vue';
+import contentEditor from './contentEditor.vue';
 import inputField from '../common/inputField.vue';
 import uploadImages from '../common/uploadImages.vue';
-import contentEditor from './contentEditor.vue';
 
 import axios from 'axios';
 import { mapState } from 'vuex';
@@ -487,6 +751,18 @@ export default {
   },
   data() {
     return {
+      employees: [],
+      employeesChanged: [],
+      isAddNewItem: false,
+      userRolesModified: [],
+      newUser: {
+        name: null,
+        phone: null,
+        isEdit: false,
+        isUpdated: false,
+        isDeleted: false,
+        isCreated: true,
+      },
       editResult: false,
       formChanged: false,
       changedUserData: {},
@@ -495,14 +771,6 @@ export default {
       formSended: false,
       blobImage: null,
       inputtedFile: null,
-      defaultLogo: {
-        name: "someName",
-        lastModified: "1602838486310",
-        size: 51224,
-        type: "image/png",
-        url: "blob:http://localhost:9000/6ebc2222-a9a5-4210-9ec9-3a733a0abc5d",
-        webkitRelativePath: "",
-      },
       formIsNotFilled: false,
       userDataEmpty: {
         role: '',
@@ -595,6 +863,7 @@ export default {
     ...mapState([
       'userRoles',
       'userData',
+      'userEmployees',
     ]),
     passwordsCorrect() {
       if (
@@ -614,8 +883,117 @@ export default {
         return false;
       }
     },
+    newUserPhoneNumberCorrect() {
+      if (this.newUser.name.length >= 6 && this.newUser.phone.length === 17) {
+        return true
+      }
+      return false;
+    },
+    'newUser.phone'(value) {
+      this.handlePhone(value);
+      console.log('value ::', value);
+      // if (!value.length) {
+      //   return null;
+      // }
+    },
   },
   methods: {
+    handlePhone(value) {
+      if (value.length !== 17) {
+        this.formState.phone.filled = false;
+      } else {
+        this.formState.phone.filled = true;
+      }
+    },
+    removeEmployeeItem(index) {
+      if (this.employees[index].isCreated === true) {
+        this.employees.splice(index, 1)
+      } else if (this.employees[index].isCreated === false) {
+        this.employees[index].isUpdated = false;
+        this.employees[index].isDeleted = true;
+      }
+    },
+    recoverEmployeeItem(index) {
+      this.employees[index].isDeleted = false;
+
+      let item = this.employees[index];
+      if ((item.name === this.userEmployees[index].name && item.phone === this.userEmployees[index].phone)) {
+        this.employees[index].isUpdated = false;
+      } else {
+        this.employees[index].isUpdated = true;
+      }
+    },
+    editEmployeeItem(index) {
+      console.log('edit ::');
+      this.stopEditingAllEmployeingItems();
+      this.closeAddingNewUser();
+      this.closeAddingEmployeeItem();
+      this.employees[index].isEdit = true;
+    },
+    stopEditingEmployeeItem(index) {
+      this.employees[index].isEdit = false;
+
+      let item = this.employees[index];
+      console.log(' >>', item.name === this.userEmployees[index].name, item.name, this.userEmployees[index].name);
+      console.log(' >>', item.phone === this.userEmployees[index].phone, item.phone, this.userEmployees[index].phone);
+      if (!(item.name === this.userEmployees[index].name && item.phone === this.userEmployees[index].phone)) {
+        this.employees[index].isUpdated = true;
+      } else {
+        this.employees[index].isUpdated = false;
+      }
+      if (item.phone !== this.userEmployees[index].phone) {
+        item.phone = this.gFormatPhoneRevert(item.phone);
+      }
+    },
+    stopEditingAllEmployeingItems() {
+      this.employees.forEach(
+        item => {
+          item.isEdit = false;
+        }
+      )
+    },
+    closeAddingEmployeeItem() {
+      this.isAddNewItem = false;
+    },
+    removeNewUser() {
+      console.log('removeNewUser ::');
+      this.clearNewUser();
+      this.closeAddingEmployeeItem();
+    },
+    clearNewUser() {
+      console.log('clearNewUser ::');
+      this.newUser = {
+        name: null,
+        phone: null,
+        isEdit: false,
+        isUpdated: false,
+        isDeleted: false,
+        isCreated: true,
+      };
+    },
+    addUserToAnother() {
+      this.stopEditingAllEmployeingItems();
+
+      let newUser = JSON.parse(JSON.stringify(this.newUser));
+      let number = newUser.phone;
+      newUser.phone = this.gFormatPhoneRevert(number);
+
+      this.employees.push(newUser);
+      this.clearNewUser();
+      this.isAddNewItem = !this.isAddNewItem;
+
+      // newUser.new = true;
+      // this.employeesChanged.push(newUser);
+    },
+    closeAddingNewUser() {
+      this.clearNewUser();
+      this.stopEditingAllEmployeingItems();
+    },
+    addEmployeeItem() {
+      console.log('addEmployeeItem ::');
+      this.isAddNewItem = true;
+      this.closeAddingNewUser();
+    },
     inputFile() {
       console.log('inputFile() ::', this.$refs.file.files[0]);
       this.inputtedFile = this.$refs.file.files[0];
@@ -650,14 +1028,16 @@ export default {
         userData = formData;
       }
 
+      // If we edit the profile page.
       if (this.formType === 'edit') {
+        // Trying to send user info.
         try {
           this.editResult = false;
           const transport = axios.create({
             withCredentials: true
           });
           const sendUserDataResult = await transport.post(
-            process.env.host_api + '/user/edit',
+            process.env.host_api + '/user/update',
             userData
           )
             .then(
@@ -681,6 +1061,39 @@ export default {
           }
         } catch(error) {
           console.error('Something went wrong with user editing ::', error);
+        }
+        // Trying to send employees info.
+        if (this.employees.length) {
+          try {
+            this.editResult = false;
+            const transport = axios.create({
+              withCredentials: true
+            });
+            const sendEmployeesDataResult = await transport.post(
+              process.env.host_api + '/employee/update',
+              this.employees
+            )
+              .then(
+                response => {
+                  console.log('response.data ::', response);
+                  return response.data;
+                }
+              )
+                .catch(
+                  error => {
+                    console.error('Error [Editing] ::', error);
+                    return false;
+                  }
+                );
+            // if (sendEmployeesDataResult) {
+            //   this.editResult = true;
+            //   this.changedUserData = {};
+            //   this.formChanged = false;
+            //   this.$store.commit('updateEmployeesDataState', sendEmployeesDataResult);
+            // }
+          } catch(error) {
+            console.error('[Employee edit error] ::', error);
+          }
         }
       } else if (this.formType === 'reg') {
         try {
@@ -924,8 +1337,54 @@ export default {
         this.formChanged = false;
       }
     },
+    // detectChangedEmployees(data) {
+    //   this.detectDeletedItems(data);
+    // },
+    // detectDeletedItems(data) {
+    //   const detectedItem = this.userEmployees.forEach(
+    //     item => {
+    //       const newItem = data.every(
+    //         subItem => {
+    //           item.deleted = false;
+    //           if (item.id !== subItem.id) {
+    //             item.deleted = true;
+    //           }
+    //           return item.id !== subItem.id;
+    //         }
+    //       );
+    //       if (newItem) {
+    //         return item;
+    //       }
+    //     }
+    //   );
+    //   if (detectedItem) {
+    //     this.employeesChanged.push(item);
+    //     console.log('this.employeesChanged ::', this.employeesChanged);
+    //   }
+    //   console.log('detectedItem ::', detectedItem);
+    // },
+    // detectAddedItems(data) {
+    //   console.log('detectAddedItems ::');
+    // },
+    // detectChangedItems(data) {
+    //   console.log('detectChangedItems ::');
+    // },
   },
   watch: {
+    'employees'(value) {
+      // console.log('employees watching! ::', value);
+      // console.log('this.userEmployees ::', this.userEmployees);
+      // Detection of the form changes.
+      if (!this.compareArrays(value, this.userEmployees)) {
+        // console.log('employees watching! ::');
+        // this.detectChangedEmployees(value);
+        // this.userDataLocal.employees = value;
+        // this.changedUserData.employees = value;
+      } else {
+        delete this.changedUserData.employees;
+      }
+      this.watchChangedUserData();
+    },
     'userDataLocal.role'(value) {
       this.updateFormState();
       // Detection of the form changes.
@@ -1031,12 +1490,15 @@ export default {
   },
   beforeMount() {
     this.userDataLocal = JSON.parse(JSON.stringify(this.userData));
+    this.employees = JSON.parse(JSON.stringify(this.userEmployees));
+    // console.log('this.userEmployees ::', this.userEmployees);
+    // console.log('this.employees ::', this.employees);
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
     this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
   },
-  mounted() {
+  async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
     if (this.formType === 'reg') {
       this.buttonName = 'Регистрация';

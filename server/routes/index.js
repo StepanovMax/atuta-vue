@@ -1,11 +1,11 @@
-import user from './user';
+import user from './user.route';
 import auth from './auth';
 import help from './help';
 import data from './data';
 import objects from './objects';
 import dialogs from './dialogs';
+import employee from './employee.route';
 import companies from './companies';
-import Users from '../server/controllers/user';
 import tutorial from './tutorial.routes';
 
 const routes = app => {
@@ -15,10 +15,6 @@ const routes = app => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-
-  app.post('/api/users', Users.signUp);
-
-  app.get('/api/users/get-all', Users.getAllUsers);
 
   app.get('/testapi', (req, res) => {
     const reqHost = req.get('host');
@@ -37,6 +33,7 @@ const routes = app => {
   app.use('/data', data);
   app.use('/objects', objects);
   app.use('/dialogs', dialogs);
+  app.use('/employee', employee);
   app.use('/tutorial', tutorial);
   app.use('/companies', companies);
 }

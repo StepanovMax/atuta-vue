@@ -71,6 +71,18 @@
         width: 140px;
       }
     }
+
+    &_deleted {
+      background-color: #cccccc;
+    }
+
+    &_updated {
+      background-color: #eaeaea;
+    }
+
+    &_created {
+      background-color: #999999;
+    }
   }
 
   &__btn {
