@@ -65,8 +65,6 @@ const actions = {
     )
       .then(
         response => {
-          console.log('checkAuth checkTokenResult ::', response);
-          // console.log('Response checkToken ::', response);
           return response;
         }
       )
@@ -78,7 +76,6 @@ const actions = {
         );
     // If the state loggedIn data is TRUE,
     if (checkTokenResult.data) {
-      console.log('checkTokenResult.data ::', checkTokenResult.data);
       // then fill out to TRUE loggedIn statement.
       context.commit('updateLoggedInState', true);
       // then fill out userData statement.
@@ -106,7 +103,7 @@ const actions = {
       )
         .then(
           response => {
-            console.log('getUserInfo response ::', response.data);
+            // console.log('getUserInfo response ::', response.data);
             context.commit('updateUserDataState', response.data);
             return response;
           }
@@ -118,10 +115,33 @@ const actions = {
             }
           );
     } catch(error) {
-      console.log('getUserByID error ::', error);
+      console.log('[getUserByID error] ::', error);
       return false;
     }
-  }
+  },
+  getEmployeeByUserID: async (context, commit, dispatch) => {
+    try {
+      // Get user emplyees.
+      return await transport.get(
+        process.env.host_api + '/employee/getAll'
+      )
+        .then(
+          response => {
+            context.commit('updateUserEmployeesDataState', response.data);
+            return response.data;
+          }
+        )
+          .catch(
+            error => {
+              console.error('[axios getAllByUserID error] ::', error);
+              return false;
+            }
+          );
+    } catch(error) {
+      console.error('[try/catch getAllByUserID error] ::', error);
+      return false;
+    }
+  },
 }
 
 export default actions;

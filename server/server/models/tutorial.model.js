@@ -3,13 +3,14 @@ module.exports = (sequelize, Sequelize) => {
     title: {
       type: Sequelize.STRING
     },
-    description: {
-      type: Sequelize.STRING
-    },
-    published: {
-      type: Sequelize.BOOLEAN
-    }
   });
+
+  const Employee = require("./employee.model.js")(sequelize, Sequelize);
+
+  Tutorial.associate = () => {
+    Tutorial.hasMany(Employee);
+    Employee.belongsTo(Tutorial);
+  };
 
   return Tutorial;
 };

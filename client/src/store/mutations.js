@@ -32,6 +32,9 @@ const mutations = {
   updateUserDataState(state, data) {
     state.userData = data;
   },
+  updateUserEmployeesDataState(state, data) {
+    state.userEmployees = data;
+  },
   updateLoggedInState(state, data) {
     state.isLoggedIn = data;
   },

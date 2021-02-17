@@ -30,7 +30,33 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-db.user = require("./user.js")(sequelize, Sequelize);
+let Employee = require("./employee.model.js")(sequelize, Sequelize);
+let User = require("./user.model.js")(sequelize, Sequelize);
+// let Tutorial = require("./tutorial.model.js")(sequelize, Sequelize);
+
+db.employee = Employee;
+db.user = User;
+// db.tutorial = Tutorial;
+
+User.hasOne(Employee);
+Employee.belongsTo(User);
+
+
+/* */
+// const Company = sequelize.define('company', {
+//   name: Sequelize.STRING,
+// });
+
+// const Product = sequelize.define('product', {
+//   name: Sequelize.STRING,
+// });
+
+// Company.hasMany(Product);
+// Product.belongsTo(Company);
+
+// db.company = Company;
+// db.product = Product;
+/* */
+
 
 export default db;
