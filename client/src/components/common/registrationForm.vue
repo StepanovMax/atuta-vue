@@ -659,7 +659,7 @@
 
         <div
           v-local
-          v-if="true && userData"
+          v-if="true && userDataLocal"
           class="local-output-data"
         >
           <h6 class="
@@ -667,10 +667,10 @@
             title_h6
             title_bold
           ">
-            userData
+            userDataLocal
           </h6>
           <pre>
-            {{ userData }}
+            {{ userDataLocal }}
           </pre>
         </div>
 
@@ -748,7 +748,6 @@ export default {
       },
       userDataLocal: {},
       switcherValue: '',
-      userRolesModified: [],
       erroredElementsArray: [],
       formState: {
         name: {
@@ -1420,7 +1419,7 @@ export default {
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
+    this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
   },
   async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
