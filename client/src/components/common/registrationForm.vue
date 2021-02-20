@@ -659,7 +659,7 @@
 
         <div
           v-local
-          v-if="true && employeesChanged"
+          v-if="true && userData"
           class="local-output-data"
         >
           <h6 class="
@@ -667,48 +667,10 @@
             title_h6
             title_bold
           ">
-            employeesChanged
+            userData
           </h6>
           <pre>
-            {{ employeesChanged }}
-          </pre>
-        </div>
-
-        <br>
-
-        <div
-          v-local
-          v-if="true && employees"
-          class="local-output-data"
-        >
-          <h6 class="
-            title
-            title_h6
-            title_bold
-          ">
-            employees
-          </h6>
-          <pre>
-            {{ employees }}
-          </pre>
-        </div>
-
-        <br>
-
-        <div
-          v-local
-          v-if="true && userEmployees"
-          class="local-output-data"
-        >
-          <h6 class="
-            title
-            title_h6
-            title_bold
-          ">
-            userEmployees
-          </h6>
-          <pre>
-            {{ userEmployees }}
+            {{ userData }}
           </pre>
         </div>
 
@@ -1334,46 +1296,11 @@ export default {
         this.formChanged = false;
       }
     },
-    // detectChangedEmployees(data) {
-    //   this.detectDeletedItems(data);
-    // },
-    // detectDeletedItems(data) {
-    //   const detectedItem = this.userEmployees.forEach(
-    //     item => {
-    //       const newItem = data.every(
-    //         subItem => {
-    //           item.deleted = false;
-    //           if (item.id !== subItem.id) {
-    //             item.deleted = true;
-    //           }
-    //           return item.id !== subItem.id;
-    //         }
-    //       );
-    //       if (newItem) {
-    //         return item;
-    //       }
-    //     }
-    //   );
-    //   if (detectedItem) {
-    //     this.employeesChanged.push(item);
-    //     console.log('this.employeesChanged ::', this.employeesChanged);
-    //   }
-    //   console.log('detectedItem ::', detectedItem);
-    // },
-    // detectAddedItems(data) {
-    //   console.log('detectAddedItems ::');
-    // },
-    // detectChangedItems(data) {
-    //   console.log('detectChangedItems ::');
-    // },
   },
   watch: {
     'employees'(value) {
-      // console.log('employees watching! ::', value);
-      // console.log('this.userEmployees ::', this.userEmployees);
       // Detection of the form changes.
       if (!this.compareArrays(value, this.userEmployees)) {
-        // console.log('employees watching! ::');
         // this.detectChangedEmployees(value);
         // this.userDataLocal.employees = value;
         // this.changedUserData.employees = value;

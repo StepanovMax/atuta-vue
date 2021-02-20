@@ -4,7 +4,7 @@ import filterDataSelected from './filterDataSelected.js';
 import filterDataDefault from './filterDataDefault.js';
 
 const state = {
-  userEmployees: [],
+  userEmployees: null,
   routesHistory: [],
   filterDialogsDropdownState: {
     label: 'Все',
