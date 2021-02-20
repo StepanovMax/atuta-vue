@@ -899,7 +899,7 @@ export default {
   },
   methods: {
     handlePhone(value) {
-      if (value.length !== 17) {
+      if (value.length !== 11) {
         this.formState.phone.filled = false;
       } else {
         this.formState.phone.filled = true;
@@ -1222,13 +1222,6 @@ export default {
         return true;
       }
       return false;
-    },
-    handlePhone(value) {
-      if (value.length !== 17) {
-        this.formState.phone.filled = false;
-      } else {
-        this.formState.phone.filled = true;
-      }
     },
     handleLogo(value) {
       console.log('handleLogo ::', value[0].object, value.length);
