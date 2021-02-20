@@ -37,7 +37,7 @@ const actions = {
     }
   },
   logout: async (context, commit) => {
-    console.log('logout ::');
+    // console.log('logout ::');
     await transport.get(
       process.env.host_api + '/auth/logout'
     )
@@ -46,6 +46,7 @@ const actions = {
           console.log('logout response ::', response);
           context.commit('updateLoggedInState', false);
           context.commit('updateUserDataState', null);
+          context.commit('updateUserEmployeesDataState', null);
           return response;
         }
       )
@@ -76,10 +77,12 @@ const actions = {
         );
     // If the state loggedIn data is TRUE,
     if (checkTokenResult.data) {
+      // console.log(' >> checkTokenResult.data ::', checkTokenResult.data);
       // then fill out to TRUE loggedIn statement.
       context.commit('updateLoggedInState', true);
       // then fill out userData statement.
       context.commit('updateUserDataState', checkTokenResult.data);
+      await context.dispatch('getEmployeeByUserID');
       // if (checkTokenResult.data.favouriteObjectsListID) {
       //   // then loading the user's favourite objects.
       //   this.getFavouritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
@@ -88,7 +91,6 @@ const actions = {
       // this.getDialogsByUserID(checkTokenResult.data.id);
       return true;
     } else {
-      console.log('checkToken else ::');
       await context.dispatch('logout');
       context.commit('updateLoggedInState', false);
       context.commit('updateUserDataState', null);

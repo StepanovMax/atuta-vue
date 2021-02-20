@@ -295,6 +295,7 @@ export default {
         this.$store.commit('updateLoggedInState', true);
         console.log('loginResult.data ::', loginResult.data);
         this.$store.commit('updateUserDataState', loginResult.data);
+        await this.$store.dispatch('getEmployeeByUserID');
         // Call the plugin for fav.objects
         // this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         if (this.routesHistory.length > 1) {

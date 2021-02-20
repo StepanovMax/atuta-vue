@@ -226,44 +226,30 @@ const router = new Router({
   ]
 });
 
-const isTokenExpired = async function(to, from, next) {
-  if (store.state.userData && store.state.userData.expireDate) {
+const isTokenExpired = async from => {
+  // If the store contains the user data, =>
+  if (store.state.isLoggedIn && store.state.userData && store.state.userData.expireDate) {
     const timestampNow = new Date().getTime() / 1000 | 0;
-    // Token is expired
+    // => we should check it's token. ->
+    // -> Case (1) when the access token is needed to be updated,
     if (store.state.userData.expireDate < timestampNow) {
-      // console.log('expired ::');
       try {
-        console.log(' >> try');
-        const hasPermission = await store.dispatch("checkAuth");
+        const checkAuthPassed = await store.dispatch('checkAuth');
         await store.dispatch('getEmployeeByUserID');
-        if (hasPermission) {
-          // console.log(' >> hasPermission true');
-          // return true;
-        } else {
-          // console.log(' >> hasPermission false');
+        if (!checkAuthPassed) {
           await store.dispatch('logout');
-          // console.log(' >> dispatch logout');
-          // return false;
         }
       } catch(error) {
-        console.log('Guard error ::', timestampNow, error);
+        console.log('[Error checking authentication] ::', error);
       }
+    // -> Case (2) when its token is ok.
     // Token is OK.
-    } else {
-      console.log(' >> Token is OK.');
-      return true;
     }
+  // If the store DOES NOT contain the user data, =>
   } else {
-    const hasPermission = await store.dispatch("checkAuth");
-    await store.dispatch('getEmployeeByUserID');
-    if (hasPermission) {
-      // console.log(' >> hasPermission true');
-      // return true;
-    } else {
-      // console.log(' >> hasPermission false');
-      await store.dispatch('logout');
-      console.log(' >> dispatch logout');
-      // return false;
+    // The case when the 'FROM' attribute is empty will understand as page reloading.
+    if (!from.name) {
+      await store.dispatch('checkAuth');
     }
   }
 };
@@ -287,17 +273,9 @@ const collectRoutesHistory = (from) => {
 
 router.beforeEach(
   async (to, from, next) => {
-    // const parentPageName = to.matched[0].name;
     // Each route we should to check expired token.
-    await isTokenExpired();
+    await isTokenExpired(from);
     collectRoutesHistory(from);
-
-    // In case of the page reloading 
-    if (!from.name) {
-      await store.dispatch('getUserByID');
-      await store.dispatch('getEmployeeByUserID');
-      next();
-    }
 
     // Restrict the registration and login pages for loggedin users.
     if (store.state.isLoggedIn) {
