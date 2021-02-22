@@ -1000,8 +1000,11 @@ export default {
       const name = data.name;
       const phone = this.gFormatPhoneRevert(data.phone);
       if (this.formType === 'reg') {
-        data.logo = this.userDataLocal.logo[0].object;
-        console.log('data.logo ::', this.userDataLocal.logo[0].object.url);
+        console.log('data.logo 1 ::', this.userDataLocal.logo);
+        if (this.userDataLocal.logo.length) {
+          data.logo = this.userDataLocal.logo[0].object;
+          console.log('data.logo 2 ::', this.userDataLocal.logo);
+        }
       }
       data.phone = phone;
       data.role = role;
@@ -1216,7 +1219,7 @@ export default {
       return false;
     },
     handleLogo(value) {
-      console.log('handleLogo ::', value[0].object, value.length);
+      console.log('handleLogo ::', value[0].object, value);
       if (value && value.length) {
         console.log('handleLogo update ::', this.userDataLocal.logo);
         console.log('handleLogo update ::', value[0].object.url);
@@ -1438,6 +1441,7 @@ export default {
     },
     blobImage: {
       handler(value) {
+        console.log('blobImage ::', value);
         this.handleLogo(value);
       },
       deep: true
