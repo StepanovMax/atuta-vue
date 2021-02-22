@@ -683,7 +683,7 @@
 
         <div
           v-local
-          v-if="true && formType"
+          v-if="true && employees"
           class="local-output-data"
         >
           <h6 class="
@@ -691,10 +691,10 @@
             title_h6
             title_bold
           ">
-            formType
+            employees
           </h6>
           <pre>
-            {{ formType }}
+            {{ employees }}
           </pre>
         </div>
 
@@ -881,6 +881,10 @@ export default {
       //   return null;
       // }
     },
+    employeesComparison() {
+      console.log('this.employees, this.userEmployees ::', this.employees, this.userEmployees);
+      return this.compareArrays(this.employees, this.userEmployees);
+    },
   },
   methods: {
     handlePhone(value) {
@@ -897,6 +901,7 @@ export default {
         this.employees[index].isUpdated = false;
         this.employees[index].isDeleted = true;
       }
+      this.watchChangedUserData();
     },
     recoverEmployeeItem(index) {
       this.employees[index].isDeleted = false;
@@ -907,6 +912,7 @@ export default {
       } else {
         this.employees[index].isUpdated = true;
       }
+      this.watchChangedUserData()
     },
     editEmployeeItem(index) {
       console.log('edit ::');
@@ -933,6 +939,7 @@ export default {
         // console.log('item.phone ::', typeof this.gFormatPhoneRevert(item.phone).toString());
         // console.log('item.phone ::', typeof +this.gFormatPhoneRevert(item.phone).toString());
       }
+      this.watchChangedUserData();
     },
     stopEditingAllEmployeingItems() {
       this.employees.forEach(
@@ -1313,11 +1320,12 @@ export default {
       }
     },
     watchChangedUserData() {
-      if (Boolean(Object.keys(this.changedUserData).length)) {
+      if (Boolean(Object.keys(this.changedUserData).length) || !this.employeesComparison) {
         this.formChanged = true;
       } else {
         this.formChanged = false;
       }
+      console.log('this.employeesComparison ::', this.employeesComparison);
     },
   },
   watch: {
