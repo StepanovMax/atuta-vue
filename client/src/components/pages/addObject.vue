@@ -6,7 +6,14 @@
 
     <adsLeft />
 
-    <div class="article article_add">
+    <errorPage403
+      v-if="!isLoggedIn"
+    />
+
+    <div
+      v-if="isLoggedIn"
+      class="article article_add"
+    >
       <h1
         class="
           title
@@ -889,6 +896,7 @@ import addObjectHouse from '../addObject/desktop/addObjectHouse.vue';
 import addObjectSector from '../addObject/desktop/addObjectSector.vue';
 import addObjectGarage from '../addObject/desktop/addObjectGarage.vue';
 import addObjectCommercial from '../addObject/desktop/addObjectCommercial.vue';
+import errorPage403 from '../pages/errors/userNotLoggedInComponent.vue';
 
 export default {
   name: 'addObject',
@@ -913,7 +921,7 @@ export default {
     addObjectSector,
     addObjectGarage,
     addObjectCommercial,
-    axios,
+    errorPage403,
   },
   data() {
     return {
@@ -1105,6 +1113,7 @@ export default {
   },
   computed: {
     ...mapState([
+      'isLoggedIn',
       'filterDataDefault',
       'objectDataSelected',
       'filterDataSelected',
