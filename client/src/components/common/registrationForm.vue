@@ -403,17 +403,20 @@
       </div>
 
 
-
       <div
         v-if="
-          userDataLocal.role
-          || userDataLocal.role.slug === 'agency'
-          || userDataLocal.role.slug === 'builder'
+          formType === 'edit'
+          &&
+          (
+            userDataLocal.role
+            || userDataLocal.role.slug === 'agency'
+            || userDataLocal.role.slug === 'builder'
+          )
         "
         class="template-page__content-row"
       >
         <header class="settings-sub-page__header">
-          <h3 class="settings-sub-page__title">
+          <h3 class="registration-page__title_row">
             Сотрудники
           </h3>
         </header>
@@ -625,6 +628,8 @@
         </div>
       </div>
 
+      <br>
+
 
 
       <div
@@ -671,6 +676,25 @@
           </h6>
           <pre>
             {{ userDataLocal }}
+          </pre>
+        </div>
+
+        <br>
+
+        <div
+          v-local
+          v-if="true && formType"
+          class="local-output-data"
+        >
+          <h6 class="
+            title
+            title_h6
+            title_bold
+          ">
+            formType
+          </h6>
+          <pre>
+            {{ formType }}
           </pre>
         </div>
 
