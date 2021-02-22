@@ -403,17 +403,20 @@
       </div>
 
 
-
       <div
         v-if="
-          userDataLocal.role
-          || userDataLocal.role.slug === 'agency'
-          || userDataLocal.role.slug === 'builder'
+          formType === 'edit'
+          &&
+          (
+            userDataLocal.role
+            || userDataLocal.role.slug === 'agency'
+            || userDataLocal.role.slug === 'builder'
+          )
         "
         class="template-page__content-row"
       >
         <header class="settings-sub-page__header">
-          <h3 class="settings-sub-page__title">
+          <h3 class="registration-page__title_row">
             Сотрудники
           </h3>
         </header>
@@ -625,6 +628,7 @@
         </div>
       </div>
 
+      <br>
 
 
       <div
@@ -671,6 +675,25 @@
           </h6>
           <pre>
             {{ userData }}
+          </pre>
+        </div>
+
+        <br>
+
+        <div
+          v-local
+          v-if="true && employees"
+          class="local-output-data"
+        >
+          <h6 class="
+            title
+            title_h6
+            title_bold
+          ">
+            employees
+          </h6>
+          <pre>
+            {{ employees }}
           </pre>
         </div>
 
@@ -748,7 +771,6 @@ export default {
       },
       userDataLocal: {},
       switcherValue: '',
-      userRolesModified: [],
       erroredElementsArray: [],
       formState: {
         name: {
@@ -858,6 +880,10 @@ export default {
       //   return null;
       // }
     },
+    employeesComparison() {
+      console.log('this.employees, this.userEmployees ::', this.employees, this.userEmployees);
+      return this.compareArrays(this.employees, this.userEmployees);
+    },
   },
   methods: {
     handlePhone(value) {
@@ -874,6 +900,7 @@ export default {
         this.employees[index].isUpdated = false;
         this.employees[index].isDeleted = true;
       }
+      this.watchChangedUserData();
     },
     recoverEmployeeItem(index) {
       this.employees[index].isDeleted = false;
@@ -884,6 +911,7 @@ export default {
       } else {
         this.employees[index].isUpdated = true;
       }
+      this.watchChangedUserData()
     },
     editEmployeeItem(index) {
       console.log('edit ::');
@@ -910,6 +938,7 @@ export default {
         // console.log('item.phone ::', typeof this.gFormatPhoneRevert(item.phone).toString());
         // console.log('item.phone ::', typeof +this.gFormatPhoneRevert(item.phone).toString());
       }
+      this.watchChangedUserData();
     },
     stopEditingAllEmployeingItems() {
       this.employees.forEach(
@@ -970,8 +999,11 @@ export default {
       const name = data.name;
       const phone = this.gFormatPhoneRevert(data.phone);
       if (this.formType === 'reg') {
-        data.logo = this.userDataLocal.logo[0].object;
-        console.log('data.logo ::', this.userDataLocal.logo[0].object.url);
+        console.log('data.logo 1 ::', this.userDataLocal.logo);
+        if (this.userDataLocal.logo.length) {
+          data.logo = this.userDataLocal.logo[0].object;
+          console.log('data.logo 2 ::', this.userDataLocal.logo);
+        }
       }
       data.phone = phone;
       data.role = role;
@@ -1186,7 +1218,7 @@ export default {
       return false;
     },
     handleLogo(value) {
-      console.log('handleLogo ::', value[0].object, value.length);
+      console.log('handleLogo ::', value[0].object, value);
       if (value && value.length) {
         console.log('handleLogo update ::', this.userDataLocal.logo);
         console.log('handleLogo update ::', value[0].object.url);
@@ -1290,11 +1322,12 @@ export default {
       }
     },
     watchChangedUserData() {
-      if (Boolean(Object.keys(this.changedUserData).length)) {
+      if (Boolean(Object.keys(this.changedUserData).length) || !this.employeesComparison) {
         this.formChanged = true;
       } else {
         this.formChanged = false;
       }
+      console.log('this.employeesComparison ::', this.employeesComparison);
     },
   },
   watch: {
@@ -1407,6 +1440,7 @@ export default {
     },
     blobImage: {
       handler(value) {
+        console.log('blobImage ::', value);
         this.handleLogo(value);
       },
       deep: true
@@ -1420,7 +1454,7 @@ export default {
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles(this.userDataLocal.role);
+    this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
   },
   async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
