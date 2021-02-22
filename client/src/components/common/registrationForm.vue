@@ -631,7 +631,6 @@
       <br>
 
 
-
       <div
         class="template-page__content-row"
       >
@@ -664,7 +663,7 @@
 
         <div
           v-local
-          v-if="true && userDataLocal"
+          v-if="true && userData"
           class="local-output-data"
         >
           <h6 class="
@@ -672,10 +671,10 @@
             title_h6
             title_bold
           ">
-            userDataLocal
+            userData
           </h6>
           <pre>
-            {{ userDataLocal }}
+            {{ userData }}
           </pre>
         </div>
 
