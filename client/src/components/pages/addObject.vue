@@ -826,23 +826,36 @@
 
       <div
         v-local
-        style="
-          color: #444;
-          font-size: 13px;
-          line-height: 110%;
-        "
+        v-if="true && suggestList"
+        class="local-output-data"
       >
-        <h3
-          class="
-            title
-            title_h6
-            title_bold
-          "
-        >
-          Данные созданного объекта:
-        </h3>
-        <pre v-local>{{ suggestList }}</pre>
-        <pre v-local>{{ createdObject }}</pre>
+        <h6 class="
+          title
+          title_h6
+          title_bold
+        ">
+          suggestList
+        </h6>
+        <pre>
+          {{ suggestList }}
+        </pre>
+      </div>
+
+      <div
+        v-local
+        v-if="true && createdObject"
+        class="local-output-data"
+      >
+        <h6 class="
+          title
+          title_h6
+          title_bold
+        ">
+          createdObject
+        </h6>
+        <pre>
+          {{ createdObject }}
+        </pre>
       </div>
 
 
