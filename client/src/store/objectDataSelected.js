@@ -1,5 +1,4 @@
 const objectDataSelected = {
-  id: 71628571265,
   object: {
     value: null,
     required: true,
