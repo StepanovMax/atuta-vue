@@ -385,7 +385,7 @@
               <upload-images
                 id="upload-images"
                 :propIsMultiple="true"
-                :value.sync="createdObject.photoGallery.value"
+                :value.sync="blobImage"
               />
             </div>
           </div>
@@ -808,6 +808,7 @@
                   btn_middle
                   add-object-page__btn
                 "
+                @click="sendObject"
               >
                 Разместить объявление
               </button>
@@ -833,7 +834,7 @@
 
       <div
         v-local
-        v-if="true && suggestList"
+        v-if="true && finalObjectData"
         class="local-output-data"
       >
         <h6 class="
@@ -841,10 +842,10 @@
           title_h6
           title_bold
         ">
-          suggestList
+          finalObjectData
         </h6>
         <pre>
-          {{ suggestList }}
+          {{ finalObjectData }}
         </pre>
       </div>
 
@@ -925,6 +926,8 @@ export default {
   },
   data() {
     return {
+      blobImage: {},
+      changedObject: [],
       fieldsForValidating: [],
       openChildComponent: false,
       isClicked: false,
@@ -994,6 +997,18 @@ export default {
     }
   },
   watch: {
+    'blobImage'(value) {
+      console.log('value ::', value);
+      if (value) {
+        let newArray = [];
+        value.forEach(
+          item => {
+            newArray.push(item.object);
+          }
+        );
+        this.createdObject.photoGallery.value = newArray;
+      }
+    },
     currentAddress: {
       handler(value) {
         if (value === '') {
@@ -1019,6 +1034,8 @@ export default {
     },
     createdObject: {
       handler(value) {
+        console.log('>> createdObject');
+        this.objectDataForSending(value);
         // console.log('createdObject WATCH ::', value);
         this.objectData = value;
         // TODO: Why?
@@ -1225,6 +1242,34 @@ export default {
         }
       }
     },
+    finalObjectData() {
+      let data = {};
+      if (this.changedObject && this.changedObject.object) {
+        if (this.changedObject.object.value && this.changedObject.object.value.slug) {
+          data.objectType = this.changedObject.object.value.slug;
+        }
+        if (this.changedObject.deal.value && this.changedObject.deal.value.slug) {
+          data.deal = this.changedObject.deal.value.slug;
+        }
+        if (this.changedObject.address.value && this.changedObject.address.coords) {
+          data.address = this.changedObject.address.coords;
+        }
+        if (this.changedObject.district.value && this.changedObject.district.value.slug) {
+          data.district = this.changedObject.district.value.slug;
+        }
+        if (this.changedObject.onlineShow.value && this.changedObject.onlineShow.value.slug) {
+          data.onlineShow = this.changedObject.onlineShow.value.slug;
+        }
+        if (this.changedObject.description.value) {
+          data.description = this.changedObject.description.value;
+        }
+        if (this.changedObject.photoGallery.value) {
+          data.photoGallery = this.createdObject.photoGallery.value;
+        }
+      }
+      console.log('data ::', data);
+      return data;
+    },
   },
   created() {
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
@@ -1233,6 +1278,21 @@ export default {
     this.createdObject.date = toDayDate;
   },
   methods: {
+    objectDataForSending(value) {
+      this.changedObject = JSON.parse(JSON.stringify(value));
+      if (this.changedObject.object.value && this.changedObject.object.value.slug) {
+        this.filterDataDefaultClone.object.forEach(
+          item => {
+            // console.log('>> item', item.slug, this.changedObject.object.value.slug);
+            if (item.slug !== this.changedObject.object.value.slug) {
+              delete this.changedObject[item.slug];
+            }
+          }
+        );
+      }
+      // console.log('>> this 2', this.changedObject.object.value.slug);
+      // console.log('>> this 3', this.changedObject[this.changedObject.object.value.slug]);
+    },
     createMetaTitle() {
       const typeSlug = this.createdObject.object.value.slug;
       const deal = this.createdObject.deal.value.slug;
@@ -1499,6 +1559,47 @@ export default {
           console.log('Rejected [getDistrict error] ::', error);
         }
       );
+    },
+    async sendObject() {
+      // Trying to send user info.
+      try {
+        const formData = new FormData();
+        const data = JSON.parse(JSON.stringify(this.finalObjectData));
+        if (this.finalObjectData.photoGallery && this.finalObjectData.photoGallery.length) {
+          this.finalObjectData.photoGallery.forEach(
+            item => {
+              formData.append('file', item);
+            }
+          );
+        }
+        delete data.photoGallery;
+        formData.append('object', JSON.stringify(data));
+
+        const transport = axios.create({
+          withCredentials: true
+        });
+        const objectDataResult = await transport.post(
+          process.env.host_api + '/object/create',
+          formData
+        )
+          .then(
+            response => {
+              console.log('/object/create ::', response);
+              return response.data;
+            }
+          )
+            .catch(
+              error => {
+                console.error('Error [Object creation] ::', error);
+                return false;
+              }
+            );
+        if (objectDataResult) {
+          console.log('objectDataResult ::', objectDataResult);
+        }
+      } catch(error) {
+        console.error('Something went wrong with object creation ::', error);
+      }
     },
   },
   // mounted() {
