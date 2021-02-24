@@ -1,12 +1,15 @@
-import user from './user.route';
 import auth from './auth';
 import help from './help';
 import data from './data';
 import objects from './objects';
 import dialogs from './dialogs';
-import employee from './employee.route';
 import companies from './companies';
+
+import user from './user.route';
+import object from './object.route';
+import employee from './employee.route';
 import tutorial from './tutorial.routes';
+
 
 const routes = app => {
   app.use(function (req, res, next) {
@@ -27,15 +30,17 @@ const routes = app => {
   });
 
   // Import API Routes
-  app.use('/user', user);
   app.use('/help', help);
   app.use('/auth', auth);
   app.use('/data', data);
   app.use('/objects', objects);
   app.use('/dialogs', dialogs);
+  app.use('/companies', companies);
+
+  app.use('/user', user);
+  app.use('/object', object);
   app.use('/employee', employee);
   app.use('/tutorial', tutorial);
-  app.use('/companies', companies);
 }
 
 export default routes;

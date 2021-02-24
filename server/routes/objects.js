@@ -1,30 +1,38 @@
-import express from 'express';
 import { Router } from 'express';
+import multer from 'multer';
 import testObjects from '../testData/testObjects';
+
+let storageConfig = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, '../client/uploads');
+  },
+  filename: function (req, file, callback) {
+    const name = 'image-' + Date.now();
+    req.suffix = name;
+    callback(null, name);
+  }
+});
+
+let upload = multer({
+  storage: storageConfig
+});
 
 const router = Router();
 
 
-router.get(
-  '/',
+router.post(
+  '/create',
   (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.status(200).send({
-      message: 'Objects response OK - 200'
-    });
+    const { object } = req.body;
+    console.log(' ');
+    console.log('  >> Object');
+    console.log(object);
+    console.log(' ');
+
+    res.status(200).send(true);
   }
 );
 
-
-router.get(
-  '/asd',
-  (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.status(200).send({
-      message: 'Хей-хей ?!'
-    });
-  }
-);
 
 router.get(
   '/get-objects',
