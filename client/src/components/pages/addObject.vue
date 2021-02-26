@@ -934,10 +934,6 @@ export default {
       errorsOther: [],
       errorsMain: [],
       suggestList: [],
-      userData: {
-        name: 'Агентство недвижимости №1',
-        type: 'agency',
-      },
       localityDistricts: [],
       townObject: {},
       townLabel: {
@@ -1034,15 +1030,20 @@ export default {
     },
     createdObject: {
       handler(value) {
-        console.log('>> createdObject');
+        console.log('>> createdObject', value);
         this.objectDataForSending(value);
         // console.log('createdObject WATCH ::', value);
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
         // console.log('createdObject WATCH this.createdObject ::', this.createdObject);
-        this.objectData.agency.name = this.userData.name;
-        this.objectData.agency.type = this.userData.type;
+        if (this.userData.role === 'personal') {
+          this.objectData.agency.name = this.userRoles['personal'].label;
+        } else if (this.userData.role === 'agent') {
+          this.objectData.agency.name = this.userRoles['agent'].label;
+        } else {
+          this.objectData.agency.name = this.userData.name;
+        }
 
         this.formIsFilledArray = [];
         const obj1 = this.createdObject;
@@ -1130,6 +1131,8 @@ export default {
   },
   computed: {
     ...mapState([
+      'userData',
+      'userRoles',
       'isLoggedIn',
       'filterDataDefault',
       'objectDataSelected',
@@ -1244,27 +1247,239 @@ export default {
     },
     finalObjectData() {
       let data = {};
-      if (this.changedObject && this.changedObject.object) {
-        if (this.changedObject.object.value && this.changedObject.object.value.slug) {
+      if (this.changedObject) {
+        data.userId = this.userData.id;
+        if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
           data.objectType = this.changedObject.object.value.slug;
         }
-        if (this.changedObject.deal.value && this.changedObject.deal.value.slug) {
+        if (this.changedObject.deal && this.changedObject.deal.value && this.changedObject.deal.value.slug) {
           data.deal = this.changedObject.deal.value.slug;
         }
-        if (this.changedObject.address.value && this.changedObject.address.coords) {
+        if (this.changedObject.address && this.changedObject.address.value && this.changedObject.address.coords) {
           data.address = this.changedObject.address.coords;
         }
-        if (this.changedObject.district.value && this.changedObject.district.value.slug) {
+        if (this.changedObject.district && this.changedObject.district.value && this.changedObject.district.value.slug) {
           data.district = this.changedObject.district.value.slug;
         }
-        if (this.changedObject.onlineShow.value && this.changedObject.onlineShow.value.slug) {
+        if (this.changedObject.onlineShow && this.changedObject.onlineShow.value && this.changedObject.onlineShow.value.slug) {
           data.onlineShow = this.changedObject.onlineShow.value.slug;
         }
-        if (this.changedObject.description.value) {
+        if (this.changedObject.description && this.changedObject.description.value) {
           data.description = this.changedObject.description.value;
         }
-        if (this.changedObject.photoGallery.value) {
+        if (this.changedObject.photoGallery && this.changedObject.photoGallery.value) {
           data.photoGallery = this.createdObject.photoGallery.value;
+        }
+        if (this.changedObject.price && this.changedObject.price.value) {
+          data.price = this.createdObject.price.value;
+        }
+        if (this.changedObject.tarif && this.changedObject.tarif.value) {
+          data.tarif = this.createdObject.tarif.value.slug;
+        }
+        if (this.changedObject.deposit && this.changedObject.deposit.value) {
+          data.deposit = this.createdObject.deposit.value;
+        }
+        if (this.changedObject.rentType && this.changedObject.rentType.value) {
+          data.rentType = this.changedObject.rentType.value.slug;
+        }
+        if (this.changedObject.connectionWay && this.changedObject.connectionWay.value) {
+          if (this.createdObject.connectionWay.value.length === 2) {
+            data.connectionWay = 'both';
+          } else if (this.createdObject.connectionWay.value.length === 1) {
+            data.connectionWay = this.createdObject.connectionWay.value[0].slug;
+          }
+        }
+        if (this.changedObject.phone && this.changedObject.phone.value) {
+          data.phone = this.gFormatPhoneRevert(this.createdObject.phone.value.phone);
+        }
+        // App
+        if (this.changedObject.app) {
+          if (this.changedObject.app.type && this.changedObject.app.type.value) {
+            data.appType = this.changedObject.app.type.value.slug;
+          }
+          if (this.changedObject.app.view && this.changedObject.app.view.value) {
+            data.appView = this.changedObject.app.view.value.slug;
+          }
+          if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
+            data.appRoomsCount = this.changedObject.app.roomsCount.value.slug;
+          }
+          if (this.changedObject.app.floor && this.changedObject.app.floor.value) {
+            data.appFloor = this.changedObject.app.floor.value.slug;
+          }
+          if (this.changedObject.app.floorAll && this.changedObject.app.floorAll.value) {
+            data.appFloorAll = this.changedObject.app.floorAll.value.slug;
+          }
+          if (this.changedObject.app.area && this.changedObject.app.area.value) {
+            data.appArea = this.changedObject.app.area.value;
+          }
+          if (this.changedObject.app.areaLiving && this.changedObject.app.areaLiving.value) {
+            data.appAreaLiving = this.changedObject.app.areaLiving.value;
+          }
+          if (this.changedObject.app.areaKitchen && this.changedObject.app.areaKitchen.value) {
+            data.appAreaKitchen = this.changedObject.app.areaKitchen.value;
+          }
+          if (this.changedObject.app.year && this.changedObject.app.year.value) {
+            data.appYear = this.changedObject.app.year.value.slug;
+          }
+        }
+        // House
+        if (this.changedObject.house) {
+          if (this.changedObject.house.type && this.changedObject.house.type.value) {
+            data.houseType = this.changedObject.house.type.value.slug;
+          }
+          if (this.changedObject.house.roomsCount && this.changedObject.house.roomsCount.value) {
+            data.houseRoomsCount = this.changedObject.house.roomsCount.value.slug;
+          }
+          if (this.changedObject.house.view && this.changedObject.house.view.value) {
+            data.houseView = this.changedObject.house.view.value.slug;
+          }
+          if (this.changedObject.house.wall && this.changedObject.house.wall.value) {
+            data.houseWall = this.changedObject.house.wall.value.slug;
+          }
+          if (this.changedObject.house.year && this.changedObject.house.year.value) {
+            data.houseYear = this.changedObject.house.year.value.slug;
+          }
+          if (this.changedObject.house.distance && this.changedObject.house.distance.value) {
+            data.houseDistance = this.changedObject.house.distance.value.slug;
+          }
+          if (this.changedObject.house.areaLand && this.changedObject.house.areaLand.value) {
+            data.houseAreaLand = this.changedObject.house.areaLand.value;
+          }
+          if (this.changedObject.house.areaHouse && this.changedObject.house.areaHouse.value) {
+            data.houseAreaHouse = this.changedObject.house.areaHouse.value;
+          }
+          if (this.changedObject.house.floorAll && this.changedObject.house.floorAll.value) {
+            data.houseFloorAll = this.changedObject.house.floorAll.value.slug;
+          }
+        }
+        // Room
+        if (this.changedObject.room) {
+          if (this.changedObject.room.area && this.changedObject.room.area.value) {
+            data.roomArea = this.changedObject.room.area.value;
+          }
+          if (this.changedObject.room.year && this.changedObject.room.year.value) {
+            data.roomYear = this.changedObject.room.year.value.slug;
+          }
+          if (this.changedObject.room.floor && this.changedObject.room.floor.value) {
+            data.roomFloor = this.changedObject.room.floor.value.slug;
+          }
+          if (this.changedObject.room.floorAll && this.changedObject.room.floorAll.value) {
+            data.roomFloorAll = this.changedObject.room.floorAll.value.slug;
+          }
+          if (this.changedObject.room.roomsCount && this.changedObject.room.roomsCount.value) {
+            data.roomRoomsCount = this.changedObject.room.roomsCount.value.slug;
+          }
+          if (this.changedObject.room.view && this.changedObject.room.view.value) {
+            data.roomView = this.changedObject.room.view.value.slug;
+          }
+        }
+        // Garage
+        if (this.changedObject.garage) {
+          if (this.changedObject.garage.type && this.changedObject.garage.type.value) {
+            data.garageType = this.changedObject.garage.type.value.slug;
+          }
+          if (this.changedObject.garage.area && this.changedObject.garage.area.value) {
+            data.garageArea = this.changedObject.garage.area.value;
+          }
+          if (this.changedObject.garage.security && this.changedObject.garage.security.value) {
+            data.garageSecurity = this.changedObject.garage.security.slug;
+          }
+          if (this.changedObject.garage.garageType && this.changedObject.garage.garageType.value) {
+            data.garageGarageType = this.changedObject.garage.garageType.value.slug;
+          }
+          if (this.changedObject.garage.parkingType && this.changedObject.garage.parkingType.value) {
+            data.garageParkingType = this.changedObject.garage.parkingType.value.slug;
+          }
+        }
+        // Sector
+        if (this.changedObject.sector) {
+          if (this.changedObject.sector.area && this.changedObject.sector.area.value) {
+            data.sectorArea = this.changedObject.sector.area.value;
+          }
+          if (this.changedObject.sector.distance && this.changedObject.sector.distance.value) {
+            data.sectorDistance = this.changedObject.sector.distance.value.slug;
+          }
+          if (this.changedObject.sector.type && this.changedObject.sector.type.value) {
+            data.sectorType = this.changedObject.sector.type.value.slug;
+          }
+          if (this.changedObject.sector.facade && this.changedObject.sector.facade.value) {
+            data.sectorFacade = this.changedObject.sector.facade.value;
+          }
+          if (this.changedObject.sector.availabilityOfBuildings && this.changedObject.sector.availabilityOfBuildings.slug) {
+            data.sectorAvailabilityOfBuildings = this.changedObject.sector.availabilityOfBuildings.slug;
+          }
+        }
+        // Commercial
+        if (this.changedObject.commercial) {
+          if (this.changedObject.commercial.type && this.changedObject.commercial.type.value) {
+            data.commercialType = this.changedObject.commercial.type.value;
+          }
+          if (this.changedObject.commercial.area && this.changedObject.commercial.area.value) {
+            data.commercialArea = this.changedObject.commercial.area.value;
+          }
+          if (this.changedObject.commercial.year && this.changedObject.commercial.year.slug) {
+            data.commercialYear = this.changedObject.commercial.year.slug;
+          }
+          if (this.changedObject.commercial.class && this.changedObject.commercial.class.value) {
+            data.commercialClass = this.changedObject.commercial.class.value.slug;
+          }
+          if (this.changedObject.commercial.distance && this.changedObject.commercial.distance.slug) {
+            data.commercialDistance = this.changedObject.commercial.distance.slug;
+          }
+          if (this.changedObject.commercial.floor && this.changedObject.commercial.floor.value) {
+            data.commercialFloor = this.changedObject.commercial.floor.value.slug;
+          }
+          if (this.changedObject.commercial.floorAll && this.changedObject.commercial.floorAll.value) {
+            data.commercialFloorAll = this.changedObject.commercial.floorAll.value.slug;
+          }
+          if (this.changedObject.commercial.tenant && this.changedObject.commercial.tenant.value) {
+            data.commercialTenant = this.changedObject.commercial.tenant.value.slug;
+          }
+          if (this.changedObject.commercial.facade && this.changedObject.commercial.facade.value) {
+            data.commercialFacade = this.changedObject.commercial.facade.value;
+          }
+        }
+        // Comfort
+        if (this.changedObject.comfortType && this.changedObject.comfortType.value) {
+          data.comfortType = this.changedObject.comfortType.value.slug;
+        }
+        if (this.changedObject.bedCount && this.changedObject.bedCount.value) {
+          data.comfortBedCount = this.changedObject.bedCount.value.slug;
+        }
+        if (this.changedObject.sleepingPlacesCount && this.changedObject.sleepingPlacesCount.value) {
+          data.comfortSleepingPlacesCount = this.changedObject.sleepingPlacesCount.value.slug;
+        }
+        if (this.changedObject.roomMultimedia && this.changedObject.roomMultimedia.value) {
+          data.comfortRoomMultimedia = [];
+          this.changedObject.roomMultimedia.value.forEach(
+            item => {
+              data.comfortRoomMultimedia.push(item.slug);
+            }
+          );
+        }
+        if (this.changedObject.roomEquipment && this.changedObject.roomEquipment.value) {
+          data.comfortRoomEquipment = [];
+          this.changedObject.roomEquipment.value.forEach(
+            item => {
+              data.comfortRoomEquipment.push(item.slug);
+            }
+          );
+        }
+        if (this.changedObject.roomComfort && this.changedObject.roomComfort.value) {
+          data.comfortRoom = [];
+          this.changedObject.roomComfort.value.forEach(
+            item => {
+              data.comfortRoom.push(item.slug);
+            }
+          );
+        }
+        if (this.changedObject.roomAdditional && this.changedObject.roomAdditional.value) {
+          data.comfortRoomAdditional = [];
+          this.changedObject.roomAdditional.value.forEach(
+            item => {
+              data.comfortRoomAdditional.push(item.slug);
+            }
+          );
         }
       }
       console.log('data ::', data);
@@ -1272,15 +1487,17 @@ export default {
     },
   },
   created() {
+    console.log('userData ::', this.userData);
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
     this.createdObject.address.value = null;
     const toDayDate = this.gConvertDate(new Date());
-    this.createdObject.date = toDayDate;
+    // this.createdObject.date = toDayDate;
+    // this.createdObject.date = new Date();
   },
   methods: {
     objectDataForSending(value) {
       this.changedObject = JSON.parse(JSON.stringify(value));
-      if (this.changedObject.object.value && this.changedObject.object.value.slug) {
+      if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
         this.filterDataDefaultClone.object.forEach(
           item => {
             // console.log('>> item', item.slug, this.changedObject.object.value.slug);
