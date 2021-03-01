@@ -125,14 +125,15 @@ router.post(
         imagesArray.push(imagePath + item);
       }
     );
-    // console.log(' ');
-    // console.log('  >> imagesArray');
-    // console.log(imagesArray);
-    // console.log(' ');
+    console.log(' ');
+    console.log('  >> imagesArray');
+    console.log(imagesArray);
+    console.log(' ');
     console.log(' ');
     console.log('  >> object');
     console.log(typeof object);
     console.log(' ');
+    object.photoGallery = imagesArray;
 
     await Item.create(object).then(
       data => {

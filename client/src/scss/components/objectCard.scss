@@ -59,6 +59,10 @@ $UPLOAD-IMAGE-WIDTH: 234px;
         flex-grow: 1;
         height: 100%;
       }
+
+      &_district {
+        justify-content: flex-start;
+      }
     }
   }
 
@@ -364,11 +368,19 @@ $UPLOAD-IMAGE-WIDTH: 234px;
     text-align: right;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     color: $COLOR-BASE;
     margin: 0;
     width: 100%;
+
+    &_number {
+      justify-content: flex-start;
+    }
+
+    &_free {
+      justify-content: space-between;
+    }
   }
 
   &__agency {
