@@ -21,6 +21,7 @@ const mutations = {
     state.previousPage = data;
   },
   updateMyObjectsState(state, data) {
+    // console.log('mutations.js : updateMyObjectsState =>', data);
     state.myObjects = data;
   },
   updateFederalRegionsAlphabeticalState(state, data) {

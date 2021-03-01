@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="userDataComputed"
     id="myObjectsSubPage"
     class="my-objects-sub-page"
   >
@@ -10,7 +9,10 @@
       </h3>
     </header>
 
-    <div class="template-page__content">
+    <div
+      class="template-page__content"
+      v-if="myObjects.length"
+    >
       <switcher
         v-if="arrayWithCountedStatuses"
         class="add-object-page__switcher"
@@ -39,7 +41,7 @@
       </div>
 
       <grid
-        v-if="selectedObjects"
+        v-if="selectedObjects.length"
         :propGridView="'net'"
         :propGridItems="selectedObjects"
         :propGridSorting="true"
@@ -47,12 +49,21 @@
       />
     </div>
 
+    <div
+      class="template-page__content"
+      v-else
+    >
+      <p class="paragraph">
+        Данных нет
+      </p>
+    </div>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import grid from '../../grid.vue';
 import multiselect from 'vue-multiselect';
@@ -75,6 +86,9 @@ export default {
     }
   },
   watch: {
+    selectedStatus(value) {
+      console.log('value ::', value);
+    },
     selectedEmployees(value) {
       // console.log('value ::', value);
       let objectsArray = [];
@@ -85,7 +99,7 @@ export default {
           }
         }
       );
-      console.log('asd ::', objectsArray);
+      console.log('myObjects.vue : asd ::', objectsArray);
       this.updateObjects();
     },
   },
@@ -96,6 +110,9 @@ export default {
       'objectsStatuses',
       'favouriteObjects',
     ]),
+    ...mapActions([
+      'getMyObjects',
+    ]),
     selectedStatus: {
       cache: false,
       get() {
@@ -104,15 +121,14 @@ export default {
       set(value) {
         this.selectedStatusValue = value;
         this.updateObjects();
-        // console.log('selectedObjects ::', this.selectedObjects);
       }
     },
-    userDataComputed() {
-      if (this.userData) {
-        this.checkUsersObjects(this.userData);
-      }
-      return this.userData;
-    },
+    // userDataComputed() {
+    //   if (this.userData) {
+    //     this.checkUsersObjects(this.userData);
+    //   }
+    //   return this.userData;
+    // },
     urlGetObjectsByParentId() {
       const host = this.getHost();
       const url = `${host.api}` + '/objects/get-objects-by-parent-id';
@@ -152,12 +168,10 @@ export default {
   },
   methods: {
     updateObjects() {
-      console.log('updateObjects ::');
       this.updateObjectsDependsOnStatus();
       this.updateObjectsDependsOnEmployee();
     },
     updateObjectsDependsOnEmployee() {
-      console.log('this.selectedEmployees ::', this.selectedEmployees);
       if (this.selectedEmployees.slug) {
         const objectsArray = this.selectedObjects.filter(
           item => {
@@ -168,12 +182,9 @@ export default {
             } else {
               return false;
             }
-            console.log('item ::', item.user.contact.slug);
-            console.log('employee ::', this.selectedEmployees);
           }
         );
         this.selectedObjects = objectsArray;
-        console.log('objectsArray ::', objectsArray);
       }
     },
     updateObjectsDependsOnStatus() {
@@ -211,6 +222,7 @@ export default {
       for (const key in objects) {
         if (!objects.hasOwnProperty(key)) continue;
         const subObj = objects[key];
+        console.log('myObjects.vue : allObjects !::', this.allObjects);
         this.allObjects.push(subObj);
         if (subObj.status === 0) {
           this.objectsGroupedByStatuses[0].array.push(subObj);
@@ -259,7 +271,12 @@ export default {
       }
     },
   },
-  mounted() {
+  async mounted() {
+    const allObjects = [await this.getMyObjects];
+    if (allObjects.length) {
+      console.log('myObjects.vue : myObjects !!! ::', this.allObjects);
+      this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
+    }
     // If we got objects already.
     if (this.myObjects.length) {
       this.selectedStatus = 'all';
