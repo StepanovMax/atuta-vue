@@ -26,6 +26,7 @@
           {'object-card__wrap-img_list-view': propObjectView === 'list'},
           {'object-card__wrap-img-sample_default':
             (
+              dataObjectData.photoGallery &&
               dataObjectData.photoGallery.length === 0
             )
           }
@@ -43,7 +44,7 @@
           title="Перейти подробнее 1"
         >
           <img
-            v-if="dataObjectData.photoGallery.length === 0"
+            v-if="dataObjectData.photoGallery && dataObjectData.photoGallery.length === 0"
             class="img object-card__img"
             :src="hostResulted"
             alt=""
@@ -115,7 +116,8 @@
             <!-- app -->
             <div
               v-if="
-                dataObjectData.object.slug === 'app'
+                dataObjectData.objectType &&
+                dataObjectData.objectType.slug === 'app'
               "
               class="object-card__wrap-info-details"
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
@@ -141,7 +143,7 @@
               </div>
               <div
                 v-if="
-                  dataObjectData.object.slug === 'app'
+                  dataObjectData.objectType.slug === 'app'
                 "
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
@@ -176,7 +178,7 @@
             <!-- house -->
             <div
               v-if="
-                dataObjectData.object.slug === 'house'
+                dataObjectData.objectType.slug === 'house'
               "
               class="object-card__wrap-info-details"
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
@@ -233,7 +235,7 @@
             <!-- room -->
             <div
               v-if="
-                dataObjectData.object.slug === 'room'
+                dataObjectData.objectType.slug === 'room'
               "
               class="object-card__wrap-info-details"
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
@@ -290,7 +292,7 @@
 
             <!-- garage -->
             <div
-              v-if="dataObjectData.object.slug === 'garage'"
+              v-if="dataObjectData.objectType.slug === 'garage'"
               class="object-card__wrap-info-details"
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
             >
@@ -348,7 +350,7 @@
             </div>
 
             <!-- sector -->
-            <div v-if="dataObjectData.object.slug === 'sector'"
+            <div v-if="dataObjectData.objectType.slug === 'sector'"
               class="object-card__wrap-info-details"
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
             >
@@ -386,11 +388,11 @@
 
             <!-- commercial -->
             <div
-              v-if="dataObjectData.object.slug === 'commercial'"
+              v-if="dataObjectData.objectType.slug === 'commercial'"
               class="object-card__wrap-info-details"
               :class="[
                 {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
-                {'object-card__wrap-info-details_grid': dataObjectData.object.slug === 'commercial'}
+                {'object-card__wrap-info-details_grid': dataObjectData.objectType.slug === 'commercial'}
               ]"
             >
               <div v-if="dataObjectData.type"
@@ -400,7 +402,7 @@
                 "
                 :class="[
                   {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.objectType.slug === 'commercial'}
                 ]"
               >
                 <span>
@@ -415,7 +417,7 @@
                 "
                 :class="[
                   {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.objectType.slug === 'commercial'}
                 ]"
               >
                 <span
@@ -441,7 +443,7 @@
               </div>
               <div
                 v-if="
-                  dataObjectData.object.slug === 'commercial'
+                  dataObjectData.objectType.slug === 'commercial'
                   && dataObjectData.type.slug !== 'sector'
                   && dataObjectData.tenant
                 "
@@ -451,7 +453,7 @@
                 "
                 :class="[
                   {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.objectType.slug === 'commercial'}
                 ]"
               >
                 <span
@@ -476,7 +478,7 @@
                 "
                 :class="[
                   {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.objectType.slug === 'commercial'}
                 ]"
               >
                 <span
@@ -499,7 +501,7 @@
             <!-- last -->
             <div
               v-if="
-                dataObjectData.object.slug === 'commercial'
+                dataObjectData.objectType.slug === 'commercial'
                 && dataObjectData.type.slug === 'sector'
               "
               class="object-card__wrap-info-details object-card__wrap-info-details_last"
@@ -515,7 +517,7 @@
                 "
                 :class="[
                   {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
-                  {'object-card__wrap-info-details-item_grid': dataObjectData.object.slug === 'commercial'}
+                  {'object-card__wrap-info-details-item_grid': dataObjectData.objectType.slug === 'commercial'}
                 ]"
               >
                 <span v-if="dataObjectData.tenant.slug === 'yes'">
