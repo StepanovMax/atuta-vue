@@ -23,15 +23,17 @@ const filterDataDefault = {
     {
       label: 'Поселений(ИЖС)',
       slug: 'settlements',
+      labelShort: 'ИЖС',
     },
     {
       label: 'Сельсхозназначения(СНТ, ДНП)',
       slug: 'agricultural',
-      labelShort: 'С/х (СНТ, ДНП)',
+      labelShort: 'С/х',
     },
     {
       label: 'Промназначения',
       slug: 'industrial',
+      labelShort: 'Пром',
     },
   ],
   district: [],
@@ -93,6 +95,7 @@ const filterDataDefault = {
     {
       slug: 'commercial',
       label: 'Коммерческая недвижимость',
+      labelShort: 'Коммерция',
     },
   ],
   garage: [
@@ -103,6 +106,7 @@ const filterDataDefault = {
     {
       slug: 'parking',
       label: 'Машиноместо',
+      labelShort: 'Машино- место',
     },
   ],
   garageTypes: [
@@ -114,28 +118,34 @@ const filterDataDefault = {
     {
       slug: 'brick',
       label: 'Кирпичный',
+      labelShort: 'Кирпич',
     },
     {
       slug: 'irony',
       label: 'Железный',
+      labelShort: 'Железо',
     },
   ],
   parkingTypes: [
     {
       slug: 'multilevelParking',
       label: 'Многоуровневый паркинг',
+      labelShort: 'Мн-ур. паркинг',
     },
     {
       slug: 'undergroundParking',
       label: 'Подземный паркинг',
+      labelShort: 'Под. паркинг',
     },
     {
       slug: 'сoveredParking',
       label: 'Крытая стоянка',
+      labelShort: 'Кр. стоянка',
     },
     {
       slug: 'openParking',
       label: 'Открытая стоянка',
+      labelShort: 'Отк.стоянка',
     },
   ],
   security: [
