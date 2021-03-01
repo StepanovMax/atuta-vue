@@ -147,4 +147,50 @@ router.post(
   }
 );
 
+
+router.get(
+  '/getAll',
+  async (req, res) => {
+    // Extract the token from cookies.
+    const accessToken = req.cookies.accessToken;
+    console.log(' ');
+    console.log('   >> [Logout] accessToken ::', accessToken);
+    console.log(' ');
+    // If the accessToken is not a null.
+    if (accessToken) {
+      // Checking and decoding the token.
+      const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+      try {
+        let myObjects = [];
+        // Find the object in DB.
+        await Item.findAll({
+          where: {
+            userId: decodedAccessToken.id,
+          }
+        })
+          .then(
+            objects => {
+              objects.forEach(
+                item => {
+                  console.log('item =>', item);
+                  myObjects.push(item.dataValues);
+                }
+              );
+              console.log('myObjects =>', myObjects);
+              res.status(200).send(myObjects);
+            }
+          );
+      } catch(error) {
+        console.error('Error [Backend :: object.controller :: getAll] ::', error);
+      }
+    }
+
+    console.log(' ');
+    console.log('  >> myObjects');
+    // console.log(myObjects);
+    console.log(' ');
+  }
+);
+
 export default router;

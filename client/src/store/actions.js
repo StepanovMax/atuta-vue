@@ -144,6 +144,30 @@ const actions = {
       return false;
     }
   },
+  getMyObjects: async (context, commit, dispatch) => {
+    try {
+      // Get user emplyees.
+      return await transport.get(
+        process.env.host_api + '/object/getAll'
+      )
+        .then(
+          response => {
+            console.log('actions.js : response.data =>', response.data);
+            context.commit('updateMyObjectsState', response.data);
+            return response.data;
+          }
+        )
+          .catch(
+            error => {
+              console.error('[axios getMyObjects error] ::', error);
+              return false;
+            }
+          );
+    } catch(error) {
+      console.error('[try/catch getMyObjects error] ::', error);
+      return false;
+    }
+  },
 }
 
 export default actions;
