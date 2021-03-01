@@ -1038,9 +1038,9 @@ export default {
         this.createdObject = value;
         // console.log('createdObject WATCH this.createdObject ::', this.createdObject);
         if (this.userData.role === 'personal') {
-          this.objectData.agency.name = this.userRoles['personal'].label;
+          this.objectData.agency.name = this.userRoles[0].label;
         } else if (this.userData.role === 'agent') {
-          this.objectData.agency.name = this.userRoles['agent'].label;
+          this.objectData.agency.name = this.userRoles[1].label;
         } else {
           this.objectData.agency.name = this.userData.name;
         }
@@ -1249,17 +1249,23 @@ export default {
       let data = {};
       if (this.changedObject) {
         data.userId = this.userData.id;
+        const timestampNow = new Date().getTime() / 1000 | 0;
+        data.status = 'active';
+        data.createdDate = timestampNow;
         if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
           data.objectType = this.changedObject.object.value.slug;
+          data.objectTypeLabel = this.changedObject.object.value.label;
+          data.objectTypeLabelShort = this.changedObject.object.value.labelShort;
         }
         if (this.changedObject.deal && this.changedObject.deal.value && this.changedObject.deal.value.slug) {
           data.deal = this.changedObject.deal.value.slug;
         }
         if (this.changedObject.address && this.changedObject.address.value && this.changedObject.address.coords) {
-          data.address = this.changedObject.address.coords;
+          data.addressCoords = this.changedObject.address.coords;
+          data.addressName = this.changedObject.address.value;
         }
         if (this.changedObject.district && this.changedObject.district.value && this.changedObject.district.value.slug) {
-          data.district = this.changedObject.district.value.slug;
+          data.district = this.changedObject.district.value.label;
         }
         if (this.changedObject.onlineShow && this.changedObject.onlineShow.value && this.changedObject.onlineShow.value.slug) {
           data.onlineShow = this.changedObject.onlineShow.value.slug;
@@ -1376,7 +1382,29 @@ export default {
         // Garage
         if (this.changedObject.garage) {
           if (this.changedObject.garage.type && this.changedObject.garage.type.value) {
-            data.garageType = this.changedObject.garage.type.value.slug;
+            data.garageType = this.changedObject.garage.type.value.label;
+            if (this.changedObject.garage.type.value.labelShort) {
+              data.garageTypeShort = this.changedObject.garage.type.value.labelShort;
+            }
+          }
+          if (
+              this.changedObject.garage.type
+              && this.changedObject.garage.type.value
+              && this.changedObject.garage.type.value.slug === 'garage'
+              && this.changedObject.garage.garageType
+              && this.changedObject.garage.garageType.value
+          ) {
+            data.garageSubType = this.changedObject.garage.garageType.value.label;
+            data.garageSubTypeShort = this.changedObject.garage.garageType.value.labelShort;
+          } else if (
+            this.changedObject.garage.type
+            && this.changedObject.garage.type.value
+            && this.changedObject.garage.type.value.slug === 'parking'
+            && this.changedObject.garage.parkingType
+            && this.changedObject.garage.parkingType.value
+          ) {
+            data.garageSubType = this.changedObject.garage.parkingType.value.label;
+            data.garageSubTypeShort = this.changedObject.garage.parkingType.value.labelShort;
           }
           if (this.changedObject.garage.area && this.changedObject.garage.area.value) {
             data.garageArea = this.changedObject.garage.area.value;
@@ -1384,17 +1412,14 @@ export default {
           if (this.changedObject.garage.security && this.changedObject.garage.security.value) {
             data.garageSecurity = this.changedObject.garage.security.slug;
           }
-          if (this.changedObject.garage.garageType && this.changedObject.garage.garageType.value) {
-            data.garageGarageType = this.changedObject.garage.garageType.value.slug;
-          }
-          if (this.changedObject.garage.parkingType && this.changedObject.garage.parkingType.value) {
-            data.garageParkingType = this.changedObject.garage.parkingType.value.slug;
-          }
         }
         // Sector
         if (this.changedObject.sector) {
           if (this.changedObject.sector.area && this.changedObject.sector.area.value) {
             data.sectorArea = this.changedObject.sector.area.value;
+            if (this.changedObject.sector.type.value.labelShort) {
+              data.sectorTypeShort = this.changedObject.sector.type.value.labelShort;
+            }
           }
           if (this.changedObject.sector.distance && this.changedObject.sector.distance.value) {
             data.sectorDistance = this.changedObject.sector.distance.value.slug;
@@ -1412,7 +1437,8 @@ export default {
         // Commercial
         if (this.changedObject.commercial) {
           if (this.changedObject.commercial.type && this.changedObject.commercial.type.value) {
-            data.commercialType = this.changedObject.commercial.type.value;
+            data.commercialTypeSlug = this.changedObject.commercial.type.value.slug;
+            data.commercialTypeLabel = this.changedObject.commercial.type.value.label;
           }
           if (this.changedObject.commercial.area && this.changedObject.commercial.area.value) {
             data.commercialArea = this.changedObject.commercial.area.value;

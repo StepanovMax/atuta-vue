@@ -35,7 +35,6 @@
           :key="'key-' + item.id + '-' + index"
         >
           <cardObject
-            v-if="propItemType === 'object'"
             :propObjectView="dataGridView"
             :key="'key-' + item.id + '-' + index"
             :propObjectData="item"
@@ -118,6 +117,7 @@ export default {
     },
   },
   beforeMount() {
+    console.log('propGridItems ::', this.propGridItems);
     this.dataGridItems = this.propGridItems;
   },
 };

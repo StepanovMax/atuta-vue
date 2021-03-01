@@ -86,9 +86,6 @@ export default {
     }
   },
   watch: {
-    selectedStatus(value) {
-      console.log('value ::', value);
-    },
     selectedEmployees(value) {
       // console.log('value ::', value);
       let objectsArray = [];
@@ -167,6 +164,27 @@ export default {
     },
   },
   methods: {
+    addClientNameToObject() {
+      this.myObjects.map(
+        item => {
+          if (this.userData.role === 'personal') {
+            item.user = {
+              name: 'Собственник'
+            }
+          } else if (this.userData.role === 'agent') {
+            item.user = {
+              name: 'Агент'
+            }
+          } else {
+            item.user = {
+              name: this.userData.name
+            }
+          }
+          return item;
+        }
+      );
+      console.log('this.myObjects >>>', this.myObjects);
+    },
     updateObjects() {
       this.updateObjectsDependsOnStatus();
       this.updateObjectsDependsOnEmployee();
@@ -224,15 +242,15 @@ export default {
         const subObj = objects[key];
         console.log('myObjects.vue : allObjects !::', this.allObjects);
         this.allObjects.push(subObj);
-        if (subObj.status === 0) {
+        if (subObj.status === 'onModeration') {
           this.objectsGroupedByStatuses[0].array.push(subObj);
-        } else if (subObj.status === 1) {
+        } else if (subObj.status === 'active') {
           this.objectsGroupedByStatuses[1].array.push(subObj);
-        } else if (subObj.status === 2) {
+        } else if (subObj.status === 'awaitingForPayment') {
           this.objectsGroupedByStatuses[2].array.push(subObj);
-        } else if (subObj.status === 3) {
+        } else if (subObj.status === 'declined') {
           this.objectsGroupedByStatuses[3].array.push(subObj);
-        } else if (subObj.status === 4) {
+        } else if (subObj.status === 'completed') {
           this.objectsGroupedByStatuses[4].array.push(subObj);
         }
       }
@@ -275,6 +293,7 @@ export default {
     const allObjects = [await this.getMyObjects];
     if (allObjects.length) {
       console.log('myObjects.vue : myObjects !!! ::', this.allObjects);
+      this.addClientNameToObject();
       this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
     }
     // If we got objects already.

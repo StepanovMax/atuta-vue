@@ -2,11 +2,18 @@
 module.exports = (sequelize, Sequelize) => {
 
   const Item = sequelize.define('item', {
-    userName: {
+    status: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the status'
+      }
+    },
+    createdDate: {
       type: Sequelize.DECIMAL,
       allowNull: {
         args: false,
-        msg: 'Please enter the user number'
+        msg: 'Please enter the date of the creation'
       }
     },
     objectType: {
@@ -16,6 +23,20 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the object type'
       }
     },
+    objectTypeLabel: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the object type label'
+      }
+    },
+    objectTypeLabelShort: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the object type label short',
+      }
+    },
     deal: {
       type: Sequelize.STRING,
       allowNull: {
@@ -23,11 +44,18 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the deal type'
       }
     },
-    address: {
+    addressCoords: {
       type: Sequelize.ARRAY(Sequelize.FLOAT),
       allowNull: {
         args: false,
-        msg: 'Please enter the address'
+        msg: 'Please enter the address coords'
+      }
+    },
+    addressName: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the address name'
       }
     },
     district: {
@@ -303,6 +331,26 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the garage type value',
       }
     },
+    garageTypeShort: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
+    garageSubType: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the garage sub type value',
+      }
+    },
+    garageSubTypeShort: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the garage sub type short value',
+      }
+    },
     garageArea: {
       type: Sequelize.STRING,
       allowNull: {
@@ -317,25 +365,17 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the garage security value',
       }
     },
-    garageGarageType: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the garage garage type value',
-      }
-    },
-    garageParkingType: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the garage parking type value',
-      }
-    },
     sectorType: {
       type: Sequelize.STRING,
       allowNull: {
         args: false,
         msg: 'Please enter the sector type value',
+      }
+    },
+    sectorTypeShort: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
       }
     },
     sectorArea: {
@@ -363,11 +403,18 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       }
     },
-    commercialType: {
+    commercialTypeSlug: {
       type: Sequelize.STRING,
       allowNull: {
         args: false,
-        msg: 'Please enter the commercial type value',
+        msg: 'Please enter the commercial type value slug',
+      }
+    },
+    commercialTypeLabel: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the commercial type value label',
       }
     },
     commercialArea: {
