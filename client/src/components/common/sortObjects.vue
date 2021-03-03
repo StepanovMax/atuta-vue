@@ -46,7 +46,10 @@
         />
       </button>
     </li>
-    <li class="sort-objects__item">
+    <li
+      v-if="false"
+      class="sort-objects__item"
+    >
       <button
         class="
           btn
@@ -167,10 +170,10 @@ export default {
       if (this.sortWayDate === 'less') {
         this.dataObjectsForSorting.sort(
           (a, b) => {
-            if (parseInt(a.date) < parseInt(b.date)) {
+            if (parseInt(a.createdDate) < parseInt(b.createdDate)) {
               return -1;
             }
-            if (parseInt(a.date) > parseInt(b.date)) {
+            if (parseInt(a.createdDate) > parseInt(b.createdDate)) {
               return 1;
             }
             return 0
@@ -180,10 +183,10 @@ export default {
       } else if (this.sortWayDate === 'more') {
         this.dataObjectsForSorting.sort(
           (a, b) => {
-            if (parseInt(a.date) < parseInt(b.date)) {
+            if (parseInt(a.createdDate) < parseInt(b.createdDate)) {
               return 1;
             }
-            if (parseInt(a.date) > parseInt(b.date)) {
+            if (parseInt(a.createdDate) > parseInt(b.createdDate)) {
               return -1;
             }
             return 0
