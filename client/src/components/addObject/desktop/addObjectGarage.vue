@@ -195,7 +195,12 @@
           form__title
           form__title_add-object
         ">
-          Площадь машиноместа
+          <span>
+            Площадь машиноместа
+          </span>
+          <span v-if="propCreatedObjectGarage.area.required">
+            *
+          </span>
         </h3>
         <div class="
           form__row
