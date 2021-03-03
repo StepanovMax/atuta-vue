@@ -516,6 +516,9 @@
               createdObject.object.value.slug === 'app'
               || createdObject.object.value.slug === 'room'
               || createdObject.object.value.slug === 'house'
+              || createdObject.object.value.slug === 'garage'
+              || createdObject.object.value.slug === 'sector'
+              || createdObject.object.value.slug === 'commercial'
             )
           "
           class="form__row"
@@ -855,6 +858,22 @@
 
       </div>
 
+      <div
+        v-local
+        v-if="true && formIsFilledArray"
+        class="local-output-data"
+      >
+        <h6 class="
+          title
+          title_h6
+          title_bold
+        ">
+          formIsFilledArray
+        </h6>
+        <pre>
+          {{ formIsFilledArray }}
+        </pre>
+      </div>
 
       <div
         v-local
