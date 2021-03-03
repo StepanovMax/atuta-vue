@@ -677,7 +677,9 @@
                     {{ dataObjectData.id }}
                   </span>
                 </span>
-                <span v-if="dataObjectData.createdDate">
+                <span
+                  v-if="dataObjectData.createdDate"
+                >
                   {{ gTimestampToDateConverter(dataObjectData.createdDate) }}
                 </span>
               </p>
