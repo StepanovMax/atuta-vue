@@ -96,8 +96,8 @@ storageConfig = multer.diskStorage({
     // callback(null, '../client/uploads');
   },
   filename: function (req, file, callback) {
-    console.log(' ');
-    console.log('  >> FILE', file);
+    // console.log(' ');
+    // console.log('  >> FILE', file);
     const name = 'object-' + Date.now();
     imagesArrayCutted.push(name);
     callback(null, name);
@@ -125,25 +125,26 @@ router.post(
         imagesArray.push(imagePath + item);
       }
     );
-    console.log(' ');
-    console.log('  >> imagesArray');
-    console.log(imagesArray);
-    console.log(' ');
-    console.log(' ');
-    console.log('  >> object');
-    console.log(typeof object);
-    console.log(' ');
     object.photoGallery = imagesArray;
 
-    await Item.create(object).then(
-      data => {
-        res.status(200).send({
-          result: true,
-          data: data,
-        });
-        imagesArray = imagesArrayCutted = [];
-      }
-    );
+    let result;
+    try {
+      result = await Item.create(object).then(
+        data => {
+          res.status(200).send({
+            result: true,
+            data: data,
+          });
+          imagesArray = imagesArrayCutted = [];
+          return data;
+        }
+      );
+    } catch(error) {
+      console.log(' ');
+      console.log('catch ::', error);
+      console.log(' ');
+      res.status(200).send(false);
+    }
 
   }
 );

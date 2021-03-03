@@ -812,6 +812,7 @@
               >
                 Разместить объявление
               </button>
+
               <button
                 v-else
                 class="
@@ -827,6 +828,29 @@
               </button>
             </div>
           </div>
+
+          <p
+            v-if="showSuccessMessageOnObjectCreating"
+            class="
+              paragraph
+              paragraph_success
+              paragraph_align-right
+            "
+          >
+            Объект был успешно опубликован.
+          </p>
+
+          <p
+            v-if="showErrorMessageOnObjectCreating"
+            class="
+              paragraph
+              paragraph_success
+              paragraph_align-right
+            "
+          >
+            При публикации объекта произошла ошибка.
+            <br>Пожалуйста, повторите публикацию ещё раз.
+          </p>
         </div>
 
       </div>
@@ -926,6 +950,8 @@ export default {
   },
   data() {
     return {
+      showSuccessMessageOnObjectCreating: false,
+      showErrorMessageOnObjectCreating: false,
       blobImage: {},
       changedObject: [],
       fieldsForValidating: [],
@@ -1806,6 +1832,8 @@ export default {
     async sendObject() {
       // Trying to send user info.
       try {
+        this.showSuccessMessageOnObjectCreating = false;
+        this.showErrorMessageOnObjectCreating = false;
         const formData = new FormData();
         const data = JSON.parse(JSON.stringify(this.finalObjectData));
         if (this.finalObjectData.photoGallery && this.finalObjectData.photoGallery.length) {
@@ -1827,7 +1855,6 @@ export default {
         )
           .then(
             response => {
-              console.log('/object/create ::', response);
               return response.data;
             }
           )
@@ -1838,7 +1865,11 @@ export default {
               }
             );
         if (objectDataResult) {
-          console.log('objectDataResult ::', objectDataResult);
+          this.showSuccessMessageOnObjectCreating = true;
+          this.showErrorMessageOnObjectCreating = false;
+        } else {
+          this.showSuccessMessageOnObjectCreating = false;
+          this.showErrorMessageOnObjectCreating = true;
         }
       } catch(error) {
         console.error('Something went wrong with object creation ::', error);
