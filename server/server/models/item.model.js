@@ -184,7 +184,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     appRoomsCount: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: false,
         msg: 'Please enter the app rooms count value',
