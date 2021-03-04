@@ -237,7 +237,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     houseRoomsCount: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: false,
         msg: 'Please enter the house rooms count value',
@@ -264,7 +264,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     houseDistance: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: true,
       }
@@ -318,7 +318,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     roomRoomsCount: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: false,
         msg: 'Please enter the rooms count value',
@@ -386,7 +386,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     sectorDistance: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: true,
       }
@@ -437,7 +437,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     commercialDistance: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: true,
       }

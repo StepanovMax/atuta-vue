@@ -196,12 +196,12 @@
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
-                  {{ dataObjectData.houseRoomsCount }}
+                  {{ dataObjectData.houseRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.houseRoomsCount != 'studio'
-                    && dataObjectData.houseRoomsCount != 'freePlan'
+                    dataObjectData.houseRoomsCount.slug != 'studio'
+                    && dataObjectData.houseRoomsCount.slug != 'freePlan'
                   "
                 >
                   &nbsp;комн.
@@ -247,18 +247,18 @@
             >
               <div
                 v-if="
-                  dataObjectData.appRoomsCount
+                  dataObjectData.roomRoomsCount
                 "
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
-                  {{ dataObjectData.appRoomsCount }}
+                  {{ dataObjectData.roomRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.appRoomsCount != 'studio'
-                    && dataObjectData.appRoomsCount != 'freePlan'
+                    dataObjectData.roomRoomsCount.slug != 'studio'
+                    && dataObjectData.roomRoomsCount.slug != 'freePlan'
                   "
                 >
                   &nbsp;комн.
