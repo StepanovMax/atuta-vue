@@ -129,12 +129,7 @@
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
-                <span
-                  v-if="
-                    dataObjectData.appRoomsCount.slug === 'studio'
-                    || dataObjectData.appRoomsCount.slug === 'freePlan'
-                  "
-                >
+                <span>
                   {{ dataObjectData.appRoomsCount.label }}
                 </span>
                 <span
