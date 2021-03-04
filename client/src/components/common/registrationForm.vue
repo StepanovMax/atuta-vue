@@ -1085,12 +1085,13 @@ export default {
                     return false;
                   }
                 );
-            // if (sendEmployeesDataResult) {
-            //   this.editResult = true;
-            //   this.changedUserData = {};
-            //   this.formChanged = false;
-            //   this.$store.commit('updateEmployeesDataState', sendEmployeesDataResult);
-            // }
+            if (sendEmployeesDataResult) {
+              this.editResult = true;
+              this.changedUserData = {};
+              this.formChanged = false;
+              this.$store.commit('updateUserEmployeesDataState', sendEmployeesDataResult);
+              await this.$store.dispatch('getEmployeeByUserID');
+            }
           } catch(error) {
             console.error('[Employee edit error] ::', error);
           }
