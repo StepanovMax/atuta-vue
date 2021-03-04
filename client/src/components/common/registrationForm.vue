@@ -410,8 +410,8 @@
           (
             userDataLocal.role
             && (
-              userDataLocal.role === 'agency'
-              || userDataLocal.role === 'builder'
+              userDataLocal.role.slug === 'agency'
+              || userDataLocal.role.slug === 'builder'
             )
           )
         "
@@ -665,7 +665,7 @@
 
         <div
           v-local
-          v-if="true && userData"
+          v-if="true && userDataLocal"
           class="local-output-data"
         >
           <h6 class="
@@ -673,10 +673,10 @@
             title_h6
             title_bold
           ">
-            userData
+            userDataLocal
           </h6>
           <pre>
-            {{ userData }}
+            {{ userDataLocal }}
           </pre>
         </div>
 
@@ -1143,8 +1143,9 @@ export default {
     addCheckedPropertyForUserRoles(role) {
       this.userRoles.forEach(
         item => {
-          const itemModified = item;
+          let itemModified = item;
           if (itemModified.slug === role) {
+            console.log('role ::', role);
             itemModified.checked = true;
             this.userDataLocal.role = itemModified;
           } else {
@@ -1456,7 +1457,8 @@ export default {
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
+    this.addCheckedPropertyForUserRoles(this.userData.role);
+    // this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
   },
   async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
