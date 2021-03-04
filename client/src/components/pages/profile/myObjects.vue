@@ -23,19 +23,23 @@
       />
 
       <div
+        v-if="
+          userData.role === 'builder'
+          || userData.role === 'agency'
+        "
         class="sub-filter"
       >
         <multiselect
           class="multiselect_employee"
           v-model="selectedEmployees"
-          :options="employeesList"
+          :options="userEmployees"
           :show-labels="false"
           :allow-empty="true"
           :close-on-select="true"
           :multiple="false"
           :searchable="true"
-          label="label"
-          track-by="phoneNumber"
+          label="name"
+          track-by="phone"
           placeholder="Сотрудники"
         />
       </div>
@@ -87,7 +91,7 @@ export default {
   },
   watch: {
     selectedEmployees(value) {
-      // console.log('value ::', value);
+      console.log('value ::', value);
       let objectsArray = [];
       objectsArray = this.selectedObjects.filter(
         item => {
@@ -104,6 +108,7 @@ export default {
     ...mapState([
       'userData',
       'myObjects',
+      'userEmployees',
       'objectsStatuses',
       'favouriteObjects',
     ]),
@@ -132,7 +137,7 @@ export default {
       return url;
     },
     employeesList() {
-      // console.log('employeesList ::');
+      console.log('userEmployees ::', this.userEmployees);
       let selectedEmployees = [];
       selectedEmployees.push({
         label: 'Все',
@@ -190,18 +195,19 @@ export default {
       this.updateObjectsDependsOnEmployee();
     },
     updateObjectsDependsOnEmployee() {
-      if (this.selectedEmployees.slug) {
+      if (this.selectedEmployees.phone) {
         const objectsArray = this.selectedObjects.filter(
           item => {
             if (this.selectedEmployees.slug === 'all') {
               return true;
-            } else if (item.user.contact.slug === this.selectedEmployees.slug) {
+            } else if (item.phone === this.selectedEmployees.phone) {
               return true;
             } else {
               return false;
             }
           }
         );
+        console.log('objectsArray >>>', objectsArray);
         this.selectedObjects = objectsArray;
       }
     },

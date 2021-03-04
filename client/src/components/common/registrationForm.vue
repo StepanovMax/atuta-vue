@@ -409,8 +409,10 @@
           &&
           (
             userDataLocal.role
-            || userDataLocal.role.slug === 'agency'
-            || userDataLocal.role.slug === 'builder'
+            && (
+              userDataLocal.role.slug === 'agency'
+              || userDataLocal.role.slug === 'builder'
+            )
           )
         "
         class="template-page__content-row"
@@ -663,7 +665,7 @@
 
         <div
           v-local
-          v-if="true && userData"
+          v-if="true && userDataLocal"
           class="local-output-data"
         >
           <h6 class="
@@ -671,10 +673,10 @@
             title_h6
             title_bold
           ">
-            userData
+            userDataLocal
           </h6>
           <pre>
-            {{ userData }}
+            {{ userDataLocal }}
           </pre>
         </div>
 
@@ -1141,8 +1143,9 @@ export default {
     addCheckedPropertyForUserRoles(role) {
       this.userRoles.forEach(
         item => {
-          const itemModified = item;
+          let itemModified = item;
           if (itemModified.slug === role) {
+            console.log('role ::', role);
             itemModified.checked = true;
             this.userDataLocal.role = itemModified;
           } else {
@@ -1327,7 +1330,7 @@ export default {
       } else {
         this.formChanged = false;
       }
-      console.log('this.employeesComparison ::', this.employeesComparison);
+      // console.log('this.employeesComparison ::', this.employeesComparison);
     },
   },
   watch: {
@@ -1450,11 +1453,15 @@ export default {
     this.userDataLocal = JSON.parse(JSON.stringify(this.userData));
     this.employees = JSON.parse(JSON.stringify(this.userEmployees));
     // console.log('this.userEmployees ::', this.userEmployees);
-    // console.log('this.employees ::', this.employees);
+    console.log('this.formType ::', this.formType);
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
+    if (this.formType === 'reg') {
+      this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
+    } else if (this.formType === 'edit') {
+      this.addCheckedPropertyForUserRoles(this.userData.role);
+    }
   },
   async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));

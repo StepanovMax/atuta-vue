@@ -31,7 +31,7 @@ const objectDataSelected = {
   },
   phone: {
     value: null,
-    required: false,
+    required: true,
   },
   connectionWay: {
     value: null,
