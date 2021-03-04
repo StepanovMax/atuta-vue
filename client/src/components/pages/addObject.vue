@@ -451,18 +451,31 @@
                 </span>
               </h3>
               <multiselect
+                v-if="
+                  userData.role
+                  && (
+                    userData.role === 'agency'
+                    || userData.role === 'builder'
+                  )
+                "
                 v-model="createdObject.phone.value"
-                :options="phones"
+                :options="userEmployees"
                 :custom-label="labelWithPhone"
                 :show-labels="false"
                 :allow-empty="false"
                 :close-on-select="true"
                 :multiple="false"
                 :searchable="true"
-                label="label"
-                track-by="slug"
+                label="name"
+                track-by="phone"
                 placeholder="Телефон"
               />
+              <p
+                v-else
+                class="paragraph"
+              >
+                {{ gFormatPhone(userData.phone) }}
+              </p>
             </div>
           </div>
         </div>
@@ -877,7 +890,7 @@
 
       <div
         v-local
-        v-if="true && finalObjectData"
+        v-if="true && objectData"
         class="local-output-data"
       >
         <h6 class="
@@ -885,10 +898,10 @@
           title_h6
           title_bold
         ">
-          finalObjectData
+          objectData
         </h6>
         <pre>
-          {{ finalObjectData }}
+          {{ objectData }}
         </pre>
       </div>
 
@@ -1075,20 +1088,20 @@ export default {
     },
     createdObject: {
       handler(value) {
-        console.log('>> createdObject', value);
         this.objectDataForSending(value);
-        // console.log('createdObject WATCH ::', value);
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
-        // console.log('createdObject WATCH this.createdObject ::', this.createdObject);
         if (this.userData.role === 'personal') {
+          this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.userRoles[0].label;
         } else if (this.userData.role === 'agent') {
+          this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.userRoles[1].label;
         } else {
           this.objectData.agency.name = this.userData.name;
         }
+        // console.log('>> this.objectData.phone', this.objectData.phone);
 
         this.formIsFilledArray = [];
         const obj1 = this.createdObject;
@@ -1179,6 +1192,7 @@ export default {
       'userData',
       'userRoles',
       'isLoggedIn',
+      'userEmployees',
       'filterDataDefault',
       'objectDataSelected',
       'filterDataSelected',
@@ -1698,8 +1712,8 @@ export default {
       this.addressSelected = true;
       this.hideSuggestionsList();
     },
-    labelWithPhone ({ label, phone }) {
-      return `${label}: ${phone}`
+    labelWithPhone ({ name, phone }) {
+      return `${name}: ${this.gFormatPhone(phone)}`
     },
     getLocalityByLabel(label) {
       const localityObjects = this.federalRegionsAlphabetical;

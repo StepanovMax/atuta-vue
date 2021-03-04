@@ -409,8 +409,10 @@
           &&
           (
             userDataLocal.role
-            || userDataLocal.role.slug === 'agency'
-            || userDataLocal.role.slug === 'builder'
+            && (
+              userDataLocal.role === 'agency'
+              || userDataLocal.role === 'builder'
+            )
           )
         "
         class="template-page__content-row"
@@ -1327,7 +1329,7 @@ export default {
       } else {
         this.formChanged = false;
       }
-      console.log('this.employeesComparison ::', this.employeesComparison);
+      // console.log('this.employeesComparison ::', this.employeesComparison);
     },
   },
   watch: {
