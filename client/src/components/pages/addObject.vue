@@ -1393,7 +1393,7 @@ export default {
             data.houseType = this.changedObject.house.type.value.slug;
           }
           if (this.changedObject.house.roomsCount && this.changedObject.house.roomsCount.value) {
-            data.houseRoomsCount = this.changedObject.house.roomsCount.value.slug;
+            data.houseRoomsCount = this.changedObject.house.roomsCount.value;
           }
           if (this.changedObject.house.view && this.changedObject.house.view.value) {
             data.houseView = this.changedObject.house.view.value.slug;
@@ -1432,7 +1432,7 @@ export default {
             data.roomFloorAll = this.changedObject.room.floorAll.value.slug;
           }
           if (this.changedObject.room.roomsCount && this.changedObject.room.roomsCount.value) {
-            data.roomRoomsCount = this.changedObject.room.roomsCount.value.slug;
+            data.roomRoomsCount = this.changedObject.room.roomsCount.value;
           }
           if (this.changedObject.room.view && this.changedObject.room.view.value) {
             data.roomView = this.changedObject.room.view.value.slug;
