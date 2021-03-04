@@ -1355,7 +1355,7 @@ export default {
           }
         }
         if (this.changedObject.phone && this.changedObject.phone.value) {
-          data.phone = this.gFormatPhoneRevert(this.createdObject.phone.value.phone);
+          data.phone = this.gFormatPhoneRevert(this.createdObject.phone.value);
         }
         // App
         if (this.changedObject.app) {
@@ -1366,7 +1366,7 @@ export default {
             data.appView = this.changedObject.app.view.value.slug;
           }
           if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
-            data.appRoomsCount = this.changedObject.app.roomsCount.value.slug;
+            data.appRoomsCount = this.changedObject.app.roomsCount.value;
           }
           if (this.changedObject.app.floor && this.changedObject.app.floor.value) {
             data.appFloor = this.changedObject.app.floor.value.slug;

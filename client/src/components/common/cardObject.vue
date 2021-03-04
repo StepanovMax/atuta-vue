@@ -129,13 +129,18 @@
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
-                <span>
-                  {{ dataObjectData.appRoomsCount }}
+                <span
+                  v-if="
+                    dataObjectData.appRoomsCount.slug === 'studio'
+                    || dataObjectData.appRoomsCount.slug === 'freePlan'
+                  "
+                >
+                  {{ dataObjectData.appRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.appRoomsCount != 'studio'
-                    && dataObjectData.appRoomsCount != 'freePlan'
+                    dataObjectData.appRoomsCount.slug !== 'studio'
+                    && dataObjectData.appRoomsCount.slug !== 'freePlan'
                   "
                 >
                   &nbsp;комн.
