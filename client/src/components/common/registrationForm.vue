@@ -1453,12 +1453,15 @@ export default {
     this.userDataLocal = JSON.parse(JSON.stringify(this.userData));
     this.employees = JSON.parse(JSON.stringify(this.userEmployees));
     // console.log('this.userEmployees ::', this.userEmployees);
-    // console.log('this.employees ::', this.employees);
+    console.log('this.formType ::', this.formType);
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
     }
-    this.addCheckedPropertyForUserRoles(this.userData.role);
-    // this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
+    if (this.formType === 'reg') {
+      this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
+    } else if (this.formType === 'edit') {
+      this.addCheckedPropertyForUserRoles(this.userData.role);
+    }
   },
   async mounted() {
     this.userDataForDetection = JSON.parse(JSON.stringify(this.userDataLocal));
