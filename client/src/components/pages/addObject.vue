@@ -890,7 +890,7 @@
 
       <div
         v-local
-        v-if="true && objectData"
+        v-if="true && finalObjectData"
         class="local-output-data"
       >
         <h6 class="
@@ -898,10 +898,10 @@
           title_h6
           title_bold
         ">
-          objectData
+          finalObjectData
         </h6>
         <pre>
-          {{ objectData }}
+          {{ finalObjectData }}
         </pre>
       </div>
 
@@ -1355,7 +1355,7 @@ export default {
           }
         }
         if (this.changedObject.phone && this.changedObject.phone.value) {
-          data.phone = this.gFormatPhoneRevert(this.createdObject.phone.value);
+          data.phone = this.createdObject.phone.value.phone;
         }
         // App
         if (this.changedObject.app) {
