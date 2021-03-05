@@ -39,7 +39,7 @@
             :key="'key-' + item.id + '-' + index"
             :propObjectData="item"
             :propIsSample="false"
-            :propIsSelected="propIsSelected"
+            :propIsSelected="item.fav"
           />
 
           <cardCompany
@@ -117,7 +117,11 @@ export default {
     },
   },
   beforeMount() {
-    console.log('propGridItems ::', this.propGridItems);
+    this.propGridItems.forEach(
+      item => {
+        // console.log(item.id, item.user.name);
+      }
+    );
     this.dataGridItems = this.propGridItems;
   },
 };
