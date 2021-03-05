@@ -20,6 +20,7 @@ const state = {
   currentDialogsListOfUserState: [],
   allDialogsListOfUserState: [],
   favouriteObjects: [],
+  favouriteObjectsArray: [],
   previousPage: null,
   count: 11.7,
   isLoggedIn: false,

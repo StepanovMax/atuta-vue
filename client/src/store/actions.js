@@ -83,9 +83,11 @@ const actions = {
       // then fill out userData statement.
       context.commit('updateUserDataState', checkTokenResult.data);
       await context.dispatch('getEmployeeByUserID');
+      // console.log('checkTokenResult.data', checkTokenResult.data);
+      context.commit('updateFavouriteObjectsState', checkTokenResult.data.favouriteObjects);
       // if (checkTokenResult.data.favouriteObjectsListID) {
       //   // then loading the user's favourite objects.
-      //   this.getFavouritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
+      //   this.getFavoritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
       // }
       // // then loading user's dialogs.
       // this.getDialogsByUserID(checkTokenResult.data.id);
@@ -94,6 +96,7 @@ const actions = {
       await context.dispatch('logout');
       context.commit('updateLoggedInState', false);
       context.commit('updateUserDataState', null);
+      context.commit('updateFavouriteObjectsState', null);
       return false;
     }
   },
@@ -152,7 +155,6 @@ const actions = {
       )
         .then(
           response => {
-            console.log('actions.js : response.data =>', response.data);
             context.commit('updateMyObjectsState', response.data);
             return response.data;
           }
@@ -165,6 +167,52 @@ const actions = {
           );
     } catch(error) {
       console.error('[try/catch getMyObjects error] ::', error);
+      return false;
+    }
+  },
+  getFavoritesObjectsByListID: async (context, data) => {
+    console.log('getFavoritesObjectsByListID ::', data);
+    try {
+      // Get user fav objects.
+      await transport.post(
+        process.env.host_api + '/object/get-favourite-objects-by-list-id',
+        {
+          idsArray: data
+        }
+      )
+        .then(
+          response => {
+            response.data.map(
+              item => {
+                item.fav = true;
+                if (context.state.userData.role === 'personal') {
+                  item.user = {
+                    name: 'Собственник'
+                  }
+                } else if (context.state.userData.role === 'agent') {
+                  item.user = {
+                    name: 'Агент'
+                  }
+                } else {
+                  item.user = {
+                    name: context.state.userData.name
+                  }
+                }
+                return item;
+              }
+            );
+            context.commit('updateFavouriteObjectsArrayState', response.data);
+            return response.data;
+          }
+        )
+          .catch(
+            error => {
+              console.error('[axios getFavoritesObjectsByListID error] ::', error);
+              return false;
+            }
+          );
+    } catch(error) {
+      console.error('[try/catch getFavoritesObjectsByListID error] ::', error);
       return false;
     }
   },

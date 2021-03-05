@@ -77,6 +77,13 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       }
     },
+    favorites: {
+      type: Sequelize.ARRAY(Sequelize.INTEGER),
+      allowNull: {
+        args: false,
+        msg: 'Please enter the favorites',
+      },
+    },
     accessToken: {
       type: Sequelize.TEXT,
       allowNull: {

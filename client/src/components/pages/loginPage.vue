@@ -297,7 +297,7 @@ export default {
         this.$store.commit('updateUserDataState', loginResult.data);
         await this.$store.dispatch('getEmployeeByUserID');
         // Call the plugin for fav.objects
-        // this.getFavouritesObjectsByListID(loginResult.data.favouriteObjectsListID);
+        // this.getFavoritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         if (this.routesHistory.length > 1) {
           this.$router.push({
             name: this.routesHistory[0]

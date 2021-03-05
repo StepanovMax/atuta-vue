@@ -90,8 +90,16 @@ export default {
     }
   },
   watch: {
+    selectedObjects(value) {
+      // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
+      // console.log('watch : selectedObjects ::', value);
+    },
+    favouriteObjects(value) {
+      // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
+      // console.log('watch : favouriteObjects ::', value);
+    },
     selectedEmployees(value) {
-      console.log('value ::', value);
+      // console.log('value ::', value);
       let objectsArray = [];
       objectsArray = this.selectedObjects.filter(
         item => {
@@ -188,7 +196,7 @@ export default {
           return item;
         }
       );
-      console.log('this.myObjects >>>', this.myObjects);
+      // console.log('this.myObjects >>>', this.myObjects);
     },
     updateObjects() {
       this.updateObjectsDependsOnStatus();
@@ -246,8 +254,8 @@ export default {
       for (const key in objects) {
         if (!objects.hasOwnProperty(key)) continue;
         const subObj = objects[key];
-        console.log('myObjects.vue : allObjects !::', this.allObjects);
-        this.allObjects.push(subObj);
+        // console.log('myObjects.vue : allObjects !::', this.allObjects);
+        // this.allObjects.push(subObj);
         if (subObj.status === 'onModeration') {
           this.objectsGroupedByStatuses[0].array.push(subObj);
         } else if (subObj.status === 'active') {
@@ -276,35 +284,56 @@ export default {
       }
       return arrayWithCountedStatuses;
     },
-    async checkUsersObjects(value) {
-      const result = await axios.post(
-        this.urlGetObjectsByParentId,
-        {
-          id: value.id
+    // async checkUsersObjects(value) {
+    //   const result = await axios.post(
+    //     this.urlGetObjectsByParentId,
+    //     {
+    //       id: value.id
+    //     }
+    //   )
+    //     .then(function (response) {
+    //       return response;
+    //     })
+    //     .catch(function (error) {
+    //       console.error('Error ::', error);
+    //     });
+    //   if (result) {
+    //     this.$store.commit('updateMyObjectsState', result.data);
+    //     this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
+    //   }
+    // },
+    addFavOptionToObjects(objects, favorites) {
+      // console.log('myObjects.vue : objects ::', objects);
+      // console.log('myObjects.vue : favorites ::', favorites);
+      const objectsWithFav = objects.map(
+        objItem => {
+          objItem.fav = false;
+          const catchedItem = favorites.some(
+            favItem => objItem.id === favItem
+          )
+          if (catchedItem) {
+            objItem.fav = true;
+          }
+          // console.log('myObjects.vue : objItem ::', objItem.id, objItem.fav);
+          return objItem;
         }
-      )
-        .then(function (response) {
-          return response;
-        })
-        .catch(function (error) {
-          console.error('Error ::', error);
-        });
-      if (result) {
-        this.$store.commit('updateMyObjectsState', result.data);
-        this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
-      }
+      );
+      // console.log('myObjects.vue : objectsWithFav ::', objectsWithFav);
+      return objectsWithFav;
     },
   },
   async mounted() {
-    const allObjects = [await this.getMyObjects];
-    if (allObjects.length) {
-      console.log('myObjects.vue : myObjects !!! ::', this.allObjects);
-      this.addClientNameToObject();
-      this.arrayWithCountedStatuses = this.toCountArray(this.myObjects);
-    }
-    // If we got objects already.
-    if (this.myObjects.length) {
-      this.selectedStatus = 'all';
+    const myObjectsResult = await this.getMyObjects;
+    if (myObjectsResult) {
+      if (this.myObjects && this.myObjects.length && this.favouriteObjects && this.favouriteObjects.length) {
+        // console.log('myObjects.vue : this.allObjects ::', this.myObjects);
+        // console.log('myObjects.vue : this.userData ::', this.userData);
+        this.selectedObjects = this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
+        // console.log('myObjects.vue : this.allObjects ::', this.allObjects);
+        this.addClientNameToObject();
+        this.arrayWithCountedStatuses = this.toCountArray(this.allObjects);
+        this.selectedStatus = 'all';
+      }
     }
   },
 };

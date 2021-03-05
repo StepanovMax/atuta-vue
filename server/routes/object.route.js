@@ -175,11 +175,11 @@ router.get(
             objects => {
               objects.forEach(
                 item => {
-                  console.log('item =>', item);
+                  // console.log('item =>', item);
                   myObjects.push(item.dataValues);
                 }
               );
-              console.log('myObjects =>', myObjects);
+              // console.log('myObjects =>', myObjects);
               res.status(200).send(myObjects);
             }
           );
@@ -192,6 +192,51 @@ router.get(
     console.log('  >> myObjects');
     // console.log(myObjects);
     console.log(' ');
+  }
+);
+
+
+router.post(
+  '/get-favourite-objects-by-list-id',
+  async (req, res) => {
+    const idsArray = req.body.idsArray;
+
+    idsArray.forEach(
+      item => {
+        console.log('item ::', item);
+      }
+    );
+
+    try {
+      let resultArray = [];
+      Item.findAll({
+        where: {
+          id: idsArray,
+        }
+      })
+        .then(
+          result => {
+            result.forEach(
+              item => {
+                resultArray.push(item.dataValues);
+                console.log('   >> item ::', item.dataValues.id);
+              }
+            )
+            res.status(200).send(resultArray);
+          }
+        )
+          .catch(
+            error => {
+              console.error('Error get-favourite-objects-by-list-id ::', error);
+              res.status(400).send(false);
+            }
+          );
+
+    } catch(error) {
+      console.error('Error [Backend :: object.controller :: get-favourite-objects-by-list-id] ::', error);
+      res.status(400).send(false);
+    }
+
   }
 );
 
