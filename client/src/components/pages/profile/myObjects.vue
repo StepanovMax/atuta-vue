@@ -92,14 +92,14 @@ export default {
   watch: {
     selectedObjects(value) {
       // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
-      // console.log('watch : selectedObjects ::', value);
+      console.log('watch : selectedObjects ::', value);
     },
     favouriteObjects(value) {
       // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
-      // console.log('watch : favouriteObjects ::', value);
+      console.log('watch : favouriteObjects ::', value);
     },
     selectedEmployees(value) {
-      // console.log('value ::', value);
+      console.log('value ::', value);
       let objectsArray = [];
       objectsArray = this.selectedObjects.filter(
         item => {
@@ -318,7 +318,7 @@ export default {
           return objItem;
         }
       );
-      // console.log('myObjects.vue : objectsWithFav ::', objectsWithFav);
+      console.log('myObjects.vue : objectsWithFav ::', objectsWithFav);
       return objectsWithFav;
     },
   },
@@ -326,10 +326,10 @@ export default {
     const myObjectsResult = await this.getMyObjects;
     if (myObjectsResult) {
       if (this.myObjects && this.myObjects.length && this.favouriteObjects && this.favouriteObjects.length) {
-        // console.log('myObjects.vue : this.allObjects ::', this.myObjects);
-        // console.log('myObjects.vue : this.userData ::', this.userData);
+        console.log('myObjects.vue : this.allObjects ::', this.myObjects);
+        console.log('myObjects.vue : this.userData ::', this.userData);
         this.selectedObjects = this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
-        // console.log('myObjects.vue : this.allObjects ::', this.allObjects);
+        console.log('myObjects.vue : this.allObjects ::', this.allObjects);
         this.addClientNameToObject();
         this.arrayWithCountedStatuses = this.toCountArray(this.allObjects);
         this.selectedStatus = 'all';
