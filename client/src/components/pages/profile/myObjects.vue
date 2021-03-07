@@ -324,6 +324,7 @@ export default {
   },
   async mounted() {
     const myObjectsResult = await this.getMyObjects;
+    console.log('myObjectsResult ::', myObjectsResult, this.myObjects, this.favouriteObjects);
     if (myObjectsResult) {
       if (this.myObjects && this.myObjects.length && this.favouriteObjects && this.favouriteObjects.length) {
         console.log('myObjects.vue : this.allObjects ::', this.myObjects);
