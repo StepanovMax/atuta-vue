@@ -83,7 +83,7 @@ const actions = {
       // then fill out userData statement.
       context.commit('updateUserDataState', checkTokenResult.data);
       await context.dispatch('getEmployeeByUserID');
-      // console.log('checkTokenResult.data', checkTokenResult.data);
+      console.log('checkTokenResult.data', checkTokenResult.data);
       context.commit('updateFavouriteObjectsState', checkTokenResult.data.favouriteObjects);
       // if (checkTokenResult.data.favouriteObjectsListID) {
       //   // then loading the user's favourite objects.
