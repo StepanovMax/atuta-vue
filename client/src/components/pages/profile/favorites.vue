@@ -11,9 +11,9 @@
 
     <div class="template-page__content">
       <grid
-        v-if="favouriteObjects"
+        v-if="favouriteObjectsArray"
         :propGridView="'net'"
-        :propGridItems="favouriteObjects"
+        :propGridItems="favouriteObjectsArray"
         :propGridSorting="true"
         :propIsSelected="true"
         propItemType="object"
@@ -22,7 +22,7 @@
 
     <div
       v-local
-      v-if="false && userData"
+      v-if="true && favouriteObjectsArray"
       class="local-output-data"
     >
       <h6 class="
@@ -30,27 +30,10 @@
         title_h6
         title_bold
       ">
-        userData
+        favouriteObjectsArray
       </h6>
       <pre>
-        {{ userData }}
-      </pre>
-    </div>
-
-    <div
-      v-local
-      v-if="false && favouriteObjects"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        favouriteObjects
-      </h6>
-      <pre>
-        {{ favouriteObjects }}
+        {{ favouriteObjectsArray }}
       </pre>
     </div>
 
@@ -69,30 +52,19 @@ export default {
     grid,
   },
   watch: {
-    // We are using Watcher for UserData because we waiting while this data has been loaded from the server.
-    userData(newValue, oldValue) {
-      if (newValue) {
-        this.getFavouritesObjectsByListID(newValue.favouriteObjectsListID);
-      }
+    async favouriteObjects(value) {
+      await this.$store.dispatch('getFavoritesObjectsByListID', value);
     },
   },
   computed: {
     ...mapState([
       'userData',
       'favouriteObjects',
+      'favouriteObjectsArray',
     ]),
   },
-  mounted() {
-    // If we got fav objects already.
-    if (this.favouriteObjects) {
-    // If we don't get fav objects yet.
-    } else {
-      if (this.userData) {
-        this.getFavouritesObjectsByListID(this.userData.favouriteObjects);
-      } else {
-        // console.log(' - there no userData');
-      }
-    }
+  async mounted() {
+    await this.$store.dispatch('getFavoritesObjectsByListID', this.favouriteObjects);
   },
 };
 </script>

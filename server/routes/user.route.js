@@ -1,6 +1,11 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { updateUser } from '../server/controllers/user.controller';
+import {
+  updateUser,
+  getUserFavorites,
+  addUserFavorites,
+  removeUserFavorites
+} from '../server/controllers/user.controller';
 
 const storageConfig = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -30,5 +35,23 @@ router.post(
   ]),
   updateUser,
 );
+
+router.post(
+  '/getUserFavorites',
+  getUserFavorites,
+);
+
+router.post(
+  '/addUserFavorites',
+  addUserFavorites,
+);
+
+router.post(
+  '/removeUserFavorites',
+  removeUserFavorites,
+);
+
+
+
 
 export default router;

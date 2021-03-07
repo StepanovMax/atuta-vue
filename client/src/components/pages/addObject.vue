@@ -890,7 +890,7 @@
 
       <div
         v-local
-        v-if="true && objectData"
+        v-if="true && finalObjectData"
         class="local-output-data"
       >
         <h6 class="
@@ -898,10 +898,10 @@
           title_h6
           title_bold
         ">
-          objectData
+          finalObjectData
         </h6>
         <pre>
-          {{ objectData }}
+          {{ finalObjectData }}
         </pre>
       </div>
 
@@ -1355,7 +1355,7 @@ export default {
           }
         }
         if (this.changedObject.phone && this.changedObject.phone.value) {
-          data.phone = this.gFormatPhoneRevert(this.createdObject.phone.value.phone);
+          data.phone = this.createdObject.phone.value.phone;
         }
         // App
         if (this.changedObject.app) {
@@ -1366,7 +1366,7 @@ export default {
             data.appView = this.changedObject.app.view.value.slug;
           }
           if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
-            data.appRoomsCount = this.changedObject.app.roomsCount.value.slug;
+            data.appRoomsCount = this.changedObject.app.roomsCount.value;
           }
           if (this.changedObject.app.floor && this.changedObject.app.floor.value) {
             data.appFloor = this.changedObject.app.floor.value.slug;
@@ -1393,7 +1393,7 @@ export default {
             data.houseType = this.changedObject.house.type.value.slug;
           }
           if (this.changedObject.house.roomsCount && this.changedObject.house.roomsCount.value) {
-            data.houseRoomsCount = this.changedObject.house.roomsCount.value.slug;
+            data.houseRoomsCount = this.changedObject.house.roomsCount.value;
           }
           if (this.changedObject.house.view && this.changedObject.house.view.value) {
             data.houseView = this.changedObject.house.view.value.slug;
@@ -1432,7 +1432,7 @@ export default {
             data.roomFloorAll = this.changedObject.room.floorAll.value.slug;
           }
           if (this.changedObject.room.roomsCount && this.changedObject.room.roomsCount.value) {
-            data.roomRoomsCount = this.changedObject.room.roomsCount.value.slug;
+            data.roomRoomsCount = this.changedObject.room.roomsCount.value;
           }
           if (this.changedObject.room.view && this.changedObject.room.view.value) {
             data.roomView = this.changedObject.room.view.value.slug;

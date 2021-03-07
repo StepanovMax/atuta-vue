@@ -45,7 +45,6 @@ export default {
     },
     propIsSelected: {
       type: Boolean,
-      default: false,
       required: false,
     },
   },

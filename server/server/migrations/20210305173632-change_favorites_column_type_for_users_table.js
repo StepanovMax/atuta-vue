@@ -3,25 +3,22 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.removeColumn(
+      queryInterface.changeColumn(
         'users',
-        'login',
+        'favorites',
         {
-          allowNull: true,
-          unique: true,
+          type: Sequelize.ARRAY(Sequelize.INTEGER),
         },
       ),
     ]);
   },
-
-  down: (queryInterface, Sequelize) => {
+  down: queryInterface => {
     return Promise.all([
-      queryInterface.addColumn(
+      queryInterface.changeColumn(
         'users',
-        'login',
+        'favorites',
         {
-          allowNull: true,
-          unique: true,
+          type: Sequelize.ARRAY(Sequelize.DECIMAL),
         },
       ),
     ]);

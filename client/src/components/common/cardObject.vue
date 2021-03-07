@@ -130,12 +130,12 @@
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
-                  {{ dataObjectData.appRoomsCount }}
+                  {{ dataObjectData.appRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.appRoomsCount != 'studio'
-                    && dataObjectData.appRoomsCount != 'freePlan'
+                    dataObjectData.appRoomsCount.slug !== 'studio'
+                    && dataObjectData.appRoomsCount.slug !== 'freePlan'
                   "
                 >
                   &nbsp;комн.
@@ -196,12 +196,12 @@
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
-                  {{ dataObjectData.houseRoomsCount }}
+                  {{ dataObjectData.houseRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.houseRoomsCount != 'studio'
-                    && dataObjectData.houseRoomsCount != 'freePlan'
+                    dataObjectData.houseRoomsCount.slug != 'studio'
+                    && dataObjectData.houseRoomsCount.slug != 'freePlan'
                   "
                 >
                   &nbsp;комн.
@@ -247,18 +247,18 @@
             >
               <div
                 v-if="
-                  dataObjectData.appRoomsCount
+                  dataObjectData.roomRoomsCount
                 "
                 class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
-                  {{ dataObjectData.appRoomsCount }}
+                  {{ dataObjectData.roomRoomsCount.label }}
                 </span>
                 <span
                   v-if="
-                    dataObjectData.appRoomsCount != 'studio'
-                    && dataObjectData.appRoomsCount != 'freePlan'
+                    dataObjectData.roomRoomsCount.slug != 'studio'
+                    && dataObjectData.roomRoomsCount.slug != 'freePlan'
                   "
                 >
                   &nbsp;комн.
@@ -758,6 +758,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { mapState } from 'vuex';
 import showPhoneNumber from './showPhoneNumber.vue';
 import moveToFavorites from './moveToFavorites.vue';
@@ -811,7 +812,6 @@ export default {
     },
     propIsSelected: {
       type: Boolean,
-      default: false,
       required: false,
     },
   },
@@ -829,7 +829,7 @@ export default {
         if (value) {
           // console.log('Add to Fav ::', value);
           // console.log('Add to Fav ::', this.dataObjectData);
-          this.addItemToFavourites(this.dataObjectData);
+          this.addItemToFavourites(this.dataObjectData.id);
         } else {
           // console.log('Remove from Fav ::', value);
           this.removeItemFromFavourites(this.dataObjectData.id);
@@ -839,44 +839,92 @@ export default {
     },
   },
   methods: {
-    addItemToFavourites(object) {
-      const newFavArray = [...this.favouriteObjects];
-      const itemAlreadyInFavs = this.favouriteObjects.some(
-        item => {
-          if (item.id === object.id) {
-            // console.log('item.id', item.id);
-            // console.log('object.id', object.id);
-            return true;
+    async addItemToFavourites(id) {
+      console.log('id ::', id);
+
+
+      // Trying to add favorite objects.
+      try {
+        const transport = axios.create({
+          withCredentials: true
+        });
+
+        const sendUserFavoritesDataResult = await transport.post(
+          process.env.host_api + '/user/addUserFavorites',
+          {
+            id: parseInt(id)
           }
-          return false;
+        )
+          .then(
+            response => {
+              console.log('response.data ::', response.data);
+              return response.data;
+            }
+          )
+            .catch(
+              error => {
+                console.error('Error [Favs updating] ::', error);
+                return false;
+              }
+            );
+        if (sendUserFavoritesDataResult) {
+          this.$store.commit('updateFavouriteObjectsState', sendUserFavoritesDataResult);
+          console.log('favouriteObjects ::', this.favouriteObjects);
         }
-      )
-      // console.log('itemAlreadyInFavs', itemAlreadyInFavs);
-      if (!itemAlreadyInFavs) {
-        newFavArray.push(object);
-        this.$store.commit('updateFavouriteObjectsState', newFavArray);
+      } catch(error) {
+        console.error('Something went wrong with user editing ::', error);
       }
+
+
+      // const newFavArray = [...this.favouriteObjects];
+      // const itemAlreadyInFavs = this.favouriteObjects.some(
+      //   item => {
+      //     if (item.id === object.id) {
+      //       // console.log('item.id', item.id);
+      //       // console.log('object.id', object.id);
+      //       return true;
+      //     }
+      //     return false;
+      //   }
+      // )
+      // // console.log('itemAlreadyInFavs', itemAlreadyInFavs);
+      // if (!itemAlreadyInFavs) {
+      //   newFavArray.push(object);
+      //   this.$store.commit('updateFavouriteObjectsState', newFavArray);
+      // }
     },
-    removeItemFromFavourites(id) {
-      const newFavArray = [];
-      const newFavArrayID = [];
-      this.favouriteObjects.forEach(
-        item => {
-          if (item.id !== id) {
-            newFavArray.push(item);
+    async removeItemFromFavourites(id) {
+      // Trying to add favorite objects.
+      try {
+        const transport = axios.create({
+          withCredentials: true
+        });
+
+        const sendUserFavoritesDataResult = await transport.post(
+          process.env.host_api + '/user/removeUserFavorites',
+          {
+            id: parseInt(id)
           }
+        )
+          .then(
+            response => {
+              console.log('response.data ::', response.data);
+              return response.data;
+            }
+          )
+            .catch(
+              error => {
+                console.error('Error [Favs updating] ::', error);
+                return false;
+              }
+            );
+        if (sendUserFavoritesDataResult) {
+          this.$store.commit('updateFavouriteObjectsState', sendUserFavoritesDataResult);
+          console.log('favouriteObjects 2 ::', this.favouriteObjects);
         }
-      )
-      this.userData.favouriteObjectsListID.forEach(
-        item => {
-          if (item !== id) {
-            newFavArrayID.push(item);
-          }
-        }
-      )
-      this.userData.favouriteObjectsListID = newFavArrayID;
-      this.$store.commit('updateUserDataState', this.userData);
-      this.$store.commit('updateFavouriteObjectsState', newFavArray);
+      } catch(error) {
+        console.error('Something went wrong with user editing ::', error);
+      }
     },
     timeConverter(UNIX_timestamp){
       const a = new Date(UNIX_timestamp * 1000);

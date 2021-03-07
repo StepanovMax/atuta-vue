@@ -327,6 +327,7 @@ const login = async (req, res) => {
           logo: user.logo,
           website: user.website,
           address: user.address,
+          favouriteObjects: user.favorites,
           description: user.description,
           expireDate: accessTokenDate,
         },
@@ -345,6 +346,7 @@ const login = async (req, res) => {
           logo: user.logo,
           website: user.website,
           address: user.address,
+          favouriteObjects: user.favorites,
           description: user.description,
           expireDate: refreshTokenDate,
         },
@@ -524,11 +526,13 @@ const checkToken = async (req, res) => {
             console.log(' ');
             // Check if token expire date is moer than now.
             if (dateNow < userData.expireDate && dateNow < decodedRefreshToken.expireDate) {
+              decodedAccessToken.favouriteObjects = user.dataValues.favorites;
               console.log(' ');
-              console.log('   >> accessToken is OK ::');
+              console.log('   >> accessToken is OK ::', decodedAccessToken);
               console.log(' ');
               res.status(200).send(decodedAccessToken);
             } else if (userData.expireDate <= dateNow && dateNow < decodedRefreshToken.expireDate) {
+              decodedAccessToken.favouriteObjects = user.dataValues.favorites;
               console.log(' ');
               console.log('   >> accessToken is EXPIRED, but refreshToken is OK ::');
               console.log(' ');
@@ -647,6 +651,162 @@ const updateUser = async (req, res) => {
 }
 
 
+const addUserFavorites = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> UpdateUser > accessToken ::');
+  console.log(accessToken);
+  console.log(' ');
+
+  console.log(' ');
+  console.log('   >> updateUserFavorites > req.body ::');
+  console.log(typeof req.body.id);
+  console.log(' ');
+
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+    const foundedUser = await User.findOne({
+      where: {
+        id: decodedAccessToken.id
+      }
+    });
+
+    console.log(' ');
+    console.log('   >> foundedUser.dataValues.favorites ::');
+    console.log(foundedUser.dataValues.favorites);
+    console.log(' ');
+
+    try {
+      console.log(' ');
+      console.log('   >> foundedUser ::');
+      // console.log(foundedUser.dataValues);
+      console.log(' ');
+
+      // const userCopy = JSON.parse(JSON.stringify(foundedUser.dataValues.favorites));
+      let idArray = foundedUser.dataValues.favorites;
+
+      if (idArray === null) {
+        idArray = [];
+      }
+      const favItemIdExist = idArray.includes(req.body.id);
+
+      if (!favItemIdExist) {
+        idArray.push(req.body.id);
+        const updateValues = {
+          favorites: idArray
+        };
+        foundedUser.update(updateValues).then(
+          self => {
+            console.log(' ');
+            console.log('   >> Favorites changed ::', idArray);
+            console.log(' ');
+            res.status(200).send(idArray);
+          }
+        );
+      }
+    } catch(error) {
+      console.error('[Error > updateUserFavorites] ::', error);
+      res.status(200).send(false);
+    }
+  }
+}
+
+
+const removeUserFavorites = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+  console.log(' ');
+  console.log('   >> UpdateUser > accessToken ::');
+  console.log(accessToken);
+  console.log(' ');
+
+  console.log(' ');
+  console.log('   >> updateUserFavorites > req.body ::');
+  console.log(typeof req.body.id);
+  console.log(' ');
+
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+    const foundedUser = await User.findOne({
+      where: {
+        id: decodedAccessToken.id
+      }
+    });
+
+    console.log(' ');
+    console.log('   >> foundedUser.dataValues.favorites ::');
+    console.log(foundedUser.dataValues.favorites);
+    console.log(' ');
+
+    try {
+      console.log(' ');
+      console.log('   >> foundedUser ::');
+      // console.log(foundedUser.dataValues);
+      console.log(' ');
+
+      // const userCopy = JSON.parse(JSON.stringify(foundedUser.dataValues.favorites));
+      let idArray = foundedUser.dataValues.favorites;
+
+      if (idArray === null) {
+        idArray = [];
+      }
+      const favItemIdExist = idArray.includes(req.body.id);
+
+      if (favItemIdExist) {
+        const index = idArray.indexOf(req.body.id);
+        if (index > -1) {
+          idArray.splice(index, 1);
+        }
+        const updateValues = {
+          favorites: idArray
+        };
+        foundedUser.update(updateValues).then(
+          self => {
+            console.log(' ');
+            console.log('   >> Favorites changed ::', idArray);
+            console.log(' ');
+            res.status(200).send(idArray);
+          }
+        );
+      }
+    } catch(error) {
+      console.error('[Error > updateUserFavorites] ::', error);
+      res.status(200).send(false);
+    }
+  }
+}
+
+
+const getUserFavorites = async (req, res) => {
+  // Extract the token from cookies.
+  const accessToken = req.cookies.accessToken;
+
+  if (accessToken) {
+    // Checking and decoding the token.
+    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
+
+    const foundedUser = await User.findOne({
+      where: {
+        id: decodedAccessToken.id
+      }
+    });
+
+    if (foundedUser.dataValues.favorites && foundedUser.dataValues.favorites.length) {
+      res.status(200).send(foundedUser.dataValues.favorites);
+    } else {
+      res.status(200).send(false);
+    }
+  } else {
+    res.status(200).send(false);
+  }
+}
+
+
 const getUserByID = async (req, res) => {
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
@@ -675,4 +835,16 @@ const getUserByID = async (req, res) => {
 }
 
 
-export { registration, login, logout, checkToken, verifyRegistrationLink, removeUser, updateUser, getUserByID };
+export {
+  registration,
+  login,
+  logout,
+  checkToken,
+  verifyRegistrationLink,
+  removeUser,
+  updateUser,
+  getUserByID,
+  getUserFavorites,
+  addUserFavorites,
+  removeUserFavorites
+};
