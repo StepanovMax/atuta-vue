@@ -148,6 +148,7 @@ const actions = {
     }
   },
   getMyObjects: async (context, commit, dispatch) => {
+    console.log('getMyObjects ::');
     try {
       // Get user emplyees.
       return await transport.get(
@@ -155,6 +156,7 @@ const actions = {
       )
         .then(
           response => {
+            console.log('getMyObjects response.data ::', response.data);
             context.commit('updateMyObjectsState', response.data);
             return response.data;
           }
