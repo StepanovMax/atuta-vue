@@ -46,6 +46,7 @@
 
       <grid
         v-if="selectedObjects.length"
+        propSortingTypeGrid="common"
         :propGridView="'net'"
         :propGridItems="selectedObjects"
         :propGridSorting="true"

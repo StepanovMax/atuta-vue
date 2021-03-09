@@ -887,6 +887,7 @@
 
               <grid
                 v-if="storedObjects"
+                propSortingTypeGrid="common"
                 :propGridView="'net'"
                 :propGridItems="storedObjects"
                 :propGridSorting="false"

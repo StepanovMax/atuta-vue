@@ -34,6 +34,7 @@
 
         <grid
           v-if="companiesList"
+          propSortingTypeGrid="common"
           propGridView="list"
           :propGridItems="companiesList"
           :propGridSorting="false"

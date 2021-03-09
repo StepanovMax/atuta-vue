@@ -37,6 +37,9 @@ const getLast32Objects = async (req, res, file) => {
     const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
 
     try {
+      let objectsVIP = [];
+      let objectsOthers = [];
+      let objectsFinal = [];
       // Find the object in DB.
       await Item.findAll({
         limit: 20,
@@ -64,7 +67,11 @@ const getLast32Objects = async (req, res, file) => {
                 return object;
               }
             );
-            // console.log('objects =>', objects);
+            // objectsFinal.forEach(
+            //   item => {
+            //     console.log('item =>', item.tarif);
+            //   }
+            // );
             res.status(200).send(objects);
           }
         );

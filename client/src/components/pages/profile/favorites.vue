@@ -12,6 +12,7 @@
     <div class="template-page__content">
       <grid
         v-if="favouriteObjectsArray"
+        propSortingTypeGrid="common"
         :propGridView="'net'"
         :propGridItems="favouriteObjectsArray"
         :propGridSorting="true"
