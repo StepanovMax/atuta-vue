@@ -23,7 +23,11 @@
         />
       </button>
     </li>
-    <li class="sort-objects__item">
+
+    <li
+      v-if="propSortingTypeSortObjects === 'common'"
+      class="sort-objects__item"
+    >
       <button
         class="
           btn
@@ -46,8 +50,9 @@
         />
       </button>
     </li>
+
     <li
-      v-if="false"
+      v-if="propSortingTypeSortObjects === 'common'"
       class="sort-objects__item"
     >
       <button
@@ -88,6 +93,11 @@ export default {
     propObjectsForSorting: {
       type: Array,
       default: [],
+      required: true,
+    },
+    propSortingTypeSortObjects: {
+      type: String,
+      default: 'common',
       required: true,
     }
   },
@@ -136,6 +146,95 @@ export default {
       this.$emit('update:value', this.dataObjectsForSorting);
     },
     sortPrice() {
+      if (this.propSortingTypeSortObjects === 'vip') {
+        this.sortPriceVip();
+      } else if (this.propSortingTypeSortObjects === 'common') {
+        this.sortPriceCommon();
+      }
+    },
+    sortPriceVip() {
+      let objectsFinal = [];
+      let objectsVIP = [];
+      let objectsOthers = [];
+      let objectsFinalSorted = [];
+
+      this.dataObjectsForSorting.forEach(
+        item => {
+          if (item.tarif === 'vip') {
+            objectsVIP.push(item);
+          } else if (item.tarif !== 'vip') {
+            objectsOthers.push(item);
+          }
+        }
+      );
+
+      let testArray = [];
+      let numberStart;
+      let numberEnd;
+      for(var i = 0; i < this.dataObjectsForSorting.length; ++i) {
+        if (i % 9 == 0) {
+          numberStart = i;
+          numberEnd = i + 3;
+        }
+        if (i >= numberStart && i < numberEnd) {
+          testArray.push(objectsVIP[0]);
+          if (objectsVIP.length > 1) {
+            objectsVIP.splice(0, 1);
+          }
+        } else {
+          testArray.push(objectsOthers[0]);
+          if (objectsOthers.length > 1) {
+            objectsOthers.splice(0, 1);
+          }
+        }
+        // objectsFinalSorted.push();
+      }
+      // console.log('testArray =>', testArray);
+
+      if (this.sortWayDate === 'less') {
+        objectsOthers.sort(
+          (a, b) => {
+            if (parseInt(a.createdDate) < parseInt(b.createdDate)) {
+              return -1;
+            }
+            if (parseInt(a.createdDate) > parseInt(b.createdDate)) {
+              return 1;
+            }
+            return 0
+          }
+        );
+        this.sortWayDate = 'more';
+      } else if (this.sortWayDate === 'more') {
+        objectsOthers.sort(
+          (a, b) => {
+            if (parseInt(a.createdDate) < parseInt(b.createdDate)) {
+              return 1;
+            }
+            if (parseInt(a.createdDate) > parseInt(b.createdDate)) {
+              return -1;
+            }
+            return 0
+          }
+        );
+        this.sortWayDate = 'less';
+      }
+
+      objectsFinal = objectsVIP.concat(objectsOthers);
+      // objectsFinal.push(objectsVIP);
+      // objectsFinal.push(objectsOthers);
+      // objectsFinal = [...objectsVIP, ...objectsOthers];
+      // console.log('objectsOthers ::', objectsOthers);
+      // console.log('this.dataObjectsForSorting ::', this.dataObjectsForSorting);
+      testArray.forEach(
+        item => {
+          // console.log('item =>', item.tarif, item.id);
+        }
+      );
+
+      this.activeButton = 'date';
+      this.$emit('update:value', testArray);
+    },
+    sortPriceCommon() {
       if (this.sortWayPrice === 'less') {
         this.dataObjectsForSorting.sort(
           (a, b) => {
@@ -199,7 +298,7 @@ export default {
     },
   },
   mounted() {
-    this.sortDate();
+    this.sortPrice();
   },
 };
 </script>

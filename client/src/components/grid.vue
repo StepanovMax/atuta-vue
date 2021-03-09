@@ -13,6 +13,7 @@
         />
 
         <sortObjects
+          :propSortingTypeSortObjects="propSortingTypeGrid"
           :propObjectsForSorting="propGridItems"
           :value.sync="dataSortedObjects"
         />
@@ -31,7 +32,7 @@
             {'grid__list-item_net': dataGridView === 'net'},
             {'grid__list-item_list': dataGridView === 'list'},
           ]"
-          v-for="(item, index) in propGridItems"
+          v-for="(item, index) in dataGridItems"
           :key="'key-' + item.id + '-' + index"
         >
           <cardObject
@@ -107,21 +108,18 @@ export default {
       default: false,
       required: false,
     },
+    propSortingTypeGrid: {
+      type: String,
+      default: 'all',
+      required: true,
+    }
   },
   watch: {
-    dataSortedObjects: {
-      handler() {
-        this.dataGridItems = this.dataSortedObjects;
-      },
-      deep: true
+    dataSortedObjects(value) {
+      this.dataGridItems = value;
     },
   },
   beforeMount() {
-    this.propGridItems.forEach(
-      item => {
-        // console.log(item.id, item.user.name);
-      }
-    );
     this.dataGridItems = this.propGridItems;
   },
 };

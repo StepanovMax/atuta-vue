@@ -111,6 +111,7 @@
           <grid
             v-if="storedObjects"
             class="company-page__same-objects-grid"
+            propSortingTypeGrid="common"
             :propGridView="'net'"
             :propGridItems="storedObjects"
             :propGridSorting="false"

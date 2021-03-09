@@ -9,6 +9,7 @@
     <div class="article">
       <grid
         v-if="objectsOnHome"
+        propSortingTypeGrid="vip"
         :propGridView="'net'"
         :propGridItems="objectsOnHome"
         :propGridSorting="true"
