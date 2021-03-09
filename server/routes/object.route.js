@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { create } from '../server/controllers/object.controller';
+import { getLast32Objects } from '../server/controllers/object.controller';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -151,7 +151,7 @@ router.post(
 
 
 router.get(
-  '/getAll',
+  '/getAllByUserId',
   async (req, res) => {
     // Extract the token from cookies.
     const accessToken = req.cookies.accessToken;
@@ -239,5 +239,12 @@ router.post(
 
   }
 );
+
+
+router.get(
+  '/getLast32Objects',
+  getLast32Objects
+);
+
 
 export default router;
