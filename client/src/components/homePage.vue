@@ -8,9 +8,9 @@
     </div>
     <div class="article">
       <grid
-        v-if="storedObjects"
+        v-if="objectsOnHome"
         :propGridView="'net'"
-        :propGridItems="storedObjects"
+        :propGridItems="objectsOnHome"
         :propGridSorting="true"
         propItemType="object"
       />
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 import adsRight from './adsRight.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
@@ -35,54 +35,48 @@ export default {
   },
   data() {
     return {
-      storedObjects: null,
       response: '',
       error: '',
       host: '',
     }
   },
-  created() {
-    // Calling the fetching method.
-    this.getObjectsOnLoad();
-  },
   computed: {
-    url() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/objects/get-objects/';
-      return url;
-    },
+    ...mapState([
+      'objectsOnHome',
+    ]),
   },
   methods: {
-    // Fetch objects on the page load.
-    getObjectsOnLoad() {
-      // const url2 = 'https://jsonplaceholder.typicode.com/posts';
+    async getLast32Objects() {
+      const transport = axios.create({
+        withCredentials: true
+      });
 
-      axios({
-        method: 'get',
-        url: this.url,
-        responseType: 'stream',
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          "Access-Control-Allow-Credentials": "true"
-        },
-      })
-        .then(response => {
-          this.response = 'Success!';
-          this.storedObjects = JSON.parse(JSON.stringify(response.data));
-        })
-          .catch(error => {
-            this.error = error;
-          })
-            .then(function () {
-              // alert('always executed');
-            });
-    }
+      try {
+        console.log('try getLast32Objects');
+        // Get last 32 objects.
+        await transport.get(
+          process.env.host_api + '/object/getLast32Objects'
+        )
+          .then(
+            response => {
+              console.log('getLast32Objects : response.data =>', response.data);
+              this.$store.commit('updateObjectsOnHomeState', response.data);
+            }
+          )
+            .catch(
+              error => {
+                console.error('[axios getLast32Objects error] ::', error);
+              }
+            );
+      } catch(error) {
+        console.error('[try/catch getLast32Objects error] ::', error);
+      }
+    },
   },
   mounted() {
-    // console.log('home page mounted storedObjects ::', this.storedObjects);
+    console.log('home page mounted storedObjects ::');
+    // Calling the fetching method.
+    this.getLast32Objects();
   },
 };
 </script>
