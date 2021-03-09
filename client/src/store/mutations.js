@@ -1,4 +1,7 @@
 const mutations = {
+  updateObjectsOnHomeState(state, data) {
+    state.objectsOnHome = data;
+  },
   updateRoutesHistoryState(state, data) {
     state.routesHistory = data;
   },
