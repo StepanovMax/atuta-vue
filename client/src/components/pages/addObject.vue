@@ -1094,12 +1094,12 @@ export default {
         this.createdObject = value;
         if (this.userData.role === 'personal') {
           this.objectData.phone.value = this.userData.phone;
-          this.objectData.agency.name = this.userRoles[0].label;
+          this.objectData.agency.name = this.objectData.companyName = this.userRoles[0].label;
         } else if (this.userData.role === 'agent') {
           this.objectData.phone.value = this.userData.phone;
-          this.objectData.agency.name = this.userRoles[1].label;
+          this.objectData.agency.name = this.objectData.companyName = this.userRoles[1].label;
         } else {
-          this.objectData.agency.name = this.userData.name;
+          this.objectData.agency.name = this.objectData.companyName = this.userData.name;
         }
         // console.log('>> this.objectData.phone', this.objectData.phone);
 
@@ -1308,6 +1308,7 @@ export default {
       let data = {};
       if (this.changedObject) {
         data.userId = this.userData.id;
+        data.companyName = this.objectData.companyName;
         const timestampNow = new Date().getTime() / 1000 | 0;
         data.status = 'active';
         data.createdDate = timestampNow;
