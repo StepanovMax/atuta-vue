@@ -29,57 +29,44 @@ const create = async (req, res, file) => {
 
 
 const getLast32Objects = async (req, res, file) => {
-  // Extract the token from cookies.
-  const accessToken = req.cookies.accessToken;
-  // If the accessToken is not a null.
-  if (accessToken) {
-    // Checking and decoding the token.
-    const decodedAccessToken = jwt.verify(accessToken, jwtSecret);
-
-    try {
-      let objectsVIP = [];
-      let objectsOthers = [];
-      let objectsFinal = [];
-      // Find the object in DB.
-      await Item.findAll({
-        limit: 20,
-        order: [['createdDate', 'DESC']]
-      })
-        .then(
-          objects => {
-            objects.map(
-              item => {
-                const object = item.dataValues;
-                if (decodedAccessToken.role === 'personal') {
-                  object.user = {
-                    name: 'Собственник'
-                  }
-                } else if (decodedAccessToken.role === 'agent') {
-                  object.user = {
-                    name: 'Агент'
-                  }
-                } else {
-                  object.user = {
-                    name: decodedAccessToken.name
-                  }
-                }
-                // console.log('object =>', object.user);
-                return object;
-              }
-            );
-            // objectsFinal.forEach(
-            //   item => {
-            //     console.log('item =>', item.tarif);
-            //   }
-            // );
-            res.status(200).send(objects);
-          }
-        );
-    } catch(error) {
-      console.error('Error [Backend :: object.controller :: getAll] ::', error);
-    }
-  } else {
-
+  try {
+    // Find the object in DB.
+    await Item.findAll({
+      limit: 20,
+      order: [['createdDate', 'DESC']]
+    })
+      .then(
+        objects => {
+          objects.map(
+            item => {
+              const object = item.dataValues;
+              // if (decodedAccessToken.role === 'personal') {
+              //   object.user = {
+              //     name: 'Собственник'
+              //   }
+              // } else if (decodedAccessToken.role === 'agent') {
+              //   object.user = {
+              //     name: 'Агент'
+              //   }
+              // } else {
+              //   object.user = {
+              //     name: decodedAccessToken.name
+              //   }
+              // }
+              // console.log('object =>', object.user);
+              return object;
+            }
+          );
+          // objects.forEach(
+          //   item => {
+          //     console.log('item =>', item);
+          //   }
+          // );
+          res.status(200).send(objects);
+        }
+      );
+  } catch(error) {
+    console.error('Error [Backend :: object.controller :: getAll] ::', error);
   }
 };
 
