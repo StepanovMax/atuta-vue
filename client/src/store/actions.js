@@ -152,7 +152,7 @@ const actions = {
     try {
       // Get user emplyees.
       return await transport.get(
-        process.env.host_api + '/object/getAll'
+        process.env.host_api + '/object/getAllByUserId'
       )
         .then(
           response => {
