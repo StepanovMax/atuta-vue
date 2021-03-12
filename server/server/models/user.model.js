@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
 
   const User = sequelize.define('user', {
     role: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
       allowNull: {
         args: false,
         msg: 'Please enter your role'

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { getLast32Objects } from '../server/controllers/object.controller';
+import { getLast32Objects, getObjectById } from '../server/controllers/object.controller';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -201,12 +201,6 @@ router.post(
   async (req, res) => {
     const idsArray = req.body.idsArray;
 
-    idsArray.forEach(
-      item => {
-        console.log('item ::', item);
-      }
-    );
-
     try {
       let resultArray = [];
       Item.findAll({
@@ -244,6 +238,12 @@ router.post(
 router.get(
   '/getLast32Objects',
   getLast32Objects
+);
+
+
+router.post(
+  '/get-object-by-id',
+  getObjectById
 );
 
 
