@@ -2,6 +2,13 @@
 module.exports = (sequelize, Sequelize) => {
 
   const Item = sequelize.define('item', {
+    title: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the title'
+      }
+    },
     company: {
       type: Sequelize.JSON,
       allowNull: {

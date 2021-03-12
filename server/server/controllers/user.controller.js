@@ -807,7 +807,7 @@ const getUserFavorites = async (req, res) => {
 }
 
 
-const getUserByID = async (req, res) => {
+const getUserCurrent = async (req, res) => {
   // Extract the token from cookies.
   const accessToken = req.cookies.accessToken;
   console.log(' ');
@@ -835,6 +835,23 @@ const getUserByID = async (req, res) => {
 }
 
 
+const getUserById = async (req, res) => {
+  const { body } = req;
+  const userID = parseInt(body.id);
+  try {
+    const foundedUser = await User.findOne({
+      where: {
+        id: userID
+      }
+    });
+    res.status(200).send(foundedUser);
+  } catch(error) {
+    console.error('[Error > getUserInfo] ::', error);
+    res.status(200).send(false);
+  }
+}
+
+
 export {
   registration,
   login,
@@ -843,7 +860,8 @@ export {
   verifyRegistrationLink,
   removeUser,
   updateUser,
-  getUserByID,
+  getUserById,
+  getUserCurrent,
   getUserFavorites,
   addUserFavorites,
   removeUserFavorites
