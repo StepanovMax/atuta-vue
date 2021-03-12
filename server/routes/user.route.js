@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import {
   updateUser,
+  getUserById,
   getUserFavorites,
   addUserFavorites,
   removeUserFavorites
@@ -51,7 +52,10 @@ router.post(
   removeUserFavorites,
 );
 
-
+router.post(
+  '/get-user-by-id',
+  getUserById,
+);
 
 
 export default router;
