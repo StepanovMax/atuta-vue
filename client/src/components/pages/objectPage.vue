@@ -24,7 +24,7 @@
                   v-if="objectData"
                   class="object-page__category-text"
                 >
-                  {{ objectData.object.label }} / {{ objectData.deal.label }}
+                  {{ objectData.objectTypeLabel }} / {{ objectData.deal.label }}
                 </p>
               </div>
 
@@ -44,7 +44,9 @@
           </div>
         </div>
 
-        <div class="object-page__row">
+        <div
+          class="object-page__row"
+        >
 
           <div class="object-page__side-left">
 
@@ -80,9 +82,9 @@
             </div>
 
             <showPhoneNumber
-              v-if="objectData && objectData.phoneNumber"
+              v-if="objectOwner && objectOwner.phone"
               propClass="object-card__btn object-card__btn_show-phone"
-              :propPhoneNumber="objectData.phoneNumber"
+              :propPhoneNumber="objectOwner.phone"
               propPhoneView="big"
               :propObjectData="objectData"
             />
@@ -94,7 +96,7 @@
 
             <!-- App -->
             <div
-              v-if="objectData && objectData.object.slug === 'app'"
+              v-if="objectData && objectData.objectType === 'app'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -161,7 +163,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.floor.slug }}
+                  {{ objectData.floor }}
                 </span>
               </p>
 
@@ -178,7 +180,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.floorAll.slug }}
+                  {{ objectData.floorAll }}
                 </span>
               </p>
 
@@ -262,14 +264,14 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}&nbsp;г.
+                  {{ objectData.year }}г.
                 </span>
               </p>
             </div>
 
             <!-- House -->
             <div
-              v-if="objectData && objectData.object.slug === 'house'"
+              v-if="objectData && objectData.objectType === 'house'"
               class="object-page__characteristics"
             >
               <!-- View -->
@@ -319,7 +321,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}&nbsp;г.
+                  {{ objectData.year }}г.
                 </span>
               </p>
 
@@ -394,7 +396,7 @@
 
             <!-- Room -->
             <div
-              v-if="objectData && objectData.object.slug === 'room'"
+              v-if="objectData && objectData.objectType === 'room'"
               class="object-page__characteristics"
             >
               <!-- Area -->
@@ -425,7 +427,7 @@
                   Комнат всего:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.roomsCount.label }}
+                  {{ objectData.roomsCount }}
                 </span>
               </p>
 
@@ -455,7 +457,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}&nbsp;г.
+                  {{ objectData.year }}г.
                 </span>
               </p>
 
@@ -489,14 +491,14 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.floorAll.slug }}
+                  {{ objectData.floorAll }}
                 </span>
               </p>
             </div>
 
             <!-- Garage -->
             <div
-              v-if="objectData && objectData.object.slug === 'garage'"
+              v-if="objectData && objectData.objectType === 'garage'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -573,7 +575,7 @@
 
             <!-- Sector -->
             <div
-              v-if="objectData && objectData.object.slug === 'sector'"
+              v-if="objectData && objectData.objectType === 'sector'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -643,7 +645,7 @@
 
             <!-- Commercial -->
             <div
-              v-if="objectData && objectData.object.slug === 'commercial'"
+              v-if="objectData && objectData.objectType === 'commercial'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -707,7 +709,7 @@
                   Этаж:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.floor.slug }}
+                  {{ objectData.floor }}
                 </span>
               </p>
 
@@ -720,26 +722,39 @@
                   Этажей всего:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.floorAll.slug }}
+                  {{ objectData.floorAll }}
                 </span>
               </p>
 
               <!-- Tenant -->
               <p
-                v-if="objectData.tenant"
+                v-if="
+                  objectData
+                  && objectData.objectType === 'commercial'
+                  && objectData.commercialTenant
+                "
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   С арендатором:
                 </span>
-                <span class="object-page__characteristics-item_right">
-                  {{ objectData.tenant.label }}
+                <span
+                  v-if="objectData.commercialTenant"
+                  class="object-page__characteristics-item_right"
+                >
+                  Да
+                </span>
+                <span
+                  v-else
+                  class="object-page__characteristics-item_right"
+                >
+                  Нет
                 </span>
               </p>
 
               <!-- Year -->
               <p
-                v-if="objectData.year && objectData.type.slug !== 'sector'"
+                v-if="objectData.year"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -750,7 +765,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.year.label }}&nbsp;г.
+                  {{ objectData.year }}г.
                 </span>
               </p>
             </div>
@@ -769,13 +784,23 @@
                   Расстояние до города:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  <span>
-                    {{ objectData.distance.value }}
+                  <span
+                    v-if="objectData.distance === 'into-city'"
+                  >
+                    В черте города
+                  </span>
+                  <span
+                    v-else
+                  >
+                    {{ objectData.distance }}
                   </span>
                   <span>
                     &nbsp;
                   </span>
-                  <unit propUnit="km" />
+                  <unit
+                    v-if="objectData.distance !== 'into-city'"
+                    propUnit="km"
+                  />
                 </span>
               </p>
 
@@ -787,8 +812,17 @@
                 <span class="object-page__characteristics-item_left">
                   Онлайн показ:
                 </span>
-                <span class="object-page__characteristics-item_right">
-                  {{ objectData.onlineShow.label }}
+                <span
+                  v-if="objectData.onlineShow"
+                  class="object-page__characteristics-item_right"
+                >
+                  Да
+                </span>
+                <span
+                  v-else
+                  class="object-page__characteristics-item_right"
+                >
+                  Нет
                 </span>
               </p>
 
@@ -804,7 +838,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ gTimestampToDateConverter(objectData.date) }}
+                  {{ gTimestampToDateConverter(objectData.createdDate) }}
                 </span>
               </p>
 
@@ -838,33 +872,35 @@
               </p>
             </div>
 
-            <p class="paragraph object-page__user">
+            <p
+              v-if="this.objectOwner"
+              class="paragraph object-page__user"
+            >
               <span>
-                {{ objectData.user.type.label }}:
-              </span>
-              <span>
-                {{ objectData.user.name }}
+                {{ this.objectOwner.name }}
               </span>
             </p>
 
             <p
               v-if="
-                (
-                  objectData.user.type.slug === 'agency'
-                  || objectData.user.type.slug === 'builder'
+                this.objectOwner
+                && (
+                  objectData.company.slug === 'agency'
+                  || objectData.company.slug === 'builder'
                 )
-                && objectData.user.contact
               "
               class="paragraph object-page__user"
             >
-              {{ objectData.user.contact.label }}
+              {{ this.objectOwner.role.label }}
             </p>
 
           </div>
 
         </div>
 
-        <div class="object-page__row">
+        <div
+          class="object-page__row"
+        >
 
           <div
             v-if="objectData"
@@ -906,7 +942,7 @@
             </p>
             
             <yandex-map
-              v-if="objectData"
+              v-if="false && objectData"
               class="object-page__map"
               :settings="settings"
               :coords="objectData.coords"
@@ -935,7 +971,9 @@
       </div>
 
 
-      <div class="object-page__wrap">
+      <div
+        class="object-page__wrap"
+      >
         <div class="object-page__row">
 
           <div class="object-page__side-left">
@@ -1023,6 +1061,7 @@ export default {
   data() {
     return {
       // backToPage: '',
+      objectOwner: null,
       objectData: null,
       message: {},
       objectID: this.$route.params.id,
@@ -1067,11 +1106,6 @@ export default {
       }
       return '';
     },
-    urlGetObjectById() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/objects/get-object-by-id';
-      return url;
-    },
     urlGetAllObjects() {
       const host = this.getHost();
       const url = `${host.api}` + '/objects/get-objects';
@@ -1079,24 +1113,85 @@ export default {
     },
   },
   methods: {
+    async getUserById(id) {
+      console.log('getUserById ::', id);
+
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      await transport.post(
+        process.env.host_api + '/user/get-user-by-id',
+        {
+          id: id
+        }
+      )
+        .then(
+          response => {
+            // console.log('response ::', response);
+            this.objectOwner = response.data;
+            console.log('this.objectOwner ::', this.objectOwner);
+          }
+        )
+          .catch(
+            error => {
+              this.userData = null;
+              console.error(error);
+            }
+          );
+    },
     // Get an object when the page has been reload.
     async getObjectOnPageReload() {
-      // const url = '//127.0.0.1:9001/objects/get-object-by-id';
-      const result = await axios.post(
-        this.urlGetObjectById,
+      console.log('this.objectID ::', this.objectID);
+
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      await transport.post(
+        process.env.host_api + '/object/get-object-by-id',
         {
           id: this.objectID
         }
       )
-        .then(function (response) {
-          return response;
-        })
-          .catch(function (error) {
-            console.error(error);
-          });
-      if (result) {
-        this.objectData = result.data;
-      }
+        .then(
+          response => {
+            console.log('response ::', response.data);
+            this.objectData = response.data;
+            if (this.objectData.objectType === 'house') {
+              this.objectData.distance = this.objectData.houseDistance;
+              this.objectData.year = this.objectData.houseYear;
+              this.objectData.floorAll = this.objectData.houseFloorAll;
+              this.objectData.floor = this.objectData.houseFloor;
+              this.objectData.roomsCount = this.objectData.houseRoomsCount;
+            } else if (this.objectData.objectType === 'commercial') {
+              this.objectData.distance = this.objectData.commercialDistance;
+              this.objectData.year = this.objectData.commercialYear;
+              this.objectData.floorAll = this.objectData.commercialFloorAll;
+              this.objectData.floor = this.objectData.commercialFloor;
+            } else if (this.objectData.objectType === 'sector') {
+              this.objectData.distance = this.objectData.sectorDistance;
+            } else if (this.objectData.objectType === 'room') {
+              this.objectData.year = this.objectData.roomYear;
+              this.objectData.floorAll = this.objectData.roomFloorAll;
+              this.objectData.floor = this.objectData.roomFloor;
+              this.objectData.roomsCount = this.objectData.roomRoomsCount;
+            } else if (this.objectData.objectType === 'app') {
+              this.objectData.year = this.objectData.appYear;
+              this.objectData.floorAll = this.objectData.appFloorAll;
+              this.objectData.floor = this.objectData.appFloor;
+              this.objectData.roomsCount = this.objectData.appRoomsCount;
+            }
+            console.log('objectData ::', this.objectData);
+            this.getUserById(this.objectData.userId);
+          }
+        )
+          .catch(
+            error => {
+              this.objectData = null;
+              console.error(error);
+            }
+          );
     },
     // Get an object when the page has been reload.
     async getSameObjects() {
@@ -1114,10 +1209,11 @@ export default {
     },
   },
   beforeMount(){
-    this.getSameObjects();
+    // this.getSameObjects();
     // If it's a route transition then load an object through params.
     if (this.$route.params.objectData) {
       this.objectData = this.$route.params.objectData;
+      this.getUserById(this.objectData.userId);
     } else {
       this.getObjectOnPageReload();
     }
