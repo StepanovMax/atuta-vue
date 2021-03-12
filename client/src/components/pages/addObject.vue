@@ -873,7 +873,7 @@
 
       <div
         v-local
-        v-if="true && formIsFilledArray"
+        v-if="true && objectData"
         class="local-output-data"
       >
         <h6 class="
@@ -881,10 +881,10 @@
           title_h6
           title_bold
         ">
-          formIsFilledArray
+          objectData
         </h6>
         <pre>
-          {{ formIsFilledArray }}
+          {{ objectData }}
         </pre>
       </div>
 
@@ -1308,7 +1308,12 @@ export default {
       let data = {};
       if (this.changedObject) {
         data.userId = this.userData.id;
-        data.companyName = this.objectData.companyName;
+        data.company = {
+          name: this.userData.name,
+          typeSlug: this.userData.role,
+          typeLabel: this.objectData.agency.name,
+          label: this.objectData.companyName,
+        };
         const timestampNow = new Date().getTime() / 1000 | 0;
         data.status = 'active';
         data.createdDate = timestampNow;

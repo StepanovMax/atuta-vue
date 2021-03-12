@@ -2,11 +2,11 @@
 module.exports = (sequelize, Sequelize) => {
 
   const Item = sequelize.define('item', {
-    companyName: {
-      type: Sequelize.STRING,
+    company: {
+      type: Sequelize.JSON,
       allowNull: {
         args: false,
-        msg: 'Please enter the companyName'
+        msg: 'Please enter the company data'
       }
     },
     status: {

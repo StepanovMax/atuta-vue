@@ -24,7 +24,7 @@
                   v-if="objectData"
                   class="object-page__category-text"
                 >
-                  {{ objectData.object.label }} / {{ objectData.deal.label }}
+                  {{ objectData.objectTypeLabel }} / {{ objectData.deal.label }}
                 </p>
               </div>
 
@@ -44,7 +44,9 @@
           </div>
         </div>
 
-        <div class="object-page__row">
+        <div
+          class="object-page__row"
+        >
 
           <div class="object-page__side-left">
 
@@ -94,7 +96,7 @@
 
             <!-- App -->
             <div
-              v-if="objectData && objectData.object.slug === 'app'"
+              v-if="objectData && objectData.objectType === 'app'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -269,7 +271,7 @@
 
             <!-- House -->
             <div
-              v-if="objectData && objectData.object.slug === 'house'"
+              v-if="objectData && objectData.objectType === 'house'"
               class="object-page__characteristics"
             >
               <!-- View -->
@@ -394,7 +396,7 @@
 
             <!-- Room -->
             <div
-              v-if="objectData && objectData.object.slug === 'room'"
+              v-if="objectData && objectData.objectType === 'room'"
               class="object-page__characteristics"
             >
               <!-- Area -->
@@ -496,7 +498,7 @@
 
             <!-- Garage -->
             <div
-              v-if="objectData && objectData.object.slug === 'garage'"
+              v-if="objectData && objectData.objectType === 'garage'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -573,7 +575,7 @@
 
             <!-- Sector -->
             <div
-              v-if="objectData && objectData.object.slug === 'sector'"
+              v-if="objectData && objectData.objectType === 'sector'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -643,7 +645,7 @@
 
             <!-- Commercial -->
             <div
-              v-if="objectData && objectData.object.slug === 'commercial'"
+              v-if="objectData && objectData.objectType === 'commercial'"
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -864,7 +866,10 @@
 
         </div>
 
-        <div class="object-page__row">
+        <div
+          v-if="false"
+          class="object-page__row"
+        >
 
           <div
             v-if="objectData"
@@ -935,7 +940,9 @@
       </div>
 
 
-      <div class="object-page__wrap">
+      <div
+        class="object-page__wrap"
+      >
         <div class="object-page__row">
 
           <div class="object-page__side-left">
@@ -1067,11 +1074,6 @@ export default {
       }
       return '';
     },
-    urlGetObjectById() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/objects/get-object-by-id';
-      return url;
-    },
     urlGetAllObjects() {
       const host = this.getHost();
       const url = `${host.api}` + '/objects/get-objects';
@@ -1081,22 +1083,30 @@ export default {
   methods: {
     // Get an object when the page has been reload.
     async getObjectOnPageReload() {
-      // const url = '//127.0.0.1:9001/objects/get-object-by-id';
-      const result = await axios.post(
-        this.urlGetObjectById,
+      console.log('this.objectID ::', this.objectID);
+
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      await transport.post(
+        process.env.host_api + '/object/get-object-by-id',
         {
           id: this.objectID
         }
       )
-        .then(function (response) {
-          return response;
-        })
-          .catch(function (error) {
-            console.error(error);
-          });
-      if (result) {
-        this.objectData = result.data;
-      }
+        .then(
+          response => {
+            console.log('response ::', response);
+            this.objectData = response.data;
+          }
+        )
+          .catch(
+            error => {
+              this.objectData = null;
+              console.error(error);
+            }
+          );
     },
     // Get an object when the page has been reload.
     async getSameObjects() {
@@ -1114,7 +1124,7 @@ export default {
     },
   },
   beforeMount(){
-    this.getSameObjects();
+    // this.getSameObjects();
     // If it's a route transition then load an object through params.
     if (this.$route.params.objectData) {
       this.objectData = this.$route.params.objectData;

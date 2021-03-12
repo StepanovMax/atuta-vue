@@ -71,4 +71,35 @@ const getLast32Objects = async (req, res, file) => {
 };
 
 
-export { create, getLast32Objects };
+const getObjectById = async (req, res, file) => {
+  const { body } = req;
+  const objectID = parseInt(body.id);
+  try {
+    await Item.findOne({
+      where: {
+        id: objectID,
+      }
+    })
+      .then(
+        data => {
+          console.log('data.dataValues ::', data.dataValues);
+          res.status(200).send(data.dataValues);
+        }
+      )
+        .catch(
+          error => {
+            res.status(404).send({
+              message: 'Object not found'
+            });
+          }
+        );
+  } catch(error) {
+    console.error('getObjectById error ::', error);
+    res.status(404).send({
+      message: 'Object not found'
+    });
+  }
+};
+
+
+export { create, getLast32Objects, getObjectById };
