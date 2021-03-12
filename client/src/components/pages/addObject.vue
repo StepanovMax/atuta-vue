@@ -454,8 +454,8 @@
                 v-if="
                   userData.role
                   && (
-                    userData.role === 'agency'
-                    || userData.role === 'builder'
+                    userData.role.slug === 'agency'
+                    || userData.role.slug === 'builder'
                   )
                 "
                 v-model="createdObject.phone.value"
@@ -1088,17 +1088,21 @@ export default {
     },
     createdObject: {
       handler(value) {
+        console.log('handler ::', this.userData);
         this.objectDataForSending(value);
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
-        if (this.userData.role === 'personal') {
+        if (this.userData.role.slug === 'personal') {
+          this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[0].label;
-        } else if (this.userData.role === 'agent') {
+        } else if (this.userData.role.slug === 'agent') {
+          this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[1].label;
         } else {
+          this.createdObject.phone.required = true;
           this.objectData.agency.name = this.objectData.companyName = this.userData.name;
         }
         // console.log('>> this.objectData.phone', this.objectData.phone);
@@ -1307,6 +1311,7 @@ export default {
     finalObjectData() {
       let data = {};
       if (this.changedObject) {
+        data.title = this.createdObject.metaTitle;
         data.userId = this.userData.id;
         data.company = {
           name: this.userData.name,
