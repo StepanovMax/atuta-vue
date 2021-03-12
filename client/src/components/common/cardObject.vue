@@ -703,9 +703,9 @@
               ]"
             >
               <span
-                v-if="dataObjectData.companyName"
+                v-if="dataObjectData.company.label"
               >
-                {{ dataObjectData.companyName }}
+                {{ dataObjectData.company.label }}
               </span>
             </p>
           </a>
