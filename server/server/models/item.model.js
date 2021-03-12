@@ -9,11 +9,32 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the title'
       }
     },
-    company: {
-      type: Sequelize.JSON,
+    companyName: {
+      type: Sequelize.STRING,
       allowNull: {
         args: false,
-        msg: 'Please enter the company data'
+        msg: 'Please enter the company name'
+      }
+    },
+    companyRoleLabel: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the company role label'
+      }
+    },
+    companyRoleSlug: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the company role slug'
+      }
+    },
+    cardName: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the card name'
       }
     },
     status: {
@@ -141,6 +162,30 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the phone value'
       }
     },
+    roomsCountSlug: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
+    roomsCountLabel: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
+    floor: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
+    floorAll: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
     comfortType: {
       type: Sequelize.STRING,
       allowNull: {
@@ -197,27 +242,6 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the app view value',
       }
     },
-    appRoomsCount: {
-      type: Sequelize.JSON,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the app rooms count value',
-      }
-    },
-    appFloor: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the app floor value',
-      }
-    },
-    appFloorAll: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the app floor all value',
-      }
-    },
     appArea: {
       type: Sequelize.BIGINT,
       allowNull: {
@@ -237,24 +261,11 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       }
     },
-    appYear: {
-      type: Sequelize.BIGINT,
-      allowNull: {
-        args: true,
-      }
-    },
     houseType: {
       type: Sequelize.STRING,
       allowNull: {
         args: false,
         msg: 'Please enter the house type value',
-      }
-    },
-    houseRoomsCount: {
-      type: Sequelize.JSON,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the house rooms count value',
       }
     },
     houseView: {
@@ -266,19 +277,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     houseWall: {
       type: Sequelize.STRING,
-      allowNull: {
-        args: true,
-      }
-    },
-    houseYear: {
-      type: Sequelize.BIGINT,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the house year value',
-      }
-    },
-    houseDistance: {
-      type: Sequelize.JSON,
       allowNull: {
         args: true,
       }
@@ -297,45 +295,11 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the house area value',
       }
     },
-    houseFloorAll: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the house floor all value',
-      }
-    },
     roomArea: {
       type: Sequelize.STRING,
       allowNull: {
         args: false,
         msg: 'Please enter the room area value',
-      }
-    },
-    roomYear: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: true,
-      }
-    },
-    roomFloor: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the room floor value',
-      }
-    },
-    roomFloorAll: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the room floor all value',
-      }
-    },
-    roomRoomsCount: {
-      type: Sequelize.JSON,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the rooms count value',
       }
     },
     garageType: {
@@ -399,12 +363,6 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the sector area value',
       }
     },
-    sectorDistance: {
-      type: Sequelize.JSON,
-      allowNull: {
-        args: true,
-      }
-    },
     sectorFacade: {
       type: Sequelize.STRING,
       allowNull: {
@@ -438,7 +396,7 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the commercial area value',
       }
     },
-    commercialYear: {
+    year: {
       type: Sequelize.STRING,
       allowNull: {
         args: true,
@@ -450,24 +408,16 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       }
     },
-    commercialDistance: {
-      type: Sequelize.JSON,
+    distanceLabel: {
+      type: Sequelize.STRING,
       allowNull: {
         args: true,
       }
     },
-    commercialFloor: {
+    distanceSlug: {
       type: Sequelize.STRING,
       allowNull: {
-        args: false,
-        msg: 'Please enter the commercial floor value',
-      }
-    },
-    commercialFloorAll: {
-      type: Sequelize.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the commercial floor all value',
+        args: true,
       }
     },
     commercialTenant: {
