@@ -873,7 +873,7 @@
 
       <div
         v-local
-        v-if="true && objectData"
+        v-if="true && errorsMain"
         class="local-output-data"
       >
         <h6 class="
@@ -881,10 +881,10 @@
           title_h6
           title_bold
         ">
-          objectData
+          errorsMain
         </h6>
         <pre>
-          {{ objectData }}
+          {{ errorsMain }}
         </pre>
       </div>
 
