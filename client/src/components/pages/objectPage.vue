@@ -264,11 +264,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-<<<<<<< HEAD
-                  {{ objectData.year }}&nbsp;г.
-=======
                   {{ objectData.year }}г.
->>>>>>> [AT-ff6kxd] Fix table and adding of properties
                 </span>
               </p>
             </div>
@@ -769,11 +765,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-<<<<<<< HEAD
-                  {{ objectData.year }}&nbsp;г.
-=======
                   {{ objectData.year }}г.
->>>>>>> [AT-ff6kxd] Fix table and adding of properties
                 </span>
               </p>
             </div>
@@ -1170,30 +1162,18 @@ export default {
               this.objectData.distance = this.objectData.houseDistance;
               this.objectData.year = this.objectData.houseYear;
               this.objectData.floorAll = this.objectData.houseFloorAll;
-<<<<<<< HEAD
-=======
               this.objectData.floor = this.objectData.houseFloor;
               this.objectData.roomsCount = this.objectData.houseRoomsCount;
->>>>>>> [AT-ff6kxd] Fix table and adding of properties
             } else if (this.objectData.objectType === 'commercial') {
               this.objectData.distance = this.objectData.commercialDistance;
               this.objectData.year = this.objectData.commercialYear;
               this.objectData.floorAll = this.objectData.commercialFloorAll;
-<<<<<<< HEAD
-=======
               this.objectData.floor = this.objectData.commercialFloor;
->>>>>>> [AT-ff6kxd] Fix table and adding of properties
             } else if (this.objectData.objectType === 'sector') {
               this.objectData.distance = this.objectData.sectorDistance;
             } else if (this.objectData.objectType === 'room') {
               this.objectData.year = this.objectData.roomYear;
               this.objectData.floorAll = this.objectData.roomFloorAll;
-<<<<<<< HEAD
-            } else if (this.objectData.objectType === 'app') {
-              this.objectData.year = this.objectData.appYear;
-              this.objectData.floorAll = this.objectData.appFloorAll;
-            }
-=======
               this.objectData.floor = this.objectData.roomFloor;
               this.objectData.roomsCount = this.objectData.roomRoomsCount;
             } else if (this.objectData.objectType === 'app') {
@@ -1203,7 +1183,6 @@ export default {
               this.objectData.roomsCount = this.objectData.appRoomsCount;
             }
             console.log('objectData ::', this.objectData);
->>>>>>> [AT-ff6kxd] Fix table and adding of properties
             this.getUserById(this.objectData.userId);
           }
         )
