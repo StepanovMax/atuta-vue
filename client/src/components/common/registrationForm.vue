@@ -997,7 +997,8 @@ export default {
     },
     prepareUserDataForSending() {
       const data = {...this.userDataLocal};
-      const role = data.role.slug;
+      const roleLabel = data.role.label;
+      const roleSlug = data.role.slug;
       const name = data.name;
       const phone = this.gFormatPhoneRevert(data.phone);
       if (this.formType === 'reg') {
@@ -1008,7 +1009,8 @@ export default {
         }
       }
       data.phone = phone;
-      data.role = role;
+      data.roleLabel = roleLabel;
+      data.roleSlug = roleSlug;
       data.name = name;
       data.date = Date.now();
       return data;
