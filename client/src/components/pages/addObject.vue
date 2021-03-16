@@ -1076,7 +1076,7 @@ export default {
     },
     createdObject: {
       handler(value) {
-        console.log('handler ::', this.userData);
+        // console.log('createdObject ::', this.userData);
         this.objectDataForSending(value);
         this.objectData = value;
         // TODO: Why?
@@ -1093,6 +1093,7 @@ export default {
           this.createdObject.phone.required = true;
           this.objectData.agency.name = this.objectData.companyName = this.userData.name;
         }
+        console.log('createdObject ::', value);
         // console.log('>> this.objectData.phone', this.objectData.phone);
 
         this.formIsFilledArray = [];
