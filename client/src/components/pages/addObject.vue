@@ -1082,11 +1082,11 @@ export default {
         // TODO: Why?
         this.createdObject = value;
         console.log('this.userData.role ::', this.userData.role);
-        if (this.userData.role === 'personal') {
+        if (this.userData.roleSlug === 'personal') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[0].label;
-        } else if (this.userData.role === 'agent') {
+        } else if (this.userData.roleSlug === 'agent') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[1].label;
@@ -1355,7 +1355,7 @@ export default {
           }
         }
         if (this.changedObject.phone && this.changedObject.phone.value) {
-          data.phone = this.createdObject.phone.value;
+          data.phone = this.createdObject.phone.value.phone;
         }
 
 
@@ -1932,6 +1932,14 @@ export default {
         console.error('Something went wrong with object creation ::', error);
       }
     },
+  },
+  beforeMount() {
+    if (this.userData) {
+      this.userData.role = {
+        slug: this.userData.roleSlug,
+        label: this.userData.roleLabel,
+      };
+    }
   },
   // mounted() {
   //   const suggestView1 = ymaps.SuggestView('currentAddress');
