@@ -1081,11 +1081,12 @@ export default {
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
-        if (this.userData.role.slug === 'personal') {
+        console.log('this.userData.role ::', this.userData.role);
+        if (this.userData.role === 'personal') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[0].label;
-        } else if (this.userData.role.slug === 'agent') {
+        } else if (this.userData.role === 'agent') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
           this.objectData.agency.name = this.objectData.companyName = this.userRoles[1].label;
