@@ -2,11 +2,18 @@
 module.exports = (sequelize, Sequelize) => {
 
   const User = sequelize.define('user', {
-    role: {
-      type: Sequelize.JSON,
+    roleLabel: {
+      type: Sequelize.STRING,
       allowNull: {
         args: false,
-        msg: 'Please enter your role'
+        msg: 'Please enter your role label'
+      }
+    },
+    roleSlug: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter your role slug'
       }
     },
     password: {
