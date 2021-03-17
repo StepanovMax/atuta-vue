@@ -147,7 +147,7 @@ export default {
     },
     sortPrice() {
       if (this.propSortingTypeSortObjects === 'vip') {
-        this.sortPriceVip();
+        this.sortPrice();
       } else if (this.propSortingTypeSortObjects === 'common') {
         this.sortPriceCommon();
       }
