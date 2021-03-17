@@ -36,6 +36,7 @@
           :key="'key-' + item.id + '-' + index"
         >
           <cardObject
+            v-if="!item.ads && (item.ads !== 'yes')"
             :propObjectView="dataGridView"
             :key="'key-' + item.id + '-' + index"
             :propObjectData="item"
