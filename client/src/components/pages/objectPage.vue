@@ -98,11 +98,15 @@
             </div>
 
             <showPhoneNumber
-              v-if="objectOwner && objectOwner.phone"
+              v-if="
+                objectOwner
+                && objectOwner.phone
+              "
               propClass="object-card__btn object-card__btn_show-phone"
               :propPhoneNumber="objectOwner.phone"
               propPhoneView="big"
               :propObjectData="objectData"
+              :propConnectionWay="objectData.connectionWay"
             />
 
             <moveToFavorites
@@ -112,7 +116,10 @@
 
             <!-- App -->
             <div
-              v-if="objectData && objectData.objectType === 'app'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'app'
+              "
               class="object-page__characteristics"
             >
               <!-- Type -->
@@ -134,7 +141,7 @@
 
               <!-- View -->
               <p
-                v-if="objectData.appView"
+                v-if="objectData.appViewLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -145,13 +152,13 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.appView }}
+                  {{ objectData.appViewLabel }}
                 </span>
               </p>
 
               <!-- Roomscount -->
               <p
-                v-if="objectData.roomsCount"
+                v-if="objectData.roomsCountLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -162,7 +169,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.roomsCount }}
+                  {{ objectData.roomsCountLabel }}
                 </span>
               </p>
 
@@ -202,7 +209,7 @@
 
               <!-- Area -->
               <p
-                v-if="objectData.area"
+                v-if="objectData.appArea"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -214,7 +221,7 @@
                   class="object-page__characteristics-item_right"
                 >
                   <span>
-                    {{ objectData.area.slug }}
+                    {{ objectData.appArea }}
                   </span>
                   <span>
                     &nbsp;
@@ -225,7 +232,7 @@
 
               <!-- Area kitchen -->
               <p
-                v-if="objectData.areaKitchen"
+                v-if="objectData.appAreaKitchen"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -235,7 +242,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.areaKitchen.slug }}
+                    {{ objectData.appAreaKitchen }}
                   </span>
                   <span>
                     &nbsp;
@@ -246,7 +253,7 @@
 
               <!-- Area living -->
               <p
-                v-if="objectData.areaLiving"
+                v-if="objectData.appAreaLiving"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -258,7 +265,7 @@
                   class="object-page__characteristics-item_right"
                 >
                   <span>
-                    {{ objectData.areaLiving.slug }}
+                    {{ objectData.appAreaLiving }}
                   </span>
                   <span>
                     &nbsp;
@@ -287,12 +294,15 @@
 
             <!-- House -->
             <div
-              v-if="objectData && objectData.objectType === 'house'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'house'
+              "
               class="object-page__characteristics"
             >
               <!-- View -->
               <p
-                v-if="objectData.view"
+                v-if="objectData.houseTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -303,13 +313,13 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.view.label }}
+                  {{ objectData.houseTypeLabel }}
                 </span>
               </p>
 
               <!-- Roomscount -->
               <p
-                v-if="objectData.roomsCount"
+                v-if="objectData.roomsCountLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -320,7 +330,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.roomsCount.slug }}
+                  {{ objectData.roomsCountLabel }}
                 </span>
               </p>
 
@@ -343,7 +353,7 @@
 
               <!-- Wall material -->
               <p
-                v-if="objectData.wall"
+                v-if="objectData.houseWallLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -354,13 +364,13 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.wall.label }}
+                  {{ objectData.houseWallLabel }}
                 </span>
               </p>
 
               <!-- Area house -->
               <p
-                v-if="objectData.areaHouse"
+                v-if="objectData.houseAreaHouse"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -368,7 +378,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.areaHouse.label }}
+                    {{ objectData.houseAreaHouse }}
                   </span>
                   <span>
                     &nbsp;
@@ -379,7 +389,7 @@
 
               <!-- Area sector -->
               <p
-                v-if="objectData.areaSector"
+                v-if="objectData.houseAreaLand"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -387,7 +397,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.areaSector.label }}
+                    {{ objectData.houseAreaLand }}
                   </span>
                   <span>
                     &nbsp;
@@ -412,12 +422,15 @@
 
             <!-- Room -->
             <div
-              v-if="objectData && objectData.objectType === 'room'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'room'
+              "
               class="object-page__characteristics"
             >
               <!-- Area -->
               <p
-                v-if="objectData.area"
+                v-if="objectData.roomArea"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -425,7 +438,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.area.label }}
+                    {{ objectData.roomArea }}
                   </span>
                   <span>
                     &nbsp;
@@ -436,27 +449,27 @@
 
               <!-- Rooms count -->
               <p
-                v-if="objectData.roomsCount"
+                v-if="objectData.roomsCountLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Комнат всего:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.roomsCount }}
+                  {{ objectData.roomsCountLabel }}
                 </span>
               </p>
 
               <!-- View -->
               <p
-                v-if="objectData.view"
+                v-if="objectData.rromViewLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Вид дома:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.view.label }}
+                  {{ objectData.rromViewLabel }}
                 </span>
               </p>
 
@@ -490,7 +503,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.floor.slug }}
+                  {{ objectData.floor }}
                 </span>
               </p>
 
@@ -514,51 +527,54 @@
 
             <!-- Garage -->
             <div
-              v-if="objectData && objectData.objectType === 'garage'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'garage'
+              "
               class="object-page__characteristics"
             >
-              <!-- Type -->
+              <!-- Sub type -->
               <p
-                v-if="objectData.type"
+                v-if="objectData.garageTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Тип:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.type.label }}
+                  {{ objectData.garageTypeLabel }}
                 </span>
               </p>
 
               <!-- Garage type -->
               <p
-                v-if="objectData.garageType"
+                v-if="objectData.garageSubTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Тип гаража:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.garageType.label }}
+                  {{ objectData.garageSubTypeLabel }}
                 </span>
               </p>
 
               <!-- Parking type -->
               <p
-                v-if="objectData.parkingType"
+                v-if="objectData.parkingSubTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Тип парковочного места:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.parkingType.label }}
+                  {{ objectData.parkingSubTypeLabel }}
                 </span>
               </p>
 
               <!-- Area -->
               <p
-                v-if="objectData.area"
+                v-if="objectData.garageArea"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -566,7 +582,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.area.label }}
+                    {{ objectData.garageArea }}
                   </span>
                   <span>
                     &nbsp;
@@ -577,39 +593,51 @@
 
               <!-- Security -->
               <p
-                v-if="objectData.security"
+                v-if="objectData.garageSecurity"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Охрана:
                 </span>
-                <span class="object-page__characteristics-item_right">
-                  {{ objectData.security.label }}
+                <span
+                  v-if="objectData.garageSecurity"
+                  class="object-page__characteristics-item_right"
+                >
+                  Да
+                </span>
+                <span
+                  v-else
+                  class="object-page__characteristics-item_right"
+                >
+                  Нет
                 </span>
               </p>
             </div>
 
             <!-- Sector -->
             <div
-              v-if="objectData && objectData.objectType === 'sector'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'sector'
+              "
               class="object-page__characteristics"
             >
               <!-- Type -->
               <p
-                v-if="objectData.type"
+                v-if="objectData.sectorTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Тип:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.type.label }}
+                  {{ objectData.sectorTypeLabel }}
                 </span>
               </p>
 
               <!-- Area -->
               <p
-                v-if="objectData.area"
+                v-if="objectData.sectorArea"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -617,7 +645,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.area.label }}
+                    {{ objectData.sectorArea }}
                   </span>
                   <span>
                     &nbsp;
@@ -628,7 +656,7 @@
 
               <!-- Facade -->
               <p
-                v-if="objectData.facade"
+                v-if="objectData.sectorFacade"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -636,7 +664,7 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.facade.value }}
+                    {{ objectData.sectorFacade }}
                   </span>
                   <span>
                     &nbsp;
@@ -647,39 +675,51 @@
 
               <!-- Availability of buildings -->
               <p
-                v-if="objectData.availabilityOfBuildings"
+                v-if="objectData.sectorAvailabilityOfBuildings"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Наличие строений:
                 </span>
-                <span class="object-page__characteristics-item_right">
-                  {{ objectData.availabilityOfBuildings.label }}
+                <span
+                  v-if="objectData.sectorAvailabilityOfBuildings"
+                  class="object-page__characteristics-item_right"
+                >
+                  Да
+                </span>
+                <span
+                  v-else
+                  class="object-page__characteristics-item_right"
+                >
+                  Нет
                 </span>
               </p>
             </div>
 
             <!-- Commercial -->
             <div
-              v-if="objectData && objectData.objectType === 'commercial'"
+              v-if="
+                objectData
+                && objectData.objectTypeSlug === 'commercial'
+              "
               class="object-page__characteristics"
             >
               <!-- Type -->
               <p
-                v-if="objectData.type"
+                v-if="objectData.commercialTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Тип:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.type.label }}
+                  {{ objectData.commercialTypeLabel }}
                 </span>
               </p>
 
               <!-- Area -->
               <p
-                v-if="objectData.area"
+                v-if="objectData.commercialArea"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -687,17 +727,17 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span>
-                    {{ objectData.area.label }}
+                    {{ objectData.commercialArea }}
                   </span>
                   <span>
                     &nbsp;
                   </span>
                   <unit
-                    v-if="objectData.type.slug === 'sector'"
+                    v-if="objectData.objectTypeSlug === 'sector'"
                     propUnit="acr"
                   />
                   <unit
-                    v-if="objectData.type.slug !== 'sector'"
+                    v-if="objectData.objectTypeSlug !== 'sector'"
                     propUnit="meterSquare"
                   />
                 </span>
@@ -705,14 +745,14 @@
 
               <!-- Class -->
               <p
-                v-if="objectData.class"
+                v-if="objectData.commercialClass"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
                   Класс:
                 </span>
                 <span class="object-page__characteristics-item_right">
-                  {{ objectData.class.label }}
+                  {{ objectData.commercialClass }}
                 </span>
               </p>
 
@@ -746,7 +786,7 @@
               <p
                 v-if="
                   objectData
-                  && objectData.objectType === 'commercial'
+                  && objectData.objectTypeSlug === 'commercial'
                   && objectData.commercialTenant
                 "
                 class="object-page__characteristics-item"
@@ -1244,7 +1284,7 @@ export default {
       this.getObjectOnPageReload();
     }
     console.log('objectData.photoGallery ::', this.objectData);
-    if (!this.objectData.photoGallery.length) {
+    if (this.objectData && !this.objectData.photoGallery.length) {
       // this.objectData.photoGallery.push('/src/images/logo/logo_desktop.png');
     }
   },

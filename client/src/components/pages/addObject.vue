@@ -873,7 +873,7 @@
 
       <div
         v-local
-        v-if="true && errorsMain"
+        v-if="true && finalObjectData"
         class="local-output-data"
       >
         <h6 class="
@@ -881,10 +881,10 @@
           title_h6
           title_bold
         ">
-          errorsMain
+          finalObjectData
         </h6>
         <pre>
-          {{ errorsMain }}
+          {{ finalObjectData }}
         </pre>
       </div>
 
@@ -1507,11 +1507,16 @@ export default {
             data.garageSubTypeLabel = this.changedObject.garage.parkingType.value.label;
             data.garageSubTypeLabelShort = this.changedObject.garage.parkingType.value.labelShort;
           }
-          if (this.changedObject.garage.area && this.changedObject.garage.area.value) {
-            data.garageArea = this.changedObject.garage.area.value;
+          console.log('  ! ', this.changedObject.garage.area);
+          if (this.changedObject.garage.area) {
+            data.garageArea = this.changedObject.garage.area;
           }
-          if (this.changedObject.garage.security && this.changedObject.garage.security.value) {
-            data.garageSecurity = this.changedObject.garage.security.slug;
+          if (this.changedObject.garage.security && this.changedObject.garage.security.slug) {
+            if (this.changedObject.garage.security.slug) {
+              data.garageSecurity = this.changedObject.garage.security.slug;
+            } else {
+              data.garageSecurity = 'no';
+            }
           }
         }
         // Sector
@@ -1898,6 +1903,7 @@ export default {
         this.showErrorMessageOnObjectCreating = false;
         const formData = new FormData();
         const data = JSON.parse(JSON.stringify(this.finalObjectData));
+        // console.log('this.userData ::', this.userData);
         if (this.finalObjectData.photoGallery && this.finalObjectData.photoGallery.length) {
           this.finalObjectData.photoGallery.forEach(
             item => {

@@ -6,6 +6,10 @@
     ]"
   >
     <div
+      v-if="
+        propConnectionWay === 'both'
+        || propConnectionWay === 'phone'
+      "
       class="show-phone-number__phone"
       :class="[
         {'show-phone-number__phone_big': propPhoneView === 'big'},
@@ -45,6 +49,10 @@
       </p>
     </div>
     <button
+      v-if="
+        propConnectionWay === 'both'
+        || propConnectionWay === 'messages'
+      "
       @click="moveToDialog"
       class="
         btn
@@ -86,6 +94,11 @@ export default {
       type: Object,
       default: () => ({}),
       required: false,
+    },
+    propConnectionWay: {
+      type: String,
+      default: 'both',
+      required: true
     },
   },
   data() {
