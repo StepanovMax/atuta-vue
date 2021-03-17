@@ -62,9 +62,25 @@
             </h2>
 
             <imagesCarousel
-              v-if="objectData"
+              v-if="
+                objectData
+                && objectData.photoGallery.length
+              "
               :propImages="objectData.photoGallery"
             />
+
+            <p
+              v-if="
+                objectData
+                && !objectData.photoGallery.length
+              "
+              class="
+                paragraph
+                object-page__description
+              "
+            >
+              {{ objectData.description }}
+            </p>
 
           </div>
 
@@ -101,7 +117,7 @@
             >
               <!-- Type -->
               <p
-                v-if="objectData.type"
+                v-if="objectData.objectTypeLabel"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -112,13 +128,13 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.type.label }}
+                  {{ objectData.objectTypeLabel }}
                 </span>
               </p>
 
               <!-- View -->
               <p
-                v-if="objectData.view"
+                v-if="objectData.appView"
                 class="object-page__characteristics-item"
               >
                 <span
@@ -129,7 +145,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.view.label }}
+                  {{ objectData.appView }}
                 </span>
               </p>
 
@@ -146,7 +162,7 @@
                 <span
                   class="object-page__characteristics-item_right"
                 >
-                  {{ objectData.roomsCount.slug }}
+                  {{ objectData.roomsCount }}
                 </span>
               </p>
 
@@ -777,7 +793,6 @@
             >
               <!-- Distance -->
               <p
-                v-if="objectData.distance"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -785,28 +800,35 @@
                 </span>
                 <span class="object-page__characteristics-item_right">
                   <span
-                    v-if="objectData.distance === 'into-city'"
+                    v-if="objectData.distanceSlug === 'into-city'"
                   >
                     В черте города
                   </span>
                   <span
                     v-else
                   >
-                    {{ objectData.distance }}
+                    {{ objectData.distanceLabel }}
                   </span>
                   <span>
                     &nbsp;
                   </span>
                   <unit
-                    v-if="objectData.distance !== 'into-city'"
+                    v-if="
+                      objectData.distanceSlug
+                      && objectData.distanceSlug !== 'into-city'
+                    "
                     propUnit="km"
                   />
+                  <span
+                    v-if="!objectData.distanceSlug"
+                  >
+                    Не указано
+                  </span>
                 </span>
               </p>
 
               <!-- Online show -->
               <p
-                v-if="objectData.onlineShow"
                 class="object-page__characteristics-item"
               >
                 <span class="object-page__characteristics-item_left">
@@ -885,13 +907,13 @@
               v-if="
                 this.objectOwner
                 && (
-                  objectData.company.slug === 'agency'
-                  || objectData.company.slug === 'builder'
+                  objectData.companyRoleSlug === 'agency'
+                  || objectData.companyRoleSlug === 'builder'
                 )
               "
               class="paragraph object-page__user"
             >
-              {{ this.objectOwner.role.label }}
+              {{ this.objectData.companyRoleLabel }}
             </p>
 
           </div>
@@ -908,6 +930,10 @@
           >
 
             <p
+              v-if="
+                objectData
+                && objectData.photoGallery.length
+              "
               class="
                 paragraph
                 object-page__description
@@ -1208,7 +1234,7 @@ export default {
       }
     },
   },
-  beforeMount(){
+  beforeMount() {
     // this.getSameObjects();
     // If it's a route transition then load an object through params.
     if (this.$route.params.objectData) {
@@ -1216,6 +1242,10 @@ export default {
       this.getUserById(this.objectData.userId);
     } else {
       this.getObjectOnPageReload();
+    }
+    console.log('objectData.photoGallery ::', this.objectData);
+    if (!this.objectData.photoGallery.length) {
+      // this.objectData.photoGallery.push('/src/images/logo/logo_desktop.png');
     }
   },
 };

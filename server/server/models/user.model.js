@@ -62,8 +62,7 @@ module.exports = (sequelize, Sequelize) => {
     logo: {
       type: Sequelize.STRING,
       allowNull: {
-        args: false,
-        msg: 'Please enter your logo'
+        args: true,
       }
     },
     website: {
@@ -87,43 +86,43 @@ module.exports = (sequelize, Sequelize) => {
     favorites: {
       type: Sequelize.ARRAY(Sequelize.INTEGER),
       allowNull: {
-        args: false,
-        msg: 'Please enter the favorites',
+        args: true,
       },
     },
     accessToken: {
       type: Sequelize.TEXT,
       allowNull: {
         args: true,
-        msg: 'Please enter an accessToken'
       },
     },
     refreshToken: {
       type: Sequelize.TEXT,
       allowNull: {
         args: true,
-        msg: 'Please enter an refreshToken'
       },
     },
     status: {
       type: Sequelize.STRING,
       allowNull: {
         args: true,
-        msg: 'Please enter an status'
       },
     },
     expireRegDate: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       allowNull: {
         args: true,
-        msg: 'Please enter an expireRegDate'
       },
     },
     regKey: {
       type: Sequelize.TEXT,
       allowNull: {
         args: true,
-        msg: 'Please enter an regKey'
+      },
+    },
+    agencyBuyDate: {
+      type: Sequelize.INTEGER,
+      allowNull: {
+        args: true,
       },
     },
   }, {});

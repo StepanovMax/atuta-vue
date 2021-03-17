@@ -167,6 +167,15 @@ export default {
           }
         }
       );
+      // console.log('objectsVIP', objectsVIP);
+      // console.log('objectsOthers', objectsOthers.length);
+      if (objectsOthers) {
+        objectsOthers.forEach(
+          item => {
+            // console.log('item ::', item.id);
+          }
+        )
+      }
 
       let testArray = [];
       let numberStart;
@@ -175,17 +184,30 @@ export default {
         if (i % 9 == 0) {
           numberStart = i;
           numberEnd = i + 3;
+          // console.log('testArray =>', numberStart, numberEnd);
         }
+        // console.log('numberStart ::', numberStart, numberEnd);
         if (i >= numberStart && i < numberEnd) {
-          testArray.push(objectsVIP[0]);
-          if (objectsVIP.length > 1) {
+          console.log('objectsVIP ::', objectsVIP.length);
+          if (objectsVIP.length >= 1) {
+            testArray.push(objectsVIP[0]);
             objectsVIP.splice(0, 1);
+          } else {
+            testArray.push({ads: 'yes'});
           }
+          // console.log('i ::', i, objectsVIP[0].id);
         } else {
           testArray.push(objectsOthers[0]);
           if (objectsOthers.length > 1) {
             objectsOthers.splice(0, 1);
           }
+          // console.log('  i ::', i, objectsOthers[0].id);
+          // console.log('testArray ::');
+          // testArray.forEach(
+          //   item => {
+          //     console.log('item =>', item.tarif, item.id);
+          //   }
+          // );
         }
         // objectsFinalSorted.push();
       }
@@ -225,11 +247,6 @@ export default {
       // objectsFinal = [...objectsVIP, ...objectsOthers];
       // console.log('objectsOthers ::', objectsOthers);
       // console.log('this.dataObjectsForSorting ::', this.dataObjectsForSorting);
-      testArray.forEach(
-        item => {
-          // console.log('item =>', item.tarif, item.id);
-        }
-      );
 
       this.activeButton = 'date';
       this.$emit('update:value', testArray);
