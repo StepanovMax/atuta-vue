@@ -8,7 +8,7 @@
           sort-objects__btn_price
         "
         :class="{'sort-objects__btn_active': activeButton === 'price'}"
-        @click="sortPrice()"
+        @click="sortPriceCommon()"
       >
         <span
           class="sort-objects__btn-text"
