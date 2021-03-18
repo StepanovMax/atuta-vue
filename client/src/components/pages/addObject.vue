@@ -873,7 +873,7 @@
 
       <div
         v-local
-        v-if="true && objectData"
+        v-if="true && finalObjectData"
         class="local-output-data"
       >
         <h6 class="
@@ -881,10 +881,10 @@
           title_h6
           title_bold
         ">
-          objectData
+          finalObjectData
         </h6>
         <pre>
-          {{ objectData }}
+          {{ finalObjectData }}
         </pre>
       </div>
 
@@ -1033,18 +1033,6 @@ export default {
         phoneNumber: '79612701887',
       },
       district: '',
-      phones: [
-        {
-          label: 'Максим Степанов',
-          slug: 'maxim-stepanov',
-          phone: '+7 (961) 270-18-87',
-        },
-        {
-          label: 'Артур Тавадян',
-          slug: 'artur-tavadyan',
-          phone: '+7 (928) 112-20-80',
-        },
-      ],
       addressSelected: false,
       formIsFilled: false,
       formIsFilledArray: [],
@@ -1088,11 +1076,12 @@ export default {
     },
     createdObject: {
       handler(value) {
-        console.log('handler ::', this.userData);
+        // console.log('createdObject ::', this.userData);
         this.objectDataForSending(value);
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
+        console.log('this.userData ::', this.userData);
         if (this.userData.role.slug === 'personal') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
@@ -1311,19 +1300,18 @@ export default {
     finalObjectData() {
       let data = {};
       if (this.changedObject) {
+        // console.log('this.userData ::', this.userData);
         data.title = this.createdObject.metaTitle;
         data.userId = this.userData.id;
-        data.company = {
-          name: this.userData.name,
-          typeSlug: this.userData.role,
-          typeLabel: this.objectData.agency.name,
-          label: this.objectData.companyName,
-        };
+        data.companyName = this.userData.name;
+        data.companyRoleLabel = this.userData.role.label;
+        data.companyRoleSlug = this.userData.role.slug;
+        data.cardName = this.objectData.agency.name;
         const timestampNow = new Date().getTime() / 1000 | 0;
         data.status = 'active';
         data.createdDate = timestampNow;
         if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
-          data.objectType = this.changedObject.object.value.slug;
+          data.objectTypeSlug = this.changedObject.object.value.slug;
           data.objectTypeLabel = this.changedObject.object.value.label;
           data.objectTypeLabelShort = this.changedObject.object.value.labelShort;
         }
@@ -1335,7 +1323,8 @@ export default {
           data.addressName = this.changedObject.address.value;
         }
         if (this.changedObject.district && this.changedObject.district.value && this.changedObject.district.value.slug) {
-          data.district = this.changedObject.district.value.label;
+          data.districtSlug = this.changedObject.district.value.slug;
+          data.districtLabel = this.changedObject.district.value.label;
         }
         if (this.changedObject.onlineShow && this.changedObject.onlineShow.value && this.changedObject.onlineShow.value.slug) {
           data.onlineShow = this.changedObject.onlineShow.value.slug;
@@ -1368,22 +1357,84 @@ export default {
         if (this.changedObject.phone && this.changedObject.phone.value) {
           data.phone = this.createdObject.phone.value.phone;
         }
+
+        console.log('this.changedObject ::', this.changedObject);
+        if (data.objectTypeSlug === 'app') {
+          if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
+            data.roomsCountLabel = this.changedObject.app.roomsCount.value.label;
+            data.roomsCountSlug = this.changedObject.app.roomsCount.value.slug;
+          }
+          if (this.changedObject.app.year && this.changedObject.app.year.value) {
+            data.year = this.changedObject.app.year.value.slug;
+          }
+          if (this.changedObject.app.floor && this.changedObject.app.floor.value) {
+            data.floor = this.changedObject.app.floor.value.slug;
+          }
+          if (this.changedObject.app.floorAll && this.changedObject.app.floorAll.value) {
+            data.floorAll = this.changedObject.app.floorAll.value.slug;
+          }
+        } else if (data.objectTypeSlug === 'house') {
+          if (this.changedObject.house.roomsCount && this.changedObject.house.roomsCount.value) {
+            data.roomsCountLabel = this.changedObject.house.roomsCount.value.label;
+            data.roomsCountSlug = this.changedObject.house.roomsCount.value.slug;
+          }
+          if (this.changedObject.house.distance && this.changedObject.house.distance.value) {
+            data.distanceLabel = this.changedObject.house.distance.value.label;
+            data.distanceSlug = this.changedObject.house.distance.value.slug;
+          }
+          if (this.changedObject.house.year && this.changedObject.house.year.value) {
+            data.year = this.changedObject.house.year.value.slug;
+          }
+          if (this.changedObject.house.floorAll && this.changedObject.house.floorAll.value) {
+            data.floorAll = this.changedObject.house.floorAll.value.slug;
+          }
+        } else if (data.objectTypeSlug === 'room') {
+          if (this.changedObject.room.roomsCount && this.changedObject.room.roomsCount.value) {
+            data.roomsCountLabel = this.changedObject.room.roomsCount.value.label;
+            data.roomsCountSlug = this.changedObject.room.roomsCount.value.slug;
+          }
+          if (this.changedObject.room.year && this.changedObject.room.year.value) {
+            data.year = this.changedObject.room.year.value.slug;
+          }
+          if (this.changedObject.room.floor && this.changedObject.room.floor.value) {
+            data.floor = this.changedObject.room.floor.value.slug;
+          }
+          if (this.changedObject.room.floorAll && this.changedObject.room.floorAll.value) {
+            data.floorAll = this.changedObject.room.floorAll.value.slug;
+          }
+        } else if (data.objectTypeSlug === 'garage') {
+
+        } else if (data.objectTypeSlug === 'commercial') {
+          if (this.changedObject.commercial.distance.value && this.changedObject.commercial.distance.value.slug) {
+            data.distanceLabel = this.changedObject.commercial.distance.value.label;
+            data.distanceSlug = this.changedObject.commercial.distance.value.slug;
+          }
+          if (this.changedObject.commercial.year && this.changedObject.commercial.year.slug) {
+            data.year = this.changedObject.commercial.year.slug;
+          }
+          if (this.changedObject.commercial.floor && this.changedObject.commercial.floor.value) {
+            data.floor = this.changedObject.commercial.floor.value.slug;
+          }
+          if (this.changedObject.commercial.floorAll && this.changedObject.commercial.floorAll.value) {
+            data.floorAll = this.changedObject.commercial.floorAll.value.slug;
+          }
+        } else if (data.objectTypeSlug === 'sector') {
+          if (this.changedObject.sector.distance && this.changedObject.sector.distance.value) {
+            data.distanceLabel = this.changedObject.sector.distance.value.slug;
+            data.distanceSlug = this.changedObject.sector.distance.value.slug;
+          }
+        }
+
+
         // App
         if (this.changedObject.app) {
           if (this.changedObject.app.type && this.changedObject.app.type.value) {
-            data.appType = this.changedObject.app.type.value.slug;
+            data.appTypeSlug = this.changedObject.app.type.value.slug;
+            data.appTypeLabel = this.changedObject.app.type.value.label;
           }
           if (this.changedObject.app.view && this.changedObject.app.view.value) {
-            data.appView = this.changedObject.app.view.value.slug;
-          }
-          if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
-            data.appRoomsCount = this.changedObject.app.roomsCount.value;
-          }
-          if (this.changedObject.app.floor && this.changedObject.app.floor.value) {
-            data.appFloor = this.changedObject.app.floor.value.slug;
-          }
-          if (this.changedObject.app.floorAll && this.changedObject.app.floorAll.value) {
-            data.appFloorAll = this.changedObject.app.floorAll.value.slug;
+            data.appViewSlug = this.changedObject.app.view.value.slug;
+            data.appViewLabel = this.changedObject.app.view.value.label;
           }
           if (this.changedObject.app.area && this.changedObject.app.area.value) {
             data.appArea = this.changedObject.app.area.value;
@@ -1394,29 +1445,20 @@ export default {
           if (this.changedObject.app.areaKitchen && this.changedObject.app.areaKitchen.value) {
             data.appAreaKitchen = this.changedObject.app.areaKitchen.value;
           }
-          if (this.changedObject.app.year && this.changedObject.app.year.value) {
-            data.appYear = this.changedObject.app.year.value.slug;
-          }
         }
         // House
         if (this.changedObject.house) {
           if (this.changedObject.house.type && this.changedObject.house.type.value) {
-            data.houseType = this.changedObject.house.type.value.slug;
-          }
-          if (this.changedObject.house.roomsCount && this.changedObject.house.roomsCount.value) {
-            data.houseRoomsCount = this.changedObject.house.roomsCount.value;
+            data.houseTypeSlug = this.changedObject.house.type.value.slug;
+            data.houseTypeLabel = this.changedObject.house.type.value.label;
           }
           if (this.changedObject.house.view && this.changedObject.house.view.value) {
-            data.houseView = this.changedObject.house.view.value.slug;
+            data.houseViewSlug = this.changedObject.house.view.value.slug;
+            data.houseViewLabel = this.changedObject.house.view.value.label;
           }
           if (this.changedObject.house.wall && this.changedObject.house.wall.value) {
-            data.houseWall = this.changedObject.house.wall.value.slug;
-          }
-          if (this.changedObject.house.year && this.changedObject.house.year.value) {
-            data.houseYear = this.changedObject.house.year.value.slug;
-          }
-          if (this.changedObject.house.distance && this.changedObject.house.distance.value) {
-            data.houseDistance = this.changedObject.house.distance.value.slug;
+            data.houseWallSlug = this.changedObject.house.wall.value.slug;
+            data.houseWallLabel = this.changedObject.house.wall.value.label;
           }
           if (this.changedObject.house.areaLand && this.changedObject.house.areaLand.value) {
             data.houseAreaLand = this.changedObject.house.areaLand.value;
@@ -1424,37 +1466,24 @@ export default {
           if (this.changedObject.house.areaHouse && this.changedObject.house.areaHouse.value) {
             data.houseAreaHouse = this.changedObject.house.areaHouse.value;
           }
-          if (this.changedObject.house.floorAll && this.changedObject.house.floorAll.value) {
-            data.houseFloorAll = this.changedObject.house.floorAll.value.slug;
-          }
         }
         // Room
         if (this.changedObject.room) {
+          if (this.changedObject.room.view && this.changedObject.room.view.value) {
+            data.roomViewSlug = this.changedObject.room.view.value.slug;
+            data.roomViewLabel = this.changedObject.room.view.value.label;
+          }
           if (this.changedObject.room.area && this.changedObject.room.area.value) {
             data.roomArea = this.changedObject.room.area.value;
-          }
-          if (this.changedObject.room.year && this.changedObject.room.year.value) {
-            data.roomYear = this.changedObject.room.year.value.slug;
-          }
-          if (this.changedObject.room.floor && this.changedObject.room.floor.value) {
-            data.roomFloor = this.changedObject.room.floor.value.slug;
-          }
-          if (this.changedObject.room.floorAll && this.changedObject.room.floorAll.value) {
-            data.roomFloorAll = this.changedObject.room.floorAll.value.slug;
-          }
-          if (this.changedObject.room.roomsCount && this.changedObject.room.roomsCount.value) {
-            data.roomRoomsCount = this.changedObject.room.roomsCount.value;
-          }
-          if (this.changedObject.room.view && this.changedObject.room.view.value) {
-            data.roomView = this.changedObject.room.view.value.slug;
           }
         }
         // Garage
         if (this.changedObject.garage) {
           if (this.changedObject.garage.type && this.changedObject.garage.type.value) {
-            data.garageType = this.changedObject.garage.type.value.label;
+            data.garageTypeSlug = this.changedObject.garage.type.value.slug;
+            data.garageTypeLabel = this.changedObject.garage.type.value.label;
             if (this.changedObject.garage.type.value.labelShort) {
-              data.garageTypeShort = this.changedObject.garage.type.value.labelShort;
+              data.garageTypeLabelShort = this.changedObject.garage.type.value.labelShort;
             }
           }
           if (
@@ -1464,8 +1493,9 @@ export default {
               && this.changedObject.garage.garageType
               && this.changedObject.garage.garageType.value
           ) {
-            data.garageSubType = this.changedObject.garage.garageType.value.label;
-            data.garageSubTypeShort = this.changedObject.garage.garageType.value.labelShort;
+            data.garageSubTypeSlug = this.changedObject.garage.garageType.value.label;
+            data.garageSubTypeLabel = this.changedObject.garage.garageType.value.label;
+            data.garageSubTypeLabelShort = this.changedObject.garage.garageType.value.labelShort;
           } else if (
             this.changedObject.garage.type
             && this.changedObject.garage.type.value
@@ -1473,14 +1503,20 @@ export default {
             && this.changedObject.garage.parkingType
             && this.changedObject.garage.parkingType.value
           ) {
-            data.garageSubType = this.changedObject.garage.parkingType.value.label;
-            data.garageSubTypeShort = this.changedObject.garage.parkingType.value.labelShort;
+            data.garageSubTypeSlug = this.changedObject.garage.parkingType.value.label;
+            data.garageSubTypeLabel = this.changedObject.garage.parkingType.value.label;
+            data.garageSubTypeLabelShort = this.changedObject.garage.parkingType.value.labelShort;
           }
-          if (this.changedObject.garage.area && this.changedObject.garage.area.value) {
-            data.garageArea = this.changedObject.garage.area.value;
+          console.log('  ! ', this.changedObject.garage.area);
+          if (this.changedObject.garage.area) {
+            data.garageArea = this.changedObject.garage.area;
           }
-          if (this.changedObject.garage.security && this.changedObject.garage.security.value) {
-            data.garageSecurity = this.changedObject.garage.security.slug;
+          if (this.changedObject.garage.security && this.changedObject.garage.security.slug) {
+            if (this.changedObject.garage.security.slug) {
+              data.garageSecurity = this.changedObject.garage.security.slug;
+            } else {
+              data.garageSecurity = 'no';
+            }
           }
         }
         // Sector
@@ -1491,11 +1527,10 @@ export default {
               data.sectorTypeShort = this.changedObject.sector.type.value.labelShort;
             }
           }
-          if (this.changedObject.sector.distance && this.changedObject.sector.distance.value) {
-            data.sectorDistance = this.changedObject.sector.distance.value.slug;
-          }
           if (this.changedObject.sector.type && this.changedObject.sector.type.value) {
-            data.sectorType = this.changedObject.sector.type.value.slug;
+            data.sectorTypeLabel = this.changedObject.sector.type.value.label;
+            data.sectorTypeSlug = this.changedObject.sector.type.value.slug;
+            data.sectorTypeLabelShort = this.changedObject.sector.type.value.labelShort;
           }
           if (this.changedObject.sector.facade && this.changedObject.sector.facade.value) {
             data.sectorFacade = this.changedObject.sector.facade.value;
@@ -1513,20 +1548,8 @@ export default {
           if (this.changedObject.commercial.area && this.changedObject.commercial.area.value) {
             data.commercialArea = this.changedObject.commercial.area.value;
           }
-          if (this.changedObject.commercial.year && this.changedObject.commercial.year.slug) {
-            data.commercialYear = this.changedObject.commercial.year.slug;
-          }
           if (this.changedObject.commercial.class && this.changedObject.commercial.class.value) {
             data.commercialClass = this.changedObject.commercial.class.value.slug;
-          }
-          if (this.changedObject.commercial.distance && this.changedObject.commercial.distance.slug) {
-            data.commercialDistance = this.changedObject.commercial.distance.slug;
-          }
-          if (this.changedObject.commercial.floor && this.changedObject.commercial.floor.value) {
-            data.commercialFloor = this.changedObject.commercial.floor.value.slug;
-          }
-          if (this.changedObject.commercial.floorAll && this.changedObject.commercial.floorAll.value) {
-            data.commercialFloorAll = this.changedObject.commercial.floorAll.value.slug;
           }
           if (this.changedObject.commercial.tenant && this.changedObject.commercial.tenant.value) {
             data.commercialTenant = this.changedObject.commercial.tenant.value.slug;
@@ -1578,7 +1601,7 @@ export default {
           );
         }
       }
-      console.log('data ::', data);
+      // console.log('data ::', data);
       return data;
     },
   },
@@ -1880,6 +1903,7 @@ export default {
         this.showErrorMessageOnObjectCreating = false;
         const formData = new FormData();
         const data = JSON.parse(JSON.stringify(this.finalObjectData));
+        // console.log('this.userData ::', this.userData);
         if (this.finalObjectData.photoGallery && this.finalObjectData.photoGallery.length) {
           this.finalObjectData.photoGallery.forEach(
             item => {
@@ -1919,6 +1943,15 @@ export default {
         console.error('Something went wrong with object creation ::', error);
       }
     },
+  },
+  beforeMount() {
+    console.log('beforeMount this.userData ::', this.userData);
+    if (this.userData) {
+      this.userData.role = {
+        slug: this.userData.roleSlug,
+        label: this.userData.roleLabel,
+      };
+    }
   },
   // mounted() {
   //   const suggestView1 = ymaps.SuggestView('currentAddress');

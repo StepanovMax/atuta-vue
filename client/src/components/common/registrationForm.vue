@@ -43,7 +43,15 @@
 
 
       <div
-        v-if="formType === 'reg' && (userDataLocal.role.slug === 'agency' || userDataLocal.role.slug === 'builder')"
+        v-if="
+          formType === 'reg'
+          && userDataLocal
+          && userDataLocal.role
+          && (
+            userDataLocal.role.slug === 'agency'
+            || userDataLocal.role.slug === 'builder'
+          )
+        "
         class="template-page__content-row"
       >
         <div class="registration-page__banner">
@@ -760,7 +768,10 @@ export default {
       inputtedFile: null,
       formIsNotFilled: false,
       userDataEmpty: {
-        role: '',
+        role: {
+          label: 'Агентство',
+          slug: 'agency',
+        },
         password: '',
         repassword: '',
         name: '',
@@ -997,7 +1008,8 @@ export default {
     },
     prepareUserDataForSending() {
       const data = {...this.userDataLocal};
-      const role = data.role.slug;
+      const roleLabel = data.role.label;
+      const roleSlug = data.role.slug;
       const name = data.name;
       const phone = this.gFormatPhoneRevert(data.phone);
       if (this.formType === 'reg') {
@@ -1008,7 +1020,9 @@ export default {
         }
       }
       data.phone = phone;
-      data.role = role;
+      data.roleLabel = roleLabel;
+      data.roleSlug = roleSlug;
+      delete data.role;
       data.name = name;
       data.date = Date.now();
       return data;
@@ -1457,6 +1471,12 @@ export default {
     console.log('this.formType ::', this.formType);
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
+      console.log('this.userDataLocal ::', this.userDataLocal);
+    } else {
+      this.userDataLocal.role = {
+        slug: this.userDataLocal.roleSlug,
+        label: this.userDataLocal.roleLabel,
+      };
     }
     if (this.formType === 'reg') {
       this.addCheckedPropertyForUserRoles(this.userRoles[2].slug);
