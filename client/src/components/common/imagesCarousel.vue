@@ -41,8 +41,8 @@ export default {
     const items = this.propImages.map(
       (item, index) => {
         const imageObject = {
-          src: item,
-          thumbnail: item,
+          src: process.env.host_front + item,
+          thumbnail: process.env.host_front + item,
         }
         return imageObject;
       }

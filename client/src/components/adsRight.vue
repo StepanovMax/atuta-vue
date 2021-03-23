@@ -7,7 +7,7 @@
       target="_blank"
     >
       <img
-        :src="host.front + '/src/images/ads/external-content.duckduckgo.com.jpeg'"
+        :src="hostFront + '/src/images/ads/external-content.duckduckgo.com.jpeg'"
         alt="Реклама"
         class="
           image
@@ -16,7 +16,7 @@
         "
       >
       <img
-        :src="host.front + '/src/images/ads/ads_horizontal.png'"
+        :src="hostFront + '/src/images/ads/ads_horizontal.png'"
         alt="Реклама"
         class="
           image
@@ -34,7 +34,7 @@ export default {
   name: 'adsRight',
   data() {
     return {
-      host: this.getHost(),
+      hostFront: process.env.host_front,
     }
   },
 };

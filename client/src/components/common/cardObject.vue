@@ -52,7 +52,7 @@
           <img
             v-else
             class="img object-card__img"
-            :src="dataObjectData.photoGallery[0]"
+            :src="hostFront + dataObjectData.photoGallery[0]"
             alt=""
           >
         </router-link>
@@ -765,8 +765,8 @@ export default {
     return {
       dataObjectData: this.propObjectData,
       dataIsShowPhoneNumber: false,
-      host: this.getHost(),
       favValue: false,
+      hostFront: process.env.host_front,
     }
   },
   components: {
@@ -954,9 +954,9 @@ export default {
     },
     hostResulted() {
       if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
-        this.dataObjectData.urlPreview = '/src/images/logo/logo_desktop.png';
+        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_desktop.png';
       }
-      return this.host.front + this.dataObjectData.urlPreview
+      return this.dataObjectData.urlPreview
     },
   },
 };
