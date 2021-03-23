@@ -140,11 +140,6 @@ export default {
     //   }
     //   return this.userData;
     // },
-    urlGetObjectsByParentId() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/objects/get-objects-by-parent-id';
-      return url;
-    },
     employeesList() {
       console.log('userEmployees ::', this.userEmployees);
       let selectedEmployees = [];
@@ -287,7 +282,7 @@ export default {
     },
     // async checkUsersObjects(value) {
     //   const result = await axios.post(
-    //     this.urlGetObjectsByParentId,
+    //     process.env.host_api + '/objects/get-objects-by-parent-id',
     //     {
     //       id: value.id
     //     }

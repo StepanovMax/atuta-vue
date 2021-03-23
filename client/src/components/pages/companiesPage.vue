@@ -72,21 +72,12 @@ export default {
     return {
       companiesCount: null,
       companiesList: null,
-      host: this.getHost(),
     }
-  },
-  computed: {
-    url() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/companies/get-companies-all';
-      return url;
-    },
   },
   methods: {
     // Get an object when the page has been reload.
     async getCompaniesAll() {
-      // const url = '//127.0.0.1:9001/companies/get-companies-all';
-      const result = await axios.get(this.url)
+      const result = await axios.get(process.env.host_api + '/companies/get-companies-all')
         .then(function (response) {
           return response;
         })

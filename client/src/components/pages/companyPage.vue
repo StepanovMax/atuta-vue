@@ -24,7 +24,7 @@
           <div class="company-page__image-wrap">
             <img
               class="company-page__image"
-              :src="host.front + companyData.urlPreview" 
+              :src="hostFront + companyData.urlPreview" 
               alt=""
             >
           </div>
@@ -147,21 +147,11 @@ export default {
   },
   data() {
     return {
-      host: this.getHost(),
+      hostFront: process.env.host_front,
       storedObjects: null,
       companyData: null,
       companyID: this.$route.params.id,
     }
-  },
-  computed: {
-    urlGetCompanyById() {
-      const url = this.host.api + '/companies/get-company-by-id';
-      return url;
-    },
-    urlGetObjectsOnLoad() {
-      const url = this.host.api + '/objects/get-objects/';
-      return url;
-    },
   },
   beforeMount(){
     this.getObjectsOnLoad();
@@ -176,7 +166,7 @@ export default {
     // Get a company when the page has been reload.
     async getCompanyOnPageReload() {
       const result = await axios.post(
-        this.urlGetCompanyById,
+        process.env.host_api + '/companies/get-company-by-id',
         {
           id: this.companyID
         }
@@ -195,7 +185,7 @@ export default {
     getObjectsOnLoad() {
       axios({
         method: 'get',
-        url: this.urlGetObjectsOnLoad,
+        url: process.env.host_api + '/objects/get-objects/',
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

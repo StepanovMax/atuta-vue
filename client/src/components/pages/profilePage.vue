@@ -20,7 +20,7 @@
           class="profile-page__logo-wrap"
         >
           <img
-            :src="userData.logo"
+            :src="hostFront + userData.logo"
             :alt="userData.name.label"
             class="profile-page__logo-img"
           />
@@ -245,6 +245,7 @@ export default {
   data() {
     return {
       pageName: '',
+      hostFront: process.env.host_front,
     }
   },
   watch: { 

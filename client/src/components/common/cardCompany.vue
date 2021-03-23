@@ -69,7 +69,6 @@ export default {
   name: 'cardCompany',
   data() {
     return {
-      host: this.getHost(),
       urlPreviewEmpty: false,
     }
   },
@@ -86,7 +85,7 @@ export default {
         this.propCompanyData.urlPreview = '/src/images/logo/logo_desktop.png';
         this.urlPreviewEmpty = true;
       }
-      return this.host.front + this.propCompanyData.urlPreview
+      return process.env.host_front + this.propCompanyData.urlPreview
     },
   },
 };
