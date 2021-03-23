@@ -42,13 +42,6 @@ export default {
   components: {
 
   },
-  computed: {
-    urlGetHelpById() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/help/get-help-by-id';
-      return url;
-    },
-  },
   watch: {
     '$route.params': function(id) {
       console.log('$route.params ::');
@@ -58,7 +51,7 @@ export default {
     // Get an help when the page has been reload.
     async getHelpOnPageReload() {
       const result = await axios.post(
-        this.urlGetHelpById,
+        process.env.host_api + '/help/get-help-by-id',
         {
           id: this.helpID
         }

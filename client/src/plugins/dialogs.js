@@ -6,8 +6,7 @@ const dialogs = {
       methods: {
         // Loading dialogs by the user id.
         async getDialogsByUserID(userID) {
-          const host = this.getHost();
-          const url = `${host.api}` + '/dialogs/get-dialogs-by-user-id';
+          const url = process.env.host_api + '/dialogs/get-dialogs-by-user-id';
 
           const result = await axios.post(
             url,
@@ -28,8 +27,7 @@ const dialogs = {
         },
         // Loading dialog by its id.
         async getDialogByID(dialogID) {
-          const host = this.getHost();
-          const url = `${host.api}` + '/dialogs/get-dialog-by-id';
+          const url = process.env.host_api + '/dialogs/get-dialog-by-id';
 
           const result = await axios.post(
             url,
@@ -50,8 +48,7 @@ const dialogs = {
         },
         // Loading all dialogs length.
         async getAllDialogsLength() {
-          const host = this.getHost();
-          const url = `${host.api}` + '/dialogs/get-all-dialogs-length';
+          const url = process.env.host_api + '/dialogs/get-all-dialogs-length';
 
           const result = await axios.get(
             url

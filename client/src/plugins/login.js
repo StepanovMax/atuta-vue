@@ -6,8 +6,7 @@ const login = {
       methods: {
         // Loading fav objects by the user id.
         // async getFavouritesObjectsByListID(idsArray) {
-        //   const host = this.getHost();
-        //   const url = `${host.api}` + '/objects/get-favourite-objects-by-id';
+        //   const url = process.env.host_api + '/objects/get-favourite-objects-by-id';
 
         //   const result = await axios.post(
         //     url,

@@ -98,11 +98,6 @@ export default {
     ...mapState([
       'mobileQuestionState',
     ]),
-    url() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/help/get-help-all';
-      return url;
-    },
   },
   methods: {
     changeMobileQuestionState(state) {
@@ -117,7 +112,7 @@ export default {
     },
     // Get the help data when the page has been reload.
     async getHelpAll() {
-      const result = await axios.get(this.url)
+      const result = await axios.get(process.env.host_api + '/help/get-help-all')
         .then(function (response) {
           return response;
         })
