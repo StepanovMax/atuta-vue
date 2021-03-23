@@ -1172,11 +1172,6 @@ export default {
       }
       return '';
     },
-    urlGetAllObjects() {
-      const host = this.getHost();
-      const url = `${host.api}` + '/objects/get-objects';
-      return url;
-    },
   },
   methods: {
     async getUserById(id) {
@@ -1262,7 +1257,7 @@ export default {
     // Get an object when the page has been reload.
     async getSameObjects() {
       // const url = '//127.0.0.1:9001/objects/get-objects';
-      const result = await axios.get(this.urlGetAllObjects)
+      const result = await axios.get(process.env.host_api + '/objects/get-objects')
         .then(function (response) {
           return response;
         })

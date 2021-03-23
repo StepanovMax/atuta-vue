@@ -10,7 +10,6 @@ import App from './App.vue';
 import login from './plugins/login.js';
 import cookie from './plugins/cookie.js';
 import common from './plugins/common.js';
-import getHost from './plugins/getHost.js';
 import dialogs from './plugins/dialogs.js';
 import formatNumbers from './plugins/formatNumbers.js';
 import './scss/index.scss';
@@ -39,7 +38,6 @@ Vue.use(vClickOutside);
 Vue.use(login);
 Vue.use(cookie);
 Vue.use(common);
-Vue.use(getHost);
 Vue.use(dialogs);
 Vue.use(formatNumbers);
 
