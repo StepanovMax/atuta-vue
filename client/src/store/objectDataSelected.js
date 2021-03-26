@@ -281,10 +281,6 @@ const objectDataSelected = {
     value: null,
     required: true,
   },
-  priceYear: {
-    value: null,
-    required: true,
-  },
   deposit: {
     value: null,
     required: true,
