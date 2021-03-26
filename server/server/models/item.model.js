@@ -9,6 +9,13 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the title'
       }
     },
+    metaTitle: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the metaTitle'
+      }
+    },
     companyName: {
       type: Sequelize.STRING,
       allowNull: {
