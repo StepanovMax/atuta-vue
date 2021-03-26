@@ -481,7 +481,7 @@ const filterDataDefault = {
       label: 'Торговая площадь',
     },
     {
-      slug: 'industrial-purpose',
+      slug: 'free-purpose',
       label: 'Свободного назначения',
     },
   ],

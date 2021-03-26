@@ -982,7 +982,10 @@
               {{ objectData.description }}
             </p>
 
-            <div class="object-page__same-objects">
+            <div
+              v-if="false"
+              class="object-page__same-objects"
+            >
               <h3 class="object-page__same-objects-title">
                 Похожие объекты
               </h3>

@@ -5,19 +5,19 @@ module.exports = {
     return Promise.all([
       queryInterface.addColumn(
         'items',
-        'companyName',
+        'metaTitle',
         {
           type: Sequelize.STRING,
-        },
-      ),
+        }
+      )
     ]);
   },
-  down: queryInterface => {
+  down: (queryInterface, Sequelize) => {
     return Promise.all([
       queryInterface.removeColumn(
         'items',
-        'companyName'
-      ),
+        'metaTitle',
+      )
     ]);
   }
 };

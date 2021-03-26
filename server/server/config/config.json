@@ -28,10 +28,10 @@
     }
   },
   "stage": {
-    "username": "maxgresql",
-    "password": "2128506",
+    "username": "postgres",
+    "password": "wMf7R^A^80PV7XezlcRQaFXaPZMrtpM",
     "database": "atuta",
-    "host": "localhost",
+    "host": "atuta-stage.c2knr5rmdqcj.eu-central-1.rds.amazonaws.com",
     "dialect": "postgres",
     "operatorsAliases": false,
     "pool": {

@@ -32,12 +32,14 @@ const corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-db.sequelize.sync().then(result => {
-  console.log(' ');
-  console.log('   >> DB synchronization success!');
-  console.log(' ');
-})
-.catch(err=> console.log(err));
+db.sequelize
+  .sync()
+    .then(result => {
+      console.log(' ');
+      console.log('   >> DB synchronization success!');
+      console.log(' ');
+    })
+      .catch(err=> console.log(err));
 
 app.use(cookieParser());
 app.use(express.json());
