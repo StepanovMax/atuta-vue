@@ -632,7 +632,7 @@
                 <span>
                   Цена в год
                 </span>
-                <span v-if="createdObject.price.required">
+                <span v-if="createdObject.priceYear.required">
                   *
                 </span>
               </h4>
@@ -642,10 +642,10 @@
                 :propErrorClass="{
                   'input_error': this.errorsMain.includes('price')
                 }"
-                :value.sync="createdObject.price.value"
+                :value.sync="createdObject.priceYear.value"
               />
               <p
-                v-if="this.errorsMain.includes('price')"
+                v-if="this.errorsMain.includes('priceYear')"
                 class="paragraph paragraph_invalid"
               >
                 Необходимо указать цену
@@ -1630,18 +1630,42 @@ export default {
       // console.log('>> this 3', this.changedObject[this.changedObject.object.value.slug]);
     },
     createMetaTitle() {
+      let part1;
+      let rentType;
+      let rentSubType;
+      let part2;
       const typeSlug = this.createdObject.object.value.slug;
       const deal = this.createdObject.deal.value.slug;
-      if (typeSlug === 'app') {
-        let metaTitle = '';
-        const typeLabel = 'квартиру';
-        let dealAction = '';
-        const objectPrice = this.gFormatPrice(this.createdObject.price.value) + '₽';
-        if (deal === 'buy') {
-          dealAction = 'Продам';
-        } else if (deal === 'rent') {
-          dealAction = 'Сдам в аренду';
+
+      let metaTitle = '';
+      let dealAction = '';
+
+      if (deal === 'buy') {
+        dealAction = 'Продам';
+        rentType = '';
+        part2 = this.gFormatPrice(this.createdObject.price.value) + '₽';
+      } else if (deal === 'rent') {
+        dealAction = 'Сдам в аренду';
+        if (this.createdObject.rentType.slug === 'per-day') {
+          rentType = ' посуточно';
+          rentSubType = 'в день';
+        } else if (this.createdObject.rentType.slug === 'long-term') {
+          rentType = ' на длительный срок';
+          rentSubType = 'в месяц';
         }
+        if (typeSlug === 'commercial') {
+          part2 = this.gFormatPrice(this.createdObject.deposit.value) + '₽(залог)/'
+                  + this.gFormatPrice(this.createdObject.price.value) + '₽' + '(' + rentSubType + ')/'
+                  + this.gFormatPrice(this.createdObject.priceYear.value) + '₽(в год)';
+        } else {
+          part2 = this.gFormatPrice(this.createdObject.deposit.value) + '₽(залог)/'
+                  + this.gFormatPrice(this.createdObject.price.value) + '₽'
+                  + '(' + rentSubType + ')';
+        }
+      }
+
+      if (typeSlug === 'app') {
+        const typeLabel = 'квартиру';
         let roomsCount = '';
         let roomsLabel = '';
         let rooms = '';
@@ -1655,12 +1679,109 @@ export default {
           roomsLabel = 'комн.';
           rooms = this.createdObject.app.roomsCount.value.slug + roomsLabel;
         }
+        part1 = dealAction + ' ' + typeLabel + rentType;
         const floor = 'этаж ' + this.createdObject.app.floor.value.slug + '/' +  this.createdObject.app.floorAll.value.slug;
-        const objectData = rooms + ', ' + this.createdObject.app.area.value + 'м²' + ', ' + floor;
-        metaTitle = dealAction + ' ' + typeLabel + ' ' + objectPrice + ' [' + objectData + ']';
-        console.log('metaTitle ::', metaTitle);
-        this.createdObject.metaTitle = metaTitle;
+        const part3 = rooms + ', ' + this.createdObject.app.area.value + 'м²' + ', ' + floor;
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+      } else if (typeSlug === 'house') {
+        let typeLabel;
+        if (this.createdObject.house.type.value.slug === 'house') {
+          typeLabel = 'дом';
+        } else if (this.createdObject.house.type.value.slug === 'summerCottage') {
+          typeLabel = 'дачу';
+        } else if (this.createdObject.house.type.value.slug === 'cottage') {
+          typeLabel = 'коттедж';
+        } else if (this.createdObject.house.type.value.slug === 'townhouse') {
+          typeLabel = 'таунхаус';
+        }
+        let roomsCount = '';
+        let roomsLabel = '';
+        let rooms = '';
+
+        if (
+          this.createdObject.house.roomsCount.value.slug === 'studio'
+          || this.createdObject.house.roomsCount.value.slug === 'freePlan'
+        ) {
+          roomsCount = this.createdObject.house.roomsCount.value.label;
+          rooms = roomsCount;
+        } else {
+          roomsLabel = 'комн.';
+          rooms = this.createdObject.house.roomsCount.value.slug + roomsLabel;
+        }
+        part1 = dealAction + ' ' + typeLabel + rentType;
+
+        const part3 = rooms + ', ' + this.createdObject.house.areaHouse.value + 'м²' + ', ' + this.createdObject.house.areaLand.value + 'сот.' + ', ' + this.createdObject.house.floorAll.value.label + 'эт.';
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+      } else if (typeSlug === 'room') {
+        const typeLabel = 'комнату';
+        const roomsCountAll = this.createdObject.room.floor.value.slug  + 'комн.';
+        const floor = 'этаж ' + this.createdObject.room.floor.value.slug + '/' +  this.createdObject.room.floorAll.value.slug;
+        part1 = dealAction + ' ' + typeLabel + rentType;
+
+        const part3 = roomsCountAll + ', ' + this.createdObject.room.area.value + 'м²' + ', ' + floor;
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+      } else if (typeSlug === 'garage') {
+        let subTypeLabel;
+        let typeLabel = this.createdObject.garage.type.value.label.toLowerCase();
+        if (this.createdObject.garage.type.value.slug === 'garage') {
+          subTypeLabel = this.createdObject.garage.garageType.value.labelShort.toLowerCase();
+        } else if (this.createdObject.garage.type.value.slug === 'parking') {
+          subTypeLabel = this.createdObject.garage.parkingType.value.labelShort.toLowerCase();
+        }
+        const garageArea = this.createdObject.garage.area.value + 'м²';
+        part1 = dealAction + ' ' + typeLabel + '(' + subTypeLabel + ')' + rentType;
+
+        const part3 = garageArea;
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+      } else if (typeSlug === 'sector') {
+        const typeLabel = 'участок';
+        const subTypeLabel = '(' + this.createdObject.sector.type.value.labelShort.toLowerCase() + ')';
+        const area = this.createdObject.sector.area.value + 'сот.';
+        part1 = dealAction + ' ' + typeLabel + subTypeLabel + rentType;
+
+        const part3 = area;
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+      } else if (typeSlug === 'commercial') {
+        let area;
+        let floor;
+        let part3;
+        let tenant;
+        let typeLabel;
+        if (this.createdObject.commercial.type.value.slug === 'public-catering') {
+          typeLabel = 'помещение под общепит';
+        } else if (this.createdObject.commercial.type.value.slug === 'production') {
+          typeLabel = 'производ.помещение';
+        } else if (this.createdObject.commercial.type.value.slug === 'trading-area') {
+          typeLabel = 'торговую площадь';
+        } else if (this.createdObject.commercial.type.value.slug === 'hotel') {
+          typeLabel = 'гостиницу';
+        } else if (this.createdObject.commercial.type.value.slug === 'free-purpose') {
+          typeLabel = 'помещение свободного назначения';
+        } else {
+          typeLabel = this.createdObject.commercial.type.value.label.toLowerCase();
+        }
+        if (this.createdObject.commercial.tenant.value.slug === 'yes') {
+          tenant = 'с арендатором'
+        } else {
+          tenant = 'без арендатора'
+        }
+        if (this.createdObject.commercial.type.value.slug === 'sector') {
+          area = this.createdObject.commercial.area.value + 'сот.';
+        } else {
+          area = this.createdObject.commercial.area.value + 'м²';
+          floor = 'этаж ' + this.createdObject.commercial.floor.value.slug + '/' +  this.createdObject.commercial.floorAll.value.slug;
+        }
+
+        part1 = dealAction + ' ' + typeLabel + rentType;
+        if (floor) {
+          part3 = area + ', ' + floor + ', ' + tenant;
+        } else {
+          part3 = area + ', ' + tenant;
+        }
+        metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
       }
+      console.log('metaTitle ::', metaTitle);
+      this.createdObject.metaTitle = metaTitle;
     },
     currentAddressUpdate(event) {
       this.currentAddress = event.target.value;
