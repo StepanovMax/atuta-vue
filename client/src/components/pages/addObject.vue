@@ -617,44 +617,6 @@
               v-if="
                 createdObject.deal.value
                 && createdObject.deal.value.slug === 'rent'
-                && createdObject.object.value
-                && createdObject.object.value.slug === 'commercial'
-              "
-              class="form__block-width form__block-width-third"
-            >
-              <h4 class="
-                title
-                title_h6
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Цена в год
-                </span>
-                <span v-if="createdObject.priceYear.required">
-                  *
-                </span>
-              </h4>
-              <inputWithUnit
-                propType="number"
-                propUnit="rouble"
-                :propErrorClass="{
-                  'input_error': this.errorsMain.includes('price')
-                }"
-                :value.sync="createdObject.priceYear.value"
-              />
-              <p
-                v-if="this.errorsMain.includes('priceYear')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать цену
-              </p>
-            </div>
-            <div
-              v-if="
-                createdObject.deal.value
-                && createdObject.deal.value.slug === 'rent'
               "
               class="form__block-width form__block-width-third"
               ref="deposit"
@@ -1653,15 +1615,8 @@ export default {
           rentType = ' на длительный срок';
           rentSubType = 'в месяц';
         }
-        if (typeSlug === 'commercial') {
-          part2 = this.gFormatPrice(this.createdObject.deposit.value) + '₽(залог)/'
-                  + this.gFormatPrice(this.createdObject.price.value) + '₽' + '(' + rentSubType + ')/'
-                  + this.gFormatPrice(this.createdObject.priceYear.value) + '₽(в год)';
-        } else {
-          part2 = this.gFormatPrice(this.createdObject.deposit.value) + '₽(залог)/'
-                  + this.gFormatPrice(this.createdObject.price.value) + '₽'
-                  + '(' + rentSubType + ')';
-        }
+        part2 = this.gFormatPrice(this.createdObject.deposit.value) + '₽(залог)/'
+                + this.gFormatPrice(this.createdObject.price.value) + '₽' + '(' + rentSubType + ')';
       }
 
       if (typeSlug === 'app') {
