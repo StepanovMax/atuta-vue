@@ -5,52 +5,23 @@ const dote = require('dotenv').config({
 });
 
 
-console.log('dotenv', dote);
-console.log('   __', process.env.pg_username);
+// console.log('dotenv', dote);
+// console.log('   __', process.env.pg_username);
 
 
 module.exports = {
-  "localhost": {
-    "username": "maxgresql",
-    "password": "2128506",
-    "database": "atuta",
-    "host": "localhost",
-    "dialect": "postgres",
-    "operatorsAliases": false,
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
-  },
   "development": {
-    "username": "maxgresql",
-    "password": "2128506",
-    "database": "atuta",
-    "host": "localhost",
-    "dialect": "postgres",
-    "operatorsAliases": false,
+    "username": process.env.pg_username,
+    "password": process.env.pg_password,
+    "database": process.env.pg_database,
+    "host": process.env.pg_host,
+    "dialect": process.env.pg_dialect,
+    "operatorsAliases": process.env.pg_operatorsAliases,
     "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
-  },
-
-  "stage": {
-    "username": "postgres",
-    "password": "wMf7R^A^80PV7XezlcRQaFXaPZMrtpM",
-    "database": "atuta",
-    "host": "atuta-stage.c2knr5rmdqcj.eu-central-1.rds.amazonaws.com",
-    "dialect": "postgres",
-    "operatorsAliases": false,
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
+      "max": process.env.pg_max,
+      "min": process.env.pg_min,
+      "acquire": process.env.pg_acquire,
+      "idle": process.env.pg_idle,
     }
   },
 }
