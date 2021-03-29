@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 dotenv.config({
-  path: '../env/.env'
+  path: '../.env'
 });
 
 const jwtSecret = process.env.jwt_secret;
