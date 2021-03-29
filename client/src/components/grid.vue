@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import cardObject from './common/cardObject.vue';
 import cardCompany from './common/cardCompany.vue';
 import sortObjects from './common/sortObjects.vue';
@@ -118,6 +117,10 @@ export default {
   watch: {
     dataSortedObjects(value) {
       this.dataGridItems = value;
+    },
+    propGridItems(value) {
+      this.dataGridItems = this.propGridItems;
+      console.log('watch this.propGridItems ::', value);
     },
   },
   beforeMount() {

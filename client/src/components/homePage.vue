@@ -25,7 +25,6 @@ import { mapState } from 'vuex';
 import adsRight from './adsRight.vue';
 import grid from './grid.vue';
 import filterDesktop from './filters/filterDesktop.vue';
-import axios from 'axios';
 
 export default {
   name: 'homePage',
@@ -46,39 +45,9 @@ export default {
       'objectsOnHome',
     ]),
   },
-  methods: {
-    // async getLast32Objects() {
-    //   const transport = axios.create({
-    //     withCredentials: true
-    //   });
-
-    //   try {
-    //     console.log('try getLast32Objects');
-    //     // Get last 32 objects.
-    //     await transport.get(
-    //       process.env.host_api + '/object/getLast32Objects'
-    //     )
-    //       .then(
-    //         response => {
-    //           console.log('getLast32Objects : response.data =>', response.data);
-    //           this.$store.commit('updateObjectsOnHomeState', response.data);
-    //         }
-    //       )
-    //         .catch(
-    //           error => {
-    //             console.error('[axios getLast32Objects error] ::', error);
-    //           }
-    //         );
-    //   } catch(error) {
-    //     console.error('[try/catch getLast32Objects error] ::', error);
-    //   }
-    // },
-  },
   async mounted() {
-    console.log('home page mounted storedObjects ::');
     // Calling the fetching method.
     await this.$store.dispatch('getLast32Objects');
-    // this.getLast32Objects();
   },
 };
 </script>
