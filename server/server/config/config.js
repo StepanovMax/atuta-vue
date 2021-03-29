@@ -11,17 +11,17 @@ const dote = require('dotenv').config({
 
 module.exports = {
   "development": {
-    "username": progress.env.pg_username,
-    "password": progress.env.pg_password,
-    "database": progress.env.pg_database,
-    "host": progress.env.pg_host,
-    "dialect": progress.env.pg_dialect,
-    "operatorsAliases": progress.env.pg_operatorsAliases,
+    "username": process.env.pg_username,
+    "password": process.env.pg_password,
+    "database": process.env.pg_database,
+    "host": process.env.pg_host,
+    "dialect": process.env.pg_dialect,
+    "operatorsAliases": process.env.pg_operatorsAliases,
     "pool": {
-      "max": progress.env.pg_max,
-      "min": progress.env.pg_min,
-      "acquire": progress.env.pg_acquire,
-      "idle": progress.env.pg_idle,
+      "max": process.env.pg_max,
+      "min": process.env.pg_min,
+      "acquire": process.env.pg_acquire,
+      "idle": process.env.pg_idle,
     }
   },
 }
