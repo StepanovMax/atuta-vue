@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import Sequelize from "sequelize";
 
 dotenv.config({
-  path: `env/.env.${process.env.NODE_ENV}`
+  path: 'env/.env'
 });
 
 console.log('process.env.pg_database ::', process.env.pg_database);

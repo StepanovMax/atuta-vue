@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 
 dotenv.config({
-  path: `env/.env.${process.env.NODE_ENV}`
+  path: 'env/.env'
 });
 
 console.log(' ');
