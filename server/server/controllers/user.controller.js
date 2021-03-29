@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const sendinblue = require('../../sendinblue');
 
 dotenv.config({
-  path: `../env/.env.${process.env.NODE_ENV}`
+  path: '../env/.env'
 });
 
 const User = db.user;
