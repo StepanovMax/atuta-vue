@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import db from '../server/models';
 
 dotenv.config({
-  path: '../env/.env'
+  path: '../.env'
 });
 
 const Item = db.item;
