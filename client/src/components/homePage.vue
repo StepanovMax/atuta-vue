@@ -47,37 +47,38 @@ export default {
     ]),
   },
   methods: {
-    async getLast32Objects() {
-      const transport = axios.create({
-        withCredentials: true
-      });
+    // async getLast32Objects() {
+    //   const transport = axios.create({
+    //     withCredentials: true
+    //   });
 
-      try {
-        console.log('try getLast32Objects');
-        // Get last 32 objects.
-        await transport.get(
-          process.env.host_api + '/object/getLast32Objects'
-        )
-          .then(
-            response => {
-              console.log('getLast32Objects : response.data =>', response.data);
-              this.$store.commit('updateObjectsOnHomeState', response.data);
-            }
-          )
-            .catch(
-              error => {
-                console.error('[axios getLast32Objects error] ::', error);
-              }
-            );
-      } catch(error) {
-        console.error('[try/catch getLast32Objects error] ::', error);
-      }
-    },
+    //   try {
+    //     console.log('try getLast32Objects');
+    //     // Get last 32 objects.
+    //     await transport.get(
+    //       process.env.host_api + '/object/getLast32Objects'
+    //     )
+    //       .then(
+    //         response => {
+    //           console.log('getLast32Objects : response.data =>', response.data);
+    //           this.$store.commit('updateObjectsOnHomeState', response.data);
+    //         }
+    //       )
+    //         .catch(
+    //           error => {
+    //             console.error('[axios getLast32Objects error] ::', error);
+    //           }
+    //         );
+    //   } catch(error) {
+    //     console.error('[try/catch getLast32Objects error] ::', error);
+    //   }
+    // },
   },
-  mounted() {
+  async mounted() {
     console.log('home page mounted storedObjects ::');
     // Calling the fetching method.
-    this.getLast32Objects();
+    await this.$store.dispatch('getLast32Objects');
+    // this.getLast32Objects();
   },
 };
 </script>
