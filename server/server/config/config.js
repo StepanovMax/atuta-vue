@@ -1,3 +1,14 @@
+const path = require('path');
+
+const dote = require('dotenv').config({
+  path: path.resolve('../env', `.env.${process.env.NODE_ENV}`)
+});
+
+
+console.log('dotenv', dote);
+console.log('   __', process.env.pg_username);
+
+
 module.exports = {
   "localhost": {
     "username": "maxgresql",
@@ -27,6 +38,7 @@ module.exports = {
       "idle": 10000
     }
   },
+
   "stage": {
     "username": "postgres",
     "password": "wMf7R^A^80PV7XezlcRQaFXaPZMrtpM",
