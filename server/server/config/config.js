@@ -1,7 +1,7 @@
 const path = require('path');
 
 const dote = require('dotenv').config({
-  path: path.resolve('../', `.env.${process.env.NODE_ENV}`)
+  path: path.resolve('../', '.env')
 });
 
 
