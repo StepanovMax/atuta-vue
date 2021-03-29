@@ -11,7 +11,7 @@ const dotenv = require('dotenv').config({
 });
 
 
-console.log('process.env.HOST_FRONT ::', process.env.HOST_FRONT);
+console.log('process.env.host_front ::', process.env.host_front);
 
 
 module.exports = merge(
@@ -28,7 +28,7 @@ module.exports = merge(
 
       new HtmlWebpackPlugin({
         title: 'Сайт Атута | Для разработчиков',
-        host: process.env.HOST_FRONT,
+        host: process.env.host_front,
         filename: '../index.html',
         template: 'index-template.html',
         inject: false,
