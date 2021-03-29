@@ -218,6 +218,28 @@ const actions = {
       return false;
     }
   },
+  getLast32Objects: async (context, data) => {
+    try {
+      console.log('try getLast32Objects');
+      // Get last 32 objects.
+      await transport.get(
+        process.env.host_api + '/object/getLast32Objects'
+      )
+        .then(
+          response => {
+            console.log('getLast32Objects : response.data =>', response.data);
+            context.commit('updateObjectsOnHomeState', response.data);
+          }
+        )
+          .catch(
+            error => {
+              console.error('[axios getLast32Objects error] ::', error);
+            }
+          );
+    } catch(error) {
+      console.error('[try/catch getLast32Objects error] ::', error);
+    }
+  },
 }
 
 export default actions;
