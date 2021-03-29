@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 
 dotenv.config({
-  path: '../env/.env'
+  path: '../.env'
 });
 const Item = db.item;
 const jwtSecret = process.env.jwt_secret;
