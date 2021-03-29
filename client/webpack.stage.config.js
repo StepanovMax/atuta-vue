@@ -116,7 +116,7 @@ module.exports = {
     // }),
     new VueLoaderPlugin(),
     new Dotenv({
-      path: path.resolve(__dirname, 'env/.env.stage'),
+      path: path.resolve(__dirname, '.env.stage'),
     }),
     new webpack.DefinePlugin({
       "process.env": {
