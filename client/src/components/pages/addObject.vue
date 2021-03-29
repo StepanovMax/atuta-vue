@@ -1043,7 +1043,7 @@ export default {
         this.objectData = value;
         // TODO: Why?
         this.createdObject = value;
-        console.log('this.userData ::', this.userData);
+        // console.log('this.userData ::', this.userData);
         if (this.userData.role.slug === 'personal') {
           this.createdObject.phone.required = false;
           this.objectData.phone.value = this.userData.phone;
@@ -1263,7 +1263,8 @@ export default {
       let data = {};
       if (this.changedObject) {
         // console.log('this.userData ::', this.userData);
-        data.title = this.createdObject.metaTitle;
+        data.title = this.createdObject.title;
+        data.metaTitle = this.createdObject.metaTitle;
         data.userId = this.userData.id;
         data.companyName = this.userData.name;
         data.companyRoleLabel = this.userData.role.label;
@@ -1320,7 +1321,7 @@ export default {
           data.phone = this.createdObject.phone.value.phone;
         }
 
-        console.log('this.changedObject ::', this.changedObject);
+        // console.log('this.changedObject ::', this.changedObject);
         if (data.objectTypeSlug === 'app') {
           if (this.changedObject.app.roomsCount && this.changedObject.app.roomsCount.value) {
             data.roomsCountLabel = this.changedObject.app.roomsCount.value.label;
@@ -1471,7 +1472,7 @@ export default {
           }
           console.log('  ! ', this.changedObject.garage.area);
           if (this.changedObject.garage.area) {
-            data.garageArea = this.changedObject.garage.area;
+            data.garageArea = this.changedObject.garage.area.value;
           }
           if (this.changedObject.garage.security && this.changedObject.garage.security.slug) {
             if (this.changedObject.garage.security.slug) {
@@ -1599,6 +1600,7 @@ export default {
       const typeSlug = this.createdObject.object.value.slug;
       const deal = this.createdObject.deal.value.slug;
 
+      let title = '';
       let metaTitle = '';
       let dealAction = '';
 
@@ -1624,13 +1626,20 @@ export default {
         let roomsCount = '';
         let roomsLabel = '';
         let rooms = '';
+        let titleRoomsCount;
         if (
           this.createdObject.app.roomsCount.value.slug === 'studio'
           || this.createdObject.app.roomsCount.value.slug === 'freePlan'
         ) {
           roomsCount = this.createdObject.app.roomsCount.value.label;
           rooms = roomsCount;
+          if (this.createdObject.app.roomsCount.value.slug === 'freePlan') {
+            titleRoomsCount = 'Своб.планировка, ';
+          } else if (this.createdObject.app.roomsCount.value.slug === 'studio') {
+            titleRoomsCount = 'Квартира-студия, ';
+          }
         } else {
+          titleRoomsCount = this.createdObject.app.roomsCount.value.slug + '-к. квартира, ';
           roomsLabel = 'комн.';
           rooms = this.createdObject.app.roomsCount.value.slug + roomsLabel;
         }
@@ -1638,6 +1647,7 @@ export default {
         const floor = 'этаж ' + this.createdObject.app.floor.value.slug + '/' +  this.createdObject.app.floorAll.value.slug;
         const part3 = rooms + ', ' + this.createdObject.app.area.value + 'м²' + ', ' + floor;
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+        title = titleRoomsCount + this.createdObject.app.area.value + 'м², ' + floor;
       } else if (typeSlug === 'house') {
         let typeLabel;
         if (this.createdObject.house.type.value.slug === 'house') {
@@ -1667,14 +1677,21 @@ export default {
 
         const part3 = rooms + ', ' + this.createdObject.house.areaHouse.value + 'м²' + ', ' + this.createdObject.house.areaLand.value + 'сот.' + ', ' + this.createdObject.house.floorAll.value.label + 'эт.';
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+        title = this.createdObject.house.type.value.label + ' '
+                + this.createdObject.house.areaHouse.value + 'м² на участке '
+                + this.createdObject.house.areaLand.value + 'сот.';
       } else if (typeSlug === 'room') {
         const typeLabel = 'комнату';
         const roomsCountAll = this.createdObject.room.floor.value.slug  + 'комн.';
-        const floor = 'этаж ' + this.createdObject.room.floor.value.slug + '/' +  this.createdObject.room.floorAll.value.slug;
+        const floor = 'этаж ' + this.createdObject.room.floor.value.slug + '/' + this.createdObject.room.floorAll.value.slug;
         part1 = dealAction + ' ' + typeLabel + rentType;
 
         const part3 = roomsCountAll + ', ' + this.createdObject.room.area.value + 'м²' + ', ' + floor;
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+        title = 'Комната '
+                + this.createdObject.room.area.value + 'м² в '
+                + this.createdObject.room.roomsCount.value.label + '-к, '
+                + this.createdObject.room.floor.value.slug + '/' + this.createdObject.room.floorAll.value.slug;
       } else if (typeSlug === 'garage') {
         let subTypeLabel;
         let typeLabel = this.createdObject.garage.type.value.label.toLowerCase();
@@ -1688,6 +1705,9 @@ export default {
 
         const part3 = garageArea;
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
+        title = this.createdObject.garage.type.value.label
+                + '(' + subTypeLabel + ') на '
+                + garageArea;
       } else if (typeSlug === 'sector') {
         const typeLabel = 'участок';
         const subTypeLabel = '(' + this.createdObject.sector.type.value.labelShort.toLowerCase() + ')';
@@ -1736,6 +1756,8 @@ export default {
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
       }
       console.log('metaTitle ::', metaTitle);
+      console.log('title ::', title);
+      this.createdObject.title = title;
       this.createdObject.metaTitle = metaTitle;
     },
     currentAddressUpdate(event) {
