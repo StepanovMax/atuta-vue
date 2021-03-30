@@ -86,7 +86,7 @@ module.exports = {
   //   ],
   // },
   optimization: {
-    minimize: true,
+    // minimize: true,
   //   minimizer: [
   //     // new UglifyJsPlugin({
   //     //   include: /\.min\.js$/
