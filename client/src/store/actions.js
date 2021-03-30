@@ -184,25 +184,26 @@ const actions = {
       )
         .then(
           response => {
-            response.data.map(
-              item => {
-                item.fav = true;
-                if (context.state.userData.role === 'personal') {
-                  item.user = {
-                    name: 'Собственник'
-                  }
-                } else if (context.state.userData.role === 'agent') {
-                  item.user = {
-                    name: 'Агент'
-                  }
-                } else {
-                  item.user = {
-                    name: context.state.userData.name
-                  }
-                }
-                return item;
-              }
-            );
+            console.log('getFavoritesObjectsByListID response.data.map ::', response);
+            // response.data.map(
+            //   item => {
+            //     item.fav = true;
+            //     if (context.state.userData.role === 'personal') {
+            //       item.user = {
+            //         name: 'Собственник'
+            //       }
+            //     } else if (context.state.userData.role === 'agent') {
+            //       item.user = {
+            //         name: 'Агент'
+            //       }
+            //     } else {
+            //       item.user = {
+            //         name: context.state.userData.name
+            //       }
+            //     }
+            //     return item;
+            //   }
+            // );
             context.commit('updateFavouriteObjectsArrayState', response.data);
             return response.data;
           }
@@ -222,20 +223,20 @@ const actions = {
     try {
       console.log('try getLast32Objects');
       // Get last 32 objects.
-      // await transport.get(
-      //   process.env.host_api + '/object/getLast32Objects'
-      // )
-      //   .then(
-      //     response => {
-      //       console.log('getLast32Objects : response.data =>', response.data);
-      //       context.commit('updateObjectsOnHomeState', response.data);
-      //     }
-      //   )
-      //     .catch(
-      //       error => {
-      //         console.error('[axios getLast32Objects error] ::', error);
-      //       }
-      //     );
+      await transport.get(
+        process.env.host_api + '/object/getLast32Objects'
+      )
+        .then(
+          response => {
+            console.log('getLast32Objects : response.data =>', response.data);
+            context.commit('updateObjectsOnHomeState', response.data);
+          }
+        )
+          .catch(
+            error => {
+              console.error('[axios getLast32Objects error] ::', error);
+            }
+          );
     } catch(error) {
       console.error('[try/catch getLast32Objects error] ::', error);
     }
