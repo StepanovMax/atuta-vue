@@ -11,8 +11,8 @@ const timestamp = new Date().getTime();
 
 module.exports = {
   entry: path.join(__dirname, './src/index.js'),
-  devtool: 'none',
-  mode: 'development',
+  devtool: 'eval',
+  mode: 'none',
   output: {
     filename: `bundle-${timestamp}.js`,
     publicPath: '/build/',
