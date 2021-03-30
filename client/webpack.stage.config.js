@@ -3,8 +3,6 @@ const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const TerserPlugin = require('terser-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const timestamp = new Date().getTime();
 
@@ -68,40 +66,8 @@ module.exports = {
       }
     ]
   },
-  // optimization: {
-  //   minimizer: [
-  //     new UglifyJsPlugin({
-  //       uglifyOptions: {
-  //         output: {
-  //           comments: false
-  //         },
-  //         minify: {},
-  //         compress: {
-  //           booleans: true,
-  //           //...
-  //         }
-  //       }
-  //     })
-  //   ],
-  // },
   optimization: {
     minimize: true,
-  //   minimizer: [
-  //     // new UglifyJsPlugin({
-  //     //   include: /\.min\.js$/
-  //     // }),
-  //     // new TerserPlugin({
-  //     //   parallel: true
-  //     // }),
-  //     new TerserPlugin({
-  //       cache: true,
-  //       parallel: 8,
-  //       sourceMap: true, // Must be set to true if using source-maps in production
-  //       // terserOptions: {
-  //       //   // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-  //       // }
-  //     }),
-  //   ]
   },
   resolve: {
     extensions: ['*', '.js', '.vue', '.json']
