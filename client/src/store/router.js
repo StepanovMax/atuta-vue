@@ -234,7 +234,7 @@ const isTokenExpired = async from => {
     // -> Case (1) when the access token is needed to be updated,
     if (store.state.userData.expireDate < timestampNow) {
       try {
-        const checkAuthPassed = await store.dispatch('checkAuth');
+        // const checkAuthPassed = await store.dispatch('checkAuth');
         await store.dispatch('getEmployeeByUserID');
         if (!checkAuthPassed) {
           await store.dispatch('logout');
@@ -249,7 +249,7 @@ const isTokenExpired = async from => {
   } else {
     // The case when the 'FROM' attribute is empty will understand as page reloading.
     if (!from.name) {
-      await store.dispatch('checkAuth');
+      // await store.dispatch('checkAuth');
     }
   }
 };
