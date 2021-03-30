@@ -20,7 +20,7 @@ const actions = {
     let flatLocalitiesList = [];
     for (let key in data) {
       if (data.hasOwnProperty(key)) {
-        // flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
+        flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
       }
     }
 
@@ -59,7 +59,7 @@ const actions = {
   },
   checkAuth: async (context, commit, dispatch) => {
     // Get towns list.
-    await context.dispatch('getTowns');
+    // await context.dispatch('getTowns');
     // Check the token.
     const checkTokenResult = await transport.get(
       process.env.host_api + '/auth/checkToken'
