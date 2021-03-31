@@ -43,7 +43,7 @@ import axios from 'axios';
 import { Icon } from 'leaflet';
 import { latLng } from "leaflet";
 import { LMarker, LTileLayer, LMap } from 'vue2-leaflet';
-import 'leaflet/dist/leaflet.css';
+// import 'leaflet/dist/leaflet.css';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import { transliterate as tr, slugify } from 'transliteration';
 
@@ -483,9 +483,9 @@ export default {
   created() {
     delete Icon.Default.prototype._getIconUrl;
     Icon.Default.mergeOptions({
-      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-      iconUrl: require('leaflet/dist/images/marker-icon.png'),
-      shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+      // iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+      // iconUrl: require('leaflet/dist/images/marker-icon.png'),
+      // shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
   },
   async mounted() {
