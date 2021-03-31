@@ -2,18 +2,30 @@ const path = require('path');
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const PATHS = {
+  client: path.join(__dirname, './'),
+  src: path.join(__dirname, './src'),
+  env: path.join(__dirname, './env'),
+  public: path.join(__dirname, './public'),
+}
 
 const timestamp = new Date().getTime();
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  externals: {
+    paths: PATHS
+  },
+  entry: `${PATHS.src}/index.js`,
   devtool: 'none',
   mode: 'development',
   output: {
-    filename: `bundle-${timestamp}.js`,
-    publicPath: '/build/',
-    path: path.join(__dirname, 'build'),
+    filename: `index-${timestamp}.js`,
+    publicPath: '/',
+    path: PATHS.public,
   },
   module: {
     rules: [
@@ -57,9 +69,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '/[name]-[hash:8].[ext]',
-              publicPath: '',
-              outputPath: 'img',
-              useRelativePath: true
+              emitFile: true,
             }
           }
         ]
@@ -72,7 +82,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'rootEnv': path.resolve(__dirname, '/env'),
+      'rootEnv': PATHS.env,
     }
   },
   node: {
@@ -81,7 +91,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new Dotenv({
-      path: path.resolve(__dirname, 'env/.env.development'),
+      path: `${PATHS.client}/.env`,
     }),
     new webpack.DefinePlugin({
       "process.env": {
@@ -93,7 +103,7 @@ module.exports = {
       host: process.env.host_front,
       mode: 'dev',
       timestamp: timestamp,
-      filename: '../index.html',
+      filename: `${PATHS.public}/index.html`,
       template: 'index-template.html',
       inject: false,
     }),

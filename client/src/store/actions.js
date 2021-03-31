@@ -20,7 +20,7 @@ const actions = {
     let flatLocalitiesList = [];
     for (let key in data) {
       if (data.hasOwnProperty(key)) {
-        flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
+        // flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
       }
     }
 
