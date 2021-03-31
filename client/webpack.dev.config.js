@@ -103,7 +103,7 @@ module.exports = {
       host: process.env.host_front,
       mode: 'dev',
       timestamp: timestamp,
-      filename: `${PATHS.public}/index.html`,
+      filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
     }),

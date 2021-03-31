@@ -13,7 +13,6 @@ import styleGuide from '../components/pages/styleGuide.vue';
 import objectPage from '../components/pages/objectPage.vue';
 import profilePage from '../components/pages/profilePage.vue';
 import companyPage from '../components/pages/companyPage.vue';
-import getDistricts from '../components/pages/getDistricts.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
 // Profile sub pages
 import pocketSubPage from '../components/pages/profile/pocketSubPage.vue';
@@ -80,11 +79,6 @@ const router = new Router({
       meta: {
         title: 'Создать объект',
       },
-    },
-    {
-      path: '/get-districts',
-      name:'getDistricts',
-      component: getDistricts
     },
     {
       path: '/companies',
