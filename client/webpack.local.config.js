@@ -50,6 +50,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        exclude: '/node_modules/',
         options: {
           loaders: {
             scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
@@ -72,28 +73,8 @@ module.exports = {
           'sass-loader',
         ]
       },
-      // {
-      //   // test: /\.(jpe?g|png|gif|svg|ico)$/i,
-      //   test: /\.(jpg|png|svg)$/i,
-      //   exclude: [/node_modules/],
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '/[name]-[hash:8].[ext]',
-      //         // publicPath: `${PATHS.public}/images/img`,
-      //         // outputPath: `${PATHS.public}/images`,
-      //         // useRelativePath: true,
-      //         // context: '/',
-      //         // context: `${PATHS.public}/src/images/ads`,
-      //         // include: `${PATHS.src}`,
-      //       }
-      //     }
-      //   ]
-      // },
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/i,
-        // exclude: /node_modules/,
         include: PATHS.src,
         use: [
           {
@@ -105,22 +86,6 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(jpe?g|png|gif|svg|ico)$/i,
-      //   use: [
-      //     {
-      //       loader: 'image-webpack-loader',
-      //       options: {
-      //         name: '/[name]-[hash:8].[ext]',
-      //         // publicPath: `${PATHS.public}/images/img`,
-      //         // outputPath: `${PATHS.public}/images`,
-      //         // useRelativePath: true,
-      //         context: `${PATHS.public}/src/images/ads`,
-      //         // include: `${PATHS.src}`,
-      //       }
-      //     }
-      //   ]
-      // },
     ]
   },
   resolve: {
@@ -147,7 +112,7 @@ module.exports = {
       title: 'Сайт Атута | Локальная версия',
       host: process.env.host_front,
       mode: 'local',
-      filename: `${PATHS.public}/index.html`,
+      filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
     }),

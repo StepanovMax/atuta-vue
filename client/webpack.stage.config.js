@@ -2,18 +2,30 @@ const path = require('path');
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const PATHS = {
+  client: path.join(__dirname, './'),
+  src: path.join(__dirname, './src'),
+  env: path.join(__dirname, './env'),
+  public: path.join(__dirname, './public'),
+}
 
 const timestamp = new Date().getTime();
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  externals: {
+    paths: PATHS
+  },
+  entry: `${PATHS.src}/index.js`,
   devtool: 'none',
   mode: 'production',
   output: {
-    filename: `bundle-${timestamp}.js`,
-    publicPath: '/build/',
-    path: path.join(__dirname, 'build'),
+    filename: `index-${timestamp}.js`,
+    publicPath: '/',
+    path: PATHS.public,
   },
   module: {
     rules: [
@@ -57,9 +69,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '/[name]-[hash:8].[ext]',
-              publicPath: '',
-              outputPath: 'img',
-              useRelativePath: true
+              emitFile: true,
             }
           }
         ]
@@ -70,7 +80,10 @@ module.exports = {
     minimize: true,
   },
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
+    alias: {
+      'rootEnv': PATHS.env,
+    }
   },
   node: {
     fs: "empty"
@@ -82,7 +95,7 @@ module.exports = {
     // }),
     new VueLoaderPlugin(),
     new Dotenv({
-      path: path.resolve(__dirname, '.env.stage'),
+      path: `${PATHS.client}/.env`,
     }),
     new webpack.DefinePlugin({
       "process.env": {
@@ -90,11 +103,11 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута | Для разработчиков',
+      title: 'Сайт Атута',
       host: process.env.host_front,
       mode: 'stage',
       timestamp: timestamp,
-      filename: '../index.html',
+      filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
     }),
