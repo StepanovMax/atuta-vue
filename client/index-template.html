@@ -11,13 +11,13 @@
 <body>
   <div id="app"></div>
   <% if (htmlWebpackPlugin.options.mode === 'local') { %>
-  <script src="<%= htmlWebpackPlugin.options.host %>/build/bundle.js"></script>
+  <script src="<%= htmlWebpackPlugin.options.host %>/public/index.js"></script>
   <% } %>
   <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
-  <script src="http://dev.atyta.ru/build/bundle-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
+  <script src="http://dev.atyta.ru/public/index-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
   <% } %>
   <% if (htmlWebpackPlugin.options.mode === 'stage') { %>
-  <script src="https://stage.atyta.ru/build/bundle-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
+  <script src="https://stage.atyta.ru/public/index-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
   <% } %>
 </body>
 </html>
