@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       ads_horizontal_mubarak: ads_horizontal_mubarak,
-      ally_bank:ally_bank,
+      ally_bank: ally_bank,
       hostFront: process.env.host_front,
     }
   },

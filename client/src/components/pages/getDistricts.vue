@@ -43,7 +43,7 @@ import axios from 'axios';
 import { Icon } from 'leaflet';
 import { latLng } from "leaflet";
 import { LMarker, LTileLayer, LMap } from 'vue2-leaflet';
-// import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import { transliterate as tr, slugify } from 'transliteration';
 

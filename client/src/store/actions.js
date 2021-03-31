@@ -20,7 +20,7 @@ const actions = {
     let flatLocalitiesList = [];
     for (let key in data) {
       if (data.hasOwnProperty(key)) {
-        // flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
+        flatLocalitiesList = [...flatLocalitiesList, ...data[key].localities];
       }
     }
 
@@ -59,7 +59,7 @@ const actions = {
   },
   checkAuth: async (context, commit, dispatch) => {
     // Get towns list.
-    // await context.dispatch('getTowns');
+    await context.dispatch('getTowns');
     // Check the token.
     const checkTokenResult = await transport.get(
       process.env.host_api + '/auth/checkToken'
@@ -185,25 +185,25 @@ const actions = {
         .then(
           response => {
             console.log('getFavoritesObjectsByListID response.data.map ::', response);
-            // response.data.map(
-            //   item => {
-            //     item.fav = true;
-            //     if (context.state.userData.role === 'personal') {
-            //       item.user = {
-            //         name: 'Собственник'
-            //       }
-            //     } else if (context.state.userData.role === 'agent') {
-            //       item.user = {
-            //         name: 'Агент'
-            //       }
-            //     } else {
-            //       item.user = {
-            //         name: context.state.userData.name
-            //       }
-            //     }
-            //     return item;
-            //   }
-            // );
+            response.data.map(
+              item => {
+                item.fav = true;
+                if (context.state.userData.role === 'personal') {
+                  item.user = {
+                    name: 'Собственник'
+                  }
+                } else if (context.state.userData.role === 'agent') {
+                  item.user = {
+                    name: 'Агент'
+                  }
+                } else {
+                  item.user = {
+                    name: context.state.userData.name
+                  }
+                }
+                return item;
+              }
+            );
             context.commit('updateFavouriteObjectsArrayState', response.data);
             return response.data;
           }
