@@ -2,9 +2,11 @@ const path = require('path');
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const dotenv = require('dotenv').config({
+  path: __dirname + '/.env'
+});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PATHS = {
   client: path.join(__dirname, './'),
@@ -23,6 +25,7 @@ module.exports = {
   devtool: 'none',
   mode: 'production',
   output: {
+    publicPath: '/public/',
     path: PATHS.public,
     filename: `index-${timestamp}.js`,
   },
@@ -89,6 +92,7 @@ module.exports = {
     fs: "empty"
   },
   plugins: [
+    new CleanWebpackPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   include: /\.min\.js$/,
     //   minimize: true
@@ -98,18 +102,16 @@ module.exports = {
       path: `${PATHS.client}/.env`,
     }),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'stage') // default value if not specified
-      }
+      "process.env": dotenv.parsed,
     }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута',
+      title: 'Стейдж Атута',
       host: process.env.host_front,
-      mode: 'stage',
       timestamp: timestamp,
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }

@@ -2,9 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const dotenvWebpack = require('dotenv-webpack');
+const dotenv = require('dotenv').config({
+  path: __dirname + '/.env'
+});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PATHS = {
   client: path.join(__dirname, './'),
@@ -12,6 +14,8 @@ const PATHS = {
   env: path.join(__dirname, './env'),
   public: path.join(__dirname, './public'),
 }
+
+const timestamp = new Date().getTime();
 
 module.exports = {
   externals: {
@@ -26,6 +30,7 @@ module.exports = {
     disableHostCheck: true,
     historyApiFallback: true,
     contentBase: PATHS.client,
+    writeToDisk: true,
     overlay: {
       warnings: true,
       errors: true,
@@ -33,9 +38,9 @@ module.exports = {
     clientLogLevel: 'error',
   },
   output: {
-    publicPath: '/',
+    publicPath: '/public/',
     path: PATHS.public,
-    filename: 'index.js',
+    filename: `index-${timestamp}.js`,
   },
   module: {
     rules: [
@@ -99,20 +104,18 @@ module.exports = {
     fs: "empty"
   },
   plugins: [
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     { from: `${PATHS.src}/images`, to: `${PATHS.public}/images` },
-    //   ],
-    // }),
-    // new CleanWebpackPlugin(),
-    new Dotenv({
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
+    new dotenvWebpack({
       path: `${PATHS.client}/.env`,
     }),
-    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": dotenv.parsed,
+    }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута | Локальная версия',
+      title: 'Development Atuta',
       host: process.env.host_front,
-      mode: 'local',
+      timestamp: timestamp,
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,

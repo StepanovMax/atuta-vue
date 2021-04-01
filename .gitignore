@@ -2,6 +2,7 @@ client/build/*
 client/public/*
 client/node_modules/
 client/yarn.lock
+client/yarn-error.log
 client/uploads/
 client/env
 client/.env

@@ -9,16 +9,13 @@
   "private": true,
   "scripts": {
     "test-build": "webpack --config webpack.test.config.js",
+
     "local-build": "webpack --config webpack.local.config.js --progress --colors --no-watch",
     "local-start": "webpack-dev-server --config webpack.local.config.js --progress --colors --inline --hot --watch",
+
     "dev-build": "NODE_ENV=development webpack --config webpack.dev.config.js",
-    "stage-build": "NODE_ENV=stage webpack --config webpack.stage.config.js",
-    "build": "webpack            --progress --colors --no-watch",
-    "watch": "webpack            --progress --colors --watch",
-    "start": "webpack-dev-server --progress --colors --inline --hot --watch",
-    "prod": "webpack-dev-server --mode production",
-    "dev": "webpack-dev-server --mode development",
-    "local": "webpack-dev-server --mode none"
+
+    "stage-build": "NODE_ENV=stage webpack --config webpack.stage.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

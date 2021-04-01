@@ -3,21 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="<%=require('./src/images/favicon/favicon.ico')%>">
+  <link rel="icon" href="<%= htmlWebpackPlugin.options.host %><%=require('./src/images/favicon/favicon.ico')%>">
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
 </head>
 <body>
   <div id="app"></div>
-  <% if (htmlWebpackPlugin.options.mode === 'local') { %>
-  <script src="<%= htmlWebpackPlugin.options.host %>/public/index.js"></script>
-  <% } %>
-  <% if (htmlWebpackPlugin.options.mode === 'dev') { %>
-  <script src="http://dev.atyta.ru/public/index-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
-  <% } %>
-  <% if (htmlWebpackPlugin.options.mode === 'stage') { %>
-  <script src="https://stage.atyta.ru/public/index-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
-  <% } %>
+  <script src="<%= htmlWebpackPlugin.options.host %>/public/index-<%= htmlWebpackPlugin.options.timestamp %>.js"></script>
 </body>
 </html>
