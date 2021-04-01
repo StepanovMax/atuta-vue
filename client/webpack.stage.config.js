@@ -23,9 +23,8 @@ module.exports = {
   devtool: 'none',
   mode: 'production',
   output: {
-    filename: `index-${timestamp}.js`,
-    publicPath: PATHS.client,
     path: PATHS.public,
+    filename: `index-${timestamp}.js`,
   },
   module: {
     rules: [
@@ -68,8 +67,9 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '/[name]-[hash:8].[ext]',
               emitFile: true,
+              esModule: false,
+              name: 'images/[name]-[hash:8].[ext]',
             }
           }
         ]

@@ -33,9 +33,9 @@ module.exports = {
     clientLogLevel: 'error',
   },
   output: {
-    filename: 'index.js',
     publicPath: '/',
     path: PATHS.public,
+    filename: 'index.js',
   },
   module: {
     rules: [
