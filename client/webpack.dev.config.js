@@ -23,6 +23,7 @@ module.exports = {
   devtool: 'none',
   mode: 'development',
   output: {
+    publicPath: '/',
     path: PATHS.public,
     filename: `index-${timestamp}.js`,
   },
@@ -63,6 +64,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|ico|svg)$/i,
+        include: PATHS.src,
         use: [
           {
             loader: 'file-loader',
