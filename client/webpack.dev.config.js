@@ -106,6 +106,7 @@ module.exports = {
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }
