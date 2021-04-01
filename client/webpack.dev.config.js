@@ -2,12 +2,14 @@ const path = require('path');
 const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const dotenv = require('dotenv').config({
+  path: __dirname + '/.env'
+});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PATHS = {
-  client: path.join(__dirname, './'),
+  client: path.join(__dirname, '/'),
   src: path.join(__dirname, './src'),
   env: path.join(__dirname, './env'),
   public: path.join(__dirname, './public'),
@@ -23,7 +25,7 @@ module.exports = {
   devtool: 'none',
   mode: 'development',
   output: {
-    publicPath: '/',
+    publicPath: '/public/',
     path: PATHS.public,
     filename: `index-${timestamp}.js`,
   },
@@ -84,26 +86,24 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'rootEnv': PATHS.env,
+      'rootEnv': PATHS.client,
     }
   },
   node: {
     fs: "empty"
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new Dotenv({
       path: `${PATHS.client}/.env`,
     }),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') // default value if not specified
-      }
+      "process.env": dotenv.parsed,
     }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута | Для разработчиков',
+      title: 'Development Atuta',
       host: process.env.host_front,
-      mode: 'dev',
       timestamp: timestamp,
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
