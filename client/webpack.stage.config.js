@@ -24,7 +24,7 @@ module.exports = {
   mode: 'production',
   output: {
     filename: `index-${timestamp}.js`,
-    publicPath: '/',
+    publicPath: PATHS.client,
     path: PATHS.public,
   },
   module: {

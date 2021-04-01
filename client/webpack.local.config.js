@@ -80,8 +80,9 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name]-[hash:8].[ext]',
               emitFile: true,
+              esModule: false,
+              name: 'images/[name]-[hash:8].[ext]',
             },
           },
         ],
