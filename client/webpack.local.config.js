@@ -74,7 +74,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/i,
+        test: /\.(jpe?g|png|gif|ico|svg)$/i,
         include: PATHS.src,
         use: [
           {
