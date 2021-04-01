@@ -8,14 +8,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test-build": "webpack --config webpack.test.config.js",
-
-    "local-build": "webpack --config webpack.local.config.js --progress --colors --no-watch",
-    "local-start": "webpack-dev-server --config webpack.local.config.js --progress --colors --inline --hot --watch",
-
-    "dev-build": "NODE_ENV=development webpack --config webpack.dev.config.js",
-
-    "stage-build": "NODE_ENV=stage webpack --config webpack.stage.config.js"
+    "local-start": "webpack-dev-server -d --progress --colors --inline --hot --watch --env=local",
+    "local-build": "webpack -d --env=local",
+    "dev-build":   "webpack -p --env=dev",
+    "stage-build": "webpack -p --env=stage",
+    "prod-build":  "webpack -p --env=prod"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
