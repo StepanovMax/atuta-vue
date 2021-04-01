@@ -4,7 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PATHS = {
   client: path.join(__dirname, './'),
@@ -74,7 +74,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/i,
+        test: /\.(jpe?g|png|gif|ico|svg)$/i,
         include: PATHS.src,
         use: [
           {
@@ -116,6 +116,7 @@ module.exports = {
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }

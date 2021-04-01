@@ -63,13 +63,14 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|ico|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '/[name]-[hash:8].[ext]',
               emitFile: true,
+              esModule: false,
+              name: '/[name]-[hash:8].[ext]',
             }
           }
         ]
@@ -106,6 +107,7 @@ module.exports = {
       filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }
