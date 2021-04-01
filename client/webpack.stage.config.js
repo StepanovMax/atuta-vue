@@ -3,19 +3,31 @@ const webpack = require("webpack");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const TerserPlugin = require('terser-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const dotenv = require('dotenv').config({
+  path: __dirname + '/.env'
+});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const PATHS = {
+  client: path.join(__dirname, './'),
+  src: path.join(__dirname, './src'),
+  env: path.join(__dirname, './env'),
+  public: path.join(__dirname, './public'),
+}
 
 const timestamp = new Date().getTime();
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  externals: {
+    paths: PATHS
+  },
+  entry: `${PATHS.src}/index.js`,
   devtool: 'none',
   mode: 'production',
   output: {
-    filename: `bundle-${timestamp}.js`,
-    publicPath: '/build/',
-    path: path.join(__dirname, 'build'),
+    publicPath: '/public/',
+    path: PATHS.public,
+    filename: `index-${timestamp}.js`,
   },
   module: {
     rules: [
@@ -53,84 +65,53 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|ico|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '/[name]-[hash:8].[ext]',
-              publicPath: '',
-              outputPath: 'img',
-              useRelativePath: true
+              emitFile: true,
+              esModule: false,
+              name: 'images/[name]-[hash:8].[ext]',
             }
           }
         ]
       }
     ]
   },
-  // optimization: {
-  //   minimizer: [
-  //     new UglifyJsPlugin({
-  //       uglifyOptions: {
-  //         output: {
-  //           comments: false
-  //         },
-  //         minify: {},
-  //         compress: {
-  //           booleans: true,
-  //           //...
-  //         }
-  //       }
-  //     })
-  //   ],
-  // },
   optimization: {
     minimize: true,
-  //   minimizer: [
-  //     // new UglifyJsPlugin({
-  //     //   include: /\.min\.js$/
-  //     // }),
-  //     // new TerserPlugin({
-  //     //   parallel: true
-  //     // }),
-  //     new TerserPlugin({
-  //       cache: true,
-  //       parallel: 8,
-  //       sourceMap: true, // Must be set to true if using source-maps in production
-  //       // terserOptions: {
-  //       //   // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-  //       // }
-  //     }),
-  //   ]
   },
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
+    alias: {
+      'rootEnv': PATHS.env,
+    }
   },
   node: {
     fs: "empty"
   },
   plugins: [
+    new CleanWebpackPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   include: /\.min\.js$/,
     //   minimize: true
     // }),
     new VueLoaderPlugin(),
     new Dotenv({
-      path: path.resolve(__dirname, '.env.stage'),
+      path: `${PATHS.client}/.env`,
     }),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'stage') // default value if not specified
-      }
+      "process.env": dotenv.parsed,
     }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута | Для разработчиков',
+      title: 'Стейдж Атута',
       host: process.env.host_front,
-      mode: 'stage',
       timestamp: timestamp,
-      filename: '../index.html',
+      filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }

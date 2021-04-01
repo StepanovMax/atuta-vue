@@ -13,7 +13,6 @@ import styleGuide from '../components/pages/styleGuide.vue';
 import objectPage from '../components/pages/objectPage.vue';
 import profilePage from '../components/pages/profilePage.vue';
 import companyPage from '../components/pages/companyPage.vue';
-import getDistricts from '../components/pages/getDistricts.vue';
 import companiesPage from '../components/pages/companiesPage.vue';
 // Profile sub pages
 import pocketSubPage from '../components/pages/profile/pocketSubPage.vue';
@@ -80,11 +79,6 @@ const router = new Router({
       meta: {
         title: 'Создать объект',
       },
-    },
-    {
-      path: '/get-districts',
-      name:'getDistricts',
-      component: getDistricts
     },
     {
       path: '/companies',
@@ -234,7 +228,7 @@ const isTokenExpired = async from => {
     // -> Case (1) when the access token is needed to be updated,
     if (store.state.userData.expireDate < timestampNow) {
       try {
-        const checkAuthPassed = await store.dispatch('checkAuth');
+        // const checkAuthPassed = await store.dispatch('checkAuth');
         await store.dispatch('getEmployeeByUserID');
         if (!checkAuthPassed) {
           await store.dispatch('logout');
@@ -249,7 +243,7 @@ const isTokenExpired = async from => {
   } else {
     // The case when the 'FROM' attribute is empty will understand as page reloading.
     if (!from.name) {
-      await store.dispatch('checkAuth');
+      // await store.dispatch('checkAuth');
     }
   }
 };

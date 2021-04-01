@@ -2,10 +2,26 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const dotenvWebpack = require('dotenv-webpack');
+const dotenv = require('dotenv').config({
+  path: __dirname + '/.env'
+});
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const PATHS = {
+  client: path.join(__dirname, './'),
+  src: path.join(__dirname, './src'),
+  env: path.join(__dirname, './env'),
+  public: path.join(__dirname, './public'),
+}
+
+const timestamp = new Date().getTime();
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  externals: {
+    paths: PATHS
+  },
+  entry: `${PATHS.src}/index.js`,
   devtool: 'eval',
   mode: 'none',
   devServer: {
@@ -13,7 +29,8 @@ module.exports = {
     inline: true,
     disableHostCheck: true,
     historyApiFallback: true,
-    contentBase: path.join(__dirname),
+    contentBase: PATHS.client,
+    writeToDisk: true,
     overlay: {
       warnings: true,
       errors: true,
@@ -21,9 +38,9 @@ module.exports = {
     clientLogLevel: 'error',
   },
   output: {
-    filename: 'bundle.js',
-    publicPath: '/build/',
-    path: path.join(__dirname, 'build'),
+    publicPath: '/public/',
+    path: PATHS.public,
+    filename: `index-${timestamp}.js`,
   },
   module: {
     rules: [
@@ -38,6 +55,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        exclude: '/node_modules/',
         options: {
           loaders: {
             scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
@@ -61,42 +79,47 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|ico|svg)$/i,
+        include: PATHS.src,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '/[name]-[hash:8].[ext]',
-              publicPath: '',
-              outputPath: 'img',
-              useRelativePath: true
-            }
-          }
-        ]
-      }
+              emitFile: true,
+              esModule: false,
+              name: 'images/[name]-[hash:8].[ext]',
+            },
+          },
+        ],
+      },
     ]
   },
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'rootEnv': path.resolve(__dirname, '/env'),
+      'rootEnv': PATHS.env,
     }
   },
   node: {
     fs: "empty"
   },
   plugins: [
-    new Dotenv({
-      path: path.resolve(__dirname, 'env/.env.localhost'),
-    }),
+    new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
+    new dotenvWebpack({
+      path: `${PATHS.client}/.env`,
+    }),
+    new webpack.DefinePlugin({
+      "process.env": dotenv.parsed,
+    }),
     new HtmlWebpackPlugin({
-      title: 'Сайт Атута | Локальная версия',
+      title: 'Development Atuta',
       host: process.env.host_front,
-      mode: 'local',
-      filename: '../index.html',
+      timestamp: timestamp,
+      filename: `${PATHS.client}/index.html`,
       template: 'index-template.html',
       inject: false,
+      favicon: "./src/images/favicon/favicon.ico",
     }),
   ],
 }

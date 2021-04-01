@@ -184,6 +184,7 @@ const actions = {
       )
         .then(
           response => {
+            console.log('getFavoritesObjectsByListID response.data.map ::', response);
             response.data.map(
               item => {
                 item.fav = true;

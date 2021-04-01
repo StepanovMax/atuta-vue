@@ -10,12 +10,14 @@
   >
     <img
       class="img logo__img"
-      src="/src/images/logo/logo_desktop.png"
+      :src="hostFront + '/' + logo"
     >
   </router-link>
 </template>
 
 <script>
+import logo from '../images/logo/logo_desktop.png';
+
 export default {
   name: 'logo',
   props: {
@@ -24,6 +26,12 @@ export default {
       type: String,
       required: true
     },
+  },
+  data() {
+    return {
+      logo: logo,
+      hostFront: process.env.host_front,
+    }
   },
   mounted() {
     // console.log('location ::', this.location);

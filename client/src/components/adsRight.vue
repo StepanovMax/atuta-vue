@@ -7,7 +7,7 @@
       target="_blank"
     >
       <img
-        :src="hostFront + '/src/images/ads/external-content.duckduckgo.com.jpeg'"
+        :src="hostFront + duckduckgo"
         alt="Реклама"
         class="
           image
@@ -16,7 +16,7 @@
         "
       >
       <img
-        :src="hostFront + '/src/images/ads/ads_horizontal.png'"
+        :src="hostFront + ads_horizontal"
         alt="Реклама"
         class="
           image
@@ -29,11 +29,15 @@
 </template>
 
 <script>
+import ads_horizontal from '../images/ads/ads_horizontal.png';
+import duckduckgo from '../images/ads/corpbank.jpeg';
 
 export default {
   name: 'adsRight',
   data() {
     return {
+      duckduckgo: duckduckgo,
+      ads_horizontal: ads_horizontal,
       hostFront: process.env.host_front,
     }
   },
