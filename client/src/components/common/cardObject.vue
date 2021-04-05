@@ -119,15 +119,43 @@
                 dataObjectData.objectTypeSlug &&
                 dataObjectData.objectTypeSlug === 'app'
               "
-              class="object-card__wrap-info-details"
-              :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
+              class="
+                object-card__wrap-info-details
+                object-card__wrap-info-details_grid
+              "
+              :class="[
+                {'object-card__wrap-info-details_list-view': propObjectView === 'list'},
+              ]"
             >
+              <div
+                v-if="
+                  dataObjectData.objectTypeLabel
+                "
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_room
+                  object-card__wrap-info-details-item_grid
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
+              >
+                <span>
+                  {{ dataObjectData.objectTypeLabel }}
+                </span>
+              </div>
               <div
                 v-if="
                   dataObjectData.roomsCountLabel
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
-                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_room
+                  object-card__wrap-info-details-item_grid
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
               >
                 <span>
                   {{ dataObjectData.roomsCountLabel }}
@@ -145,8 +173,14 @@
                 v-if="
                   dataObjectData.objectTypeSlug === 'app'
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
-                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_area
+                  object-card__wrap-info-details-item_grid
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
               >
                 <span
                   v-if="dataObjectData.appArea"
@@ -160,9 +194,12 @@
               <div
                 class="
                   object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
                   object-card__wrap-info-details-item_floor
                 "
-                :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
               >
                 <span
                   v-if="dataObjectData.floor"
@@ -185,14 +222,38 @@
               v-if="
                 dataObjectData.objectTypeSlug === 'house'
               "
-              class="object-card__wrap-info-details"
+              class="
+                object-card__wrap-info-details
+                object-card__wrap-info-details_grid
+              "
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
             >
               <div
                 v-if="
+                  dataObjectData.houseTypeLabel
+                "
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_room
+                  object-card__wrap-info-details-item_grid
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
+              >
+                <span>
+                  {{ dataObjectData.houseTypeLabel }}
+                </span>
+              </div>
+              <div
+                v-if="
                   dataObjectData.roomsCountLabel
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
+                  object-card__wrap-info-details-item_room
+                "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
@@ -211,7 +272,11 @@
                 v-if="
                   dataObjectData.houseAreaHouse
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
+                  object-card__wrap-info-details-item_area
+                "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span v-if="dataObjectData.houseAreaHouse">
@@ -225,7 +290,11 @@
                 v-if="
                   dataObjectData.houseAreaLand
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
+                  object-card__wrap-info-details-item_area
+                "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span v-if="dataObjectData.houseAreaLand">
@@ -242,14 +311,38 @@
               v-if="
                 dataObjectData.objectTypeSlug === 'room'
               "
-              class="object-card__wrap-info-details"
+              class="
+                object-card__wrap-info-details
+                object-card__wrap-info-details_grid
+              "
               :class="{'object-card__wrap-info-details_list-view': propObjectView === 'list'}"
             >
               <div
                 v-if="
+                  dataObjectData.objectTypeLabel
+                "
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_room
+                  object-card__wrap-info-details-item_grid
+                "
+                :class="[
+                  {'object-card__wrap-info-details-item_list-view': propObjectView === 'list'},
+                ]"
+              >
+                <span>
+                  {{ dataObjectData.objectTypeLabel }}
+                </span>
+              </div>
+              <div
+                v-if="
                   dataObjectData.roomsCountLabel
                 "
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_room"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
+                  object-card__wrap-info-details-item_room
+                "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span>
@@ -265,7 +358,11 @@
                 </span>
               </div>
               <div
-                class="object-card__wrap-info-details-item object-card__wrap-info-details-item_area"
+                class="
+                  object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
+                  object-card__wrap-info-details-item_area
+                "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
               >
                 <span
@@ -280,6 +377,7 @@
               <div
                 class="
                   object-card__wrap-info-details-item
+                  object-card__wrap-info-details-item_grid
                   object-card__wrap-info-details-item_floor
                 "
                 :class="{'object-card__wrap-info-details-item_list-view': propObjectView === 'list'}"
@@ -465,12 +563,12 @@
                 <span
                   v-if="dataObjectData.commercialTenant === 'yes'"
                 >
-                  С арендатором: Да
+                  С арендатором
                 </span>
                 <span
                   v-if="dataObjectData.commercialTenant === 'no'"
                 >
-                  С арендатором: Нет
+                  Без арендатора
                 </span>
               </div>
               <div
