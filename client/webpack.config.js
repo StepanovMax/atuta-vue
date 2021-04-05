@@ -120,6 +120,19 @@ module.exports = env => {
     node: {
       fs: "empty"
     },
+    devServer: {
+      port: 9000,
+      inline: true,
+      disableHostCheck: true,
+      historyApiFallback: true,
+      contentBase: PATHS.client,
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
+      clientLogLevel: 'error',
+      writeToDisk: true,
+    },
     plugins: [
       new CleanWebpackPlugin(),
       new VueLoaderPlugin(),
