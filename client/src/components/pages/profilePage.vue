@@ -225,11 +225,11 @@
 </template>
 
 <script>
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
-import breadcrumbs from '../common/breadcrumbs.vue';
-import filterDesktop from '../filters/filterDesktop.vue';
-import errorPage403 from '../pages/errors/userNotLoggedInComponent.vue';
+import adsLeft from '@cmp/adsLeft.vue';
+import adsRight from '@cmp/adsRight.vue';
+import breadcrumbs from '@cmp/common/breadcrumbs.vue';
+import filterDesktop from '@cmp/filters/filterDesktop.vue';
+import errorPage403 from '@cmp/pages/errors/userNotLoggedInComponent.vue';
 
 import { mapState } from 'vuex';
 
