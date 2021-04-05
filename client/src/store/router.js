@@ -249,9 +249,12 @@ const isTokenExpired = async from => {
     }
   // If the store DOES NOT contain the user data, =>
   } else {
-    // The case when the 'FROM' attribute is empty will understand as page reloading.
+    // The case when the 'FROM' attribute is empty.
+    // It's very similar to the page reloading behavior.
     if (!from.name) {
-      // await store.dispatch('checkAuth');
+      console.log('from.name ::', from.name);
+      // If the page is reloading we need to recheck user's authentication.
+      await store.dispatch('checkAuth');
     }
   }
 };
@@ -278,6 +281,7 @@ router.beforeEach(
     // Each route we should to check expired token.
     await isTokenExpired(from);
     collectRoutesHistory(from);
+    console.log('-= r =-');
 
     // Restrict the registration and login pages for loggedin users.
     if (store.state.isLoggedIn) {
