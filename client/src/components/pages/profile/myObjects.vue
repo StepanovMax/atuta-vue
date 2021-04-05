@@ -67,12 +67,11 @@
 </template>
 
 <script>
-import axios from 'axios';
+import multiselect from 'vue-multiselect';
 import { mapState, mapActions } from 'vuex';
 
-import grid from '../../grid.vue';
-import multiselect from 'vue-multiselect';
-import switcher from '../../common/switcher.vue';
+import grid from '@cmp/grid.vue';
+import switcher from '@cmp/common/switcher.vue';
 
 export default {
   name: 'myObjects',
