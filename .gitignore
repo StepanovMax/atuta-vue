@@ -6,6 +6,7 @@ client/yarn-error.log
 client/uploads/
 client/env
 client/.env
+client/index.html
 
 server/node_modules/
 server/yarn.lock
@@ -13,7 +14,6 @@ server/yarn-error.log
 server/env
 server/.env
 
-client/index.html
 *.code-workspace
 
 env/*
