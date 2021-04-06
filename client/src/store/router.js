@@ -81,7 +81,7 @@ const router = new Router({
       },
     },
     {
-      path: '/edit-object',
+      path: '/edit-object/:id',
       name:'editObject',
       component: editObject,
       meta: {
@@ -236,7 +236,7 @@ const isTokenExpired = async from => {
     // -> Case (1) when the access token is needed to be updated,
     if (store.state.userData.expireDate < timestampNow) {
       try {
-        // const checkAuthPassed = await store.dispatch('checkAuth');
+        const checkAuthPassed = await store.dispatch('checkAuth');
         await store.dispatch('getEmployeeByUserID');
         if (!checkAuthPassed) {
           await store.dispatch('logout');
@@ -252,7 +252,6 @@ const isTokenExpired = async from => {
     // The case when the 'FROM' attribute is empty.
     // It's very similar to the page reloading behavior.
     if (!from.name) {
-      console.log('from.name ::', from.name);
       // If the page is reloading we need to recheck user's authentication.
       await store.dispatch('checkAuth');
     }
@@ -281,7 +280,6 @@ router.beforeEach(
     // Each route we should to check expired token.
     await isTokenExpired(from);
     collectRoutesHistory(from);
-    console.log('-= r =-');
 
     // Restrict the registration and login pages for loggedin users.
     if (store.state.isLoggedIn) {
