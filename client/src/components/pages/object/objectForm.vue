@@ -1,898 +1,892 @@
 <template>
   <div
-    id="addObject"
-    class="main add-object-page"
+    id="objectForm"
+    class="article article_add"
   >
-
-    <adsLeft />
-
-    <errorPage403
-      v-if="!isLoggedIn"
+    <breadcrumbs
+      propPageName="myObjectsSubPage"
     />
 
-    <div
-      v-if="isLoggedIn"
-      class="article article_add"
+    <h1
+      class="
+        title
+        title_h3
+        title_bold
+        form__title_add-object-main
+      "
     >
+      Редактировать объявление
+    </h1>
 
-      <objectForm
-        v-if="isLoggedIn"
-      />
+    <h1
+      v-if="isEditObjectPage"
+      class="
+        title
+        title_h2
+        title_bold
+      "
+    >
+      {{ propObjectData.title }}
+    </h1>
 
-      <h1
-        class="
-          title
-          title_h3
-          title_bold
-          form__title_add-object-main
-        "
-      >
-        Подать объявление
-      </h1>
+    <div class="form form_add-object">
+      <div class="form__row form__row_block-width form__row_block-width-half">
 
-      <div class="form form_add-object">
-        <div class="form__row form__row_block-width form__row_block-width-half">
-
-          <div class="form__block-width form__block-width-half">
-            <div
-              ref="object"
-              class="form__row"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Тип объекта
-                </span>
-                <span v-if="createdObject.object.required">
-                  *
-                </span>
-              </h3>
-              <radioButtons
-                radioButtonsView="wrapAddObject"
-                radioButtonsId="objectTypeAddObject"
-                :propErrorClass="errorsMain.includes('object')"
-                :items="filterDataDefaultClone.object"
-                :value.sync="createdObject.object.value"
-                @change.native="clickOnMainFields()"
-              />
-              <p
-                v-if="this.errorsMain.includes('object')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать тип объекта
-              </p>
-            </div>
-
-            <div
-              v-if="
-                createdObject.object.value
-                && createdObject.object.value.slug === 'commercial'
-              "
-              ref="type"
-              class="form__row"
-            >
-              <div class="
-                form__row
-                form__row_block-width
-              ">
-                <div class="
-                  form__block-width 
-                ">
-                  <h3 class="
-                    form__title
-                    form__title_add-object
-                  ">
-                    <span>
-                      Вид коммерческого объекта
-                    </span>
-                    <span v-if="createdObject.commercial.type.required">
-                      *
-                    </span>
-                  </h3>
-                  <radioButtons
-                    :propErrorClass="errorsMain.includes('type')"
-                    key="objectCommercialTypeAddObject"
-                    radioButtonsView="wrapHalf"
-                    radioButtonsId="objectCommercialTypeAddObject"
-                    :items="filterDataDefaultClone.commercialView"
-                    :value.sync="commerceSubTypeVModel"
-                  />
-                  <p
-                    v-if="this.errorsMain.includes('type')"
-                    class="paragraph paragraph_invalid"
-                  >
-                    Необходимо указать вид коммерческого объекта
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              ref="deal"
-              class="form__row"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Тип сделки
-                </span>
-                <span v-if="createdObject.deal.required">
-                  *
-                </span>
-              </h3>
-              <switcher
-                class="add-object-page__switcher"
-                :class="{
-                  'switcher_error': this.errorsMain.includes('deal')
-                }"
-                switcherId="dealDesktop"
-                :items="filterDataDefaultClone.deal"
-                :value.sync="dealVModel"
-                @change.native="clickOnMainFields()"
-              />
-              <p
-                v-if="this.errorsMain.includes('deal')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать тип сделки
-              </p>
-            </div>
-
-            <div
-              ref="address"
-              class="form__row"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Адрес
-                </span>
-                <span v-if="createdObject.address.required">
-                  *
-                </span>
-              </h3>
-              <div class="input-address">
-                <input
-                  type="text"
-                  class="
-                    input
-                    form__input
-                    form__input_add-object
-                  "
-                  :class="{
-                    'input_error': this.errorsMain.includes('address')
-                  }"
-                  id="suggestAddress"
-                  :value="currentAddress"
-                  @input="currentAddressUpdate($event)"
-                  @focus="addressSelected = false"
-                >
-                <ul
-                  v-if="suggestList.length > 0"
-                  class="input-address__suggest-list"
-                  v-click-outside="hideSuggestionsList"
-                >
-                  <li
-                    class="input-address__suggest-list-item"
-                    v-for="(item, index) in suggestList"
-                    :key="'key-' + index"
-                    @click="selectSuggestedAddress($event)"
-                  >
-                    <p
-                      class="input-address__suggest-list-item-text"
-                    >
-                      {{ item.value }}
-                    </p>
-                  </li>
-                </ul>
-              </div>
-              <p
-                v-if="this.errorsMain.includes('address')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать адрес
-              </p>
-            </div>
-          </div>
-
-          <div class="form__block-width form__block-width-half">
-            <yandex-map
-              class="add-object-page__map"
-              :settings="settings"
-              :coords="coordsTaganrog"
-              :zoom="15"
-              :controls="controls"
-              @click="clickOnMap"
-            >
-              <ymap-marker 
-                :coords="coordsTaganrog"
-                marker-id="123"
-                hint-content=""
-              />
-            </yandex-map>
-          </div>
-        </div>
-
-        <div
-          ref="district"
-          class="form__row"
-          v-if="
-            objectTypeAndDealTypeIsSelected
-          "
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Район
-                </span>
-                <span v-if="createdObject.district.required">
-                  *
-                </span>
-              </h3>
-              <multiselect
-                :class="{
-                  'multiselect_error': this.errorsMain.includes('district')
-                }"
-                v-model="createdObject.district.value"
-                :options="localityDistricts"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="label"
-                track-by="slug"
-                placeholder="Район"
-              />
-              <p
-                v-if="this.errorsMain.includes('district')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать район
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <addObjectApp
-          ref="app"
-          v-if="
-            objectTypeAndDealTypeIsSelected
-            && createdObject.object.value.slug === 'app'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <addObjectHouse
-          ref="house"
-          v-if="
-            objectTypeAndDealTypeIsSelected
-            && createdObject.object.value.slug === 'house'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <addObjectRoom
-          ref="room"
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-            && createdObject.object.value.slug === 'room'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <addObjectGarage
-          ref="garage"
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-            && createdObject.object.value.slug === 'garage'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <addObjectSector
-          ref="sector"
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-            && createdObject.object.value.slug === 'sector'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <addObjectCommercial
-          ref="commercial"
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-            && createdObject.object.value.slug === 'commercial'
-          "
-          :propCreatedObject="createdObject"
-          :propValidateErrors="fieldsForValidating"
-        />
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div
-              ref="onlineShow"
-              class="form__block-width form__block-width-third"
-            >
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Онлайн показ
-                </span>
-                <span v-if="createdObject.onlineShow.required">
-                  *
-                </span>
-              </h3>
-              <switcher
-                class="add-object-page__switcher"
-                switcherId="onlineShowAddObject"
-                :items="filterDataDefaultClone.appOnlineShow"
-                :value.sync="createdObject.onlineShow.value"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div
-              ref="photoGallery"
-              class="form__block-width"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Фотографии
-                </span>
-                <span v-if="createdObject.photoGallery.required">
-                  *
-                </span>
-              </h3>
-              <upload-images
-                id="upload-images"
-                :propIsMultiple="true"
-                :value.sync="blobImage"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div
-              ref="description"
-              class="form__block-width"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Описание
-                </span>
-                <span v-if="createdObject.description.required">
-                  *
-                </span>
-              </h3>
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-                class="textarea"
-                v-model="createdObject.description.value"
-              >
-              </textarea>
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-half">
-            <div
-              ref="phone"
-              class="form__block-width form__block-width-half"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Телефон
-                </span>
-                <span v-if="createdObject.phone.required">
-                  *
-                </span>
-              </h3>
-              <multiselect
-                v-if="
-                  userData.role
-                  && (
-                    userData.role.slug === 'agency'
-                    || userData.role.slug === 'builder'
-                  )
-                "
-                v-model="createdObject.phone.value"
-                :options="userEmployees"
-                :custom-label="labelWithPhone"
-                :show-labels="false"
-                :allow-empty="false"
-                :close-on-select="true"
-                :multiple="false"
-                :searchable="true"
-                label="name"
-                track-by="phone"
-                placeholder="Телефон"
-              />
-              <p
-                v-else
-                class="paragraph"
-              >
-                {{ gFormatPhone(userData.phone) }}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-half">
-            <div
-              ref="connectionWay"
-              class="form__block-width form__block-width-half"
-            >
-              <h3 class="
-                form__title
-                form__title_add-object
-              ">
-                <span>
-                  Способ связи
-                </span>
-                <span v-if="createdObject.connectionWay.required">
-                  *
-                </span>
-              </h3>
-              <checkboxes
-                :propErrorClass="errorsMain.includes('connectionWay')"
-                checkboxId="connectionWayAddObject"
-                checkboxType="listVertical"
-                :items="filterDataDefaultClone.connectionWay"
-                :value.sync="createdObject.connectionWay.value"
-              />
-              <p
-                v-if="errorsMain.includes('connectionWay')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать способ связи
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.deal.value.slug === 'rent'
-            && createdObject.object.value
-            && (
-              createdObject.object.value.slug === 'app'
-              || createdObject.object.value.slug === 'room'
-              || createdObject.object.value.slug === 'house'
-              || createdObject.object.value.slug === 'garage'
-              || createdObject.object.value.slug === 'sector'
-              || createdObject.object.value.slug === 'commercial'
-            )
-          "
-          class="form__row"
-          ref="rentType"
-        >
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            <span>
-              Срок аренды
-            </span>
-            <span v-if="createdObject.rentType.required">
-              *
-            </span>
-          </h3>
-          <switcher
-            class="add-object-page__switcher"
-            switcherId="rentTypeDesktop"
-            :items="filterDataDefaultClone.rentType"
-            :value.sync="createdObject.rentType"
-          />
-        </div>
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <h3 class="
-            form__title
-            form__title_add-object
-          ">
-            <span>
-              Цена
-            </span>
-            <span v-if="createdObject.price.required">
-              *
-            </span>
-          </h3>
+        <div class="form__block-width form__block-width-half">
           <div
-            ref="price"
-            class="form__row form__row_block-width form__row_block-width-third"
+            ref="object"
+            class="form__row"
           >
-            <div
-              class="form__block-width form__block-width-third"
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Тип объекта
+              </span>
+              <span v-if="createdObject.object.required">
+                *
+              </span>
+            </h3>
+            <radioButtons
+              radioButtonsView="wrapAddObject"
+              radioButtonsId="objectTypeAddObject"
+              :propErrorClass="errorsMain.includes('object')"
+              :items="filterDataDefaultClone.object"
+              :value.sync="createdObject.object.value"
+              @change.native="clickOnMainFields()"
+            />
+            <p
+              v-if="this.errorsMain.includes('object')"
+              class="paragraph paragraph_invalid"
             >
-              <h4
-                v-if="createdObject.deal.value.slug === 'rent'"
-                class="
-                  title
-                  title_h6
-                  title_bold
+              Необходимо указать тип объекта
+            </p>
+          </div>
+
+          <div
+            v-if="
+              createdObject.object.value
+              && createdObject.object.value.slug === 'commercial'
+            "
+            ref="type"
+            class="form__row"
+          >
+            <div class="
+              form__row
+              form__row_block-width
+            ">
+              <div class="
+                form__block-width 
+              ">
+                <h3 class="
                   form__title
                   form__title_add-object
-                "
-              >
-                <span>
-                  {{ priceTitle }}
-                </span>
-                <span v-if="createdObject.price.required">
-                  *
-                </span>
-              </h4>
-              <inputWithUnit
-                propType="number"
-                propUnit="rouble"
-                :propErrorClass="{
-                  'input_error': this.errorsMain.includes('price')
-                }"
-                :value.sync="createdObject.price.value"
-              />
-              <p
-                v-if="this.errorsMain.includes('price')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать цену
-              </p>
+                ">
+                  <span>
+                    Вид коммерческого объекта
+                  </span>
+                  <span v-if="createdObject.commercial.type.required">
+                    *
+                  </span>
+                </h3>
+                <radioButtons
+                  :propErrorClass="errorsMain.includes('type')"
+                  key="objectCommercialTypeAddObject"
+                  radioButtonsView="wrapHalf"
+                  radioButtonsId="objectCommercialTypeAddObject"
+                  :items="filterDataDefaultClone.commercialView"
+                  :value.sync="commerceSubTypeVModel"
+                />
+                <p
+                  v-if="this.errorsMain.includes('type')"
+                  class="paragraph paragraph_invalid"
+                >
+                  Необходимо указать вид коммерческого объекта
+                </p>
+              </div>
             </div>
-            <div
-              v-if="
-                createdObject.deal.value
-                && createdObject.deal.value.slug === 'rent'
-              "
-              class="form__block-width form__block-width-third"
-              ref="deposit"
+          </div>
+
+          <div
+            ref="deal"
+            class="form__row"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Тип сделки
+              </span>
+              <span v-if="createdObject.deal.required">
+                *
+              </span>
+            </h3>
+            <switcher
+              class="add-object-page__switcher"
+              :class="{
+                'switcher_error': this.errorsMain.includes('deal')
+              }"
+              switcherId="dealDesktop"
+              :items="filterDataDefaultClone.deal"
+              :value.sync="dealVModel"
+              @change.native="clickOnMainFields()"
+            />
+            <p
+              v-if="this.errorsMain.includes('deal')"
+              class="paragraph paragraph_invalid"
             >
-              <h4 class="
+              Необходимо указать тип сделки
+            </p>
+          </div>
+
+          <div
+            ref="address"
+            class="form__row"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Адрес
+              </span>
+              <span v-if="createdObject.address.required">
+                *
+              </span>
+            </h3>
+            <div class="input-address">
+              <input
+                type="text"
+                class="
+                  input
+                  form__input
+                  form__input_add-object
+                "
+                :class="{
+                  'input_error': this.errorsMain.includes('address')
+                }"
+                id="suggestAddress"
+                :value="currentAddress"
+                @input="currentAddressUpdate($event)"
+                @focus="addressSelected = false"
+              >
+              <ul
+                v-if="suggestList.length > 0"
+                class="input-address__suggest-list"
+                v-click-outside="hideSuggestionsList"
+              >
+                <li
+                  class="input-address__suggest-list-item"
+                  v-for="(item, index) in suggestList"
+                  :key="'key-' + index"
+                  @click="selectSuggestedAddress($event)"
+                >
+                  <p
+                    class="input-address__suggest-list-item-text"
+                  >
+                    {{ item.value }}
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <p
+              v-if="this.errorsMain.includes('address')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать адрес
+            </p>
+          </div>
+        </div>
+
+        <div class="form__block-width form__block-width-half">
+          <yandex-map
+            class="add-object-page__map"
+            :settings="settings"
+            :coords="coordsTaganrog"
+            :zoom="15"
+            :controls="controls"
+            @click="clickOnMap"
+          >
+            <ymap-marker 
+              :coords="coordsTaganrog"
+              marker-id="123"
+              hint-content=""
+            />
+          </yandex-map>
+        </div>
+      </div>
+
+      <div
+        ref="district"
+        class="form__row"
+        v-if="
+          objectTypeAndDealTypeIsSelected
+        "
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div class="form__block-width form__block-width-third">
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Район
+              </span>
+              <span v-if="createdObject.district.required">
+                *
+              </span>
+            </h3>
+            <multiselect
+              :class="{
+                'multiselect_error': this.errorsMain.includes('district')
+              }"
+              v-model="createdObject.district.value"
+              :options="localityDistricts"
+              :show-labels="false"
+              :allow-empty="false"
+              :close-on-select="true"
+              :multiple="false"
+              :searchable="true"
+              label="label"
+              track-by="slug"
+              placeholder="Район"
+            />
+            <p
+              v-if="this.errorsMain.includes('district')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать район
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <addObjectApp
+        ref="app"
+        v-if="
+          objectTypeAndDealTypeIsSelected
+          && createdObject.object.value.slug === 'app'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <addObjectHouse
+        ref="house"
+        v-if="
+          objectTypeAndDealTypeIsSelected
+          && createdObject.object.value.slug === 'house'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <addObjectRoom
+        ref="room"
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+          && createdObject.object.value.slug === 'room'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <addObjectGarage
+        ref="garage"
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+          && createdObject.object.value.slug === 'garage'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <addObjectSector
+        ref="sector"
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+          && createdObject.object.value.slug === 'sector'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <addObjectCommercial
+        ref="commercial"
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+          && createdObject.object.value.slug === 'commercial'
+        "
+        :propCreatedObject="createdObject"
+        :propValidateErrors="fieldsForValidating"
+      />
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div
+            ref="onlineShow"
+            class="form__block-width form__block-width-third"
+          >
+            <h3 class="
+              title
+              title_h5
+              title_bold
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Онлайн показ
+              </span>
+              <span v-if="createdObject.onlineShow.required">
+                *
+              </span>
+            </h3>
+            <switcher
+              class="add-object-page__switcher"
+              switcherId="onlineShowAddObject"
+              :items="filterDataDefaultClone.appOnlineShow"
+              :value.sync="createdObject.onlineShow.value"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div
+            ref="photoGallery"
+            class="form__block-width"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Фотографии
+              </span>
+              <span v-if="createdObject.photoGallery.required">
+                *
+              </span>
+            </h3>
+            <upload-images
+              id="upload-images"
+              :propIsMultiple="true"
+              :value.sync="blobImage"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div
+            ref="description"
+            class="form__block-width"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Описание
+              </span>
+              <span v-if="createdObject.description.required">
+                *
+              </span>
+            </h3>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              class="textarea"
+              v-model="createdObject.description.value"
+            >
+            </textarea>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-half">
+          <div
+            ref="phone"
+            class="form__block-width form__block-width-half"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Телефон
+              </span>
+              <span v-if="createdObject.phone.required">
+                *
+              </span>
+            </h3>
+            <multiselect
+              v-if="
+                userData.role
+                && (
+                  userData.role.slug === 'agency'
+                  || userData.role.slug === 'builder'
+                )
+              "
+              v-model="createdObject.phone.value"
+              :options="userEmployees"
+              :custom-label="labelWithPhone"
+              :show-labels="false"
+              :allow-empty="false"
+              :close-on-select="true"
+              :multiple="false"
+              :searchable="true"
+              label="name"
+              track-by="phone"
+              placeholder="Телефон"
+            />
+            <p
+              v-else
+              class="paragraph"
+            >
+              {{ gFormatPhone(userData.phone) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-half">
+          <div
+            ref="connectionWay"
+            class="form__block-width form__block-width-half"
+          >
+            <h3 class="
+              form__title
+              form__title_add-object
+            ">
+              <span>
+                Способ связи
+              </span>
+              <span v-if="createdObject.connectionWay.required">
+                *
+              </span>
+            </h3>
+            <checkboxes
+              :propErrorClass="errorsMain.includes('connectionWay')"
+              checkboxId="connectionWayAddObject"
+              checkboxType="listVertical"
+              :items="filterDataDefaultClone.connectionWay"
+              :value.sync="createdObject.connectionWay.value"
+            />
+            <p
+              v-if="errorsMain.includes('connectionWay')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать способ связи
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.deal.value.slug === 'rent'
+          && createdObject.object.value
+          && (
+            createdObject.object.value.slug === 'app'
+            || createdObject.object.value.slug === 'room'
+            || createdObject.object.value.slug === 'house'
+            || createdObject.object.value.slug === 'garage'
+            || createdObject.object.value.slug === 'sector'
+            || createdObject.object.value.slug === 'commercial'
+          )
+        "
+        class="form__row"
+        ref="rentType"
+      >
+        <h3 class="
+          form__title
+          form__title_add-object
+        ">
+          <span>
+            Срок аренды
+          </span>
+          <span v-if="createdObject.rentType.required">
+            *
+          </span>
+        </h3>
+        <switcher
+          class="add-object-page__switcher"
+          switcherId="rentTypeDesktop"
+          :items="filterDataDefaultClone.rentType"
+          :value.sync="createdObject.rentType"
+        />
+      </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <h3 class="
+          form__title
+          form__title_add-object
+        ">
+          <span>
+            Цена
+          </span>
+          <span v-if="createdObject.price.required">
+            *
+          </span>
+        </h3>
+        <div
+          ref="price"
+          class="form__row form__row_block-width form__row_block-width-third"
+        >
+          <div
+            class="form__block-width form__block-width-third"
+          >
+            <h4
+              v-if="createdObject.deal.value.slug === 'rent'"
+              class="
                 title
                 title_h6
                 title_bold
                 form__title
                 form__title_add-object
-              ">
-                <span>
-                  Залог
-                </span>
-                <span v-if="createdObject.deposit.required">
-                  *
-                </span>
-              </h4>
-              <inputWithUnit
-                propType="number"
-                propUnit="rouble"
-                :propErrorClass="{
-                  'input_error': this.errorsMain.includes('deposit')
-                }"
-                :value.sync="createdObject.deposit.value"
-              />
-              <p
-                v-if="this.errorsMain.includes('deposit')"
-                class="paragraph paragraph_invalid"
-              >
-                Необходимо указать размер залога
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width">
-            <div class="form__block-width">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Размещение объявления
-              </h3>
-              <p class="paragraph">
-                Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
-              </p>
-              <p class="paragraph">
-                Подача объявления стоит 30 рублей и в течение 30 дней Ваше объявление будет показываться на сайте.
-              </p>
-              <p class="paragraph">
-                Чтобы поднять объявление в поиске - воспользуйтесь услугой “Поднять объявление”. Она обновляет дату размещения объявления, поэтому поднимается в поиске, как только что опубликованное. В итоге Ваше объявление видит больше потенциальных покупателей.
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width">
-            <div class="form__block-width">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-              ">
-                Услуга “Поднять объявление”
-              </h3>
-              <tarifs 
-                :value.sync="createdObject.tarif.value"
-              />
-            </div>
-          </div>
-        </div>
-
-
-        <div
-          v-if="
-            createdObject.deal.value
-            && createdObject.object.value
-          "
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <h3 class="
-                title
-                title_h5
-                title_bold
-                form__title
-                form__title_add-object
-                add-object-page__text_price-total
-              ">
-                Итого: {{ totalPrice }}₽
-              </h3>
-            </div>
-          </div>
-        </div>
-
-
-        <div
-          class="form__row"
-          v-if="formIsFilled"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div class="form__block-width form__block-width-third">
-              <objectCardSample
-                key="key-preview-add-object"
-                class="object-card_fixed-width"
-                :propObjectData="createdObject"
-                propObjectView=""
-              />
-            </div>
-
-            <div class="
-              form__block-width
-              form__block-width-two-third
-              form__block-width-third_to-bottom
-            ">
-              <p class="paragraph paragraph_mini">
-                Вот таким образом ваше объявление будет выглядеть после подачи.
-              </p>
-            </div>
-          </div>
-        </div>
-
-
-        <div
-          class="form__row"
-        >
-          <div class="form__row form__row_block-width form__row_block-width-third">
-            <div
-              class="
-                form__block-width
-                form__block-width-third
               "
+            >
+              <span>
+                {{ priceTitle }}
+              </span>
+              <span v-if="createdObject.price.required">
+                *
+              </span>
+            </h4>
+            <inputWithUnit
+              propType="number"
+              propUnit="rouble"
+              :propErrorClass="{
+                'input_error': this.errorsMain.includes('price')
+              }"
+              :value.sync="createdObject.price.value"
             />
-            <div class="
-              form__block-width
-              form__block-width-two-third
-              form__block-width-third_to-bottom
+            <p
+              v-if="this.errorsMain.includes('price')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать цену
+            </p>
+          </div>
+          <div
+            v-if="
+              createdObject.deal.value
+              && createdObject.deal.value.slug === 'rent'
+            "
+            class="form__block-width form__block-width-third"
+            ref="deposit"
+          >
+            <h4 class="
+              title
+              title_h6
+              title_bold
+              form__title
+              form__title_add-object
             ">
-              <button
-                v-if="formIsFilled"
-                class="
-                  btn
-                  btn_blue
-                  btn_middle
-                  add-object-page__btn
-                "
-                @click="sendObject"
-              >
-                Разместить объявление
-              </button>
+              <span>
+                Залог
+              </span>
+              <span v-if="createdObject.deposit.required">
+                *
+              </span>
+            </h4>
+            <inputWithUnit
+              propType="number"
+              propUnit="rouble"
+              :propErrorClass="{
+                'input_error': this.errorsMain.includes('deposit')
+              }"
+              :value.sync="createdObject.deposit.value"
+            />
+            <p
+              v-if="this.errorsMain.includes('deposit')"
+              class="paragraph paragraph_invalid"
+            >
+              Необходимо указать размер залога
+            </p>
+          </div>
+        </div>
+      </div>
 
-              <button
-                v-else
-                class="
-                  btn
-                  btn_blue
-                  btn_middle
-                  add-object-page__btn
-                  btn_disabled
-                "
-                @click="clickOnNonSubmitButton()"
-              >
-                Не заполнены поля
-              </button>
-            </div>
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width">
+          <div class="form__block-width">
+            <h3 class="
+              title
+              title_h5
+              title_bold
+              form__title
+              form__title_add-object
+            ">
+              Размещение объявления
+            </h3>
+            <p class="paragraph">
+              Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
+            </p>
+            <p class="paragraph">
+              Подача объявления стоит 30 рублей и в течение 30 дней Ваше объявление будет показываться на сайте.
+            </p>
+            <p class="paragraph">
+              Чтобы поднять объявление в поиске - воспользуйтесь услугой “Поднять объявление”. Она обновляет дату размещения объявления, поэтому поднимается в поиске, как только что опубликованное. В итоге Ваше объявление видит больше потенциальных покупателей.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width">
+          <div class="form__block-width">
+            <h3 class="
+              title
+              title_h5
+              title_bold
+              form__title
+              form__title_add-object
+            ">
+              Услуга “Поднять объявление”
+            </h3>
+            <tarifs 
+              :value.sync="createdObject.tarif.value"
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <div
+        v-if="
+          createdObject.deal.value
+          && createdObject.object.value
+        "
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div class="form__block-width form__block-width-third">
+            <h3 class="
+              title
+              title_h5
+              title_bold
+              form__title
+              form__title_add-object
+              add-object-page__text_price-total
+            ">
+              Итого: {{ totalPrice }}₽
+            </h3>
+          </div>
+        </div>
+      </div>
+
+
+      <div
+        class="form__row"
+        v-if="formIsFilled"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div class="form__block-width form__block-width-third">
+            <objectCardSample
+              key="key-preview-add-object"
+              class="object-card_fixed-width"
+              :propObjectData="createdObject"
+              propObjectView=""
+            />
           </div>
 
-          <p
-            v-if="showSuccessMessageOnObjectCreating"
-            class="
-              paragraph
-              paragraph_success
-              paragraph_align-right
-            "
-          >
-            Объект был успешно опубликован.
-          </p>
+          <div class="
+            form__block-width
+            form__block-width-two-third
+            form__block-width-third_to-bottom
+          ">
+            <p class="paragraph paragraph_mini">
+              Вот таким образом ваше объявление будет выглядеть после подачи.
+            </p>
+          </div>
+        </div>
+      </div>
 
-          <p
-            v-if="showErrorMessageOnObjectCreating"
+
+      <div
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div
             class="
-              paragraph
-              paragraph_success
-              paragraph_align-right
+              form__block-width
+              form__block-width-third
             "
-          >
-            При публикации объекта произошла ошибка.
-            <br>Пожалуйста, повторите публикацию ещё раз.
-          </p>
+          />
+          <div class="
+            form__block-width
+            form__block-width-two-third
+            form__block-width-third_to-bottom
+          ">
+            <button
+              v-if="formIsFilled"
+              class="
+                btn
+                btn_blue
+                btn_middle
+                add-object-page__btn
+              "
+              @click="sendObject"
+            >
+              Разместить объявление
+            </button>
+
+            <button
+              v-else
+              class="
+                btn
+                btn_blue
+                btn_middle
+                add-object-page__btn
+                btn_disabled
+              "
+              @click="clickOnNonSubmitButton()"
+            >
+              Не заполнены поля
+            </button>
+          </div>
         </div>
 
-      </div>
+        <p
+          v-if="showSuccessMessageOnObjectCreating"
+          class="
+            paragraph
+            paragraph_success
+            paragraph_align-right
+          "
+        >
+          Объект был успешно опубликован.
+        </p>
 
-      <div
-        v-local
-        v-if="true && finalObjectData"
-        class="local-output-data"
-      >
-        <h6 class="
-          title
-          title_h6
-          title_bold
-        ">
-          finalObjectData
-        </h6>
-        <pre>
-          {{ finalObjectData }}
-        </pre>
+        <p
+          v-if="showErrorMessageOnObjectCreating"
+          class="
+            paragraph
+            paragraph_success
+            paragraph_align-right
+          "
+        >
+          При публикации объекта произошла ошибка.
+          <br>Пожалуйста, повторите публикацию ещё раз.
+        </p>
       </div>
-
-      <div
-        v-local
-        v-if="true && finalObjectData"
-        class="local-output-data"
-      >
-        <h6 class="
-          title
-          title_h6
-          title_bold
-        ">
-          finalObjectData
-        </h6>
-        <pre>
-          {{ finalObjectData }}
-        </pre>
-      </div>
-
-      <div
-        v-local
-        v-if="true && createdObject"
-        class="local-output-data"
-      >
-        <h6 class="
-          title
-          title_h6
-          title_bold
-        ">
-          createdObject
-        </h6>
-        <pre>
-          {{ createdObject }}
-        </pre>
-      </div>
-
 
     </div>
 
-    <adsRight />
+    <div
+      v-local
+      v-if="true && filterDataDefaultClone"
+      class="local-output-data"
+    >
+      <h6 class="
+        title
+        title_h6
+        title_bold
+      ">
+        filterDataDefaultClone
+      </h6>
+      <pre>
+        {{ filterDataDefaultClone }}
+      </pre>
+    </div>
+
+    <div
+      v-local
+      v-if="true && propObjectData"
+      class="local-output-data"
+    >
+      <h6 class="
+        title
+        title_h6
+        title_bold
+      ">
+        propObjectData
+      </h6>
+      <pre>
+        {{ propObjectData }}
+      </pre>
+    </div>
+
+    <div
+      v-local
+      v-if="true && createdObject"
+      class="local-output-data"
+    >
+      <h6 class="
+        title
+        title_h6
+        title_bold
+      ">
+        createdObject
+      </h6>
+      <pre>
+        {{ createdObject }}
+      </pre>
+    </div>
 
   </div>
 </template>
@@ -901,7 +895,7 @@
 import axios from 'axios';
 import multiselect from 'vue-multiselect';
 // import uploadImage from 'vue-upload-image';
-import { mapState, mapGetters, store, commit } from 'vuex';
+import { mapState } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 import adsLeft from '@cmp/adsLeft.vue';
@@ -910,6 +904,7 @@ import tarifs from '@cmp/tarifs.vue';
 import objectForm from '@cmp/pages/object/objectForm.vue';
 import iconCross from '@cmp/icons/iconCross.vue';
 import switcher from '@cmp/common/switcher.vue';
+import breadcrumbs from '@cmp/common/breadcrumbs.vue';
 import checkboxes from '@cmp/common/checkboxes.vue';
 import uploadImages from '@cmp/common/uploadImages.vue';
 import radioButtons from '@cmp/common/radioButtons.vue';
@@ -924,7 +919,16 @@ import addObjectCommercial from '@cmp/addObject/desktop/addObjectCommercial.vue'
 import errorPage403 from '@cmp/pages/errors/userNotLoggedInComponent.vue';
 
 export default {
-  name: 'addObject',
+  name: 'objectForm',
+  props: {
+    propObjectData: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
+  },
   components: {
     adsLeft,
     adsRight,
@@ -934,6 +938,7 @@ export default {
     iconCross,
     ymapMarker,
     checkboxes,
+    breadcrumbs,
     objectCardSample,
     multiselect,
     objectForm,
@@ -950,6 +955,8 @@ export default {
   },
   data() {
     return {
+      selectedItem: {},
+      townLabelIsHere: false,
       showSuccessMessageOnObjectCreating: false,
       showErrorMessageOnObjectCreating: false,
       blobImage: {},
@@ -1038,6 +1045,8 @@ export default {
         const localityObject = this.getLocalityByLabel(value);
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
+          this.townLabelIsHere = true;
+          console.log('>>>', this.localityDistricts);
         }
       },
       deep: true
@@ -1174,6 +1183,12 @@ export default {
     //     this.currentAddressValue = value;
     //   }
     // },
+    isEditObjectPage() {
+      if(this.$route.name === 'editObject') {
+        return true;
+      }
+      return false;
+    },
     dealVModel: {
       cache: false,
       get() {
@@ -1582,6 +1597,55 @@ export default {
     // this.createdObject.date = new Date();
   },
   methods: {
+    async fillTheFormWithObjectData() {
+      let isObjectDataEmpty;
+      if (this.propObjectData) {
+        isObjectDataEmpty = this.isObjectEmpty(this.propObjectData);
+      }
+      if (!isObjectDataEmpty) {
+        // Object type
+        let objectTypeArrayCopy = [...this.filterDataDefaultClone.object];
+        this.filterDataDefaultClone.object = objectTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.objectTypeSlug) {
+              item.checked = true;
+              this.createdObject.object.value = item;
+            }
+            return item;
+          }
+        )
+        // Deal type
+        let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
+        this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.deal) {
+              item.checked = true;
+              this.createdObject.deal.value = item;
+            }
+            return item;
+          }
+        )
+        // Object address
+        this.currentAddress = this.propObjectData.addressName;
+        this.convertAddress(this.propObjectData.addressName);
+        const districtsAreHere = await this.getAddress(this.propObjectData.addressCoords);
+        this.createdObject.address.coords = this.propObjectData.addressCoords;
+        this.createdObject.address.value = this.propObjectData.addressName;
+        this.addressSelected = true;
+        console.log('  >> this.suggestList', this.suggestList);
+        // Object district
+        if (districtsAreHere) {
+          this.hideSuggestionsList();
+          this.localityDistricts.map(
+            item => {
+              if (item.slug === this.propObjectData.districtSlug) {
+                this.createdObject.district.value = item;
+              }
+            }
+          )
+        }
+      }
+    },
     objectDataForSending(value) {
       this.changedObject = JSON.parse(JSON.stringify(value));
       if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
@@ -1839,10 +1903,11 @@ export default {
       );
     },
     hideSuggestionsList() {
+      console.log('   >>> hideSuggestionsList ::');
       this.suggestList = [];
     },
     selectSuggestedAddress(event) {
-      // this.currentAddress = event.target.innerText;
+      this.currentAddress = event.target.innerText;
       this.convertAddress(event.target.innerText);
       this.createdObject.address.value = event.target.innerText;
       this.createdObject.address.coords = this.coordsTaganrog;
@@ -1893,7 +1958,7 @@ export default {
       );
     },
     getAddress(coords) {
-      ymaps.geocode(coords).then(
+      return ymaps.geocode(coords).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
           const addressArray = firstGeoObject.properties._data.metaDataProperty.GeocoderMetaData.Address.Components;
@@ -1945,10 +2010,17 @@ export default {
           //   firstGeoObject.properties.getAll().text
           // );
 
-          this.currentAddress = selectedAddress;
+
+          // this.currentAddress = selectedAddress;
+          if (this.townLabel) {
+            return true;
+          } else {
+            return false;
+          }
         },
         error => {
           console.log('Rejected [getAddress error] ::', error);
+          return false;
         }
       );
     },
@@ -2056,7 +2128,10 @@ export default {
       };
     }
   },
-  // mounted() {
+  mounted() {
+    if (this.isEditObjectPage) {
+      this.fillTheFormWithObjectData();
+    }
   //   const suggestView1 = ymaps.SuggestView('currentAddress');
   //   const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));
   // },
@@ -2069,6 +2144,6 @@ export default {
   //     debug: true
   //   });
   //   const suggestView1 = ymaps.SuggestView('suggestAddress');
-  // }
+  }
 };
 </script>

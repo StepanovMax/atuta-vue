@@ -783,6 +783,7 @@
               name: 'editObject',
               params: {
                 id: dataObjectData.id,
+                objectData: dataObjectData,
               }
             }"
             title="Редактировать объект"
