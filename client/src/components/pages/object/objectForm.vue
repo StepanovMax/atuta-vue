@@ -271,6 +271,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <addObjectHouse
@@ -1046,7 +1047,7 @@ export default {
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
           this.townLabelIsHere = true;
-          console.log('>>>', this.localityDistricts);
+          // console.log('>>>', this.localityDistricts);
         }
       },
       deep: true
@@ -1632,7 +1633,6 @@ export default {
         this.createdObject.address.coords = this.propObjectData.addressCoords;
         this.createdObject.address.value = this.propObjectData.addressName;
         this.addressSelected = true;
-        console.log('  >> this.suggestList', this.suggestList);
         // Object district
         if (districtsAreHere) {
           this.hideSuggestionsList();
@@ -1903,7 +1903,7 @@ export default {
       );
     },
     hideSuggestionsList() {
-      console.log('   >>> hideSuggestionsList ::');
+      // console.log('   >>> hideSuggestionsList ::');
       this.suggestList = [];
     },
     selectSuggestedAddress(event) {
@@ -2120,7 +2120,7 @@ export default {
     },
   },
   beforeMount() {
-    console.log('beforeMount this.userData ::', this.userData);
+    // console.log('beforeMount this.userData ::', this.userData);
     if (this.userData) {
       this.userData.role = {
         slug: this.userData.roleSlug,
