@@ -2128,22 +2128,16 @@ export default {
       };
     }
   },
-  mounted() {
+  async mounted() {
+    await loadYmap({
+      debug: true
+    });
+    console.log('mounted ymaps ::', ymaps);
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
     }
-  //   const suggestView1 = ymaps.SuggestView('currentAddress');
-  //   const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));
-  // },
-  // mounted() {
-  //   ymaps.ready(this.yaMapInit());
-  // },
-  // async mounted() {
-  //   await loadYmap({
-  //     ...this.settings,
-  //     debug: true
-  //   });
-  //   const suggestView1 = ymaps.SuggestView('suggestAddress');
+    // const suggestView1 = ymaps.SuggestView('currentAddress');
+    // const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));
   }
 };
 </script>
