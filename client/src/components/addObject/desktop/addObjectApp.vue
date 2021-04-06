@@ -408,6 +408,13 @@ export default {
       default: [],
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
   },
   data() {
     return {
@@ -574,7 +581,7 @@ export default {
     },
   },
   mounted() {
-    // console.log('app mounted');
+    console.log('  >> propDefaultValue ::', this.propDefaultValue);
   },
 };
 </script>

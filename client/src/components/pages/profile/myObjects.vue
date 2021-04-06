@@ -92,11 +92,11 @@ export default {
   watch: {
     selectedObjects(value) {
       // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
-      console.log('watch : selectedObjects ::', value);
+      // console.log('watch : selectedObjects ::', value);
     },
     favouriteObjects(value) {
       // this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
-      console.log('watch : favouriteObjects ::', value);
+      // console.log('watch : favouriteObjects ::', value);
     },
     selectedEmployees(value) {
       console.log('value ::', value);
@@ -313,24 +313,24 @@ export default {
           return objItem;
         }
       );
-      console.log('myObjects.vue : objectsWithFav ::', objectsWithFav);
+      // console.log('myObjects.vue : objectsWithFav ::', objectsWithFav);
       return objectsWithFav;
     },
   },
   async mounted() {
     const myObjectsResult = await this.getMyObjects;
     this.$store.commit('updateFavouriteObjectsState', this.userData.favorites);
-    console.log('myObjectsResult ::', myObjectsResult, this.myObjects, this.favouriteObjects);
+    // console.log('myObjectsResult ::', myObjectsResult, this.myObjects, this.favouriteObjects);
     if (myObjectsResult) {
       if (this.myObjects && this.myObjects.length) {
-        console.log('myObjects.vue : this.allObjects ::', this.myObjects);
-        console.log('myObjects.vue : this.userData ::', this.userData);
+        // console.log('myObjects.vue : this.allObjects ::', this.myObjects);
+        // console.log('myObjects.vue : this.userData ::', this.userData);
         if (this.favouriteObjects && this.favouriteObjects.length) {
           this.selectedObjects = this.allObjects = this.addFavOptionToObjects(this.myObjects, this.favouriteObjects);
         } else {
           this.selectedObjects = this.allObjects = this.myObjects;
         }
-        console.log('myObjects.vue : this.allObjects ::', this.allObjects);
+        // console.log('myObjects.vue : this.allObjects ::', this.allObjects);
         this.addClientNameToObject();
         this.arrayWithCountedStatuses = this.toCountArray(this.allObjects);
         this.selectedStatus = 'all';
