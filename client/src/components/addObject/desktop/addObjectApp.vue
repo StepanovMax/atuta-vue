@@ -279,6 +279,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaFull"
+            :propValue="+propDefaultValue.appArea"
             :propErrorClass="{
               'input_error': this.errors.includes('area') || this.errorsArea.includes('area')
             }"
@@ -312,6 +313,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaKitchen"
+            :propValue="+propDefaultValue.appAreaKitchen"
             :class="{
               'input_error': this.errorsArea.includes('appAreaKitchen')
             }"
@@ -339,6 +341,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaLiving"
+            :propValue="+propDefaultValue.appAreaLiving"
             :class="{
               'input_error': this.errorsArea.includes('appAreaLiving')
             }"
@@ -540,6 +543,65 @@ export default {
     },
   },
   methods: {
+    fillTheFormWithObjectData() {
+      // Object subtype
+      let objectSubtypeArrayCopy = [...this.filterDataDefaultClone.appTypes];
+      this.filterDataDefaultClone.appTypes = objectSubtypeArrayCopy.map(
+        item => {
+          if (item.slug === this.propDefaultValue.appTypeSlug) {
+            item.checked = true;
+          }
+          return item;
+        }
+      )
+      // Object view
+      let objectAppViewArrayCopy = [...this.filterDataDefaultClone.appView];
+      this.filterDataDefaultClone.appTypes = objectAppViewArrayCopy.map(
+        item => {
+          if (item.slug === this.propDefaultValue.appViewSlug) {
+            item.checked = true;
+          }
+          return item;
+        }
+      )
+      // Object rooms count
+      this.filterDataDefaultClone.appRooms.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.roomsCountSlug) {
+            console.log('item.slug ::', item.slug);
+            this.propCreatedObjectApp.roomsCount.value = item;
+          }
+        }
+      )
+      // Object floor
+      this.filterDataDefaultClone.appFloorAllListCurrent.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floor) {
+            this.propCreatedObjectApp.floor.value = item;
+          }
+        }
+      )
+      // Object floor all
+      this.filterDataDefaultClone.appFloorAllList.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floorAll) {
+            this.floorAll = item;
+          }
+        }
+      )
+      // Object year
+      this.appYearsList.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.year) {
+            this.propCreatedObjectApp.year.value = item;
+          }
+        }
+      )
+    },
     validateNumbers(value) {
       const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
       return trimmedValue;
@@ -581,7 +643,10 @@ export default {
     },
   },
   mounted() {
-    console.log('  >> propDefaultValue ::', this.propDefaultValue);
+    // console.log('  >> propDefaultValue ::', this.propDefaultValue);
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
   },
 };
 </script>
