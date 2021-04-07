@@ -65,7 +65,7 @@
           </div>
 
           <div
-            v-if="
+            v-show="
               createdObject.object.value
               && createdObject.object.value.slug === 'commercial'
             "
@@ -1615,6 +1615,25 @@ export default {
             return item;
           }
         )
+
+
+        // Commercial object type
+        console.log('this.createdObject.object.value 2 ::', this.createdObject.object.value);
+        if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
+          let objectCommercialViewArrayCopy = [...this.filterDataDefaultClone.commercialView];
+          this.filterDataDefaultClone.commercialView = objectCommercialViewArrayCopy.map(
+            item => {
+              if (item.slug === this.propObjectData.commercialTypeSlug) {
+                item.checked = true;
+              } else {
+                item.checked = false;
+              }
+              return item;
+            }
+          )
+        }
+
+
         // Deal type
         let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
         this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
@@ -1644,6 +1663,7 @@ export default {
             }
           )
         }
+        this.hideSuggestionsList();
       }
     },
     objectDataForSending(value) {
@@ -2132,7 +2152,6 @@ export default {
     await loadYmap({
       debug: true
     });
-    console.log('mounted ymaps ::', ymaps);
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
     }

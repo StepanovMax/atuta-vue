@@ -37,6 +37,11 @@ export default {
       required: true,
     },
     propErrorClass: null,
+    propValue: {
+      type: Number,
+      default: null,
+      required: false,
+    },
   },
   data() {
     return {
@@ -59,6 +64,11 @@ export default {
         this.$emit('update:value', value.replace(/\s/g, ''));
       }
     },
+  },
+  mounted() {
+    if (this.propValue) {
+      this.formattedValue = this.propValue;
+    }
   },
 };
 </script>
