@@ -169,8 +169,9 @@ export default {
       return currentAngle;
     },
     uploadImages(fileList) {
+      // console.log('uploadImages/method fileList ::', fileList);
       if (this.allowToUpload) {
-        console.log('fileList ::', fileList);
+        // console.log('fileList ::', fileList);
         if (fileList && fileList.length > 0) {
           for (let i = 0; i < fileList.length; i++) {
             let canvasID = 'canvas-' + i;
@@ -448,10 +449,10 @@ export default {
       context.restore();
     },
   },
-  beforeMount() {
-    if (this.propValue) {
-      this.filesArray = this.propValue;
-    }
+  watch: {
+    propValue(value) {
+      this.uploadImages(value);
+    },
   },
 };
 </script>

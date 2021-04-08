@@ -391,6 +391,7 @@
               id="upload-images"
               :propIsMultiple="true"
               :value.sync="blobImage"
+              :propValue="photoGalleryArray"
             />
           </div>
         </div>
@@ -956,6 +957,7 @@ export default {
   },
   data() {
     return {
+      photoGalleryArray: null,
       selectedItem: {},
       townLabelIsHere: false,
       showSuccessMessageOnObjectCreating: false,
@@ -1616,7 +1618,6 @@ export default {
           }
         )
 
-
         // Commercial object type
         console.log('this.createdObject.object.value 2 ::', this.createdObject.object.value);
         if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
@@ -1633,7 +1634,6 @@ export default {
           )
         }
 
-
         // Deal type
         let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
         this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
@@ -1645,6 +1645,7 @@ export default {
             return item;
           }
         )
+
         // Object address
         this.currentAddress = this.propObjectData.addressName;
         this.convertAddress(this.propObjectData.addressName);
@@ -1652,6 +1653,7 @@ export default {
         this.createdObject.address.coords = this.propObjectData.addressCoords;
         this.createdObject.address.value = this.propObjectData.addressName;
         this.addressSelected = true;
+
         // Object district
         if (districtsAreHere) {
           this.hideSuggestionsList();
@@ -1664,6 +1666,80 @@ export default {
           )
         }
         this.hideSuggestionsList();
+
+        // Object online showing
+        const appOnlineShowArrayCopy = this.filterDataDefaultClone.appOnlineShow;
+        this.filterDataDefaultClone.appOnlineShow = appOnlineShowArrayCopy.map(
+          item => {
+            if (item.slug === 'yes') {
+              item.checked = true;
+            }
+            return item;
+          }
+        )
+        // console.log('>> this.filterDataDefaultClone.appOnlineShow ::', this.filterDataDefaultClone.appOnlineShow);
+
+        // Object photogallery
+        // this.createdObject.photoGallery.value = this.propObjectData.photoGallery;
+        // const file = new File([blob], 'image.jpg', {type: blob.type});
+        // const fileData = new File('http://127.0.0.1:9000/public/images/ally_bank-b110c3bc.jpeg', 'asd', {type: blob.type});
+        // const fileData = new FormData();
+        // console.log('>> fileData ::', fileData);\
+
+        // let i = 0;
+        // this.propObjectData.photoGallery = this.propObjectData.photoGallery.map(
+        //   item => {
+        //     i++;
+        //     let canvasID = 'canvas-' + i;
+        //     const newItem = {
+        //       id: canvasID,
+        //       url: item,
+        //     };
+        //     return newItem;
+        //   }
+        // )
+
+        this.photoGalleryArray = await Promise.all(
+          this.propObjectData.photoGallery.map(
+            async item => {
+              // console.log('>> i32 ::', index);
+              const url = item;
+              const fileName = item;
+
+              const data = await fetch(url)
+                .then(
+                  async response => {
+                    const contentType = response.headers.get('content-type');
+                    const blob = await response.blob();
+                    const file = new File([blob], fileName, { contentType });
+                    return file;
+                  }
+                );
+              // const imageObject = {
+              //   id: item.id,
+              //   object: data,
+              // };
+              return data;
+            }
+          )
+        );
+        console.log('>> this.photoGalleryArray ::', typeof this.photoGalleryArray);
+        // if (this.photoGalleryArray.length) {
+        //   console.log('>> this.photoGalleryArray ::', this.photoGalleryArray);
+        // }
+
+        // const url = 'http://127.0.0.1:9000/public/images/ally_bank-b110c3bc.jpeg'
+        // const fileName = 'myFile.jpg'
+
+        // fetch(url)
+        //   .then(async response => {
+        //     const contentType = response.headers.get('content-type');
+        //     const blob = await response.blob();
+        //     const file = new File([blob], fileName, { contentType });
+        //     console.log('>> file ::', file);
+        //     // access file here
+        //   });
+
       }
     },
     objectDataForSending(value) {
