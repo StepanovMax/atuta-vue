@@ -57,17 +57,19 @@ export default {
     enteredValue: {
       cache: false,
       get() {
+        // console.log('>> this.formattedValue', this.formattedValue);
         return this.formattedValue;
       },
       set(value) {
         this.formattedValue = this.gFormatPrice(value);
-        this.$emit('update:value', value.replace(/\s/g, ''));
+        // this.$emit('update:value', value.replace(/\s/g, ''));
       }
     },
   },
   mounted() {
+    // console.log('>> this.propValue', typeof this.propValue);
     if (this.propValue) {
-      this.formattedValue = this.propValue;
+      this.enteredValue = this.propValue;
     }
   },
 };
