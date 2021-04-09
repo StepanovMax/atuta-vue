@@ -513,7 +513,7 @@
               :propErrorClass="errorsMain.includes('connectionWay')"
               checkboxId="connectionWayAddObject"
               checkboxType="listVertical"
-              :items="filterDataDefaultClone.connectionWay"
+              :items="connectionWayComputed"
               :value.sync="createdObject.connectionWay.value"
             />
             <p
@@ -1014,11 +1014,12 @@ export default {
       addressSelected: false,
       formIsFilled: false,
       formIsFilledArray: [],
+      connectionWayData: [],
     }
   },
   watch: {
     'blobImage'(value) {
-      console.log('value ::', value);
+      // console.log('value ::', value);
       if (value) {
         let newArray = [];
         value.forEach(
@@ -1186,6 +1187,19 @@ export default {
     //     this.currentAddressValue = value;
     //   }
     // },
+    connectionWayComputed: {
+      cache: false,
+      get() {
+        return this.connectionWayData;
+      },
+      set(value) {
+        console.log('>> value / computed ::', value, Boolean(value));
+        this.connectionWayData = this.filterDataDefaultClone.connectionWay;
+        if (value) {
+          this.connectionWayData = value;
+        }
+      }
+    },
     isEditObjectPage() {
       if(this.$route.name === 'editObject') {
         return true;
@@ -1592,7 +1606,7 @@ export default {
     },
   },
   created() {
-    console.log('userData ::', this.userData);
+    // console.log('userData ::', this.userData);
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
     this.createdObject.address.value = null;
     const toDayDate = this.gConvertDate(new Date());
@@ -1619,7 +1633,6 @@ export default {
         )
 
         // Commercial object type
-        console.log('this.createdObject.object.value 2 ::', this.createdObject.object.value);
         if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
           let objectCommercialViewArrayCopy = [...this.filterDataDefaultClone.commercialView];
           this.filterDataDefaultClone.commercialView = objectCommercialViewArrayCopy.map(
@@ -1677,32 +1690,11 @@ export default {
             return item;
           }
         )
-        // console.log('>> this.filterDataDefaultClone.appOnlineShow ::', this.filterDataDefaultClone.appOnlineShow);
 
         // Object photogallery
-        // this.createdObject.photoGallery.value = this.propObjectData.photoGallery;
-        // const file = new File([blob], 'image.jpg', {type: blob.type});
-        // const fileData = new File('http://127.0.0.1:9000/public/images/ally_bank-b110c3bc.jpeg', 'asd', {type: blob.type});
-        // const fileData = new FormData();
-        // console.log('>> fileData ::', fileData);\
-
-        // let i = 0;
-        // this.propObjectData.photoGallery = this.propObjectData.photoGallery.map(
-        //   item => {
-        //     i++;
-        //     let canvasID = 'canvas-' + i;
-        //     const newItem = {
-        //       id: canvasID,
-        //       url: item,
-        //     };
-        //     return newItem;
-        //   }
-        // )
-
         this.photoGalleryArray = await Promise.all(
           this.propObjectData.photoGallery.map(
             async item => {
-              // console.log('>> i32 ::', index);
               const url = item;
               const fileName = item;
 
@@ -1715,31 +1707,36 @@ export default {
                     return file;
                   }
                 );
-              // const imageObject = {
-              //   id: item.id,
-              //   object: data,
-              // };
               return data;
             }
           )
         );
-        console.log('>> this.photoGalleryArray ::', typeof this.photoGalleryArray);
-        // if (this.photoGalleryArray.length) {
-        //   console.log('>> this.photoGalleryArray ::', this.photoGalleryArray);
-        // }
 
-        // const url = 'http://127.0.0.1:9000/public/images/ally_bank-b110c3bc.jpeg'
-        // const fileName = 'myFile.jpg'
+        // Object description
+        this.createdObject.description.value = this.propObjectData.description;
 
-        // fetch(url)
-        //   .then(async response => {
-        //     const contentType = response.headers.get('content-type');
-        //     const blob = await response.blob();
-        //     const file = new File([blob], fileName, { contentType });
-        //     console.log('>> file ::', file);
-        //     // access file here
-        //   });
+        // Object phone
+        this.userEmployees.some(
+          item => {
+            if (item.phone === this.propObjectData.phone) {
+              this.createdObject.phone.value = item;
+            }
+          }
+        );
 
+        // Object connection way
+        let connectionWayArray = [...this.filterDataDefaultClone.connectionWay];
+        if (this.propObjectData.connectionWay === 'both') {
+          connectionWayArray[0].checked = true;
+          connectionWayArray[1].checked = true;
+        } else if (this.propObjectData.connectionWay === 'phone') {
+          connectionWayArray[0].checked = true;
+          connectionWayArray[1].checked = false;
+        } else if (this.propObjectData.connectionWay === 'messages') {
+          connectionWayArray[0].checked = false;
+          connectionWayArray[1].checked = true;
+        }
+        this.connectionWayComputed = connectionWayArray;
       }
     },
     objectDataForSending(value) {
@@ -2230,6 +2227,8 @@ export default {
     });
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
+    } else {
+      this.connectionWayComputed = [...this.filterDataDefaultClone.connectionWay];
     }
     // const suggestView1 = ymaps.SuggestView('currentAddress');
     // const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));

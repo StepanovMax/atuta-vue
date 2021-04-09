@@ -49,7 +49,6 @@ export default {
   beforeMount() {
     if (this.$route.params.objectData) {
       this.objectData = this.$route.params.objectData;
-      console.log(' ::', this.objectData);
     }
   },
 };

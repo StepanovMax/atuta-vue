@@ -90,12 +90,6 @@ export default {
           return item;
         }
       }),
-      itemsCopy: [...this.items].map(function(item) {
-        if (!(item.checked === true || item.checked === false)) {
-          item.checked = false;
-        }
-        return item;
-      }),
     }
   },
   watch: {
@@ -145,6 +139,16 @@ export default {
     },
     trigger(i) {
       this.$refs.checkboxinput[i].click();
+    },
+  },
+  computed: {
+    itemsCopy() {
+      return [...this.items].map(function(item) {
+        if (!(item.checked === true || item.checked === false)) {
+          item.checked = false;
+        }
+        return item;
+      });
     },
   },
   mounted() {
