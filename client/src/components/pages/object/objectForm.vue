@@ -611,6 +611,7 @@
                 'input_error': this.errorsMain.includes('price')
               }"
               :value.sync="createdObject.price.value"
+              :propValue="+propObjectData.price"
             />
             <p
               v-if="this.errorsMain.includes('price')"
@@ -1193,7 +1194,7 @@ export default {
         return this.connectionWayData;
       },
       set(value) {
-        console.log('>> value / computed ::', value, Boolean(value));
+        // console.log('>> value / computed ::', value, Boolean(value));
         this.connectionWayData = this.filterDataDefaultClone.connectionWay;
         if (value) {
           this.connectionWayData = value;
@@ -1737,6 +1738,10 @@ export default {
           connectionWayArray[1].checked = true;
         }
         this.connectionWayComputed = connectionWayArray;
+
+        // Object price
+        this.createdObject.price.value = this.propObjectData.price;
+        console.log('>> price ::', typeof this.createdObject.price, typeof this.propObjectData.price);
       }
     },
     objectDataForSending(value) {
