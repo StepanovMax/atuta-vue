@@ -711,8 +711,9 @@
             ">
               Услуга “Поднять объявление”
             </h3>
-            <tarifs 
+            <tarifs
               :value.sync="createdObject.tarif.value"
+              :propValue="propObjectData.tarif"
             />
           </div>
         </div>
@@ -842,7 +843,7 @@
 
     <div
       v-local
-      v-if="true && filterDataDefaultClone"
+      v-if="true && formIsFilledArray"
       class="local-output-data"
     >
       <h6 class="
@@ -850,10 +851,10 @@
         title_h6
         title_bold
       ">
-        filterDataDefaultClone
+        formIsFilledArray
       </h6>
       <pre>
-        {{ filterDataDefaultClone }}
+        {{ formIsFilledArray }}
       </pre>
     </div>
 
@@ -1738,10 +1739,13 @@ export default {
           connectionWayArray[1].checked = true;
         }
         this.connectionWayComputed = connectionWayArray;
+        this.createdObject.connectionWay.value = connectionWayArray;
 
         // Object price
         this.createdObject.price.value = this.propObjectData.price;
-        console.log('>> price ::', typeof this.createdObject.price, typeof this.propObjectData.price);
+
+        // Object tarif
+        console.log('>> tarif 1 ::', this.propObjectData.tarif);
       }
     },
     objectDataForSending(value) {

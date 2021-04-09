@@ -114,6 +114,13 @@ export default {
     prop: 'value',
     event: 'change'
   },
+  props: {
+    propValue: {
+      default: '',
+      type: String,
+      required: false,
+    },
+  },
   data() {
     return {
       selectedTarifName: '',
@@ -156,6 +163,9 @@ export default {
         this.selectedTarifName = targetedTarifName;
       }
     },
+  },
+  mounted() {
+    this.selectedTarifName = this.propValue;
   },
 };
 </script>
