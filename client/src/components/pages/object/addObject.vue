@@ -1574,7 +1574,7 @@ export default {
     },
   },
   created() {
-    console.log('userData ::', this.userData);
+    // console.log('userData ::', this.userData);
     this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
     this.createdObject.address.value = null;
     const toDayDate = this.gConvertDate(new Date());

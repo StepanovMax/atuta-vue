@@ -569,7 +569,7 @@ export default {
         item => {
           // console.log('item.slug ::', item.slug,);
           if (item.slug === this.propDefaultValue.roomsCountSlug) {
-            console.log('item.slug ::', item.slug);
+            // console.log('item.slug ::', item.slug);
             this.propCreatedObjectApp.roomsCount.value = item;
           }
         }

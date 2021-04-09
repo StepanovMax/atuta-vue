@@ -99,7 +99,7 @@ export default {
       // console.log('watch : favouriteObjects ::', value);
     },
     selectedEmployees(value) {
-      console.log('value ::', value);
+      // console.log('value ::', value);
       let objectsArray = [];
       objectsArray = this.selectedObjects.filter(
         item => {

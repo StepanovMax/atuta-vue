@@ -888,7 +888,7 @@ export default {
     },
     'newUser.phone'(value) {
       this.handlePhone(value);
-      console.log('value ::', value);
+      // console.log('value ::', value);
       // if (!value.length) {
       //   return null;
       // }
