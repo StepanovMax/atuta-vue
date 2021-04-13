@@ -294,6 +294,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <addObjectGarage
@@ -558,7 +559,7 @@
         <switcher
           class="add-object-page__switcher"
           switcherId="rentTypeDesktop"
-          :items="filterDataDefaultClone.rentType"
+          :items="rentTypeComputed"
           :value.sync="createdObject.rentType"
         />
       </div>
@@ -1644,6 +1645,27 @@ export default {
       // console.log('data ::', data);
       return data;
     },
+    // Object rentType
+    rentTypeComputed() {
+      let resultArray;
+      const appRentTypeArrayCopy = [...this.filterDataDefaultClone.rentType];
+      if (this.propObjectData.rentType) {
+        resultArray = appRentTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.rentType) {
+              item.checked = true;
+              this.createdObject.rentType = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = appRentTypeArrayCopy;
+      }
+      return resultArray;
+    },
   },
   created() {
     // console.log('userData ::', this.userData);
@@ -1785,17 +1807,6 @@ export default {
 
         // Object deposit
         this.createdObject.deposit.value = this.propObjectData.deposit;
-
-        // Object rentType
-        const appRentTypeArrayCopy = this.filterDataDefaultClone.rentType;
-        this.createdObject.rentType = appRentTypeArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.rentType) {
-              item.checked = true;
-            }
-            return item;
-          }
-        )
 
         // Object comfort type
         // console.log('>> this.filterDataDefaultClone.comfortType ::', this.filterDataDefaultClone.comfortType);
