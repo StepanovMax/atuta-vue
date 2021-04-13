@@ -186,7 +186,9 @@ export default {
     },
     propDefaultValue: {
       type: Object,
-      default: {},
+      default: function () {
+        return {};
+      },
       required: true,
     },
   },
@@ -254,7 +256,7 @@ export default {
     },
   },
   mounted() {
-    // console.log('>> propDefaultValue comfort ::', this.propDefaultValue);
+    console.log('>> propDefaultValue comfort ::', this.propDefaultValue);
   },
 };
 </script>

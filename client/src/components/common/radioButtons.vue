@@ -85,17 +85,14 @@ export default {
   computed: {
     dataItemsChecked() {
       let itemsCopyArray = [...this.items];
-      // console.log('>> itemsCopyArray / computed /*  *// dataItemsChecked ::', itemsCopyArray);
       const array = itemsCopyArray.map(
         item => {
-          // console.log('>> item.checked / computed / dataItemsChecked ::', item, item.checked, ' - ', item.slug);
           if (!item.checked) {
             item.checked = false;
           }
           return item;
         }
       )
-      // console.log('>> array ::', array);
       return array;
     },
   },
@@ -126,9 +123,6 @@ export default {
     updateValue(data) {
       this.$emit('update:value', data);
     },
-  },
-  mounted() {
-    // console.log('>> this.dataItemsChecked / mounted ::', this.dataItemsChecked);
   },
 };
 </script>

@@ -22,6 +22,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="propCreatedObjectRoom.area.value"
+            :propValue="+propDefaultValue.roomArea"
             :propErrorClass="{
               'input_error': this.errors.includes('area')
             }"
@@ -57,7 +58,7 @@
             :class="{
               'multiselect_error': this.errors.includes('roomsCount')
             }"
-            v-model="propCreatedObjectRoom.roomsCount.value"
+            v-model="roomRoomsCount"
             :options="roomRooms"
             :show-labels="false"
             :allow-empty="false"
@@ -96,7 +97,7 @@
             :propErrorClass="errors.includes('view')"
             radioButtonsView="wrapHalf"
             radioButtonsId="roomViewAddObject"
-            :items="filterDataDefaultClone.appView"
+            :items="viewOfHouse"
             :value.sync="propCreatedObjectRoom.view.value"
           />
         </div>
@@ -222,7 +223,8 @@
         propCreatedObject.deal.value
         && propCreatedObject.deal.value.slug === 'rent'
       "
-      :propCreatedObjectComfort="this.propCreatedObject"
+      :propCreatedObjectComfort="propCreatedObject"
+      :propDefaultValue="propDefaultValue"
     />
 
   </Fragment>
@@ -256,6 +258,13 @@ export default {
       default: [],
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
   },
   data() {
     return {
@@ -284,6 +293,12 @@ export default {
       const startYear = this.filterDataDefaultClone.appYearsStartPosition;
       let yearsArray = [];
       for (let i = startYear; i <= currentYear; i++) {
+        if (i === this.propDefaultValue.year) {
+          this.propCreatedObjectRoom.year.value = {
+            'slug': i,
+            'label': i
+          };
+        }
         yearsArray.push(
           {
             'slug': i,
@@ -291,6 +306,7 @@ export default {
           }
         );
       }
+      // console.log('yearsArray ::', yearsArray);
       return yearsArray.reverse()
     },
     floorAll: {
@@ -319,6 +335,38 @@ export default {
         this.propCreatedObjectRoom.floorAll.value = value;
       }
     },
+    roomRoomsCount() {
+      let roomsCountValue;
+      if (this.propDefaultValue.roomsCountSlug && this.propDefaultValue.roomsCountLabel) {
+        roomsCountValue = {
+          slug: this.propDefaultValue.roomsCountSlug,
+          label: this.propDefaultValue.roomsCountLabel,
+        };
+      } else {
+        roomsCountValue = this.propCreatedObjectRoom.roomsCount.value;
+      }
+      return roomsCountValue;
+    },
+    // Object house view
+    viewOfHouse() {
+      let resultArray;
+      const objectRoomViewArrayCopy = [...this.filterDataDefaultClone.appView];
+      if (this.propDefaultValue.roomViewSlug) {
+        resultArray = objectRoomViewArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.roomViewSlug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectRoomViewArrayCopy;
+      }
+      return resultArray;
+    },
   },
   watch: {
     currentAddress: {
@@ -336,10 +384,25 @@ export default {
     },
   },
   methods: {
-    // validateNumbers(value) {
-    //   const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
-    //   return trimmedValue;
-    // },
+    fillTheFormWithObjectData() {
+      if (this.propDefaultValue.floor) {
+        this.propCreatedObjectRoom.floor.value = {
+          label: this.propDefaultValue.floor,
+          slug: this.propDefaultValue.floor,
+        };
+      }
+      if (this.propDefaultValue.floorAll) {
+        this.floorAll = {
+          label: this.propDefaultValue.floorAll,
+          slug: this.propDefaultValue.floorAll,
+        };
+      }
+    },
+  },
+  mounted() {
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
   },
 };
 </script>

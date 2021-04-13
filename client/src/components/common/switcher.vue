@@ -61,12 +61,6 @@ export default {
   data() {
     return {
       picked: [],
-      dataItemsChecked: [...this.items].map(function(item) {
-        if (!item.hasOwnProperty('checked')) {
-          item.checked = false;
-        }
-        return item;
-      }),
     }
   },
   watch: {
@@ -84,6 +78,20 @@ export default {
       deep: true
     },
   },
+  computed: {
+    dataItemsChecked() {
+      let itemsCopyArray = [...this.items];
+      const array = itemsCopyArray.map(
+        item => {
+          if (!item.checked) {
+            item.checked = false;
+          }
+          return item;
+        }
+      );
+      return array;
+    },
+  },
   methods: {
     removeCheckedAttribute(checkedElement) {
       let valueArray = checkedElement;
@@ -95,7 +103,7 @@ export default {
     },
   },
   mounted() {
-    // console.log('mounted sw ::');
+    console.log('mounted items ::', this.items);
     [...this.items].forEach(
       item => {
         if (item.hasOwnProperty('checked')) {
