@@ -80,11 +80,24 @@ export default {
   data() {
     return {
       picked: [],
-      dataItemsChecked: [...this.items].map(function(item) {
-        item.checked = false;
-        return item;
-      }),
     }
+  },
+  computed: {
+    dataItemsChecked() {
+      let itemsCopyArray = [...this.items];
+      // console.log('>> itemsCopyArray / computed /*  *// dataItemsChecked ::', itemsCopyArray);
+      const array = itemsCopyArray.map(
+        item => {
+          // console.log('>> item.checked / computed / dataItemsChecked ::', item, item.checked, ' - ', item.slug);
+          if (!item.checked) {
+            item.checked = false;
+          }
+          return item;
+        }
+      )
+      // console.log('>> array ::', array);
+      return array;
+    },
   },
   watch: {
     picked: {
@@ -100,6 +113,9 @@ export default {
       },
       deep: true
     },
+    items(value) {
+      // console.log('>> items / watch ::', value);
+    }
   },
   methods: {
     removeCheckedAttribute(checkedElement) {
@@ -110,6 +126,9 @@ export default {
     updateValue(data) {
       this.$emit('update:value', data);
     },
+  },
+  mounted() {
+    // console.log('>> this.dataItemsChecked / mounted ::', this.dataItemsChecked);
   },
 };
 </script>
