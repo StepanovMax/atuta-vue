@@ -20,7 +20,7 @@
           <radioButtons
             radioButtonsView="listVertical"
             radioButtonsId="roomСomfortAddObject"
-            :items="filterDataDefaultClone.comfortType"
+            :items="comfortTypeArray"
             :value.sync="сreatedObjectComfort.comfortType.value"
           />
         </div>
@@ -184,6 +184,11 @@ export default {
       default: {},
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: {},
+      required: true,
+    },
   },
   data() {
     return {
@@ -209,6 +214,47 @@ export default {
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
+    comfortTypeArray() {
+      let returnedData;
+      const array = [...this.filterDataDefault.comfortType];
+      // console.log('>> this.propDefaultValue.comfortType ::', this.propDefaultValue.comfortType);
+      if (this.propDefaultValue.comfortType) {
+        let newArray = [];
+        array.map(
+          item => {
+            let newItem = {
+              slug: item.slug,
+              label: item.label,
+            }
+            if (item.slug === this.propDefaultValue.comfortType) {
+              newItem.checked = true;
+              this.сreatedObjectComfort.comfortType.value = item;
+              // console.log('>> 11 ::', item.slug);
+            } else {
+              newItem.checked = false;
+              // console.log('>> 22 ::', item.slug);
+            }
+            // console.log('>> newItem ::', newItem);
+            newArray.push(newItem);
+          }
+        )
+        returnedData = newArray;
+        // console.log('>> returnedData 1 newArray ::', newArray);
+      } else {
+        returnedData = array;
+        // console.log('>> returnedData 2', returnedData);
+      }
+      // console.log('>> returnedData', returnedData);
+      return returnedData;
+    },
+  },
+  watch: {
+    comfortTypeArray(value) {
+      // console.log('>> comfortType / watch', value);
+    },
+  },
+  mounted() {
+    // console.log('>> propDefaultValue comfort ::', this.propDefaultValue);
   },
 };
 </script>

@@ -272,6 +272,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propObjectData="propObjectData"
       />
 
       <addObjectHouse
@@ -649,6 +650,7 @@
                 'input_error': this.errorsMain.includes('deposit')
               }"
               :value.sync="createdObject.deposit.value"
+              :propValue="+propObjectData.deposit"
             />
             <p
               v-if="this.errorsMain.includes('deposit')"
@@ -787,7 +789,10 @@
             form__block-width-third_to-bottom
           ">
             <button
-              v-if="formIsFilled"
+              v-if="
+                formIsFilled
+                && !isEditObjectPage
+              "
               class="
                 btn
                 btn_blue
@@ -800,7 +805,10 @@
             </button>
 
             <button
-              v-else
+              v-if="
+                !formIsFilled
+                && !isEditObjectPage
+              "
               class="
                 btn
                 btn_blue
@@ -811,6 +819,36 @@
               @click="clickOnNonSubmitButton()"
             >
               Не заполнены поля
+            </button>
+
+            <button
+              v-if="
+                isEditObjectPage
+                && false
+              "
+              class="
+                btn
+                btn_blue
+                btn_middle
+                add-object-page__btn
+              "
+            >
+              Сохранить изменения
+            </button>
+
+            <button
+              v-if="
+                isEditObjectPage
+              "
+              class="
+                btn
+                btn_blue
+                btn_middle
+                add-object-page__btn
+                btn_disabled
+              "
+            >
+              Изменений нет
             </button>
           </div>
         </div>
@@ -1633,6 +1671,7 @@ export default {
             return item;
           }
         )
+        // console.log('this.filterDataDefaultClone.object ::', this.filterDataDefaultClone.object);
 
         // Commercial object type
         if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
@@ -1744,8 +1783,39 @@ export default {
         // Object price
         this.createdObject.price.value = this.propObjectData.price;
 
-        // Object tarif
-        console.log('>> tarif 1 ::', this.propObjectData.tarif);
+        // Object deposit
+        this.createdObject.deposit.value = this.propObjectData.deposit;
+
+        // Object rentType
+        const appRentTypeArrayCopy = this.filterDataDefaultClone.rentType;
+        this.createdObject.rentType = appRentTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.rentType) {
+              item.checked = true;
+            }
+            return item;
+          }
+        )
+
+        // Object comfort type
+        // console.log('>> this.filterDataDefaultClone.comfortType ::', this.filterDataDefaultClone.comfortType);
+        // console.log('>> filterDataDefaultClone ::', this.filterDataDefaultClone.comfortType);
+
+        // Object subtype
+        if (this.createdObject.object.value.slug === 'app') {
+          this.createdObject.app.type.value = {
+            label: this.propObjectData.appTypeLabel,
+            slug: this.propObjectData.appTypeSlug,
+          };
+          this.createdObject.app.view.value = {
+            label: this.propObjectData.appViewLabel,
+            slug: this.propObjectData.appViewSlug,
+          };
+          this.createdObject.app.area.value = this.propObjectData.appArea;
+
+        } else if (this.createdObject.object.value.slug === 'house') {
+
+        }
       }
     },
     objectDataForSending(value) {
@@ -1926,8 +1996,8 @@ export default {
         }
         metaTitle = part1 + ' ' + part2 + ' [' + part3 + ']';
       }
-      console.log('metaTitle ::', metaTitle);
-      console.log('title ::', title);
+      // console.log('metaTitle ::', metaTitle);
+      // console.log('title ::', title);
       this.createdObject.title = title;
       this.createdObject.metaTitle = metaTitle;
     },

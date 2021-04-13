@@ -1315,6 +1315,7 @@ export default {
         }
         if (this.changedObject.rentType && this.changedObject.rentType.value) {
           data.rentType = this.changedObject.rentType.value.slug;
+          console.log('>> data.rentType ::', data.rentType);
         }
         if (this.changedObject.connectionWay && this.changedObject.connectionWay.value) {
           if (this.createdObject.connectionWay.value.length === 2) {

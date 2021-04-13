@@ -55,7 +55,7 @@
             :propErrorClass="errors.includes('view')"
             radioButtonsView="wrapHalf"
             radioButtonsId="appViewAddObject"
-            :items="filterDataDefaultClone.appView"
+            :items="viewOfHouse"
             :value.sync="propCreatedObjectApp.view.value"
           />
           <p
@@ -374,6 +374,7 @@
         && propCreatedObject.deal.value.slug === 'rent'
       "
       :propCreatedObjectComfort="this.propCreatedObject"
+      :propDefaultValue="propDefaultValue"
     />
 
   </Fragment>
@@ -527,6 +528,26 @@ export default {
         this.validateArea();
       }
     },
+    // Object house view
+    viewOfHouse() {
+      let resultArray;
+      const objectAppViewArrayCopy = [...this.filterDataDefaultClone.appView];
+      if (this.propDefaultValue.appViewSlug) {
+        resultArray = objectAppViewArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.appViewSlug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectAppViewArrayCopy;
+      }
+      return resultArray;
+    },
   },
   watch: {
     currentAddress: {
@@ -554,16 +575,7 @@ export default {
           return item;
         }
       )
-      // Object view
-      let objectAppViewArrayCopy = [...this.filterDataDefaultClone.appView];
-      this.filterDataDefaultClone.appTypes = objectAppViewArrayCopy.map(
-        item => {
-          if (item.slug === this.propDefaultValue.appViewSlug) {
-            item.checked = true;
-          }
-          return item;
-        }
-      )
+      // console.log('this.filterDataDefaultClone.appTypes ::', this.filterDataDefaultClone.appTypes);
       // Object rooms count
       this.filterDataDefaultClone.appRooms.map(
         item => {
