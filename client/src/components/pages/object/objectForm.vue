@@ -4,7 +4,11 @@
     class="article article_add"
   >
     <breadcrumbs
+      v-if="isEditObjectPage"
       propPageName="myObjectsSubPage"
+    />
+    <breadcrumbs
+      v-if="!isEditObjectPage"
     />
 
     <h1
@@ -15,7 +19,7 @@
         form__title_add-object-main
       "
     >
-      Редактировать объявление
+      {{ pageTitle }} объявление
     </h1>
 
     <h1
@@ -129,8 +133,8 @@
                 'switcher_error': this.errorsMain.includes('deal')
               }"
               switcherId="dealDesktop"
-              :items="filterDataDefaultClone.deal"
-              :value.sync="dealVModel"
+              :items="dealTypeCopmuted"
+              :value.sync="createdObject.deal.value"
               @change.native="clickOnMainFields()"
             />
             <p
@@ -283,6 +287,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <addObjectRoom
@@ -306,6 +311,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <addObjectSector
@@ -1120,6 +1126,7 @@ export default {
 
         this.formIsFilledArray = [];
         const obj1 = this.createdObject;
+        // console.log('obj1 >>', obj1);
         for (const key1 in obj1) {
           if (!obj1.hasOwnProperty(key1)) continue;
             const type = obj1.object.value;
@@ -1228,6 +1235,13 @@ export default {
     //     this.currentAddressValue = value;
     //   }
     // },
+    pageTitle() {
+      if (this.isEditObjectPage) {
+        return 'Редактировать';
+      } else {
+        return 'Подать';
+      }
+    },
     connectionWayComputed: {
       cache: false,
       get() {
@@ -1262,6 +1276,35 @@ export default {
           this.createdObject.deposit.required = true;
         }
       }
+    },
+    dealTypeCopmuted(value) {
+      let dealArray;
+      // If it's an edit object page
+      if (this.propObjectData && this.propObjectData.deal) {
+        console.log('this.filterDataDefaultClone ::', this.filterDataDefaultClone);
+        let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
+        dealArray = objectDealArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.deal) {
+              item.checked = true;
+              this.createdObject.deal.value = item;
+            }
+            return item;
+          }
+        )
+      // Else if it's the create object page
+      } else if (value) {
+        dealArray = [...this.filterDataDefaultClone.deal];
+        this.createdObject.deal.value = value;
+      }
+      if (this.createdObject.deal.value.slug === 'buy') {
+        this.createdObject.rentType.required = false;
+        this.createdObject.deposit.required = false;
+      } else if (this.createdObject.deal.value.slug === 'rent') {
+        this.createdObject.rentType.required = true;
+        this.createdObject.deposit.required = true;
+      }
+      return dealArray;
     },
     objectPrice: {
       cache: false,
@@ -1535,7 +1578,7 @@ export default {
               && this.changedObject.garage.garageType
               && this.changedObject.garage.garageType.value
           ) {
-            data.garageSubTypeSlug = this.changedObject.garage.garageType.value.label;
+            data.garageSubTypeSlug = this.changedObject.garage.garageType.value.slug;
             data.garageSubTypeLabel = this.changedObject.garage.garageType.value.label;
             data.garageSubTypeLabelShort = this.changedObject.garage.garageType.value.labelShort;
           } else if (
@@ -1545,7 +1588,7 @@ export default {
             && this.changedObject.garage.parkingType
             && this.changedObject.garage.parkingType.value
           ) {
-            data.garageSubTypeSlug = this.changedObject.garage.parkingType.value.label;
+            data.garageSubTypeSlug = this.changedObject.garage.parkingType.value.slug;
             data.garageSubTypeLabel = this.changedObject.garage.parkingType.value.label;
             data.garageSubTypeLabelShort = this.changedObject.garage.parkingType.value.labelShort;
           }
@@ -1649,9 +1692,11 @@ export default {
     rentTypeComputed() {
       let resultArray;
       const appRentTypeArrayCopy = [...this.filterDataDefaultClone.rentType];
+      console.log('this.propObjectData.rentType ::', this.propObjectData.rentType);
       if (this.propObjectData.rentType) {
         resultArray = appRentTypeArrayCopy.map(
           item => {
+            console.log('item ::', item.slug, this.propObjectData.rentType);
             if (item.slug === this.propObjectData.rentType) {
               item.checked = true;
               this.createdObject.rentType = item;
@@ -2312,6 +2357,7 @@ export default {
     }
   },
   async mounted() {
+    console.log('mounted ::');
     await loadYmap({
       debug: true
     });

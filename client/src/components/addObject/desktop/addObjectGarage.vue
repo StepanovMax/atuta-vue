@@ -29,7 +29,7 @@
             :propErrorClass="errors.includes('type')"
             radioButtonsView="listVertical"
             radioButtonsId="garageAddObject"
-            :items="filterDataDefaultClone.garage"
+            :items="typeOfGarage"
             :value.sync="typeVModel"
           />
           <p
@@ -75,7 +75,7 @@
             key="garageTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="garageTypeAddObject"
-            :items="filterDataDefaultClone.garageTypes"
+            :items="subTypeOfGarage"
             :value.sync="propCreatedObjectGarage.garageType.value"
           />
           <p
@@ -121,7 +121,7 @@
             key="parkingTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="parkingTypeAddObject"
-            :items="filterDataDefaultClone.parkingTypes"
+            :items="subTypeOfGarage"
             :value.sync="propCreatedObjectGarage.parkingType.value"
           />
           <p
@@ -170,6 +170,7 @@
               propType="number"
               propUnit="meterSquare"
               :value.sync="propCreatedObjectGarage.area.value"
+              :propValue="areaOfGarage"
               :propErrorClass="{
                 'input_error': this.errors.includes('area')
               }"
@@ -215,6 +216,7 @@
               propType="number"
               propUnit="meterSquare"
               :value.sync="propCreatedObjectGarage.area"
+              :propValue="+propDefaultValue.garageArea"
               :propErrorClass="{
                 'input_error': this.errors.includes('area')
               }"
@@ -251,7 +253,7 @@
           </h3>
           <switcher
             switcherId="securityAddObject"
-            :items="filterDataDefaultClone.security"
+            :items="securityOfGarage"
             :value.sync="propCreatedObjectGarage.security"
           />
         </div>
@@ -286,6 +288,13 @@ export default {
       type: Array,
       default: [],
       required: true,
+    },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
     },
   },
   data() {
@@ -328,6 +337,93 @@ export default {
         }
       }
     },
+    // Object type garage
+    typeOfGarage() {
+      let resultArray;
+      const objectGarageTypeArrayCopy = [...this.filterDataDefaultClone.garage];
+      if (this.propDefaultValue.garageTypeSlug) {
+        resultArray = objectGarageTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.garageTypeSlug) {
+              item.checked = true;
+              this.typeVModel = item;
+              // this.propCreatedObjectGarage.type.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectGarageTypeArrayCopy;
+      }
+      return resultArray;
+    },
+    // Object subtype of a garage
+    subTypeOfGarage() {
+      let resultArray;
+      let objectGarageSubTypeArrayCopy;
+      if (
+        this.propDefaultValue.garageTypeSlug
+        && this.propDefaultValue.garageTypeSlug === 'garage'
+      ) {
+        objectGarageSubTypeArrayCopy = [...this.filterDataDefaultClone.garageTypes];
+      } else if (
+        this.propDefaultValue.garageTypeSlug
+        && this.propDefaultValue.garageTypeSlug === 'parking'
+      ) {
+        objectGarageSubTypeArrayCopy = [...this.filterDataDefaultClone.parkingTypes];
+      }
+      if (this.propDefaultValue.garageSubTypeSlug) {
+        resultArray = objectGarageSubTypeArrayCopy.map(
+          item => {
+            // console.log('truee ::', item.slug, this.propDefaultValue);
+            if (item.slug === this.propDefaultValue.garageSubTypeSlug) {
+              item.checked = true;
+              if (this.propDefaultValue.garageTypeSlug === 'garage') {
+                this.propCreatedObjectGarage.garageType.value = item;
+              } else if (this.propDefaultValue.garageTypeSlug === 'parking') {
+                this.propCreatedObjectGarage.parkingType.value = item;
+              }
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectGarageSubTypeArrayCopy;
+      }
+      console.log('resultArray ::', resultArray);
+      return resultArray;
+    },
+    // Garage security
+    securityOfGarage() {
+      let resultArray;
+      const objectGarageSecurityArrayCopy = [...this.filterDataDefaultClone.security];
+      if (this.propDefaultValue.garageSecurity) {
+        resultArray = objectGarageSecurityArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.garageSecurity) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectGarageSecurityArrayCopy;
+      }
+      return resultArray;
+    },
+    // Garage area
+    areaOfGarage() {
+      if (this.propDefaultValue && this.propDefaultValue.garageArea) {
+        this.propCreatedObjectGarage.area.value = this.propDefaultValue.garageArea;
+      }
+      return +this.propDefaultValue.garageArea;
+    },
   },
   watch: {
     currentAddress: {
@@ -343,12 +439,6 @@ export default {
       },
       deep: true
     },
-  },
-  methods: {
-    // validateNumbers(value) {
-    //   const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
-    //   return trimmedValue;
-    // },
   },
 };
 </script>

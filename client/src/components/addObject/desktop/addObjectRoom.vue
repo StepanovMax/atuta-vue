@@ -22,7 +22,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="propCreatedObjectRoom.area.value"
-            :propValue="+propDefaultValue.roomArea"
+            :propValue="areaOfRoom"
             :propErrorClass="{
               'input_error': this.errors.includes('area')
             }"
@@ -234,9 +234,9 @@
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
-import radioButtons from '../../common/radioButtons.vue';
-import addObjectComfort from './addObjectComfort.vue';
-import inputWithUnit from '../../common/inputWithUnit.vue';
+import radioButtons from '@cmp/common/radioButtons.vue';
+import addObjectComfort from '@cmp/addObject/desktop/addObjectComfort.vue';
+import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectRoom',
@@ -306,7 +306,6 @@ export default {
           }
         );
       }
-      // console.log('yearsArray ::', yearsArray);
       return yearsArray.reverse()
     },
     floorAll: {
@@ -315,11 +314,13 @@ export default {
         return this.propCreatedObjectRoom.floorAll.value;
       },
       set(value) {
+        console.log('value ::', value);
         // If a user select floorFull more than floorCurrent.
         if (this.propCreatedObjectRoom.floor && value.slug < this.propCreatedObjectRoom.floor.slug) {
           // Then floorCurrent will be a null.
           this.propCreatedObjectRoom.floor = null;
         }
+        console.log('this.filterDataDefaultClone ::', this.filterDataDefaultClone);
         // All floors that bigger than selected floorAll value will be disabled.
         this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
           item => {
@@ -342,6 +343,7 @@ export default {
           slug: this.propDefaultValue.roomsCountSlug,
           label: this.propDefaultValue.roomsCountLabel,
         };
+        this.propCreatedObjectRoom.roomsCount.value = roomsCountValue;
       } else {
         roomsCountValue = this.propCreatedObjectRoom.roomsCount.value;
       }
@@ -367,6 +369,10 @@ export default {
       }
       return resultArray;
     },
+    areaOfRoom() {
+      this.propCreatedObjectRoom.area.value = +this.propDefaultValue.roomArea
+      return +this.propDefaultValue.roomArea;
+    }
   },
   watch: {
     currentAddress: {
@@ -377,7 +383,6 @@ export default {
     },
     propValidateErrors: {
       handler(value) {
-        console.log('propValidateErrors watch house ::', value);
         this.errors = value;
       },
       deep: true
