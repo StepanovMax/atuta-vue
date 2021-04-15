@@ -48,11 +48,6 @@ export default {
       formattedValue: '',
     }
   },
-  methods: {
-    // inputChange(event) {
-    //   this.$emit('update:value', event.target.value);
-    // },
-  },
   computed: {
     enteredValue: {
       cache: false,
@@ -67,7 +62,6 @@ export default {
     },
   },
   mounted() {
-    // console.log('>> this.propValue', typeof this.propValue);
     if (this.propValue) {
       this.enteredValue = this.propValue;
     }

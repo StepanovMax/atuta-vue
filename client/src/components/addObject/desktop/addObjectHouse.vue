@@ -22,7 +22,7 @@
             :propErrorClass="errors.includes('type')"
             radioButtonsView="wrapHalf"
             radioButtonsId="objectViewAddObject"
-            :items="filterDataDefaultClone.houseTypes"
+            :items="typeOfHouse"
             :value.sync="propCreatedObjectHouse.type.value"
           />
           <p
@@ -123,7 +123,7 @@
           </h3>
           <multiselect
             v-model="propCreatedObjectHouse.wall.value"
-            :options="filterDataDefaultClone.houseWall"
+            :options="houseWallMaterial"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -176,6 +176,7 @@
               propType="number"
               propUnit="meterSquare"
               :value.sync="propCreatedObjectHouse.areaHouse.value"
+              :propValue="livingAreaOfHouse"
               :propErrorClass="{
                 'input_error': this.errors.includes('areaHouse')
               }"
@@ -210,6 +211,7 @@
             propType="number"
             propUnit="acr"
             :value.sync="propCreatedObjectHouse.areaLand.value"
+            :propValue="landAreaOfHouse"
             :propErrorClass="{
               'input_error': this.errors.includes('areaLand')
             }"
@@ -245,7 +247,7 @@
             :class="{
               'multiselect_error': this.errors.includes('floorAll')
             }"
-            v-model="propCreatedObjectHouse.floorAll.value"
+            v-model="floorAll"
             :options="houseFloors"
             :show-labels="false"
             :allow-empty="false"
@@ -302,6 +304,7 @@
         && propCreatedObject.deal.value.slug === 'rent'
       "
       :propCreatedObjectComfort="this.propCreatedObject"
+      :propDefaultValue="propDefaultValue"
     />
 
   </Fragment>
@@ -311,9 +314,9 @@
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, mapGetters, store, commit } from 'vuex';
-import radioButtons from '../../common/radioButtons.vue';
-import addObjectComfort from './addObjectComfort.vue';
-import inputWithUnit from '../../common/inputWithUnit.vue';
+import radioButtons from '@cmp/common/radioButtons.vue';
+import addObjectComfort from '@cmp/addObject/desktop/addObjectComfort.vue';
+import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectHouse',
@@ -334,6 +337,13 @@ export default {
       type: Array,
       default: [],
       required: true,
+    },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
     },
   },
   data() {
@@ -364,6 +374,12 @@ export default {
       const startYear = this.filterDataDefaultClone.appYearsStartPosition;
       let yearsArray = [];
       for (let i = startYear; i <= currentYear; i++) {
+        if (i === this.propDefaultValue.year) {
+          this.propCreatedObjectHouse.year.value = {
+            'slug': i,
+            'label': i
+          };
+        }
         yearsArray.push(
           {
             'slug': i,
@@ -371,7 +387,86 @@ export default {
           }
         );
       }
-      return yearsArray.reverse()
+      return yearsArray.reverse();
+    },
+    // Object type
+    typeOfHouse() {
+      let resultArray;
+      const objectHouseTypesArrayCopy = [...this.filterDataDefaultClone.houseTypes];
+      if (this.propDefaultValue.houseTypeSlug) {
+        resultArray = objectHouseTypesArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.houseTypeSlug) {
+              item.checked = true;
+              this.propCreatedObjectHouse.type.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectHouseTypesArrayCopy;
+      }
+      return resultArray;
+    },
+    // Object wall material
+    houseWallMaterial() {
+      let resultArray;
+      const objectHouseWallArrayCopy = [...this.filterDataDefaultClone.houseWall];
+      if (this.propDefaultValue.houseWallSlug) {
+        resultArray = objectHouseWallArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.houseWallSlug) {
+              this.propCreatedObjectHouse.wall.value = item;
+              // item.checked = true;
+            } else {
+              // item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectHouseTypesArrayCopy;
+      }
+      return resultArray;
+    },
+    // Object floor all
+    floorAll: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.floorAll.value;
+      },
+      set(value) {
+        console.log('value ::', value);
+        // If a user select floorFull more than floorCurrent.
+        if (this.propCreatedObjectHouse.floor && value.slug < this.propCreatedObjectHouse.floor.slug) {
+          // Then floorCurrent will be a null.
+          this.propCreatedObjectHouse.floor = null;
+        }
+        // console.log('this.filterDataDefaultClone ::', this.filterDataDefaultClone);
+        // All floors that bigger than selected floorAll value will be disabled.
+        this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
+          item => {
+            // Convert slug string to number and add a value +1.
+            const selectedNumber = +value.slug + 1;
+            if (item.slug >= selectedNumber ) {
+              item.$isDisabled = true;
+            } else {
+              item.$isDisabled = false;
+            }
+          }
+        )
+        this.propCreatedObjectHouse.floorAll.value = value;
+      }
+    },
+    landAreaOfHouse() {
+      this.propCreatedObjectHouse.areaLand.value = +this.propDefaultValue.houseAreaLand;
+      return +this.propDefaultValue.houseAreaLand;
+    },
+    livingAreaOfHouse() {
+      this.propCreatedObjectHouse.areaHouse.value = +this.propDefaultValue.houseAreaHouse;
+      return +this.propDefaultValue.houseAreaHouse;
     },
   },
   watch: {
@@ -390,10 +485,34 @@ export default {
     },
   },
   methods: {
+    fillTheFormWithObjectData() {
+      this.filterDataDefaultClone.houseRoomsCount.map(
+        item => {
+          if (item.slug === this.propDefaultValue.roomsCountSlug) {
+            this.propCreatedObjectHouse.roomsCount.value = item;
+          }
+        }
+      );
+      if (this.propDefaultValue.floorAll) {
+        this.floorAll = {
+          label: this.propDefaultValue.floorAll,
+          slug: this.propDefaultValue.floorAll,
+        };
+      }
+      this.propCreatedObjectHouse.distance.value = {
+        slug: this.propDefaultValue.distanceSlug,
+        label: this.propDefaultValue.distanceLabel,
+      };
+    },
     validateNumbers(value) {
       const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
       return trimmedValue;
     },
+  },
+  mounted() {
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
   },
 };
 </script>

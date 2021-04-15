@@ -103,7 +103,6 @@ export default {
     },
   },
   mounted() {
-    console.log('mounted items ::', this.items);
     [...this.items].forEach(
       item => {
         if (item.hasOwnProperty('checked')) {

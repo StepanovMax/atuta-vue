@@ -384,11 +384,11 @@
 import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
-import switcher from '../../common/switcher.vue';
-import radioButtons from '../../common/radioButtons.vue';
-import checkboxes from '../../common/checkboxes.vue';
-import addObjectComfort from './addObjectComfort.vue';
-import inputWithUnit from '../../common/inputWithUnit.vue';
+import switcher from '@cmp/common/switcher.vue';
+import radioButtons from '@cmp/common/radioButtons.vue';
+import checkboxes from '@cmp/common/checkboxes.vue';
+import addObjectComfort from '@cmp/addObject/desktop/addObjectComfort.vue';
+import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectApp',
