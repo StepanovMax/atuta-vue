@@ -29,6 +29,7 @@
             propType="number"
             :propUnit="sectorUnit"
             :value.sync="propCreatedObjectCommercial.area.value"
+            :propValue="areaOfCommercial"
             :propErrorClass="{
               'input_error': this.errors.includes('area')
             }"
@@ -74,6 +75,7 @@
             propType="number"
             propUnit="meter"
             :value.sync="propCreatedObjectCommercial.facade.value"
+            :propValue="facadeOfCommercial"
           />
         </div>
       </div>
@@ -108,7 +110,7 @@
             key="buildingTypeAddObject"
             radioButtonsView="listHorizontal"
             radioButtonsId="buildingTypeAddObject"
-            :items="filterDataDefaultClone.commercialClass"
+            :items="classOfCommercial"
             :value.sync="propCreatedObjectCommercial.class.value"
           />
           <p
@@ -123,8 +125,14 @@
 
     <div
       v-if="
-        propCreatedObjectCommercial.type.value
-        && propCreatedObjectCommercial.type.value.slug !== 'sector'
+        (
+          propDefaultValue
+          && propDefaultValue.commercialTypeSlug !== 'sector'
+        )
+        || (
+          propCreatedObjectCommercial.type.value
+          && propCreatedObjectCommercial.type.value.slug !== 'sector'
+        )
       "
       class="form__row"
     >
@@ -222,7 +230,7 @@
           </h3>
           <switcher
             switcherId="tenantAddObject"
-            :items="filterDataDefaultClone.tenant"
+            :items="tenantOfCommercial"
             :value.sync="propCreatedObjectCommercial.tenant.value"
           />
         </div>
@@ -284,8 +292,8 @@
             Расстояние до города
           </h3>
           <multiselect
-            v-model="propCreatedObjectCommercial.distance"
-            :options="getDistanceArray"
+            v-model="propCreatedObjectCommercial.distance.value"
+            :options="distanceOfCommercial"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -327,6 +335,13 @@ export default {
       type: Array,
       default: [],
       required: true,
+    },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
     },
   },
   data() {
@@ -402,6 +417,71 @@ export default {
       }
       return yearsArray.reverse()
     },
+    // Area of commercial object
+    areaOfCommercial() {
+      if (this.propDefaultValue && this.propDefaultValue.commercialArea) {
+        this.propCreatedObjectCommercial.area.value = this.propDefaultValue.commercialArea;
+      }
+      return +this.propDefaultValue.commercialArea;
+    },
+    // Class of commercial object
+    classOfCommercial() {
+      let resultArray;
+      const objectCommercialClassArrayCopy = [...this.filterDataDefaultClone.commercialClass];
+      if (this.propDefaultValue.commercialClass) {
+        resultArray = objectCommercialClassArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.commercialClass) {
+              item.checked = true;
+              this.propCreatedObjectCommercial.class.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectCommercialClassArrayCopy;
+      }
+      return resultArray;
+    },
+    // Tenant of commercial object
+    tenantOfCommercial() {
+      let resultArray;
+      const objectCommercialTenantArrayCopy = [...this.filterDataDefaultClone.tenant];
+      if (this.propDefaultValue.commercialTenant) {
+        resultArray = objectCommercialTenantArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.commercialTenant) {
+              item.checked = true;
+              this.propCreatedObjectCommercial.tenant.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectCommercialTenantArrayCopy;
+      }
+      return resultArray;
+    },
+    distanceOfCommercial() {
+      if (this.propDefaultValue.distanceSlug && this.propDefaultValue.distanceLabel) {
+        this.propCreatedObjectCommercial.distance.value = {
+          slug: this.propDefaultValue.distanceSlug,
+          label: this.propDefaultValue.distanceLabel,
+        };
+      }
+      return this.getDistanceArray;
+    },
+    // Garage area
+    facadeOfCommercial() {
+      if (this.propDefaultValue && this.propDefaultValue.facade) {
+        this.propCreatedObjectCommercial.facade.value = this.propDefaultValue.facade;
+      }
+      return +this.propDefaultValue.facade;
+    },
   },
   watch: {
     currentAddress: {
@@ -416,6 +496,31 @@ export default {
       },
       deep: true
     },
+  },
+  methods: {
+    fillTheFormWithObjectData() {
+      if (this.propDefaultValue.floorAll) {
+        this.floorAll = {
+          label: this.propDefaultValue.floorAll,
+          slug: this.propDefaultValue.floorAll,
+        };
+      }
+      // Object floor
+      this.filterDataDefaultClone.appFloorAllListCurrent.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floor) {
+            this.propCreatedObjectCommercial.floor.value = item;
+          }
+        }
+      )
+    },
+  },
+  mounted() {
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
+    console.log('propCreatedObjectCommercial ::', this.propCreatedObjectCommercial);
   },
 };
 </script>

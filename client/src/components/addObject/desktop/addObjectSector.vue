@@ -29,7 +29,7 @@
             :class="{
               'multiselect_error': this.errors.includes('type')
             }"
-            v-model="propCreatedObjectSector.type.value"
+            v-model="typeOfSector"
             :options="filterDataDefaultClone.sectorType"
             :show-labels="false"
             :allow-empty="false"
@@ -78,6 +78,7 @@
             propType="number"
             propUnit="acr"
             :value.sync="propCreatedObjectSector.area.value"
+            :propValue="areaOfSector"
             :propErrorClass="{
               'input_error': this.errors.includes('area')
             }"
@@ -205,10 +206,21 @@ export default {
       default: [],
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
   },
   data() {
     return {
       errors: [],
+      sectorTypeValue: {
+        slug: this.propDefaultValue.sectorTypeSlug,
+        label: this.propDefaultValue.sectorTypeLabel,
+      },
       propCreatedObjectSector: this.propCreatedObject.sector,
     }
   },
@@ -221,6 +233,24 @@ export default {
     ]),
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
+    },
+    // Type of sector
+    typeOfSector: {
+      cache: false,
+      set(value) {
+        console.log('value ::', value);
+        this.sectorTypeValue = value;
+      },
+      get() {
+        return this.sectorTypeValue;
+      },
+    },
+    // Area of sector
+    areaOfSector() {
+      if (this.propDefaultValue && this.propDefaultValue.sectorArea) {
+        this.propCreatedObjectSector.area.value = this.propDefaultValue.sectorArea;
+      }
+      return +this.propDefaultValue.sectorArea;
     },
   },
   watch: {

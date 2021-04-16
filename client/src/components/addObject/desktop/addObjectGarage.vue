@@ -377,10 +377,10 @@ export default {
       if (this.propDefaultValue.garageSubTypeSlug) {
         resultArray = objectGarageSubTypeArrayCopy.map(
           item => {
-            // console.log('truee ::', item.slug, this.propDefaultValue);
             if (item.slug === this.propDefaultValue.garageSubTypeSlug) {
               item.checked = true;
               if (this.propDefaultValue.garageTypeSlug === 'garage') {
+                
                 this.propCreatedObjectGarage.garageType.value = item;
               } else if (this.propDefaultValue.garageTypeSlug === 'parking') {
                 this.propCreatedObjectGarage.parkingType.value = item;
@@ -439,6 +439,9 @@ export default {
       },
       deep: true
     },
+  },
+  mounted() {
+    console.log('propCreatedObjectGarage ::', this.propCreatedObjectGarage);
   },
 };
 </script>
