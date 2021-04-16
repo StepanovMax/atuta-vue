@@ -35,7 +35,6 @@
 
     <div class="form form_add-object">
       <div class="form__row form__row_block-width form__row_block-width-half">
-
         <div class="form__block-width form__block-width-half">
           <div
             ref="object"
@@ -133,7 +132,7 @@
                 'switcher_error': this.errorsMain.includes('deal')
               }"
               switcherId="dealDesktop"
-              :items="dealTypeCopmuted"
+              :items="dealArrayValue"
               :value.sync="createdObject.deal.value"
               @change.native="clickOnMainFields()"
             />
@@ -270,7 +269,8 @@
       <addObjectApp
         ref="app"
         v-if="
-          objectTypeAndDealTypeIsSelected
+          createdObject.deal.value
+          && objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'app'
         "
         :propCreatedObject="createdObject"
@@ -282,7 +282,8 @@
       <addObjectHouse
         ref="house"
         v-if="
-          objectTypeAndDealTypeIsSelected
+          createdObject.deal.value
+          && objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'house'
         "
         :propCreatedObject="createdObject"
@@ -323,6 +324,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <addObjectCommercial
@@ -334,6 +336,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
+        :propDefaultValue="propObjectData"
       />
 
       <div
@@ -1261,6 +1264,31 @@ export default {
       }
       return false;
     },
+    dealArrayValue(value) {
+      let dealArray;
+      if (this.propObjectData && this.propObjectData.deal) {
+        const objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
+        dealArray = objectDealArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.deal) {
+              item.checked = true;
+              this.createdObject.deal.value = item;
+            }
+            return item;
+          }
+        )
+      } else {
+        dealArray = [...this.filterDataDefaultClone.deal];
+      }
+      // if (this.createdObject.deal.value.slug === 'buy') {
+      //   this.createdObject.rentType.required = false;
+      //   this.createdObject.deposit.required = false;
+      // } else if (this.createdObject.deal.value.slug === 'rent') {
+      //   this.createdObject.rentType.required = true;
+      //   this.createdObject.deposit.required = true;
+      // }
+      return dealArray;
+    },
     dealVModel: {
       cache: false,
       get() {
@@ -1277,35 +1305,37 @@ export default {
         }
       }
     },
-    dealTypeCopmuted(value) {
-      let dealArray;
-      // If it's an edit object page
-      if (this.propObjectData && this.propObjectData.deal) {
-        console.log('this.filterDataDefaultClone ::', this.filterDataDefaultClone);
-        let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
-        dealArray = objectDealArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.deal) {
-              item.checked = true;
-              this.createdObject.deal.value = item;
-            }
-            return item;
-          }
-        )
-      // Else if it's the create object page
-      } else if (value) {
-        dealArray = [...this.filterDataDefaultClone.deal];
-        this.createdObject.deal.value = value;
-      }
-      if (this.createdObject.deal.value.slug === 'buy') {
-        this.createdObject.rentType.required = false;
-        this.createdObject.deposit.required = false;
-      } else if (this.createdObject.deal.value.slug === 'rent') {
-        this.createdObject.rentType.required = true;
-        this.createdObject.deposit.required = true;
-      }
-      return dealArray;
-    },
+    // dealTypeComputed: {
+    //   cache: false,
+    //   get() {
+    //     return this.dealArrayValue;
+    //   },
+    //   set(value) {
+    //     console.log('value ::', value);
+    //     if (value) {
+    //       this.dealArrayValue = [...this.filterDataDefaultClone.deal];
+    //       this.createdObject.deal.value = value;
+    //     } else if (!value && (this.propObjectData && this.propObjectData.deal)) {
+    //       let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
+    //       this.dealArrayValue = objectDealArrayCopy.map(
+    //         item => {
+    //           if (item.slug === this.propObjectData.deal) {
+    //             item.checked = true;
+    //             this.createdObject.deal.value = item;
+    //           }
+    //           return item;
+    //         }
+    //       )
+    //     }
+    //     if (this.createdObject.deal.value.slug === 'buy') {
+    //       this.createdObject.rentType.required = false;
+    //       this.createdObject.deposit.required = false;
+    //     } else if (this.createdObject.deal.value.slug === 'rent') {
+    //       this.createdObject.rentType.required = true;
+    //       this.createdObject.deposit.required = true;
+    //     }
+    //   }
+    // },
     objectPrice: {
       cache: false,
       get() {
@@ -1692,7 +1722,7 @@ export default {
     rentTypeComputed() {
       let resultArray;
       const appRentTypeArrayCopy = [...this.filterDataDefaultClone.rentType];
-      console.log('this.propObjectData.rentType ::', this.propObjectData.rentType);
+      // console.log('this.propObjectData.rentType ::', this.propObjectData.rentType);
       if (this.propObjectData.rentType) {
         resultArray = appRentTypeArrayCopy.map(
           item => {
@@ -1756,16 +1786,17 @@ export default {
         }
 
         // Deal type
-        let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
-        this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.deal) {
-              item.checked = true;
-              this.createdObject.deal.value = item;
-            }
-            return item;
-          }
-        )
+        // let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
+        // this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
+        //   item => {
+        //     if (item.slug === this.propObjectData.deal) {
+        //       item.checked = true;
+        //       this.dealTypeComputed = item;
+        //       this.createdObject.deal.value = item;
+        //     }
+        //     return item;
+        //   }
+        // )
 
         // Object address
         this.currentAddress = this.propObjectData.addressName;
@@ -2357,7 +2388,7 @@ export default {
     }
   },
   async mounted() {
-    console.log('mounted ::');
+    // console.log('objectDataSelected ::', this.objectDataSelected);
     await loadYmap({
       debug: true
     });

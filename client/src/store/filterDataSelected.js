@@ -70,6 +70,8 @@ const filterDataSelected = {
     view: null,
     area: null,
     distance: null,
+    floor: null,
+    floorAll: null,
   },
 };
 
