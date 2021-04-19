@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
 
     <div
       ref="area"
@@ -227,11 +227,10 @@
       :propDefaultValue="propDefaultValue"
     />
 
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
 import radioButtons from '@cmp/common/radioButtons.vue';
@@ -241,7 +240,6 @@ import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 export default {
   name: 'addObjectRoom',
   components: {
-    Fragment,
     multiselect,
     radioButtons,
     inputWithUnit,
@@ -369,6 +367,7 @@ export default {
       }
       return resultArray;
     },
+    // Object area of room
     areaOfRoom() {
       this.propCreatedObjectRoom.area.value = +this.propDefaultValue.roomArea
       return +this.propDefaultValue.roomArea;

@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
 
     <div
       ref="type"
@@ -377,11 +377,10 @@
       :propDefaultValue="propDefaultValue"
     />
 
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
 import switcher from '@cmp/common/switcher.vue';
@@ -393,7 +392,6 @@ import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 export default {
   name: 'addObjectApp',
   components: {
-    Fragment,
     switcher,
     checkboxes,
     multiselect,
