@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
 
     <div
       ref="type"
@@ -307,11 +307,10 @@
       :propDefaultValue="propDefaultValue"
     />
 
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, mapGetters, store, commit } from 'vuex';
 import radioButtons from '@cmp/common/radioButtons.vue';
@@ -321,7 +320,6 @@ import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 export default {
   name: 'addObjectHouse',
   components: {
-    Fragment,
     multiselect,
     radioButtons,
     inputWithUnit,

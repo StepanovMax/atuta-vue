@@ -55,8 +55,8 @@
               radioButtonsView="wrapAddObject"
               radioButtonsId="objectTypeAddObject"
               :propErrorClass="errorsMain.includes('object')"
-              :items="filterDataDefaultClone.object"
-              :value.sync="createdObject.object.value"
+              :items="objectType"
+              :value.sync="objectTypeValue"
               @change.native="clickOnMainFields()"
             />
             <p
@@ -224,9 +224,7 @@
       <div
         ref="district"
         class="form__row"
-        v-if="
-          objectTypeAndDealTypeIsSelected
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
       >
         <div class="form__row form__row_block-width form__row_block-width-third">
           <div class="form__block-width form__block-width-third">
@@ -269,8 +267,7 @@
       <addObjectApp
         ref="app"
         v-if="
-          createdObject.deal.value
-          && objectTypeAndDealTypeIsSelected
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'app'
         "
         :propCreatedObject="createdObject"
@@ -282,8 +279,7 @@
       <addObjectHouse
         ref="house"
         v-if="
-          createdObject.deal.value
-          && objectTypeAndDealTypeIsSelected
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'house'
         "
         :propCreatedObject="createdObject"
@@ -294,8 +290,7 @@
       <addObjectRoom
         ref="room"
         v-if="
-          createdObject.deal.value
-          && createdObject.object.value
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'room'
         "
         :propCreatedObject="createdObject"
@@ -306,8 +301,7 @@
       <addObjectGarage
         ref="garage"
         v-if="
-          createdObject.deal.value
-          && createdObject.object.value
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'garage'
         "
         :propCreatedObject="createdObject"
@@ -318,8 +312,7 @@
       <addObjectSector
         ref="sector"
         v-if="
-          createdObject.deal.value
-          && createdObject.object.value
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'sector'
         "
         :propCreatedObject="createdObject"
@@ -330,8 +323,7 @@
       <addObjectCommercial
         ref="commercial"
         v-if="
-          createdObject.deal.value
-          && createdObject.object.value
+          objectTypeAndDealTypeIsSelected
           && createdObject.object.value.slug === 'commercial'
         "
         :propCreatedObject="createdObject"
@@ -340,10 +332,7 @@
       />
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-third">
@@ -376,10 +365,7 @@
       </div>
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-third">
@@ -409,10 +395,7 @@
       </div>
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-third">
@@ -445,10 +428,7 @@
       </div>
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-half">
@@ -498,10 +478,7 @@
       </div>
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-half">
@@ -539,9 +516,8 @@
 
       <div
         v-if="
-          createdObject.deal.value
+          objectTypeAndDealTypeIsSelected
           && createdObject.deal.value.slug === 'rent'
-          && createdObject.object.value
           && (
             createdObject.object.value.slug === 'app'
             || createdObject.object.value.slug === 'room'
@@ -574,10 +550,7 @@
       </div>
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <h3 class="
@@ -674,10 +647,7 @@
 
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width">
@@ -706,10 +676,7 @@
 
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width">
@@ -733,10 +700,7 @@
 
 
       <div
-        v-if="
-          createdObject.deal.value
-          && createdObject.object.value
-        "
+        v-if="objectTypeAndDealTypeIsSelected"
         class="form__row"
       >
         <div class="form__row form__row_block-width form__row_block-width-third">
@@ -1069,7 +1033,7 @@ export default {
   },
   watch: {
     blobImage(value) {
-      console.log('blobImage ::', value);
+      // console.log('blobImage ::', value);
       if (value) {
         let newArray = [];
         value.forEach(
@@ -1079,11 +1043,11 @@ export default {
           }
         );
         this.createdObject.photoGallery.value = newArray;
-        this.createdObject.photoGallery.value.forEach(
-          item => {
-            console.log('>> item ::', item.url);
-          }
-        );
+        // this.createdObject.photoGallery.value.forEach(
+        //   item => {
+        //     console.log('>> item ::', item.url);
+        //   }
+        // );
       }
     },
     currentAddress: {
@@ -1709,9 +1673,43 @@ export default {
       } else {
         resultArray = arrayCopy;
       }
-      console.log('resultArray ::', resultArray);
       return resultArray;
     },
+    objectType() {
+      let resultArray;
+      const appObjectTypeArrayCopy = [...this.filterDataDefaultClone.object];
+      if (this.propObjectData.objectTypeSlug) {
+        resultArray = appObjectTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.objectTypeSlug) {
+              console.log('item ::', item);
+              item.checked = true;
+              this.createdObject.object.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = appObjectTypeArrayCopy;
+      }
+      return resultArray;
+    },
+    objectTypeValue: {
+      cache: false,
+      get() {
+        return this.createdObject.object.value;
+      },
+      set(value) {
+        console.log('value ::', value);
+        if (value) {
+          this.createdObject.object.value = value;
+        } else {
+
+        }
+      }
+    }
   },
   created() {
     // console.log('userData ::', this.userData);
