@@ -29,8 +29,8 @@
             :class="{
               'multiselect_error': this.errors.includes('type')
             }"
-            v-model="typeOfSector"
-            :options="filterDataDefaultClone.sectorType"
+            v-model="propCreatedObjectSector.type.value"
+            :options="typeOfSector2"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -118,6 +118,7 @@
             propType="number"
             propUnit="meter"
             :value.sync="propCreatedObjectSector.facade.value"
+            :propValue="facadeOfSector"
           />
         </div>
       </div>
@@ -139,7 +140,7 @@
           </h3>
           <multiselect
             v-model="propCreatedObjectSector.distance.value"
-            :options="getDistanceArray"
+            :options="distanceOfSector"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -170,8 +171,8 @@
           <switcher
             class="add-object-page__switcher"
             switcherId="objectViewAddObject"
-            :items="filterDataDefaultClone.appOnlineShow"
-            :value.sync="propCreatedObjectSector.availabilityOfBuildings"
+            :items="presenceOfBuildingsOnTheSector"
+            :value.sync="propCreatedObjectSector.availabilityOfBuildings.value"
           />
         </div>
       </div>
@@ -237,13 +238,45 @@ export default {
     // Type of sector
     typeOfSector: {
       cache: false,
-      set(value) {
-        console.log('value ::', value);
-        this.sectorTypeValue = value;
-      },
       get() {
         return this.sectorTypeValue;
       },
+      set(value) {
+        console.log('value ::', value);
+        this.sectorTypeValue = value;
+        this.propCreatedObjectSector.type.value = value;
+      },
+    },
+    typeOfSector2() {
+      let resultArray;
+      const objectSectorTypeArrayCopy = [...this.filterDataDefaultClone.sectorType];
+      console.log('this.propDefaultValue ::', this.propDefaultValue);
+      if (this.propDefaultValue.sectorTypeSlug) {
+        resultArray = objectSectorTypeArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.sectorTypeSlug) {
+              item.checked = true;
+              this.propCreatedObjectSector.type.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectSectorTypeArrayCopy;
+      }
+      return resultArray;
+    },
+    // Type of sector
+    distanceOfSector() {
+      if (this.propDefaultValue.distanceSlug && this.propDefaultValue.distanceLabel) {
+        this.propCreatedObjectSector.distance.value = {
+          slug: this.propDefaultValue.distanceSlug,
+          label: this.propDefaultValue.distanceLabel,
+        };
+      }
+      return this.getDistanceArray;
     },
     // Area of sector
     areaOfSector() {
@@ -251,6 +284,45 @@ export default {
         this.propCreatedObjectSector.area.value = this.propDefaultValue.sectorArea;
       }
       return +this.propDefaultValue.sectorArea;
+    },
+    // Facade of sector
+    facadeOfSector() {
+      if (this.propDefaultValue && this.propDefaultValue.sectorFacade) {
+        this.propCreatedObjectSector.facade.value = this.propDefaultValue.sectorFacade;
+      }
+      return +this.propDefaultValue.sectorFacade;
+    },
+    // Distance of sector
+    distanceOfSector() {
+      if (this.propDefaultValue.distanceSlug && this.propDefaultValue.distanceLabel) {
+        this.propCreatedObjectSector.distance.value = {
+          slug: this.propDefaultValue.distanceSlug,
+          label: this.propDefaultValue.distanceLabel,
+        };
+      }
+      return this.getDistanceArray;
+    },
+    // Presence of buildings on the sector
+    presenceOfBuildingsOnTheSector() {
+      console.log('this.propCreatedObjectSector ::', this.propCreatedObjectSector);
+      let resultArray;
+      const objectSectorPresenceOfBuildingsArrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
+      if (this.propDefaultValue.sectorAvailabilityOfBuildings) {
+        resultArray = objectSectorPresenceOfBuildingsArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.sectorAvailabilityOfBuildings) {
+              item.checked = true;
+              this.propCreatedObjectSector.availabilityOfBuildings.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectSectorPresenceOfBuildingsArrayCopy;
+      }
+      return resultArray;
     },
   },
   watch: {

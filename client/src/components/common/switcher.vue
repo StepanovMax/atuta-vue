@@ -81,7 +81,8 @@ export default {
   computed: {
     dataItemsChecked() {
       let itemsCopyArray = [...this.items];
-      const array = itemsCopyArray.map(
+      let array = [];
+      array = itemsCopyArray.map(
         item => {
           if (!item.checked) {
             item.checked = false;
@@ -101,17 +102,19 @@ export default {
     updateValue(data) {
       this.$emit('update:value', data);
     },
-  },
-  mounted() {
-    [...this.items].forEach(
-      item => {
-        if (item.hasOwnProperty('checked')) {
+    sendCheckedItemToTheParentValue() {
+      const arrayItems = [...this.items];
+      arrayItems.forEach(
+        item => {
           if (item.checked === true) {
             this.updateValue(item)
           }
         }
-      }
-    );
+      );
+    },
+  },
+  mounted() {
+    this.sendCheckedItemToTheParentValue();
   },
 };
 </script>

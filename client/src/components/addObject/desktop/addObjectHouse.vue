@@ -427,7 +427,7 @@ export default {
           }
         )
       } else {
-        resultArray = objectHouseTypesArrayCopy;
+        resultArray = objectHouseWallArrayCopy;
       }
       return resultArray;
     },
