@@ -244,6 +244,7 @@ export default {
                 function (blob) {
                   vm.filesArray[index].object.url = URL.createObjectURL(blob);
                   vm.filesArray[index].blob = blob;
+                  // console.log('vm.filesArray ::', vm.filesArray);
                   vm.$emit('update:value', vm.filesArray);
                   URL.revokeObjectURL(blob);
                 },

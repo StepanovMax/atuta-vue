@@ -256,7 +256,7 @@ export default {
     },
   },
   mounted() {
-    console.log('>> propDefaultValue comfort ::', this.propDefaultValue);
+    // console.log('>> propDefaultValue comfort ::', this.propDefaultValue);
   },
 };
 </script>

@@ -368,7 +368,7 @@
             <switcher
               class="add-object-page__switcher"
               switcherId="onlineShowAddObject"
-              :items="filterDataDefaultClone.appOnlineShow"
+              :items="onlineShowOfObject"
               :value.sync="createdObject.onlineShow.value"
             />
           </div>
@@ -1068,16 +1068,22 @@ export default {
     }
   },
   watch: {
-    'blobImage'(value) {
-      // console.log('value ::', value);
+    blobImage(value) {
+      console.log('blobImage ::', value);
       if (value) {
         let newArray = [];
         value.forEach(
           item => {
+            // console.log('item.object ::', item.object);
             newArray.push(item.object);
           }
         );
         this.createdObject.photoGallery.value = newArray;
+        this.createdObject.photoGallery.value.forEach(
+          item => {
+            console.log('>> item ::', item.url);
+          }
+        );
       }
     },
     currentAddress: {
@@ -1223,21 +1229,6 @@ export default {
       'filterDataSelected',
       'federalRegionsAlphabetical',
     ]),
-    // currentAddress: {
-    //   cache: false,
-    //   get() {
-    //     // alert('get currentAddress');
-    //     return this.currentAddressValue;
-    //   },
-    //   set(value) {
-    //     this.onInputType();
-    //     if (value === '') {
-    //       this.createdObject.address.value = null;
-    //       this.createdObject.address.coords = null;
-    //     }
-    //     this.currentAddressValue = value;
-    //   }
-    // },
     pageTitle() {
       if (this.isEditObjectPage) {
         return 'Редактировать';
@@ -1289,53 +1280,6 @@ export default {
       // }
       return dealArray;
     },
-    dealVModel: {
-      cache: false,
-      get() {
-        return this.createdObject.deal.value;
-      },
-      set(value) {
-        this.createdObject.deal.value = value;
-        if (this.createdObject.deal.value.slug === 'buy') {
-          this.createdObject.rentType.required = false;
-          this.createdObject.deposit.required = false;
-        } else if (this.createdObject.deal.value.slug === 'rent') {
-          this.createdObject.rentType.required = true;
-          this.createdObject.deposit.required = true;
-        }
-      }
-    },
-    // dealTypeComputed: {
-    //   cache: false,
-    //   get() {
-    //     return this.dealArrayValue;
-    //   },
-    //   set(value) {
-    //     console.log('value ::', value);
-    //     if (value) {
-    //       this.dealArrayValue = [...this.filterDataDefaultClone.deal];
-    //       this.createdObject.deal.value = value;
-    //     } else if (!value && (this.propObjectData && this.propObjectData.deal)) {
-    //       let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
-    //       this.dealArrayValue = objectDealArrayCopy.map(
-    //         item => {
-    //           if (item.slug === this.propObjectData.deal) {
-    //             item.checked = true;
-    //             this.createdObject.deal.value = item;
-    //           }
-    //           return item;
-    //         }
-    //       )
-    //     }
-    //     if (this.createdObject.deal.value.slug === 'buy') {
-    //       this.createdObject.rentType.required = false;
-    //       this.createdObject.deposit.required = false;
-    //     } else if (this.createdObject.deal.value.slug === 'rent') {
-    //       this.createdObject.rentType.required = true;
-    //       this.createdObject.deposit.required = true;
-    //     }
-    //   }
-    // },
     objectPrice: {
       cache: false,
       get() {
@@ -1726,7 +1670,6 @@ export default {
       if (this.propObjectData.rentType) {
         resultArray = appRentTypeArrayCopy.map(
           item => {
-            console.log('item ::', item.slug, this.propObjectData.rentType);
             if (item.slug === this.propObjectData.rentType) {
               item.checked = true;
               this.createdObject.rentType = item;
@@ -1739,6 +1682,34 @@ export default {
       } else {
         resultArray = appRentTypeArrayCopy;
       }
+      return resultArray;
+    },
+    onlineShowOfObject() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
+      if (this.propObjectData && this.propObjectData.onlineShow) {
+        let onlineShow = 'no';
+        if (this.propObjectData.onlineShow) {
+          onlineShow = 'yes';
+        }
+        resultArray = arrayCopy.map(
+          item => {
+            let newItem = {
+              label: item.label,
+              slug: item.slug,
+              checked: false,
+            };
+            if (item.slug === onlineShow) {
+              newItem.checked = true;
+              this.createdObject.onlineShow.value = item;
+            }
+            return newItem;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      console.log('resultArray ::', resultArray);
       return resultArray;
     },
   },
@@ -1768,7 +1739,6 @@ export default {
             return item;
           }
         )
-        // console.log('this.filterDataDefaultClone.object ::', this.filterDataDefaultClone.object);
 
         // Commercial object type
         if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
@@ -1784,19 +1754,6 @@ export default {
             }
           )
         }
-
-        // Deal type
-        // let objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
-        // this.filterDataDefaultClone.deal = objectDealArrayCopy.map(
-        //   item => {
-        //     if (item.slug === this.propObjectData.deal) {
-        //       item.checked = true;
-        //       this.dealTypeComputed = item;
-        //       this.createdObject.deal.value = item;
-        //     }
-        //     return item;
-        //   }
-        // )
 
         // Object address
         this.currentAddress = this.propObjectData.addressName;
