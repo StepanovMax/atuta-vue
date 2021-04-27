@@ -29,8 +29,8 @@
             :propErrorClass="errors.includes('type')"
             radioButtonsView="listVertical"
             radioButtonsId="garageAddObject"
-            :items="typeOfGarage"
-            :value.sync="typeVModel"
+            :items="garageTypeList"
+            :value.sync="garageTypeSelectedItem"
           />
           <p
             v-if="this.errors.includes('type')"
@@ -75,8 +75,8 @@
             key="garageTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="garageTypeAddObject"
-            :items="subTypeOfGarage"
-            :value.sync="propCreatedObjectGarage.garageType.value"
+            :items="garageSubTypeList"
+            :value.sync="garageGarageSubTypeValue"
           />
           <p
             v-if="this.errors.includes('garageType')"
@@ -121,8 +121,8 @@
             key="parkingTypeAddObject"
             radioButtonsView="listVertical"
             radioButtonsId="parkingTypeAddObject"
-            :items="subTypeOfGarage"
-            :value.sync="propCreatedObjectGarage.parkingType.value"
+            :items="garageSubTypeList"
+            :value.sync="garageParkingSubTypeValue"
           />
           <p
             v-if="this.errors.includes('parkingType')"
@@ -169,8 +169,8 @@
             <inputWithUnit
               propType="number"
               propUnit="meterSquare"
-              :value.sync="propCreatedObjectGarage.area.value"
-              :propValue="areaOfGarage"
+              :value.sync="garageAreaValue"
+              :propValue="propGarageAreaValue"
               :propErrorClass="{
                 'input_error': this.errors.includes('area')
               }"
@@ -215,8 +215,8 @@
             <inputWithUnit
               propType="number"
               propUnit="meterSquare"
-              :value.sync="propCreatedObjectGarage.area"
-              :propValue="+propDefaultValue.garageArea"
+              :value.sync="garageAreaValue"
+              :propValue="propGarageAreaValue"
               :propErrorClass="{
                 'input_error': this.errors.includes('area')
               }"
@@ -253,8 +253,8 @@
           </h3>
           <switcher
             switcherId="securityAddObject"
-            :items="securityOfGarage"
-            :value.sync="propCreatedObjectGarage.security"
+            :items="garageSecurityList"
+            :value.sync="garageSecuritySelectedItem"
           />
         </div>
       </div>
@@ -296,15 +296,20 @@ export default {
       },
       required: false,
     },
+    propIsObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
       errors: [],
-      propCreatedObjectGarage: this.propCreatedObject.garage,
     }
   },
   computed: {
     ...mapState([
+      'isEditObjectPage',
       'filterDataDefault',
     ]),
     ...mapGetters([
@@ -313,7 +318,37 @@ export default {
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
-    typeVModel: {
+    /*
+      Object "garage" type.
+    */
+    // Object "garage" type items with the selected element.
+    garageTypeList() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.garage];
+      // console.log('this.propCreatedObjectGarage.type ::', this.propCreatedObjectGarage.type);
+      if (
+        this.propCreatedObjectGarage.type.value
+        && this.propCreatedObjectGarage.type.value.slug
+      ) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.propCreatedObjectGarage.type.value.slug) {
+              item.checked = true;
+              // this.garageTypeSelectedItem = item;
+              // this.propCreatedObjectGarage.type.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    // Object "garage" type selected item value.
+    garageTypeSelectedItem: {
       cache: false,
       get() {
         return this.propCreatedObjectGarage.type.value;
@@ -335,47 +370,30 @@ export default {
           this.propCreatedObjectGarage.parkingType.required = true;
           this.propCreatedObjectGarage.garageType.required = false;
         }
+        // console.log('tt ::', value.slug, this.propDefaultValue.garageTypeSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.garageTypeSlug, 'type');
       }
-    },
-    // Object type garage
-    typeOfGarage() {
-      let resultArray;
-      const objectGarageTypeArrayCopy = [...this.filterDataDefaultClone.garage];
-      if (this.propDefaultValue.garageTypeSlug) {
-        resultArray = objectGarageTypeArrayCopy.map(
-          item => {
-            if (item.slug === this.propDefaultValue.garageTypeSlug) {
-              item.checked = true;
-              this.typeVModel = item;
-              // this.propCreatedObjectGarage.type.value = item;
-            } else {
-              item.checked = false;
-            }
-            return item;
-          }
-        )
-      } else {
-        resultArray = objectGarageTypeArrayCopy;
-      }
-      return resultArray;
     },
     // Object subtype of a garage
-    subTypeOfGarage() {
+    garageSubTypeList() {
       let resultArray;
-      let objectGarageSubTypeArrayCopy;
+      let subTypeArrayCopy;
       if (
-        this.propDefaultValue.garageTypeSlug
-        && this.propDefaultValue.garageTypeSlug === 'garage'
+        this.propCreatedObjectGarage.type.value
+        && this.propCreatedObjectGarage.type.value.slug === 'garage'
       ) {
-        objectGarageSubTypeArrayCopy = [...this.filterDataDefaultClone.garageTypes];
+        subTypeArrayCopy = [...this.filterDataDefaultClone.garageTypes];
       } else if (
-        this.propDefaultValue.garageTypeSlug
-        && this.propDefaultValue.garageTypeSlug === 'parking'
+        this.propCreatedObjectGarage.type.value
+        && this.propCreatedObjectGarage.type.value.slug === 'parking'
       ) {
-        objectGarageSubTypeArrayCopy = [...this.filterDataDefaultClone.parkingTypes];
+        subTypeArrayCopy = [...this.filterDataDefaultClone.parkingTypes];
       }
-      if (this.propDefaultValue.garageSubTypeSlug) {
-        resultArray = objectGarageSubTypeArrayCopy.map(
+      if (
+        this.propCreatedObjectGarage.type.value
+        && this.propCreatedObjectGarage.type.value.slug
+      ) {
+        resultArray = subTypeArrayCopy.map(
           item => {
             if (item.slug === this.propDefaultValue.garageSubTypeSlug) {
               item.checked = true;
@@ -392,13 +410,37 @@ export default {
           }
         )
       } else {
-        resultArray = objectGarageSubTypeArrayCopy;
+        resultArray = subTypeArrayCopy;
       }
-      console.log('resultArray ::', resultArray);
       return resultArray;
     },
-    // Garage security
-    securityOfGarage() {
+    garageGarageSubTypeValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectGarage.garageType.value;
+      },
+      set(value) {
+        console.log('ss ::', value.slug, this.propDefaultValue.garageSubTypeSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.garageSubTypeSlug, 'garageType');
+        this.propCreatedObjectGarage.garageType.value = value;
+      }
+    },
+    garageParkingSubTypeValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectGarage.parkingType.value;
+      },
+      set(value) {
+        // console.log('gg ::', value.slug, this.propDefaultValue.parkingSubTypeSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.parkingSubTypeSlug, 'parkingType');
+        this.propCreatedObjectGarage.parkingType.value = value;
+      }
+    },
+    /*
+      Object "garage" security.
+    */
+    // Object "garage" security items with the selected element.
+    garageSecurityList() {
       let resultArray;
       const objectGarageSecurityArrayCopy = [...this.filterDataDefaultClone.security];
       if (this.propDefaultValue.garageSecurity) {
@@ -417,12 +459,58 @@ export default {
       }
       return resultArray;
     },
-    // Garage area
-    areaOfGarage() {
-      if (this.propDefaultValue && this.propDefaultValue.garageArea) {
-        this.propCreatedObjectGarage.area.value = this.propDefaultValue.garageArea;
+    // Object "garage" security selected item value.
+    garageSecuritySelectedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectGarage.security.value;
+      },
+      set(value) {
+        console.log('aa', value.slug, this.propDefaultValue.garageSecurity);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.garageSecurity, 'security');
+        this.propCreatedObjectGarage.security.value = value;
       }
+    },
+    /*
+      Object "garage" area.
+    */
+    // Object "garage" area selected item value.
+    garageAreaValue: {
+      cache: false,
+      get() {
+        return +this.propCreatedObjectGarage.area.value;
+      },
+      set(value) {
+        this.compareDataForEdit(+value, +this.propDefaultValue.garageArea, 'area');
+        this.propCreatedObjectGarage.area.value = +value;
+      }
+    },
+    propGarageAreaValue() {
       return +this.propDefaultValue.garageArea;
+    },
+    // Object "garage" area items with the selected element.
+    propCreatedObjectGarage() {
+      // console.log('propCreatedObjectGarage ::');
+      let objectCopy = {...this.propCreatedObject.garage};
+      // If page is "Edit object" page.
+      if (this.isEditObjectPage) {
+        console.log('this.isEditObjectPage ::');
+
+        // Object "garage" type.
+        const newGarageType = {
+          slug: this.propDefaultValue.garageTypeSlug,
+          label: this.propDefaultValue.garageTypeLabel,
+        };
+        objectCopy.type.value = newGarageType;
+        // console.log('objectCopy ::', objectCopy);
+
+        // Object "garage" area.
+        // this.propCreatedObjectGarage.area.value = this.propDefaultValue.garageArea;
+
+      }
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(objectCopy);
+      return editedObject;
     },
   },
   watch: {
@@ -438,6 +526,71 @@ export default {
         console.log('value watch ::', value);
       },
       deep: true
+    },
+  },
+  methods: {
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key) {
+      if (value1 === value2) {
+        this.propCreatedObjectGarage[key].edited = false;
+      } else {
+        this.propCreatedObjectGarage[key].edited = true;
+        if (key === 'garageType') {
+          this.propCreatedObjectGarage['garageType'].edited = false;
+          this.propCreatedObjectGarage['parkingType'].edited = true;
+        } else if (key === 'parkingType') {
+          this.propCreatedObjectGarage['garageType'].edited = true;
+          this.propCreatedObjectGarage['parkingType'].edited = false;
+        }
+
+      }
+      this.checkFullObjectForEditedProperties(this.propCreatedObjectGarage);
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        // console.log('count ::', count, object[key].value.slug);
+        if (
+          key !== 'edited'
+          && Boolean(object[key].value)
+          && object[key].edited === true
+        ) {
+          count++;
+          console.log('count ::', count, object[key].value.slug);
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    objectIsEdited(flag) {
+      this.$emit('update:propIsObjectDataEdited', flag)
+    },
+    fillTheFormWithObjectData() {
+      // if (this.propDefaultValue.floor) {
+      //   this.propCreatedObjectGarage.floor.value = {
+      //     label: this.propDefaultValue.floor,
+      //     slug: this.propDefaultValue.floor,
+      //   };
+      // }
+      // if (this.propDefaultValue.floorAll) {
+      //   this.floorAll = {
+      //     label: this.propDefaultValue.floorAll,
+      //     slug: this.propDefaultValue.floorAll,
+      //   };
+      // }
     },
   },
   mounted() {

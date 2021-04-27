@@ -55,8 +55,8 @@
               radioButtonsView="wrapAddObject"
               radioButtonsId="objectTypeAddObject"
               :propErrorClass="errorsMain.includes('object')"
-              :items="objectType"
-              :value.sync="objectTypeValue"
+              :items="objectTypeItems"
+              :value.sync="objectTypeSelectedItem"
               @change.native="clickOnMainFields()"
             />
             <p
@@ -98,8 +98,8 @@
                   key="objectCommercialTypeAddObject"
                   radioButtonsView="wrapHalf"
                   radioButtonsId="objectCommercialTypeAddObject"
-                  :items="filterDataDefaultClone.commercialView"
-                  :value.sync="commerceSubTypeVModel"
+                  :items="commerceTypeItems"
+                  :value.sync="commerceTypeSelectedItem"
                 />
                 <p
                   v-if="this.errorsMain.includes('type')"
@@ -132,8 +132,8 @@
                 'switcher_error': this.errorsMain.includes('deal')
               }"
               switcherId="dealDesktop"
-              :items="dealArrayValue"
-              :value.sync="createdObject.deal.value"
+              :items="objectDealItems"
+              :value.sync="objectDealSelectedItem"
               @change.native="clickOnMainFields()"
             />
             <p
@@ -184,7 +184,7 @@
                   class="input-address__suggest-list-item"
                   v-for="(item, index) in suggestList"
                   :key="'key-' + index"
-                  @click="selectSuggestedAddress($event)"
+                  @click="selectSuggestedAddress($event.target.innerText)"
                 >
                   <p
                     class="input-address__suggest-list-item-text"
@@ -243,8 +243,8 @@
               :class="{
                 'multiselect_error': this.errorsMain.includes('district')
               }"
-              v-model="createdObject.district.value"
-              :options="localityDistricts"
+              v-model="objectDistrictSelectedItem"
+              :options="objectDistrictItems"
               :show-labels="false"
               :allow-empty="false"
               :close-on-select="true"
@@ -274,6 +274,7 @@
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
         :propObjectData="propObjectData"
+        :propIsObjectDataEdited.sync="isAppObjectDataEdited"
       />
 
       <addObjectHouse
@@ -285,6 +286,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propIsObjectDataEdited.sync="isHouseObjectDataEdited"
       />
 
       <addObjectRoom
@@ -296,6 +298,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propIsObjectDataEdited.sync="isRoomObjectDataEdited"
       />
 
       <addObjectGarage
@@ -307,6 +310,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propIsObjectDataEdited.sync="isGarageObjectDataEdited"
       />
 
       <addObjectSector
@@ -318,6 +322,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propIsObjectDataEdited.sync="isSectorObjectDataEdited"
       />
 
       <addObjectCommercial
@@ -329,6 +334,7 @@
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
         :propDefaultValue="propObjectData"
+        :propIsObjectDataEdited.sync="isCommercialObjectDataEdited"
       />
 
       <div
@@ -357,8 +363,8 @@
             <switcher
               class="add-object-page__switcher"
               switcherId="onlineShowAddObject"
-              :items="onlineShowOfObject"
-              :value.sync="createdObject.onlineShow.value"
+              :items="onlineShowItems"
+              :value.sync="onlineShowSelectedItem"
             />
           </div>
         </div>
@@ -420,7 +426,7 @@
               cols="30"
               rows="10"
               class="textarea"
-              v-model="createdObject.description.value"
+              v-model="descriptionValue"
             >
             </textarea>
           </div>
@@ -455,7 +461,7 @@
                   || userData.role.slug === 'builder'
                 )
               "
-              v-model="createdObject.phone.value"
+              v-model="phoneObjectValue"
               :options="userEmployees"
               :custom-label="labelWithPhone"
               :show-labels="false"
@@ -501,8 +507,8 @@
               :propErrorClass="errorsMain.includes('connectionWay')"
               checkboxId="connectionWayAddObject"
               checkboxType="listVertical"
-              :items="connectionWayComputed"
-              :value.sync="createdObject.connectionWay.value"
+              :items="connectionWayListComputed"
+              :value.sync="connectionWayValueComputed"
             />
             <p
               v-if="errorsMain.includes('connectionWay')"
@@ -545,7 +551,7 @@
           class="add-object-page__switcher"
           switcherId="rentTypeDesktop"
           :items="rentTypeComputed"
-          :value.sync="createdObject.rentType"
+          :value.sync="rentTypeValue"
         />
       </div>
 
@@ -594,7 +600,7 @@
               :propErrorClass="{
                 'input_error': this.errorsMain.includes('price')
               }"
-              :value.sync="createdObject.price.value"
+              :value.sync="priceObjectValue"
               :propValue="+propObjectData.price"
             />
             <p
@@ -632,7 +638,7 @@
               :propErrorClass="{
                 'input_error': this.errorsMain.includes('deposit')
               }"
-              :value.sync="createdObject.deposit.value"
+              :value.sync="depositObjectValue"
               :propValue="+propObjectData.deposit"
             />
             <p
@@ -798,7 +804,7 @@
             <button
               v-if="
                 isEditObjectPage
-                && false
+                && isObjectEdited
               "
               class="
                 btn
@@ -813,6 +819,7 @@
             <button
               v-if="
                 isEditObjectPage
+                && !isObjectEdited
               "
               class="
                 btn
@@ -990,7 +997,7 @@ export default {
         type: String,
         default: '',
       },
-      createdObject: {},
+      // createdObject: {},
       settings: {
         lang: 'ru_RU',
         version: '2.1',
@@ -1029,16 +1036,54 @@ export default {
       formIsFilled: false,
       formIsFilledArray: [],
       connectionWayData: [],
+      isObjectDataEdited: false,
+      isAppObjectDataEdited: false,
+      isHouseObjectDataEdited: false,
+      isRoomObjectDataEdited: false,
+      isGarageObjectDataEdited: false,
+      isSectorObjectDataEdited: false,
+      isCommercialObjectDataEdited: false,
     }
   },
   watch: {
+    suggestList(value) {
+      // console.log('suggestList', value);
+    },
+    isObjectEdited(value) {
+      console.log('isObjectEdited ::', value);
+    },
+    isAppObjectDataEdited(value) {
+      console.log('isAppObjectDataEdited ::', value);
+    },
+    isHouseObjectDataEdited(value) {
+      console.log('isHouseObjectDataEdited ::', value);
+    },
+    isRoomObjectDataEdited(value) {
+      console.log('isRoomObjectDataEdited ::', value);
+    },
+    isGarageObjectDataEdited(value) {
+      console.log('isGarageObjectDataEdited ::', value);
+    },
+    isSectorObjectDataEdited(value) {
+      console.log('isSectorObjectDataEdited ::', value);
+    },
+    isCommercialObjectDataEdited(value) {
+      console.log('isCommercialObjectDataEdited ::', value);
+    },
     blobImage(value) {
-      // console.log('blobImage ::', value);
       if (value) {
+        const newValue = value.map(
+          item => {
+            return item.object.name;
+          }
+        );
+        // console.log('blobImage ::', newValue === this.propObjectData.photoGallery);
+        if (this.isEditObjectPage) {
+          this.compareArrayForEdit(newValue, this.propObjectData.photoGallery, 'photoGallery');
+        }
         let newArray = [];
         value.forEach(
           item => {
-            // console.log('item.object ::', item.object);
             newArray.push(item.object);
           }
         );
@@ -1052,6 +1097,7 @@ export default {
     },
     currentAddress: {
       handler(value) {
+        // console.log('address ::', value);
         if (value === '') {
           this.createdObject.address.value = null;
           this.createdObject.address.coords = null;
@@ -1060,6 +1106,7 @@ export default {
         if (!this.addressSelected) {
           this.onInputType();
         }
+        this.compareDataForEdit(value, this.propObjectData.addressName, 'address');
       },
       deep: true
     },
@@ -1070,18 +1117,17 @@ export default {
         if (localityObject) {
           this.localityDistricts = localityObject.districts;
           this.townLabelIsHere = true;
-          // console.log('>>>', this.localityDistricts);
         }
       },
       deep: true
     },
     createdObject: {
       handler(value) {
-        // console.log('createdObject ::', this.userData);
+        // console.log('value ::');
         this.objectDataForSending(value);
         this.objectData = value;
         // TODO: Why?
-        this.createdObject = value;
+        // this.createdObject = value;
         // console.log('this.userData ::', this.userData);
         if (this.userData.role.slug === 'personal') {
           this.createdObject.phone.required = false;
@@ -1188,11 +1234,312 @@ export default {
       'userRoles',
       'isLoggedIn',
       'userEmployees',
+      'isEditObjectPage',
       'filterDataDefault',
       'objectDataSelected',
       'filterDataSelected',
       'federalRegionsAlphabetical',
     ]),
+    createdObject() {
+      // console.log('createdObject ::');
+      let createdObjectCopy;
+      // If page is "Edit object" page.
+      if (this.isEditObjectPage) {
+
+        createdObjectCopy = {...this.objectDataSelected};
+
+
+        // Object type
+        const newObjectType = {
+          slug: this.propObjectData.objectTypeSlug,
+          label: this.propObjectData.objectTypeLabel,
+        };
+        createdObjectCopy.object.value = newObjectType;
+
+        // Deal type
+        let selectedItem;
+        this.filterDataDefaultClone.buy.some(
+          item => {
+            if (item.slug === this.propObjectData.deal) {
+              selectedItem = item;
+            }
+          }
+        );
+        createdObjectCopy.deal.value = selectedItem;
+
+        // Commercial object type
+        const objectCommercialViewArrayCopy = [...this.filterDataDefaultClone.commercialView];
+        this.filterDataDefaultClone.commercialView = objectCommercialViewArrayCopy.map(
+          item => {
+            if (item.slug === this.propObjectData.commercialTypeSlug) {
+              item.checked = true;
+              createdObjectCopy.commercial.type.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        );
+
+        // Object online showing
+        const appOnlineShowArrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
+        this.filterDataDefaultClone.appOnlineShow = appOnlineShowArrayCopy.map(
+          item => {
+            if (item.slug === 'yes') {
+              item.checked = true;
+            }
+            return item;
+          }
+        );
+
+        // Object district
+        // console.log('this.objectDistrictSelectedItem ::', this.objectDistrictSelectedItem);
+        this.localityDistricts.map(
+          item => {
+            if (item.slug === this.propObjectData.districtSlug) {
+              createdObjectCopy.district.value = item;
+            }
+            return item;
+          }
+        );
+
+
+      // If page is "Add object" page.
+      } else {
+        createdObjectCopy = {...this.objectDataSelected};
+        createdObjectCopy.address.value = null;
+      }
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(createdObjectCopy);
+      return editedObject;
+    },
+    /*
+      Object type.
+    */
+    // Object type items with the selected element.
+    objectTypeItems() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.object];
+      if (
+        this.createdObject.object.value
+        && this.createdObject.object.value.slug
+      ) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.createdObject.object.value.slug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    // Object type selected item value.
+    objectTypeSelectedItem: {
+      cache: false,
+      get() {
+        return this.createdObject.object.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propObjectData.objectTypeSlug, 'object');
+        this.createdObject.object.value = value;
+      }
+    },
+    /*
+      Object deal.
+    */
+    // Deal type items with the selected element.
+    objectDealItems() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.deal];
+      if (
+        this.createdObject.deal.value
+        && this.createdObject.deal.value.slug
+      ) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.createdObject.deal.value.slug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      // Showing Rent or Buying fields.
+      this.divideBuyAndRent();
+      return resultArray;
+    },
+    // Object deal selected item value.
+    objectDealSelectedItem: {
+      cache: false,
+      get() {
+        return this.createdObject.deal.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propObjectData.deal, 'deal');
+        this.createdObject.deal.value = value;
+      }
+    },
+    /*
+      Object commerce type.
+    */
+    // Object commerce items with the selected element.
+    commerceTypeItems() {
+      // filterDataDefaultClone.commercialView
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.commercialView];
+      // console.log('commerceTypeItems ::', this.createdObject.commercial);
+      if (
+        this.createdObject.commercial.type.value
+        && this.createdObject.commercial.type.value.slug
+      ) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.createdObject.commercial.type.value.slug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    // Object commerce type selected item value.
+    commerceTypeSelectedItem: {
+      cache: false,
+      get() {
+        return this.createdObject.commercial.type.value;
+      },
+      set(value) {
+        this.createdObject.commercial.type.value = value;
+        this.sectorCommerceTypeDetectionWithFloor();
+        this.compareDataForEdit(value.slug, this.propObjectData.commercialTypeSlug, 'type', 'commercial');
+      }
+    },
+    /*
+      Object online showing.
+    */
+    // Object online showing items with the selected element.
+    onlineShowItems() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
+      if (this.propObjectData && this.propObjectData.onlineShow) {
+        let onlineShow = 'no';
+        if (this.propObjectData.onlineShow) {
+          onlineShow = 'yes';
+        }
+        resultArray = arrayCopy.map(
+          item => {
+            let newItem = {
+              label: item.label,
+              slug: item.slug,
+              checked: false,
+            };
+            if (item.slug === onlineShow) {
+              newItem.checked = true;
+              this.createdObject.onlineShow.value = item;
+            }
+            return newItem;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    // Object online show selected item value.
+    onlineShowSelectedItem: {
+      cache: false,
+      get() {
+        return this.createdObject.onlineShow.value;
+      },
+      set(value) {
+        let valueFlag;
+        if (value.slug === 'yes') {
+          valueFlag = true;
+        } else {
+          valueFlag = false;
+        }
+        this.compareDataForEdit(valueFlag, this.propObjectData.onlineShow, 'onlineShow');
+        this.createdObject.onlineShow.value = value;
+      }
+    },
+    /*
+      Object district.
+    */
+    // Object district items with the selected element.
+    objectDistrictSelectedItem: {
+      cache: false,
+      get() {
+        return this.createdObject.district.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propObjectData.districtSlug, 'district');
+        this.createdObject.district.value = value;
+      }
+    },
+    // Object district selected item value.
+    objectDistrictItems() {
+      let resultArray;
+      const arrayCopy = [...this.localityDistricts];
+      // console.log('arrayCopy ::', arrayCopy);
+      if (
+        this.createdObject.district.value
+        && this.createdObject.district.value.slug
+      ) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.createdObject.district.value.slug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    isObjectEdited() {
+      if (
+        this.isObjectDataEdited
+        || this.isAppObjectDataEdited
+        || this.isHouseObjectDataEdited
+        || this.isRoomObjectDataEdited
+        || this.isGarageObjectDataEdited
+        || this.isSectorObjectDataEdited
+        || this.isCommercialObjectDataEdited
+      ) {
+        return true;
+      } else if (
+        !this.isObjectDataEdited
+        && !this.isAppObjectDataEdited
+        && !this.isHouseObjectDataEdited
+        && !this.isRoomObjectDataEdited
+        && !this.isGarageObjectDataEdited
+        && !this.isSectorObjectDataEdited
+        && !this.isCommercialObjectDataEdited
+      ) {
+       return false;
+      } else {
+        return false;
+      }
+    },
     pageTitle() {
       if (this.isEditObjectPage) {
         return 'Редактировать';
@@ -1200,49 +1547,71 @@ export default {
         return 'Подать';
       }
     },
-    connectionWayComputed: {
+    phoneObjectValue: {
+      cache: false,
+      get() {
+        return this.createdObject.phone.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.phone, this.propObjectData.phone, 'phone');
+        this.createdObject.phone.value = value;
+      }
+    },
+    priceObjectValue: {
+      cache: false,
+      get() {
+        return this.createdObject.price.value;
+      },
+      set(value) {
+        const priceValue = value.replace(/\s/g, '');
+        this.compareDataForEdit(priceValue, this.propObjectData.price, 'price');
+        this.createdObject.price.value = value;
+      }
+    },
+    depositObjectValue: {
+      cache: false,
+      get() {
+        return this.createdObject.deposit.value;
+      },
+      set(value) {
+        const priceValue = value.replace(/\s/g, '');
+        this.compareDataForEdit(priceValue, this.propObjectData.deposit, 'deposit');
+        this.createdObject.deposit.value = value;
+      }
+    },
+    connectionWayListComputed: {
       cache: false,
       get() {
         return this.connectionWayData;
       },
       set(value) {
-        // console.log('>> value / computed ::', value, Boolean(value));
         this.connectionWayData = this.filterDataDefaultClone.connectionWay;
         if (value) {
           this.connectionWayData = value;
         }
       }
     },
-    isEditObjectPage() {
-      if(this.$route.name === 'editObject') {
-        return true;
-      }
-      return false;
-    },
-    dealArrayValue(value) {
-      let dealArray;
-      if (this.propObjectData && this.propObjectData.deal) {
-        const objectDealArrayCopy = [...this.filterDataDefaultClone.deal];
-        dealArray = objectDealArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.deal) {
-              item.checked = true;
-              this.createdObject.deal.value = item;
-            }
-            return item;
+    connectionWayValueComputed: {
+      cache: false,
+      get() {
+        return this.createdObject.connectionWay.value;
+      },
+      set(value) {
+        if (value) {
+          this.createdObject.connectionWay.value = value;
+        }
+        // Validation for edit page
+        const lengthOfConnectionWayArray = this.createdObject.connectionWay.value.length;
+        if (lengthOfConnectionWayArray === 2) {
+          this.compareDataForEdit(this.propObjectData.connectionWay, 'both', 'connectionWay');
+        } else if (lengthOfConnectionWayArray === 1) {
+          if (this.propObjectData.connectionWay === 'phone' || this.propObjectData.connectionWay === 'messages') {
+            this.objectIsEdited(false);
+          } else {
+            this.objectIsEdited(true);
           }
-        )
-      } else {
-        dealArray = [...this.filterDataDefaultClone.deal];
+        }
       }
-      // if (this.createdObject.deal.value.slug === 'buy') {
-      //   this.createdObject.rentType.required = false;
-      //   this.createdObject.deposit.required = false;
-      // } else if (this.createdObject.deal.value.slug === 'rent') {
-      //   this.createdObject.rentType.required = true;
-      //   this.createdObject.deposit.required = true;
-      // }
-      return dealArray;
     },
     objectPrice: {
       cache: false,
@@ -1292,33 +1661,6 @@ export default {
         && this.createdObject.deal.value.slug
       );
     },
-    commerceSubTypeVModel: {
-      cache: false,
-      get() {
-        return this.createdObject.commercial.type.value;
-      },
-      set(value) {
-        this.createdObject.commercial.type.value = value;
-        const indexFloor = this.formIsFilledArray.indexOf('floor');
-        const indexFloorAll = this.formIsFilledArray.indexOf('floorAll');
-        if (this.createdObject.commercial.type.value.slug === 'sector') {
-          // console.log('test', indexFloor, indexFloorAll);
-          if (indexFloor > -1) {
-            // console.log('test 1');
-            // this.formIsFilledArray.splice(indexFloor, 1);
-            this.createdObject.commercial.floor.required = false;
-          }
-          if (indexFloorAll > -1) {
-            // console.log('test 2');
-            // this.formIsFilledArray.splice(indexFloorAll, 1);
-            this.createdObject.commercial.floorAll.required = false;
-          }
-        } else {
-          this.createdObject.commercial.floor.required = true;
-          this.createdObject.commercial.floorAll.required = true;
-        }
-      }
-    },
     finalObjectData() {
       let data = {};
       if (this.changedObject) {
@@ -1359,13 +1701,15 @@ export default {
           data.photoGallery = this.createdObject.photoGallery.value;
         }
         if (this.changedObject.price && this.changedObject.price.value) {
-          data.price = this.createdObject.price.value;
+          const priceCopy = this.createdObject.price.value;
+          data.price = priceCopy.replace(/\s/g, '');
         }
         if (this.changedObject.tarif && this.changedObject.tarif.value) {
           data.tarif = this.createdObject.tarif.value.slug;
         }
         if (this.changedObject.deposit && this.changedObject.deposit.value) {
-          data.deposit = this.createdObject.deposit.value;
+          const depositCopy = this.createdObject.deposit.value;
+          data.deposit = depositCopy.replace(/\s/g, '');
         }
         if (this.changedObject.rentType && this.changedObject.rentType.value) {
           data.rentType = this.changedObject.rentType.value.slug;
@@ -1648,142 +1992,155 @@ export default {
       }
       return resultArray;
     },
-    onlineShowOfObject() {
-      let resultArray;
-      const arrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
-      if (this.propObjectData && this.propObjectData.onlineShow) {
-        let onlineShow = 'no';
-        if (this.propObjectData.onlineShow) {
-          onlineShow = 'yes';
-        }
-        resultArray = arrayCopy.map(
-          item => {
-            let newItem = {
-              label: item.label,
-              slug: item.slug,
-              checked: false,
-            };
-            if (item.slug === onlineShow) {
-              newItem.checked = true;
-              this.createdObject.onlineShow.value = item;
-            }
-            return newItem;
-          }
-        )
-      } else {
-        resultArray = arrayCopy;
-      }
-      return resultArray;
-    },
-    objectType() {
-      let resultArray;
-      const appObjectTypeArrayCopy = [...this.filterDataDefaultClone.object];
-      if (this.propObjectData.objectTypeSlug) {
-        resultArray = appObjectTypeArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.objectTypeSlug) {
-              console.log('item ::', item);
-              item.checked = true;
-              this.createdObject.object.value = item;
-            } else {
-              item.checked = false;
-            }
-            return item;
-          }
-        )
-      } else {
-        resultArray = appObjectTypeArrayCopy;
-      }
-      return resultArray;
-    },
-    objectTypeValue: {
+    rentTypeValue: {
       cache: false,
       get() {
-        return this.createdObject.object.value;
+        return this.createdObject.rentType;
       },
       set(value) {
-        console.log('value ::', value);
-        if (value) {
-          this.createdObject.object.value = value;
-        } else {
-
-        }
+        this.compareDataForEdit(value.slug, this.propObjectData.rentType, 'object');
+        this.createdObject.rentType = value;
       }
-    }
-  },
-  created() {
-    // console.log('userData ::', this.userData);
-    this.createdObject = JSON.parse(JSON.stringify(this.objectDataSelected));
-    this.createdObject.address.value = null;
-    const toDayDate = this.gConvertDate(new Date());
-    // this.createdObject.date = toDayDate;
-    // this.createdObject.date = new Date();
+    },
+    descriptionValue: {
+      cache: false,
+      get() {
+        return this.createdObject.description.value;
+      },
+      set(value) {
+        let newValue;
+        if (this.propObjectData.description === null) {
+          newValue = '';
+        } else {
+          newValue = this.propObjectData.description;
+        }
+        this.createdObject.description.value = value;
+        console.log('value, newValue ::', value, newValue);
+        this.compareDataForEdit(value, newValue, 'description');
+      }
+    },
   },
   methods: {
+    // Detect is current page is "edit objet page".
+    editObjectPageDetect() {
+      let result;
+      if(this.$route.name === 'editObject') {
+        result = true;
+      } else {
+        result = false;
+      }
+      this.$store.commit('updateIsEditObjectPageState', result);
+    },
+    // Sector commerce type detection(floor dependence).
+    sectorCommerceTypeDetectionWithFloor() {
+      const indexFloor = this.formIsFilledArray.indexOf('floor');
+      const indexFloorAll = this.formIsFilledArray.indexOf('floorAll');
+      if (this.createdObject.commercial.type.value.slug === 'sector') {
+        // console.log('test', indexFloor, indexFloorAll);
+        if (indexFloor > -1) {
+          // console.log('test 1');
+          // this.formIsFilledArray.splice(indexFloor, 1);
+          this.createdObject.commercial.floor.required = false;
+        }
+        if (indexFloorAll > -1) {
+          // console.log('test 2');
+          // this.formIsFilledArray.splice(indexFloorAll, 1);
+          this.createdObject.commercial.floorAll.required = false;
+        }
+      } else {
+        this.createdObject.commercial.floor.required = true;
+        this.createdObject.commercial.floorAll.required = true;
+      }
+    },
+    // Showing Rent or Buying fields.
+    divideBuyAndRent() {
+      if (
+        this.createdObject.deal
+        && this.createdObject.deal.value
+      ) {
+        if (this.createdObject.deal.value.slug === 'buy') {
+          this.createdObject.rentType.required = false;
+          this.createdObject.deposit.required = false;
+        } else if (this.createdObject.deal.value.slug === 'rent') {
+          this.createdObject.rentType.required = true;
+          this.createdObject.deposit.required = true;
+        }
+      }
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        if (object[key].edited === true) {
+          count++;
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key, type) {
+      // console.log('ch ::', value1, value2);
+      if (!type) {
+        if (value1 === value2) {
+          this.createdObject[key].edited = false;
+        } else {
+          this.createdObject[key].edited = true;
+        }
+        this.checkFullObjectForEditedProperties(this.createdObject);
+      } else if (type === 'commercial') {
+        if (value1 === value2) {
+          this.createdObject.commercial[key].edited = false;
+        } else {
+          this.createdObject.commercial[key].edited = true;
+        }
+        this.checkFullObjectForEditedProperties(this.createdObject.commercial);
+      }
+    },
+    compareArrayForEdit(array1, array2, key) {
+      const length1 = array1.length;
+      const length2 = array2.length;
+      let flagEqual = true;
+      if (length1 === length2) {
+        for (let i = 0; i <= length1; i++) {
+          if (array1[i] !== array2[i]) {
+            flagEqual = false;
+          }
+        }
+        if (!flagEqual) {
+          this.createdObject[key].edited = true;
+        } else {
+          this.createdObject[key].edited = false;
+        }
+      } else {
+        this.createdObject[key].edited = true;
+      }
+      this.checkFullObjectForEditedProperties(this.createdObject);
+    },
+    objectIsEdited(flag) {
+      this.isObjectDataEdited = flag;
+    },
     async fillTheFormWithObjectData() {
       let isObjectDataEmpty;
       if (this.propObjectData) {
         isObjectDataEmpty = this.isObjectEmpty(this.propObjectData);
       }
       if (!isObjectDataEmpty) {
-        // Object type
-        let objectTypeArrayCopy = [...this.filterDataDefaultClone.object];
-        this.filterDataDefaultClone.object = objectTypeArrayCopy.map(
-          item => {
-            if (item.slug === this.propObjectData.objectTypeSlug) {
-              item.checked = true;
-              this.createdObject.object.value = item;
-            }
-            return item;
-          }
-        )
-
-        // Commercial object type
-        if (this.createdObject.object.value && this.createdObject.object.value.slug === 'commercial') {
-          let objectCommercialViewArrayCopy = [...this.filterDataDefaultClone.commercialView];
-          this.filterDataDefaultClone.commercialView = objectCommercialViewArrayCopy.map(
-            item => {
-              if (item.slug === this.propObjectData.commercialTypeSlug) {
-                item.checked = true;
-              } else {
-                item.checked = false;
-              }
-              return item;
-            }
-          )
-        }
 
         // Object address
-        this.currentAddress = this.propObjectData.addressName;
-        this.convertAddress(this.propObjectData.addressName);
-        const districtsAreHere = await this.getAddress(this.propObjectData.addressCoords);
-        this.createdObject.address.coords = this.propObjectData.addressCoords;
-        this.createdObject.address.value = this.propObjectData.addressName;
-        this.addressSelected = true;
-
-        // Object district
-        if (districtsAreHere) {
-          this.hideSuggestionsList();
-          this.localityDistricts.map(
-            item => {
-              if (item.slug === this.propObjectData.districtSlug) {
-                this.createdObject.district.value = item;
-              }
-            }
-          )
-        }
-        this.hideSuggestionsList();
-
-        // Object online showing
-        const appOnlineShowArrayCopy = this.filterDataDefaultClone.appOnlineShow;
-        this.filterDataDefaultClone.appOnlineShow = appOnlineShowArrayCopy.map(
-          item => {
-            if (item.slug === 'yes') {
-              item.checked = true;
-            }
-            return item;
-          }
-        )
+        this.selectSuggestedAddress(this.propObjectData.addressName);
 
         // Object photogallery
         this.photoGalleryArray = await Promise.all(
@@ -1830,7 +2187,7 @@ export default {
           connectionWayArray[0].checked = false;
           connectionWayArray[1].checked = true;
         }
-        this.connectionWayComputed = connectionWayArray;
+        this.connectionWayListComputed = connectionWayArray;
         this.createdObject.connectionWay.value = connectionWayArray;
 
         // Object price
@@ -1862,18 +2219,19 @@ export default {
     },
     objectDataForSending(value) {
       this.changedObject = JSON.parse(JSON.stringify(value));
-      if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
+      if (
+        this.changedObject.object
+        && this.changedObject.object.value
+        && this.changedObject.object.value.slug
+      ) {
         this.filterDataDefaultClone.object.forEach(
           item => {
-            // console.log('>> item', item.slug, this.changedObject.object.value.slug);
             if (item.slug !== this.changedObject.object.value.slug) {
               delete this.changedObject[item.slug];
             }
           }
         );
       }
-      // console.log('>> this 2', this.changedObject.object.value.slug);
-      // console.log('>> this 3', this.changedObject[this.changedObject.object.value.slug]);
     },
     createMetaTitle() {
       let part1;
@@ -2120,10 +2478,11 @@ export default {
       // console.log('   >>> hideSuggestionsList ::');
       this.suggestList = [];
     },
-    selectSuggestedAddress(event) {
-      this.currentAddress = event.target.innerText;
-      this.convertAddress(event.target.innerText);
-      this.createdObject.address.value = event.target.innerText;
+    selectSuggestedAddress(addressText) {
+      // console.log('addressText ::', addressText);
+      this.currentAddress = addressText;
+      this.convertAddress(addressText);
+      this.createdObject.address.value = addressText;
       this.createdObject.address.coords = this.coordsTaganrog;
       this.addressSelected = true;
       this.hideSuggestionsList();
@@ -2164,6 +2523,7 @@ export default {
     onInputType(event) {
       ymaps.suggest(this.currentAddress).then(
         res => {
+          // console.log('res', res);
           this.suggestList = res;
         },
         error => {
@@ -2225,7 +2585,6 @@ export default {
           // );
 
 
-          // this.currentAddress = selectedAddress;
           if (this.townLabel) {
             return true;
           } else {
@@ -2302,6 +2661,7 @@ export default {
         }
         delete data.photoGallery;
         formData.append('object', JSON.stringify(data));
+        console.log('finalObjectData ::', this.finalObjectData);
 
         const transport = axios.create({
           withCredentials: true
@@ -2312,25 +2672,41 @@ export default {
         )
           .then(
             response => {
+              console.log('response ::', response);
               return response.data;
             }
           )
             .catch(
               error => {
+                console.log('catch ::');
                 console.error('Error [Object creation] ::', error);
                 return false;
               }
             );
         if (objectDataResult) {
+          console.log('objectDataResult 1 ::');
           this.showSuccessMessageOnObjectCreating = true;
           this.showErrorMessageOnObjectCreating = false;
         } else {
+          console.log('objectDataResult 2 ::');
           this.showSuccessMessageOnObjectCreating = false;
           this.showErrorMessageOnObjectCreating = true;
         }
       } catch(error) {
         console.error('Something went wrong with object creation ::', error);
       }
+    },
+    convertRawDataToObject() {
+      const rawObjectData = {...this.propObjectData};
+      let resultObjectData = {...this.createdObject};
+      // Object
+      resultObjectData.object.value.label = rawObjectData.objectTypeLabel;
+      resultObjectData.object.value.slug = rawObjectData.objectTypeSlug;
+      // Deal
+      resultObjectData.deal.value.label = '';
+      resultObjectData.deal.value.slug = rawObjectData.deal;
+      console.log('resultObjectData ::', resultObjectData);
+      return resultObjectData;
     },
   },
   beforeMount() {
@@ -2343,17 +2719,17 @@ export default {
     }
   },
   async mounted() {
-    // console.log('objectDataSelected ::', this.objectDataSelected);
+    this.editObjectPageDetect();
+    // console.log('createdObject ::', this.createdObject);
+    // console.log('isObjectDataEdited ::', this.isObjectDataEdited, this.isAppObjectDataEdited);
     await loadYmap({
       debug: true
     });
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
     } else {
-      this.connectionWayComputed = [...this.filterDataDefaultClone.connectionWay];
+      this.connectionWayListComputed = [...this.filterDataDefaultClone.connectionWay];
     }
-    // const suggestView1 = ymaps.SuggestView('currentAddress');
-    // const suggestView = ymaps.SuggestView('suggestAddress', {results: 5}).events.add('select', handler.bind(event));
   }
 };
 </script>

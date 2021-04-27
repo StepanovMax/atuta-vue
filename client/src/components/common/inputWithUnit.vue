@@ -57,7 +57,7 @@ export default {
       },
       set(value) {
         this.formattedValue = this.gFormatPrice(value);
-        // this.$emit('update:value', value.replace(/\s/g, ''));
+        this.$emit('update:value', this.formattedValue);
       }
     },
   },
