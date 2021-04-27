@@ -4,6 +4,7 @@ import filterDataSelected from './filterDataSelected.js';
 import filterDataDefault from './filterDataDefault.js';
 
 const state = {
+  isEditObjectPage: false,
   objectsOnHome: null,
   userEmployees: null,
   routesHistory: [],

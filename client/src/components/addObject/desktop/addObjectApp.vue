@@ -22,7 +22,7 @@
             class="add-object-page__switcher"
             switcherId="typeAddObject"
             :items="filterDataDefaultClone.appTypes"
-            :value.sync="propCreatedObjectApp.type.value"
+            :value.sync="objectTypeValue"
           />
           <p
             v-if="this.errors.includes('type')"
@@ -56,7 +56,7 @@
             radioButtonsView="wrapHalf"
             radioButtonsId="appViewAddObject"
             :items="viewOfHouse"
-            :value.sync="propCreatedObjectApp.view.value"
+            :value.sync="viewOfHouseValue"
           />
           <p
             v-if="this.errors.includes('view')"
@@ -90,7 +90,7 @@
             :class="{
               'multiselect_error': this.errors.includes('roomsCount')
             }"
-            v-model="propCreatedObjectApp.roomsCount.value"
+            v-model="objectRoomsCountValue"
             :options="filterDataDefaultClone.appRooms"
             :show-labels="false"
             :allow-empty="false"
@@ -149,7 +149,7 @@
             :class="{
               'multiselect_error': this.errors.includes('floor')
             }"
-            v-model="propCreatedObjectApp.floor.value"
+            v-model="objectFloorValue"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -229,7 +229,7 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectApp.year.value"
+            v-model="objectYearOfBuildingValue"
             :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -417,6 +417,11 @@ export default {
       },
       required: false,
     },
+    propIsObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
@@ -426,7 +431,6 @@ export default {
       appAreaFullData: null,
       appAreaKitchenData: null,
       appAreaLivingData: null,
-      propCreatedObjectApp: this.propCreatedObject.app,
     }
   },
   computed: {
@@ -453,6 +457,7 @@ export default {
         return this.propCreatedObjectApp.floorAll.value;
       },
       set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floorAll, 'floorAll');
         // If a user select floorFull more than floorCurrent.
         if (this.propCreatedObjectApp.floor && value.slug < this.propCreatedObjectApp.floor.slug) {
           // Then floorCurrent will be a null.
@@ -493,6 +498,7 @@ export default {
         return this.appAreaFullData;
       },
       set(value) {
+        this.compareDataForEdit(value, this.propDefaultValue.appArea, 'area');
         this.appAreaFullData = this.validateNumbers(value);
         this.propCreatedObjectApp.area.value = this.appAreaFullData;
         this.validateArea();
@@ -504,6 +510,7 @@ export default {
         return this.appAreaKitchenData;
       },
       set(value) {
+        this.compareDataForEdit(value, this.propDefaultValue.appAreaKitchen, 'areaKitchen');
         this.appAreaKitchenData = this.validateNumbers(value);
         this.propCreatedObjectApp.areaKitchen.value = this.appAreaKitchenData;
         this.validateArea();
@@ -515,6 +522,8 @@ export default {
         return this.appAreaLivingData;
       },
       set(value) {
+        // console.log('value >>', value, this.propDefaultValue.appAreaLiving);
+        this.compareDataForEdit(value, this.propDefaultValue.appAreaLiving, 'areaLiving');
         if (value === '0') {
           this.errorsArea.push('appAreaLiving');
         } else {
@@ -546,6 +555,63 @@ export default {
       }
       return resultArray;
     },
+    viewOfHouseValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.view.value;
+      },
+      set(value) {
+        // console.log('== ', value.slug, this.propDefaultValue.appViewSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.appViewSlug, 'view');
+        this.propCreatedObjectApp.view.value = value;
+      }
+    },
+    objectTypeValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.type.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.appTypeSlug, 'type');
+        this.propCreatedObjectApp.type.value = value;
+      }
+    },
+    objectRoomsCountValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.roomsCount.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.roomsCountSlug, 'roomsCount');
+        this.propCreatedObjectApp.roomsCount.value = value;
+      }
+    },
+    objectFloorValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.floor.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
+        this.propCreatedObjectApp.floor.value = value;
+      }
+    },
+    objectYearOfBuildingValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.year.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.year, 'year');
+        this.propCreatedObjectApp.year.value = value;
+      }
+    },
+    propCreatedObjectApp() {
+      let appObjectCopy = {...this.propCreatedObject.app};
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(appObjectCopy);
+      return editedObject;
+    },
   },
   watch: {
     currentAddress: {
@@ -562,6 +628,41 @@ export default {
     },
   },
   methods: {
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key) {
+      if (value1 === value2) {
+        this.propCreatedObjectApp[key].edited = false;
+      } else {
+        this.propCreatedObjectApp[key].edited = true;
+      }
+      this.checkFullObjectForEditedProperties(this.propCreatedObjectApp);
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        if (object[key].edited === true) {
+          count++;
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    objectIsEdited(flag) {
+      this.$emit('update:propIsObjectDataEdited', flag)
+    },
     fillTheFormWithObjectData() {
       // Object subtype
       let objectSubtypeArrayCopy = [...this.filterDataDefaultClone.appTypes];

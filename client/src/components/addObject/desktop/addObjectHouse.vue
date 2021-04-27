@@ -23,7 +23,7 @@
             radioButtonsView="wrapHalf"
             radioButtonsId="objectViewAddObject"
             :items="typeOfHouse"
-            :value.sync="propCreatedObjectHouse.type.value"
+            :value.sync="typeOfHouseValue"
           />
           <p
             v-if="this.errors.includes('type')"
@@ -56,7 +56,7 @@
             :class="{
               'multiselect_error': this.errors.includes('roomsCount')
             }"
-            v-model="propCreatedObjectHouse.roomsCount.value"
+            v-model="roomsCountValue"
             :options="filterDataDefaultClone.houseRoomsCount"
             :show-labels="false"
             :allow-empty="false"
@@ -92,7 +92,7 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectHouse.year.value"
+            v-model="houseYearValue"
             :options="houseYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -122,7 +122,7 @@
             </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.wall.value"
+            v-model="houseWallMaterialValue"
             :options="houseWallMaterial"
             :show-labels="false"
             :allow-empty="false"
@@ -175,8 +175,8 @@
             <inputWithUnit
               propType="number"
               propUnit="meterSquare"
-              :value.sync="propCreatedObjectHouse.areaHouse.value"
-              :propValue="livingAreaOfHouse"
+              :value.sync="areaOfHouseValue"
+              :propValue="areaOfHouse"
               :propErrorClass="{
                 'input_error': this.errors.includes('areaHouse')
               }"
@@ -210,7 +210,7 @@
           <inputWithUnit
             propType="number"
             propUnit="acr"
-            :value.sync="propCreatedObjectHouse.areaLand.value"
+            :value.sync="landAreaValue"
             :propValue="landAreaOfHouse"
             :propErrorClass="{
               'input_error': this.errors.includes('areaLand')
@@ -283,7 +283,7 @@
             </span>
           </h3>
           <multiselect
-            v-model="propCreatedObjectHouse.distance.value"
+            v-model="distanceValue"
             :options="getDistanceArray"
             :show-labels="false"
             :allow-empty="false"
@@ -343,12 +343,16 @@ export default {
       },
       required: false,
     },
+    propIsObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
       errors: [],
       createdObject: {},
-      propCreatedObjectHouse: this.propCreatedObject.house,
     }
   },
   computed: {
@@ -387,6 +391,26 @@ export default {
       }
       return yearsArray.reverse();
     },
+    houseYearValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.year.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.year, 'year');
+        this.propCreatedObjectHouse.year.value = value;
+      }
+    },
+    roomsCountValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.roomsCount.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.roomsCountSlug, 'roomsCount');
+        this.propCreatedObjectHouse.roomsCount.value = value;
+      }
+    },
     // Object type
     typeOfHouse() {
       let resultArray;
@@ -407,6 +431,16 @@ export default {
         resultArray = objectHouseTypesArrayCopy;
       }
       return resultArray;
+    },
+    typeOfHouseValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.type.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.houseTypeSlug, 'type');
+        this.propCreatedObjectHouse.type.value = value;
+      }
     },
     // Object wall material
     houseWallMaterial() {
@@ -429,6 +463,16 @@ export default {
       }
       return resultArray;
     },
+    houseWallMaterialValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.wall.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.houseWallSlug, 'wall');
+        this.propCreatedObjectHouse.wall.value = value;
+      }
+    },
     // Object floor all
     floorAll: {
       cache: false,
@@ -436,13 +480,12 @@ export default {
         return this.propCreatedObjectHouse.floorAll.value;
       },
       set(value) {
-        console.log('value ::', value);
+        // console.log('value ::', value);
         // If a user select floorFull more than floorCurrent.
         if (this.propCreatedObjectHouse.floor && value.slug < this.propCreatedObjectHouse.floor.slug) {
           // Then floorCurrent will be a null.
           this.propCreatedObjectHouse.floor = null;
         }
-        // console.log('this.filterDataDefaultClone ::', this.filterDataDefaultClone);
         // All floors that bigger than selected floorAll value will be disabled.
         this.filterDataDefaultClone.appFloorAllListCurrent.forEach(
           item => {
@@ -455,6 +498,7 @@ export default {
             }
           }
         )
+        this.compareDataForEdit(+value.slug, +this.propDefaultValue.floorAll, 'floorAll');
         this.propCreatedObjectHouse.floorAll.value = value;
       }
     },
@@ -462,9 +506,45 @@ export default {
       this.propCreatedObjectHouse.areaLand.value = +this.propDefaultValue.houseAreaLand;
       return +this.propDefaultValue.houseAreaLand;
     },
-    livingAreaOfHouse() {
+    landAreaValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.areaLand.value;
+      },
+      set(value) {
+        this.compareDataForEdit(+value, +this.propDefaultValue.houseAreaLand, 'areaLand');
+        this.propCreatedObjectHouse.areaLand.value = value;
+      }
+    },
+    areaOfHouse() {
       this.propCreatedObjectHouse.areaHouse.value = +this.propDefaultValue.houseAreaHouse;
       return +this.propDefaultValue.houseAreaHouse;
+    },
+    areaOfHouseValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.areaHouse.value;
+      },
+      set(value) {
+        this.compareDataForEdit(+value, +this.propDefaultValue.houseAreaHouse, 'areaHouse');
+        this.propCreatedObjectHouse.areaHouse.value = value;
+      }
+    },
+    propCreatedObjectHouse() {
+      let houseObjectCopy = {...this.propCreatedObject.house};
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(houseObjectCopy);
+      return editedObject;
+    },
+    distanceValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.distance.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.distanceSlug, 'distance');
+        this.propCreatedObjectHouse.distance.value = value;
+      }
     },
   },
   watch: {
@@ -481,8 +561,50 @@ export default {
       },
       deep: true
     },
+    propIsObjectDataEdited() {
+      let houseObjectCopy = {...this.propCreatedObject.house};
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(houseObjectCopy);
+      return editedObject;
+    },
   },
   methods: {
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key) {
+      // console.log('methods >>', value1, value2);
+      if (value1 === value2) {
+        this.propCreatedObjectHouse[key].edited = false;
+      } else {
+        this.propCreatedObjectHouse[key].edited = true;
+      }
+      this.checkFullObjectForEditedProperties(this.propCreatedObjectHouse);
+    },
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        if (object[key].edited === true) {
+          count++;
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    objectIsEdited(flag) {
+      this.$emit('update:propIsObjectDataEdited', flag)
+    },
     fillTheFormWithObjectData() {
       this.filterDataDefaultClone.houseRoomsCount.map(
         item => {

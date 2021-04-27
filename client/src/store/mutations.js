@@ -1,4 +1,7 @@
 const mutations = {
+  updateIsEditObjectPageState(state, data) {
+    state.isEditObjectPage = data;
+  },
   updateObjectsOnHomeState(state, data) {
     state.objectsOnHome = data;
   },
