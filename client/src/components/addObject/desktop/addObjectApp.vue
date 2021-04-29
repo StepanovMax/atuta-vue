@@ -375,6 +375,7 @@
       "
       :propCreatedObjectComfort="propCreatedObject"
       :propDefaultValue="propDefaultValue"
+      :propIsComfortObjectDataEdited.sync="isComfortObjectDataEdited"
     />
 
   </div>
@@ -431,6 +432,7 @@ export default {
       appAreaFullData: null,
       appAreaKitchenData: null,
       appAreaLivingData: null,
+      isComfortObjectDataEdited: false,
     }
   },
   computed: {
@@ -614,6 +616,9 @@ export default {
     },
   },
   watch: {
+    isComfortObjectDataEdited(value) {
+      console.log('isComfortObjectDataEdited / watch ::', value);
+    },
     currentAddress: {
       handler(value) {
         this.createdObject.address = value;

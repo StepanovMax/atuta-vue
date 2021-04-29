@@ -150,6 +150,70 @@ router.post(
 );
 
 
+router.post(
+  '/update',
+  upload.fields([
+    { name: 'file', maxCount: 10 },
+    { name: 'object', maxCount: 1 },
+  ]),
+  async (req, res) => {
+    const object = JSON.parse(req.body.object);
+    const accessToken = req.cookies.accessToken;
+    let imagesArray = [];
+    imagesArrayCutted.forEach(
+      item => {
+        imagesArray.push(imagePath + item);
+      }
+    );
+    object.photoGallery = imagesArray;
+
+    let result;
+    try {
+      const foundedItem = await Item.findOne({
+        where: {
+          id: object.id
+        }
+      });
+      foundedItem.update(object).then(
+        self => {
+          console.log(' ');
+          console.log('   >> Item has been updated ::');
+          console.log(' ');
+          imagesArray = imagesArrayCutted = [];
+          // res.status(200).send(self);
+        }
+      );
+      console.log(' ');
+      // console.log('  >> id ::', object.id);
+      console.log(' ');
+      console.log('  >> object ::', object);
+      console.log(' ');
+      // console.log('  >> foundedItem ::', foundedItem.dataValues);
+      // result = await Item.create(object).then(
+      //   data => {
+      //     res.status(200).send({
+      //       result: true,
+      //       data: data,
+      //     });
+      //     imagesArray = imagesArrayCutted = [];
+      //     return data;
+      //   }
+      // );
+      res.status(200).send({
+        result: true,
+        data: 'Updated object',
+      });
+    } catch(error) {
+      console.log(' ');
+      console.log('catch ::', error);
+      console.log(' ');
+      res.status(200).send(false);
+    }
+
+  }
+);
+
+
 router.get(
   '/getAllByUserId',
   async (req, res) => {

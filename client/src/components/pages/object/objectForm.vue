@@ -779,7 +779,7 @@
                 btn_middle
                 add-object-page__btn
               "
-              @click="sendObject"
+              @click="sendObject(false)"
             >
               Разместить объявление
             </button>
@@ -812,6 +812,7 @@
                 btn_middle
                 add-object-page__btn
               "
+              @click="sendObject(true)"
             >
               Сохранить изменения
             </button>
@@ -1224,6 +1225,116 @@ export default {
         if (this.formIsFilled === true) {
           this.createMetaTitle();
         }
+      },
+      deep: true
+    },
+    'createdObject.comfortType': {
+      handler(value) {
+        console.log('value ::', value);
+        if (value && value.value) {
+          this.compareDataForEdit(value.value.slug, this.propObjectData.comfortType, 'comfortType');
+        }
+      },
+      deep: true
+    },
+    'createdObject.bedCount': {
+      handler(value) {
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortBedCount)) {
+          defaultValue = 0;
+        } else {
+          defaultValue = +this.propObjectData.comfortBedCount;
+        }
+        if (value && value.value) {
+          this.compareDataForEdit(+value.value.slug, defaultValue, 'bedCount');
+        }
+      },
+      deep: true
+    },
+    'createdObject.sleepingPlacesCount': {
+      handler(value) {
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortSleepingPlacesCount)) {
+          defaultValue = 0;
+        } else {
+          defaultValue = +this.propObjectData.comfortSleepingPlacesCount;
+        }
+        if (value && value.value) {
+          this.compareDataForEdit(+value.value.slug, defaultValue, 'sleepingPlacesCount');
+        }
+      },
+      deep: true
+    },
+    'createdObject.roomMultimedia': {
+      handler(value) {
+        let newValue;
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortRoomMultimedia)) {
+          newValue = [];
+        } else {
+          newValue = this.propObjectData.comfortRoomMultimedia;
+        }
+        if (!Boolean(value.value)) {
+          defaultValue = [];
+        } else {
+          defaultValue = value.value;
+        }
+        this.compareArrayForEdit(newValue, defaultValue, 'roomMultimedia');
+      },
+      deep: true
+    },
+    'createdObject.roomEquipment': {
+      handler(value) {
+        let newValue;
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortRoomEquipment)) {
+          newValue = [];
+        } else {
+          newValue = this.propObjectData.comfortRoomEquipment;
+        }
+        if (!Boolean(value.value)) {
+          defaultValue = [];
+        } else {
+          defaultValue = value.value;
+        }
+        this.compareArrayForEdit(newValue, defaultValue, 'roomEquipment');
+      },
+      deep: true
+    },
+    'createdObject.roomComfort': {
+      handler(value) {
+        let newValue;
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortRoomComfort)) {
+          newValue = [];
+        } else {
+          newValue = this.propObjectData.comfortRoomComfort;
+        }
+        if (!Boolean(value.value)) {
+          defaultValue = [];
+        } else {
+          defaultValue = value.value;
+        }
+        this.compareArrayForEdit(newValue, defaultValue, 'roomComfort');
+      },
+      deep: true
+    },
+    'createdObject.roomAdditional': {
+      handler(value) {
+        let newValue;
+        let defaultValue;
+        if (!Boolean(this.propObjectData.comfortRoomAdditional)) {
+          newValue = [];
+        } else {
+          newValue = this.propObjectData.comfortRoomAdditional;
+        }
+        if (!Boolean(value.value)) {
+          defaultValue = [];
+        } else {
+          defaultValue = value.value;
+        }
+        console.log('createdObject.roomAdditional ::', newValue, defaultValue);
+        this.compareArrayForEdit(newValue, defaultValue, 'roomAdditional');
       },
       deep: true
     },
@@ -1664,7 +1775,7 @@ export default {
     finalObjectData() {
       let data = {};
       if (this.changedObject) {
-        // console.log('this.userData ::', this.userData);
+        console.log('this.changedObject', this.changedObject);
         data.title = this.createdObject.title;
         data.metaTitle = this.createdObject.metaTitle;
         data.userId = this.userData.id;
@@ -1711,8 +1822,10 @@ export default {
           const depositCopy = this.createdObject.deposit.value;
           data.deposit = depositCopy.replace(/\s/g, '');
         }
-        if (this.changedObject.rentType && this.changedObject.rentType.value) {
-          data.rentType = this.changedObject.rentType.value.slug;
+        console.log('this.changedObject.rentType', this.changedObject.rentType);
+        if (this.changedObject.rentType && this.changedObject.rentType.slug) {
+          data.rentType = this.changedObject.rentType.slug;
+          console.log('data.rentType', data.rentType);
         }
         if (this.changedObject.connectionWay && this.changedObject.connectionWay.value) {
           if (this.createdObject.connectionWay.value.length === 2) {
@@ -2644,12 +2757,25 @@ export default {
         }
       );
     },
-    async sendObject() {
+    async sendObject(editFlag) {
       // Trying to send user info.
       try {
         this.showSuccessMessageOnObjectCreating = false;
         this.showErrorMessageOnObjectCreating = false;
         const formData = new FormData();
+
+        let url;
+        if (editFlag) {
+          this.finalObjectData.id = this.propObjectData.id;
+          console.log('  >> id ::', this.finalObjectData.id, this.finalObjectData);
+          url = process.env.host_api + '/object/update';
+        } else {
+          url = process.env.host_api + '/object/create';
+        }
+
+
+
+
         const data = JSON.parse(JSON.stringify(this.finalObjectData));
         // console.log('this.userData ::', this.userData);
         if (this.finalObjectData.photoGallery && this.finalObjectData.photoGallery.length) {
@@ -2667,7 +2793,7 @@ export default {
           withCredentials: true
         });
         const objectDataResult = await transport.post(
-          process.env.host_api + '/object/create',
+          url,
           formData
         )
           .then(
@@ -2684,11 +2810,9 @@ export default {
               }
             );
         if (objectDataResult) {
-          console.log('objectDataResult 1 ::');
           this.showSuccessMessageOnObjectCreating = true;
           this.showErrorMessageOnObjectCreating = false;
         } else {
-          console.log('objectDataResult 2 ::');
           this.showSuccessMessageOnObjectCreating = false;
           this.showErrorMessageOnObjectCreating = true;
         }
