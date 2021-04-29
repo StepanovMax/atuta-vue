@@ -496,7 +496,6 @@ export default {
         return this.propCreatedObjectCommercial.class.value;
       },
       set(value) {
-        console.log('yy ::', value.slug, this.propDefaultValue.commercialClass);
         this.compareDataForEdit(value.slug, this.propDefaultValue.commercialClass, 'class');
         this.propCreatedObjectCommercial.class.value = value;
       }
@@ -532,7 +531,6 @@ export default {
         return this.propCreatedObjectCommercial.tenant.value;
       },
       set(value) {
-        console.log('aa', value.slug, this.propDefaultValue.commercialTenant);
         this.compareDataForEdit(value.slug, this.propDefaultValue.commercialTenant, 'tenant');
         this.propCreatedObjectCommercial.tenant.value = value;
       }
@@ -641,7 +639,6 @@ export default {
           && object[key].edited === true
         ) {
           count++;
-          console.log('count ::', count, object[key].value.slug);
         }
         if (count > 0) {
           this.objectIsEdited(true);
