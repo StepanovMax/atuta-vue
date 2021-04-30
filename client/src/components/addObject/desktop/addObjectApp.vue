@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
 
     <div
       ref="type"
@@ -22,7 +22,7 @@
             class="add-object-page__switcher"
             switcherId="typeAddObject"
             :items="filterDataDefaultClone.appTypes"
-            :value.sync="propCreatedObjectApp.type.value"
+            :value.sync="objectTypeValue"
           />
           <p
             v-if="this.errors.includes('type')"
@@ -55,8 +55,8 @@
             :propErrorClass="errors.includes('view')"
             radioButtonsView="wrapHalf"
             radioButtonsId="appViewAddObject"
-            :items="filterDataDefaultClone.appView"
-            :value.sync="propCreatedObjectApp.view.value"
+            :items="viewOfHouse"
+            :value.sync="viewOfHouseValue"
           />
           <p
             v-if="this.errors.includes('view')"
@@ -90,7 +90,7 @@
             :class="{
               'multiselect_error': this.errors.includes('roomsCount')
             }"
-            v-model="propCreatedObjectApp.roomsCount.value"
+            v-model="objectRoomsCountValue"
             :options="filterDataDefaultClone.appRooms"
             :show-labels="false"
             :allow-empty="false"
@@ -149,7 +149,7 @@
             :class="{
               'multiselect_error': this.errors.includes('floor')
             }"
-            v-model="propCreatedObjectApp.floor.value"
+            v-model="objectFloorValue"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -229,7 +229,7 @@
       <div class="form__row form__row_block-width form__row_block-width-third">
         <div class="form__block-width form__block-width-third">
           <multiselect
-            v-model="propCreatedObjectApp.year.value"
+            v-model="objectYearOfBuildingValue"
             :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -279,6 +279,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaFull"
+            :propValue="+propDefaultValue.appArea"
             :propErrorClass="{
               'input_error': this.errors.includes('area') || this.errorsArea.includes('area')
             }"
@@ -312,6 +313,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaKitchen"
+            :propValue="+propDefaultValue.appAreaKitchen"
             :class="{
               'input_error': this.errorsArea.includes('appAreaKitchen')
             }"
@@ -339,6 +341,7 @@
             propType="number"
             propUnit="meterSquare"
             :value.sync="appAreaLiving"
+            :propValue="+propDefaultValue.appAreaLiving"
             :class="{
               'input_error': this.errorsArea.includes('appAreaLiving')
             }"
@@ -370,26 +373,26 @@
         propCreatedObject.deal.value
         && propCreatedObject.deal.value.slug === 'rent'
       "
-      :propCreatedObjectComfort="this.propCreatedObject"
+      :propCreatedObjectComfort="propCreatedObject"
+      :propDefaultValue="propDefaultValue"
+      :propIsComfortObjectDataEdited.sync="isComfortObjectDataEdited"
     />
 
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment';
 import multiselect from 'vue-multiselect';
 import { mapState, store, commit } from 'vuex';
-import switcher from '../../common/switcher.vue';
-import radioButtons from '../../common/radioButtons.vue';
-import checkboxes from '../../common/checkboxes.vue';
-import addObjectComfort from './addObjectComfort.vue';
-import inputWithUnit from '../../common/inputWithUnit.vue';
+import switcher from '@cmp/common/switcher.vue';
+import radioButtons from '@cmp/common/radioButtons.vue';
+import checkboxes from '@cmp/common/checkboxes.vue';
+import addObjectComfort from '@cmp/addObject/desktop/addObjectComfort.vue';
+import inputWithUnit from '@cmp/common/inputWithUnit.vue';
 
 export default {
   name: 'addObjectApp',
   components: {
-    Fragment,
     switcher,
     checkboxes,
     multiselect,
@@ -408,6 +411,18 @@ export default {
       default: [],
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
+    propIsObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
@@ -417,7 +432,7 @@ export default {
       appAreaFullData: null,
       appAreaKitchenData: null,
       appAreaLivingData: null,
-      propCreatedObjectApp: this.propCreatedObject.app,
+      isComfortObjectDataEdited: false,
     }
   },
   computed: {
@@ -444,6 +459,7 @@ export default {
         return this.propCreatedObjectApp.floorAll.value;
       },
       set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floorAll, 'floorAll');
         // If a user select floorFull more than floorCurrent.
         if (this.propCreatedObjectApp.floor && value.slug < this.propCreatedObjectApp.floor.slug) {
           // Then floorCurrent will be a null.
@@ -484,6 +500,7 @@ export default {
         return this.appAreaFullData;
       },
       set(value) {
+        this.compareDataForEdit(value, this.propDefaultValue.appArea, 'area');
         this.appAreaFullData = this.validateNumbers(value);
         this.propCreatedObjectApp.area.value = this.appAreaFullData;
         this.validateArea();
@@ -495,6 +512,7 @@ export default {
         return this.appAreaKitchenData;
       },
       set(value) {
+        this.compareDataForEdit(value, this.propDefaultValue.appAreaKitchen, 'areaKitchen');
         this.appAreaKitchenData = this.validateNumbers(value);
         this.propCreatedObjectApp.areaKitchen.value = this.appAreaKitchenData;
         this.validateArea();
@@ -506,6 +524,8 @@ export default {
         return this.appAreaLivingData;
       },
       set(value) {
+        // console.log('value >>', value, this.propDefaultValue.appAreaLiving);
+        this.compareDataForEdit(value, this.propDefaultValue.appAreaLiving, 'areaLiving');
         if (value === '0') {
           this.errorsArea.push('appAreaLiving');
         } else {
@@ -517,8 +537,88 @@ export default {
         this.validateArea();
       }
     },
+    // Object house view
+    viewOfHouse() {
+      let resultArray;
+      const objectAppViewArrayCopy = [...this.filterDataDefaultClone.appView];
+      if (this.propDefaultValue.appViewSlug) {
+        resultArray = objectAppViewArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.appViewSlug) {
+              item.checked = true;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectAppViewArrayCopy;
+      }
+      return resultArray;
+    },
+    viewOfHouseValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.view.value;
+      },
+      set(value) {
+        // console.log('== ', value.slug, this.propDefaultValue.appViewSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.appViewSlug, 'view');
+        this.propCreatedObjectApp.view.value = value;
+      }
+    },
+    objectTypeValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.type.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.appTypeSlug, 'type');
+        this.propCreatedObjectApp.type.value = value;
+      }
+    },
+    objectRoomsCountValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.roomsCount.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.roomsCountSlug, 'roomsCount');
+        this.propCreatedObjectApp.roomsCount.value = value;
+      }
+    },
+    objectFloorValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.floor.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
+        this.propCreatedObjectApp.floor.value = value;
+      }
+    },
+    objectYearOfBuildingValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.year.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.year, 'year');
+        this.propCreatedObjectApp.year.value = value;
+      }
+    },
+    propCreatedObjectApp() {
+      let appObjectCopy = {...this.propCreatedObject.app};
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(appObjectCopy);
+      return editedObject;
+    },
   },
   watch: {
+    isComfortObjectDataEdited(value) {
+      console.log('isComfortObjectDataEdited / watch ::', value);
+    },
     currentAddress: {
       handler(value) {
         this.createdObject.address = value;
@@ -533,6 +633,91 @@ export default {
     },
   },
   methods: {
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key) {
+      if (value1 === value2) {
+        this.propCreatedObjectApp[key].edited = false;
+      } else {
+        this.propCreatedObjectApp[key].edited = true;
+      }
+      this.checkFullObjectForEditedProperties(this.propCreatedObjectApp);
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        if (object[key].edited === true) {
+          count++;
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    objectIsEdited(flag) {
+      this.$emit('update:propIsObjectDataEdited', flag)
+    },
+    fillTheFormWithObjectData() {
+      // Object subtype
+      let objectSubtypeArrayCopy = [...this.filterDataDefaultClone.appTypes];
+      this.filterDataDefaultClone.appTypes = objectSubtypeArrayCopy.map(
+        item => {
+          if (item.slug === this.propDefaultValue.appTypeSlug) {
+            item.checked = true;
+          }
+          return item;
+        }
+      )
+      // console.log('this.filterDataDefaultClone.appTypes ::', this.filterDataDefaultClone.appTypes);
+      // Object rooms count
+      this.filterDataDefaultClone.appRooms.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.roomsCountSlug) {
+            // console.log('item.slug ::', item.slug);
+            this.propCreatedObjectApp.roomsCount.value = item;
+          }
+        }
+      )
+      // Object floor
+      this.filterDataDefaultClone.appFloorAllListCurrent.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floor) {
+            this.propCreatedObjectApp.floor.value = item;
+          }
+        }
+      )
+      // Object floor all
+      this.filterDataDefaultClone.appFloorAllList.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floorAll) {
+            this.floorAll = item;
+          }
+        }
+      )
+      // Object year
+      this.appYearsList.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.year) {
+            this.propCreatedObjectApp.year.value = item;
+          }
+        }
+      )
+    },
     validateNumbers(value) {
       const trimmedValue = +value.toString().replace(/[^0-9]/g, '');
       return trimmedValue;
@@ -574,7 +759,10 @@ export default {
     },
   },
   mounted() {
-    // console.log('app mounted');
+    // console.log('  >> propDefaultValue ::', this.propDefaultValue);
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
   },
 };
 </script>

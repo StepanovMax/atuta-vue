@@ -5,35 +5,35 @@ import store from './store';
 Vue.use(Router);
 
 // Pages
-import HomePage from '../components/homePage.vue';
-import answer from '../components/common/answer.vue';
-import helpPage from '../components/pages/helpPage.vue';
-import addObject from '../components/pages/addObject.vue';
-import styleGuide from '../components/pages/styleGuide.vue';
-import objectPage from '../components/pages/objectPage.vue';
-import profilePage from '../components/pages/profilePage.vue';
-import companyPage from '../components/pages/companyPage.vue';
-import companiesPage from '../components/pages/companiesPage.vue';
+import HomePage from '@cmp/homePage.vue';
+import answer from '@cmp/common/answer.vue';
+import helpPage from '@cmp/pages/helpPage.vue';
+import addObject from '@cmp/pages/object/addObject.vue';
+import editObject from '@cmp/pages/object/editObject.vue';
+import styleGuide from '@cmp/pages/styleGuide.vue';
+import objectPage from '@cmp/pages/objectPage.vue';
+import profilePage from '@cmp/pages/profilePage.vue';
+import companyPage from '@cmp/pages/companyPage.vue';
+import companiesPage from '@cmp/pages/companiesPage.vue';
 // Profile sub pages
-import pocketSubPage from '../components/pages/profile/pocketSubPage.vue';
-import pocketAddMoneySubPage from '../components/pages/profile/pocketAddMoneySubPage.vue';
-import pocketHistorySubPage from '../components/pages/profile/pocketHistorySubPage.vue';
-import test from '../components/pages/profile/test.vue';
-import pocketSubscriptionSubPage from '../components/pages/profile/pocketSubscriptionSubPage.vue';
-import settings from '../components/pages/profile/settings.vue';
-import dialogsSubPage from '../components/pages/profile/dialogsSubPage.vue';
-import dialogSubPageSingle from '../components/pages/profile/dialogSubPageSingle.vue';
-import myObjects from '../components/pages/profile/myObjects.vue';
-import favorites from '../components/pages/profile/favorites.vue';
+import pocketSubPage from '@cmp/pages/profile/pocketSubPage.vue';
+import pocketAddMoneySubPage from '@cmp/pages/profile/pocketAddMoneySubPage.vue';
+import pocketHistorySubPage from '@cmp/pages/profile/pocketHistorySubPage.vue';
+import test from '@cmp/pages/profile/test.vue';
+import pocketSubscriptionSubPage from '@cmp/pages/profile/pocketSubscriptionSubPage.vue';
+import settings from '@cmp/pages/profile/settings.vue';
+import dialogsSubPage from '@cmp/pages/profile/dialogsSubPage.vue';
+import dialogSubPageSingle from '@cmp/pages/profile/dialogSubPageSingle.vue';
+import myObjects from '@cmp/pages/profile/myObjects.vue';
+import favorites from '@cmp/pages/profile/favorites.vue';
 // Reg section
-import loginPage from '../components/pages/loginPage.vue';
-import forgotPasswordPage from '../components/pages/forgotPasswordPage.vue';
-import registrationPage from '../components/pages/registrationPage.vue';
-import verifyPage from '../components/pages/verifyPage.vue';
+import loginPage from '@cmp/pages/loginPage.vue';
+import forgotPasswordPage from '@cmp/pages/forgotPasswordPage.vue';
+import registrationPage from '@cmp/pages/registrationPage.vue';
+import verifyPage from '@cmp/pages/verifyPage.vue';
 // 404
-import notFoundComponent from '../components/pages/errors/notFoundComponent.vue';
-import userNotLoggedInComponent from '../components/pages/errors/userNotLoggedInComponent.vue';
-import state from './state';
+import notFoundComponent from '@cmp/pages/errors/notFoundComponent.vue';
+import userNotLoggedInComponent from '@cmp/pages/errors/userNotLoggedInComponent.vue';
 
 
 const router = new Router({
@@ -78,6 +78,14 @@ const router = new Router({
       component: addObject,
       meta: {
         title: 'Создать объект',
+      },
+    },
+    {
+      path: '/edit-object/:id',
+      name:'editObject',
+      component: editObject,
+      meta: {
+        title: 'Редактировать объект',
       },
     },
     {
@@ -228,7 +236,7 @@ const isTokenExpired = async from => {
     // -> Case (1) when the access token is needed to be updated,
     if (store.state.userData.expireDate < timestampNow) {
       try {
-        // const checkAuthPassed = await store.dispatch('checkAuth');
+        const checkAuthPassed = await store.dispatch('checkAuth');
         await store.dispatch('getEmployeeByUserID');
         if (!checkAuthPassed) {
           await store.dispatch('logout');
@@ -241,9 +249,11 @@ const isTokenExpired = async from => {
     }
   // If the store DOES NOT contain the user data, =>
   } else {
-    // The case when the 'FROM' attribute is empty will understand as page reloading.
+    // The case when the 'FROM' attribute is empty.
+    // It's very similar to the page reloading behavior.
     if (!from.name) {
-      // await store.dispatch('checkAuth');
+      // If the page is reloading we need to recheck user's authentication.
+      await store.dispatch('checkAuth');
     }
   }
 };

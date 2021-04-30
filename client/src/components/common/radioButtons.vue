@@ -80,11 +80,21 @@ export default {
   data() {
     return {
       picked: [],
-      dataItemsChecked: [...this.items].map(function(item) {
-        item.checked = false;
-        return item;
-      }),
     }
+  },
+  computed: {
+    dataItemsChecked() {
+      let itemsCopyArray = [...this.items];
+      const array = itemsCopyArray.map(
+        item => {
+          if (!item.checked) {
+            item.checked = false;
+          }
+          return item;
+        }
+      )
+      return array;
+    },
   },
   watch: {
     picked: {
@@ -100,6 +110,9 @@ export default {
       },
       deep: true
     },
+    items(value) {
+      // console.log('>> items / watch ::', value);
+    }
   },
   methods: {
     removeCheckedAttribute(checkedElement) {

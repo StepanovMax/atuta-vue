@@ -28,7 +28,8 @@
           <inputWithUnit
             propType="number"
             :propUnit="sectorUnit"
-            :value.sync="propCreatedObjectCommercial.area.value"
+            :value.sync="commercialAreaSeletedItem"
+            :propValue="commercialAreaPropValue"
             :propErrorClass="{
               'input_error': this.errors.includes('area')
             }"
@@ -74,6 +75,7 @@
             propType="number"
             propUnit="meter"
             :value.sync="propCreatedObjectCommercial.facade.value"
+            :propValue="facadeOfCommercial"
           />
         </div>
       </div>
@@ -108,8 +110,8 @@
             key="buildingTypeAddObject"
             radioButtonsView="listHorizontal"
             radioButtonsId="buildingTypeAddObject"
-            :items="filterDataDefaultClone.commercialClass"
-            :value.sync="propCreatedObjectCommercial.class.value"
+            :items="commercialClassItems"
+            :value.sync="commercialClassSeletedItem"
           />
           <p
             v-if="this.errors.includes('class')"
@@ -123,8 +125,14 @@
 
     <div
       v-if="
-        propCreatedObjectCommercial.type.value
-        && propCreatedObjectCommercial.type.value.slug !== 'sector'
+        (
+          propDefaultValue
+          && propDefaultValue.commercialTypeSlug !== 'sector'
+        )
+        || (
+          propCreatedObjectCommercial.type.value
+          && propCreatedObjectCommercial.type.value.slug !== 'sector'
+        )
       "
       class="form__row"
     >
@@ -156,7 +164,7 @@
             </span>
           </h4>
           <multiselect
-            v-model="propCreatedObjectCommercial.floor.value"
+            v-model="commercialFloorSelectedItem"
             :options="filterDataDefaultClone.appFloorAllListCurrent"
             :show-labels="false"
             :allow-empty="false"
@@ -222,8 +230,8 @@
           </h3>
           <switcher
             switcherId="tenantAddObject"
-            :items="filterDataDefaultClone.tenant"
-            :value.sync="propCreatedObjectCommercial.tenant.value"
+            :items="commercialTenantItems"
+            :value.sync="commercialTenantSelectedItem"
           />
         </div>
       </div>
@@ -252,7 +260,7 @@
             Год постройки
           </h3>
           <multiselect
-            v-model="propCreatedObjectCommercial.year"
+            v-model="commercialYearSelectedItem"
             :options="appYearsList"
             :show-labels="false"
             :allow-empty="false"
@@ -284,8 +292,8 @@
             Расстояние до города
           </h3>
           <multiselect
-            v-model="propCreatedObjectCommercial.distance"
-            :options="getDistanceArray"
+            v-model="commercialDistanceSelectedItem"
+            :options="commercialDistanceItems"
             :show-labels="false"
             :allow-empty="false"
             :close-on-select="true"
@@ -328,20 +336,42 @@ export default {
       default: [],
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: false,
+    },
+    propIsObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
       errors: [],
-      propCreatedObjectCommercial: this.propCreatedObject.commercial,
     }
   },
   computed: {
     ...mapState([
+      'isEditObjectPage',
       'filterDataDefault',
     ]),
     ...mapGetters([
       'getDistanceArray',
     ]),
+    commercialFloorSelectedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.floor.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
+        this.propCreatedObjectCommercial.floor.value = value;
+      }
+    },
     sectorUnit() {
       let sectorUnitSlug;
       if (
@@ -368,6 +398,7 @@ export default {
         return this.propCreatedObjectCommercial.floorAll.value;
       },
       set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floorAll, 'floorAll');
         // If a user select floorFull more than floorCurrent.
         if (this.propCreatedObjectCommercial.floor.value && value.slug < this.propCreatedObjectCommercial.floor.value.slug) {
           // Then floorCurrent will be a null.
@@ -402,6 +433,167 @@ export default {
       }
       return yearsArray.reverse()
     },
+    commercialYearSelectedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.year.value;
+      },
+      set(value) {
+        console.log('vv ::', value.slug, this.propDefaultValue.year);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.year, 'year');
+        this.propCreatedObjectCommercial.year.value = value;
+      }
+    },
+    /*
+      Object "commercial" area.
+    */
+    // Object "commercial" area property.
+    commercialAreaPropValue() {
+      if (this.propDefaultValue && this.propDefaultValue.commercialArea) {
+        this.propCreatedObjectCommercial.area.value = this.propDefaultValue.commercialArea;
+      }
+      return +this.propDefaultValue.commercialArea;
+    },
+    // Object "commercial" area selected item value.
+    commercialAreaSeletedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.area.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value, this.propDefaultValue.commercialArea, 'area');
+        this.propCreatedObjectCommercial.area.value = value;
+      }
+    },
+    /*
+      Object "commercial" class.
+    */
+    // Object "commercial" class items with the selected element.
+    commercialClassItems() {
+      let resultArray;
+      const objectCommercialClassArrayCopy = [...this.filterDataDefaultClone.commercialClass];
+      if (this.propDefaultValue.commercialClass) {
+        resultArray = objectCommercialClassArrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.commercialClass) {
+              item.checked = true;
+              this.propCreatedObjectCommercial.class.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = objectCommercialClassArrayCopy;
+      }
+      return resultArray;
+    },
+    // Object "commercial" class selected item value.
+    commercialClassSeletedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.class.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.commercialClass, 'class');
+        this.propCreatedObjectCommercial.class.value = value;
+      }
+    },
+    /*
+      Object "commercial" tenant.
+    */
+    // Object "commercial" tenant items with the selected element.
+    commercialTenantItems() {
+      let resultArray;
+      const arrayCopy = [...this.filterDataDefaultClone.tenant];
+      if (this.propDefaultValue.commercialTenant) {
+        resultArray = arrayCopy.map(
+          item => {
+            if (item.slug === this.propDefaultValue.commercialTenant) {
+              item.checked = true;
+              this.propCreatedObjectCommercial.tenant.value = item;
+            } else {
+              item.checked = false;
+            }
+            return item;
+          }
+        )
+      } else {
+        resultArray = arrayCopy;
+      }
+      return resultArray;
+    },
+    // Object "commercial" tenant selected item value.
+    commercialTenantSelectedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.tenant.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.commercialTenant, 'tenant');
+        this.propCreatedObjectCommercial.tenant.value = value;
+      }
+    },
+    /*
+      Object "commercial" distance.
+    */
+    // Object "commercial" distance items with the selected element.
+    commercialDistanceItems() {
+      if (this.propDefaultValue.distanceSlug && this.propDefaultValue.distanceLabel) {
+        this.propCreatedObjectCommercial.distance.value = {
+          slug: this.propDefaultValue.distanceSlug,
+          label: this.propDefaultValue.distanceLabel,
+        };
+      }
+      return this.getDistanceArray;
+    },
+    // Object "commercial" distance selected item value.
+    commercialDistanceSelectedItem: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectCommercial.distance.value;
+      },
+      set(value) {
+        console.log('яя', value.slug, this.propDefaultValue.distanceSlug);
+        this.compareDataForEdit(value.slug, this.propDefaultValue.distanceSlug, 'distance');
+        this.propCreatedObjectCommercial.distance.value = value;
+      }
+    },
+    // Garage area
+    facadeOfCommercial() {
+      if (this.propDefaultValue && this.propDefaultValue.facade) {
+        this.propCreatedObjectCommercial.facade.value = this.propDefaultValue.facade;
+      }
+      return +this.propDefaultValue.facade;
+    },
+    propCreatedObjectCommercial() {
+      // console.log('propCreatedObjectCommercial ::');
+      let objectCopy = {...this.propCreatedObject.commercial};
+      // If page is "Edit object" page.
+      if (this.isEditObjectPage) {
+        // Object "sector" type.
+        const newCommercialYear = {
+          slug: this.propDefaultValue.year,
+          label: this.propDefaultValue.year,
+        };
+        objectCopy.year.value = newCommercialYear;
+
+      }
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(objectCopy);
+      return editedObject;
+    },
+    distanceValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectHouse.distance.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.distanceSlug, 'distance');
+        this.propCreatedObjectHouse.distance.value = value;
+      }
+    },
   },
   watch: {
     currentAddress: {
@@ -416,6 +608,71 @@ export default {
       },
       deep: true
     },
+  },
+  methods: {
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // Compare each property whether it was edited or not.
+    compareDataForEdit(value1, value2, key) {
+      if (value1 === value2) {
+        this.propCreatedObjectCommercial[key].edited = false;
+      } else {
+        this.propCreatedObjectCommercial[key].edited = true;
+      }
+      this.checkFullObjectForEditedProperties(this.propCreatedObjectCommercial);
+    },
+    // Check all properties of the object whether they were edited or not.
+    checkFullObjectForEditedProperties(object) {
+      let count = 0;
+      for (const key in object) {
+        // console.log('count ::', count, object[key].value.slug);
+        if (
+          key !== 'edited'
+          && Boolean(object[key].value)
+          && object[key].edited === true
+        ) {
+          count++;
+        }
+        if (count > 0) {
+          this.objectIsEdited(true);
+        } else {
+          this.objectIsEdited(false);
+        }
+      }
+    },
+    objectIsEdited(flag) {
+      this.$emit('update:propIsObjectDataEdited', flag)
+    },
+    fillTheFormWithObjectData() {
+      if (this.propDefaultValue.floorAll) {
+        this.floorAll = {
+          label: this.propDefaultValue.floorAll,
+          slug: this.propDefaultValue.floorAll,
+        };
+      }
+      // Object floor
+      this.filterDataDefaultClone.appFloorAllListCurrent.map(
+        item => {
+          // console.log('item.slug ::', item.slug,);
+          if (item.slug === this.propDefaultValue.floor) {
+            this.propCreatedObjectCommercial.floor.value = item;
+          }
+        }
+      )
+    },
+  },
+  mounted() {
+    if (this.propDefaultValue) {
+      this.fillTheFormWithObjectData();
+    }
+    // console.log('propCreatedObjectCommercial ::', this.propCreatedObjectCommercial);
   },
 };
 </script>

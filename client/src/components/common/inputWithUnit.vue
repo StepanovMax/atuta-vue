@@ -37,28 +37,34 @@ export default {
       required: true,
     },
     propErrorClass: null,
+    propValue: {
+      type: Number,
+      default: null,
+      required: false,
+    },
   },
   data() {
     return {
       formattedValue: '',
     }
   },
-  methods: {
-    // inputChange(event) {
-    //   this.$emit('update:value', event.target.value);
-    // },
-  },
   computed: {
     enteredValue: {
       cache: false,
       get() {
+        // console.log('>> this.formattedValue', this.formattedValue);
         return this.formattedValue;
       },
       set(value) {
         this.formattedValue = this.gFormatPrice(value);
-        this.$emit('update:value', value.replace(/\s/g, ''));
+        this.$emit('update:value', this.formattedValue);
       }
     },
+  },
+  mounted() {
+    if (this.propValue) {
+      this.enteredValue = this.propValue;
+    }
   },
 };
 </script>

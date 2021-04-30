@@ -26,7 +26,7 @@ const filterDataDefault = {
       labelShort: 'ИЖС',
     },
     {
-      label: 'Сельсхозназначения(СНТ, ДНП)',
+      label: 'Сельхозназначения(СНТ, ДНП)',
       slug: 'agricultural',
       labelShort: 'С/х',
     },

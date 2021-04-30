@@ -120,7 +120,6 @@ export default {
     },
     propGridItems(value) {
       this.dataGridItems = this.propGridItems;
-      console.log('watch this.propGridItems ::', value);
     },
   },
   beforeMount() {

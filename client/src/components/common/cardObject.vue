@@ -775,10 +775,43 @@
 
           </router-link>
 
-          <a
-            href="http://an1tag.ru"
+
+          <router-link
+            v-if="$route.name === 'myObjectsSubPage'"
             class="object-card__link"
-            target="_blank"
+            :to="{
+              name: 'editObject',
+              params: {
+                id: dataObjectData.id,
+                objectData: dataObjectData,
+              }
+            }"
+            title="Редактировать объект"
+          >
+            <p
+              class="object-card__agency"
+              :class="[
+                {'object-card__agency_list-view': propObjectView === 'list'},
+                {'object-card__agency_premium': dataObjectData.tarif && dataObjectData.tarif === 'premium'},
+                {'object-card__agency_vip': dataObjectData.tarif && dataObjectData.tarif === 'vip'},
+                {'object-card__agency_up': dataObjectData.tarif && dataObjectData.tarif === 'up'},
+              ]"
+            >
+              <span>
+                Редактировать
+              </span>
+            </p>
+          </router-link>
+
+          <router-link
+            v-else
+            class="object-card__link"
+            :to="{
+              name: 'companyPage',
+              params: {
+                id: dataObjectData.id,
+              }
+            }"
             :title="'Перейти на страницу ' + `${dataObjectData.user}`"
           >
             <p
@@ -790,13 +823,11 @@
                 {'object-card__agency_up': dataObjectData.tarif && dataObjectData.tarif === 'up'},
               ]"
             >
-              <span
-                v-if="dataObjectData.cardName"
-              >
+              <span>
                 {{ dataObjectData.cardName }}
               </span>
             </p>
-          </a>
+          </router-link>
         </div>
 
 

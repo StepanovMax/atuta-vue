@@ -114,6 +114,8 @@ module.exports = env => {
     resolve: {
       extensions: ['*', '.js', '.vue', '.json'],
       alias: {
+        '@src': PATHS.src,
+        '@cmp': `${PATHS.src}/components`,
         'rootEnv': PATHS.client,
       }
     },

@@ -61,12 +61,6 @@ export default {
   data() {
     return {
       picked: [],
-      dataItemsChecked: [...this.items].map(function(item) {
-        if (!item.hasOwnProperty('checked')) {
-          item.checked = false;
-        }
-        return item;
-      }),
     }
   },
   watch: {
@@ -84,6 +78,21 @@ export default {
       deep: true
     },
   },
+  computed: {
+    dataItemsChecked() {
+      let itemsCopyArray = [...this.items];
+      let array = [];
+      array = itemsCopyArray.map(
+        item => {
+          if (!item.checked) {
+            item.checked = false;
+          }
+          return item;
+        }
+      );
+      return array;
+    },
+  },
   methods: {
     removeCheckedAttribute(checkedElement) {
       let valueArray = checkedElement;
@@ -93,18 +102,19 @@ export default {
     updateValue(data) {
       this.$emit('update:value', data);
     },
-  },
-  mounted() {
-    // console.log('mounted sw ::');
-    [...this.items].forEach(
-      item => {
-        if (item.hasOwnProperty('checked')) {
+    sendCheckedItemToTheParentValue() {
+      const arrayItems = [...this.items];
+      arrayItems.forEach(
+        item => {
           if (item.checked === true) {
             this.updateValue(item)
           }
         }
-      }
-    );
+      );
+    },
+  },
+  mounted() {
+    this.sendCheckedItemToTheParentValue();
   },
 };
 </script>

@@ -20,8 +20,8 @@
           <radioButtons
             radioButtonsView="listVertical"
             radioButtonsId="roomСomfortAddObject"
-            :items="filterDataDefaultClone.comfortType"
-            :value.sync="сreatedObjectComfort.comfortType.value"
+            :items="comfortTypeArray"
+            :value.sync="comfortTypeSelectedValue"
           />
         </div>
       </div>
@@ -52,7 +52,7 @@
             Количество кроватей
           </h4>
           <multiselect
-            v-model="сreatedObjectComfort.bedCount.value"
+            v-model="roomBedSelectedValue"
             :options="roomBedCount"
             :show-labels="false"
             :allow-empty="false"
@@ -75,7 +75,7 @@
             Количество спальных мест
           </h4>
           <multiselect
-            v-model="сreatedObjectComfort.sleepingPlacesCount.value"
+            v-model="sleepingPlacesCountSelectedValue"
             :options="roomSleepingPlacesCount"
             :show-labels="false"
             :allow-empty="false"
@@ -184,11 +184,22 @@ export default {
       default: {},
       required: true,
     },
+    propDefaultValue: {
+      type: Object,
+      default: function () {
+        return {};
+      },
+      required: true,
+    },
+    propIsComfortObjectDataEdited: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   data() {
     return {
       createdObject: {},
-      сreatedObjectComfort: this.propCreatedObjectComfort,
     }
   },
   computed: {
@@ -201,14 +212,141 @@ export default {
       const resultedArray = this.gAddPlusLastValueToArray(array);
       return resultedArray;
     },
+    roomBedSelectedValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectComfort.bedCount.value;
+      },
+      set(value) {
+        console.log('value ::', value.slug, +this.propDefaultValue.comfortBedCount);
+        // this.compareDataForEdit(+value.slug, +this.propDefaultValue.comfortBedCount, 'bedCount');
+        this.propCreatedObjectComfort.bedCount.value = value;
+      }
+    },
     roomSleepingPlacesCount() {
       const array = this.gConvertRangeToArray(this.filterDataDefaultClone.roomSleepingPlacesCount);
       const resultedArray = this.gAddPlusLastValueToArray(array);
       return resultedArray;
     },
+    sleepingPlacesCountSelectedValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectComfort.sleepingPlacesCount.value;
+      },
+      set(value) {
+        console.log('value ::', value.slug, +this.propDefaultValue.comfortSleepingPlacesCount);
+        // this.compareDataForEdit(+value.slug, +this.propDefaultValue.comfortBedCount, 'bedCount');
+        this.propCreatedObjectComfort.sleepingPlacesCount.value = value;
+      }
+    },
     filterDataDefaultClone() {
       return JSON.parse(JSON.stringify(this.filterDataDefault));
     },
+    comfortTypeArray() {
+      let returnedData;
+      const array = [...this.filterDataDefault.comfortType];
+      // console.log('>> this.propDefaultValue.comfortType ::', this.propDefaultValue.comfortType);
+      if (this.propDefaultValue.comfortType) {
+        let newArray = [];
+        array.map(
+          item => {
+            let newItem = {
+              slug: item.slug,
+              label: item.label,
+            }
+            if (item.slug === this.propDefaultValue.comfortType) {
+              newItem.checked = true;
+              this.сreatedObjectComfort.comfortType.value = item;
+              // console.log('>> 11 ::', item.slug);
+            } else {
+              newItem.checked = false;
+              // console.log('>> 22 ::', item.slug);
+            }
+            // console.log('>> newItem ::', newItem);
+            newArray.push(newItem);
+          }
+        )
+        returnedData = newArray;
+        // console.log('>> returnedData 1 newArray ::', newArray);
+      } else {
+        returnedData = array;
+        // console.log('>> returnedData 2', returnedData);
+      }
+      // console.log('>> returnedData', returnedData);
+      return returnedData;
+    },
+    comfortTypeSelectedValue: {
+      cache: false,
+      get() {
+        return this.сreatedObjectComfort.comfortType.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.comfortType, 'comfortType');
+        this.сreatedObjectComfort.comfortType.value = value;
+      }
+    },
+    сreatedObjectComfort() {
+      let objectCopy = {...this.propCreatedObjectComfort};
+
+
+      // Object "comfort" bed count.
+      const newComfortBedCount = {
+        slug: this.propDefaultValue.comfortBedCount,
+        label: this.propDefaultValue.comfortBedCount,
+      };
+      objectCopy.bedCount.value = newComfortBedCount;
+
+
+      // Add an 'edited' property to the object.
+      const editedObject = this.addEditedPropertyToObjectItems(objectCopy);
+      return editedObject;
+    },
+  },
+  watch: {
+    comfortTypeArray(value) {
+      // console.log('>> comfortType / watch', value);
+    },
+  },
+  methods: {
+    // Add an 'edited' property to the object.
+    addEditedPropertyToObjectItems(object) {
+      for(const key in object) {
+        if (typeof object[key] === 'object') {
+          object[key].edited = false;
+        }
+      }
+      return object;
+    },
+    // // Compare each property whether it was edited or not.
+    // compareDataForEdit(value1, value2, key) {
+    //   if (value1 === value2) {
+    //     this.сreatedObjectComfort[key].edited = false;
+    //   } else {
+    //     this.сreatedObjectComfort[key].edited = true;
+    //   }
+    //   this.checkFullObjectForEditedProperties(this.сreatedObjectComfort);
+    // },
+    // // Check all properties of the object whether they were edited or not.
+    // checkFullObjectForEditedProperties(object) {
+    //   let count = 0;
+    //   for (const key in object) {
+    //     if (object[key].edited === true) {
+    //       count++;
+    //     }
+    //     if (count > 0) {
+    //       this.objectIsEdited(true);
+    //     } else {
+    //       this.objectIsEdited(false);
+    //     }
+    //   }
+    // },
+    // objectIsEdited(flag) {
+    //   console.log('flag ::', flag);
+    //   this.$emit('update:propIsComfortObjectDataEdited', flag)
+    // },
+  },
+  mounted() {
+    console.log('>> this.сreatedObjectComfort ::', this.сreatedObjectComfort);
   },
 };
 </script>
