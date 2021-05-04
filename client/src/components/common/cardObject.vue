@@ -32,6 +32,14 @@
           }
         ]"
       >
+        <button
+          v-if="isMyOwnObjectOnMyObjectsPage"
+          class="object-card__btn_remove object-card__remove-object"
+          title="Удалить объект"
+          @click="removeObjectFromDb(dataObjectData.id)"
+        >
+          Удалить
+        </button>
         <router-link
           class="object-card__link"
           :to="{
@@ -957,7 +965,130 @@ export default {
       deep: true
     },
   },
+  computed: {
+    ...mapState([
+      'userData',
+      'myObjects',
+      'favouriteObjects',
+      'filterDataSelected',
+    ]),
+    // Detect if it's a 'My Objects' page and if it's my own object.
+    isMyOwnObjectOnMyObjectsPage() {
+      let isMyOwnObjectOnMyObjectsPage = true;
+      let isMyOwnObject;
+      let isMyObjectsPage;
+      if (this.isFavorite) {
+        isMyOwnObject = true;
+      } else {
+        isMyOwnObject = false;
+      }
+      if (this.isMyObjectsPage) {
+        isMyObjectsPage = true;
+      } else {
+        isMyObjectsPage = false;
+      }
+      if (isMyOwnObject && isMyObjectsPage) {
+        isMyOwnObjectOnMyObjectsPage = true;
+      } else {
+        isMyOwnObjectOnMyObjectsPage = false;
+      }
+      // console.log('  >> ', this.userData.favouriteObjects);
+      return isMyOwnObjectOnMyObjectsPage;
+    },
+    moveToFavColor() {
+      let color;
+      if (this.dataObjectData.tarif) {
+        if (this.dataObjectData.tarif === 'premium') {
+          color = 'orange';
+        } else if (this.dataObjectData.tarif === 'vip') {
+          color = 'blue';
+        } else if (this.dataObjectData.tarif === 'up') {
+          color = 'green';
+        }
+      } else {
+        color = 'default';
+      }
+      return color;
+    },
+    hostResulted() {
+      if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
+        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_desktop.png';
+      }
+      return this.dataObjectData.urlPreview
+    },
+    // Detect whether current page is 'My Objects' page.
+    isMyObjectsPage() {
+      let result;
+      if(this.$route.name === 'myObjectsSubPage') {
+        result = true;
+      } else {
+        result = false;
+      }
+      return result;
+    },
+    // Detect whether the object is a favorite object.
+    isFavorite() {
+      const result = this.myObjects.some(
+        item => item.id === this.dataObjectData.id
+      );
+      return result;
+    },
+  },
   methods: {
+    async removeObjectFromFavorites(id) {
+      const filteredArray = this.myObjects.filter(
+        item => {
+          if (item.id !== id) {
+            console.log('item.id ::', item.id);
+            return item;
+          }
+        }
+      );
+      if (filteredArray) {
+        this.$store.commit('updateMyObjectsState', filteredArray);
+      }
+    },
+    async removeObjectFromDb(id) {
+      console.log('myObjects ::', this.myObjects);
+      console.log('id ::', id);
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      // const objectRemoved = true;
+      const objectRemoved = await transport.post(
+        process.env.host_api + '/object/remove',
+        {
+          id: parseInt(id)
+        }
+      )
+        .then(
+          response => {
+            console.log('Remove data result ::', response.data.result);
+            return response.data.result;
+          }
+        )
+          .catch(
+            error => {
+              console.error('Error [My objects removing] ::', error);
+              return false;
+            }
+          );
+      if (objectRemoved) {
+        const filteredArray = this.myObjects.filter(
+          item => {
+            if (item.id !== id) {
+              return item;
+            } else {
+              console.log('item.id ::', item.id);
+            }
+          }
+        );
+        if (filteredArray) {
+          this.$store.commit('updateMyObjectsState', filteredArray);
+        }
+      }
+    },
     async addItemToFavourites(id) {
       console.log('id ::', id);
 
@@ -1058,34 +1189,6 @@ export default {
       }
       const time = day + '.' + month + '.' + year;
       return time;
-    },
-  },
-  computed: {
-    ...mapState([
-      'userData',
-      'favouriteObjects',
-      'filterDataSelected',
-    ]),
-    moveToFavColor() {
-      let color;
-      if (this.dataObjectData.tarif) {
-        if (this.dataObjectData.tarif === 'premium') {
-          color = 'orange';
-        } else if (this.dataObjectData.tarif === 'vip') {
-          color = 'blue';
-        } else if (this.dataObjectData.tarif === 'up') {
-          color = 'green';
-        }
-      } else {
-        color = 'default';
-      }
-      return color;
-    },
-    hostResulted() {
-      if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
-        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_desktop.png';
-      }
-      return this.dataObjectData.urlPreview
     },
   },
 };

@@ -339,6 +339,39 @@ $UPLOAD-IMAGE-WIDTH: 234px;
         background-color: $COLOR-BLUE-LIGHT;
       }
     }
+
+    &_remove {
+      top: 4px;
+      right: 4px;
+      z-index: 2;
+      position: absolute;
+      font-size: 11px;
+      padding: 2px 5px;
+      border-radius: 2px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        border-radius: 5px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 4px 0 rgba(0,0,0,0.3);
+        background-color: #fff;
+        transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      &:hover {
+        &:after {
+          box-shadow: 0 0 4px 0 rgba(0,0,0,0.1);
+        }
+      }
+    }
   }
 
   &__address {

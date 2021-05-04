@@ -151,6 +151,49 @@ router.post(
 
 
 router.post(
+  '/remove',
+  async (req, res) => {
+    const id = JSON.parse(req.body.id);
+    console.log('  >> object.id ::', req.body.id);
+    try {
+      const foundedItem = await Item.findOne({
+        where: {
+          id: id
+        }
+      });
+      await foundedItem.destroy()
+        .then(
+          self => {
+            console.log(' ');
+            console.log('   >> Object has been removed ::');
+            console.log(' ');
+            res.status(200).send({
+              result: true,
+            });
+          }
+        )
+          .catch(
+            error => {
+              console.error('Error [Object remove] ::', error);
+              res.status(200).send({
+                result: false,
+              });
+            }
+          );
+    } catch(error) {
+      console.log(' ');
+      console.log('Catch removing object error ::', error);
+      console.log(' ');
+      res.status(200).send({
+        result: false,
+      });
+    }
+
+  }
+);
+
+
+router.post(
   '/update',
   upload.fields([
     { name: 'file', maxCount: 10 },
