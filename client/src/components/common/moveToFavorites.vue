@@ -53,6 +53,13 @@ export default {
       dataIsIconFilled: false
     }
   },
+  watch: {
+    propIsSelected(value) {
+      if (value) {
+        this.dataIsIconFilled = value;
+      }
+    },
+  },
   methods: {
     clickOnHeartIcon() {
       this.dataIsIconFilled = !this.dataIsIconFilled;
