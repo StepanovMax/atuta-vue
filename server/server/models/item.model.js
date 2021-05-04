@@ -57,11 +57,24 @@ module.exports = (sequelize, Sequelize) => {
         msg: 'Please enter the status'
       }
     },
+    rejectionReason: {
+      type: Sequelize.STRING,
+      allowNull: {
+        args: true,
+      }
+    },
     createdDate: {
       type: Sequelize.INTEGER,
       allowNull: {
         args: false,
         msg: 'Please enter the date of the creation'
+      }
+    },
+    tarifExpiredDate: {
+      type: Sequelize.INTEGER,
+      allowNull: {
+        args: false,
+        msg: 'Please enter the date of the expiration'
       }
     },
     objectTypeSlug: {
