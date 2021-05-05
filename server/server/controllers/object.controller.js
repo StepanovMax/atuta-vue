@@ -33,7 +33,10 @@ const getLast32Objects = async (req, res, file) => {
     // Find the object in DB.
     await Item.findAll({
       limit: 20,
-      order: [['createdDate', 'DESC']]
+      order: [['createdDate', 'DESC']],
+      where: {
+        status: 'active',
+      },
     })
       .then(
         objects => {
