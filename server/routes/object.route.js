@@ -312,6 +312,7 @@ router.post(
       let resultArray = [];
       Item.findAll({
         where: {
+          status: 'active',
           id: idsArray,
         }
       })

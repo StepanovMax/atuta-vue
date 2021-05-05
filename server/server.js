@@ -5,9 +5,14 @@ import routes from './routes';
 import cors from 'cors';
 import http from 'http';
 import db from './server/models/index.js';
+import { moveActiveToExpired } from './cron/expiredDate.js';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+
+
+moveActiveToExpired();
+
 
 dotenv.config({
   path: '.env'
