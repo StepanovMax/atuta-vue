@@ -668,6 +668,9 @@
               Размещение объявления
             </h3>
             <p class="paragraph">
+              Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectData.tarifExpiredDate) }}
+            </p>
+            <p class="paragraph">
               Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
             </p>
             <p class="paragraph">
@@ -1784,6 +1787,9 @@ export default {
         data.companyRoleSlug = this.userData.role.slug;
         data.cardName = this.objectData.agency.name;
         const timestampNow = new Date().getTime() / 1000 | 0;
+        const timestamp24hours = 24 * 60 * 60;
+        const timestamp30days = 30 * timestamp24hours;
+        data.tarifExpiredDate = timestampNow + timestamp30days;
         data.status = 'active';
         data.createdDate = timestampNow;
         if (this.changedObject.object && this.changedObject.object.value && this.changedObject.object.value.slug) {
