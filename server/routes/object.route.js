@@ -110,6 +110,10 @@ let upload = multer({
 
 const router = Router();
 
+const validateDescription = description => {
+  console.log(' >> description ::', description);
+}
+
 
 router.post(
   '/create',
@@ -129,19 +133,24 @@ router.post(
 
     let result;
     try {
-      result = await Item.create(object).then(
-        data => {
-          res.status(200).send({
-            result: true,
-            data: data,
-          });
-          imagesArray = imagesArrayCutted = [];
-          return data;
-        }
-      );
+      result = await Item.create(object)
+        .then(
+          success => {
+            res.status(200).send({
+              result: true,
+              data: success,
+            });
+            imagesArray = imagesArrayCutted = [];
+            return success;
+          }
+        ).catch(
+          error => {
+            console.error('Object create error ::', error);
+          }
+        );
     } catch(error) {
       console.log(' ');
-      console.log('catch ::', error);
+      console.error('Try Object create error ::', error);
       console.log(' ');
       res.status(200).send(false);
     }
@@ -210,6 +219,10 @@ router.post(
     );
     object.photoGallery = imagesArray;
 
+    // if (object.description.length > 0) {
+    //   validateDescription(object.description);
+    // }
+
     let result;
     try {
       const foundedItem = await Item.findOne({
@@ -226,11 +239,11 @@ router.post(
           // res.status(200).send(self);
         }
       );
-      console.log(' ');
+      // console.log(' ');
       // console.log('  >> id ::', object.id);
-      console.log(' ');
-      console.log('  >> object ::', object);
-      console.log(' ');
+      // console.log(' ');
+      // console.log('  >> object ::', object);
+      // console.log(' ');
       // console.log('  >> foundedItem ::', foundedItem.dataValues);
       // result = await Item.create(object).then(
       //   data => {

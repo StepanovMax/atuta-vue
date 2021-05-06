@@ -75,13 +75,10 @@
   }
 
   &__banner {
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: inline-block;
-    background-color: $COLOR-GREEN-DARK;
+    @extend .banner;
 
     &-text {
-      color: $COLOR-WHITE;
+      @extend .banner-text;
     }
   }
 }
