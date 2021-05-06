@@ -838,28 +838,42 @@
           </div>
         </div>
 
-        <p
-          v-if="showSuccessMessageOnObjectCreating"
-          class="
-            paragraph
-            paragraph_success
-            paragraph_align-right
-          "
-        >
-          Объект был успешно опубликован.
-        </p>
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div class="
+            form__block-width
+            form__block-width_align-right
+          ">
+            <div
+              v-if="showSuccessMessageOnObjectCreating"
+              class="
+                paragraph
+                banner
+              "
+            >
+              <p class="banner-text">
+                Объект отправлен на модерацию.
+              </p>
+              <p class="banner-text">
+                Через несколько минут объект будет опубликован.
+              </p>
+            </div>
 
-        <p
-          v-if="showErrorMessageOnObjectCreating"
-          class="
-            paragraph
-            paragraph_success
-            paragraph_align-right
-          "
-        >
-          При публикации объекта произошла ошибка.
-          <br>Пожалуйста, повторите публикацию ещё раз.
-        </p>
+            <div
+              v-if="showErrorMessageOnObjectCreating"
+              class="
+                paragraph
+                banner
+              "
+            >
+              <p class="banner-text">
+                При публикации объекта произошла ошибка.
+              </p>
+              <p class="banner-text">
+                Пожалуйста, повторите публикацию ещё раз.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
