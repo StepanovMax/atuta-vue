@@ -466,7 +466,7 @@ export default {
         return this.propCreatedObjectGarage.security.value;
       },
       set(value) {
-        console.log('aa', value.slug, this.propDefaultValue.garageSecurity);
+        // console.log('aa', value.slug, this.propDefaultValue.garageSecurity);
         this.compareDataForEdit(value.slug, this.propDefaultValue.garageSecurity, 'security');
         this.propCreatedObjectGarage.security.value = value;
       }

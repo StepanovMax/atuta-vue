@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="propObjectDataValue"
     id="objectForm"
     class="article article_add"
   >
@@ -30,7 +31,7 @@
         title_bold
       "
     >
-      {{ propObjectData.title }}
+      {{ propObjectDataValue.title }}
     </h1>
 
     <div class="form form_add-object">
@@ -272,8 +273,8 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
-        :propObjectData="propObjectData"
+        :propDefaultValue="propObjectDataValue"
+        :propObjectDataValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isAppObjectDataEdited"
       />
 
@@ -285,7 +286,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
+        :propDefaultValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isHouseObjectDataEdited"
       />
 
@@ -297,7 +298,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
+        :propDefaultValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isRoomObjectDataEdited"
       />
 
@@ -309,7 +310,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
+        :propDefaultValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isGarageObjectDataEdited"
       />
 
@@ -321,7 +322,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
+        :propDefaultValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isSectorObjectDataEdited"
       />
 
@@ -333,7 +334,7 @@
         "
         :propCreatedObject="createdObject"
         :propValidateErrors="fieldsForValidating"
-        :propDefaultValue="propObjectData"
+        :propDefaultValue="propObjectDataValue"
         :propIsObjectDataEdited.sync="isCommercialObjectDataEdited"
       />
 
@@ -601,7 +602,7 @@
                 'input_error': this.errorsMain.includes('price')
               }"
               :value.sync="priceObjectValue"
-              :propValue="+propObjectData.price"
+              :propValue="+propObjectDataValue.price"
             />
             <p
               v-if="this.errorsMain.includes('price')"
@@ -639,7 +640,7 @@
                 'input_error': this.errorsMain.includes('deposit')
               }"
               :value.sync="depositObjectValue"
-              :propValue="+propObjectData.deposit"
+              :propValue="+propObjectDataValue.deposit"
             />
             <p
               v-if="this.errorsMain.includes('deposit')"
@@ -668,7 +669,7 @@
               Размещение объявления
             </h3>
             <p class="paragraph">
-              Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectData.tarifExpiredDate) }}
+              Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectDataValue.tarifExpiredDate) }}
             </p>
             <p class="paragraph">
               Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
@@ -701,7 +702,7 @@
             </h3>
             <tarifs
               :value.sync="createdObject.tarif.value"
-              :propValue="propObjectData.tarif"
+              :propValue="propObjectDataValue.tarif"
             />
           </div>
         </div>
@@ -883,7 +884,7 @@
 
     <div
       v-local
-      v-if="true && propObjectData"
+      v-if="true && propObjectDataValue"
       class="local-output-data"
     >
       <h6 class="
@@ -891,10 +892,10 @@
         title_h6
         title_bold
       ">
-        propObjectData
+        propObjectDataValue
       </h6>
       <pre>
-        {{ propObjectData }}
+        {{ propObjectDataValue }}
       </pre>
     </div>
 
@@ -950,9 +951,7 @@ export default {
   props: {
     propObjectData: {
       type: Object,
-      default: function () {
-        return {};
-      },
+      default: () => {},
       required: false,
     },
   },
@@ -1047,6 +1046,10 @@ export default {
       isGarageObjectDataEdited: false,
       isSectorObjectDataEdited: false,
       isCommercialObjectDataEdited: false,
+      propObjectDataValue: {
+        type: Object,
+        default: () => {},
+      },
     }
   },
   watch: {
@@ -1081,9 +1084,9 @@ export default {
             return item.object.name;
           }
         );
-        // console.log('blobImage ::', newValue === this.propObjectData.photoGallery);
+        // console.log('blobImage ::', newValue === this.propObjectDataValue.photoGallery);
         if (this.isEditObjectPage) {
-          this.compareArrayForEdit(newValue, this.propObjectData.photoGallery, 'photoGallery');
+          this.compareArrayForEdit(newValue, this.propObjectDataValue.photoGallery, 'photoGallery');
         }
         let newArray = [];
         value.forEach(
@@ -1110,12 +1113,13 @@ export default {
         if (!this.addressSelected) {
           this.onInputType();
         }
-        this.compareDataForEdit(value, this.propObjectData.addressName, 'address');
+        this.compareDataForEdit(value, this.propObjectDataValue.addressName, 'address');
       },
       deep: true
     },
     townLabel: {
       handler(value) {
+        // console.log('townLabel ::', value);
         this.createdObject.address.town = value;
         const localityObject = this.getLocalityByLabel(value);
         if (localityObject) {
@@ -1235,7 +1239,7 @@ export default {
       handler(value) {
         console.log('value ::', value);
         if (value && value.value) {
-          this.compareDataForEdit(value.value.slug, this.propObjectData.comfortType, 'comfortType');
+          this.compareDataForEdit(value.value.slug, this.propObjectDataValue.comfortType, 'comfortType');
         }
       },
       deep: true
@@ -1243,13 +1247,13 @@ export default {
     'createdObject.bedCount': {
       handler(value) {
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortBedCount)) {
+        if (!Boolean(this.propObjectDataValue.comfortBedCount)) {
           defaultValue = 0;
         } else {
-          defaultValue = +this.propObjectData.comfortBedCount;
+          defaultValue = +this.propObjectDataValue.comfortBedCount;
         }
         if (value && value.value) {
-          this.compareDataForEdit(+value.value.slug, defaultValue, 'bedCount');
+          this.compareDataForEdit(+value.value.slug, defaultValue, 'bdCount');
         }
       },
       deep: true
@@ -1257,10 +1261,10 @@ export default {
     'createdObject.sleepingPlacesCount': {
       handler(value) {
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortSleepingPlacesCount)) {
+        if (!Boolean(this.propObjectDataValue.comfortSleepingPlacesCount)) {
           defaultValue = 0;
         } else {
-          defaultValue = +this.propObjectData.comfortSleepingPlacesCount;
+          defaultValue = +this.propObjectDataValue.comfortSleepingPlacesCount;
         }
         if (value && value.value) {
           this.compareDataForEdit(+value.value.slug, defaultValue, 'sleepingPlacesCount');
@@ -1272,10 +1276,10 @@ export default {
       handler(value) {
         let newValue;
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortRoomMultimedia)) {
+        if (!Boolean(this.propObjectDataValue.comfortRoomMultimedia)) {
           newValue = [];
         } else {
-          newValue = this.propObjectData.comfortRoomMultimedia;
+          newValue = this.propObjectDataValue.comfortRoomMultimedia;
         }
         if (!Boolean(value.value)) {
           defaultValue = [];
@@ -1290,10 +1294,10 @@ export default {
       handler(value) {
         let newValue;
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortRoomEquipment)) {
+        if (!Boolean(this.propObjectDataValue.comfortRoomEquipment)) {
           newValue = [];
         } else {
-          newValue = this.propObjectData.comfortRoomEquipment;
+          newValue = this.propObjectDataValue.comfortRoomEquipment;
         }
         if (!Boolean(value.value)) {
           defaultValue = [];
@@ -1308,10 +1312,10 @@ export default {
       handler(value) {
         let newValue;
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortRoomComfort)) {
+        if (!Boolean(this.propObjectDataValue.comfortRoomComfort)) {
           newValue = [];
         } else {
-          newValue = this.propObjectData.comfortRoomComfort;
+          newValue = this.propObjectDataValue.comfortRoomComfort;
         }
         if (!Boolean(value.value)) {
           defaultValue = [];
@@ -1326,17 +1330,17 @@ export default {
       handler(value) {
         let newValue;
         let defaultValue;
-        if (!Boolean(this.propObjectData.comfortRoomAdditional)) {
+        if (!Boolean(this.propObjectDataValue.comfortRoomAdditional)) {
           newValue = [];
         } else {
-          newValue = this.propObjectData.comfortRoomAdditional;
+          newValue = this.propObjectDataValue.comfortRoomAdditional;
         }
         if (!Boolean(value.value)) {
           defaultValue = [];
         } else {
           defaultValue = value.value;
         }
-        console.log('createdObject.roomAdditional ::', newValue, defaultValue);
+        // console.log('createdObject.roomAdditional ::', newValue, defaultValue);
         this.compareArrayForEdit(newValue, defaultValue, 'roomAdditional');
       },
       deep: true
@@ -1365,8 +1369,8 @@ export default {
 
         // Object type
         const newObjectType = {
-          slug: this.propObjectData.objectTypeSlug,
-          label: this.propObjectData.objectTypeLabel,
+          slug: this.propObjectDataValue.objectTypeSlug,
+          label: this.propObjectDataValue.objectTypeLabel,
         };
         createdObjectCopy.object.value = newObjectType;
 
@@ -1374,7 +1378,7 @@ export default {
         let selectedItem;
         this.filterDataDefaultClone.buy.some(
           item => {
-            if (item.slug === this.propObjectData.deal) {
+            if (item.slug === this.propObjectDataValue.deal) {
               selectedItem = item;
             }
           }
@@ -1385,7 +1389,7 @@ export default {
         const objectCommercialViewArrayCopy = [...this.filterDataDefaultClone.commercialView];
         this.filterDataDefaultClone.commercialView = objectCommercialViewArrayCopy.map(
           item => {
-            if (item.slug === this.propObjectData.commercialTypeSlug) {
+            if (item.slug === this.propObjectDataValue.commercialTypeSlug) {
               item.checked = true;
               createdObjectCopy.commercial.type.value = item;
             } else {
@@ -1410,7 +1414,7 @@ export default {
         // console.log('this.objectDistrictSelectedItem ::', this.objectDistrictSelectedItem);
         this.localityDistricts.map(
           item => {
-            if (item.slug === this.propObjectData.districtSlug) {
+            if (item.slug === this.propObjectDataValue.districtSlug) {
               createdObjectCopy.district.value = item;
             }
             return item;
@@ -1460,7 +1464,7 @@ export default {
         return this.createdObject.object.value;
       },
       set(value) {
-        this.compareDataForEdit(value.slug, this.propObjectData.objectTypeSlug, 'object');
+        this.compareDataForEdit(value.slug, this.propObjectDataValue.objectTypeSlug, 'object');
         this.createdObject.object.value = value;
       }
     },
@@ -1499,7 +1503,7 @@ export default {
         return this.createdObject.deal.value;
       },
       set(value) {
-        this.compareDataForEdit(value.slug, this.propObjectData.deal, 'deal');
+        this.compareDataForEdit(value.slug, this.propObjectDataValue.deal, 'deal');
         this.createdObject.deal.value = value;
       }
     },
@@ -1540,7 +1544,7 @@ export default {
       set(value) {
         this.createdObject.commercial.type.value = value;
         this.sectorCommerceTypeDetectionWithFloor();
-        this.compareDataForEdit(value.slug, this.propObjectData.commercialTypeSlug, 'type', 'commercial');
+        this.compareDataForEdit(value.slug, this.propObjectDataValue.commercialTypeSlug, 'type', 'commercial');
       }
     },
     /*
@@ -1550,9 +1554,9 @@ export default {
     onlineShowItems() {
       let resultArray;
       const arrayCopy = [...this.filterDataDefaultClone.appOnlineShow];
-      if (this.propObjectData && this.propObjectData.onlineShow) {
+      if (this.propObjectDataValue && this.propObjectDataValue.onlineShow) {
         let onlineShow = 'no';
-        if (this.propObjectData.onlineShow) {
+        if (this.propObjectDataValue.onlineShow) {
           onlineShow = 'yes';
         }
         resultArray = arrayCopy.map(
@@ -1587,7 +1591,7 @@ export default {
         } else {
           valueFlag = false;
         }
-        this.compareDataForEdit(valueFlag, this.propObjectData.onlineShow, 'onlineShow');
+        this.compareDataForEdit(valueFlag, this.propObjectDataValue.onlineShow, 'onlineShow');
         this.createdObject.onlineShow.value = value;
       }
     },
@@ -1601,7 +1605,8 @@ export default {
         return this.createdObject.district.value;
       },
       set(value) {
-        this.compareDataForEdit(value.slug, this.propObjectData.districtSlug, 'district');
+        console.log('value -- ', value);
+        this.compareDataForEdit(value.slug, this.propObjectDataValue.districtSlug, 'district');
         this.createdObject.district.value = value;
       }
     },
@@ -1609,7 +1614,7 @@ export default {
     objectDistrictItems() {
       let resultArray;
       const arrayCopy = [...this.localityDistricts];
-      // console.log('arrayCopy ::', arrayCopy);
+      console.log('arrayCopy ::', arrayCopy);
       if (
         this.createdObject.district.value
         && this.createdObject.district.value.slug
@@ -1667,7 +1672,7 @@ export default {
         return this.createdObject.phone.value;
       },
       set(value) {
-        this.compareDataForEdit(value.phone, this.propObjectData.phone, 'phone');
+        this.compareDataForEdit(value.phone, this.propObjectDataValue.phone, 'phone');
         this.createdObject.phone.value = value;
       }
     },
@@ -1678,7 +1683,7 @@ export default {
       },
       set(value) {
         const priceValue = value.replace(/\s/g, '');
-        this.compareDataForEdit(priceValue, this.propObjectData.price, 'price');
+        this.compareDataForEdit(priceValue, this.propObjectDataValue.price, 'price');
         this.createdObject.price.value = value;
       }
     },
@@ -1689,7 +1694,7 @@ export default {
       },
       set(value) {
         const priceValue = value.replace(/\s/g, '');
-        this.compareDataForEdit(priceValue, this.propObjectData.deposit, 'deposit');
+        this.compareDataForEdit(priceValue, this.propObjectDataValue.deposit, 'deposit');
         this.createdObject.deposit.value = value;
       }
     },
@@ -1717,9 +1722,9 @@ export default {
         // Validation for edit page
         const lengthOfConnectionWayArray = this.createdObject.connectionWay.value.length;
         if (lengthOfConnectionWayArray === 2) {
-          this.compareDataForEdit(this.propObjectData.connectionWay, 'both', 'connectionWay');
+          this.compareDataForEdit(this.propObjectDataValue.connectionWay, 'both', 'connectionWay');
         } else if (lengthOfConnectionWayArray === 1) {
-          if (this.propObjectData.connectionWay === 'phone' || this.propObjectData.connectionWay === 'messages') {
+          if (this.propObjectDataValue.connectionWay === 'phone' || this.propObjectDataValue.connectionWay === 'messages') {
             this.objectIsEdited(false);
           } else {
             this.objectIsEdited(true);
@@ -2093,11 +2098,11 @@ export default {
     rentTypeComputed() {
       let resultArray;
       const appRentTypeArrayCopy = [...this.filterDataDefaultClone.rentType];
-      // console.log('this.propObjectData.rentType ::', this.propObjectData.rentType);
-      if (this.propObjectData.rentType) {
+      // console.log('this.propObjectDataValue.rentType ::', this.propObjectDataValue.rentType);
+      if (this.propObjectDataValue.rentType) {
         resultArray = appRentTypeArrayCopy.map(
           item => {
-            if (item.slug === this.propObjectData.rentType) {
+            if (item.slug === this.propObjectDataValue.rentType) {
               item.checked = true;
               this.createdObject.rentType = item;
             } else {
@@ -2117,7 +2122,7 @@ export default {
         return this.createdObject.rentType;
       },
       set(value) {
-        this.compareDataForEdit(value.slug, this.propObjectData.rentType, 'object');
+        this.compareDataForEdit(value.slug, this.propObjectDataValue.rentType, 'object');
         this.createdObject.rentType = value;
       }
     },
@@ -2128,10 +2133,10 @@ export default {
       },
       set(value) {
         let newValue;
-        if (this.propObjectData.description === null) {
+        if (this.propObjectDataValue.description === null) {
           newValue = '';
         } else {
-          newValue = this.propObjectData.description;
+          newValue = this.propObjectDataValue.description;
         }
         this.createdObject.description.value = value;
         console.log('value, newValue ::', value, newValue);
@@ -2253,17 +2258,17 @@ export default {
     },
     async fillTheFormWithObjectData() {
       let isObjectDataEmpty;
-      if (this.propObjectData) {
-        isObjectDataEmpty = this.isObjectEmpty(this.propObjectData);
+      if (this.propObjectDataValue) {
+        isObjectDataEmpty = this.isObjectEmpty(this.propObjectDataValue);
       }
       if (!isObjectDataEmpty) {
 
         // Object address
-        this.selectSuggestedAddress(this.propObjectData.addressName);
+        this.selectSuggestedAddress(this.propObjectDataValue.addressName);
 
         // Object photogallery
         this.photoGalleryArray = await Promise.all(
-          this.propObjectData.photoGallery.map(
+          this.propObjectDataValue.photoGallery.map(
             async item => {
               const url = item;
               const fileName = item;
@@ -2283,12 +2288,12 @@ export default {
         );
 
         // Object description
-        this.createdObject.description.value = this.propObjectData.description;
+        this.createdObject.description.value = this.propObjectDataValue.description;
 
         // Object phone
         this.userEmployees.some(
           item => {
-            if (item.phone === this.propObjectData.phone) {
+            if (item.phone === this.propObjectDataValue.phone) {
               this.createdObject.phone.value = item;
             }
           }
@@ -2296,13 +2301,13 @@ export default {
 
         // Object connection way
         let connectionWayArray = [...this.filterDataDefaultClone.connectionWay];
-        if (this.propObjectData.connectionWay === 'both') {
+        if (this.propObjectDataValue.connectionWay === 'both') {
           connectionWayArray[0].checked = true;
           connectionWayArray[1].checked = true;
-        } else if (this.propObjectData.connectionWay === 'phone') {
+        } else if (this.propObjectDataValue.connectionWay === 'phone') {
           connectionWayArray[0].checked = true;
           connectionWayArray[1].checked = false;
-        } else if (this.propObjectData.connectionWay === 'messages') {
+        } else if (this.propObjectDataValue.connectionWay === 'messages') {
           connectionWayArray[0].checked = false;
           connectionWayArray[1].checked = true;
         }
@@ -2310,10 +2315,10 @@ export default {
         this.createdObject.connectionWay.value = connectionWayArray;
 
         // Object price
-        this.createdObject.price.value = this.propObjectData.price;
+        this.createdObject.price.value = this.propObjectDataValue.price;
 
         // Object deposit
-        this.createdObject.deposit.value = this.propObjectData.deposit;
+        this.createdObject.deposit.value = this.propObjectDataValue.deposit;
 
         // Object comfort type
         // console.log('>> this.filterDataDefaultClone.comfortType ::', this.filterDataDefaultClone.comfortType);
@@ -2322,14 +2327,14 @@ export default {
         // Object subtype
         if (this.createdObject.object.value.slug === 'app') {
           this.createdObject.app.type.value = {
-            label: this.propObjectData.appTypeLabel,
-            slug: this.propObjectData.appTypeSlug,
+            label: this.propObjectDataValue.appTypeLabel,
+            slug: this.propObjectDataValue.appTypeSlug,
           };
           this.createdObject.app.view.value = {
-            label: this.propObjectData.appViewLabel,
-            slug: this.propObjectData.appViewSlug,
+            label: this.propObjectDataValue.appViewLabel,
+            slug: this.propObjectDataValue.appViewSlug,
           };
-          this.createdObject.app.area.value = this.propObjectData.appArea;
+          this.createdObject.app.area.value = this.propObjectDataValue.appArea;
 
         } else if (this.createdObject.object.value.slug === 'house') {
 
@@ -2600,6 +2605,7 @@ export default {
     selectSuggestedAddress(addressText) {
       // console.log('addressText ::', addressText);
       this.currentAddress = addressText;
+      console.log('selectSuggestedAddress 1 ::');
       this.convertAddress(addressText);
       this.createdObject.address.value = addressText;
       this.createdObject.address.coords = this.coordsTaganrog;
@@ -2627,15 +2633,17 @@ export default {
       // console.log('event.target.value ::', event.target.value);
     },
     convertAddress(address) {
+      console.log('convertAddress ::', address);
       ymaps.geocode(address).then(
         res => {
+          console.log('geocode then ::');
           const firstGeoObject = res.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
           this.coordsTaganrog = coords;
           this.getAddress(this.coordsTaganrog);
         },
         error => {
-          console.error('Rejected [Geocode error] ::', error);
+          console.error('Rejected [Ymaps.geocode error] ::', error);
         }
       );
     },
@@ -2651,6 +2659,7 @@ export default {
       );
     },
     getAddress(coords) {
+      console.log('getAddress ::', coords);
       return ymaps.geocode(coords).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
@@ -2772,7 +2781,7 @@ export default {
 
         let url;
         if (editFlag) {
-          this.finalObjectData.id = this.propObjectData.id;
+          this.finalObjectData.id = this.propObjectDataValue.id;
           console.log('  >> id ::', this.finalObjectData.id, this.finalObjectData);
           url = process.env.host_api + '/object/update';
         } else {
@@ -2827,7 +2836,7 @@ export default {
       }
     },
     convertRawDataToObject() {
-      const rawObjectData = {...this.propObjectData};
+      const rawObjectData = {...this.propObjectDataValue};
       let resultObjectData = {...this.createdObject};
       // Object
       resultObjectData.object.value.label = rawObjectData.objectTypeLabel;
@@ -2837,6 +2846,33 @@ export default {
       resultObjectData.deal.value.slug = rawObjectData.deal;
       console.log('resultObjectData ::', resultObjectData);
       return resultObjectData;
+    },
+    // Get an object when the page has been reload.
+    async getObjectOnPageReload() {
+      // console.log('this.$route.params.id ::', this.$route.params.id);
+
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      return await transport.post(
+        process.env.host_api + '/object/get-object-by-id',
+        {
+          id: this.$route.params.id
+        }
+      )
+        .then(
+          response => {
+            console.log('response ::', response.data);
+            return response.data;
+          }
+        )
+          .catch(
+            error => {
+              this.objectData = null;
+              console.error(error);
+            }
+          );
     },
   },
   beforeMount() {
@@ -2849,12 +2885,20 @@ export default {
     }
   },
   async mounted() {
+    console.log('  >> this.propObjectDataValue ::', this.propObjectDataValue);
     this.editObjectPageDetect();
-    // console.log('createdObject ::', this.createdObject);
-    // console.log('isObjectDataEdited ::', this.isObjectDataEdited, this.isAppObjectDataEdited);
     await loadYmap({
+      ...this.settings,
       debug: true
     });
+    const isPropObjectDataEmpty = this.isObjectEmpty(this.propObjectData);
+    if (isPropObjectDataEmpty) {
+      console.log('  >> 1');
+      this.propObjectDataValue = {...this.propObjectData};
+    } else {
+      console.log('  >> 2');
+      this.propObjectDataValue = await this.getObjectOnPageReload();
+    }
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
     } else {

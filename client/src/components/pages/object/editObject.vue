@@ -12,7 +12,7 @@
 
     <objectForm
       v-if="isLoggedIn"
-      :propObjectData=objectData
+      :propObjectData="objectData"
     />
 
     <adsRight />
