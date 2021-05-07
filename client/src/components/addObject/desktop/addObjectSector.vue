@@ -381,7 +381,7 @@ export default {
         return this.propCreatedObjectSector.availabilityOfBuildings.value;
       },
       set(value) {
-        console.log('ll ::', value.slug, this.propDefaultValue.sectorAvailabilityOfBuildings);
+        // console.log('ll ::', value.slug, this.propDefaultValue.sectorAvailabilityOfBuildings);
         this.compareDataForEdit(value.slug, this.propDefaultValue.sectorAvailabilityOfBuildings, 'availabilityOfBuildings');
         this.propCreatedObjectSector.availabilityOfBuildings.value = value;
       }
