@@ -228,7 +228,7 @@ export default {
       this.closeUserMenuMobile();
     },
     async logout() {
-      e.preventDefault();
+      // e.preventDefault();
       this.$store.commit('updateLoggedInState', false);
       this.$store.commit('updateUserDataState', {});
       this.$root.$emit('closeMobileMenu');
