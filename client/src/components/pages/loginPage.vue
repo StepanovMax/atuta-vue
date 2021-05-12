@@ -298,15 +298,9 @@ export default {
         await this.$store.dispatch('getEmployeeByUserID');
         // Call the plugin for fav.objects
         // this.getFavoritesObjectsByListID(loginResult.data.favouriteObjectsListID);
-        if (this.routesHistory.length > 1) {
-          this.$router.push({
-            name: this.routesHistory[0]
-          });
-        } else {
-          this.$router.push({
-            name: 'homePage'
-          });
-        }
+        this.$router.push({
+          name: 'profilePage'
+        });
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       } else {
