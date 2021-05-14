@@ -410,6 +410,28 @@
         </div>
       </div>
 
+      <div
+        v-if="emailAlreadyExist"
+        class="template-page__content-row"
+      >
+        <div class="registration-page__banner">
+          <p class="paragraph registration-page__banner-text">
+            Такой email уже существует.
+          </p>
+        </div>
+      </div>
+
+      <div
+        v-if="phoneAlreadyExist"
+        class="template-page__content-row"
+      >
+        <div class="registration-page__banner">
+          <p class="paragraph registration-page__banner-text">
+            Такой телефон уже существует.
+          </p>
+        </div>
+      </div>
+
 
       <div
         v-if="
@@ -764,6 +786,8 @@ export default {
       userDataForDetection: null,
       firstSending: false,
       formSended: false,
+      emailAlreadyExist: false,
+      phoneAlreadyExist: false,
       blobImage: null,
       inputtedFile: null,
       formIsNotFilled: false,
@@ -1133,17 +1157,30 @@ export default {
               );
           if (sendUserDataResult.result) {
             this.formSended = true;
+            this.emailAlreadyExist = false;
+            this.phoneAlreadyExist = false;
             this.formState.phone.exist = false;
             this.formState.email.exist = false;
             console.log('sendUserDataResult 1 ::', sendUserDataResult);
           } else {
             if (sendUserDataResult.type === 'email') {
+              this.emailAlreadyExist = true;
+              this.phoneAlreadyExist = false;
               this.formState.phone.exist = false;
               this.formState.email.exist = true;
             } else if (sendUserDataResult.type === 'phone') {
+              this.emailAlreadyExist = false;
+              this.phoneAlreadyExist = true;
               this.formState.phone.exist = true;
               this.formState.email.exist = false;
+            } else if (sendUserDataResult.type === 'both') {
+              this.emailAlreadyExist = true;
+              this.phoneAlreadyExist = true;
+              this.formState.phone.exist = true;
+              this.formState.email.exist = true;
             } else {
+              this.emailAlreadyExist = false;
+              this.phoneAlreadyExist = false;
               this.formState.phone.exist = false;
               this.formState.email.exist = false;
             }
@@ -1249,6 +1286,7 @@ export default {
     },
     onSubmit() {
       const resultFormValidation = this.formValidation();
+      console.log('resultFormValidation ::', resultFormValidation);
       this.firstSending = true;
       if (resultFormValidation) {
         console.log('onSubmit => success!');

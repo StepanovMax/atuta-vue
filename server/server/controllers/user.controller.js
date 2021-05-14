@@ -2,6 +2,7 @@ import db from '../models';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
+import { Op } from 'sequelize';
 const sendinblue = require('../../sendinblue');
 
 dotenv.config({
@@ -104,8 +105,10 @@ const registration = async (req, res, file) => {
     try {
       let findUser = await User.findOne({
         where: {
-          email: userDataParsed.email,
-          phone: userDataParsed.phone,
+          [Op.or]: [
+            { email: userDataParsed.email },
+            { phone: userDataParsed.phone }
+          ]
         }
       });
       // 3.1 If user is upsent.
@@ -136,61 +139,104 @@ const registration = async (req, res, file) => {
       userDataParsed.status = 'pending';
       userDataParsed.expireRegDate = expirateRegDate;
       userDataParsed.regKey = regKey;
-      // 3.1.2 create user in DB.
-      try {
-        await User.create(userDataParsed).then(
-          data => {
-            const reglink = process.env.host_front + '/verify/' + data.id + '/' + regKey;
-            console.log(' ');
-            console.log("   >> Message sent to " + userDataParsed.email, userDataParsed.name);
-            console.log(' ');
 
-            const configEmail = {
-              to: [{
-                email: userDataParsed.email
-              }],
-              templateId: 3,
-              params: {
-                FIRSTNAME: userDataParsed.name,
-                CODE: reglink,
-              },
-            };
+      const createRecord = async () => {
+        try {
+          await User.create(userDataParsed).then(
+            data => {
+              const reglink = process.env.host_front + '/verify/' + data.id + '/' + regKey;
+              console.log(' ');
+              console.log("   >> Message sent to " + userDataParsed.email, userDataParsed.name);
+              console.log(' ');
 
-            try {
-              sendinblue(configEmail);
-              // Create a copy of the founed user.
-              const responseUser = JSON.parse(JSON.stringify(data));
-              // Remove an important info.
-              delete responseUser.salt;
-              delete responseUser.regKey;
-              delete responseUser.password;
-              delete responseUser.createdAt;
-              delete responseUser.updatedAt;
-              delete responseUser.expireRegDate;
-              res.status(200).send({
-                result: true,
-                data: responseUser,
-              });
-            } catch(error) {
-              console.error(' ');
-              console.error('[Sendinblue error]', error.message);
-              console.error(' ');
-              res.status(200).send({
-                result: false,
-                message: error.message,
-              });
+              const configEmail = {
+                to: [{
+                  email: userDataParsed.email
+                }],
+                templateId: 3,
+                params: {
+                  FIRSTNAME: userDataParsed.name,
+                  CODE: reglink,
+                },
+              };
+
+              try {
+                sendinblue(configEmail);
+                // Create a copy of the founed user.
+                const responseUser = JSON.parse(JSON.stringify(data));
+                // Remove an important info.
+                delete responseUser.salt;
+                delete responseUser.regKey;
+                delete responseUser.password;
+                delete responseUser.createdAt;
+                delete responseUser.updatedAt;
+                delete responseUser.expireRegDate;
+                res.status(200).send({
+                  result: true,
+                  data: responseUser,
+                });
+              } catch(error) {
+                console.error(' ');
+                console.error('[Sendinblue error]', error.message);
+                console.error(' ');
+                res.status(200).send({
+                  result: false,
+                  message: error.message,
+                });
+              }
             }
+          );
+        } catch(error) {
+          console.error(' ');
+          console.error('[Create user error]', error.errors[0].path);
+          console.error(' ');
+          res.send({
+            result: false,
+            message: error.message,
+            type: error.errors[0].path,
+          });
+        }
+      };
+
+      if (!findUser) {
+        // 3.1.2 create user in DB.
+        createRecord();
+      } else {
+        // Check expiration date
+        // Remove if expired
+        // findUser.destroy();
+        const dateNow = new Date().getTime() / 1000 | 0;
+        const date = dateNow - 600;
+        let cause;
+        if (findUser.dataValues.phone === userDataParsed.phone && findUser.dataValues.email === userDataParsed.email) {
+          cause = 'both';
+        } else if (findUser.dataValues.email === userDataParsed.email) {
+          cause = 'email';
+        } else if (findUser.dataValues.phone === userDataParsed.phone) {
+          cause = 'phone';
+        }
+        if (findUser.dataValues.status === 'pending') {
+          if (findUser.dataValues.expireRegDate < date) {
+            console.log(' ');
+            console.log(' 1 ');
+            console.log(' ');
+            findUser.destroy();
+            createRecord();
+          } else {
+            console.log(' ');
+            console.log(' 2 ');
+            console.log(' ');
+            res.send({
+              result: false,
+              type: cause,
+            });
           }
-        );
-      } catch(error) {
-        console.error(' ');
-        console.error('[Create user error]', error.errors[0].path);
-        console.error(' ');
-        res.send({
-          result: false,
-          message: error.message,
-          type: error.errors[0].path,
-        });
+        } else if (findUser.dataValues.status === 'active') {
+          res.send({
+            result: false,
+            type: cause,
+          });
+        }
       }
     } catch(error) {
       console.error('[Find user error]', error.message);
@@ -275,8 +321,13 @@ const createUser = async (req, res, file) => {
         console.error('error ::', error)
       }
     } else {
+      // Check expiration date
+      // Remove if expired
+      // findUser.destroy();
+      const dateNow = new Date().getTime() / 1000 | 0;
+      const date = dateNow + 600;
       console.log(' ');
-      console.log('User already exist! ::');
+      console.log('User already exist! ::', findUser.expireRegDate, date);
       console.log(' ');
       res.send(false);
     }
