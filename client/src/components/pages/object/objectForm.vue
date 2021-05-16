@@ -1174,7 +1174,7 @@ export default {
             const obj2 = obj1[key1];
             if (obj2.hasOwnProperty('required')) {
               if (obj2.required === true) {
-                if (obj2.value === null || obj2.value === '') {
+                if (obj2.value === null || obj2.value === '' || (obj2.value && obj2.value.length === 0)) {
                   this.formIsFilledArray.push(key1);
                 }
               }
@@ -1730,18 +1730,18 @@ export default {
         return this.createdObject.connectionWay.value;
       },
       set(value) {
-        if (value) {
-          this.createdObject.connectionWay.value = value;
-        }
+        this.createdObject.connectionWay.value = value;
         // Validation for edit page
-        const lengthOfConnectionWayArray = this.createdObject.connectionWay.value.length;
-        if (lengthOfConnectionWayArray === 2) {
-          this.compareDataForEdit(this.propObjectDataValue.connectionWay, 'both', 'connectionWay');
-        } else if (lengthOfConnectionWayArray === 1) {
-          if (this.propObjectDataValue.connectionWay === 'phone' || this.propObjectDataValue.connectionWay === 'messages') {
-            this.objectIsEdited(false);
-          } else {
-            this.objectIsEdited(true);
+        if (this.createdObject.connectionWay.value) {
+          const lengthOfConnectionWayArray = this.createdObject.connectionWay.value.length;
+          if (lengthOfConnectionWayArray === 2) {
+            this.compareDataForEdit(this.propObjectDataValue.connectionWay, 'both', 'connectionWay');
+          } else if (lengthOfConnectionWayArray === 1) {
+            if (this.propObjectDataValue.connectionWay === 'phone' || this.propObjectDataValue.connectionWay === 'messages') {
+              this.objectIsEdited(false);
+            } else {
+              this.objectIsEdited(true);
+            }
           }
         }
       }
@@ -2899,19 +2899,18 @@ export default {
     }
   },
   async mounted() {
-    console.log('  >> this.propObjectDataValue ::', this.propObjectDataValue);
     this.editObjectPageDetect();
     await loadYmap({
       ...this.settings,
       debug: true
     });
     const isPropObjectDataEmpty = this.isObjectEmpty(this.propObjectData);
-    if (isPropObjectDataEmpty) {
-      console.log('  >> 1');
-      this.propObjectDataValue = {...this.propObjectData};
-    } else {
-      console.log('  >> 2');
-      this.propObjectDataValue = await this.getObjectOnPageReload();
+    if (this.isEditObjectPage) {
+      if (isPropObjectDataEmpty) {
+        this.propObjectDataValue = {...this.propObjectData};
+      } else {
+        this.propObjectDataValue = await this.getObjectOnPageReload();
+      }
     }
     if (this.isEditObjectPage) {
       this.fillTheFormWithObjectData();
