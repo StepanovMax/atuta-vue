@@ -41,7 +41,7 @@
         <span v-else>
           <img
             class="img object-card__img"
-            src="/src/images/logo/logo_desktop.png"
+            src="/src/images/logo/logo_card.jpg"
             alt=""
           >
         </span>

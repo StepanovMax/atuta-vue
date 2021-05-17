@@ -1012,7 +1012,7 @@ export default {
     },
     hostResulted() {
       if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
-        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_desktop.png';
+        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_card.jpg';
       }
       return this.dataObjectData.urlPreview
     },
