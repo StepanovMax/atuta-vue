@@ -478,11 +478,18 @@ export default {
     garageAreaValue: {
       cache: false,
       get() {
+        // console.log('this.propCreatedObjectGarage.area.value >> ', this.propCreatedObjectGarage.area.value);
         return +this.propCreatedObjectGarage.area.value;
       },
       set(value) {
+        let newValue;
         this.compareDataForEdit(+value, +this.propDefaultValue.garageArea, 'area');
-        this.propCreatedObjectGarage.area.value = +value;
+        if (value === '' || value === 0 || value === '0') {
+          newValue = null;
+        } else {
+          newValue = +value;
+        }
+        this.propCreatedObjectGarage.area.value = newValue;
       }
     },
     propGarageAreaValue() {
@@ -566,7 +573,7 @@ export default {
           && object[key].edited === true
         ) {
           count++;
-          console.log('count ::', count, object[key].value.slug);
+          // console.log('count ::', count, object[key].value.slug);
         }
         if (count > 0) {
           this.objectIsEdited(true);

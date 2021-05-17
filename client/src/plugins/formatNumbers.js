@@ -131,6 +131,15 @@ const formatNumbers = {
         gLowerCaseFirstLetter(string) {
           return string.charAt(0).toLowerCase() + string.slice(1);
         },
+        gFilterSymbolsFromNumbers(string) {
+          const stringedValue = string.toString();
+          // console.log('stringedValue ::', stringedValue);
+          const regex = /^\$([0-9,])*/g;
+          const numberFormatted = stringedValue.replace(/\D+/g, '');
+          // const numberFormatted = stringedValue.replace(/^\$([0-9,])*/g, '');
+          // console.log('numberFormatted ::', numberFormatted);
+          return numberFormatted;
+        },
       }
     });
   }
