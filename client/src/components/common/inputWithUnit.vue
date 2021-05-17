@@ -6,6 +6,7 @@
       :class="propErrorClass"
       @keypress="gIsNumber($event)"
       v-model="enteredValue"
+      @paste.prevent
     >
     <unit
       :propUnit="propUnit"
@@ -56,7 +57,11 @@ export default {
         return this.formattedValue;
       },
       set(value) {
-        this.formattedValue = this.gFormatPrice(value);
+        let newValue;
+        if (this.propType === 'number') {
+          newValue = this.gFilterSymbolsFromNumbers(value);
+        }
+        this.formattedValue = this.gFormatPrice(newValue);
         this.$emit('update:value', this.formattedValue);
       }
     },
