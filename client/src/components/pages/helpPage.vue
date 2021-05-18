@@ -1,10 +1,7 @@
 <template>
   <div
     id="helpPage"
-    class="help-page"
   >
-
-    <adsLeft />
 
     <div class="help-page__wrap">
 
@@ -66,8 +63,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -76,15 +71,11 @@ import axios from 'axios';
 import { mapState } from 'vuex';
 
 import grid from '../grid.vue';
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
   name: 'helpPage',
   components: {
-    adsLeft,
-    adsRight,
     breadcrumbs,
   },
   data() {

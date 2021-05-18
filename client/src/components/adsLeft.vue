@@ -1,7 +1,7 @@
 <template>
-  <div class="ads ads_left">
+  <div class="sda sda_left">
     <a
-      class="link ads__link"
+      class="link sda__link"
       href="https://www.open.ru/"
       title="Реклама"
       target="_blank"
@@ -11,17 +11,17 @@
         alt="Реклама"
         class="
           image
-          ads__img
-          ads__img_vertical
+          sda__img
+          sda__img_vertical
         "
       >
       <img
-        :src="hostFront + ads_horizontal_mubarak"
+        :src="hostFront + sda_horizontal_mubarak"
         alt="Реклама"
         class="
           image
-          ads__img
-          ads__img_horizontal
+          sda__img
+          sda__img_horizontal
         "
       >
     </a>
@@ -29,14 +29,14 @@
 </template>
 
 <script>
-import ads_horizontal_mubarak from '../images/ads/ads_horizontal_mubarak.png';
-import ally_bank from '../images/ads/ally_bank.jpeg';
+import sda_horizontal_mubarak from '../images/sda/sda_horizontal_mubarak.png';
+import ally_bank from '../images/sda/ally_bank.jpeg';
 
 export default {
-  name: 'adsLeft',
+  name: 'sdaLeft',
   data() {
     return {
-      ads_horizontal_mubarak: ads_horizontal_mubarak,
+      sda_horizontal_mubarak: sda_horizontal_mubarak,
       ally_bank: ally_bank,
       hostFront: process.env.host_front,
     }

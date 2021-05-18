@@ -1,7 +1,6 @@
 <template>
   <div
     id="objectPage"
-    class="object-page"
   >
     <div
       v-if="objectData"
@@ -1077,8 +1076,6 @@
       </div>
 
     </div>
-
-    <adsRight />
 
   </div>
 </template>
