@@ -480,6 +480,28 @@ export default {
         this.propCreatedObjectApp.floorAll.value = value;
       }
     },
+    objectFloorValue: {
+      cache: false,
+      get() {
+        return this.propCreatedObjectApp.floor.value;
+      },
+      set(value) {
+        this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
+        this.propCreatedObjectApp.floor.value = value;
+        // All floors that less than selected floor value will be disabled.
+        this.filterDataDefaultClone.appFloorAllList.forEach(
+          item => {
+            // Convert slug string to number and add a value +1.
+            const selectedNumber = +value.slug - 1;
+            if (item.slug <= selectedNumber ) {
+              item.$isDisabled = true;
+            } else {
+              item.$isDisabled = false;
+            }
+          }
+        )
+      }
+    },
     appYearsList() {
       const currentYear = new Date().getFullYear();
       const startYear = this.filterDataDefaultClone.appYearsStartPosition;
@@ -586,16 +608,6 @@ export default {
       set(value) {
         this.compareDataForEdit(value.slug, this.propDefaultValue.roomsCountSlug, 'roomsCount');
         this.propCreatedObjectApp.roomsCount.value = value;
-      }
-    },
-    objectFloorValue: {
-      cache: false,
-      get() {
-        return this.propCreatedObjectApp.floor.value;
-      },
-      set(value) {
-        this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
-        this.propCreatedObjectApp.floor.value = value;
       }
     },
     objectYearOfBuildingValue: {
