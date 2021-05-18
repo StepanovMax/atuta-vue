@@ -1,10 +1,7 @@
 <template>
   <div
     id="registrationPage"
-    class="template-page"
   >
-
-    <adsLeft />
 
     <div class="template-page__wrap">
 
@@ -33,14 +30,10 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
 <script>
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 import switcher from '../common/switcher.vue';
 import inputField from '../common/inputField.vue';
@@ -54,8 +47,6 @@ export default {
   name: 'registrationPage',
   components: {
     iconOk,
-    adsLeft,
-    adsRight,
     breadcrumbs,
     switcher,
     inputField,

@@ -940,8 +940,6 @@ import multiselect from 'vue-multiselect';
 import { mapState } from 'vuex';
 import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
-import adsLeft from '@cmp/adsLeft.vue';
-import adsRight from '@cmp/adsRight.vue';
 import tarifs from '@cmp/tarifs.vue';
 import objectForm from '@cmp/pages/object/objectForm.vue';
 import iconCross from '@cmp/icons/iconCross.vue';
@@ -970,8 +968,6 @@ export default {
     },
   },
   components: {
-    adsLeft,
-    adsRight,
     tarifs,
     switcher,
     yandexMap,

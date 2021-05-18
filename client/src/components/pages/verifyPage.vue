@@ -1,10 +1,7 @@
 <template>
   <div
     id="verifyPage"
-    class="template-page"
   >
-
-    <adsLeft />
 
     <div class="template-page__wrap">
 
@@ -113,23 +110,17 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
   name: 'verifyPage',
   components: {
-    adsLeft,
-    adsRight,
     breadcrumbs,
   },
   data() {
