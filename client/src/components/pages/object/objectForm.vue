@@ -1169,8 +1169,18 @@ export default {
             const type = obj1.object.value;
             const obj2 = obj1[key1];
             if (obj2.hasOwnProperty('required')) {
-              if (obj2.required === true) {
-                if (obj2.value === null || obj2.value === '' || (obj2.value && obj2.value.length === 0)) {
+              if (
+                obj2.required === true
+                && !obj2.error
+              ) {
+                if (
+                    obj2.value === null
+                    || obj2.value === ''
+                    || (
+                      obj2.value
+                      && obj2.value.length === 0
+                    )
+                  ) {
                   this.formIsFilledArray.push(key1);
                 }
               }
@@ -1179,8 +1189,14 @@ export default {
                 for (const key2 in obj2) {
                   const obj3 = obj2[key2];
                   if (obj3 && obj3.required) {
-                    if (obj3.required === true) {
-                      if (obj3.value === null || obj3.value === '') {
+                    if (
+                      obj3.required === true
+                    ) {
+                      if (
+                        obj3.value === null
+                        || obj3.value === ''
+                        || obj3.error
+                      ) {
                         this.formIsFilledArray.push(key2);
                       }
                     }
