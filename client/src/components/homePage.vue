@@ -1,11 +1,8 @@
 <template>
   <div
     id="home"
-    class="main"
+    class="article"
   >
-    <div class="filter">
-      <filterDesktop />
-    </div>
     <div class="article">
       <grid
         v-if="objectsOnHome"
@@ -16,22 +13,17 @@
         propItemType="object"
       />
     </div>
-    <adsRight />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import adsRight from './adsRight.vue';
 import grid from './grid.vue';
-import filterDesktop from './filters/filterDesktop.vue';
 
 export default {
   name: 'homePage',
   components: {
-    adsRight,
     grid,
-    filterDesktop,
   },
   data() {
     return {

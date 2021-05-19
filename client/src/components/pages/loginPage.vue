@@ -1,10 +1,7 @@
 <template>
   <div
     id="loginPage"
-    class="template-page"
   >
-
-    <adsLeft />
 
     <div class="template-page__wrap">
 
@@ -139,8 +136,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -148,8 +143,6 @@
 import axios from 'axios';
 import { mapState, store } from 'vuex';
 
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 import inputField from '../common/inputField.vue';
 import iconOk from '../icons/iconOk.vue';
@@ -157,8 +150,6 @@ import iconOk from '../icons/iconOk.vue';
 export default {
   name: 'loginPage',
   components: {
-    adsLeft,
-    adsRight,
     breadcrumbs,
     inputField,
     iconOk,
@@ -298,15 +289,9 @@ export default {
         await this.$store.dispatch('getEmployeeByUserID');
         // Call the plugin for fav.objects
         // this.getFavoritesObjectsByListID(loginResult.data.favouriteObjectsListID);
-        if (this.routesHistory.length > 1) {
-          this.$router.push({
-            name: this.routesHistory[0]
-          });
-        } else {
-          this.$router.push({
-            name: 'homePage'
-          });
-        }
+        this.$router.push({
+          name: 'profilePage'
+        });
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});
       } else {

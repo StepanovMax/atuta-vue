@@ -1,10 +1,7 @@
 <template>
   <div
     id="companiesPage"
-    class="companies-page"
   >
-
-    <adsLeft />
 
     <div class="companies-page__wrap">
 
@@ -45,8 +42,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -54,8 +49,6 @@
 import axios from 'axios';
 
 import grid from '../grid.vue';
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import filterDesktop from '../filters/filterDesktop.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
@@ -63,8 +56,6 @@ export default {
   name: 'companiesPage',
   components: {
     grid,
-    adsLeft,
-    adsRight,
     breadcrumbs,
     filterDesktop,
   },

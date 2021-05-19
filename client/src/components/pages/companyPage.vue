@@ -1,11 +1,8 @@
 <template>
   <div
     id="companyPage"
-    class="company-page"
     v-if="companyData"
   >
-
-    <adsLeft />
 
     <div class="company-page__wrap">
 
@@ -123,8 +120,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -132,17 +127,12 @@
 import axios from 'axios';
 
 import grid from '../grid.vue';
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
-import filterDesktop from '../filters/filterDesktop.vue';
 
 export default {
   name: 'companyPage',
   components: {
     grid,
-    adsLeft,
-    adsRight,
     breadcrumbs,
   },
   data() {

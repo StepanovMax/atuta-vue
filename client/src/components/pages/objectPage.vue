@@ -1,7 +1,6 @@
 <template>
   <div
     id="objectPage"
-    class="object-page"
   >
     <div
       v-if="objectData"
@@ -68,6 +67,16 @@
               "
               :propImages="objectData.photoGallery"
             />
+
+            <div
+              v-else
+              class="object-page__photo-gallery"
+            >
+              <img 
+                :src="defaultImgSrc"
+              class="object-page__photo-gallery-img"
+              />
+            </div>
 
             <p
               v-if="
@@ -1068,8 +1077,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -1147,6 +1154,7 @@ export default {
       },
       data: {},
       storedObjects: false,
+      defaultImgSrc: process.env.host_front + '/src/images/logo/logo_page.jpg',
       // objectDataProp: {
       //   title: this.objectData.title,
       // },
@@ -1282,9 +1290,9 @@ export default {
       this.getObjectOnPageReload();
     }
     console.log('objectData.photoGallery ::', this.objectData);
-    if (this.objectData && !this.objectData.photoGallery.length) {
-      // this.objectData.photoGallery.push('/src/images/logo/logo_desktop.png');
-    }
+    // if (this.objectData && !this.objectData.photoGallery.length) {
+    //   this.objectData.photoGallery.push('/src/images/logo/logo_page.jpg');
+    // }
   },
 };
 </script>

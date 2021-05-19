@@ -9,7 +9,9 @@
     <headerDesktop />
     <searchMobile />
     <div class="main-wrap">
-      <router-view></router-view>
+      <dsaWrap>
+        <router-view></router-view>
+      </dsaWrap>
     </div>
     <menuMobile />
     <footerDesktop />
@@ -17,16 +19,17 @@
 </template>
 
 <script>
-import axios from 'axios';
-import headerDesktop from './components/header/header.vue';
-import footerDesktop from './components/footerDesktop.vue';
-import searchMobile from './components/search/searchMobile.vue';
-import menuMobile from './components/menu/menuMobile.vue';
+import dsaWrap from '@cmp/pages/dsaWrap.vue';
+import headerDesktop from '@cmp/header/header.vue';
+import footerDesktop from '@cmp/footerDesktop.vue';
+import searchMobile from '@cmp/search/searchMobile.vue';
+import menuMobile from '@cmp/menu/menuMobile.vue';
 import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'App',
   components: {
+    dsaWrap,
     headerDesktop,
     footerDesktop,
     menuMobile,

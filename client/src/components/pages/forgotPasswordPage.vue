@@ -1,10 +1,7 @@
 <template>
   <div
     id="forgotPasswordPage"
-    class="help-page"
   >
-
-    <adsLeft />
 
     <div class="help-page__wrap">
 
@@ -32,8 +29,6 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
@@ -41,15 +36,11 @@
 import axios from 'axios';
 import { mapState } from 'vuex';
 
-import adsLeft from '../adsLeft.vue';
-import adsRight from '../adsRight.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 
 export default {
   name: 'loginPage',
   components: {
-    adsLeft,
-    adsRight,
     breadcrumbs,
   },
 };

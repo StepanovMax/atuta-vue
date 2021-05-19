@@ -227,11 +227,13 @@ export default {
     clickOnLink() {
       this.closeUserMenuMobile();
     },
-    logout() {
+    async logout() {
+      // e.preventDefault();
       this.$store.commit('updateLoggedInState', false);
       this.$store.commit('updateUserDataState', {});
       this.$root.$emit('closeMobileMenu');
       this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
+      await this.$store.dispatch('logout');
     }
   },
 };

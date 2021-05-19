@@ -1,10 +1,7 @@
 <template>
   <div
     id="notFoundPage"
-    class="not-found-page"
   >
-
-    <adsLeft />
 
     <div class="not-found-page__wrap">
 
@@ -47,21 +44,15 @@
 
     </div>
 
-    <adsRight />
-
   </div>
 </template>
 
 <script>
-import adsLeft from '../../adsLeft.vue';
-import adsRight from '../../adsRight.vue';
 import breadcrumbs from '../../common/breadcrumbs.vue';
 
 export default {
   name: 'notFoundComponent',
   components: {
-    adsLeft,
-    adsRight,
     breadcrumbs,
   },
 };

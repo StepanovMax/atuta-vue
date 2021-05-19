@@ -134,22 +134,24 @@ export default {
     },
     // Update 'fav option' for the 'My Objects' state.
     addFavorites() {
-      const array = this.myObjects.map(
-        item => {
-          item.fav = false;
-          const catched = this.favouriteObjects.some(
-            fav => item.id === fav
-          )
-          if (catched) {
-            item.fav = true;
+      if (this.favouriteObjects) {
+        const array = this.myObjects.map(
+          item => {
+            item.fav = false;
+            const catched = this.favouriteObjects.some(
+              fav => item.id === fav
+            )
+            if (catched) {
+              item.fav = true;
+            }
+            return item;
           }
-          return item;
+        );
+        if (array) {
+          this.$store.commit('updateMyObjectsState', array);
         }
-      );
-      if (array) {
-        this.$store.commit('updateMyObjectsState', array);
+        return array;
       }
-      return array;
     },
   },
   async mounted() {

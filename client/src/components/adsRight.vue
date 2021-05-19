@@ -1,7 +1,7 @@
 <template>
-  <div class="ads ads_right">
+  <div class="sda sda_right">
     <a
-      class="link ads__link"
+      class="link sda__link"
       href="https://www.open.ru/"
       title="Реклама"
       target="_blank"
@@ -11,17 +11,17 @@
         alt="Реклама"
         class="
           image
-          ads__img
-          ads__img_vertical
+          sda__img
+          sda__img_vertical
         "
       >
       <img
-        :src="hostFront + ads_horizontal"
+        :src="hostFront + sda_horizontal"
         alt="Реклама"
         class="
           image
-          ads__img
-          ads__img_horizontal
+          sda__img
+          sda__img_horizontal
         "
       >
     </a>
@@ -29,15 +29,15 @@
 </template>
 
 <script>
-import ads_horizontal from '../images/ads/ads_horizontal.png';
-import duckduckgo from '../images/ads/corpbank.jpeg';
+import sda_horizontal from '../images/sda/sda_horizontal.png';
+import duckduckgo from '../images/sda/corpbank.jpeg';
 
 export default {
-  name: 'adsRight',
+  name: 'sdaRight',
   data() {
     return {
       duckduckgo: duckduckgo,
-      ads_horizontal: ads_horizontal,
+      sda_horizontal: sda_horizontal,
       hostFront: process.env.host_front,
     }
   },
