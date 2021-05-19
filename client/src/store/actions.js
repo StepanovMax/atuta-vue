@@ -43,7 +43,6 @@ const actions = {
     )
       .then(
         response => {
-          console.log('logout response ::', response);
           context.commit('updateLoggedInState', false);
           context.commit('updateUserDataState', null);
           context.commit('updateUserEmployeesDataState', null);

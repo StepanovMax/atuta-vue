@@ -252,6 +252,11 @@ export default {
       if (
         this.$route.name === 'objectPage'
         || this.$route.name === 'homePage'
+        || (
+          this.$route.matched
+          && this.$route.matched[0]
+          && this.$route.matched[0].name === 'profilePage'
+        )
       ) {
         booleanValue = false;
       } else {
