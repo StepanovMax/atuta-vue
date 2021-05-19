@@ -918,7 +918,6 @@ export default {
       // }
     },
     employeesComparison() {
-      console.log('this.employees, this.userEmployees ::', this.employees, this.userEmployees);
       return this.compareArrays(this.employees, this.userEmployees);
     },
   },
@@ -1197,7 +1196,6 @@ export default {
         item => {
           let itemModified = item;
           if (itemModified.slug === role) {
-            console.log('role ::', role);
             itemModified.checked = true;
             this.userDataLocal.role = itemModified;
           } else {
@@ -1496,7 +1494,6 @@ export default {
     },
     blobImage: {
       handler(value) {
-        console.log('blobImage ::', value);
         this.handleLogo(value);
       },
       deep: true
@@ -1506,10 +1503,8 @@ export default {
     this.userDataLocal = JSON.parse(JSON.stringify(this.userData));
     this.employees = JSON.parse(JSON.stringify(this.userEmployees));
     // console.log('this.userEmployees ::', this.userEmployees);
-    console.log('this.formType ::', this.formType);
     if (!this.userDataLocal) {
       this.userDataLocal = this.userDataEmpty;
-      console.log('this.userDataLocal ::', this.userDataLocal);
     } else {
       this.userDataLocal.role = {
         slug: this.userDataLocal.roleSlug,
