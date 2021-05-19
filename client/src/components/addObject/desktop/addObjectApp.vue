@@ -738,7 +738,9 @@ export default {
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaKitchen)) {
         if (this.appAreaFull <= this.appAreaKitchen) {
           this.errorsArea.push('appAreaKitchen');
+          this.propCreatedObjectApp.areaKitchen.error = true;
         } else {
+          this.propCreatedObjectApp.areaKitchen.error = false;
           const indexAppAreaKitchen = this.errorsArea.indexOf('appAreaKitchen');
           this.errorsArea.splice(indexAppAreaKitchen, 1);
           const indexAppAreaFull = this.errorsArea.indexOf('appAreaFull');
@@ -748,7 +750,9 @@ export default {
       if (Boolean(this.appAreaFull) && Boolean(this.appAreaLiving)) {
         if (this.appAreaFull <= this.appAreaLiving) {
           this.errorsArea.push('appAreaLiving');
+          this.propCreatedObjectApp.areaLiving.error = true;
         } else {
+          this.propCreatedObjectApp.areaLiving.error = false;
           const indexAppAreaLiving = this.errorsArea.indexOf('appAreaLiving');
           this.errorsArea.splice(indexAppAreaLiving, 1);
           const indexAppAreaFull = this.errorsArea.indexOf('appAreaFull');
@@ -759,7 +763,9 @@ export default {
         const sumKitchenWithLiving = +this.appAreaKitchen + +this.appAreaLiving;
         if (this.appAreaFull <= sumKitchenWithLiving) {
           this.errorsArea.push('appAreaFull');
+          this.propCreatedObjectApp.area.error = true;
         } else {
+          this.propCreatedObjectApp.area.error = false;
           const indexAppAreaKitchen = this.errorsArea.indexOf('appAreaLiving');
           this.errorsArea.splice(indexAppAreaKitchen, 1);
           const indexAppAreaLiving = this.errorsArea.indexOf('appAreaLiving');
