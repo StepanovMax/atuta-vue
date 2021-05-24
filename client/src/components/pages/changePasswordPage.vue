@@ -13,7 +13,6 @@
 
         </div>
 
-
         <div class="help-page__header-bottom">
 
           <h1 class="help-page__title">

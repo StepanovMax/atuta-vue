@@ -81,7 +81,11 @@ const recoverPassword = async(req, res) => {
 
           const dateNow = new Date().getTime() / 1000 | 0;
 
+<<<<<<< HEAD
           const expireRecoverDate = dateNow + 600;
+=======
+          const expireRecoverDate = dateNow + 60;
+>>>>>>> [AT-jn3r74] Add restore password
 
           const updateValue = {
             expireRecoverPasswordDate: expireRecoverDate,

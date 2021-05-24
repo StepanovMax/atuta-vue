@@ -50,6 +50,11 @@ const router = new Router({
       },
     },
     {
+      path: '/change-password/:userId/:secretCode',
+      name:'changePasswordPage',
+      component: changePasswordPage
+    },
+    {
       path: '/styleGuide',
       name:'styleGuide',
       component: styleGuide
