@@ -122,6 +122,23 @@
           </div>
         </div>
 
+        <div class="template-page__content-row">
+          <div
+            class="
+              login-page__btn-wrap
+              login-page__btn-wrap_buttons
+            "
+          >
+            <router-link
+              class="link"
+              :to="{ name: 'recoverPasswordPage' }"
+              title="Восстановить пароль"
+            >
+              Восстановить пароль
+            </router-link>
+          </div>
+        </div>
+
         <p
           v-if="!authResult"
           class="paragraph paragraph_invalid"

@@ -123,7 +123,7 @@ const registration = async (req, res, file) => {
         },
         jwtSecret
       );
-      regKey = regKey.replace(/\./g,'')
+      regKey = regKey.replace(/\./g,'');
       // console.log('regKey ::', regKey);
       const dateNow = new Date().getTime() / 1000 | 0;
       const expirateRegDate = dateNow + 600;
@@ -409,6 +409,9 @@ const login = async (req, res) => {
 
       // Comparison of the founded password and entered password.
       bcrypt.compare(body.password, user.password, function(err, result) {
+        console.log(' ');
+        console.log('  >> Login ::', body.password, user.password, result);
+        console.log(' ');
         // If passwords equal.
         if (result) {
           console.log(' ');
@@ -443,7 +446,7 @@ const login = async (req, res) => {
           res.status(200).send(responseUser);
         } else {
           console.error(' ');
-          console.error('   >> Passwords is NOT equal ::', body.password, user.password, result);
+          console.error('   >> Login: Passwords is NOT equal ::', body.password, user.password, result);
           console.error(' ');
           res.status(200).send(false);
         }
@@ -918,5 +921,5 @@ export {
   getUserCurrent,
   getUserFavorites,
   addUserFavorites,
-  removeUserFavorites
+  removeUserFavorites,
 };

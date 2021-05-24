@@ -9,16 +9,23 @@
   }
 
   &_invalid {
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: .25px;
     color: red;
     margin-bottom: 2px;
+    font-weight: 400;
+  }
+
+  &_error {
+    color: red;
+    font-size: 14px;
+    font-weight: 700;
   }
 
   &_success {
-    font-size: 12px;
-    letter-spacing: .25px;
-    color: green;
+    font-size: 14px;
+    color: rgb(2, 180, 2);
+    font-weight: 700;
     margin-bottom: 2px;
   }
 
