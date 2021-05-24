@@ -233,7 +233,7 @@ export default {
       let booleanValue;
       if (
         this.isLoggedIn
-        && this.userData
+        && Boolean(this.userData)
         && !this.isSdaLeftShowing
         && (
           this.$route.matched

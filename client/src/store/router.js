@@ -28,7 +28,8 @@ import myObjects from '@cmp/pages/profile/myObjects.vue';
 import favorites from '@cmp/pages/profile/favorites.vue';
 // Reg section
 import loginPage from '@cmp/pages/loginPage.vue';
-import forgotPasswordPage from '@cmp/pages/forgotPasswordPage.vue';
+import recoverPasswordPage from '@cmp/pages/recoverPasswordPage.vue';
+import changePasswordPage from '@cmp/pages/changePasswordPage.vue';
 import registrationPage from '@cmp/pages/registrationPage.vue';
 import verifyPage from '@cmp/pages/verifyPage.vue';
 // 404
@@ -48,6 +49,11 @@ const router = new Router({
       },
     },
     {
+      path: '/change-password/:userId/:secretCode',
+      name:'changePasswordPage',
+      component: changePasswordPage
+    },
+    {
       path: '/styleGuide',
       name:'styleGuide',
       component: styleGuide
@@ -58,6 +64,11 @@ const router = new Router({
       component: verifyPage
     },
     {
+      path: '/recover-password',
+      name:'recoverPasswordPage',
+      component: recoverPasswordPage
+    },
+    {
       path: '/registration',
       name:'registrationPage',
       component: registrationPage
@@ -66,11 +77,6 @@ const router = new Router({
       path: '/login',
       name:'loginPage',
       component: loginPage
-    },
-    {
-      path: '/forgot-password',
-      name:'forgotPasswordPage',
-      component: forgotPasswordPage
     },
     {
       path: '/add-object',

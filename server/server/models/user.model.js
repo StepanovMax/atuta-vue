@@ -113,6 +113,18 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       },
     },
+    expireRecoverPasswordDate: {
+      type: Sequelize.INTEGER,
+      allowNull: {
+        args: true,
+      },
+    },
+    expireRecoverSecretCode: {
+      type: Sequelize.TEXT,
+      allowNull: {
+        args: true,
+      },
+    },
     regKey: {
       type: Sequelize.TEXT,
       allowNull: {
