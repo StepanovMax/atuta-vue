@@ -17,6 +17,26 @@ const common = {
         compareArrays(a, b) {
           return JSON.stringify(a) === JSON.stringify(b);
         },
+        gValidatePassword(value) {
+          const mask = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,33})/;
+          return mask.test(value);
+        },
+        gValidatePasswordForOneNumber(value) {
+          const mask = /(?=.*[0-9])/;
+          return mask.test(value);
+        },
+        gValidatePasswordForOneLetterInLowercase(value) {
+          const mask = /(?=.*[a-z])/;
+          return mask.test(value);
+        },
+        gValidatePasswordForOneLetterInUppercase(value) {
+          const mask = /(?=.*[A-Z])/;
+          return mask.test(value);
+        },
+        gValidatePasswordForOneSpecialSymbol(value) {
+          const mask = /(?=.*[!@#\$%\^&\*])/;
+          return mask.test(value);
+        },
       }
     });
   }

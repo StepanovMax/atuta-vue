@@ -879,56 +879,20 @@
 
     </div>
 
-    <div
-      v-local
-      v-if="true && formIsFilledArray"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        formIsFilledArray
-      </h6>
-      <pre>
-        {{ formIsFilledArray }}
-      </pre>
-    </div>
+    <local-output-data
+      :object="createdObject"
+      name="createdObject"
+    />
 
-    <div
-      v-local
-      v-if="true && propObjectDataValue"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        propObjectDataValue
-      </h6>
-      <pre>
-        {{ propObjectDataValue }}
-      </pre>
-    </div>
+    <local-output-data
+      :object="propObjectDataValue"
+      name="propObjectDataValue"
+    />
 
-    <div
-      v-local
-      v-if="true && createdObject"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        createdObject
-      </h6>
-      <pre>
-        {{ createdObject }}
-      </pre>
-    </div>
+    <local-output-data
+      :object="formIsFilledArray"
+      name="formIsFilledArray"
+    />
 
   </div>
 </template>
@@ -957,6 +921,7 @@ import addObjectSector from '@cmp/addObject/desktop/addObjectSector.vue';
 import addObjectGarage from '@cmp/addObject/desktop/addObjectGarage.vue';
 import addObjectCommercial from '@cmp/addObject/desktop/addObjectCommercial.vue';
 import errorPage403 from '@cmp/pages/errors/userNotLoggedInComponent.vue';
+import localOutputData from '@cmp/common/localOutputData.vue';
 
 export default {
   name: 'objectForm',
@@ -988,6 +953,7 @@ export default {
     addObjectGarage,
     addObjectCommercial,
     errorPage403,
+    localOutputData,
   },
   data() {
     return {

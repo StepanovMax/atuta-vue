@@ -1,6 +1,18 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { registration, login, logout, checkToken, verifyRegistrationLink, removeUser, getUserCurrent } from '../server/controllers/user.controller';
+import {
+  registration, 
+  login,
+  logout,
+  checkToken,
+  verifyRegistrationLink,
+  removeUser,
+  getUserCurrent,
+} from '../server/controllers/user.controller';
+
+import verifyRecoverPasswordLink from '../server/controllers/user/verifyRecoverPasswordLink';
+import recoverPassword from '../server/controllers/user/recoverPassword';
+import changePassword from '../server/controllers/user/changePassword';
 
 let storageConfig = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -18,6 +30,23 @@ let upload = multer({
 });
 
 const router = Router();
+
+// console.log(' text __', typeof verifyRecoverPasswordLink);
+
+router.get(
+  '/verifyRecover/:userId/:secretCode',
+  verifyRecoverPasswordLink
+);
+
+router.post(
+  '/recoverPassword',
+  recoverPassword,
+);
+
+router.post(
+  '/changePassword',
+  changePassword
+);
 
 router.post(
   '/registration',

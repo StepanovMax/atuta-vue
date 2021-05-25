@@ -21,22 +21,10 @@
       />
     </div>
 
-    <div
-      v-local
-      v-if="true && favouriteObjectsArray"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        favouriteObjectsArray
-      </h6>
-      <pre>
-        {{ favouriteObjectsArray }}
-      </pre>
-    </div>
+    <local-output-data
+      :object="favouriteObjectsArray"
+      name="favouriteObjectsArray"
+    />
 
   </div>
 </template>
@@ -46,11 +34,13 @@ import axios from 'axios';
 import { mapState } from 'vuex';
 
 import grid from '../../grid.vue';
+import localOutputData from '@cmp/common/localOutputData.vue';
 
 export default {
   name: 'favorites',
   components: {
     grid,
+    localOutputData,
   },
   watch: {
     async favouriteObjects(value) {

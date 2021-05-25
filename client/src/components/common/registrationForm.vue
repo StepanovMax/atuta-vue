@@ -693,41 +693,17 @@
 
         <br>
 
-        <div
-          v-local
-          v-if="true && userDataLocal"
-          class="local-output-data"
-        >
-          <h6 class="
-            title
-            title_h6
-            title_bold
-          ">
-            userDataLocal
-          </h6>
-          <pre>
-            {{ userDataLocal }}
-          </pre>
-        </div>
+        <local-output-data
+          :object="userDataLocal"
+          name="userDataLocal"
+        />
 
         <br>
 
-        <div
-          v-local
-          v-if="true && employees"
-          class="local-output-data"
-        >
-          <h6 class="
-            title
-            title_h6
-            title_bold
-          ">
-            employees
-          </h6>
-          <pre>
-            {{ employees }}
-          </pre>
-        </div>
+        <local-output-data
+          :object="employees"
+          name="employees"
+        />
 
       </div>
 
@@ -741,6 +717,7 @@ import switcher from '../common/switcher.vue';
 import contentEditor from './contentEditor.vue';
 import inputField from '../common/inputField.vue';
 import uploadImages from '../common/uploadImages.vue';
+import localOutputData from '@cmp/common/localOutputData.vue';
 
 import axios from 'axios';
 import { mapState } from 'vuex';
@@ -753,6 +730,7 @@ export default {
     inputField,
     uploadImages,
     contentEditor,
+    localOutputData,
   },
   props: {
     propUserData: {

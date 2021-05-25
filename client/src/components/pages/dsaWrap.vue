@@ -35,155 +35,7 @@
         </p>
       </div>
 
-      <ul
-        class="
-          menu
-          profile-page__menu
-        "
-      >
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <router-link
-            v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'settingsSubPage' }"
-            @click.native="clickOnLink()"
-          >
-            <a
-              :href="href"
-              :active="isActive"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              :class="{'link_active-menu': isActive}"
-              @click="navigate"
-            >
-              Профиль
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <router-link
-            v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'pocketSubPage' }"
-            @click.native="clickOnLink()"
-          >
-            <a
-              :href="href"
-              :active="isActive"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              :class="{'link_active-menu': isActive}"
-              @click="navigate"
-            >
-              Кошелёк
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <router-link
-            v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'favoritesSubPage' }"
-            @click.native="clickOnLink()"
-          >
-            <a
-              :href="href"
-              :active="isActive"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              :class="{'link_active-menu': isActive}"
-              @click="navigate"
-            >
-              Избранное
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <router-link
-            v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'dialogsSubPage' }"
-            @click.native="clickOnLink()"
-          >
-            <a
-              :href="href"
-              :active="isActive"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              :class="{'link_active-menu': isActive}"
-              @click="navigate"
-            >
-              Сообщения
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <router-link
-            v-slot="{ navigate, href, isActive }"
-            :to="{ name: 'myObjectsSubPage' }"
-            @click.native="clickOnLink()"
-          >
-            <a
-              :href="href"
-              :active="isActive"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              :class="{'link_active-menu': isActive}"
-              @click="navigate"
-            >
-              Мои объявления
-            </a>
-          </router-link>
-        </li>
-        <li
-          class="
-            menu__item
-            profile-page__menu-item
-          "
-        >
-          <a
-            href=""
-            @click="logout"
-            class="
-              link
-              user-menu-mobile__menu-item-link
-            "
-          >
-            Выйти
-          </a>
-        </li>
-      </ul>
+      <menuSidebar />
 
     </div>
 
@@ -198,6 +50,7 @@
 import adsLeft from '@cmp/adsLeft.vue';
 import adsRight from '@cmp/adsRight.vue';
 import filterDesktop from '@cmp/filters/filterDesktop.vue';
+import menuSidebar from '@cmp/menu/menuSidebar.vue';
 
 import { mapState } from 'vuex';
 
@@ -207,6 +60,7 @@ export default {
     adsLeft,
     adsRight,
     filterDesktop,
+    menuSidebar,
   },
   data() {
     return {
@@ -233,7 +87,7 @@ export default {
       let booleanValue;
       if (
         this.isLoggedIn
-        && this.userData
+        && Boolean(this.userData)
         && !this.isSdaLeftShowing
         && (
           this.$route.matched
@@ -262,6 +116,9 @@ export default {
       } else {
         booleanValue = true;
       }
+      console.log('booleanValue ::', 
+        this.$route
+      );
       return booleanValue;
     },
     classValue() {
@@ -277,21 +134,6 @@ export default {
     },
   },
   methods: {
-    async logout(e) {
-      this.$router.push({
-        name: 'homePage'
-      });
-      e.preventDefault();
-      this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', null);
-      await this.$store.dispatch('logout');
-    },
-    closeUserMenuMobile() {
-      this.$store.commit('closeMobileMenus');
-    },
-    clickOnLink() {
-      this.closeUserMenuMobile();
-    },
   },
   mounted() {
     // console.log('this.$route ::', this.$route);

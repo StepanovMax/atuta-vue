@@ -1,7 +1,7 @@
 <template>
   <div
     v-local
-    v-if="propObjectData"
+    v-if="object"
     class="local-output-data"
   >
     <h6 class="
@@ -9,10 +9,10 @@
       title_h6
       title_bold
     ">
-      propObjectData
+      {{ name }}
     </h6>
     <pre>
-      {{ propObjectData }}
+      {{ object }}
     </pre>
   </div>
 </template>
@@ -22,10 +22,13 @@
 export default {
   name: 'localOutputData',
   props: {
-    propObjectData: {
-      type: Object,
-      default: {},
-      required: true,
+    object: {
+      required: true
+    },
+    name: {
+      default: '',
+      type: String,
+      required: true
     },
   },
 };

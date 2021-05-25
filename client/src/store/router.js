@@ -28,7 +28,9 @@ import myObjects from '@cmp/pages/profile/myObjects.vue';
 import favorites from '@cmp/pages/profile/favorites.vue';
 // Reg section
 import loginPage from '@cmp/pages/loginPage.vue';
-import forgotPasswordPage from '@cmp/pages/forgotPasswordPage.vue';
+import recoverPasswordPage from '@cmp/pages/recoverPasswordPage.vue';
+import changePasswordPage from '@cmp/pages/changePasswordPage.vue';
+import changePasswordFromAccountPage from '@cmp/pages/changePasswordFromAccountPage.vue';
 import registrationPage from '@cmp/pages/registrationPage.vue';
 import verifyPage from '@cmp/pages/verifyPage.vue';
 // 404
@@ -58,6 +60,11 @@ const router = new Router({
       component: verifyPage
     },
     {
+      path: '/recover-password',
+      name:'recoverPasswordPage',
+      component: recoverPasswordPage
+    },
+    {
       path: '/registration',
       name:'registrationPage',
       component: registrationPage
@@ -66,11 +73,6 @@ const router = new Router({
       path: '/login',
       name:'loginPage',
       component: loginPage
-    },
-    {
-      path: '/forgot-password',
-      name:'forgotPasswordPage',
-      component: forgotPasswordPage
     },
     {
       path: '/add-object',
@@ -97,10 +99,20 @@ const router = new Router({
       },
     },
     {
+      path: '/change-password/:userId/:secretCode',
+      name:'changePasswordPage',
+      component: changePasswordPage
+    },
+    {
       path: '/profile',
       name:'profilePage',
       component: profilePage,
       children: [
+        {
+          path: '/change-password',
+          name:'changePasswordFromAccountPage',
+          component: changePasswordFromAccountPage
+        },
         {
           path: '/profile/settings',
           name:'settingsSubPage',
@@ -253,6 +265,8 @@ const isTokenExpired = async from => {
     // It's very similar to the page reloading behavior.
     if (!from.name) {
       // If the page is reloading we need to recheck user's authentication.
+      await store.dispatch('checkAuth');
+    } else if (from.name === 'changePasswordFromAccountPage') {
       await store.dispatch('checkAuth');
     }
   }
