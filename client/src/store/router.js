@@ -55,6 +55,11 @@ const router = new Router({
       component: changePasswordPage
     },
     {
+      path: '/change-password',
+      name:'changePasswordFromAccountPage',
+      component: changePasswordFromAccountPage
+    },
+    {
       path: '/styleGuide',
       name:'styleGuide',
       component: styleGuide
