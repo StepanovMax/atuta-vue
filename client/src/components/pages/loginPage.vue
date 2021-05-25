@@ -148,8 +148,15 @@
 
       </div>
 
-      <pre v-local>{{ loginData }}</pre>
-      <pre v-local>{{ formState }}</pre>
+      <local-output-data
+        :object="loginData"
+        name="loginData"
+      />
+
+      <local-output-data
+        :object="formState"
+        name="formState"
+      />
 
     </div>
 
@@ -164,12 +171,15 @@ import breadcrumbs from '../common/breadcrumbs.vue';
 import inputField from '../common/inputField.vue';
 import iconOk from '../icons/iconOk.vue';
 
+import localOutputData from '@cmp/common/localOutputData.vue';
+
 export default {
   name: 'loginPage',
   components: {
     breadcrumbs,
     inputField,
     iconOk,
+    localOutputData,
   },
   data() {
     return {
@@ -307,7 +317,7 @@ export default {
         // Call the plugin for fav.objects
         // this.getFavoritesObjectsByListID(loginResult.data.favouriteObjectsListID);
         this.$router.push({
-          name: 'profilePage'
+          name: 'settingsSubPage'
         });
         // then update cookie with the TRUE value.
         this.setCookie('isLoggedIn', true, {secure: true, 'max-age': 3600});

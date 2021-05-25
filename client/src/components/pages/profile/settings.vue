@@ -26,22 +26,10 @@
     </div>
 
 
-    <div
-      v-local
-      v-if="false && userData"
-      class="local-output-data"
-    >
-      <h6 class="
-        title
-        title_h6
-        title_bold
-      ">
-        userData
-      </h6>
-      <pre>
-        {{ userData }}
-      </pre>
-    </div>
+    <local-output-data
+      :object="userData"
+      name="userData"
+    />
 
   </div>
 </template>
@@ -49,11 +37,13 @@
 <script>
 import { mapState } from 'vuex';
 import registrationForm from '../../common/registrationForm.vue';
+import localOutputData from '@cmp/common/localOutputData.vue';
 
 export default {
   name: 'settings',
   components: {
     registrationForm,
+    localOutputData,
   },
   data() {
     return {

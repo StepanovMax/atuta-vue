@@ -3,7 +3,12 @@
     id="changePasswordPage"
   >
 
+    <errorPage403
+      v-if="!isLoggedIn"
+    />
+
     <div
+      v-else
       class="help-page__wrap"
     >
 
@@ -44,13 +49,13 @@ import changePasswordForm from '@cmp/pages/changePasswordForm.vue';
 import errorPage403 from '@cmp/pages/errors/userNotLoggedInComponent.vue';
 
 export default {
-  name: 'changePasswordPage',
+  name: 'changePasswordFromAccountPage',
   components: {
     breadcrumbs,
     inputField,
     localOutputData,
-    changePasswordForm,
     errorPage403,
+    changePasswordForm,
   },
   data() {
     return {
@@ -252,11 +257,6 @@ export default {
   },
   async mounted() {
     this.linkWasVerified = await this.verifyRecoverLink();
-    if (this.isLoggedIn) {
-      this.$router.push({
-        name: 'changePasswordFromAccountPage'
-      });
-    }
   }
 };
 </script>

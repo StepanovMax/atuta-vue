@@ -50,169 +50,22 @@
         </p>
       </div>
       <div class="user-menu-mobile__content">
-        <ul
-          class="
-            menu
-            user-menu-mobile__menu
-          "
-        >
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{ name: 'favoritesSubPage' }"
-              class="link"
-              @click.native="clickOnLink()"
-            >
-              Избранное
-            </router-link>
-          </li>
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{
-                name: 'myObjectsSubPage'
-              }"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              @click.native="clickOnLink()"
-            >
-              Мои объявления
-            </router-link>
-          </li>
-          <li
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{
-                name: 'companiesPage'
-              }"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              @click.native="clickOnLink()"
-            >
-              Компании
-            </router-link>
-          </li>
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{ name: 'dialogsSubPage' }"
-              class="link"
-              @click.native="clickOnLink()"
-            >
-              Сообщения
-            </router-link>
-          </li>
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{ name: 'pocketSubPage' }"
-              class="link"
-              @click.native="clickOnLink()"
-            >
-              Кошелёк
-            </router-link>
-          </li>
-          <li
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{
-                name: 'helpPage'
-              }"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              @click.native="clickOnLink()"
-            >
-              Помощь
-            </router-link>
-          </li>
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{
-                name: 'settingsSubPage'
-              }"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-              @click.native="clickOnLink()"
-            >
-              Профиль
-            </router-link>
-          </li>
-          <li
-            v-if="isLoggedIn"
-            class="
-              menu__item
-              user-menu-mobile__menu-item
-            "
-          >
-            <router-link
-              :to="{
-                name: 'homePage'
-              }"
-              class="
-                link
-                user-menu-mobile__menu-item-link
-              "
-            >
-              <a
-                @click="logout"
-              >
-                Выйти
-              </a>
-            </router-link>
-          </li>
-        </ul>
+        <menuSidebar />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, store, commit } from 'vuex';
+import { mapState } from 'vuex';
+
+import menuSidebar from '@cmp/menu/menuSidebar.vue';
 
 export default {
   name: 'userMenuMobile',
+  components: {
+    menuSidebar,
+  },
   computed: {
     ...mapState([
       'userData',
@@ -221,20 +74,20 @@ export default {
     ]),
   },
   methods: {
-    closeUserMenuMobile() {
-      this.$store.commit('closeMobileMenus');
-    },
-    clickOnLink() {
-      this.closeUserMenuMobile();
-    },
-    async logout() {
-      // e.preventDefault();
-      this.$store.commit('updateLoggedInState', false);
-      this.$store.commit('updateUserDataState', {});
-      this.$root.$emit('closeMobileMenu');
-      this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
-      await this.$store.dispatch('logout');
-    }
+    // closeUserMenuMobile() {
+    //   this.$store.commit('closeMobileMenus');
+    // },
+    // clickOnLink() {
+    //   this.closeUserMenuMobile();
+    // },
+    // async logout() {
+    //   // e.preventDefault();
+    //   this.$store.commit('updateLoggedInState', false);
+    //   this.$store.commit('updateUserDataState', {});
+    //   this.$root.$emit('closeMobileMenu');
+    //   this.setCookie('isLoggedIn', false, {secure: true, 'max-age': 3600});
+    //   await this.$store.dispatch('logout');
+    // }
   },
 };
 </script>
