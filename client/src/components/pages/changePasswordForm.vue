@@ -552,7 +552,6 @@ export default {
         .then(
           response => {
             if (response && response.data) {
-              console.log('response.data ::', response.data);
               this.resultChangesSuccess = true;
               this.resultChangesError = false;
 
@@ -571,20 +570,16 @@ export default {
             error => {
               this.resultChangesSuccess = false;
               this.resultChangesError = true;
-              console.log('Error changePassword ::', error);
               return false;
             }
           );
     },
     async verifyRecoverLink() {
-      console.log('verifyRecoverLink ::');
       const result = await axios.get(
         process.env.host_api + '/auth/verifyRecover/' + this.$route.params.userId + '/' + this.$route.params.secretCode
       )
         .then(
           success => {
-            console.log('success VerifyRecoverLink ::', success.data.message);
-            console.log('success VerifyRecoverLink ::', success.data.result);
             this.serverText = success.data.message;
             return success.data.result;
           }
@@ -594,7 +589,6 @@ export default {
               return false;
             }
           );
-      console.log('result VerifyRecoverLink ::', result);
       return result;
     },
   },

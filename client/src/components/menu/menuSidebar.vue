@@ -6,6 +6,38 @@
     "
   >
     <li
+      :class="menuItemClass"
+    >
+      <router-link
+        :to="{
+          name: 'helpPage'
+        }"
+        class="
+          link
+          user-menu-mobile__menu-item-link
+        "
+        @click.native="clickOnLink()"
+      >
+        Помощь
+      </router-link>
+    </li>
+    <li
+      :class="menuItemClass"
+    >
+      <router-link
+        :to="{
+          name: 'companiesPage'
+        }"
+        class="
+          link
+          user-menu-mobile__menu-item-link
+        "
+        @click.native="clickOnLink()"
+      >
+        Компании
+      </router-link>
+    </li>
+    <li
       v-if="isLoggedIn"
       :class="menuItemClass"
     >
@@ -32,22 +64,6 @@
         @click.native="clickOnLink()"
       >
         Мои объявления
-      </router-link>
-    </li>
-    <li
-      :class="menuItemClass"
-    >
-      <router-link
-        :to="{
-          name: 'companiesPage'
-        }"
-        class="
-          link
-          user-menu-mobile__menu-item-link
-        "
-        @click.native="clickOnLink()"
-      >
-        Компании
       </router-link>
     </li>
     <li
