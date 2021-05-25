@@ -81,7 +81,7 @@ const recoverPassword = async(req, res) => {
 
           const dateNow = new Date().getTime() / 1000 | 0;
 
-          const expireRecoverDate = dateNow + 60;
+          const expireRecoverDate = dateNow + 600;
 
           const updateValue = {
             expireRecoverPasswordDate: expireRecoverDate,

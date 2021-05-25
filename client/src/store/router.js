@@ -30,6 +30,7 @@ import favorites from '@cmp/pages/profile/favorites.vue';
 import loginPage from '@cmp/pages/loginPage.vue';
 import recoverPasswordPage from '@cmp/pages/recoverPasswordPage.vue';
 import changePasswordPage from '@cmp/pages/changePasswordPage.vue';
+import changePasswordFromAccountPage from '@cmp/pages/changePasswordFromAccountPage.vue';
 import registrationPage from '@cmp/pages/registrationPage.vue';
 import verifyPage from '@cmp/pages/verifyPage.vue';
 // 404
@@ -52,6 +53,11 @@ const router = new Router({
       path: '/change-password/:userId/:secretCode',
       name:'changePasswordPage',
       component: changePasswordPage
+    },
+    {
+      path: '/change-password',
+      name:'changePasswordFromAccountPage',
+      component: changePasswordFromAccountPage
     },
     {
       path: '/styleGuide',
@@ -259,6 +265,8 @@ const isTokenExpired = async from => {
     // It's very similar to the page reloading behavior.
     if (!from.name) {
       // If the page is reloading we need to recheck user's authentication.
+      await store.dispatch('checkAuth');
+    } else if (from.name === 'changePasswordFromAccountPage') {
       await store.dispatch('checkAuth');
     }
   }

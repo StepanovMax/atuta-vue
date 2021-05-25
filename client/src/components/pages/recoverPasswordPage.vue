@@ -152,22 +152,10 @@
 
         <br>
 
-        <div
-          v-local
-          v-if="true && formState"
-          class="local-output-data"
-        >
-          <h6 class="
-            title
-            title_h6
-            title_bold
-          ">
-            formState
-          </h6>
-          <pre>
-            {{ formState }}
-          </pre>
-        </div>
+        <local-output-data
+          :object="formState"
+          name="formState"
+        />
 
       </div>
 
@@ -182,12 +170,14 @@ import { mapState } from 'vuex';
 
 import breadcrumbs from '@cmp/common/breadcrumbs.vue';
 import inputField from '@cmp/common/inputField.vue';
+import localOutputData from '@cmp/common/localOutputData.vue';
 
 export default {
   name: 'recoverPasswordPage',
   components: {
     breadcrumbs,
     inputField,
+    localOutputData,
   },
   data() {
     return {
