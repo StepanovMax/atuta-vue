@@ -116,6 +116,9 @@ export default {
       } else {
         booleanValue = true;
       }
+      console.log('booleanValue ::', 
+        this.$route
+      );
       return booleanValue;
     },
     classValue() {
