@@ -450,6 +450,18 @@ export default {
       set(value) {
         this.compareDataForEdit(value.slug, this.propDefaultValue.floor, 'floor');
         this.propCreatedObjectRoom.floor.value = value;
+        // All floors that less than selected floor value will be disabled.
+        this.filterDataDefaultClone.appFloorAllList.forEach(
+          item => {
+            // Convert slug string to number and add a value +1.
+            const selectedNumber = +value.slug - 1;
+            if (item.slug <= selectedNumber ) {
+              item.$isDisabled = true;
+            } else {
+              item.$isDisabled = false;
+            }
+          }
+        )
       }
     },
   },

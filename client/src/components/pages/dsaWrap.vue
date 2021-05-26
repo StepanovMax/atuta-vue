@@ -47,12 +47,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import adsLeft from '@cmp/adsLeft.vue';
 import adsRight from '@cmp/adsRight.vue';
 import filterDesktop from '@cmp/filters/filterDesktop.vue';
 import menuSidebar from '@cmp/menu/menuSidebar.vue';
-
-import { mapState } from 'vuex';
 
 export default {
   name: 'dsaWrap',
@@ -61,13 +61,6 @@ export default {
     adsRight,
     filterDesktop,
     menuSidebar,
-  },
-  data() {
-    return {
-      // duckduckgo: duckduckgo,
-      // sda_horizontal: sda_horizontal,
-      // hostFront: process.env.host_front,
-    }
   },
   computed: {
     ...mapState([
@@ -109,7 +102,10 @@ export default {
         || (
           this.$route.matched
           && this.$route.matched[0]
-          && this.$route.matched[0].name === 'profilePage'
+          && (
+            this.$route.matched[0].name === 'profilePage'
+            && this.isLoggedIn
+          )
         )
       ) {
         booleanValue = false;

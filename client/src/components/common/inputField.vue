@@ -149,7 +149,7 @@ export default {
     handleInput(event) {
       const value = event.target.value;
       if (this.propType === 'symbolsWithNumbers') {
-        this.filteredValue = value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/gi, '');
+        this.filteredValue = this.gFilterSpecialSymbols(value);
       } else if (this.propType === 'password' || this.propType === 'email' || this.propType === 'website') {
         this.filteredValue = value;
       }

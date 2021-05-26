@@ -133,12 +133,18 @@ const formatNumbers = {
         },
         gFilterSymbolsFromNumbers(string) {
           const stringedValue = string.toString();
-          // console.log('stringedValue ::', stringedValue);
-          const regex = /^\$([0-9,])*/g;
           const numberFormatted = stringedValue.replace(/\D+/g, '');
-          // const numberFormatted = stringedValue.replace(/^\$([0-9,])*/g, '');
-          // console.log('numberFormatted ::', numberFormatted);
           return numberFormatted;
+        },
+        gFilterSpecialSymbols(string) {
+          const stringedValue = string.toString();
+          const specialSymbolsRemoved = stringedValue.replace(/[^А-Яа-яA-Za-z0-9]+/ig, '');
+          return specialSymbolsRemoved;
+        },
+        gFilterNumbers(string) {
+          const stringedValue = string.toString();
+          const numbersRemoved = stringedValue.replace(/\d+/g, '');
+          return numbersRemoved;
         },
       }
     });

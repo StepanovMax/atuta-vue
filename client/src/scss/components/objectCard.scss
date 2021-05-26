@@ -81,6 +81,11 @@ $UPLOAD-IMAGE-WIDTH: 234px;
     &_details {
       flex-grow: 1;
     }
+
+    &_top {
+      width: 100%;
+      min-height: 100%;
+    }
   }
 
   &__wrap {
