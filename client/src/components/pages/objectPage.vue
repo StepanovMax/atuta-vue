@@ -1092,6 +1092,7 @@ import showPhoneNumber from '../common/showPhoneNumber.vue';
 import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 import imagesCarousel from '../common/imagesCarousel.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
+import logoPage from '@src/images/logo/logo_page.jpg';
 
 import axios from 'axios';
 import { mapState, store, commit } from 'vuex';
@@ -1099,6 +1100,7 @@ import { yandexMap, ymapMarker, loadYmap } from 'vue-yandex-maps';
 
 export default {
   metaInfo: {
+    logoPage: logoPage,
     title: 'My Example App',
     meta: [
       {
@@ -1154,7 +1156,7 @@ export default {
       },
       data: {},
       storedObjects: false,
-      defaultImgSrc: process.env.host_front + '/src/images/logo/logo_page.jpg',
+      defaultImgSrc: process.env.host_front + logoPage,
       // objectDataProp: {
       //   title: this.objectData.title,
       // },
