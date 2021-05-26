@@ -41,7 +41,7 @@
         <span v-else>
           <img
             class="img object-card__img"
-            src="/src/images/logo/logo_card.jpg"
+            :src="hostFront + logoCard"
             alt=""
           >
         </span>
@@ -651,13 +651,16 @@ import socialSharing from './socialSharing.vue';
 import iconCrown from '../icons/iconCrown.vue'
 import iconDiamond from '../icons/iconDiamond.vue'
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
+import logoCard from '@src/images/logo/logo_card.jpg';
 
 export default {
   name: 'grid',
   data() {
     return {
+      logoCard: logoCard,
       dataObjectData: this.propObjectData,
       dataIsShowPhoneNumber: false,
+      hostFront: process.env.host_front,
     }
   },
   components: {
