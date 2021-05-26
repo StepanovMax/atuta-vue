@@ -41,7 +41,10 @@
           Удалить
         </button>
         <router-link
-          class="object-card__link"
+          class="
+            object-card__link
+            object-card__link_top
+          "
           :to="{
             name: 'objectPage',
             params: {
@@ -895,11 +898,13 @@ import iconCrown from '../icons/iconCrown.vue'
 import iconArrowUp from '../icons/iconArrowUp.vue'
 import iconDiamond from '../icons/iconDiamond.vue'
 import iconHeartStroke from '../icons/iconHeartStroke.vue';
+import logoCard from '@src/images/logo/logo_card.jpg';
 
 export default {
   name: 'grid',
   data() {
     return {
+      logoCard: logoCard,
       dataObjectData: this.propObjectData,
       dataIsShowPhoneNumber: false,
       favValue: false,
@@ -1012,7 +1017,7 @@ export default {
     },
     hostResulted() {
       if (!this.dataObjectData.urlPreview || this.dataObjectData.urlPreview.length === 0) {
-        this.dataObjectData.urlPreview = this.hostFront + '/src/images/logo/logo_card.jpg';
+        this.dataObjectData.urlPreview = this.hostFront + logoCard;
       }
       return this.dataObjectData.urlPreview
     },
