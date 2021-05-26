@@ -88,8 +88,9 @@
             propClass="registration-page__input"
             propKey="name"
             key="name"
-            :value.sync="userDataLocal.name"
+            :value.sync="userName"
             :propValue="userDataLocal.name"
+            @paste.prevent
           />
         </div>
 
@@ -864,6 +865,15 @@ export default {
       'userData',
       'userEmployees',
     ]),
+    userName: {
+      cache: false,
+      get() {
+        return this.userDataLocal.name;
+      },
+      set(value) {
+        this.userDataLocal.name = value;
+      }
+    },
     passwordsCorrect() {
       if (
         this.formState.password.filled &&
