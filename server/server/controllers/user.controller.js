@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import { Op } from 'sequelize';
+import clearUserData from '../common/clearUserData';
 const sendinblue = require('../../sendinblue');
 
 dotenv.config({
@@ -585,9 +586,10 @@ const checkToken = async (req, res) => {
             if (dateNow < userData.expireDate && dateNow < decodedRefreshToken.expireDate) {
               decodedAccessToken.favouriteObjects = user.dataValues.favorites;
               console.log(' ');
-              console.log('   >> accessToken is OK ::', decodedAccessToken);
+              console.log('   >> accessToken is OK ::');
               console.log(' ');
-              res.status(200).send(decodedAccessToken);
+              const userClearedData = clearUserData(user.dataValues);
+              res.status(200).send(userClearedData);
             } else if (userData.expireDate <= dateNow && dateNow < decodedRefreshToken.expireDate) {
               decodedAccessToken.favouriteObjects = user.dataValues.favorites;
               console.log(' ');
@@ -623,7 +625,8 @@ const checkToken = async (req, res) => {
                 console.log('   >> Auth tokens has been updated ::');
                 console.log(' ');
                 self.expireDate = accessTokenDate;
-                res.status(200).send(self);
+                const userClearedData = clearUserData(self.dataValues);
+                res.status(200).send(userClearedData);
               });
               // userData.expireDate = accessTokenDate;
               // res.status(200).send(userData);
