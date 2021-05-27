@@ -149,7 +149,7 @@ export default {
       });
 
       const sendedData = {
-        money: +this.moneyValue,
+        money: +this.addedMoneyValue,
         userId: this.userData.id,
       };
 
