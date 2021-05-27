@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      moneyValue: '',
+      moneyValue: 0,
       balanceUpdatedSuccess: false,
     }
   },
@@ -103,7 +103,7 @@ export default {
       }
     },
     moneyBalance() {
-      let value = null;
+      let value = 0;
       if (
         this.userData
         && this.userData.moneyBalance
