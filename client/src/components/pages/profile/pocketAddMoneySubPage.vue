@@ -2,6 +2,7 @@
   <div
     id=""
     class=""
+    v-if="userData"
   >
     <header class="template-page__header">
       <h3 class="template-page__subtitle">
@@ -14,7 +15,7 @@
         class="pocket-page__balance"
       >
         <p class="paragraph">
-          Текущий баланс: 551р.
+          Текущий баланс: {{ userData.moneyBalance }}р.
         </p>
       </div>
 
@@ -52,6 +53,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import inputWithUnit from '../../common/inputWithUnit.vue';
 
 export default {
@@ -64,5 +67,13 @@ export default {
       moneyValue: '',
     }
   },
+  computed: {
+    ...mapState([
+      'userData',
+    ]),
+  },
+  mounted() {
+    console.log('userData::', this.userData.moneyBalance);
+  }
 };
 </script>
