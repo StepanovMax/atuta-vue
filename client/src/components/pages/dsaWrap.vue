@@ -56,6 +56,11 @@ import menuSidebar from '@cmp/menu/menuSidebar.vue';
 
 export default {
   name: 'dsaWrap',
+  data() {
+    return {
+      hostFront: process.env.host_front,
+    }
+  },
   components: {
     adsLeft,
     adsRight,
