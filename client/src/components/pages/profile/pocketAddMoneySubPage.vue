@@ -32,7 +32,7 @@
             "
             propType="number"
             propUnit="rouble"
-            :value.sync="moneyValue"
+            :value.sync="addedMoneyValueComputed"
           />
 
           <button
@@ -51,12 +51,12 @@
 
       </div>
 
-        <p
-          v-if="balanceUpdatedSuccess"
-          class="paragraph paragraph_success"
-        >
-          Ваш баланс пополнен.
-        </p>
+      <p
+        v-if="balanceUpdatedSuccess"
+        class="paragraph paragraph_success"
+      >
+        Ваш баланс пополнен.
+      </p>
 
     </div>
   </div>
@@ -75,7 +75,7 @@ export default {
   },
   data() {
     return {
-      moneyValue: 0,
+      addedMoneyValue: 0,
       balanceUpdatedSuccess: false,
     }
   },
@@ -92,10 +92,10 @@ export default {
     },
     activeButtonState() {
       if (
-        this.moneyValue
-        && Boolean(this.moneyValue.length)
-        && +this.moneyValue !== 0
-        && +this.moneyValue >= 0
+        this.addedMoneyValue
+        && Boolean(this.addedMoneyValue.length)
+        && +this.addedMoneyValue !== 0
+        && +this.addedMoneyValue >= 0
       ) {
         return true;
       } else {
@@ -111,6 +111,15 @@ export default {
         value = this.userData.moneyBalance;
       }
       return value;
+    },
+    addedMoneyValueComputed: {
+      cache: false,
+      get() {
+        return this.addedMoneyValue;
+      },
+      set(value) {
+        this.addedMoneyValue = this.gTrimSpaces(value);
+      }
     },
   },
   methods: {
