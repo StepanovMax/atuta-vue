@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { Op } from 'sequelize';
 const sendinblue = require('../../../sendinblue');
+import clearUserData from '../../common/clearUserData';
 
 dotenv.config({
   path: '../.env'
@@ -10,18 +11,6 @@ dotenv.config({
 
 const User = db.user;
 const jwtSecret = process.env.jwt_secret;
-
-const clearUserData = data => {
-  // Remove an important info.
-  delete data.salt;
-  delete data.regKey;
-  delete data.password;
-  delete data.createdAt;
-  delete data.updatedAt;
-  delete data.expireRegDate;
-
-  return data;
-};
 
 
 const recoverPassword = async(req, res) => {

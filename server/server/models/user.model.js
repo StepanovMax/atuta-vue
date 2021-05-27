@@ -137,6 +137,12 @@ module.exports = (sequelize, Sequelize) => {
         args: true,
       },
     },
+    moneyBalance: {
+      type: Sequelize.INTEGER,
+      allowNull: {
+        args: true,
+      },
+    },
   }, {});
 
   return User;

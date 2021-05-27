@@ -9,6 +9,7 @@ import user from './user.route';
 import object from './object.route';
 import employee from './employee.route';
 import tutorial from './tutorial.routes';
+import money from './money.route';
 
 
 const routes = app => {
@@ -41,6 +42,7 @@ const routes = app => {
   app.use('/object', object);
   app.use('/employee', employee);
   app.use('/tutorial', tutorial);
+  app.use('/money', money);
 }
 
 export default routes;
