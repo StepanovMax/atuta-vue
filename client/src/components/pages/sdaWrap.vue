@@ -9,7 +9,7 @@
       <filterDesktop />
     </div>
 
-    <dsaLeft
+    <sdaLeft
       v-if="isSdaLeftShowing"
     />
 
@@ -41,7 +41,7 @@
 
     <slot></slot>
 
-    <dsaRight />
+    <sdaRight />
 
   </div>
 </template>
