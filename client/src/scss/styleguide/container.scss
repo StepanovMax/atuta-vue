@@ -9,14 +9,14 @@
     grid-template-rows: 1fr;
     grid-template-columns: repeat(12, 1fr);
     grid-template-columns: 20% 1fr 16%;
-    grid-template-areas: "filter article adsRight";
+    grid-template-areas: "filter article sdaRight";
     gap: 0 30px;
   }
 
   @include media(tablet-landscape) {
     grid-template-rows: 1fr;
     grid-template-columns: 20% 1fr 16%;
-    grid-template-areas: "filter article adsRight";
+    grid-template-areas: "filter article sdaRight";
     gap: 0 20px;
   }
 
@@ -32,7 +32,7 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "article"
-      "adsRight"
+      "sdaRight"
     ;
     gap: 1px;
   }
@@ -46,7 +46,7 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: 1fr 16%;
-      grid-template-areas: "article adsRight";
+      grid-template-areas: "article sdaRight";
       gap: 0 30px;
     }
   
@@ -61,7 +61,7 @@
       grid-template-columns: 1fr;
       grid-template-areas:
         "article"
-        "adsRight"
+        "sdaRight"
       ;
       gap: 1px;
     }
@@ -76,28 +76,28 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: 16% 1fr 16%;
-      grid-template-areas: "adsLeft article adsRight";
+      grid-template-areas: "sdaLeft article sdaRight";
       gap: 0 30px;
     }
 
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
       grid-template-columns: 16% 1fr 16%;
-      grid-template-areas: "adsLeft article adsRight";
+      grid-template-areas: "sdaLeft article sdaRight";
       gap: 0 20px;
     }
 
     @include media(tablet-portrait) {
       grid-template-rows: 1fr auto auto;
       grid-template-columns: 1fr;
-      grid-template-areas: "adsLeft" "article" "adsRight";
+      grid-template-areas: "sdaLeft" "article" "sdaRight";
       gap: 0 20px;
     }
 
     @include media(mobile) {
       grid-template-rows: auto 1fr auto;
       grid-template-columns: 1fr;
-      grid-template-areas: "adsLeft" "article" "adsRight";
+      grid-template-areas: "sdaLeft" "article" "sdaRight";
       gap: 0 30px;
     }
   }
@@ -112,7 +112,7 @@
     @include media(desktop) {
       grid-template-rows: 1fr;
       grid-template-columns: 20% 1fr 16%;
-      grid-template-areas: "filter article adsRight";
+      grid-template-areas: "filter article sdaRight";
       gap: 0 30px;
     }
 
@@ -129,7 +129,7 @@
       grid-template-columns: 1fr;
       grid-template-areas: 
         "article"
-        "adsRight";
+        "sdaRight";
       gap: 1px;
     }
   }
@@ -145,7 +145,7 @@
       grid-template-rows: 1fr;
       grid-template-columns: repeat(12, 1fr);
       grid-template-columns: 16% 1fr 16%;
-      grid-template-areas: "adsLeft article adsRight";
+      grid-template-areas: "sdaLeft article sdaRight";
       gap: 0 30px;
     }
 
@@ -153,7 +153,7 @@
       grid-template-rows: 1fr;
       grid-template-columns: repeat(12, 1fr);
       grid-template-columns: 16% 1fr 16%;
-      grid-template-areas: "adsLeft article adsRight";
+      grid-template-areas: "sdaLeft article sdaRight";
       gap: 0 20px;
     }
 
@@ -162,7 +162,7 @@
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
         "article article"
-        "adsLeft adsRight"
+        "sdaLeft sdaRight"
       ;
       gap: 0 20px;
     }
@@ -170,7 +170,7 @@
     @include media(tablet-landscape) {
       grid-template-rows: 1fr;
       grid-template-columns: 16% 1fr 16%;
-      grid-template-areas: "adsLeft article adsRight";
+      grid-template-areas: "sdaLeft article sdaRight";
       gap: 0 20px;
     }
 
@@ -179,8 +179,8 @@
       grid-template-columns: 1fr;
       grid-template-areas:
         "article"
-        "adsLeft"
-        "adsRight"
+        "sdaLeft"
+        "sdaRight"
       ;
       gap: 1px;
     }
