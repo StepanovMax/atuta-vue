@@ -1082,7 +1082,6 @@
 
 <script>
 import grid from '../grid.vue';
-import adsRight from '../adsRight.vue';
 import unit from '../common/unit.vue';
 import lineChart from '../common/lineChart.vue';
 import socialSharing from '../common/socialSharing.vue';
@@ -1123,7 +1122,6 @@ export default {
   name: 'objectPage',
   components: {
     breadcrumbs,
-    adsRight,
     unit,
     grid,
     yandexMap,

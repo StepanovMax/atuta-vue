@@ -9,9 +9,9 @@
     <headerDesktop />
     <searchMobile />
     <div class="main-wrap">
-      <dsaWrap>
+      <sdaWrap>
         <router-view></router-view>
-      </dsaWrap>
+      </sdaWrap>
     </div>
     <menuMobile />
     <footerDesktop />
@@ -19,17 +19,17 @@
 </template>
 
 <script>
-import dsaWrap from '@cmp/pages/dsaWrap.vue';
+import sdaWrap from '@cmp/pages/sdaWrap.vue';
 import headerDesktop from '@cmp/header/header.vue';
 import footerDesktop from '@cmp/footerDesktop.vue';
 import searchMobile from '@cmp/search/searchMobile.vue';
 import menuMobile from '@cmp/menu/menuMobile.vue';
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
   components: {
-    dsaWrap,
+    sdaWrap,
     headerDesktop,
     footerDesktop,
     menuMobile,

@@ -10,7 +10,7 @@
   >
     <img
       class="img logo__img"
-      :src="hostFront + '/' + logo"
+      :src="hostFront + logo"
     >
   </router-link>
 </template>
