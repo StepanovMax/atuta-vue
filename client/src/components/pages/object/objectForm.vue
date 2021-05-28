@@ -668,7 +668,10 @@
             ">
               Размещение объявления
             </h3>
-            <p class="paragraph">
+            <p
+              v-if="propObjectDataValue.tarifExpiredDate"
+              class="paragraph"
+            >
               Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectDataValue.tarifExpiredDate) }}
             </p>
             <p class="paragraph">
@@ -844,35 +847,24 @@
             form__block-width
             form__block-width_align-right
           ">
+
             <div
-              v-if="showSuccessMessageOnObjectCreating"
               class="
                 paragraph
                 banner
               "
+              v-if="
+                activeMessage
+                && activeMessage.active
+              "
             >
-              <p class="banner-text">
-                Объект отправлен на модерацию.
-              </p>
-              <p class="banner-text">
-                Через несколько минут объект будет опубликован.
+              <p
+                class="banner-text"
+              >
+                {{ activeMessage.value }}
               </p>
             </div>
 
-            <div
-              v-if="showErrorMessageOnObjectCreating"
-              class="
-                paragraph
-                banner
-              "
-            >
-              <p class="banner-text">
-                При публикации объекта произошла ошибка.
-              </p>
-              <p class="banner-text">
-                Пожалуйста, повторите публикацию ещё раз.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -957,11 +949,36 @@ export default {
   },
   data() {
     return {
+      activeMessage: {
+        name: null,
+        value: null,
+        active: null,
+      },
+      messagesArray: {
+        'messageObjectCreationError': {
+          name: 'messageObjectCreationError',
+          value: process.env.messageObjectCreationError,
+          active: false,
+        },
+        'messageObjectCreationSuccess': {
+          name: 'messageObjectCreationSuccess',
+          value: process.env.messageObjectCreationSuccess,
+          active: false,
+        },
+        'messageObjectCreationSomethingWrong': {
+          name: 'messageObjectCreationSomethingWrong',
+          value: process.env.messageObjectCreationSomethingWrong,
+          active: false,
+        },
+        'messageObjectCreationMoneyNotEnough': {
+          name: 'messageObjectCreationMoneyNotEnough',
+          value: process.env.messageObjectCreationMoneyNotEnough,
+          active: false,
+        },
+      },
       photoGalleryArray: null,
       selectedItem: {},
       townLabelIsHere: false,
-      showSuccessMessageOnObjectCreating: false,
-      showErrorMessageOnObjectCreating: false,
       blobImage: {},
       changedObject: [],
       fieldsForValidating: [],
@@ -1153,7 +1170,6 @@ export default {
             } else {
               if (type && type.slug === key1) {
                 for (const key2 in obj2) {
-                  console.log('::', key2, obj2);
                   const obj3 = obj2[key2];
                   if (obj3 && obj3.required) {
                     if (
@@ -1351,6 +1367,11 @@ export default {
       'filterDataSelected',
       'federalRegionsAlphabetical',
     ]),
+    messageText() {
+      let text;
+      
+      return text;
+    },
     createdObject() {
       // console.log('createdObject ::');
       let createdObjectCopy;
@@ -2765,11 +2786,22 @@ export default {
         }
       );
     },
+    closeAllMessages() {
+      for (const key in this.messagesArray) {
+        this.messagesArray[key].active = false;
+      }
+    },
+    showResultMessage(serverMessage) {
+      this.closeAllMessages();
+      console.log('  >> this.messagesArray[serverMessage] ::', serverMessage, this.messagesArray[serverMessage]);
+      this.messagesArray[serverMessage].active = true;
+      this.activeMessage = {...this.messagesArray[serverMessage]};
+    },
     async sendObject(editFlag) {
       // Trying to send user info.
       try {
-        this.showSuccessMessageOnObjectCreating = false;
-        this.showErrorMessageOnObjectCreating = false;
+        console.log('sendObject ::');
+        this.closeAllMessages();
         const formData = new FormData();
 
         let url;
@@ -2780,8 +2812,6 @@ export default {
         } else {
           url = process.env.host_api + '/object/create';
         }
-
-
 
 
         const data = JSON.parse(JSON.stringify(this.finalObjectData));
@@ -2800,30 +2830,22 @@ export default {
         const transport = axios.create({
           withCredentials: true
         });
-        const objectDataResult = await transport.post(
+
+        await transport.post(
           url,
           formData
         )
           .then(
             response => {
-              console.log('response ::', response);
-              return response.data;
+              console.log('response.data.message ::', response.data.message);
+              this.showResultMessage(response.data.message);
             }
           )
             .catch(
               error => {
-                console.log('catch ::');
                 console.error('Error [Object creation] ::', error);
-                return false;
               }
             );
-        if (objectDataResult) {
-          this.showSuccessMessageOnObjectCreating = true;
-          this.showErrorMessageOnObjectCreating = false;
-        } else {
-          this.showSuccessMessageOnObjectCreating = false;
-          this.showErrorMessageOnObjectCreating = true;
-        }
       } catch(error) {
         console.error('Something went wrong with object creation ::', error);
       }
