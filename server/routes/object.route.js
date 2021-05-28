@@ -11,6 +11,7 @@ dotenv.config({
 });
 
 const Item = db.item;
+const User = db.user;
 
 const jwtSecret = process.env.jwt_secret;
 
@@ -114,6 +115,98 @@ const validateDescription = description => {
   console.log(' >> description ::', description);
 }
 
+const compareMoneyBalanceEnough = (moneyBalanceCurrent, calculatedObjectPrice) => {
+  let moneyBalanceNew;
+  console.log('  compareMoneyBalanceEnough ::', moneyBalanceCurrent >= calculatedObjectPrice);
+  if (moneyBalanceCurrent >= calculatedObjectPrice) {
+    moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
+    return moneyBalanceNew;
+  } else if (moneyBalanceCurrent === calculatedObjectPrice) {
+    moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
+    return moneyBalanceNew;
+  } else if (moneyBalanceCurrent < calculatedObjectPrice) {
+    console.log(' ');
+    console.log('  moneyBalanceCurrent ::::', moneyBalanceCurrent, calculatedObjectPrice);
+    console.log(' ');
+    return false;
+  } else {
+    return false;
+  }
+}
+
+const updateUserBalance = async (userId, calculatedObjectPrice) => {
+  // Check user balance
+  const result = await User.findOne({
+    where: {
+      id: userId,
+    }
+  })
+    .then(
+      user => {
+        const moneyBalanceCurrent = user.dataValues.moneyBalance;
+        console.log(' ');
+        console.log('  moneyBalanceCurrent ::', moneyBalanceCurrent, calculatedObjectPrice);
+        console.log(' ');
+
+        const resultMoneyBalanceEnough = compareMoneyBalanceEnough(moneyBalanceCurrent, calculatedObjectPrice);
+        console.log(' ');
+        console.log('  resultMoneyBalanceEnough ::', resultMoneyBalanceEnough);
+        console.log(' ');
+
+        if (Boolean(resultMoneyBalanceEnough)) {
+          const updateValues = {
+            moneyBalance: resultMoneyBalanceEnough,
+          };
+
+          return user.update(updateValues).then(
+            self => {
+              console.log(' ');
+              console.log('  >> [Success] - [Object payment] ::');
+              console.log(' ');
+
+              return true;
+            }
+          )
+            .catch(
+              error => {
+                console.log(' ');
+                console.log('  >> [Error] - [Object payment] ::');
+                console.log('  >> ', error);
+                console.log(' ');
+
+                return false;
+              }
+            );
+
+        } else {
+          return false;
+        }
+
+      }
+    )
+      .catch(
+        error => {
+          console.log(' ');
+          console.log('  = moneyBalanceCurrent ::');
+          console.log(' ');
+
+          return false;
+        }
+      );
+  return result;
+}
+
+const calculateObjectPrice = (tarif, defaultPrice) => {
+  let resultAmount;
+  if (tarif === 'vip') {
+    resultAmount = defaultPrice + 100;
+  } else if (tarif === 'premium') {
+    resultAmount = defaultPrice + 50;
+  } else {
+    resultAmount = defaultPrice;
+  }
+  return resultAmount;
+}
 
 router.post(
   '/create',
@@ -131,28 +224,60 @@ router.post(
     );
     object.photoGallery = imagesArray;
 
-    let result;
-    try {
-      result = await Item.create(object)
+
+    /* Balance updating */
+    console.log(' ');
+    console.log('  _ user id ::', object.userId);
+    console.log('  _ user tarif ::', object.tarif.value);
+    console.log(' ');
+
+    const minObjectPrice = 30;
+    const calculatedObjectPrice = calculateObjectPrice(object.tarif.value, minObjectPrice);
+
+    console.log(' ');
+    console.log('  calculatedObjectPrice ::', calculatedObjectPrice);
+    console.log(' ');
+
+    const userBalanceUpdated = await updateUserBalance(object.userId, calculatedObjectPrice);
+    /* Balance updating */
+
+    console.log(' ');
+    console.log('  userBalanceUpdated ::', userBalanceUpdated);
+    console.log(' ');
+
+
+    if (userBalanceUpdated) {
+      await Item.create(object)
         .then(
-          success => {
+          async success => {
+            imagesArray = imagesArrayCutted = [];
+
             res.status(200).send({
               result: true,
-              data: success,
+              message: 'messageObjectCreationSuccess',
             });
-            imagesArray = imagesArrayCutted = [];
+
             return success;
           }
-        ).catch(
-          error => {
-            console.error('Object create error ::', error);
-          }
-        );
-    } catch(error) {
-      console.log(' ');
-      console.error('Try Object create error ::', error);
-      console.log(' ');
-      res.status(200).send(false);
+        )
+          .catch(
+            error => {
+              console.log(' ');
+              console.log('  >> [Error] - [Object creation] ::');
+              console.log('  >> ', error);
+              console.log(' ');
+
+              res.status(200).send({
+                result: false,
+                message: 'messageObjectCreationError',
+              });
+            }
+          );
+    } else {
+      res.status(200).send({
+        result: false,
+        message: 'messageObjectCreationMoneyNotEnough',
+      });
     }
 
   }

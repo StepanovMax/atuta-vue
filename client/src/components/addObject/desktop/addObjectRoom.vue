@@ -294,8 +294,9 @@ export default {
         return this.propCreatedObjectRoom.area.value;
       },
       set(value) {
-        this.propCreatedObjectRoom.area.value = value;
-        this.compareDataForEdit(+value, this.propDefaultValue.roomArea, 'area');
+        const trimmedValue = +this.gTrimSpaces(value);
+        this.propCreatedObjectRoom.area.value = trimmedValue;
+        this.compareDataForEdit(trimmedValue, this.propDefaultValue.roomArea, 'area');
       }
     },
     /*
