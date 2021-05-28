@@ -9,7 +9,7 @@
       <filterDesktop />
     </div>
 
-    <adsLeft
+    <dsaLeft
       v-if="isSdaLeftShowing"
     />
 
@@ -41,7 +41,7 @@
 
     <slot></slot>
 
-    <adsRight />
+    <dsaRight />
 
   </div>
 </template>
@@ -49,21 +49,21 @@
 <script>
 import { mapState } from 'vuex';
 
-import adsLeft from '@cmp/adsLeft.vue';
-import adsRight from '@cmp/adsRight.vue';
+import sdaLeft from '@cmp/sdaLeft.vue';
+import sdaRight from '@cmp/sdaRight.vue';
 import filterDesktop from '@cmp/filters/filterDesktop.vue';
 import menuSidebar from '@cmp/menu/menuSidebar.vue';
 
 export default {
-  name: 'dsaWrap',
+  name: 'sdaWrap',
   data() {
     return {
       hostFront: process.env.host_front,
     }
   },
   components: {
-    adsLeft,
-    adsRight,
+    sdaLeft,
+    sdaRight,
     filterDesktop,
     menuSidebar,
   },
