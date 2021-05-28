@@ -2,6 +2,7 @@
   <div
     id=""
     class=""
+    v-if="userData"
   >
     <header class="template-page__header">
       <h3 class="template-page__subtitle">
@@ -14,7 +15,7 @@
         class="pocket-page__balance"
       >
         <p class="paragraph">
-          Текущий баланс: 551р.
+          Текущий баланс: {{ moneyBalance }}р.
         </p>
       </div>
 
@@ -31,7 +32,7 @@
             "
             propType="number"
             propUnit="rouble"
-            :value.sync="moneyValue"
+            :value.sync="addedMoneyValueComputed"
           />
 
           <button
@@ -40,18 +41,31 @@
               pocket-page__button_submit
             "
             :class="{
-              'btn_disabled': !moneyValue.length
+              'btn_disabled': !activeButtonState
             }"
+            @click="cashIn()"
           >
             Пополнить
           </button>
         </div>
+
       </div>
+
+      <p
+        v-if="balanceUpdatedSuccess"
+        class="paragraph paragraph_success"
+      >
+        Ваш баланс пополнен.
+      </p>
+
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { mapState } from 'vuex';
+
 import inputWithUnit from '../../common/inputWithUnit.vue';
 
 export default {
@@ -61,8 +75,106 @@ export default {
   },
   data() {
     return {
-      moneyValue: '',
+      addedMoneyValue: 0,
+      balanceUpdatedSuccess: false,
     }
   },
+  computed: {
+    ...mapState([
+      'userData',
+    ]),
+    userId() {
+      let id = null;
+      if (this.userData && this.userData.id) {
+        id = this.userData.id;
+      }
+      return id;
+    },
+    activeButtonState() {
+      if (
+        this.addedMoneyValue
+        && Boolean(this.addedMoneyValue.length)
+        && +this.addedMoneyValue !== 0
+        && +this.addedMoneyValue >= 0
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    moneyBalance() {
+      let value = 0;
+      if (
+        this.userData
+        && this.userData.moneyBalance
+      ) {
+        value = this.userData.moneyBalance;
+      }
+      return value;
+    },
+    addedMoneyValueComputed: {
+      cache: false,
+      get() {
+        return this.addedMoneyValue;
+      },
+      set(value) {
+        this.addedMoneyValue = this.gTrimSpaces(value);
+      }
+    },
+  },
+  methods: {
+    showMessage(message) {
+      this.balanceUpdatedSuccess = false;
+      if (message === 'ok') {
+        this.balanceUpdatedSuccess = true;
+      } else {
+        this.balanceUpdatedSuccess = false;
+      }
+      setTimeout(
+        () => {
+          this.balanceUpdatedSuccess = false;
+        },
+        5000
+      );
+    },
+    updateMoneyBalaceState(money) {
+      let newUserData = {...this.userData};
+      newUserData.moneyBalance = money;
+      // Fill out userData statement.
+      this.$store.commit('updateUserDataState', newUserData);
+    },
+    async cashIn() {
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      const sendedData = {
+        money: +this.addedMoneyValue,
+        userId: this.userData.id,
+      };
+
+      await transport.post(
+        process.env.host_api + '/money/add',
+        {
+          data: sendedData
+        }
+      )
+        .then(
+          response => {
+            this.showMessage(response.data.message);
+            this.updateMoneyBalaceState(response.data.money);
+          }
+        )
+          .catch(
+            error => {
+              console.error('Error [cashIn] ::', error);
+            }
+          );
+
+    },
+  },
+  mounted() {
+    console.log('userData ::', this.userData);
+  }
 };
 </script>

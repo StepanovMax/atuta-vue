@@ -2,6 +2,13 @@ const formatNumbers = {
   install(Vue) {
     Vue.mixin({
       methods: {
+        gTrimSpaces(value) {
+          // Convert to string.
+          const stringedValue = value.toString();
+          // Trim all whitespaces.
+          const trimmedSpaces = stringedValue.replace(/\s+/g, '');
+          return trimmedSpaces;
+        },
         gFormatPrice(value) {
           // Convert to string.
           let numberFormatted = value.toString();
