@@ -24,6 +24,7 @@ const state = {
   favouriteObjects: [],
   favouriteObjectsArray: [],
   previousPage: null,
+  is404Page: false,
   count: 11.7,
   isLoggedIn: false,
   userData: null,
