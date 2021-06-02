@@ -101,7 +101,7 @@ export default {
       return booleanValue;
     },
     isSdaLeftShowing() {
-      console.log('this.$route.name ::', this.$route.name, this.is404Page);
+      // console.log('this.$route.name ::', this.$route.name, this.is404Page);
       let booleanValue;
       if (
         (
@@ -143,7 +143,7 @@ export default {
   methods: {
   },
   mounted() {
-    console.log('this.is404Page ::', this.is404Page);
+    // console.log('this.is404Page ::', this.is404Page);
   },
 };
 </script>

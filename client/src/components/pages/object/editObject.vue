@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 import objectForm from '@cmp/pages/object/objectForm.vue';
 import errorPage403 from '@cmp/pages/errors/userNotLoggedInComponent.vue';
@@ -50,22 +50,31 @@ export default {
       'isLoggedIn',
     ]),
     doesThisObjectIsMyObject() {
-      if (
-        this.objectData
-        && (this.objectData.userId === this.userData.id)
-      ) {
-        console.log('doesThisObjectIsMyObject true ::');
-        return true;
+      if (this.objectData) {
+        if (this.objectData.userId === this.userData.id) {
+          return true;
+        } else {
+          return false;
+        }
       } else {
-        console.log('doesThisObjectIsMyObject false ::');
         return false;
       }
     },
   },
-  beforeMount() {
-    if (this.$route.params.objectData) {
-      this.objectData = this.$route.params.objectData;
+  methods: {
+    ...mapActions([
+      'getObjectById',
+    ]),
+    async getObject() {
+      if (this.$route.params.objectData) {
+        this.objectData = this.$route.params.objectData;
+      } else {
+        this.objectData = await this.getObjectById(this.$route.params.id);
+      }
     }
+  },
+  mounted() {
+    this.getObject();
   },
 };
 </script>
