@@ -207,6 +207,10 @@
     margin-bottom: 15px;
   }
 
+  &_404 {
+    @extend .container-3-columns;
+  }
+
   @include media(mobile) {
     margin-bottom: 30px;
   }

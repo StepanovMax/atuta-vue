@@ -123,6 +123,28 @@ const actions = {
       return false;
     }
   },
+  // Get an object when the page has been reload.
+  getObjectById: async ({context, commit, dispatch}, objectId) => {
+    console.log('objectId ::', objectId);
+    return await transport.post(
+      process.env.host_api + '/object/get-object-by-id',
+      {
+        id: objectId
+      }
+    )
+      .then(
+        response => {
+          console.log('response ::', response.data);
+          return response.data;
+        }
+      )
+        .catch(
+          error => {
+            console.log(error);
+            return null;
+          }
+        );
+  },
   getEmployeeByUserID: async (context, commit, dispatch) => {
     try {
       // Get user emplyees.

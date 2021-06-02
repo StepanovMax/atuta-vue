@@ -1,4 +1,7 @@
 const mutations = {
+  updateIs404PageState(state, data) {
+    state.is404Page = data;
+  },
   updateIsEditObjectPageState(state, data) {
     state.isEditObjectPage = data;
   },
