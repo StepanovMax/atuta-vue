@@ -3,7 +3,10 @@
     id="objectPage"
   >
     <div
-      v-if="objectData"
+      v-if="
+        objectData
+        && !is404Page
+      "
       class="object-page__content"
     >
 
@@ -1077,6 +1080,10 @@
 
     </div>
 
+    <notFoundComponent
+      v-else
+    />
+
   </div>
 </template>
 
@@ -1092,6 +1099,7 @@ import getBackToPrevUrl from '../common/getBackToPrevUrl.vue';
 import imagesCarousel from '../common/imagesCarousel.vue';
 import breadcrumbs from '../common/breadcrumbs.vue';
 import logoPage from '@src/images/logo/logo_page.jpg';
+import notFoundComponent from '@cmp/pages/errors/notFoundComponent.vue';
 
 import axios from 'axios';
 import { mapState, store, commit } from 'vuex';
@@ -1121,6 +1129,7 @@ export default {
   },
   name: 'objectPage',
   components: {
+    notFoundComponent,
     breadcrumbs,
     unit,
     grid,
@@ -1137,6 +1146,7 @@ export default {
   data() {
     return {
       // backToPage: '',
+      is404Page: false,
       objectOwner: null,
       objectData: null,
       message: {},
@@ -1173,6 +1183,7 @@ export default {
   },
   computed: {
     ...mapState([
+      'userData',
       'previousPage',
     ]),
     backToPage() {
@@ -1183,10 +1194,17 @@ export default {
       }
       return '';
     },
+    doesThisObjectIsMyObject() {
+      if (this.objectData.userId === this.userData.id) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   methods: {
     async getUserById(id) {
-      console.log('getUserById ::', id);
+      // console.log('getUserById ::', id);
 
       const transport = axios.create({
         withCredentials: true
@@ -1202,7 +1220,7 @@ export default {
           response => {
             // console.log('response ::', response);
             this.objectOwner = response.data;
-            console.log('this.objectOwner ::', this.objectOwner);
+            // console.log('this.objectOwner ::', this.objectOwner);
           }
         )
           .catch(
@@ -1214,7 +1232,7 @@ export default {
     },
     // Get an object when the page has been reload.
     async getObjectOnPageReload() {
-      console.log('this.objectID ::', this.objectID);
+      // console.log('this.objectID ::', this.objectID);
 
       const transport = axios.create({
         withCredentials: true
@@ -1228,7 +1246,7 @@ export default {
       )
         .then(
           response => {
-            console.log('response ::', response.data);
+            // console.log('response ::', response.data);
             this.objectData = response.data;
             if (this.objectData.objectType === 'house') {
               this.objectData.distance = this.objectData.houseDistance;
@@ -1254,7 +1272,8 @@ export default {
               this.objectData.floor = this.objectData.appFloor;
               this.objectData.roomsCount = this.objectData.appRoomsCount;
             }
-            console.log('objectData ::', this.objectData);
+            console.log('objectData.status ::', this.objectData.status);
+            this.update404state(this.objectData.status);
             this.getUserById(this.objectData.userId);
           }
         )
@@ -1279,17 +1298,31 @@ export default {
         this.storedObjects = result.data;
       }
     },
+    update404state(objectStatus) {
+      console.log('objectStatus ::', objectStatus);
+      if (
+        objectStatus === 'active'
+        || this.doesThisObjectIsMyObject
+      ) {
+        this.is404Page = false;
+        this.$store.commit('updateIs404PageState', false);
+      } else {
+        this.is404Page = true;
+        this.$store.commit('updateIs404PageState', true);
+      }
+    },
   },
   beforeMount() {
     // this.getSameObjects();
+    console.log('objectData ::', this.objectData);
     // If it's a route transition then load an object through params.
     if (this.$route.params.objectData) {
       this.objectData = this.$route.params.objectData;
+      this.update404state(this.objectData.status);
       this.getUserById(this.objectData.userId);
     } else {
       this.getObjectOnPageReload();
     }
-    console.log('objectData.photoGallery ::', this.objectData);
     // if (this.objectData && !this.objectData.photoGallery.length) {
     //   this.objectData.photoGallery.push('/src/images/logo/logo_page.jpg');
     // }

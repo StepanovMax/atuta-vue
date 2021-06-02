@@ -71,6 +71,7 @@ export default {
     ...mapState([
       'userData',
       'isLoggedIn',
+      'is404Page',
     ]),
     isHomePage() {
       let booleanValue;
@@ -100,9 +101,13 @@ export default {
       return booleanValue;
     },
     isSdaLeftShowing() {
+      console.log('this.$route.name ::', this.$route.name, this.is404Page);
       let booleanValue;
       if (
-        this.$route.name === 'objectPage'
+        (
+          this.$route.name === 'objectPage'
+          && !this.is404Page
+        )
         || this.$route.name === 'homePage'
         || (
           this.$route.matched
@@ -122,7 +127,11 @@ export default {
     classValue() {
       let classValue = 'template-page';
       if (this.$route.name === 'objectPage') {
-        classValue = 'object-page';
+        if (this.is404Page) {
+          classValue = 'object-page_404';
+        } else {
+          classValue = 'object-page';
+        }
       } else if (this.$route.name === 'myObjectsSubPage') {
         classValue = 'template-page profile-page';
       } else if (this.$route.name === 'homePage') {
@@ -134,7 +143,7 @@ export default {
   methods: {
   },
   mounted() {
-    // console.log('this.$route ::', this.$route);
+    console.log('this.is404Page ::', this.is404Page);
   },
 };
 </script>

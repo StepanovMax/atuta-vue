@@ -2878,7 +2878,7 @@ export default {
       )
         .then(
           response => {
-            console.log('response ::', response.data);
+            // console.log('response ::', response.data);
             return response.data;
           }
         )
