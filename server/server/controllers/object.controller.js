@@ -91,6 +91,7 @@ const getObjectById = async (req, res, file) => {
       )
         .catch(
           error => {
+            console.log('  >> getObjectById error ::');
             res.status(404).send({
               message: 'Object not found'
             });
