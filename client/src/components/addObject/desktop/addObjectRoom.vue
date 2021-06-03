@@ -423,7 +423,7 @@ export default {
       let roomObjectCopy = {...this.propCreatedObject.room};
       // If page is "Edit object" page.
       if (this.isEditObjectPage) {
-        console.log('this.isEditObjectPage ::');
+        // console.log('this.isEditObjectPage ::');
 
         // Object "room" type
         const newRoomsCount = {

@@ -63,6 +63,7 @@ export default {
   },
   computed: {
     ...mapState([
+      'userData',
       'myObjects',
       'objectsStatuses',
       'favouriteObjects',
@@ -153,10 +154,18 @@ export default {
         return array;
       }
     },
+    async getObjects() {
+      if (
+        !this.myObjects
+        || this.myObjects.length < 1
+      ) {
+        // Update the state with 'My Objects'.
+        await this.getMyObjects;
+      }
+    },
   },
-  async mounted() {
-    // Update the state with 'My Objects'.
-    await this.getMyObjects;
+  mounted() {
+    this.getObjects();
     // Compare and update 'My Objects' state with favorite objects.
     this.selectedObjectsValue = this.addFavorites();
   },

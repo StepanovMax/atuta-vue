@@ -83,7 +83,7 @@ const actions = {
       context.commit('updateUserDataState', checkTokenResult.data);
       await context.dispatch('getEmployeeByUserID');
       // console.log('checkTokenResult.data', checkTokenResult.data);
-      context.commit('updateFavouriteObjectsState', checkTokenResult.data.favouriteObjects);
+      context.commit('updateFavouriteObjectsState', checkTokenResult.data.favorites);
       // if (checkTokenResult.data.favouriteObjectsListID) {
       //   // then loading the user's favourite objects.
       //   this.getFavoritesObjectsByListID(checkTokenResult.data.favouriteObjectsListID);
@@ -125,7 +125,7 @@ const actions = {
   },
   // Get an object when the page has been reload.
   getObjectById: async ({context, commit, dispatch}, objectId) => {
-    console.log('objectId ::', objectId);
+    // console.log('objectId ::', objectId);
     return await transport.post(
       process.env.host_api + '/object/get-object-by-id',
       {
@@ -134,7 +134,7 @@ const actions = {
     )
       .then(
         response => {
-          console.log('response ::', response.data);
+          // console.log('response ::', response.data);
           return response.data;
         }
       )
@@ -169,7 +169,7 @@ const actions = {
     }
   },
   getMyObjects: async (context, commit, dispatch) => {
-    // console.log('getMyObjects ::');
+    console.log('getMyObjects ::');
     try {
       // Get user emplyees.
       return await transport.get(
@@ -194,7 +194,7 @@ const actions = {
     }
   },
   getFavoritesObjectsByListID: async (context, data) => {
-    console.log('getFavoritesObjectsByListID ::', data);
+    // console.log('getFavoritesObjectsByListID ::', data);
     try {
       // Get user fav objects.
       await transport.post(
@@ -205,7 +205,7 @@ const actions = {
       )
         .then(
           response => {
-            console.log('getFavoritesObjectsByListID response.data.map ::', response);
+            // console.log('getFavoritesObjectsByListID response.data.map ::', response);
             response.data.map(
               item => {
                 item.fav = true;

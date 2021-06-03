@@ -668,12 +668,6 @@
             ">
               Размещение объявления
             </h3>
-            <p
-              v-if="propObjectDataValue.tarifExpiredDate"
-              class="paragraph"
-            >
-              Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectDataValue.tarifExpiredDate) }}
-            </p>
             <p class="paragraph">
               Стоимость размещения объявления - <span class="paragraph_highlighted">30 ₽</span>
             </p>
@@ -713,27 +707,6 @@
 
 
       <div
-        v-if="objectTypeAndDealTypeIsSelected"
-        class="form__row"
-      >
-        <div class="form__row form__row_block-width form__row_block-width-third">
-          <div class="form__block-width form__block-width-third">
-            <h3 class="
-              title
-              title_h5
-              title_bold
-              form__title
-              form__title_add-object
-              add-object-page__text_price-total
-            ">
-              Итого: {{ totalPrice }}₽
-            </h3>
-          </div>
-        </div>
-      </div>
-
-
-      <div
         class="form__row"
         v-if="formIsFilled"
       >
@@ -763,7 +736,11 @@
       <div
         class="form__row"
       >
-        <div class="form__row form__row_block-width form__row_block-width-third">
+        <div class="
+          form__row
+          form__row_block-width
+          form__row_block-width-third
+        ">
           <div
             class="
               form__block-width
@@ -842,12 +819,141 @@
           </div>
         </div>
 
-        <div class="form__row form__row_block-width form__row_block-width-third">
+        <div
+          class="
+            form__row
+            form__row_block-width
+            form__row_block-width-third
+          "
+        >
           <div class="
             form__block-width
-            form__block-width_align-right
+            form__block-width-third
           ">
+            <div
+              class="
+                paragraph
+                banner
+              "
+              v-if="
+                activeMessage
+                && activeMessage.active
+              "
+            >
+              <p
+                class="banner-text"
+              >
+                {{ activeMessage.value }}
+              </p>
+            </div>
 
+          </div>
+        </div>
+
+      </div>
+
+
+      <div
+        v-if="isEditObjectPage"
+        class="form__row"
+      >
+        <div
+          v-if="isObjectExpired"
+          class="
+            form__row
+            form__row_block-width
+            form__row_block-width-third
+          "
+        >
+          <div
+            class="
+              form__block-width
+              form__block-width-third
+            "
+          />
+          <div
+            class="
+              form__block-width
+              form__block-width-two-third
+              form__block-width-third_to-right
+            "
+          >
+            <p
+              class="paragraph"
+            >
+              Дата истечения вашего объявления: {{ gTimestampToDateConverter(propObjectDataValue.tarifExpiredDate) }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          v-else
+          class="
+            form__row
+            form__row_block-width
+            form__row_block-width-third
+          "
+        >
+          <div
+            class="
+              form__block-width
+              form__block-width-third
+            "
+          />
+          <div
+            class="
+              form__block-width
+              form__block-width-two-third
+              form__block-width-third_to-right
+            "
+          >
+            <p
+              class="paragraph"
+            >
+              Время вашего объявления истекло.
+            </p>
+
+            <div
+              class=""
+            >
+              <button
+                class="
+                  btn
+                  btn_blue
+                  btn_middle
+                  add-object-page__btn
+                "
+                @click="activateObject()"
+              >
+                Активировать объявление
+              </button>
+
+              <button
+                class="
+                  btn
+                  btn_blue
+                  btn_middle
+                  add-object-page__btn
+                "
+                @click="removeObject()"
+              >
+                Удалить объявление
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="
+            form__row
+            form__row_block-width
+            form__row_block-width-third
+          "
+        >
+          <div class="
+            form__block-width
+            form__block-width-third
+          ">
             <div
               class="
                 paragraph
@@ -869,6 +975,27 @@
         </div>
       </div>
 
+
+      <div
+        v-if="objectTypeAndDealTypeIsSelected"
+        class="form__row"
+      >
+        <div class="form__row form__row_block-width form__row_block-width-third">
+          <div class="form__block-width form__block-width-third">
+            <h3 class="
+              title
+              title_h5
+              title_bold
+              form__title
+              form__title_add-object
+              add-object-page__text_price-total
+            ">
+              Итого: {{ totalPrice }}₽
+            </h3>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <local-output-data
@@ -882,8 +1009,8 @@
     />
 
     <local-output-data
-      :object="formIsFilledArray"
-      name="formIsFilledArray"
+      :object="activeMessage"
+      name="activeMessage"
     />
 
   </div>
@@ -965,14 +1092,34 @@ export default {
           value: process.env.messageObjectCreationSuccess,
           active: false,
         },
+        'messageObjectCreationMoneyNotEnough': {
+          name: 'messageObjectCreationMoneyNotEnough',
+          value: process.env.messageObjectCreationMoneyNotEnough,
+          active: false,
+        },
         'messageObjectCreationSomethingWrong': {
           name: 'messageObjectCreationSomethingWrong',
           value: process.env.messageObjectCreationSomethingWrong,
           active: false,
         },
-        'messageObjectCreationMoneyNotEnough': {
-          name: 'messageObjectCreationMoneyNotEnough',
-          value: process.env.messageObjectCreationMoneyNotEnough,
+        'messageObjectActivationSuccess': {
+          name: 'messageObjectActivationSuccess',
+          value: process.env.messageObjectActivationSuccess,
+          active: false,
+        },
+        'messageObjectActivationError': {
+          name: 'messageObjectActivationError',
+          value: process.env.messageObjectActivationError,
+          active: false,
+        },
+        'messageObjectActivationMoneyNotEnough': {
+          name: 'messageObjectActivationMoneyNotEnough',
+          value: process.env.messageObjectActivationMoneyNotEnough,
+          active: false,
+        },
+        'messageObjectActivationSomethingWrong': {
+          name: 'messageObjectActivationSomethingWrong',
+          value: process.env.messageObjectActivationSomethingWrong,
           active: false,
         },
       },
@@ -1246,7 +1393,7 @@ export default {
     },
     'createdObject.comfortType': {
       handler(value) {
-        console.log('value ::', value);
+        // console.log('value ::', value);
         if (value && value.value) {
           this.compareDataForEdit(value.value.slug, this.propObjectDataValue.comfortType, 'comfortType');
         }
@@ -1367,6 +1514,24 @@ export default {
       'filterDataSelected',
       'federalRegionsAlphabetical',
     ]),
+    isObjectExpired() {
+      const timestampNow = new Date().getTime() / 1000 | 0;
+      if (timestampNow < this.propObjectDataValue.tarifExpiredDate) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    expireText() {
+      let text = 'qwe';
+      if (this.isObjectExpired) {
+        const dateExpired = this.gTimestampToDateConverter(propObjectDataValue.tarifExpiredDate);
+        text = `Дата истечения вашего объявления: ${dateExpired}`;
+      } else {
+        text = 'Время вашего объявления истекло.';
+      }
+      return text;
+    },
     messageText() {
       let text;
       
@@ -1628,7 +1793,7 @@ export default {
     objectDistrictItems() {
       let resultArray;
       const arrayCopy = [...this.localityDistricts];
-      console.log('arrayCopy ::', arrayCopy);
+      // console.log('arrayCopy ::', arrayCopy);
       if (
         this.createdObject.district.value
         && this.createdObject.district.value.slug
@@ -1842,6 +2007,8 @@ export default {
         }
         if (this.changedObject.tarif && this.changedObject.tarif.value) {
           data.tarif = this.createdObject.tarif.value.slug;
+        } else {
+          data.tarif = null;
         }
         if (this.changedObject.deposit && this.changedObject.deposit.value) {
           const depositCopy = this.createdObject.deposit.value;
@@ -2619,7 +2786,7 @@ export default {
     selectSuggestedAddress(addressText) {
       // console.log('addressText ::', addressText);
       this.currentAddress = addressText;
-      console.log('selectSuggestedAddress 1 ::');
+      // console.log('selectSuggestedAddress 1 ::');
       this.convertAddress(addressText);
       this.createdObject.address.value = addressText;
       this.createdObject.address.coords = this.coordsTaganrog;
@@ -2647,10 +2814,10 @@ export default {
       // console.log('event.target.value ::', event.target.value);
     },
     convertAddress(address) {
-      console.log('convertAddress ::', address);
+      // console.log('convertAddress ::', address);
       ymaps.geocode(address).then(
         res => {
-          console.log('geocode then ::');
+          // console.log('geocode then ::');
           const firstGeoObject = res.geoObjects.get(0);
           const coords = firstGeoObject.geometry.getCoordinates();
           this.coordsTaganrog = coords;
@@ -2673,7 +2840,7 @@ export default {
       );
     },
     getAddress(coords) {
-      console.log('getAddress ::', coords);
+      // console.log('getAddress ::', coords);
       return ymaps.geocode(coords).then(
         res => {
           const firstGeoObject = res.geoObjects.get(0);
@@ -2793,9 +2960,12 @@ export default {
     },
     showResultMessage(serverMessage) {
       this.closeAllMessages();
-      console.log('  >> this.messagesArray[serverMessage] ::', serverMessage, this.messagesArray[serverMessage]);
+      console.log('  >> serverMessage ::', serverMessage);
+      console.log('  >>> this.messagesArray[serverMessage] :: 1');
       this.messagesArray[serverMessage].active = true;
       this.activeMessage = {...this.messagesArray[serverMessage]};
+      console.log('  this.activeMessage', this.activeMessage);
+      console.log('  >>> this.messagesArray[serverMessage] :: 2');
     },
     async sendObject(editFlag) {
       // Trying to send user info.
@@ -2886,6 +3056,34 @@ export default {
             error => {
               this.objectData = null;
               console.error(error);
+            }
+          );
+    },
+    async activateObject() {
+      const transport = axios.create({
+        withCredentials: true
+      });
+
+      console.log('activateObject transport ::', this.propObjectDataValue.id, this.propObjectDataValue.tarif);
+      await transport.post(
+        process.env.host_api + '/object/activate',
+        {
+          data: {
+            id: this.propObjectDataValue.id,
+            tarif: this.propObjectDataValue.tarif,
+            userId: this.propObjectDataValue.userId,
+          }
+        }
+      )
+        .then(
+          response => {
+            console.log('response.data.message ::', response.data.message);
+            this.showResultMessage(response.data.message);
+          }
+        )
+          .catch(
+            error => {
+              console.error('Error [Object creation] ::', error);
             }
           );
     },

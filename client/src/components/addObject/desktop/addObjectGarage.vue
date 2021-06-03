@@ -501,7 +501,7 @@ export default {
       let objectCopy = {...this.propCreatedObject.garage};
       // If page is "Edit object" page.
       if (this.isEditObjectPage) {
-        console.log('this.isEditObjectPage ::');
+        // console.log('this.isEditObjectPage ::');
 
         // Object "garage" type.
         const newGarageType = {
@@ -601,7 +601,7 @@ export default {
     },
   },
   mounted() {
-    console.log('propCreatedObjectGarage ::', this.propCreatedObjectGarage);
+    // console.log('propCreatedObjectGarage ::', this.propCreatedObjectGarage);
   },
 };
 </script>
