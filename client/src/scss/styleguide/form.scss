@@ -89,8 +89,14 @@
         padding-left: 0;
       }
 
-      &_to-bottom {
-        justify-content: space-between;
+      &_to {
+        &-bottom {
+          justify-content: space-between;
+        }
+
+        &-right {
+          align-items: flex-end;
+        }
       }
 
       @include media(mobile) {

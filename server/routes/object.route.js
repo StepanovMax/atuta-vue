@@ -1,6 +1,12 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { getLast32Objects, getObjectById } from '../server/controllers/object.controller';
+import {
+  getLast32Objects,
+  getObjectById,
+  activate,
+  updateUserBalance,
+  calculateObjectPrice,
+} from '../server/controllers/object.controller';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -115,98 +121,87 @@ const validateDescription = description => {
   console.log(' >> description ::', description);
 }
 
-const compareMoneyBalanceEnough = (moneyBalanceCurrent, calculatedObjectPrice) => {
-  let moneyBalanceNew;
-  console.log('  compareMoneyBalanceEnough ::', moneyBalanceCurrent >= calculatedObjectPrice);
-  if (moneyBalanceCurrent >= calculatedObjectPrice) {
-    moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
-    return moneyBalanceNew;
-  } else if (moneyBalanceCurrent === calculatedObjectPrice) {
-    moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
-    return moneyBalanceNew;
-  } else if (moneyBalanceCurrent < calculatedObjectPrice) {
-    console.log(' ');
-    console.log('  moneyBalanceCurrent ::::', moneyBalanceCurrent, calculatedObjectPrice);
-    console.log(' ');
-    return false;
-  } else {
-    return false;
-  }
-}
+// const compareMoneyBalanceEnough = (moneyBalanceCurrent, calculatedObjectPrice) => {
+//   let moneyBalanceNew;
+//   console.log('  compareMoneyBalanceEnough ::', moneyBalanceCurrent >= calculatedObjectPrice);
+//   if (moneyBalanceCurrent >= calculatedObjectPrice) {
+//     moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
+//     return moneyBalanceNew;
+//   } else if (moneyBalanceCurrent === calculatedObjectPrice) {
+//     moneyBalanceNew = moneyBalanceCurrent - calculatedObjectPrice;
+//     return moneyBalanceNew;
+//   } else if (moneyBalanceCurrent < calculatedObjectPrice) {
+//     console.log(' ');
+//     console.log('  moneyBalanceCurrent ::::', moneyBalanceCurrent, calculatedObjectPrice);
+//     console.log(' ');
+//     return false;
+//   } else {
+//     return false;
+//   }
+// }
 
-const updateUserBalance = async (userId, calculatedObjectPrice) => {
-  // Check user balance
-  const result = await User.findOne({
-    where: {
-      id: userId,
-    }
-  })
-    .then(
-      user => {
-        const moneyBalanceCurrent = user.dataValues.moneyBalance;
-        console.log(' ');
-        console.log('  moneyBalanceCurrent ::', moneyBalanceCurrent, calculatedObjectPrice);
-        console.log(' ');
+// const updateUserBalance = async (userId, calculatedObjectPrice) => {
+//   // Check user balance
+//   const result = await User.findOne({
+//     where: {
+//       id: userId,
+//     }
+//   })
+//     .then(
+//       user => {
+//         const moneyBalanceCurrent = user.dataValues.moneyBalance;
+//         console.log(' ');
+//         console.log('  moneyBalanceCurrent ::', moneyBalanceCurrent, calculatedObjectPrice);
+//         console.log(' ');
 
-        const resultMoneyBalanceEnough = compareMoneyBalanceEnough(moneyBalanceCurrent, calculatedObjectPrice);
-        console.log(' ');
-        console.log('  resultMoneyBalanceEnough ::', resultMoneyBalanceEnough);
-        console.log(' ');
+//         const resultMoneyBalanceEnough = compareMoneyBalanceEnough(moneyBalanceCurrent, calculatedObjectPrice);
+//         console.log(' ');
+//         console.log('  resultMoneyBalanceEnough ::', resultMoneyBalanceEnough);
+//         console.log(' ');
 
-        if (Boolean(resultMoneyBalanceEnough)) {
-          const updateValues = {
-            moneyBalance: resultMoneyBalanceEnough,
-          };
+//         if (Boolean(resultMoneyBalanceEnough)) {
+//           const updateValues = {
+//             moneyBalance: resultMoneyBalanceEnough,
+//           };
 
-          return user.update(updateValues).then(
-            self => {
-              console.log(' ');
-              console.log('  >> [Success] - [Object payment] ::');
-              console.log(' ');
+//           return user.update(updateValues).then(
+//             self => {
+//               console.log(' ');
+//               console.log('  >> [Success] - [Object payment] ::');
+//               console.log(' ');
 
-              return true;
-            }
-          )
-            .catch(
-              error => {
-                console.log(' ');
-                console.log('  >> [Error] - [Object payment] ::');
-                console.log('  >> ', error);
-                console.log(' ');
+//               return true;
+//             }
+//           )
+//             .catch(
+//               error => {
+//                 console.log(' ');
+//                 console.log('  >> [Error] - [Object payment] ::');
+//                 console.log('  >> ', error);
+//                 console.log(' ');
 
-                return false;
-              }
-            );
+//                 return false;
+//               }
+//             );
 
-        } else {
-          return false;
-        }
+//         } else {
+//           return false;
+//         }
 
-      }
-    )
-      .catch(
-        error => {
-          console.log(' ');
-          console.log('  = moneyBalanceCurrent ::');
-          console.log(' ');
+//       }
+//     )
+//       .catch(
+//         error => {
+//           console.log(' ');
+//           console.log('  = moneyBalanceCurrent ::');
+//           console.log(' ');
 
-          return false;
-        }
-      );
-  return result;
-}
+//           return false;
+//         }
+//       );
+//   return result;
+// }
 
-const calculateObjectPrice = (tarif, defaultPrice) => {
-  let resultAmount;
-  if (tarif === 'vip') {
-    resultAmount = defaultPrice + 100;
-  } else if (tarif === 'premium') {
-    resultAmount = defaultPrice + 50;
-  } else {
-    resultAmount = defaultPrice;
-  }
-  return resultAmount;
-}
 
 router.post(
   '/create',
@@ -228,14 +223,19 @@ router.post(
     /* Balance updating */
     console.log(' ');
     console.log('  _ user id ::', object.userId);
-    console.log('  _ user tarif ::', object.tarif.value);
+    console.log('  _ user tarif ::', object.tarif);
     console.log(' ');
 
     const minObjectPrice = 30;
-    const calculatedObjectPrice = calculateObjectPrice(object.tarif.value, minObjectPrice);
 
     console.log(' ');
-    console.log('  calculatedObjectPrice ::', calculatedObjectPrice);
+    console.log('  calculatedObjectPrice 1 ::');
+    console.log(' ');
+
+    const calculatedObjectPrice = calculateObjectPrice(object.tarif, minObjectPrice);
+
+    console.log(' ');
+    console.log('  calculatedObjectPrice 2 ::', calculatedObjectPrice);
     console.log(' ');
 
     const userBalanceUpdated = await updateUserBalance(object.userId, calculatedObjectPrice);
@@ -392,6 +392,12 @@ router.post(
     }
 
   }
+);
+
+
+router.post(
+  '/activate',
+  activate
 );
 
 

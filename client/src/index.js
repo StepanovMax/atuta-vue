@@ -43,6 +43,10 @@ Vue.use(formatNumbers);
 
 Vue.config.productionTip = false;
 
+Vue.config.errorHandler = (err) => {
+  // alert(err);
+};
+
 new Vue({
   el: '#app',
   render: h => h(App),
